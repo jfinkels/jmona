@@ -1,0 +1,142 @@
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+  <bean id="individual1" class="jmona.example.ones.OnesIndividual" >
+    <constructor-arg>
+      <list>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>0</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>0</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>0</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>0</value>
+          </constructor-arg>
+        </bean>
+      </list>
+    </constructor-arg>
+  </bean>
+  
+    <bean id="individual2" class="jmona.example.ones.OnesIndividual" >
+    <constructor-arg>
+      <list>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>0</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>1</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>1</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>0</value>
+          </constructor-arg>
+        </bean>
+      </list>
+    </constructor-arg>
+  </bean>
+  
+    <bean id="individual3" class="jmona.example.ones.OnesIndividual" >
+    <constructor-arg>
+      <list>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>1</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>0</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>0</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>1</value>
+          </constructor-arg>
+        </bean>
+      </list>
+    </constructor-arg>
+  </bean>
+  
+    <bean id="individual4" class="jmona.example.ones.OnesIndividual" >
+    <constructor-arg>
+      <list>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>1</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>0</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>1</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>1</value>
+          </constructor-arg>
+        </bean>
+      </list>
+    </constructor-arg>
+  </bean>
+  
+  <bean id="maxOnesIndividual" class="jmona.example.ones.OnesIndividual">
+    <constructor-arg>
+      <list>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>1</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>1</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>1</value>
+          </constructor-arg>
+        </bean>
+        <bean class="java.lang.Short">
+          <constructor-arg>
+            <value>1</value>
+          </constructor-arg>
+        </bean>
+      </list>
+    </constructor-arg>
+  </bean>
+  
+</beans>

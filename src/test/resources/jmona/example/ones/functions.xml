@@ -1,0 +1,15 @@
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+  <bean id="crossoverFunction" class="jmona.example.ones.OnesCrossoverFunction" />
+  <bean id="fitnessFunction" class="jmona.example.ones.OnesFitnessFunction" />
+  <bean id="breedingFunction" class="jmona.impl.DefaultBreedingFunction">
+    <property name="crossoverFunction" ref="crossoverFunction" />
+  </bean>
+  <bean id="mutatorFunction" class="jmona.example.ones.OnesMutatorFunction" />
+  <bean id="selectionFunction" class="jmona.example.ones.OnesSelectionFunction" />
+
+</beans>

@@ -1,0 +1,38 @@
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+  <import resource="./functions.xml" />
+  <import resource="./individuals.xml" />
+
+  <bean id="population" class="jmona.impl.DefaultPopulation" >
+    <constructor-arg>
+      <list>
+        <ref bean="individual1"/>
+        <ref bean="individual2"/>
+        <ref bean="individual3"/>
+        <ref bean="individual4"/>
+      </list>
+    </constructor-arg>
+  </bean>
+
+  <bean id="completionCriteria" class="jmona.example.ones.OnesCompletionCriteria" >
+    <constructor-arg>
+      <value>4</value>
+    </constructor-arg>
+    <property name="maxGenerations" value="10" />
+  </bean>
+
+  <bean id="evolutionContext" class="jmona.impl.DefaultEvolutionContext">
+    <constructor-arg>
+      <ref bean="population" />
+    </constructor-arg>
+    <property name="breedingFunction" ref="breedingFunction" />
+    <property name="fitnessFunction" ref="fitnessFunction" />
+    <property name="mutatorFunction" ref="mutatorFunction" />
+    <property name="selectionFunction" ref="selectionFunction" />
+  </bean>
+
+</beans>
