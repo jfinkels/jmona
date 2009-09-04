@@ -59,16 +59,8 @@ public class DefaultBreedingFunctionTester {
 
     // create some dummy individuals
     final Individual leftParent = new Individual() {
-      @Override
-      public Individual copy() {
-        return this;
-      }
     };
     final Individual rightParent = new Individual() {
-      @Override
-      public Individual copy() {
-        return this;
-      }
     };
 
     // breed each pair of parents to produce a list of children
