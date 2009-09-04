@@ -3,6 +3,7 @@
  */
 package jmona.impl;
 
+import jmona.FitnessException;
 import jmona.Individual;
 import jmona.Pair;
 import jmona.Population;
@@ -10,7 +11,8 @@ import jmona.Population;
 import org.apache.log4j.Logger;
 
 /**
- * Not thread-safe.
+ * A default implementation of the evolution context interface, which provides
+ * basic functionality of a genetic algorithm. Not thread-safe.
  * 
  * @param <T>
  *          The type of individual on which the evolution occurs.
@@ -123,25 +125,29 @@ public class DefaultEvolutionContext<T extends Individual> extends
       rightChild = children.right();
 
       LOG.debug("Children are " + leftChild + " and " + rightChild);
-      
+
       // mutate these children
       this.mutatorFunction().mutate(leftChild);
       this.mutatorFunction().mutate(rightChild);
 
       LOG.debug("Mutated children are " + leftChild + " and " + rightChild);
-      
+
       // add these children to the population
       this.population().add(leftChild);
       this.population().add(rightChild);
 
       LOG.debug("New population is " + this.population());
-      
+
       // add the fitnesses of these two new individuals to the map
-      this.currentFitnesses().put(leftChild,
-          this.fitnessFunction().fitness(leftChild));
-      this.currentFitnesses().put(rightChild,
-          this.fitnessFunction().fitness(rightChild));
-      
+      try {
+        this.currentFitnesses().put(leftChild,
+            this.fitnessFunction().fitness(leftChild));
+        this.currentFitnesses().put(rightChild,
+            this.fitnessFunction().fitness(rightChild));
+      } catch (final FitnessException exception) {
+        throw new EvolutionException(
+            "Failed to determine fitness of children.", exception);
+      }
       // get the new size of the population
       size = this.population().size();
     }
@@ -155,7 +161,7 @@ public class DefaultEvolutionContext<T extends Individual> extends
         this.desiredPopulationSize()));
 
     LOG.debug("Killed off population to produce " + this.population());
-    
+
     /**
      * Step 5: increment the number of the current generation
      */

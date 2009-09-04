@@ -85,8 +85,12 @@ public interface EvolutionContext<T extends Individual> {
    * 
    * @param function
    *          The fitness function used by this context.
+   * @throws FitnessException
+   *           If there is a problem determining the initial fitness of a
+   *           function when this new fitness function is set.
    */
-  void setFitnessFunction(final FitnessFunction<T> function);
+  void setFitnessFunction(final FitnessFunction<T> function)
+      throws FitnessException;
 
   /**
    * Set the mutator function used by this context.

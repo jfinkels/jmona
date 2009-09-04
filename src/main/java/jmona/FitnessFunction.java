@@ -18,6 +18,9 @@ public interface FitnessFunction<T extends Individual> {
    * @param individual
    *          The individual for which to determine fitness.
    * @return The fitness of the specified individual.
+   * @throws FitnessException
+   *           If there is a problem determining the fitness of the specified
+   *           individual.
    */
-  double fitness(T individual);
+  double fitness(final T individual) throws FitnessException;
 }

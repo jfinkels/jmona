@@ -8,6 +8,7 @@ import java.util.Map;
 
 import jmona.BreedingFunction;
 import jmona.EvolutionContext;
+import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.Individual;
 import jmona.MutatorFunction;
@@ -188,10 +189,13 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * 
    * @param function
    *          {@inheritDoc}
+   * @throws FitnessException
+   *           {@inheritDoc}
    * @see jmona.EvolutionContext#setFitnessFunction(jmona.FitnessFunction)
    */
   @Override
-  public synchronized void setFitnessFunction(final FitnessFunction<T> function) {
+  public synchronized void setFitnessFunction(final FitnessFunction<T> function)
+      throws FitnessException {
     this.fitnessFunction = function;
 
     // assign the initial fitnesses
