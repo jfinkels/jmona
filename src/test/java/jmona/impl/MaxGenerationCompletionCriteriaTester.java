@@ -27,16 +27,8 @@ public class MaxGenerationCompletionCriteriaTester {
   public void testIsSatisfied() {
     final Population<Individual> population = new DefaultPopulation<Individual>();
     population.add(new Individual() {
-      @Override
-      public Individual copy() {
-        return null;
-      }
     });
     population.add(new Individual() {
-      @Override
-      public Individual copy() {
-        return null;
-      }
     });
     final EvolutionContext<Individual> context = new DefaultEvolutionContext<Individual>(
         population);
