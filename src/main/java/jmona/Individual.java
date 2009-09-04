@@ -9,10 +9,5 @@ package jmona;
  * @author jfinke
  */
 public interface Individual extends Cloneable {
-  /**
-   * Get a cloned copy of this individual.
-   * 
-   * @return A cloned copy of this individual.
-   */
-  Individual copy();
+
 }

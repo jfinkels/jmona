@@ -25,9 +25,9 @@ public class OnesIndividual implements Individual {
   }
 
   /**
-   * {@inheritDoc}
+   * Get a cloned copy of this individual.
    * 
-   * @return {@inheritDoc}
+   * @return A cloned copy of this individual.
    */
   public OnesIndividual copy() {
     return new OnesIndividual(this.gene.clone());
@@ -62,12 +62,12 @@ public class OnesIndividual implements Individual {
   @Override
   public String toString() {
     final StringBuilder sb = new StringBuilder();
-    
+
     // append each of the bits to the string builder
     for (int i = 0; i < this.gene.length; ++i) {
       sb.append(this.gene[i]);
     }
-    
+
     return sb.toString();
   }
 }
