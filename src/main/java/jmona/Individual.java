@@ -8,6 +8,14 @@ package jmona;
  * 
  * @author jfinke
  */
-public interface Individual extends Cloneable {
-
+public interface Individual {
+  /**
+   * Get a cloned copy of this individual.
+   * 
+   * @param <T>
+   *          A class implementing the Individual interface.
+   * @return A cloned copy of this individual.
+   */
+  // TODO do i have to make this generic? this leaves many unchecked conversions
+  <T extends Individual> T copy();
 }

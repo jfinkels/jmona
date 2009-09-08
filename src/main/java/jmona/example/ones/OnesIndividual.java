@@ -25,12 +25,13 @@ public class OnesIndividual implements Individual {
   }
 
   /**
-   * Get a cloned copy of this individual.
+   * {@inheritDoc}
    * 
-   * @return A cloned copy of this individual.
+   * @return {@inheritDoc}
    */
+  @Override
   public OnesIndividual copy() {
-    return new OnesIndividual(this.gene.clone());
+    return new OnesIndividual(this.gene);
   }
 
   /**
