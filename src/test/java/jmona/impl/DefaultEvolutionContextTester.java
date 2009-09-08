@@ -26,8 +26,17 @@ public class DefaultEvolutionContextTester {
   public void testDefaultEvolutionContext() {
     final Population<Individual> population = new DefaultPopulation<Individual>();
     population.add(new Individual() {
+
+      @Override
+      public Individual copy() {
+        return this;
+      }
     });
     population.add(new Individual() {
+      @Override
+      public Individual copy() {
+        return this;
+      }
     });
 
     EvolutionContext<Individual> context = new DefaultEvolutionContext<Individual>(

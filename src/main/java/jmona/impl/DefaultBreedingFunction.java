@@ -26,14 +26,19 @@ public class DefaultBreedingFunction<T extends Individual> extends
    * @return The children which are the result of breeding the specified
    *         parents.
    */
+  // TODO decide on the contracts for which methods contain the cloning!
+  // TODO my initial feeling is that it should be the first action in this one
   @Override
   public Pair<T, T> breed(final Pair<T, T> parents) {
-
+    
     if (Util.RANDOM.nextDouble() < this.crossoverProbability()) {
       return this.crossoverFunction().crossover(parents);
     }
-
-    return parents;
+    
+    // create a cloned copy of the parents
+    final T left = parents.left().copy();
+    final T right = parents.right().copy();
+    return new Pair<T, T>(left, right);
   }
 
 }
