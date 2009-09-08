@@ -8,8 +8,8 @@ import jmona.Pair;
 import jmona.impl.Util;
 
 /**
- * Class containing one method for performing a two-point crossover in place on
- * a pair of individuals.
+ * Class containing one method for generating copies of specified individuals
+ * with two-point crossover.
  * 
  * @author jfinke
  */
