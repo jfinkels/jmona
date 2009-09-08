@@ -9,7 +9,10 @@ import java.util.NavigableSet;
 import jmona.Individual;
 
 /**
+ * A selection function which chooses individuals with maximum fitness.
+ * 
  * @param <T>
+ *          The type of individual to select.
  * @author jeff
  */
 public class MaxSelectionFunction<T extends Individual> extends
