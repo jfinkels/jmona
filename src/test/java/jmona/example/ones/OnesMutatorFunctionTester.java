@@ -50,6 +50,7 @@ public class OnesMutatorFunctionTester {
       }
     }
 
+    // TODO use standard deviation or something more official for epsilon
     assertEquals(expectedMutations, actualMutations, epsilon);
   }
 
