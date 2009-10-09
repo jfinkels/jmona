@@ -5,8 +5,6 @@ import java.util.Map;
 
 import jmona.Individual;
 
-import org.apache.log4j.Logger;
-
 /**
  * A comparator with access to a mapping from individual to corresponding
  * fitness.
