@@ -30,15 +30,16 @@ public class DefaultBreedingFunction<T extends Individual> extends
   // TODO my initial feeling is that it should be the first action in this one
   @Override
   public Pair<T, T> breed(final Pair<T, T> parents) {
-    
+
     if (Util.RANDOM.nextDouble() < this.crossoverProbability()) {
       return this.crossoverFunction().crossover(parents);
     }
-    
+
     // create a cloned copy of the parents
-    final T left = parents.left().copy();
-    final T right = parents.right().copy();
-    return new Pair<T, T>(left, right);
+    // TODO this is kludgy but necessary for compile-time type checking
+    final Individual left = parents.left().copy();
+    final Individual right = parents.right().copy();
+    return new Pair<T, T>((T) left, (T) right);
   }
 
 }
