@@ -14,8 +14,8 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses({ DefaultBreedingFunctionTester.class,
-    DefaultEvolutionContextTester.class, FitnessComparatorTester.class,
-    MaxGenerationCompletionCriteriaTester.class,
+    DefaultEvolutionContextTester.class, DefaultPopulationFactoryTester.class,
+    FitnessComparatorTester.class, MaxGenerationCompletionCriteriaTester.class,
     SelectionFunctionTester.class })
 public class AllTest {
 
