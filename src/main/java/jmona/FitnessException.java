@@ -4,6 +4,9 @@
 package jmona;
 
 /**
+ * This Exception is thrown when there is a problem determining the fitness of
+ * an Individual.
+ * 
  * @author jeff
  */
 public class FitnessException extends Exception {
