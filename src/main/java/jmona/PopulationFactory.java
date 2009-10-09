@@ -3,7 +3,6 @@
  */
 package jmona;
 
-
 /**
  * An object which provides a factory method for generating an initial
  * population of the specified type.
@@ -45,4 +44,19 @@ public interface PopulationFactory<T extends Individual> {
    *          The new factory for creating Individuals.
    */
   void setIndividualFactory(final IndividualFactory<T> newIndividualFactory);
+
+  /**
+   * Set the size of the population to create.
+   * 
+   * @param newSize
+   *          The size of the population to create.
+   */
+  void setSize(final int newSize);
+
+  /**
+   * Get the size of the population to create.
+   * 
+   * @return The size of the population to create.
+   */
+  int size();
 }
