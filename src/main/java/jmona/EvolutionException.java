@@ -1,7 +1,7 @@
 /**
  * EvolutionException.java
  */
-package jmona.impl;
+package jmona;
 
 /**
  * This Exception is thrown when there is a problem during evolution.

@@ -3,8 +3,6 @@
  */
 package jmona;
 
-import jmona.impl.EvolutionException;
-
 /**
  * A context in which evolution occurs.
  * 

@@ -3,6 +3,7 @@
  */
 package jmona.impl;
 
+import jmona.EvolutionException;
 import jmona.FitnessException;
 import jmona.Individual;
 import jmona.Pair;

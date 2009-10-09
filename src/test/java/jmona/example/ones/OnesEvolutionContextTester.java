@@ -2,7 +2,7 @@ package jmona.example.ones;
 
 import jmona.CompletionCriteria;
 import jmona.EvolutionContext;
-import jmona.impl.EvolutionException;
+import jmona.EvolutionException;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
