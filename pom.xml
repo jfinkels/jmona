@@ -122,7 +122,7 @@
         </configuration>
       </plugin>
 
-      <plugin>
+      <plugin> <!-- Java code cross-reference links -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
         <configuration>
@@ -131,7 +131,17 @@
         </configuration>
       </plugin>
 
-      <plugin>
+      <plugin> <!-- dependency cycle checks -->
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+      </plugin>
+      
+      <plugin> <!-- NCSS metrics -->
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>javancss-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin> <!-- Cobertura test coverage report -->
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>cobertura-maven-plugin</artifactId>
       </plugin>
