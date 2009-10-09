@@ -1,5 +1,6 @@
 package jmona.impl;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Map;
 
@@ -9,12 +10,18 @@ import jmona.Individual;
  * A comparator with access to a mapping from individual to corresponding
  * fitness.
  * 
+ * This class is Serializable so that, for example, a TreeMap utilizing it can
+ * also be Serializable.
+ * 
  * @author jeff
  * @param <T>
  *          The type of the individual to compare.
  */
-class FitnessComparator<T extends Individual> implements Comparator<T> {
+class FitnessComparator<T extends Individual> implements Comparator<T>,
+    Serializable {
 
+  /** Default generated serial version UID. */
+  private static final long serialVersionUID = 7321144923519505979L;
   /** The mapping from individual to corresponding fitness. */
   private Map<T, Double> fitnesses = null;
 
