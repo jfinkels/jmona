@@ -6,17 +6,11 @@
 
   <import resource="./functions.xml" />
   <import resource="./individuals.xml" />
-
-  <bean id="population" class="jmona.impl.DefaultPopulation" >
-    <constructor-arg>
-      <list>
-        <ref bean="individual1"/>
-        <ref bean="individual2"/>
-        <ref bean="individual3"/>
-        <ref bean="individual4"/>
-      </list>
-    </constructor-arg>
-  </bean>
+  <import resource="./factories.xml" />
+  
+  <bean id="population" 
+    factory-bean="populationFactory" 
+    factory-method="createPopulation" />
 
   <bean id="completionCriteria" class="jmona.example.ones.OnesCompletionCriteria" >
     <constructor-arg>
