@@ -3,7 +3,9 @@
  */
 package jmona.example.ones;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+import jmona.MutationException;
 
 import org.junit.Test;
 
@@ -37,7 +39,12 @@ public class OnesMutatorFunctionTester {
     final OnesIndividual individual = new OnesIndividual(array);
 
     // mutate the individual's gene
-    function.mutate(individual);
+    try {
+      function.mutate(individual);
+    } catch (final MutationException exception) {
+      exception.printStackTrace(System.err);
+      fail(exception.getMessage());
+    }
 
     final double prob = OnesMutatorFunction.PROB_BITWISE_MUTATION;
     final double expectedMutations = prob * individual.gene().length;
