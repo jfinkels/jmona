@@ -18,24 +18,15 @@ import jmona.Individual;
 public class MaxGenerationCompletionCriteria<T extends Individual> implements
     CompletionCriteria<T> {
 
+  /** The default maximum number of generations in the evolution. */
+  public static final int DEFAULT_MAX_GENERATIONS = Integer.MAX_VALUE;
+
   /**
    * The maximum number of generations for this evolution. If the number of
    * generations in the evolution meets or exceeds this value, then the
    * evolution stops.
    */
-  private int maxGenerations = Integer.MAX_VALUE;
-
-  /**
-   * Set the maximum number of generations for this evolution. If the number of
-   * generations in the evolution meets or exceeds this value, then the
-   * evolution stops.
-   * 
-   * @param newMaxGenerations
-   *          Set the maximum number of generations for this evolution.
-   */
-  public void setMaxGenerations(final int newMaxGenerations) {
-    this.maxGenerations = newMaxGenerations;
-  }
+  private int maxGenerations = DEFAULT_MAX_GENERATIONS;
 
   /**
    * Whether the maximum number of generations has already occurred.
@@ -48,5 +39,17 @@ public class MaxGenerationCompletionCriteria<T extends Individual> implements
   @Override
   public boolean isSatisfied(final EvolutionContext<T> context) {
     return context.currentGeneration() >= this.maxGenerations;
+  }
+
+  /**
+   * Set the maximum number of generations for this evolution. If the number of
+   * generations in the evolution meets or exceeds this value, then the
+   * evolution stops.
+   * 
+   * @param newMaxGenerations
+   *          Set the maximum number of generations for this evolution.
+   */
+  public void setMaxGenerations(final int newMaxGenerations) {
+    this.maxGenerations = newMaxGenerations;
   }
 }
