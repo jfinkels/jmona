@@ -3,6 +3,7 @@
  */
 package jmona.example.ones;
 
+import jmona.MutationException;
 import jmona.MutatorFunction;
 import jmona.impl.Util;
 
@@ -20,10 +21,12 @@ public class OnesMutatorFunction implements MutatorFunction<OnesIndividual> {
    * 
    * @param individual
    *          The individual whose gene will be mutated.
+   * @throws MutationException
+   *           {@inheritDoc}
    * @see jmona.MutatorFunction#mutate(jmona.Individual)
    */
   @Override
-  public void mutate(final OnesIndividual individual) {
+  public void mutate(final OnesIndividual individual) throws MutationException {
     // get the gene
     final short[] gene = individual.gene();
 
@@ -33,7 +36,7 @@ public class OnesMutatorFunction implements MutatorFunction<OnesIndividual> {
         gene[i] = (short) Math.abs(gene[i] - 1);
       }
     }
-    
+
     // set the gene on the individual
     individual.setGene(gene);
   }

@@ -16,6 +16,8 @@ public interface MutatorFunction<T extends Individual> {
    * 
    * @param individual
    *          The individual to mutate.
+   * @throws MutationException
+   *           If there is a problem during mutation.
    */
-  void mutate(final T individual);
+  void mutate(final T individual) throws MutationException;
 }

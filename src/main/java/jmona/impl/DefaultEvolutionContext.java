@@ -6,6 +6,7 @@ package jmona.impl;
 import jmona.EvolutionException;
 import jmona.FitnessException;
 import jmona.Individual;
+import jmona.MutationException;
 import jmona.Pair;
 import jmona.Population;
 
@@ -116,7 +117,7 @@ public class DefaultEvolutionContext<T extends Individual> extends
       parent2 = this.population().get(Util.RANDOM.nextInt(size));
 
       LOG.debug("Making children with parents " + parent1 + " and " + parent2);
-      
+
       // create a child from those two parents
       children = this.breedingFunction()
           .breed(new Pair<T, T>(parent1, parent2));
@@ -128,8 +129,12 @@ public class DefaultEvolutionContext<T extends Individual> extends
       LOG.debug("Children are " + leftChild + " and " + rightChild);
 
       // mutate these children
-      this.mutatorFunction().mutate(leftChild);
-      this.mutatorFunction().mutate(rightChild);
+      try {
+        this.mutatorFunction().mutate(leftChild);
+        this.mutatorFunction().mutate(rightChild);
+      } catch (final MutationException exception) {
+        throw new EvolutionException("Failed to mutate children.", exception);
+      }
 
       LOG.debug("Mutated children are " + leftChild + " and " + rightChild);
 
