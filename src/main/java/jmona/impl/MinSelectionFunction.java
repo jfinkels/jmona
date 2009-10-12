@@ -9,7 +9,11 @@ import java.util.NavigableSet;
 import jmona.Individual;
 
 /**
+ * A class which provides ascending iterator access to a specified set of
+ * Individuals.
+ * 
  * @param <T>
+ *          The type of Individual over which to iterate.
  * @author jeff
  */
 public class MinSelectionFunction<T extends Individual> extends
