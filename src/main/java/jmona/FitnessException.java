@@ -11,9 +11,7 @@ package jmona;
  */
 public class FitnessException extends Exception {
 
-  /**
-   * Default generated serial version UID.
-   */
+  /** Default generated serial version UID. */
   private static final long serialVersionUID = -926352878278367019L;
 
   /**
