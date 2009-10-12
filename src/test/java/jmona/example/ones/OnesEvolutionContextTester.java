@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  */
 
 /**
- * Test class for the OnesEvolutionContext class.
+ * Test class for an evolution of the Ones example.
  * 
  * @author jeff
  */
