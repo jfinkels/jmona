@@ -20,12 +20,12 @@ public abstract class AbstractBreedingFunction<T extends Individual> implements
   /** The crossover function for this breeding function. */
   private CrossoverFunction<T> crossoverFunction = null;
   /** The probability that crossover will occur when breeding. */
-  public static final double PROB_CROSSOVER_DEFAULT = 0.6;
+  public static final double DEFAULT_CROSSOVER_PROB = 0.6;
   /**
    * The probability of crossover occuring during a breeding, between 0
    * (inclusive) and 1 (inclusive).
    */
-  private double crossoverProbability = PROB_CROSSOVER_DEFAULT;
+  private double crossoverProbability = DEFAULT_CROSSOVER_PROB;
 
   /**
    * {@inheritDoc}
