@@ -87,11 +87,11 @@ public class DefaultEvolutionContext<T extends Individual> extends
      */
 
     // get the initial selection size
-    final int initialSelectionSize = (int) (this.population().size() * SELECTION_FACTOR);
+    final int initialSelectionSize = (int) (this.currentPopulation().size() * SELECTION_FACTOR);
 
     // kill off the least fit individuals
-    this.setPopulation(this.selectionFunction().select(this.currentFitnesses(),
-        initialSelectionSize));
+    this.setCurrentPopulation(this.selectionFunction().select(
+        this.currentFitnesses(), initialSelectionSize));
 
     /**
      * Step 2: breed the remaining individuals; Step 3: determine the fitnesses
@@ -102,12 +102,12 @@ public class DefaultEvolutionContext<T extends Individual> extends
     T parent1 = null, parent2 = null, leftChild = null, rightChild = null;
     Pair<T, T> children = null;
     int limit = this.desiredPopulationSize() + CHILD_REPLACEMENT_FACTOR;
-    int size = this.population().size();
+    int size = this.currentPopulation().size();
     // TODO what if this.population.size() == limit - 1?
     while (size < limit - 1) {
       // choose two members of the population to be parents
-      parent1 = this.population().get(Util.RANDOM.nextInt(size));
-      parent2 = this.population().get(Util.RANDOM.nextInt(size));
+      parent1 = this.currentPopulation().get(Util.RANDOM.nextInt(size));
+      parent2 = this.currentPopulation().get(Util.RANDOM.nextInt(size));
 
       // create a child from those two parents
       children = this.breedingFunction()
@@ -126,8 +126,8 @@ public class DefaultEvolutionContext<T extends Individual> extends
       }
 
       // add these children to the population
-      this.population().add(leftChild);
-      this.population().add(rightChild);
+      this.currentPopulation().add(leftChild);
+      this.currentPopulation().add(rightChild);
 
       // add the fitnesses of these two new individuals to the map
       try {
@@ -140,7 +140,7 @@ public class DefaultEvolutionContext<T extends Individual> extends
             "Failed to determine fitness of children.", exception);
       }
       // get the new size of the population
-      size = this.population().size();
+      size = this.currentPopulation().size();
     }
 
     /**
@@ -148,8 +148,8 @@ public class DefaultEvolutionContext<T extends Individual> extends
      */
 
     // select the population for the next generation
-    this.setPopulation(this.selectionFunction().select(this.currentFitnesses(),
-        this.desiredPopulationSize()));
+    this.setCurrentPopulation(this.selectionFunction().select(
+        this.currentFitnesses(), this.desiredPopulationSize()));
 
     /**
      * Step 5: increment the number of the current generation

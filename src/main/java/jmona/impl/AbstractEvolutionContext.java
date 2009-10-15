@@ -141,15 +141,6 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   }
 
   /**
-   * Get the current population.
-   * 
-   * @return The current population.
-   */
-  public Population<T> population() {
-    return this.population;
-  }
-
-  /**
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
@@ -170,6 +161,16 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   @Override
   public void setBreedingFunction(final BreedingFunction<T> function) {
     this.breedingFunction = function;
+  }
+
+  /**
+   * Set the current population.
+   * 
+   * @param newCurrentPopulation
+   *          The new current population.
+   */
+  protected void setCurrentPopulation(final Population<T> newCurrentPopulation) {
+    this.population = newCurrentPopulation;
   }
 
   /**
@@ -216,16 +217,6 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   public void setMutatorFunction(final MutatorFunction<T> function) {
     this.mutatorFunction = function;
 
-  }
-
-  /**
-   * Set the current population to the specified population.
-   * 
-   * @param newPopulation
-   *          The new current population.
-   */
-  protected void setPopulation(final Population<T> newPopulation) {
-    this.population = newPopulation;
   }
 
   /**
