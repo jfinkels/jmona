@@ -53,7 +53,7 @@ public class OnesEvolutionContextTester extends
     try {
       while (!this.completionCriteria.isSatisfied(this.context)) {
         this.context.stepGeneration();
-        LOG.debug(this.context.population());
+        LOG.debug(this.context.currentPopulation());
       }
     } catch (final EvolutionException exception) {
       fail(exception);
