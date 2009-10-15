@@ -55,7 +55,7 @@ public class OnesCompletionCriteria extends
     }
 
     // if any of the individuals in the population have the best gene
-    for (final OnesIndividual individual : context.population()) {
+    for (final OnesIndividual individual : context.currentPopulation()) {
       if (Arrays.equals(individual.gene(), this.maxGene)) {
         return true;
       }

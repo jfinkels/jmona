@@ -49,13 +49,6 @@ public interface EvolutionContext<T extends Individual> {
   MutatorFunction<T> mutatorFunction();
 
   /**
-   * Get the current population.
-   * 
-   * @return The current population.
-   */
-  Population<T> population();
-
-  /**
    * Get the selection function used by this context.
    * 
    * @return The selection function used by this context.
