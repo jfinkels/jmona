@@ -46,10 +46,6 @@ public class DefaultEvolutionContext<T extends Individual> extends
     super(initialPopulation);
   }
 
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(DefaultEvolutionContext.class);
-
   /**
    * Perform the selection and variation on the current generation to get the
    * next generation. On each generation of the evolution, do the following:
@@ -92,13 +88,10 @@ public class DefaultEvolutionContext<T extends Individual> extends
 
     // get the initial selection size
     final int initialSelectionSize = (int) (this.population().size() * SELECTION_FACTOR);
-    LOG.debug("choosing " + initialSelectionSize + " out of population "
-        + this.population());
 
     // kill off the least fit individuals
     this.setPopulation(this.selectionFunction().select(this.currentFitnesses(),
         initialSelectionSize));
-    LOG.debug("new population is " + this.population());
 
     /**
      * Step 2: breed the remaining individuals; Step 3: determine the fitnesses
@@ -116,8 +109,6 @@ public class DefaultEvolutionContext<T extends Individual> extends
       parent1 = this.population().get(Util.RANDOM.nextInt(size));
       parent2 = this.population().get(Util.RANDOM.nextInt(size));
 
-      LOG.debug("Making children with parents " + parent1 + " and " + parent2);
-
       // create a child from those two parents
       children = this.breedingFunction()
           .breed(new Pair<T, T>(parent1, parent2));
@@ -125,8 +116,6 @@ public class DefaultEvolutionContext<T extends Individual> extends
       // get the left child and the right child
       leftChild = children.left();
       rightChild = children.right();
-
-      LOG.debug("Children are " + leftChild + " and " + rightChild);
 
       // mutate these children
       try {
@@ -136,13 +125,9 @@ public class DefaultEvolutionContext<T extends Individual> extends
         throw new EvolutionException("Failed to mutate children.", exception);
       }
 
-      LOG.debug("Mutated children are " + leftChild + " and " + rightChild);
-
       // add these children to the population
       this.population().add(leftChild);
       this.population().add(rightChild);
-
-      LOG.debug("New population is " + this.population());
 
       // add the fitnesses of these two new individuals to the map
       try {
@@ -165,8 +150,6 @@ public class DefaultEvolutionContext<T extends Individual> extends
     // select the population for the next generation
     this.setPopulation(this.selectionFunction().select(this.currentFitnesses(),
         this.desiredPopulationSize()));
-
-    LOG.debug("Killed off population to produce " + this.population());
 
     /**
      * Step 5: increment the number of the current generation

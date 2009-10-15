@@ -12,12 +12,11 @@ import jmona.Individual;
 import jmona.Population;
 import jmona.SelectionFunction;
 
-import org.apache.log4j.Logger;
-
 /**
+ * A base class for SelectionFunctions which select a specified number of
+ * Individuals based on fitnesses.
  * 
- * 
- * Not thread sage.
+ * Not thread safe.
  * 
  * @param <T>
  *          The type of the individual to select based on fitness.
@@ -25,6 +24,12 @@ import org.apache.log4j.Logger;
  */
 public abstract class AbstractSelectionFunction<T extends Individual>
     implements SelectionFunction<T> {
+
+  /**
+   * The comparator to use for creating navigable maps from individuals to
+   * fitnesses.
+   */
+  private final FitnessComparator<T> comparator = new FitnessComparator<T>();
 
   /**
    * Get an iterator over the specified set. Individuals selected by this
@@ -38,12 +43,6 @@ public abstract class AbstractSelectionFunction<T extends Individual>
    *         selected in the {@link #select(Map, int)} method).
    */
   protected abstract Iterator<T> getIterator(final NavigableSet<T> individuals);
-
-  /**
-   * The comparator to use for creating navigable maps from individuals to
-   * fitnesses.
-   */
-  private final FitnessComparator<T> comparator = new FitnessComparator<T>();
 
   /**
    * Select the specified number of individuals with the greatest fitnesses as
@@ -70,13 +69,9 @@ public abstract class AbstractSelectionFunction<T extends Individual>
     // add all individuals to the sorted set
     sortedIndividuals.addAll(fitnesses.keySet());
 
-    LOG.debug("Sorted set of individuals: " + sortedIndividuals);
-
     // get an iterator (for example, ascending or descending; maybe some other
     // order) over the set of individuals
     final Iterator<T> iterator = this.getIterator(sortedIndividuals);
-
-    LOG.debug("iterator is: " + iterator.getClass());
 
     // get at most the specified number of individuals from the set
     int count = numberOfIndividuals;
@@ -85,7 +80,6 @@ public abstract class AbstractSelectionFunction<T extends Individual>
       final T individual = iterator.next();
       result.add(individual);
       // result.add(iterator.next());
-      LOG.debug("adding individual: " + individual);
 
       // decrement the counter
       count -= 1;
@@ -93,9 +87,4 @@ public abstract class AbstractSelectionFunction<T extends Individual>
 
     return result;
   }
-
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(AbstractSelectionFunction.class);
-
 }
