@@ -29,6 +29,23 @@ import org.junit.Test;
  */
 public class DefaultEvolutionContextTester {
 
+  /**
+   * A basic implementation of an Individual.
+   * 
+   * @author jeff
+   */
+  class ExampleIndividual implements Individual {
+    /**
+     * {@inheritDoc}
+     * 
+     * @return {@inheritDoc}
+     */
+    @Override
+    public Individual copy() {
+      return this;
+    }
+  }
+
   private final FitnessFunction<Individual> badFitnessFunction = new FitnessFunction<Individual>() {
     /**
      * {@inheritDoc}
@@ -44,7 +61,6 @@ public class DefaultEvolutionContextTester {
       throw new FitnessException();
     }
   };
-
   private final MutatorFunction<Individual> badMutatorFunction = new MutatorFunction<Individual>() {
     /**
      * {@inheritDoc}
@@ -59,6 +75,7 @@ public class DefaultEvolutionContextTester {
       throw new MutationException();
     }
   };
+
   /** The evolution context under test. */
   private EvolutionContext<Individual> context = null;
 
@@ -69,7 +86,6 @@ public class DefaultEvolutionContextTester {
       return parents;
     }
   };
-
   private final FitnessFunction<Individual> goodFitnessFunction = new FitnessFunction<Individual>() {
     /**
      * {@inheritDoc}
@@ -85,6 +101,7 @@ public class DefaultEvolutionContextTester {
       return 0;
     }
   };
+
   private final MutatorFunction<Individual> goodMutatorFunction = new MutatorFunction<Individual>() {
     /**
      * {@inheritDoc}
@@ -106,23 +123,6 @@ public class DefaultEvolutionContextTester {
   @Before
   public final void setUp() {
     this.population = new DefaultPopulation<Individual>();
-
-    /**
-     * A basic implementation of an Individual.
-     * 
-     * @author jeff
-     */
-    class ExampleIndividual implements Individual {
-      /**
-       * {@inheritDoc}
-       * 
-       * @return {@inheritDoc}
-       */
-      @Override
-      public Individual copy() {
-        return this;
-      }
-    }
 
     // add two individuals to the population
     this.population.add(new ExampleIndividual());
@@ -158,6 +158,8 @@ public class DefaultEvolutionContextTester {
   /** Test method for {@link DefaultEvolutionContext#stepGeneration()}. */
   @Test
   public final void testStepGeneration() {
+
+    // no functions have been set
     try {
       this.context.stepGeneration();
       fail("Exception should have been thrown on the previous line.");
@@ -175,6 +177,7 @@ public class DefaultEvolutionContextTester {
       }
     }
 
+    // at this point, a fitness function has been set
     try {
       this.context.stepGeneration();
       fail("Exception should have been thrown on the previous line.");
@@ -184,13 +187,15 @@ public class DefaultEvolutionContextTester {
       this.context.setBreedingFunction(breedingFunction);
     }
 
+    // at this point, a breeding function has been set
     try {
       this.context.stepGeneration();
       fail("Exception should have been thrown on the previous line.");
     } catch (final EvolutionException exception) {
       this.context.setSelectionFunction(new MaxSelectionFunction<Individual>());
     }
-    
+
+    // at this point, a selection function has been set
     try {
       this.context.stepGeneration();
       fail("Exception should have been thrown on the previous line.");
@@ -198,21 +203,30 @@ public class DefaultEvolutionContextTester {
       this.context.setMutatorFunction(this.badMutatorFunction);
     }
 
+    // at this point a bad mutator function has been set, and the population is
+    // too small
+    try {
+      this.context.stepGeneration();
+      fail("Exception should have been thrown on the previous line.");
+    } catch (final EvolutionException exception) {
+      assertTrue(this.context.currentPopulation().size() < 2);
+      this.context.currentPopulation().add(new ExampleIndividual());
+      this.context.currentPopulation().add(new ExampleIndividual());
+    }
+
+    // at this point the population is large enough
     try {
       this.context.stepGeneration();
       fail("Exception should have been thrown on the previous line.");
     } catch (final EvolutionException exception) {
       assertTrue(exception.getCause() instanceof MutationException);
+      // need to replenish the population because the mutation exception caused
+      // a decrement
+      this.context.currentPopulation().add(new ExampleIndividual());
       this.context.setMutatorFunction(this.goodMutatorFunction);
     }
-    
-    try {
-      this.context.stepGeneration();
-      fail("Exception should have been thrown on the previous line.");
-    } catch (final EvolutionException exception) {
-      assertTrue(exception.getCause() instanceof FitnessException);
-    }
 
+    // at this point a good mutator function has been set
     try {
       this.context.stepGeneration();
     } catch (final EvolutionException exception) {
