@@ -3,6 +3,7 @@
  */
 package jmona.impl;
 
+import jmona.BreedingException;
 import jmona.Individual;
 import jmona.Pair;
 
@@ -18,18 +19,23 @@ public class DefaultBreedingFunction<T extends Individual> extends
     AbstractBreedingFunction<T> {
 
   /**
-   * Create a new pair of individual from the result of breeding the specified
-   * pair of individuals.
+   * {@inheritDoc}
    * 
    * @param parents
-   *          The pair of individuals to breed.
+   *          {@inheritDoc}
+   * @throws BreedingException
+   *           {@inheritDoc}
    * @return The children which are the result of breeding the specified
    *         parents.
    */
   // TODO decide on the contracts for which methods contain the cloning!
   // TODO my initial feeling is that it should be the first action in this one
   @Override
-  public Pair<T, T> breed(final Pair<T, T> parents) {
+  public Pair<T, T> breed(final Pair<T, T> parents) throws BreedingException {
+
+    if (this.crossoverFunction() == null) {
+      throw new BreedingException("No crossover function has been set.");
+    }
 
     if (Util.RANDOM.nextDouble() < this.crossoverProbability()) {
       return this.crossoverFunction().crossover(parents);
