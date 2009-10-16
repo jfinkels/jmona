@@ -3,14 +3,13 @@
  */
 package jmona.impl;
 
+import jmona.BreedingException;
 import jmona.EvolutionException;
 import jmona.FitnessException;
 import jmona.Individual;
 import jmona.MutationException;
 import jmona.Pair;
 import jmona.Population;
-
-import org.apache.log4j.Logger;
 
 /**
  * A default implementation of the evolution context interface, which provides
@@ -116,36 +115,38 @@ public class DefaultEvolutionContext<T extends Individual> extends
       parent1 = this.currentPopulation().get(Util.RANDOM.nextInt(size));
       parent2 = this.currentPopulation().get(Util.RANDOM.nextInt(size));
 
-      // create a child from those two parents
-      children = this.breedingFunction()
-          .breed(new Pair<T, T>(parent1, parent2));
-
-      // get the left child and the right child
-      leftChild = children.left();
-      rightChild = children.right();
-
-      // mutate these children
       try {
+        // create a child from those two parents
+        children = this.breedingFunction().breed(
+            new Pair<T, T>(parent1, parent2));
+
+        // get the left child and the right child
+        leftChild = children.left();
+        rightChild = children.right();
+
+        // mutate these children
         this.mutatorFunction().mutate(leftChild);
         this.mutatorFunction().mutate(rightChild);
-      } catch (final MutationException exception) {
-        throw new EvolutionException("Failed to mutate children.", exception);
-      }
 
-      // add these children to the population
-      this.currentPopulation().add(leftChild);
-      this.currentPopulation().add(rightChild);
+        // add these children to the population
+        this.currentPopulation().add(leftChild);
+        this.currentPopulation().add(rightChild);
 
-      // add the fitnesses of these two new individuals to the map
-      try {
+        // add the fitnesses of these two new individuals to the map
         this.currentFitnesses().put(leftChild,
             this.fitnessFunction().fitness(leftChild));
         this.currentFitnesses().put(rightChild,
             this.fitnessFunction().fitness(rightChild));
+        
       } catch (final FitnessException exception) {
         throw new EvolutionException(
             "Failed to determine fitness of children.", exception);
+      } catch (final BreedingException exception) {
+        throw new EvolutionException("Failed to breed parents.", exception);
+      } catch (final MutationException exception) {
+        throw new EvolutionException("Failed to mutate children.", exception);
       }
+      
       // get the new size of the population
       size = this.currentPopulation().size();
     }
