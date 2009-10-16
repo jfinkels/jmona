@@ -19,9 +19,11 @@ public interface BreedingFunction<T extends Individual> {
    * 
    * @param parents
    *          The parent individuals.
+   * @throws BreedingException
+   *           If there is a problem breeding the two specified parents.
    * @return The child resulting from breeding the two specified parents.
    */
-  Pair<T, T> breed(final Pair<T, T> parents);
+  Pair<T, T> breed(final Pair<T, T> parents) throws BreedingException;
 
   /**
    * Get the crossover function used by this context.
