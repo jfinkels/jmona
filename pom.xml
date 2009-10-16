@@ -166,6 +166,7 @@
   </reporting>
 
   <name>JMona</name>
+  <description>A genetic algorithms framework.</description>
   <url>http://jfinkels.github.com/jmona/</url>
   <inceptionYear>2009</inceptionYear>
 </project>
