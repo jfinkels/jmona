@@ -105,6 +105,13 @@ public class DefaultEvolutionContext<T extends Individual> extends
     int size = this.currentPopulation().size();
     // TODO what if this.population.size() == limit - 1?
     while (size < limit - 1) {
+      // the current population is less than two individuals, something's wrong
+      if (this.currentPopulation().size() < 2) {
+        throw new EvolutionException("The size of the current population is "
+            + this.currentPopulation().size()
+            + " but it should be greater than 1.");
+      }
+
       // choose two members of the population to be parents
       parent1 = this.currentPopulation().get(Util.RANDOM.nextInt(size));
       parent2 = this.currentPopulation().get(Util.RANDOM.nextInt(size));
