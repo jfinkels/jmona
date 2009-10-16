@@ -4,6 +4,7 @@
 package jmona.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.List;
 import java.util.Vector;
@@ -92,6 +93,17 @@ public class DefaultBreedingFunctionTester {
         * NUM_PAIRS;
 
     assertEquals(expectedCrossovers, actualCrossovers, EPSILON);
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.impl.DefaultBreedingFunction#setCrossoverProbability(double)}.
+   */
+  @Test
+  public void testSetCrossoverProbability() {
+    final double newProb = 0.4;
+    this.function.setCrossoverProbability(newProb);
+    assertEquals(newProb, this.function.crossoverProbability(), EPSILON);
   }
 
 }
