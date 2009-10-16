@@ -9,6 +9,7 @@ import static org.junit.Assert.fail;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.BreedingException;
 import jmona.CrossoverFunction;
 import jmona.Individual;
 import jmona.Pair;
@@ -59,25 +60,18 @@ public class DefaultBreedingFunctionTester {
     final List<Pair<Individual, Individual>> allPairs = new Vector<Pair<Individual, Individual>>();
 
     // create some dummy individuals
-    final Individual leftParent = new Individual() {
-
-      @Override
-      public Individual copy() {
-        return this;
-      }
-    };
-    final Individual rightParent = new Individual() {
-
-      @Override
-      public Individual copy() {
-        return this;
-      }
-    };
+    final Individual leftParent = new ExampleIndividual();
+    final Individual rightParent = new ExampleIndividual();
 
     // breed each pair of parents to produce a list of children
     for (int i = 0; i < NUM_PAIRS; ++i) {
-      allPairs.add(i, this.function.breed(new Pair<Individual, Individual>(
-          leftParent, rightParent)));
+      try {
+        allPairs.add(i, this.function.breed(new Pair<Individual, Individual>(
+            leftParent, rightParent)));
+      } catch (final BreedingException exception) {
+        exception.printStackTrace(System.err);
+        fail(exception.getMessage());
+      }
     }
 
     // determine the total number of crossed over pairs
