@@ -1,0 +1,20 @@
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+  
+  <bean id="individualFactory" class="jmona.example.monalisa.MonaIndividualFactory">
+    <property name="initialPolygons" value="50" />
+    <property name="maxPoints" value="10" />
+    <property name="minPoints" value="3" />
+    <property name="maxX" ref="width" />
+    <property name="maxY" ref="height" />
+  </bean>
+  
+  <bean id="populationFactory" class="jmona.impl.DefaultPopulationFactory">
+    <property name="individualFactory" ref="individualFactory" />
+    <property name="size" value="4" />
+  </bean>
+
+</beans>

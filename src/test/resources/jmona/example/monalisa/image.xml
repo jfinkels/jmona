@@ -1,0 +1,22 @@
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+  
+  <bean id="targetImage" 
+    class="javax.imageio.ImageIO" 
+    factory-method="read">
+    <constructor-arg
+      value="src/test/resources/jmona/example/monalisa/images/me_mohawk_glasses.jpg" />
+  </bean>
+  
+  <bean id="height"
+    factory-bean="targetImage"
+    factory-method="getHeight" />
+  
+  <bean id="width"
+    factory-bean="targetImage"
+    factory-method="getWidth" />
+
+</beans>

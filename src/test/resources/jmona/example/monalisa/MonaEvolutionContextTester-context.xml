@@ -1,0 +1,30 @@
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+  <import resource="./image.xml" />
+  <!-- Note: must import image first; functions and factories require it -->
+  <import resource="./functions.xml" />
+  <import resource="./factories.xml" />
+
+  <bean id="completionCriteria" class="jmona.impl.MaxGenerationCompletionCriteria">
+    <property name="maxGenerations" value="3" />
+  </bean>
+
+  <bean id="population" 
+    factory-bean="populationFactory" 
+    factory-method="createPopulation" />
+
+  <bean id="evolutionContext" class="jmona.impl.DefaultEvolutionContext">
+    <constructor-arg>
+      <ref bean="population" />
+    </constructor-arg>
+    <property name="breedingFunction" ref="breedingFunction" />
+    <property name="fitnessFunction" ref="fitnessFunction" />
+    <property name="mutatorFunction" ref="mutatorFunction" />
+    <property name="selectionFunction" ref="selectionFunction" />
+  </bean>
+
+</beans>

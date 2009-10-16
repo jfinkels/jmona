@@ -1,6 +1,6 @@
 <projectDescription>
   <name>jmona</name>
-  <comment/>
+  <comment>A genetic algorithms framework.</comment>
   <projects/>
   <buildSpec>
     <buildCommand>
