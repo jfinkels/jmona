@@ -5,7 +5,6 @@
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
   <import resource="./functions.xml" />
-  <import resource="./individuals.xml" />
   <import resource="./factories.xml" />
   
   <bean id="population" 
@@ -13,9 +12,7 @@
     factory-method="createPopulation" />
 
   <bean id="completionCriteria" class="jmona.example.ones.OnesCompletionCriteria" >
-    <constructor-arg>
-      <value>4</value>
-    </constructor-arg>
+    <constructor-arg ref="geneLength" />
     <property name="maxGenerations" value="10" />
   </bean>
 
