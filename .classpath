@@ -10,6 +10,11 @@
       <attribute value="jar:file:/home/jeff/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/net/sf/jopt-simple/jopt-simple/3.2-rc1/jopt-simple-3.2-rc1.jar" sourcepath="M2_REPO/net/sf/jopt-simple/jopt-simple/3.2-rc1/jopt-simple-3.2-rc1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/home/jeff/.m2/repository/net/sf/jopt-simple/jopt-simple/3.2-rc1/jopt-simple-3.2-rc1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.7/junit-4.7.jar" sourcepath="M2_REPO/junit/junit/4.7/junit-4.7-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.14/log4j-1.2.14.jar" sourcepath="M2_REPO/log4j/log4j/1.2.14/log4j-1.2.14-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-beans/2.5.6.SEC01/spring-beans-2.5.6.SEC01.jar" sourcepath="M2_REPO/org/springframework/spring-beans/2.5.6.SEC01/spring-beans-2.5.6.SEC01-sources.jar"/>

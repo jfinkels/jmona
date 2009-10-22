@@ -69,7 +69,9 @@
     <java.source.version>1.6</java.source.version>
     <java.target.version>1.6</java.target.version>
 
+    <!-- configuration variables -->
     <checkstyle.config>${env.HOME}/resources/checkstyle.xml</checkstyle.config>
+    <mainClass>jmona.driver.Main</mainClass>
   </properties>
 
   <build>
@@ -86,6 +88,18 @@
         <configuration>
           <source>${java.source.version}</source>
           <target>${java.target.version}</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>${mainClass}</mainClass>
+            </manifest>
+          </archive>
         </configuration>
       </plugin>
     </plugins>
@@ -175,8 +189,33 @@
     </plugins>
   </reporting>
 
-  <name>JMona</name>
+  <name>jmona</name>
   <description>A genetic algorithms framework.</description>
   <url>http://jfinkels.github.com/jmona/</url>
   <inceptionYear>2009</inceptionYear>
+  <licenses>
+    <license>
+      <distribution>repo</distribution>
+      <name>GNU General Public License version 3</name>
+      <url>http://www.gnu.org/licenses/gpl-3.0.txt</url>
+    </license>
+  </licenses>
+  
+  <developers>
+    <developer>
+      <email>jeffrey.finkelstein@gmail.com</email>
+      <id>jfinkels</id>
+      <name>Jeffrey Finkelstein</name>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>-5</timezone>
+      <url>http://www.github.com/jfinkels</url>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://www.github.com/jfinkels/jmona.git</connection>
+    <url>http://github.com/jfinkels/jmona</url>
+  </scm>
 </project>
