@@ -26,7 +26,6 @@ import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.BeanDefinitionStoreException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -55,8 +54,6 @@ public class Main {
   public static final String OPT_CONFIG_FILE_DESC = "The Spring configuration file containing the evolution context.";
   /** The parser for command line options. */
   private static final OptionParser PARSER = new OptionParser();
-  /** An abnormal exit status resulting from a caught exception. */
-  public static final int STATUS_EXCEPTION = -1;
 
   /**
    * Run the image-matching evolution.
@@ -68,9 +65,11 @@ public class Main {
    * 
    * @param args
    *          The command-line arguments to this program.
+   * @throws EvolutionException
+   *           If there is some serious problem during the evolution.
    */
   @SuppressWarnings("unchecked")
-  public static void main(final String[] args) {
+  public static void main(final String[] args) throws EvolutionException {
     // set up the list of options which the parser accepts
     setUpParser();
 
@@ -81,13 +80,8 @@ public class Main {
     final String configFile = (String) options.valueOf(OPT_CONFIG_FILE);
 
     // create an application context from the specified XML configuration file
-    ApplicationContext applicationContext = null;
-    try {
-      applicationContext = new FileSystemXmlApplicationContext(configFile);
-    } catch (final BeanDefinitionStoreException exception) {
-      LOG.error("Failed to read XML configuration file.", exception);
-      System.exit(STATUS_EXCEPTION);
-    }
+    final ApplicationContext applicationContext = new FileSystemXmlApplicationContext(
+        configFile);
 
     // get the evolution context and completion criteria from the app. context
     final EvolutionContext evolutionContext = (EvolutionContext) applicationContext
@@ -97,12 +91,7 @@ public class Main {
 
     // while the criteria has not been satisfied, create the next generation
     while (!completionCriteria.isSatisfied(evolutionContext)) {
-      try {
-        evolutionContext.stepGeneration();
-      } catch (final EvolutionException exception) {
-        LOG.error("An exception occurred in the evolution.", exception);
-        System.exit(STATUS_EXCEPTION);
-      }
+      evolutionContext.stepGeneration();
     }
   }
 
