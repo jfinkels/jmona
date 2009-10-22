@@ -57,6 +57,11 @@ public class DefaultEvolutionContext<T extends Individual> extends
    * <li>increment the generation number</li>
    * </ol>
    * 
+   * A FitnessFunction, BreedingFunction (with a collaborating
+   * CrossoverFunction), MutatorFunction, and SelectionFunction must all be set
+   * on an object of this class before this method can be executed. Otherwise,
+   * an EvolutionException will be thrown.
+   * 
    * @throws EvolutionException
    *           If there is a problem during creation of the next generation.
    * @see jmona.EvolutionContext#stepGeneration()
@@ -137,7 +142,7 @@ public class DefaultEvolutionContext<T extends Individual> extends
             this.fitnessFunction().fitness(leftChild));
         this.currentFitnesses().put(rightChild,
             this.fitnessFunction().fitness(rightChild));
-        
+
       } catch (final FitnessException exception) {
         throw new EvolutionException(
             "Failed to determine fitness of children.", exception);
@@ -146,7 +151,7 @@ public class DefaultEvolutionContext<T extends Individual> extends
       } catch (final MutationException exception) {
         throw new EvolutionException("Failed to mutate children.", exception);
       }
-      
+
       // get the new size of the population
       size = this.currentPopulation().size();
     }
