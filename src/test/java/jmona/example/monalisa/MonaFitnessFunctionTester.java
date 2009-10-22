@@ -83,8 +83,6 @@ public class MonaFitnessFunctionTester {
       "src/test/resources/jmona/example/monalisa/images/purple-red.png");
   /** The coordinates for a rectangle in the top row of an image. */
   private static final int[] TOP_ROW = new int[] { 0, 0, 1, 1 };
-  /** A test image which is somewhat large. */
-  private BufferedImage bigImage = null;
   /** A polygon which will be filled black. */
   private Polygon blackPolygon;
   /** A polygon which will be filled blue. */
@@ -141,7 +139,7 @@ public class MonaFitnessFunctionTester {
     try {
       this.colorsImage = ImageIO.read(COLORS_TESTFILE);
       this.overlappingImage = ImageIO.read(OVERLAPPING_TESTFILE);
-      this.bigImage = ImageIO.read(BIG_TESTFILE);
+      final BufferedImage bigImage = ImageIO.read(BIG_TESTFILE);
     } catch (final FileNotFoundException exception) {
       fail(exception);
     } catch (final IOException exception) {
