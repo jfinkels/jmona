@@ -33,14 +33,14 @@ import org.junit.Test;
  */
 public class OnesIndividualFactoryTester {
 
+  /** The factory under test. */
+  private OnesIndividualFactory factory = null;
+
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
     this.factory = new OnesIndividualFactory();
   }
-
-  /** The factory under test. */
-  private OnesIndividualFactory factory = null;
 
   /**
    * Test method for
@@ -56,6 +56,10 @@ public class OnesIndividualFactoryTester {
     }
   }
 
+  /**
+   * Test method for
+   * {@link jmona.example.ones.OnesIndividualFactory#setLength(int)}.
+   */
   @Test
   public void testSetLength() {
     OnesIndividual individual = null;
