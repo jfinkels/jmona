@@ -66,8 +66,6 @@ public class DefaultBreedingFunctionTester {
     });
   }
 
-  public static final int NUM_TESTS = 100;
-
   /**
    * Test method for
    * {@link jmona.impl.DefaultBreedingFunction#breed(jmona.Pair)}.
@@ -77,8 +75,9 @@ public class DefaultBreedingFunctionTester {
     // initialize a list of pairs to hold the bred children
     final List<Pair<Individual, Individual>> allPairs = new Vector<Pair<Individual, Individual>>();
 
+    final int numTests = 100;
     double sum = 0;
-    for (int j = 0; j < NUM_TESTS; ++j) {
+    for (int j = 0; j < numTests; ++j) {
       // create some dummy individuals
       final Individual leftParent = new ExampleIndividual();
       final Individual rightParent = new ExampleIndividual();
@@ -105,7 +104,7 @@ public class DefaultBreedingFunctionTester {
       sum += actualCrossovers;
     }
 
-    final double averageCrossovers = sum / (double) NUM_TESTS;
+    final double averageCrossovers = sum / (double) numTests;
 
     // get the expected number of crossovers
     final double expectedCrossovers = this.function.crossoverProbability()
