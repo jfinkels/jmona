@@ -1,0 +1,10 @@
+jmona is a framework for creating genetic algorithms. It provides a basic,
+generic API for building customized genetic algorithms. See the examples in
+"src/main/java/jmona.example.*", and the corresponding tests in
+"src/test/java/jmona.example.*".
+
+This software is released under the GPLv3; see COPYING for more information.
+
+I release all original images in 
+"src/test/resources/jmona/example/monalisa/images/" to the Public Domain.
+ 
