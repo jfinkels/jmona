@@ -25,7 +25,6 @@ import jmona.EvolutionException;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
-import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -39,8 +38,6 @@ public class Main {
   public static final String COMPLETION_CRITERIA_NAME = "completionCriteria";
   /** The name of the EvolutionContext bean. */
   public static final String EVOLUTION_CONTEXT_NAME = "evolutionContext";
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger.getLogger(Main.class);
   /** The long name of the option for specifying a configuration file. */
   public static final String OPT_CONFIG_FILE_LONG = "config";
   /**
