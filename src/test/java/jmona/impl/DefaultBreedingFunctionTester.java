@@ -24,7 +24,7 @@ import org.junit.Test;
  */
 public class DefaultBreedingFunctionTester {
   /** The maximum difference of expected swaps and actual swaps. */
-  public static final double EPSILON = 10.;
+  public static final double EPSILON = 15.;
   /** The total number of pairs of individuals to test breeding on. */
   private static final int NUM_PAIRS = 100;
   /** The DefaultBreedingFunction under test. */
@@ -50,6 +50,8 @@ public class DefaultBreedingFunctionTester {
     });
   }
 
+  public static final int NUM_TESTS = 100;
+
   /**
    * Test method for
    * {@link jmona.impl.DefaultBreedingFunction#breed(jmona.Pair)}.
@@ -59,34 +61,41 @@ public class DefaultBreedingFunctionTester {
     // initialize a list of pairs to hold the bred children
     final List<Pair<Individual, Individual>> allPairs = new Vector<Pair<Individual, Individual>>();
 
-    // create some dummy individuals
-    final Individual leftParent = new ExampleIndividual();
-    final Individual rightParent = new ExampleIndividual();
+    double sum = 0;
+    for (int j = 0; j < NUM_TESTS; ++j) {
+      // create some dummy individuals
+      final Individual leftParent = new ExampleIndividual();
+      final Individual rightParent = new ExampleIndividual();
 
-    // breed each pair of parents to produce a list of children
-    for (int i = 0; i < NUM_PAIRS; ++i) {
-      try {
-        allPairs.add(i, this.function.breed(new Pair<Individual, Individual>(
-            leftParent, rightParent)));
-      } catch (final BreedingException exception) {
-        exception.printStackTrace(System.err);
-        fail(exception.getMessage());
+      // breed each pair of parents to produce a list of children
+      for (int i = 0; i < NUM_PAIRS; ++i) {
+        try {
+          allPairs.add(i, this.function.breed(new Pair<Individual, Individual>(
+              leftParent, rightParent)));
+        } catch (final BreedingException exception) {
+          exception.printStackTrace(System.err);
+          fail(exception.getMessage());
+        }
       }
+
+      // determine the total number of crossed over pairs
+      int actualCrossovers = 0;
+      for (final Pair<Individual, Individual> child : allPairs) {
+        if (child.left() == rightParent && child.right() == leftParent) {
+          actualCrossovers += 1;
+        }
+      }
+
+      sum += actualCrossovers;
     }
 
-    // determine the total number of crossed over pairs
-    int actualCrossovers = 0;
-    for (final Pair<Individual, Individual> child : allPairs) {
-      if (child.left() == rightParent && child.right() == leftParent) {
-        actualCrossovers += 1;
-      }
-    }
+    final double averageCrossovers = sum / (double) NUM_TESTS;
 
     // get the expected number of crossovers
     final double expectedCrossovers = this.function.crossoverProbability()
         * NUM_PAIRS;
 
-    assertEquals(expectedCrossovers, actualCrossovers, EPSILON);
+    assertEquals(expectedCrossovers, averageCrossovers, EPSILON);
   }
 
   /**
