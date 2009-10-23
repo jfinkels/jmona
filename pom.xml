@@ -70,7 +70,7 @@
     <java.target.version>1.6</java.target.version>
 
     <!-- configuration variables -->
-    <checkstyle.config>${env.HOME}/resources/checkstyle.xml</checkstyle.config>
+    <checkstyle.config>src/main/resources/checkstyle.xml</checkstyle.config>
     <mainClass>jmona.driver.Main</mainClass>
   </properties>
 
