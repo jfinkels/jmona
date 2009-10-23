@@ -26,6 +26,8 @@ import jmona.PostProcessor;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
+import org.apache.log4j.Logger;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -39,6 +41,8 @@ public class Main {
   public static final String COMPLETION_CRITERIA_NAME = "completionCriteria";
   /** The name of the EvolutionContext bean. */
   public static final String EVOLUTION_CONTEXT_NAME = "evolutionContext";
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger.getLogger(Main.class);
   /** The long name of the option for specifying a configuration file. */
   public static final String OPT_CONFIG_FILE_LONG = "config";
   /**
@@ -52,6 +56,7 @@ public class Main {
   public static final String OPT_CONFIG_FILE_DESC = "The Spring configuration file containing the evolution context.";
   /** The parser for command line options. */
   private static final OptionParser PARSER = new OptionParser();
+
   /** The name of the PostProcessor bean. */
   public static final String POST_PROCESSOR_NAME = "postProcessor";
 
@@ -88,13 +93,23 @@ public class Main {
         .getBean(EVOLUTION_CONTEXT_NAME, EvolutionContext.class);
     final CompletionCriteria completionCriteria = (CompletionCriteria) applicationContext
         .getBean(COMPLETION_CRITERIA_NAME, CompletionCriteria.class);
-    final PostProcessor postProcessor = (PostProcessor) applicationContext
-        .getBean(POST_PROCESSOR_NAME, PostProcessor.class);
     
+    PostProcessor postProcessor = null;
+    try {
+      postProcessor = (PostProcessor) applicationContext.getBean(
+          POST_PROCESSOR_NAME, PostProcessor.class);
+    } catch (final BeansException exception) {
+      LOG.debug("No PostProcessor with name " + POST_PROCESSOR_NAME
+          + " could be found.");
+    }
+
     // while the criteria has not been satisfied, create the next generation
     while (!completionCriteria.isSatisfied(evolutionContext)) {
       evolutionContext.stepGeneration();
-      postProcessor.process(evolutionContext);
+
+      if (postProcessor != null) {
+        postProcessor.process(evolutionContext);
+      }
     }
   }
 
