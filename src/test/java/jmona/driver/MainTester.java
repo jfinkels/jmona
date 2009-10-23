@@ -20,8 +20,8 @@
 package jmona.driver;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import jmona.EvolutionException;
+import jmona.ProcessingException;
 
 import org.junit.Test;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
@@ -53,14 +53,29 @@ public class MainTester {
     } catch (final BeanDefinitionStoreException exception) {
       assertTrue(exception instanceof BeanDefinitionStoreException);
     } catch (final EvolutionException exception) {
-      exception.printStackTrace(System.err);
-      fail(exception.getMessage());
+      fail(exception);
+    } catch (final ProcessingException exception) {
+      fail(exception);
     }
-    
+
     try {
-      Main.main(new String[] {CONFIG_FILE_GOOD});
+      Main.main(new String[] { CONFIG_FILE_GOOD });
     } catch (final EvolutionException exception) {
-      fail(exception.getMessage());
+      fail(exception);
+    } catch (final ProcessingException exception) {
+      fail(exception);
     }
+  }
+
+  /**
+   * Print the stack trace of the specified Throwable cause of the failure, then
+   * fail the current test.
+   * 
+   * @param cause
+   *          The cause for the test failure.
+   */
+  protected static final void fail(final Throwable cause) {
+    cause.printStackTrace(System.err);
+    org.junit.Assert.fail(cause.getMessage());
   }
 }
