@@ -32,7 +32,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ DefaultBreedingFunctionTester.class,
     DefaultEvolutionContextTester.class, DefaultPopulationFactoryTester.class,
     FitnessComparatorTester.class, MaxGenerationCompletionCriteriaTester.class,
-    SelectionFunctionTester.class })
+    PopulationLoggingPostProcessorTester.class, SelectionFunctionTester.class })
 public class AllTest {
 
 }
