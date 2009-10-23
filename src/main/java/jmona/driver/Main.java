@@ -23,6 +23,7 @@ import jmona.CompletionCriteria;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
 import jmona.PostProcessor;
+import jmona.ProcessingException;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
@@ -61,7 +62,9 @@ public class Main {
   public static final String POST_PROCESSOR_NAME = "postProcessor";
 
   /**
-   * Run the image-matching evolution.
+   * Run the {@link EvolutionContext#stepGeneration()} method until the
+   * CompletionCriteria is met, executing a PostProcessor (if it exists in the
+   * application context) after each generation.
    * 
    * Provide the location of the Spring XML configuration file by using the
    * <em>--config</em> command line option, followed by the location of the
@@ -71,10 +74,14 @@ public class Main {
    * @param args
    *          The command-line arguments to this program.
    * @throws EvolutionException
-   *           If there is some serious problem during the evolution.
+   *           If there is a problem during the evolution.
+   * @throws ProcessingException
+   *           If there is a problem during post-processing of the
+   *           EvolutionContext after each generation.
    */
   @SuppressWarnings("unchecked")
-  public static void main(final String[] args) throws EvolutionException {
+  public static void main(final String[] args) throws EvolutionException,
+      ProcessingException {
     // set up the list of options which the parser accepts
     setUpParser();
 
@@ -93,7 +100,7 @@ public class Main {
         .getBean(EVOLUTION_CONTEXT_NAME, EvolutionContext.class);
     final CompletionCriteria completionCriteria = (CompletionCriteria) applicationContext
         .getBean(COMPLETION_CRITERIA_NAME, CompletionCriteria.class);
-    
+
     PostProcessor postProcessor = null;
     try {
       postProcessor = (PostProcessor) applicationContext.getBean(
