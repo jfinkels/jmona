@@ -22,6 +22,7 @@ package jmona.driver;
 import jmona.CompletionCriteria;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
+import jmona.PostProcessor;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
@@ -51,6 +52,8 @@ public class Main {
   public static final String OPT_CONFIG_FILE_DESC = "The Spring configuration file containing the evolution context.";
   /** The parser for command line options. */
   private static final OptionParser PARSER = new OptionParser();
+  /** The name of the PostProcessor bean. */
+  public static final String POST_PROCESSOR_NAME = "postProcessor";
 
   /**
    * Run the image-matching evolution.
@@ -85,10 +88,13 @@ public class Main {
         .getBean(EVOLUTION_CONTEXT_NAME, EvolutionContext.class);
     final CompletionCriteria completionCriteria = (CompletionCriteria) applicationContext
         .getBean(COMPLETION_CRITERIA_NAME, CompletionCriteria.class);
-
+    final PostProcessor postProcessor = (PostProcessor) applicationContext
+        .getBean(POST_PROCESSOR_NAME, PostProcessor.class);
+    
     // while the criteria has not been satisfied, create the next generation
     while (!completionCriteria.isSatisfied(evolutionContext)) {
       evolutionContext.stepGeneration();
+      postProcessor.process(evolutionContext);
     }
   }
 
