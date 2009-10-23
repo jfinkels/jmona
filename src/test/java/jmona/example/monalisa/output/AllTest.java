@@ -29,7 +29,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jeff
  */
 @RunWith(Suite.class)
-@SuiteClasses({ ImageWriterTester.class })
+@SuiteClasses({ ImageOutputPostProcessorTester.class, ImageWriterTester.class })
 public class AllTest {
 
 }
