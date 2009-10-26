@@ -29,6 +29,7 @@ import jmona.EvolutionException;
 import jmona.ProcessingException;
 import jmona.example.monalisa.MonaIndividual;
 
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * 
  * @author jeff
  */
-@ContextConfiguration(locations = "classpath:/jmona/example/monalisa/MonaEvolutionContextTester-context.xml")
+@ContextConfiguration
 public class ImageOutputPostProcessorTester extends
     AbstractJUnit4SpringContextTests {
 
@@ -77,7 +78,6 @@ public class ImageOutputPostProcessorTester extends
   @DirtiesContext
   @Test
   public void testDefaultPeriod() {
-
     try {
       this.processor.process(this.evolutionContext);
       this.evolutionContext.stepGeneration();
