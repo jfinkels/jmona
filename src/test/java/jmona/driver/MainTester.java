@@ -20,8 +20,6 @@
 package jmona.driver;
 
 import static org.junit.Assert.assertTrue;
-import jmona.EvolutionException;
-import jmona.ProcessingException;
 
 import org.junit.Test;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
@@ -42,6 +40,34 @@ public class MainTester {
    * CompletionCriteria.
    */
   public static final String CONFIG_FILE_GOOD = "--config=src/test/resources/jmona/example/ones/OnesEvolutionContextTester-context.xml";
+  /**
+   * A Spring XML configuration file containing too few of both EvolutionContext
+   * and CompletionCriteria beans.
+   */
+  public static final String CONFIG_TOO_FEW_BOTH = "--config=src/test/resources/jmona/driver/TooFewBoth-context.xml";
+  /**
+   * A Spring XML configuration file containing too few CompletionCriteria
+   * beans.
+   */
+  public static final String CONFIG_TOO_FEW_CC = "--config=src/test/resources/jmona/driver/TooFewCC-context.xml";
+  /**
+   * A Spring XML configuration file containing too few EvolutionContext beans.
+   */
+  public static final String CONFIG_TOO_FEW_EC = "--config=src/test/resources/jmona/driver/TooFewEC-context.xml";
+  /**
+   * A Spring XML configuration file containing too many EvolutionContext and
+   * CompletionCriteria beans.
+   */
+  public static final String CONFIG_TOO_MANY_BOTH = "--config=src/test/resources/jmona/driver/TooManyBoth-context.xml";
+  /**
+   * A Spring XML configuration file containing too many CompletionCriteria
+   * beans.
+   */
+  public static final String CONFIG_TOO_MANY_CC = "--config=src/test/resources/jmona/driver/TooManyCC-context.xml";
+  /**
+   * A Spring XML configuration file containing too many EvolutionContext beans.
+   */
+  public static final String CONFIG_TOO_MANY_EC = "--config=src/test/resources/jmona/driver/TooManyEC-context.xml";
 
   /**
    * Print the stack trace of the specified Throwable cause of the failure, then
@@ -56,26 +82,102 @@ public class MainTester {
   }
 
   /**
+   * Test method for {@link jmona.driver.Main#main(java.lang.String[])} with
+   * several PostProcessors.
+   */
+  @Test
+  public void severalPostProcessors() {
+    // not yet implemented
+  }
+
+  /**
    * Test method for {@link jmona.driver.Main#main(java.lang.String[])}.
    */
   @Test
   public void testMain() {
     try {
       Main.main(new String[] { CONFIG_FILE_BAD });
+      org.junit.Assert
+          .fail("Exception should have been thrown on the previous line.");
     } catch (final BeanDefinitionStoreException exception) {
       assertTrue(exception instanceof BeanDefinitionStoreException);
-    } catch (final EvolutionException exception) {
-      fail(exception);
-    } catch (final ProcessingException exception) {
+    } catch (final RuntimeException exception) {
       fail(exception);
     }
 
     try {
       Main.main(new String[] { CONFIG_FILE_GOOD });
-    } catch (final EvolutionException exception) {
+    } catch (final RuntimeException exception) {
       fail(exception);
-    } catch (final ProcessingException exception) {
-      fail(exception);
+    }
+  }
+
+  /**
+   * Test method for {@link jmona.driver.Main#main(java.lang.String[])} when the
+   * specified configuration file does not have the necessary beans.
+   */
+  @Test
+  public void testTooFewBeans() {
+    // too few EvolutionContext beans
+    try {
+      Main.main(new String[] { CONFIG_TOO_FEW_EC });
+      org.junit.Assert
+          .fail("Exception should have been thrown on the previous line.");
+    } catch (final RuntimeException exception) {
+      assertTrue(exception instanceof RuntimeException);
+    }
+
+    // too few CompletionCriteria beans
+    try {
+      Main.main(new String[] { CONFIG_TOO_FEW_CC });
+      org.junit.Assert
+          .fail("Exception should have been thrown on the previous line.");
+    } catch (final RuntimeException exception) {
+      assertTrue(exception instanceof RuntimeException);
+    }
+
+    // too few of both classes of beans
+    try {
+      Main.main(new String[] { CONFIG_TOO_FEW_BOTH });
+      org.junit.Assert
+          .fail("Exception should have been thrown on the previous line.");
+    } catch (final RuntimeException exception) {
+      assertTrue(exception instanceof RuntimeException);
+    }
+  }
+
+  /**
+   * Test method for {@link jmona.driver.Main#main(java.lang.String[])} when the
+   * specified configuration file does has too many EvolutionContext and/or
+   * CompletionCriteria beans.
+   */
+  @Test
+  public void testTooManyBeans() {
+    // too many CompletionCriteria beans
+    try {
+      Main.main(new String[] { CONFIG_TOO_MANY_CC });
+      org.junit.Assert
+          .fail("Exception should have been thrown on the previous line.");
+    } catch (final RuntimeException exception) {
+      assertTrue(exception instanceof RuntimeException);
+    }
+
+    // too many EvolutionContext beans
+    try {
+      Main.main(new String[] { CONFIG_TOO_MANY_EC });
+      org.junit.Assert
+          .fail("Exception should have been thrown on the previous line.");
+    } catch (final RuntimeException exception) {
+      assertTrue(exception instanceof RuntimeException);
+    }
+
+    // too many of both classes of beans
+    try {
+      Main.main(new String[] { CONFIG_TOO_MANY_BOTH });
+      org.junit.Assert
+          .fail("Exception should have been thrown on the previous line.");
+    } catch (final RuntimeException exception) {
+      assertTrue(exception instanceof RuntimeException);
     }
   }
 }

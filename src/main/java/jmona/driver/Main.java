@@ -19,6 +19,8 @@
  */
 package jmona.driver;
 
+import java.util.Map;
+
 import jmona.CompletionCriteria;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
@@ -27,23 +29,16 @@ import jmona.ProcessingException;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
-import org.apache.log4j.Logger;
-import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 /**
- * Runs the image-matching evolution.
+ * Runs an arbitrary evolution from an XML application context specified by the
+ * <code>--config</code> option.
  * 
  * @author jeff
  */
 public class Main {
-  /** The name of the CompletionCriteria bean. */
-  public static final String COMPLETION_CRITERIA_NAME = "completionCriteria";
-  /** The name of the EvolutionContext bean. */
-  public static final String EVOLUTION_CONTEXT_NAME = "evolutionContext";
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger.getLogger(Main.class);
   /** The long name of the option for specifying a configuration file. */
   public static final String OPT_CONFIG_FILE_LONG = "config";
   /**
@@ -58,13 +53,10 @@ public class Main {
   /** The parser for command line options. */
   private static final OptionParser PARSER = new OptionParser();
 
-  /** The name of the PostProcessor bean. */
-  public static final String POST_PROCESSOR_NAME = "postProcessor";
-
   /**
    * Run the {@link EvolutionContext#stepGeneration()} method until the
-   * CompletionCriteria is met, executing a PostProcessor (if it exists in the
-   * application context) after each generation.
+   * CompletionCriteria is met, executing any PostProcessors after each
+   * generation step.
    * 
    * Provide the location of the Spring XML configuration file by using the
    * <em>--config</em> command line option, followed by the location of the
@@ -73,15 +65,9 @@ public class Main {
    * 
    * @param args
    *          The command-line arguments to this program.
-   * @throws EvolutionException
-   *           If there is a problem during the evolution.
-   * @throws ProcessingException
-   *           If there is a problem during post-processing of the
-   *           EvolutionContext after each generation.
    */
   @SuppressWarnings("unchecked")
-  public static void main(final String[] args) throws EvolutionException,
-      ProcessingException {
+  public static void main(final String[] args) {
     // set up the list of options which the parser accepts
     setUpParser();
 
@@ -95,34 +81,56 @@ public class Main {
     final ApplicationContext applicationContext = new FileSystemXmlApplicationContext(
         configFile);
 
-    // get the evolution context and completion criteria from the app. context
-    final EvolutionContext evolutionContext = (EvolutionContext) applicationContext
-        .getBean(EVOLUTION_CONTEXT_NAME, EvolutionContext.class);
-    final CompletionCriteria completionCriteria = (CompletionCriteria) applicationContext
-        .getBean(COMPLETION_CRITERIA_NAME, CompletionCriteria.class);
+    // get the evolution contexts, completion criteria, and post processors
+    final Map<String, EvolutionContext> evolutionContextsMap = applicationContext
+        .getBeansOfType(EvolutionContext.class);
+    final Map<String, CompletionCriteria> completionCriteriaMap = applicationContext
+        .getBeansOfType(CompletionCriteria.class);
+    final Map<String, PostProcessor> postProcessorMap = applicationContext
+        .getBeansOfType(PostProcessor.class);
 
-    PostProcessor postProcessor = null;
-    try {
-      postProcessor = (PostProcessor) applicationContext.getBean(
-          POST_PROCESSOR_NAME, PostProcessor.class);
-    } catch (final BeansException exception) {
-      LOG.debug("No PostProcessor with name " + POST_PROCESSOR_NAME
-          + " could be found.");
+    // assert that there is only one evolution context bean in the app. context
+    if (evolutionContextsMap.size() != 1) {
+      throw new RuntimeException("Application context contains "
+          + evolutionContextsMap.size()
+          + " EvolutionContext beans, but must contain only 1.");
     }
 
-    // while the criteria has not been satisfied, create the next generation
-    while (!completionCriteria.isSatisfied(evolutionContext)) {
-      evolutionContext.stepGeneration();
+    // assert that there is only one completion criteria bean in the app context
+    if (completionCriteriaMap.size() != 1) {
+      throw new RuntimeException("Application context contains "
+          + completionCriteriaMap.size()
+          + " CompletionCriteria beans, but must contain only 1.");
+    }
 
-      if (postProcessor != null) {
-        postProcessor.process(evolutionContext);
+    // get the evolution context and completion criteria
+    // (kind of goofy but necessary way to get an element from a map, i think)
+    final EvolutionContext evolutionContext = evolutionContextsMap.values()
+        .iterator().next();
+    final CompletionCriteria completionCriteria = completionCriteriaMap
+        .values().iterator().next();
+
+    try {
+      // while the criteria has not been satisfied, create the next generation
+      while (!completionCriteria.isSatisfied(evolutionContext)) {
+        // create the next generation in the evolution
+        evolutionContext.stepGeneration();
+
+        // perform all post-processing on the evolution context
+        for (final PostProcessor postProcessor : postProcessorMap.values()) {
+          postProcessor.process(evolutionContext);
+        }
       }
+    } catch (final EvolutionException exception) {
+      throw new RuntimeException(exception);
+    } catch (final ProcessingException exception) {
+      throw new RuntimeException(exception);
     }
   }
 
   /** Establish the set of options which the command line parser accepts. */
   private static void setUpParser() {
-    // --config=/path/to/configfile.xml
+    // "--config=/path/to/configfile.xml"
     PARSER.accepts(OPT_CONFIG_FILE_LONG, OPT_CONFIG_FILE_DESC)
         .withRequiredArg().ofType(String.class).defaultsTo(
             OPT_CONFIG_FILE_DEFAULT);
