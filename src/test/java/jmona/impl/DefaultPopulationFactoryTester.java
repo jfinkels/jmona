@@ -39,10 +39,22 @@ import org.junit.Test;
  */
 public class DefaultPopulationFactoryTester {
 
-  /** The population factory under test in this class. */
-  private PopulationFactory<Individual> populationFactory = null;
+  /**
+   * Helper method for printing the stack trace of an Exception and failing the
+   * test.
+   * 
+   * @param cause
+   *          The cause of the test failure.
+   */
+  protected static void fail(final Throwable cause) {
+    cause.printStackTrace(System.err);
+    org.junit.Assert.fail(cause.getMessage());
+  }
   /** The individual factory required by the population factory. */
   private IndividualFactory<Individual> individualFactory = null;
+
+  /** The population factory under test in this class. */
+  private PopulationFactory<Individual> populationFactory = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
@@ -79,23 +91,6 @@ public class DefaultPopulationFactoryTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.DefaultPopulationFactory#createPopulation()} with no
-   * IndividualFactory set (an Exception is expected to be thrown).
-   */
-  @Test
-  public void testException() {
-    this.populationFactory.setIndividualFactory(null);
-    try {
-      this.populationFactory.createPopulation();
-      org.junit.Assert
-          .fail("Exception was not thrown when it should have been.");
-    } catch (final InitializationException exception) {
-      assertTrue(exception != null);
-    }
-  }
-
-  /**
-   * Test method for
    * {@link jmona.impl.DefaultPopulationFactory#createPopulation()}.
    */
   @Test
@@ -116,28 +111,20 @@ public class DefaultPopulationFactoryTester {
   }
 
   /**
-   * Test method for {@link DefaultPopulationFactory#size()} and
-   * {@link DefaultPopulationFactory#setSize(int)}.
+   * Test method for
+   * {@link jmona.impl.DefaultPopulationFactory#createPopulation()} with no
+   * IndividualFactory set (an Exception is expected to be thrown).
    */
   @Test
-  public final void testSize() {
-    assertSame(AbstractPopulationFactory.DEFAULT_SIZE, this.populationFactory
-        .size());
-    final int newSize = 10;
-    this.populationFactory.setSize(newSize);
-    assertSame(newSize, this.populationFactory.size());
-  }
-
-  /**
-   * Helper method for printing the stack trace of an Exception and failing the
-   * test.
-   * 
-   * @param cause
-   *          The cause of the test failure.
-   */
-  protected static void fail(final Throwable cause) {
-    cause.printStackTrace(System.err);
-    org.junit.Assert.fail(cause.getMessage());
+  public void testException() {
+    this.populationFactory.setIndividualFactory(null);
+    try {
+      this.populationFactory.createPopulation();
+      org.junit.Assert
+          .fail("Exception was not thrown when it should have been.");
+    } catch (final InitializationException exception) {
+      assertTrue(exception != null);
+    }
   }
 
   /**
@@ -152,5 +139,18 @@ public class DefaultPopulationFactoryTester {
     assertNotSame(this.individualFactory, this.populationFactory
         .individualFactory());
     assertEquals(null, this.populationFactory.individualFactory());
+  }
+
+  /**
+   * Test method for {@link DefaultPopulationFactory#size()} and
+   * {@link DefaultPopulationFactory#setSize(int)}.
+   */
+  @Test
+  public final void testSize() {
+    assertSame(AbstractPopulationFactory.DEFAULT_SIZE, this.populationFactory
+        .size());
+    final int newSize = 10;
+    this.populationFactory.setSize(newSize);
+    assertSame(newSize, this.populationFactory.size());
   }
 }

@@ -61,6 +61,17 @@ public class SelectionFunctionTester {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @return {@inheritDoc}
+     * @see jmona.Individual#copy()
+     */
+    @Override
+    public FitIndividual copy() {
+      return new FitIndividual(this.fitness);
+    }
+
+    /**
      * Get the fitness of this individual.
      * 
      * @return The fitness of this individual.
@@ -77,17 +88,6 @@ public class SelectionFunctionTester {
     @Override
     public String toString() {
       return String.valueOf(this.fitness);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @return {@inheritDoc}
-     * @see jmona.Individual#copy()
-     */
-    @Override
-    public FitIndividual copy() {
-      return new FitIndividual(this.fitness);
     }
   }
 

@@ -44,6 +44,18 @@ public class MainTester {
   public static final String CONFIG_FILE_GOOD = "--config=src/test/resources/jmona/example/ones/OnesEvolutionContextTester-context.xml";
 
   /**
+   * Print the stack trace of the specified Throwable cause of the failure, then
+   * fail the current test.
+   * 
+   * @param cause
+   *          The cause for the test failure.
+   */
+  protected static final void fail(final Throwable cause) {
+    cause.printStackTrace(System.err);
+    org.junit.Assert.fail(cause.getMessage());
+  }
+
+  /**
    * Test method for {@link jmona.driver.Main#main(java.lang.String[])}.
    */
   @Test
@@ -65,17 +77,5 @@ public class MainTester {
     } catch (final ProcessingException exception) {
       fail(exception);
     }
-  }
-
-  /**
-   * Print the stack trace of the specified Throwable cause of the failure, then
-   * fail the current test.
-   * 
-   * @param cause
-   *          The cause for the test failure.
-   */
-  protected static final void fail(final Throwable cause) {
-    cause.printStackTrace(System.err);
-    org.junit.Assert.fail(cause.getMessage());
   }
 }
