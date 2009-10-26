@@ -26,10 +26,13 @@ import java.awt.Color;
 import java.awt.Polygon;
 import java.awt.image.BufferedImage;
 import java.awt.image.PixelGrabber;
+import java.io.File;
 import java.io.IOException;
 
 import jmona.example.monalisa.MonaIndividual;
 
+import org.apache.log4j.Logger;
+import org.junit.After;
 import org.junit.Test;
 
 /**
@@ -38,6 +41,22 @@ import org.junit.Test;
  * @author jeff
  */
 public class ImageWriterTester {
+
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(ImageWriterTester.class);
+
+  /** The filename at which to write a test image file. */
+  public static final String OUTPUT_FILENAME = "target/testoutput.png";
+
+  /** Perform cleanup after each test. */
+  @After
+  public final void tearDown() {
+    final File outputFile = new File(OUTPUT_FILENAME);
+    if (outputFile.exists() && !outputFile.delete()) {
+        LOG.debug("Failed to delete output file at " + OUTPUT_FILENAME);
+    }
+  }
 
   /**
    * Test method for
@@ -105,7 +124,7 @@ public class ImageWriterTester {
     final BufferedImage image = new BufferedImage(100, 100,
         BufferedImage.TYPE_INT_ARGB_PRE);
     try {
-      ImageWriter.writeImage(image, "target/testoutput.png");
+      ImageWriter.writeImage(image, OUTPUT_FILENAME);
     } catch (final IOException exception) {
       exception.printStackTrace(System.err);
       fail(exception.getMessage());

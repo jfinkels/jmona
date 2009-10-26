@@ -20,6 +20,7 @@
 package jmona.example.monalisa;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 import jmona.CompletionCriteria;
@@ -29,6 +30,7 @@ import jmona.Population;
 import jmona.example.monalisa.output.ImageWriter;
 
 import org.apache.log4j.Logger;
+import org.junit.After;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -46,6 +48,9 @@ public class MonaEvolutionContextTester extends
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger
       .getLogger(MonaEvolutionContextTester.class);
+
+  /** The filename at which to write a test image. */
+  public static final String OUTPUT_FILENAME = "target/final.png";
 
   /**
    * Print the stack trace of the specified exception and fail the test.
@@ -69,13 +74,22 @@ public class MonaEvolutionContextTester extends
   @Autowired
   private EvolutionContext<MonaIndividual> context = null;
 
+  /** Perform cleanup after each test. */
+  @After
+  public final void tearDown() {
+    final File outputFile = new File(OUTPUT_FILENAME);
+    if (outputFile.exists() && !outputFile.delete()) {
+      LOG.debug("Failed to delete output file at " + OUTPUT_FILENAME);
+    }
+  }
+
   /** Test method for a Mona evolution. */
   @Test
   public final void testEvolution() {
     // could not autowire because spring could distinguish between these 2 beans
     final int height = (Integer) this.applicationContext.getBean("height");
     final int width = (Integer) this.applicationContext.getBean("width");
-    
+
     try {
       while (!this.completionCriteria.isSatisfied(this.context)) {
         this.context.stepGeneration();
@@ -97,7 +111,7 @@ public class MonaEvolutionContextTester extends
 
       // write the image to a file
       try {
-        ImageWriter.writeImage(image, "target/final.png");
+        ImageWriter.writeImage(image, OUTPUT_FILENAME);
       } catch (final IOException exception) {
         fail(exception);
       }
