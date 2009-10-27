@@ -38,16 +38,25 @@ import jmona.Population;
 public class DefaultEvolutionContext<T extends Individual> extends
     AbstractEvolutionContext<T> {
   /**
-   * How many children are allowed beyond the desired population size during the
-   * breeding stage.
+   * The default percentage of children allowed beyond the desired population
+   * size during the breeding stage.
    */
-  public static final int CHILD_REPLACEMENT_FACTOR = 5;
-
+  public static final double DEFAULT_CHILD_REPLACEMENT_FACTOR = .2;
   /**
-   * The percentage of the population that will die off at the beginning of each
-   * generation.
+   * The default percentage of the population that will be selected as parents
+   * to create the offspring for each subsequent generation of the evolution.
    */
-  public static final double SELECTION_FACTOR = 0.75;
+  public static final double DEFAULT_SELECTION_FACTOR = 0.75;
+  /**
+   * The percentage of children allowed beyond the desired population size
+   * during the breeding stage.
+   */
+  private double childReplacementFactor = DEFAULT_CHILD_REPLACEMENT_FACTOR;
+  /**
+   * The percentage of the population that will be selected as parents to create
+   * the offspring for each subsequent generation of the evolution.
+   */
+  private double selectionFactor = DEFAULT_SELECTION_FACTOR;
 
   /**
    * Instantiate this evolution context with the specified initial population by
@@ -59,6 +68,31 @@ public class DefaultEvolutionContext<T extends Individual> extends
    */
   public DefaultEvolutionContext(final Population<T> initialPopulation) {
     super(initialPopulation);
+  }
+
+  /**
+   * Set the percentage of children allowed beyond the desired population size
+   * during the breeding stage.
+   * 
+   * @param newChildReplacementFactor
+   *          The percentage of children allowed beyond the desired population
+   *          size during the breeding stage.
+   */
+  public void setChildReplacementFactor(final double newChildReplacementFactor) {
+    this.childReplacementFactor = newChildReplacementFactor;
+  }
+
+  /**
+   * Set the percentage of the population that will be selected as parents to
+   * create the offspring for each subsequent generation of the evolution.
+   * 
+   * @param newSelectionFactor
+   *          The percentage of the population that will be selected as parents
+   *          to create the offspring for each subsequent generation of the
+   *          evolution.
+   */
+  public void setSelectionFactor(final double newSelectionFactor) {
+    this.selectionFactor = newSelectionFactor;
   }
 
   /**
@@ -86,7 +120,7 @@ public class DefaultEvolutionContext<T extends Individual> extends
   public void stepGeneration() throws EvolutionException {
 
     /**
-     * Step 0: sanity check for all necessary functions
+     * Step 0: Do sanity check for necessary functions.
      */
 
     if (this.fitnessFunction() == null) {
@@ -103,28 +137,27 @@ public class DefaultEvolutionContext<T extends Individual> extends
     }
 
     /**
-     * Step 1: kill off the least fit individuals from the current population
+     * Step 1: Select parents from the current population.
      */
 
     // get the initial selection size
-    final int initialSelectionSize = (int) (this.currentPopulation().size() * SELECTION_FACTOR);
+    final int initialSelectionSize = (int) (this.currentPopulation().size() * this.selectionFactor);
 
     // kill off the least fit individuals
     this.setCurrentPopulation(this.selectionFunction().select(
         this.currentFitnesses(), initialSelectionSize));
 
-    /**
-     * Step 2: breed the remaining individuals; Step 3: determine the fitnesses
-     * of the offspring
-     */
+    // get the maximum size of the intermediate population
+    final int limit = (int) (this.desiredPopulationSize() * (1 + this.childReplacementFactor));
+
+    // get the current size of the population
+    int size = this.currentPopulation().size();
 
     // breed to make new individuals using recombination and mutation
     T parent1 = null, parent2 = null, leftChild = null, rightChild = null;
     Pair<T, T> children = null;
-    int limit = this.desiredPopulationSize() + CHILD_REPLACEMENT_FACTOR;
-    int size = this.currentPopulation().size();
     // TODO what if this.population.size() == limit - 1?
-    while (size < limit - 1) {
+    while (this.currentPopulation().size() < limit - 1) {
       // the current population is less than two individuals, something's wrong
       if (this.currentPopulation().size() < 2) {
         throw new EvolutionException("The size of the current population is "
@@ -137,6 +170,10 @@ public class DefaultEvolutionContext<T extends Individual> extends
       parent2 = this.currentPopulation().get(Util.RANDOM.nextInt(size));
 
       try {
+        /**
+         * Step 2: Recombine two parents to yield a pair of children.
+         */
+
         // create a child from those two parents
         children = this.breedingFunction().breed(
             new Pair<T, T>(parent1, parent2));
@@ -145,13 +182,25 @@ public class DefaultEvolutionContext<T extends Individual> extends
         leftChild = children.left();
         rightChild = children.right();
 
+        /**
+         * Step 3: Mutate the created children.
+         */
+
         // mutate these children
         this.mutatorFunction().mutate(leftChild);
         this.mutatorFunction().mutate(rightChild);
 
+        /**
+         * Step 4: Add the offspring to the current population.
+         */
+
         // add these children to the population
         this.currentPopulation().add(leftChild);
         this.currentPopulation().add(rightChild);
+
+        /**
+         * Step 5: Determine the fitnesses of the new offspring.
+         */
 
         // add the fitnesses of these two new individuals to the map
         this.currentFitnesses().put(leftChild,
@@ -167,13 +216,10 @@ public class DefaultEvolutionContext<T extends Individual> extends
       } catch (final MutationException exception) {
         throw new EvolutionException("Failed to mutate children.", exception);
       }
-
-      // get the new size of the population
-      size = this.currentPopulation().size();
     }
 
     /**
-     * Step 4: kill off the least fit individuals
+     * Step 6: Kill the least fit individuals in the current population.
      */
 
     // select the population for the next generation
@@ -181,7 +227,7 @@ public class DefaultEvolutionContext<T extends Individual> extends
         this.currentFitnesses(), this.desiredPopulationSize()));
 
     /**
-     * Step 5: increment the number of the current generation
+     * Step 7: Increment the number of the current generation
      */
 
     // increment the generation number
