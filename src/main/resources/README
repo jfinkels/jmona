@@ -7,4 +7,49 @@ This software is released under the GPLv3; see COPYING for more information.
 
 I release all original images in 
 "src/test/resources/jmona/example/monalisa/images/" to the Public Domain.
+
+To prepare this package for development in Eclipse, first run
+
+  mvn install
+
+to download all the dependencies. Then run
+
+  mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true
+
+to prepare the project for Eclipse development specifically (the download
+options will download source code and documentation for dependencies of this
+project).
+
+In Eclipse, add the "M2_REPO" classpath variable by selecting "Window >
+Preferences > Java > Build Path > Classpath Variables" and adding a new
+variable with name "M2_REPO" and value equal to the directory containing your
+Maven download repository (usually at "~/.m2/repository").
+
+Also in Eclipse, add the Checkstyle Plugin by following the directions at
+"http://eclipse-cs.sourceforge.net/". Then add the Checkstyle configuration
+contained in this package by selecting "Window > Preferences > Checkstyle >
+New > Project Relative Configuration", entering any name, then choosing the
+Checkstyle XML configuration file at "src/main/resources/checkstyle.xml".
+To use those Checkstyle rules for this project, right click on the project in
+the Package Explorer pane, select "Properties > Checkstyle", then select jmona
+from the drop-down options menu.
+
+To enable the automatic code formatter in Eclipse corresponding to the
+Checkstyle configuration distributed in this package, right click on the project
+in the Package Explorer pane, select "Properties > Java Code Style > Formatter",
+select "Enable project specific settings", click "Import...", then choose the
+"formatter.xml" file supplied in the distribution of this package.
+
+Refresh the project by right clicking on the project in the Project Explorer
+pane, then selecting "Refresh".
+
+Use Maven to run tests and generate code reports by running
+
+  mvn clean site
+
+and package the project by running
+
+  mvn package
+
+See the tests for examples of how to configure and run an evolution.
  
