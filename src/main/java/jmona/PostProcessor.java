@@ -34,6 +34,8 @@ public interface PostProcessor<T extends Individual> {
    * 
    * @param evolutionContext
    *          The EvolutionContext to process.
+   * @throws ProcessingException
+   *           If there is a problem processing the specified EvolutionContext.
    */
   void process(final EvolutionContext<T> evolutionContext)
       throws ProcessingException;
