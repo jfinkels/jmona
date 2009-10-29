@@ -65,7 +65,9 @@ public class ImageOutputPostProcessor extends
    * Write the first Individual in the current population of the specified
    * EvolutionContext out to an image.
    * 
-   * The image will be written at {@value #FORMAT_STRING}.
+   * The image will be written at the filename specified by the return value of
+   * the {@link #generateFilename(int)} method with current generation number as
+   * input.
    * 
    * @param evolutionContext
    *          The EvolutionContext containing the population from which to get
@@ -111,8 +113,9 @@ public class ImageOutputPostProcessor extends
       throw new ProcessingException("Failed writing image to disk.", exception);
     }
   }
-  
-  private static final transient Logger LOG = Logger.getLogger(ImageOutputPostProcessor.class);
+
+  private static final transient Logger LOG = Logger
+      .getLogger(ImageOutputPostProcessor.class);
 
   /**
    * Set the height of the output image.
