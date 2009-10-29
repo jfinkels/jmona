@@ -21,9 +21,10 @@ package jmona;
 
 /**
  * An object which contains a method which tells whether the criteria for the
- * completion of the evolution have been met. For example, a certain number of
- * generations have been evolved, or an individual with a maximum fitness has
- * been born, etc.
+ * completion of the evolution have been met.
+ * 
+ * For example, a certain number of generations have been evolved, or an
+ * individual with a maximum fitness has been born, etc.
  * 
  * @param <T>
  *          The type of the Individual in the evolution whose completion
@@ -37,6 +38,10 @@ public interface CompletionCriteria<T extends Individual> {
    * @param context
    *          The evolution context which contains this completion criteria.
    * @return Whether the criteria for completion of the evolution have been met.
+   * @throws CompletionException
+   *           If there is a problem determining whether this completion
+   *           criteria has been satisfied.
    */
-  boolean isSatisfied(final EvolutionContext<T> context);
+  boolean isSatisfied(final EvolutionContext<T> context)
+      throws CompletionException;
 }

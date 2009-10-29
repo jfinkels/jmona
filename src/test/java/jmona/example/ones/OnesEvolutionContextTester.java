@@ -20,6 +20,7 @@
 package jmona.example.ones;
 
 import jmona.CompletionCriteria;
+import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
 
@@ -28,10 +29,6 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
-
-/**
- * OnesEvolutionContextTester.java
- */
 
 /**
  * Test class for an evolution of the Ones example.
@@ -45,6 +42,7 @@ public class OnesEvolutionContextTester extends
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger
       .getLogger(OnesEvolutionContextTester.class);
+
   /**
    * Print the stack trace of the specified exception and fail the test.
    * 
@@ -55,6 +53,7 @@ public class OnesEvolutionContextTester extends
     exception.printStackTrace(System.err);
     org.junit.Assert.fail(exception.getMessage());
   }
+
   /**
    * Get the completion criteria for this evolution from the Spring XML
    * configuration file.
@@ -74,6 +73,8 @@ public class OnesEvolutionContextTester extends
         this.context.stepGeneration();
         LOG.debug(this.context.currentPopulation());
       }
+    } catch (final CompletionException exception) {
+      fail(exception);
     } catch (final EvolutionException exception) {
       fail(exception);
     }

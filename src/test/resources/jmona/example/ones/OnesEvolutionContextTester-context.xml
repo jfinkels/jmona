@@ -30,8 +30,8 @@
     factory-bean="populationFactory" 
     factory-method="createPopulation" />
 
-  <bean id="completionCriteria" class="jmona.example.ones.OnesCompletionCriteria" >
-    <constructor-arg ref="geneLength" />
+  <bean id="completionCriteria" class="jmona.impl.DefaultCompletionCriteria" >
+    <property name="maxFitness" ref="geneLength" />
     <property name="maxGenerations" value="10" />
   </bean>
 

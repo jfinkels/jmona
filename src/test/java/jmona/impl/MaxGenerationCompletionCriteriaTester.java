@@ -21,8 +21,11 @@ package jmona.impl;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.Individual;
+import jmona.MaxGenerationCompletionCriteria;
 import jmona.Population;
 
 import org.junit.Test;
@@ -34,6 +37,8 @@ import org.junit.Test;
  */
 public class MaxGenerationCompletionCriteriaTester {
 
+  
+  
   /**
    * Test method for
    * {@link jmona.impl.MaxGenerationCompletionCriteria#isSatisfied(jmona.EvolutionContext)}
@@ -42,23 +47,23 @@ public class MaxGenerationCompletionCriteriaTester {
   @Test
   public void testIsSatisfied() {
     final Population<Individual> population = new DefaultPopulation<Individual>();
-    population.add(new Individual() {        @Override
-      public Individual copy() {
-      return this;
-    }
-    });
-    population.add(new Individual() {        @Override
-      public Individual copy() {
-      return this;
-    }
-    });
+    population.add(new ExampleIndividual());
+    population.add(new ExampleIndividual());
     final EvolutionContext<Individual> context = new DefaultEvolutionContext<Individual>(
         population);
-    final MaxGenerationCompletionCriteria<Individual> criteria = new MaxGenerationCompletionCriteria<Individual>();
-    criteria.setMaxGenerations(0);
-    assertTrue(criteria.isSatisfied(context));
-    criteria.setMaxGenerations(2);
-    assertFalse(criteria.isSatisfied(context));
+
+    final MaxGenerationCompletionCriteria<Individual> criteria = new DefaultMaxGenerationCompletionCriteria<Individual>();
+
+    try {
+      criteria.setMaxGenerations(0);
+      assertTrue(criteria.isSatisfied(context));
+
+      criteria.setMaxGenerations(2);
+      assertFalse(criteria.isSatisfied(context));
+    } catch (final CompletionException exception) {
+      exception.printStackTrace(System.err);
+      fail(exception.getMessage());
+    }
   }
 
 }

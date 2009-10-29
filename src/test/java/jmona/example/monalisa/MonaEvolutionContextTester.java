@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.IOException;
 
 import jmona.CompletionCriteria;
+import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
 import jmona.Population;
@@ -95,6 +96,8 @@ public class MonaEvolutionContextTester extends
         this.context.stepGeneration();
         LOG.debug("Current generation: " + this.context.currentGeneration());
       }
+    } catch (final CompletionException exception) {
+      fail(exception);
     } catch (final EvolutionException exception) {
       fail(exception);
     } finally {

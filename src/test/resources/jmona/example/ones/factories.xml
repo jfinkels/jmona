@@ -24,7 +24,7 @@
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
   <bean id="geneLength" class="java.lang.Integer">
-    <constructor-arg><value>4</value></constructor-arg>
+    <constructor-arg value="4" />
   </bean>
 
   <bean id="individualFactory" class="jmona.example.ones.OnesIndividualFactory">

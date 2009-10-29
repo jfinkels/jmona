@@ -19,9 +19,9 @@
  */
 package jmona.impl;
 
-import jmona.CompletionCriteria;
 import jmona.EvolutionContext;
 import jmona.Individual;
+import jmona.MaxGenerationCompletionCriteria;
 
 /**
  * An object which checks if the specified maximum number of generations has
@@ -31,12 +31,11 @@ import jmona.Individual;
  *          The type of Individual being evolved.
  * @author jeff
  */
-public class MaxGenerationCompletionCriteria<T extends Individual> implements
-    CompletionCriteria<T> {
+public class DefaultMaxGenerationCompletionCriteria<T extends Individual>
+    implements MaxGenerationCompletionCriteria<T> {
 
   /** The default maximum number of generations in the evolution. */
   public static final int DEFAULT_MAX_GENERATIONS = Integer.MAX_VALUE;
-
   /**
    * The maximum number of generations for this evolution. If the number of
    * generations in the evolution meets or exceeds this value, then the
@@ -58,12 +57,10 @@ public class MaxGenerationCompletionCriteria<T extends Individual> implements
   }
 
   /**
-   * Set the maximum number of generations for this evolution. If the number of
-   * generations in the evolution meets or exceeds this value, then the
-   * evolution stops.
+   * {@inheritDoc}
    * 
    * @param newMaxGenerations
-   *          Set the maximum number of generations for this evolution.
+   *          {@inheritDoc}
    */
   public void setMaxGenerations(final int newMaxGenerations) {
     this.maxGenerations = newMaxGenerations;

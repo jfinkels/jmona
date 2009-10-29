@@ -29,10 +29,10 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jeff
  */
 @RunWith(Suite.class)
-@SuiteClasses({ OnesCompletionCriteriaTester.class,
-    OnesCrossoverFunctionTester.class, OnesEvolutionContextTester.class,
-    OnesFitnessFunctionTester.class, OnesIndividualFactoryTester.class,
-    OnesIndividualTester.class, OnesMutatorFunctionTester.class })
+@SuiteClasses({ OnesCrossoverFunctionTester.class,
+    OnesEvolutionContextTester.class, OnesFitnessFunctionTester.class,
+    OnesIndividualFactoryTester.class, OnesIndividualTester.class,
+    OnesMutatorFunctionTester.class })
 public class AllTest {
 
 }

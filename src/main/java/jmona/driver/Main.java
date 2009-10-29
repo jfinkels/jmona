@@ -22,6 +22,7 @@ package jmona.driver;
 import java.util.Map;
 
 import jmona.CompletionCriteria;
+import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
 import jmona.PostProcessor;
@@ -121,6 +122,8 @@ public class Main {
           postProcessor.process(evolutionContext);
         }
       }
+    } catch (final CompletionException exception) {
+      throw new RuntimeException(exception);
     } catch (final EvolutionException exception) {
       throw new RuntimeException(exception);
     } catch (final ProcessingException exception) {

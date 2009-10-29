@@ -29,7 +29,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jeff
  */
 @RunWith(Suite.class)
-@SuiteClasses({ BreedingExceptionTester.class, EvolutionExceptionTester.class,
+@SuiteClasses({ BreedingExceptionTester.class,
+    CompletionExceptionTester.class, EvolutionExceptionTester.class,
     FitnessExceptionTester.class, InitializationExceptionTester.class,
     MutationExceptionTester.class, ProcessingExceptionTester.class })
 public class AllTest {
