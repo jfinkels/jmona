@@ -62,6 +62,12 @@ public class DefaultMaxFitnessCompletionCriteria<T extends Individual>
   public boolean isSatisfied(final EvolutionContext<T> context)
       throws CompletionException {
     final FitnessFunction<T> fitnessFunction = context.fitnessFunction();
+
+    if (fitnessFunction == null) {
+      throw new CompletionException(
+          "No FitnessFunction has been set on the EvolutionContext, so no fitnesses can be determined.");
+    }
+
     try {
       for (final T individual : context.currentPopulation()) {
         if (fitnessFunction.fitness(individual) >= this.maxFitness) {
