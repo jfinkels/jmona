@@ -33,7 +33,7 @@ import jmona.Population;
  *          The type of individual on which the evolution occurs.
  * @author jfinke
  */
-public class GoodEvolutionContext<T extends Individual> extends
+public class DefaultEvolutionContext<T extends Individual> extends
     AbstractEvolutionContext<T> {
   
   /**
@@ -44,7 +44,7 @@ public class GoodEvolutionContext<T extends Individual> extends
    *          The initial population.
    * @see AbstractEvolutionContext#AbstractEvolutionContext(Population)
    */
-  public GoodEvolutionContext(final Population<T> initialPopulation) {
+  public DefaultEvolutionContext(final Population<T> initialPopulation) {
     super(initialPopulation);
   }
 
