@@ -22,10 +22,31 @@ package jmona.impl;
 import jmona.Individual;
 
 /**
- * A basic implementation of an Individual.
+ * A basic implementation of an Individual which has a built-in fitness
+ * property.
  * 
  * @author jeff
  */
 public class ExampleIndividual implements Individual {
+  /** The fitness of this Individual. */
+  private double fitness = 0.0;
 
+  /**
+   * Get the fitness of this Individual.
+   * 
+   * @return The fitness of this Individual.
+   */
+  public double fitness() {
+    return this.fitness;
+  }
+
+  /**
+   * Set the fitness of this Individual.
+   * 
+   * @param newFitness
+   *          The fitness of this Individual.
+   */
+  public void setFitness(final double newFitness) {
+    this.fitness = newFitness;
+  }
 }
