@@ -31,6 +31,21 @@ public class ExampleIndividual implements Individual {
   /** The fitness of this Individual. */
   private double fitness = 0.0;
 
+  /** Instantiate this Individual with the default fitness. */
+  public ExampleIndividual() {
+    // intentionally unimplemented
+  }
+
+  /**
+   * Instantiate this Individual with the specified initial fitness.
+   * 
+   * @param initialFitness
+   *          The fitness of this Individual.
+   */
+  public ExampleIndividual(final double initialFitness) {
+    this.fitness = initialFitness;
+  }
+
   /**
    * Get the fitness of this Individual.
    * 
