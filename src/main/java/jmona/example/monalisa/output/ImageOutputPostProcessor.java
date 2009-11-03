@@ -36,10 +36,14 @@ import org.apache.log4j.Logger;
  */
 public class ImageOutputPostProcessor extends
     PeriodicPostProcessor<MonaIndividual> {
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(ImageOutputPostProcessor.class);
   /** The height of the image to output. */
   private int height = -1;
   /** The directory in which to write images. */
   private String outputDir = ".";
+
   /** The width of the image to output. */
   private int width = -1;
 
@@ -60,7 +64,7 @@ public class ImageOutputPostProcessor extends
     return String.format(this.outputDir + "generation%1$d.png",
         currentGeneration);
   }
-
+  
   /**
    * Write the first Individual in the current population of the specified
    * EvolutionContext out to an image.
@@ -113,9 +117,6 @@ public class ImageOutputPostProcessor extends
       throw new ProcessingException("Failed writing image to disk.", exception);
     }
   }
-
-  private static final transient Logger LOG = Logger
-      .getLogger(ImageOutputPostProcessor.class);
 
   /**
    * Set the height of the output image.

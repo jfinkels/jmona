@@ -1,5 +1,5 @@
 <!--
- CompletionCriteriaOnly-context.xml
+ TooFewBoth-context.xml
 
  Copyright 2009 Jeffrey Finkelstein
  
@@ -22,9 +22,5 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
-
-  <bean id="completionCriteria" class="jmona.impl.MaxGenerationCompletionCriteria" >
-    <property name="maxGenerations" value="10" />
-  </bean>
 
 </beans>

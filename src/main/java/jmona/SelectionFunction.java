@@ -22,8 +22,8 @@ package jmona;
 import java.util.Map;
 
 /**
- * A class which provides a single method which selects a population given a
- * mapping from individuals in that population to their fitness scores.
+ * A class which provides a single method which selects an Individual based on
+ * fitness scores.
  * 
  * @param <T>
  *          The type of Individual which will be selected.
@@ -31,16 +31,12 @@ import java.util.Map;
  */
 public interface SelectionFunction<T extends Individual> {
   /**
-   * Select a population based on the specified mapping from individuals in that
-   * population to corresponding fitness scores.
+   * Select an Individual based on the specified mapping from individuals to
+   * corresponding fitness scores.
    * 
    * @param fitnesses
-   *          A mapping from individuals in a population to corresponding
-   *          fitness scores.
-   * @param numberOfIndividuals
-   *          The number of individuals to select from the specified mapping.
-   * @return A population based on the specified fitness scores.
+   *          A mapping from Individuals to corresponding fitness scores.
+   * @return An Individual chosen from the specified map.
    */
-  Population<T> select(final Map<T, Double> fitnesses,
-      final int numberOfIndividuals);
+  T select(final Map<T, Double> fitnesses);
 }

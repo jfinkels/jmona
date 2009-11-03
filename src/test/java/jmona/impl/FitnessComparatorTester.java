@@ -54,12 +54,7 @@ public class FitnessComparatorTester {
     final Map<Individual, Double> fitnesses = new HashMap<Individual, Double>();
     Individual individual = null;
     for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
-      individual = new Individual() {
-        @Override
-        public Individual copy() {
-          return this;
-        }
-      };
+      individual = new ExampleIndividual();
       allIndividuals.add(individual);
       fitnesses.put(individual, (double) i);
     }
@@ -82,12 +77,7 @@ public class FitnessComparatorTester {
 
     Individual individual = null;
     for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
-      individual = new Individual() {
-        @Override
-        public Individual copy() {
-          return this;
-        }
-      };
+      individual = new ExampleIndividual();
       population.add(individual);
       fitnesses.put(individual, (double) i);
     }

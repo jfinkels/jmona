@@ -1,5 +1,5 @@
 <!--
- TooManyCC-context.xml
+ TooManyBoth-context.xml
 
  Copyright 2009 Jeffrey Finkelstein
  
@@ -23,15 +23,15 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-  <bean id="completionCriteria1" class="jmona.impl.MaxGenerationCompletionCriteria" >
+  <bean id="completionCriteria1" class="jmona.impl.DefaultMaxGenerationCompletionCriteria" >
     <property name="maxGenerations" value="1" />
   </bean>
   
-  <bean id="completionCriteria2" class="jmona.impl.MaxGenerationCompletionCriteria" >
+  <bean id="completionCriteria2" class="jmona.impl.DefaultMaxGenerationCompletionCriteria" >
     <property name="maxGenerations" value="2" />
   </bean>
   
-  <bean id="completionCriteria3" class="jmona.impl.MaxGenerationCompletionCriteria" >
+  <bean id="completionCriteria3" class="jmona.impl.DefaultMaxGenerationCompletionCriteria" >
     <property name="maxGenerations" value="3" />
   </bean>
   

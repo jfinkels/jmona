@@ -29,11 +29,18 @@ package jmona;
 public interface EvolutionContext<T extends Individual> {
 
   /**
-   * Get the breeding function used by this context.
+   * Get the crossover function used by this context.
    * 
-   * @return The breeding function used by this context.
+   * @return The crossover function used by this context.
    */
-  BreedingFunction<T> breedingFunction();
+  CrossoverFunction<T> crossoverFunction();
+
+  /**
+   * Get the probability of crossover for selected Individuals.
+   * 
+   * @return The probability of crossover for selected Individuals.
+   */
+  double crossoverProbability();
 
   /**
    * Get the current generation number; the initial generation should be 0, and
@@ -58,6 +65,13 @@ public interface EvolutionContext<T extends Individual> {
   FitnessFunction<T> fitnessFunction();
 
   /**
+   * Get the probability of mutation for selected Individuals.
+   * 
+   * @return The probability of mutation for selected Individuals.
+   */
+  double mutationProbability();
+
+  /**
    * Get the mutator function used by this context.
    * 
    * @return The mutator function used by this context.
@@ -72,20 +86,20 @@ public interface EvolutionContext<T extends Individual> {
   SelectionFunction<T> selectionFunction();
 
   /**
-   * Set the breeding function used by this context.
+   * Set the crossover function used by this context.
    * 
    * @param function
-   *          The breeding function used by this context.
+   *          The crossover function used by this context.
    */
-  void setBreedingFunction(final BreedingFunction<T> function);
+  void setCrossoverFunction(final CrossoverFunction<T> function);
 
   /**
-   * Set the desired size of the population at the end of each generation.
+   * Set the probability of crossover for selected Individuals.
    * 
-   * @param size
-   *          The desired size of the population at the end of each generation.
+   * @param newCrossoverProbability
+   *          The probability of crossover for selected Individuals.
    */
-  void setDesiredPopulationSize(final int size);
+  void setCrossoverProbability(final double newCrossoverProbability);
 
   /**
    * Set the fitness function used by this context.
@@ -98,6 +112,14 @@ public interface EvolutionContext<T extends Individual> {
    */
   void setFitnessFunction(final FitnessFunction<T> function)
       throws FitnessException;
+
+  /**
+   * Set the probability of mutation for selected Individuals.
+   * 
+   * @param newMutationProbability
+   *          The probability of mutation for selected Individuals.
+   */
+  void setMutationProbability(final double newMutationProbability);
 
   /**
    * Set the mutator function used by this context.

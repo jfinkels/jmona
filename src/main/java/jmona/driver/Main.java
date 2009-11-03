@@ -106,6 +106,7 @@ public class Main {
 
     // get the evolution context and completion criteria
     // (kind of goofy but necessary way to get an element from a map, i think)
+    // TODO is there a cleaner way of getting an element from a map?
     final EvolutionContext evolutionContext = evolutionContextsMap.values()
         .iterator().next();
     final CompletionCriteria completionCriteria = completionCriteriaMap

@@ -29,10 +29,10 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jeff
  */
 @RunWith(Suite.class)
-@SuiteClasses({ DefaultBreedingFunctionTester.class,
-    DefaultEvolutionContextTester.class, DefaultPopulationFactoryTester.class,
-    FitnessComparatorTester.class, MaxGenerationCompletionCriteriaTester.class,
-    PopulationLoggingPostProcessorTester.class, SelectionFunctionTester.class })
+@SuiteClasses({ DefaultEvolutionContextTester.class,
+    DefaultPopulationFactoryTester.class, FitnessComparatorTester.class,
+    MaxGenerationCompletionCriteriaTester.class,
+    PopulationLoggingPostProcessorTester.class })
 public class AllTest {
 
 }

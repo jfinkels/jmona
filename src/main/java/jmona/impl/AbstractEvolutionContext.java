@@ -22,7 +22,7 @@ package jmona.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import jmona.BreedingFunction;
+import jmona.CrossoverFunction;
 import jmona.EvolutionContext;
 import jmona.FitnessException;
 import jmona.FitnessFunction;
@@ -40,12 +40,20 @@ import jmona.SelectionFunction;
  */
 public abstract class AbstractEvolutionContext<T extends Individual> implements
     EvolutionContext<T> {
-  /** The breeding function. */
-  private BreedingFunction<T> breedingFunction = null;
+  /**
+   * The default probability that crossover will be performed on Individuals
+   * selected for breeding.
+   */
+  public static final double DEFAULT_CROSSOVER_PROBABILITY = 0.6;
+  /** The crossover function. */
+  private CrossoverFunction<T> crossoverFunction = null;
+  /**
+   * The probability that crossover will be performed on Individuals selected
+   * for breeding.
+   */
+  private double crossoverProbability = DEFAULT_CROSSOVER_PROBABILITY;
   /** The current fitnesses of the population. */
-  private final Map<T, Double> currentFitnesses = new HashMap<T, Double>();
-  /** The desired size of the population at each generation. */
-  private int desiredPopulationSize = 0;
+  private Map<T, Double> currentFitnesses = new HashMap<T, Double>();
   /** The fitness function for determining fitness of individuals. */
   private FitnessFunction<T> fitnessFunction = null;
   /** The current generation of the evolution. */
@@ -73,18 +81,28 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
           "The initial population must be of size greater than or equal to 2.");
     }
     this.population = initialPopulation;
-    this.desiredPopulationSize = this.population.size();
   }
 
   /**
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.EvolutionContext#breedingFunction()
+   * @see jmona.EvolutionContext#crossoverFunction()
    */
   @Override
-  public BreedingFunction<T> breedingFunction() {
-    return this.breedingFunction;
+  public CrossoverFunction<T> crossoverFunction() {
+    return this.crossoverFunction;
+  }
+
+  /**
+   * Get the probability that crossover will be performed on Individuals
+   * selected for breeding.
+   * 
+   * @return The probability that crossover will be performed.
+   */
+  @Override
+  public double crossoverProbability() {
+    return this.crossoverProbability;
   }
 
   /**
@@ -119,15 +137,6 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   }
 
   /**
-   * Get the desired population size after each generation.
-   * 
-   * @return The desired population size after each generation.
-   */
-  protected int desiredPopulationSize() {
-    return this.desiredPopulationSize;
-  }
-
-  /**
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
@@ -157,6 +166,21 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   }
 
   /**
+   * Reset the mapping from individual in the current population to its fitness.
+   * 
+   * @throws FitnessException
+   *           If there is a problem determining the fitness of an Individual.
+   */
+  protected synchronized void recalculateFitnesses() throws FitnessException {
+    this.currentFitnesses = new HashMap<T, Double>();
+
+    for (final T individual : this.population) {
+      this.currentFitnesses.put(individual, this.fitnessFunction
+          .fitness(individual));
+    }
+  }
+
+  /**
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
@@ -172,11 +196,23 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * 
    * @param function
    *          {@inheritDoc}
-   * @see jmona.EvolutionContext#setBreedingFunction(jmona.BreedingFunction)
+   * @see jmona.EvolutionContext#setCrossoverFunction(jmona.CrossoverFunction)
    */
   @Override
-  public void setBreedingFunction(final BreedingFunction<T> function) {
-    this.breedingFunction = function;
+  public void setCrossoverFunction(final CrossoverFunction<T> function) {
+    this.crossoverFunction = function;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @param newCrossoverProbability
+   *          {@inheritDoc}
+   * @see jmona.EvolutionContext#setCrossoverProbability(double)
+   */
+  @Override
+  public void setCrossoverProbability(final double newCrossoverProbability) {
+    this.crossoverProbability = newCrossoverProbability;
   }
 
   /**
@@ -187,18 +223,6 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    */
   protected void setCurrentPopulation(final Population<T> newCurrentPopulation) {
     this.population = newCurrentPopulation;
-  }
-
-  /**
-   * {@inheritDoc}
-   * 
-   * @param size
-   *          {@inheritDoc}
-   * @see jmona.EvolutionContext#setDesiredPopulationSize(int)
-   */
-  @Override
-  public void setDesiredPopulationSize(final int size) {
-    this.desiredPopulationSize = size;
   }
 
   /**
@@ -215,11 +239,33 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
       throws FitnessException {
     this.fitnessFunction = function;
 
-    // assign the initial fitnesses
-    for (final T individual : this.population) {
-      this.currentFitnesses.put(individual, this.fitnessFunction
-          .fitness(individual));
-    }
+    this.recalculateFitnesses();
+  }
+
+  public static final double DEFAULT_MUTATION_PROBABILITY = 0.1;
+  private double mutationProbability = DEFAULT_MUTATION_PROBABILITY;
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @param newMutationProbability
+   *          {@inheritDoc}
+   * @see jmona.EvolutionContext#setMutationProbability(double)
+   */
+  @Override
+  public void setMutationProbability(final double newMutationProbability) {
+    this.mutationProbability = newMutationProbability;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.EvolutionContext#mutationProbability()
+   */
+  @Override
+  public double mutationProbability() {
+    return this.mutationProbability;
   }
 
   /**
@@ -232,7 +278,6 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   @Override
   public void setMutatorFunction(final MutatorFunction<T> function) {
     this.mutatorFunction = function;
-
   }
 
   /**
@@ -246,5 +291,4 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   public void setSelectionFunction(final SelectionFunction<T> function) {
     this.selectionFunction = function;
   }
-
 }

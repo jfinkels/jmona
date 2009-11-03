@@ -24,8 +24,8 @@
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
   
   <bean id="individualFactory" class="jmona.example.monalisa.MonaIndividualFactory">
-    <property name="initialPolygons" value="50" />
-    <property name="maxPoints" value="10" />
+    <property name="initialPolygons" value="20" />
+    <property name="maxPoints" value="7" />
     <property name="minPoints" value="3" />
     <property name="maxX" ref="width" />
     <property name="maxY" ref="height" />
@@ -33,7 +33,7 @@
   
   <bean id="populationFactory" class="jmona.impl.DefaultPopulationFactory">
     <property name="individualFactory" ref="individualFactory" />
-    <property name="size" value="4" />
+    <property name="size" value="10" />
   </bean>
 
 </beans>

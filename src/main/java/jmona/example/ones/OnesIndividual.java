@@ -41,16 +41,6 @@ public class OnesIndividual implements Individual {
   }
 
   /**
-   * {@inheritDoc}
-   * 
-   * @return {@inheritDoc}
-   */
-  @Override
-  public OnesIndividual copy() {
-    return new OnesIndividual(this.gene);
-  }
-
-  /**
    * Get a copy of the gene of this individual. Returns a cloned copy of the
    * array, for the sake of security.
    * 

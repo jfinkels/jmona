@@ -24,7 +24,6 @@ import java.awt.Polygon;
 import java.util.Map.Entry;
 
 import jmona.CrossoverFunction;
-import jmona.Pair;
 import jmona.impl.Util;
 
 /**
@@ -44,48 +43,38 @@ public class MonaCrossoverFunction implements CrossoverFunction<MonaIndividual> 
    * @see jmona.CrossoverFunction#crossover(jmona.Pair)
    */
   @Override
-  public Pair<MonaIndividual, MonaIndividual> crossover(
-      final Pair<MonaIndividual, MonaIndividual> parents) {
-
-    // get the parents
-    final MonaIndividual leftParent = parents.left();
-    final MonaIndividual rightParent = parents.right();
-
-    // copy the parents to get the children
-    final MonaIndividual leftChild = leftParent.copy();
-    final MonaIndividual rightChild = rightParent.copy();
+  public void crossover(final MonaIndividual parent1,
+      final MonaIndividual parent2) {
 
     // get a random polygon/color pair from the left child
-    int counter = Util.RANDOM.nextInt(leftChild.gene().size());
+    int counter = Util.RANDOM.nextInt(parent1.gene().size());
     Polygon leftPolygon = null;
     Color leftColor = null;
-    for (final Entry<Polygon, Color> entry : leftChild.gene().entrySet()) {
+    for (final Entry<Polygon, Color> entry : parent1.gene().entrySet()) {
       if (counter == 0) {
         leftPolygon = entry.getKey();
       } else {
         counter -= 1;
       }
     }
-    leftColor = leftChild.gene().remove(leftPolygon);
+    leftColor = parent1.gene().remove(leftPolygon);
 
     // get a random polygon/color pair from the right child
-    counter = Util.RANDOM.nextInt(rightChild.gene().size());
+    counter = Util.RANDOM.nextInt(parent2.gene().size());
     Polygon rightPolygon = null;
     Color rightColor = null;
-    for (final Entry<Polygon, Color> entry : rightChild.gene().entrySet()) {
+    for (final Entry<Polygon, Color> entry : parent2.gene().entrySet()) {
       if (counter == 0) {
         rightPolygon = entry.getKey();
       } else {
         counter -= 1;
       }
     }
-    rightColor = rightChild.gene().remove(rightPolygon);
+    rightColor = parent2.gene().remove(rightPolygon);
 
     // swap the polygons/colors
-    leftChild.gene().put(rightPolygon, rightColor);
-    rightChild.gene().put(leftPolygon, leftColor);
-
-    return new Pair<MonaIndividual, MonaIndividual>(leftChild, rightChild);
+    parent1.gene().put(rightPolygon, rightColor);
+    parent2.gene().put(leftPolygon, leftColor);
   }
 
 }

@@ -26,8 +26,6 @@ import static org.junit.Assert.assertSame;
 import java.awt.Color;
 import java.awt.Polygon;
 
-import jmona.Pair;
-
 import org.junit.Test;
 
 /**
@@ -55,36 +53,34 @@ public class MonaCrossoverFunctionTester {
     left.gene().put(leftPolygon1, leftColor1);
     final MonaIndividual right = new MonaIndividual();
     right.gene().put(rightPolygon1, rightColor1);
-    final Pair<MonaIndividual, MonaIndividual> parents = new Pair<MonaIndividual, MonaIndividual>(
-        left, right);
+    /*
+     * final Pair<MonaIndividual, MonaIndividual> parents = new
+     * Pair<MonaIndividual, MonaIndividual>( left, right);
+     */
+    final Polygon leftParentPolygon = left.gene().keySet().toArray(
+        new Polygon[1])[0];
+    final Color leftParentColor = left.gene().values().toArray(new Color[1])[0];
+
+    final Polygon rightParentPolygon = right.gene().keySet().toArray(
+        new Polygon[1])[0];
+    final Color rightParentColor = right.gene().values().toArray(new Color[1])[0];
 
     final MonaCrossoverFunction function = new MonaCrossoverFunction();
-    final Pair<MonaIndividual, MonaIndividual> children = function
-        .crossover(parents);
+    function.crossover(left, right);
 
-    final Polygon leftParentPolygon = parents.left().gene().keySet().toArray(
+    final Polygon leftChildPolygon = left.gene().keySet().toArray(
         new Polygon[1])[0];
-    final Polygon rightParentPolygon = parents.right().gene().keySet().toArray(
-        new Polygon[1])[0];
-    final Polygon leftChildPolygon = children.left().gene().keySet().toArray(
-        new Polygon[1])[0];
-    final Polygon rightChildPolygon = children.right().gene().keySet().toArray(
+    final Polygon rightChildPolygon = right.gene().keySet().toArray(
         new Polygon[1])[0];
 
-    final Color leftParentColor = parents.left().gene().values().toArray(
-        new Color[1])[0];
-    final Color rightParentColor = parents.right().gene().values().toArray(
-        new Color[1])[0];
-    final Color leftChildColor = children.left().gene().values().toArray(
-        new Color[1])[0];
-    final Color rightChildColor = children.right().gene().values().toArray(
-        new Color[1])[0];
+    final Color leftChildColor = left.gene().values().toArray(new Color[1])[0];
+    final Color rightChildColor = right.gene().values().toArray(new Color[1])[0];
 
     assertSame(leftParentColor, rightChildColor);
     assertSame(rightParentColor, leftChildColor);
     assertNotSame(leftParentColor, leftChildColor);
     assertNotSame(rightParentColor, rightChildColor);
-    
+
     for (int i = 0; i < leftParentPolygon.npoints; ++i) {
       assertEquals(leftParentPolygon.xpoints[i], rightChildPolygon.xpoints[i]);
       assertEquals(leftParentPolygon.ypoints[i], rightChildPolygon.ypoints[i]);

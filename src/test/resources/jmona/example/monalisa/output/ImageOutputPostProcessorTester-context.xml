@@ -28,7 +28,7 @@
   <import resource="../functions.xml" />
   <import resource="../factories.xml" />
 
-  <bean id="completionCriteria" class="jmona.impl.MaxGenerationCompletionCriteria">
+  <bean id="completionCriteria" class="jmona.impl.DefaultMaxGenerationCompletionCriteria">
     <property name="maxGenerations" value="3" />
   </bean>
 
@@ -40,7 +40,6 @@
     <constructor-arg>
       <ref bean="population" />
     </constructor-arg>
-    <property name="breedingFunction" ref="breedingFunction" />
     <property name="fitnessFunction" ref="fitnessFunction" />
     <property name="mutatorFunction" ref="mutatorFunction" />
     <property name="selectionFunction" ref="selectionFunction" />

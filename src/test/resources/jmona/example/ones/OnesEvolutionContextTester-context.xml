@@ -23,8 +23,8 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-  <import resource="./functions.xml" />
   <import resource="./factories.xml" />
+  <import resource="./functions.xml" />
   
   <bean id="population" 
     factory-bean="populationFactory" 
@@ -39,7 +39,6 @@
     <constructor-arg>
       <ref bean="population" />
     </constructor-arg>
-    <property name="breedingFunction" ref="breedingFunction" />
     <property name="fitnessFunction" ref="fitnessFunction" />
     <property name="mutatorFunction" ref="mutatorFunction" />
     <property name="selectionFunction" ref="selectionFunction" />

@@ -23,7 +23,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import jmona.BreedingException;
 import jmona.CrossoverFunction;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
@@ -32,8 +31,8 @@ import jmona.FitnessFunction;
 import jmona.Individual;
 import jmona.MutationException;
 import jmona.MutatorFunction;
-import jmona.Pair;
 import jmona.Population;
+import jmona.impl.selection.FitnessProportionateSelection;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -83,10 +82,17 @@ public class DefaultEvolutionContextTester {
 
   /** A basic crossover function. */
   private final CrossoverFunction<Individual> crossoverFunction = new CrossoverFunction<Individual>() {
+    /**
+     * {@inheritDoc}
+     * 
+     * @param parent1
+     *          {@inheritDoc}
+     * @param parent2
+     *          {@inheritDoc}
+     */
     @Override
-    public Pair<Individual, Individual> crossover(
-        final Pair<Individual, Individual> parents) {
-      return parents;
+    public void crossover(final Individual parent1, final Individual parent2) {
+      // intentionally unimplemented
     }
   };
 
@@ -161,18 +167,6 @@ public class DefaultEvolutionContextTester {
 
   }
 
-  /**
-   * Test method for
-   * {@link DefaultEvolutionContext#setDesiredPopulationSize(int)}.
-   */
-  @Test
-  public void testSetDesiredPopulationSize() {
-    final int desiredPopulationSize = 10;
-    this.context.setDesiredPopulationSize(desiredPopulationSize);
-    // TODO set all the necessary functions, an initial population, and run the
-    // evolution to ensure that the desired population size is met
-  }
-
   /** Test method for {@link DefaultEvolutionContext#stepGeneration()}. */
   @Test
   public final void testStepGeneration() {
@@ -196,14 +190,6 @@ public class DefaultEvolutionContextTester {
     try {
       this.context.stepGeneration();
     } catch (final EvolutionException exception) {
-      // breeding function has not been set
-      this.context
-          .setBreedingFunction(new DefaultBreedingFunction<Individual>());
-    }
-
-    try {
-      this.context.stepGeneration();
-    } catch (final EvolutionException exception) {
       // mutator function has not been set
       this.context.setMutatorFunction(this.badMutatorFunction);
     }
@@ -212,7 +198,7 @@ public class DefaultEvolutionContextTester {
       this.context.stepGeneration();
     } catch (final EvolutionException exception) {
       // selection function has not been set
-      this.context.setSelectionFunction(new MaxSelectionFunction<Individual>());
+      this.context.setSelectionFunction(new FitnessProportionateSelection<Individual>());
     }
 
     try {
@@ -221,15 +207,6 @@ public class DefaultEvolutionContextTester {
       // size of population is 1, but must be greater than 1
       this.context.currentPopulation().add(new ExampleIndividual());
       this.context.currentPopulation().add(new ExampleIndividual());
-    }
-
-    try {
-      this.context.stepGeneration();
-    } catch (final EvolutionException exception) {
-      // no crossover function has been set on the breeding function
-      assertTrue(exception.getCause() instanceof BreedingException);
-      this.context.breedingFunction().setCrossoverFunction(
-          this.crossoverFunction);
     }
 
     try {

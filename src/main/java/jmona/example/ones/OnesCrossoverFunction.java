@@ -20,7 +20,6 @@
 package jmona.example.ones;
 
 import jmona.CrossoverFunction;
-import jmona.Pair;
 import jmona.impl.Util;
 
 /**
@@ -34,23 +33,19 @@ public class OnesCrossoverFunction implements CrossoverFunction<OnesIndividual> 
   /**
    * Perform a two-point crossover.
    * 
-   * @param parents
-   *          The parents on which to cross over slices of genes.
-   * @return Children having genes resulting from a random two-point crossover
-   *         of the parent genes.
+   * @param parent1
+   *          An individual.
+   * @param parent2
+   *          Another individual.
    * @see jmona.CrossoverFunction#crossover(jmona.Pair)
    */
   @Override
-  public Pair<OnesIndividual, OnesIndividual> crossover(
-      final Pair<OnesIndividual, OnesIndividual> parents) {
-
-    // get a cloned copy of the parents to be the base children
-    final OnesIndividual leftChild = parents.left().copy();
-    final OnesIndividual rightChild = parents.right().copy();
+  public void crossover(final OnesIndividual parent1,
+      final OnesIndividual parent2) {
 
     // get the genes of the children
-    final short[] gene1 = leftChild.gene();
-    final short[] gene2 = rightChild.gene();
+    final short[] gene1 = parent1.gene();
+    final short[] gene2 = parent2.gene();
 
     // get the total length of a gene
     final int geneLength = gene1.length;
@@ -68,7 +63,8 @@ public class OnesCrossoverFunction implements CrossoverFunction<OnesIndividual> 
       gene2[i] = temp;
     }
 
-    return new Pair<OnesIndividual, OnesIndividual>(leftChild, rightChild);
+    parent1.setGene(gene1);
+    parent2.setGene(gene2);
   }
 
 }

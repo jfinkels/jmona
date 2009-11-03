@@ -21,7 +21,6 @@ package jmona.example.ones;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import jmona.Pair;
 
 import org.junit.Test;
 
@@ -44,23 +43,18 @@ public class OnesCrossoverFunctionTester {
     final OnesIndividual right = new OnesIndividual(new short[] { 1, 1, 1, 1,
         1, 1, 1, 1 });
 
-    // pair them together
-    final Pair<OnesIndividual, OnesIndividual> pair = new Pair<OnesIndividual, OnesIndividual>(
-        left, right);
-
     final OnesCrossoverFunction function = new OnesCrossoverFunction();
 
-    final int beforeLengthLeft = pair.left().gene().length;
-    final int beforeLengthRight = pair.right().gene().length;
+    final int beforeLengthLeft = left.gene().length;
+    final int beforeLengthRight = right.gene().length;
 
-    final Pair<OnesIndividual, OnesIndividual> crossed = function
-        .crossover(pair);
+    function.crossover(left, right);
 
-    assertEquals(beforeLengthLeft, crossed.left().gene().length);
-    assertEquals(beforeLengthRight, crossed.right().gene().length);
+    assertEquals(beforeLengthLeft, left.gene().length);
+    assertEquals(beforeLengthRight, right.gene().length);
 
-    for (int i = crossed.left().gene().length - 1; i >= 0; --i) {
-      assertTrue(crossed.left().gene()[i] != crossed.right().gene()[i]);
+    for (int i = left.gene().length - 1; i >= 0; --i) {
+      assertTrue(left.gene()[i] != right.gene()[i]);
     }
   }
 }

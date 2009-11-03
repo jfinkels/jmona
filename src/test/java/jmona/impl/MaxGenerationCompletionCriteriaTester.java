@@ -36,8 +36,6 @@ import org.junit.Test;
  * @author jeff
  */
 public class MaxGenerationCompletionCriteriaTester {
-
-  
   
   /**
    * Test method for

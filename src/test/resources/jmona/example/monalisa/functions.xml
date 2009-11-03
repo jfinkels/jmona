@@ -33,11 +33,7 @@
     <property name="height" ref="height" />
     <property name="width" ref="width" />
   </bean>
-
-  <bean id="breedingFunction" class="jmona.impl.DefaultBreedingFunction">
-    <property name="crossoverFunction" ref="crossoverFunction" />
-  </bean>
   
-  <bean id="selectionFunction" class="jmona.impl.MaxSelectionFunction" />
+  <bean id="selectionFunction" class="jmona.impl.selection.FitnessProportionateSelection" />
 
 </beans>

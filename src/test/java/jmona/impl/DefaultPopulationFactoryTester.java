@@ -50,6 +50,7 @@ public class DefaultPopulationFactoryTester {
     cause.printStackTrace(System.err);
     org.junit.Assert.fail(cause.getMessage());
   }
+
   /** The individual factory required by the population factory. */
   private IndividualFactory<Individual> individualFactory = null;
 
@@ -70,19 +71,7 @@ public class DefaultPopulationFactoryTester {
        */
       @Override
       public Individual createIndividual() throws InitializationException {
-        return new Individual() {
-          /**
-           * {@inheritDoc}
-           * 
-           * @param <T>
-           *          {@inheritDoc}
-           * @return {@inheritDoc}
-           */
-          @Override
-          public <T extends Individual> T copy() {
-            return null;
-          }
-        };
+        return new ExampleIndividual();
       }
     };
 
@@ -101,9 +90,9 @@ public class DefaultPopulationFactoryTester {
     } catch (final InitializationException exception) {
       fail(exception);
     }
-    
+
     assertEquals(AbstractPopulationFactory.DEFAULT_SIZE, population.size());
-    
+
     for (final Individual individual : population) {
       assertNotSame(individual, null);
       assertTrue(individual instanceof Individual);
