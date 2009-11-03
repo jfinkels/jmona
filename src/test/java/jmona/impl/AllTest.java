@@ -30,8 +30,9 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses({ DefaultEvolutionContextTester.class,
-    DefaultPopulationFactoryTester.class, FitnessComparatorTester.class,
-    MaxGenerationCompletionCriteriaTester.class,
+    DefaultPopulationFactoryTester.class,
+    DefaultMaxFitnessCompletionCriteriaTester.class,
+    DefaultMaxGenerationCompletionCriteriaTester.class,
     PopulationLoggingPostProcessorTester.class })
 public class AllTest {
 
