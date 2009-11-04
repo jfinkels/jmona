@@ -25,6 +25,7 @@ import static org.junit.Assert.assertSame;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import jmona.Individual;
 import jmona.SelectionFunction;
@@ -38,12 +39,13 @@ import org.junit.Test;
  * 
  * @author jfinkels
  */
+// TODO I don't know much about statistics; a statistician should make tests
 public class FitnessProportionateSelectionTester {
 
   /** The number of individuals over which to make a selection. */
   public static final int NUM_INDIVIDUALS = 10;
   /** The number of selections to make. */
-  public static final int NUM_SELECTIONS = 1000;
+  public static final int NUM_SELECTIONS = 100000;
 
   /** The SelectionFunction under test. */
   private SelectionFunction<ExampleIndividual> function = null;
@@ -57,11 +59,10 @@ public class FitnessProportionateSelectionTester {
   /**
    * Test method for
    * {@link jmona.impl.selection.FitnessProportionateSelection#select(java.util.Map)}
-   * .
+   * on Individuals of equal weights.
    */
-  // TODO I don't know much about statistics; a statistician should make tests
   @Test
-  public void testSelect() {
+  public void testEqualWeightSelect() {
     final Map<ExampleIndividual, Double> fitnesses = new HashMap<ExampleIndividual, Double>();
 
     ExampleIndividual individual = this.function.select(fitnesses);
@@ -106,6 +107,84 @@ public class FitnessProportionateSelectionTester {
 
     assertEquals(expectedSelectionsPerIndividual, meanSelections, epsilon);
 
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.impl.selection.FitnessProportionateSelection#select(java.util.Map)}
+   * on Individual of unequal weight.
+   */
+  @Test
+  public void testUnequalWeightSelect() {
+    final Map<ExampleIndividual, Double> fitnesses = new HashMap<ExampleIndividual, Double>();
+
+    ExampleIndividual individual = this.function.select(fitnesses);
+    assertNull(individual);
+
+    individual = new ExampleIndividual();
+    fitnesses.put(individual, 1.0);
+    for (int i = 0; i < NUM_SELECTIONS; ++i) {
+      assertSame(individual, this.function.select(fitnesses));
+    }
+    fitnesses.remove(individual);
+
+    // initialize some individuals all with equal fitness
+    individual = null;
+    for (int i = 0; i < NUM_INDIVIDUALS / 2; ++i) {
+      individual = new ExampleIndividual(1.0);
+      fitnesses.put(individual, individual.fitness());
+    }
+    for (int i = NUM_INDIVIDUALS / 2; i < NUM_INDIVIDUALS; ++i) {
+      individual = new ExampleIndividual(2.0);
+      fitnesses.put(individual, individual.fitness());
+    }
+
+    final Map<ExampleIndividual, Integer> numberOfSelections = new HashMap<ExampleIndividual, Integer>();
+    ExampleIndividual selectedIndividual = null;
+    for (int i = 0; i < NUM_SELECTIONS; ++i) {
+      selectedIndividual = this.function.select(fitnesses);
+      Integer selections = numberOfSelections.get(selectedIndividual);
+      if (selections == null) {
+        numberOfSelections.put(selectedIndividual, 1);
+      } else {
+        numberOfSelections.put(selectedIndividual, (Integer) (selections + 1));
+      }
+    }
+
+    // get the total number of selections made over all individuals
+    int lowerSum = 0;
+    int upperSum = 0;
+    for (final Entry<ExampleIndividual, Integer> entry : numberOfSelections
+        .entrySet()) {
+      if (entry.getKey().fitness() == 2.0) {
+        upperSum += entry.getValue();
+      } else {
+        lowerSum += entry.getValue();
+      }
+    }
+    final int sum = upperSum + lowerSum;
+
+    // assert that the correct number of selections were made
+    final double epsilon = NUM_SELECTIONS * 0.1;
+    assertEquals(NUM_SELECTIONS * 0.333, lowerSum, epsilon);
+    assertEquals(NUM_SELECTIONS * 0.666, upperSum, epsilon);
+    assertEquals(NUM_SELECTIONS, sum);
+    
+    // get the arithmetic mean number of selections
+    double meanLowerSelections = lowerSum / (NUM_INDIVIDUALS / 2.0); 
+    double meanUpperSelections = upperSum / (NUM_INDIVIDUALS / 2.0); 
+    
+    final double lowerEpsilon = meanLowerSelections * 0.1;
+    final double upperEpsilon = meanUpperSelections * 0.1;
+    
+    for (final Entry<ExampleIndividual, Integer> entry : numberOfSelections
+        .entrySet()) {
+      if (entry.getKey().fitness() == 1.0) {
+        assertEquals(entry.getValue(), meanLowerSelections, lowerEpsilon);
+      } else {
+        assertEquals(entry.getValue(), meanUpperSelections, upperEpsilon);
+      }
+    }
   }
 
 }
