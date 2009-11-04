@@ -22,6 +22,7 @@ package jmona.impl.selection;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 import java.util.Map.Entry;
 
 import jmona.Individual;
@@ -68,9 +69,18 @@ public class FitnessProportionateSelection<T extends Individual> implements
   // TODO more documentation on fitness-proportionate selection, i.e. formulae
   @Override
   public T select(final Map<T, Double> fitnesses) {
+    // get the sum of all fitnesses
+    final double fitnessesSum = sum(fitnesses.values());
+
+    // if no individual has any fitness, just return a random one
+    if (fitnessesSum == 0.0) {
+      final Set<T> individuals = fitnesses.keySet();
+      // TODO unchecked cast
+      return (T) individuals.toArray()[Util.RANDOM.nextInt(individuals.size())];
+    }
+
     // choose a number between 0 and the sum of all fitnesses
-    final double selectionPointer = Util.RANDOM.nextDouble()
-        * sum(fitnesses.values());
+    final double selectionPointer = Util.RANDOM.nextDouble() * fitnessesSum;
 
     // initialize some local variables
     double currentPointer = 0.0;
@@ -92,5 +102,4 @@ public class FitnessProportionateSelection<T extends Individual> implements
 
     return null;
   }
-
 }
