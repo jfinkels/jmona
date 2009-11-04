@@ -30,6 +30,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the DefaultMaxFitnessCompletionCriteria class.
+ * 
  * @author jfinkels
  */
 public class DefaultMaxFitnessCompletionCriteriaTester {
