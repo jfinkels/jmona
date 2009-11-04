@@ -51,28 +51,14 @@ public class DefaultEvolutionContext<T extends Individual> extends
   /**
    * 
    * @throws EvolutionException
-   *           If there is a problem during creation of the next generation.
+   *           {@inheritDoc}
    * @see jmona.EvolutionContext#stepGeneration()
    */
   // TODO documentation for this method
   @Override
   public void stepGeneration() throws EvolutionException {
-
-    /**
-     * Step 0: Do sanity check for necessary functions.
-     */
-    if (this.fitnessFunction() == null) {
-      throw new EvolutionException("Fitness function has not been set.");
-    }
-    if (this.mutationFunction() == null) {
-      throw new EvolutionException("Mutator function has not been set.");
-    }
-    if (this.selectionFunction() == null) {
-      throw new EvolutionException("Selection function has not been set.");
-    }
-    if (this.crossoverFunction() == null) {
-      throw new EvolutionException("Crossover function has not been set.");
-    }
+    // perform a sanity check (i.e. make sure there are no null properties)
+    this.sanityCheck();
 
     // instantiate a population which will represent the next generation
     final Population<T> nextPopulation = new DefaultPopulation<T>();
@@ -80,9 +66,9 @@ public class DefaultEvolutionContext<T extends Individual> extends
     // get the size of the current population
     final int currentSize = this.currentPopulation().size();
 
+    // if the size of the population is too small
     if (currentSize < 2) {
-      throw new RuntimeException(
-          "The size of the population is currently less than 2.");
+      throw new RuntimeException("The size of the population is less than 2.");
     }
 
     try {
