@@ -73,6 +73,8 @@ public class OnesEvolutionContextTester extends
         this.context.stepGeneration();
         LOG.debug(this.context.currentPopulation());
       }
+    } catch (NullPointerException exception) {
+      fail(exception);
     } catch (final CompletionException exception) {
       fail(exception);
     } catch (final EvolutionException exception) {
