@@ -1,5 +1,5 @@
 /**
- * MonaMutatorFunction.java
+ * MonaMutationFunction.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -28,16 +28,16 @@ import java.util.Vector;
 import java.util.Map.Entry;
 
 import jmona.MutationException;
-import jmona.MutatorFunction;
+import jmona.MutationFunction;
 import jmona.impl.Util;
 
 /**
- * A mutator function which mutates with a certain probability the polygons (and
+ * A mutation function which mutates with a certain probability the polygons (and
  * corresponding colors) in the gene of an individual.
  * 
  * @author jeff
  */
-public class MonaMutatorFunction implements MutatorFunction<MonaIndividual> {
+public class MonaMutationFunction implements MutationFunction<MonaIndividual> {
 
   /** The probability of a mutation of a polygon in any individual. */
   private static final double DEFAULT_MUTATION_PROBABILITY = 0.6;
@@ -86,7 +86,7 @@ public class MonaMutatorFunction implements MutatorFunction<MonaIndividual> {
    *          The individual to mutate.
    * @throws MutationException
    *           {@inheritDoc}
-   * @see jmona.MutatorFunction#mutate(jmona.Individual)
+   * @see jmona.MutationFunction#mutate(jmona.Individual)
    */
   @Override
   public void mutate(final MonaIndividual individual) throws MutationException {

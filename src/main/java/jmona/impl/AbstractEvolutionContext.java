@@ -27,7 +27,7 @@ import jmona.EvolutionContext;
 import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.Individual;
-import jmona.MutatorFunction;
+import jmona.MutationFunction;
 import jmona.Population;
 import jmona.SelectionFunction;
 
@@ -59,7 +59,7 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   /** The current generation of the evolution. */
   private int generation = 0;
   /** The mutator function for this context. */
-  private MutatorFunction<T> mutatorFunction = null;
+  private MutationFunction<T> mutationFunction = null;
   /** The current population. */
   private Population<T> population = null;
   /** The selection function for this context. */
@@ -158,11 +158,11 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.EvolutionContext#mutatorFunction()
+   * @see jmona.EvolutionContext#mutationFunction()
    */
   @Override
-  public MutatorFunction<T> mutatorFunction() {
-    return this.mutatorFunction;
+  public MutationFunction<T> mutationFunction() {
+    return this.mutationFunction;
   }
 
   /**
@@ -273,11 +273,11 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * 
    * @param function
    *          {@inheritDoc}
-   * @see jmona.EvolutionContext#setMutatorFunction(jmona.MutatorFunction)
+   * @see jmona.EvolutionContext#setMutatorFunction(jmona.MutationFunction)
    */
   @Override
-  public void setMutatorFunction(final MutatorFunction<T> function) {
-    this.mutatorFunction = function;
+  public void setMutatorFunction(final MutationFunction<T> function) {
+    this.mutationFunction = function;
   }
 
   /**

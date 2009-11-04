@@ -1,5 +1,5 @@
 /**
- * OnesMutatorFunction.java
+ * OnesMutationFunction.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -20,7 +20,7 @@
 package jmona.example.ones;
 
 import jmona.MutationException;
-import jmona.MutatorFunction;
+import jmona.MutationFunction;
 import jmona.impl.Util;
 
 /**
@@ -28,7 +28,7 @@ import jmona.impl.Util;
  * 
  * @author jfinke
  */
-public class OnesMutatorFunction implements MutatorFunction<OnesIndividual> {
+public class OnesMutationFunction implements MutationFunction<OnesIndividual> {
   /** The probability of a bitwise mutation. */
   public static final double PROB_BITWISE_MUTATION = 0.05;
 
@@ -39,7 +39,7 @@ public class OnesMutatorFunction implements MutatorFunction<OnesIndividual> {
    *          The individual whose gene will be mutated.
    * @throws MutationException
    *           {@inheritDoc}
-   * @see jmona.MutatorFunction#mutate(jmona.Individual)
+   * @see jmona.MutationFunction#mutate(jmona.Individual)
    */
   @Override
   public void mutate(final OnesIndividual individual) throws MutationException {

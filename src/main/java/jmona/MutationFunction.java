@@ -1,5 +1,5 @@
 /**
- * MutatorFunction.java
+ * MutationFunction.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -26,7 +26,7 @@ package jmona;
  *          The type of Individual to mutate.
  * @author jfinke
  */
-public interface MutatorFunction<T extends Individual> {
+public interface MutationFunction<T extends Individual> {
   /**
    * Mutate the specified individual in place.
    * 

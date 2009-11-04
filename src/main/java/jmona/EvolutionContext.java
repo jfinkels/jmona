@@ -76,7 +76,7 @@ public interface EvolutionContext<T extends Individual> {
    * 
    * @return The mutator function used by this context.
    */
-  MutatorFunction<T> mutatorFunction();
+  MutationFunction<T> mutationFunction();
 
   /**
    * Get the selection function used by this context.
@@ -127,7 +127,7 @@ public interface EvolutionContext<T extends Individual> {
    * @param function
    *          The mutator function used by this context.
    */
-  void setMutatorFunction(final MutatorFunction<T> function);
+  void setMutatorFunction(final MutationFunction<T> function);
 
   /**
    * Set the selection function used by this context.

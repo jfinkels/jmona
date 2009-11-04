@@ -35,7 +35,7 @@ import jmona.Population;
  */
 public class DefaultEvolutionContext<T extends Individual> extends
     AbstractEvolutionContext<T> {
-  
+
   /**
    * Instantiate this evolution context with the specified initial population by
    * calling the corresponding constructor of the superclass.
@@ -64,11 +64,14 @@ public class DefaultEvolutionContext<T extends Individual> extends
     if (this.fitnessFunction() == null) {
       throw new EvolutionException("Fitness function has not been set.");
     }
-    if (this.mutatorFunction() == null) {
+    if (this.mutationFunction() == null) {
       throw new EvolutionException("Mutator function has not been set.");
     }
     if (this.selectionFunction() == null) {
       throw new EvolutionException("Selection function has not been set.");
+    }
+    if (this.crossoverFunction() == null) {
+      throw new EvolutionException("Crossover function has not been set.");
     }
 
     // instantiate a population which will represent the next generation
@@ -76,6 +79,11 @@ public class DefaultEvolutionContext<T extends Individual> extends
 
     // get the size of the current population
     final int currentSize = this.currentPopulation().size();
+
+    if (currentSize < 2) {
+      throw new RuntimeException(
+          "The size of the population is currently less than 2.");
+    }
 
     try {
       // while the size of the next generation is less than the size of the
@@ -100,10 +108,10 @@ public class DefaultEvolutionContext<T extends Individual> extends
          * Step 3: Perform mutation with probability p_mutation
          */
         if (Util.RANDOM.nextDouble() < this.mutationProbability()) {
-          this.mutatorFunction().mutate(individual1);
+          this.mutationFunction().mutate(individual1);
         }
         if (Util.RANDOM.nextDouble() < this.mutationProbability()) {
-          this.mutatorFunction().mutate(individual2);
+          this.mutationFunction().mutate(individual2);
         }
 
         /**
@@ -122,7 +130,7 @@ public class DefaultEvolutionContext<T extends Individual> extends
       // set the current population to the next generation
       this.setCurrentPopulation(nextPopulation);
 
-      // recalculate the fitnesses of the current generation  
+      // recalculate the fitnesses of the current generation
       this.recalculateFitnesses();
     } catch (final MutationException exception) {
       throw new EvolutionException("Failed mutating an individual.", exception);
@@ -130,7 +138,7 @@ public class DefaultEvolutionContext<T extends Individual> extends
       throw new EvolutionException(
           "Failed determining fitness of an individual.", exception);
     }
-    
+
     // increment the generation number
     this.incrementGeneration();
   }
