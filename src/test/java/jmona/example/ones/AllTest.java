@@ -31,7 +31,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ OnesCrossoverFunctionTester.class,
     OnesEvolutionContextTester.class, OnesFitnessFunctionTester.class,
-    OnesIndividualFactoryTester.class, OnesMutatorFunctionTester.class })
+    OnesIndividualFactoryTester.class, OnesMutationFunctionTester.class })
 public class AllTest {
 
 }

@@ -21,7 +21,6 @@ package jmona.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import jmona.CrossoverFunction;
 import jmona.EvolutionContext;
@@ -30,7 +29,7 @@ import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.Individual;
 import jmona.MutationException;
-import jmona.MutatorFunction;
+import jmona.MutationFunction;
 import jmona.Population;
 import jmona.impl.selection.FitnessProportionateSelection;
 
@@ -57,12 +56,12 @@ public class DefaultEvolutionContextTester {
      */
     @Override
     public double fitness(final Individual individual) throws FitnessException {
-      throw new FitnessException();
+      throw new FitnessException("This is a bad fitness function.");
     }
   };
 
   /** A bad mutator function, which throws an exception. */
-  private final MutatorFunction<Individual> badMutatorFunction = new MutatorFunction<Individual>() {
+  private final MutationFunction<Individual> badMutatorFunction = new MutationFunction<Individual>() {
     /**
      * {@inheritDoc}
      * 
@@ -73,7 +72,7 @@ public class DefaultEvolutionContextTester {
      */
     @Override
     public void mutate(final Individual individual) throws MutationException {
-      throw new MutationException();
+      throw new MutationException("This is a bad mutation function.");
     }
   };
 
@@ -114,7 +113,7 @@ public class DefaultEvolutionContextTester {
   };
 
   /** A basic mutator function. */
-  private final MutatorFunction<Individual> goodMutatorFunction = new MutatorFunction<Individual>() {
+  private final MutationFunction<Individual> goodMutatorFunction = new MutationFunction<Individual>() {
     /**
      * {@inheritDoc}
      * 
@@ -170,12 +169,17 @@ public class DefaultEvolutionContextTester {
   /** Test method for {@link DefaultEvolutionContext#stepGeneration()}. */
   @Test
   public final void testStepGeneration() {
+    this.context.setMutationProbability(1);
+    this.context.setCrossoverProbability(1);
+    
     try {
       this.context.stepGeneration();
+      fail("Exception should have been thrown on the previous line.");
     } catch (final EvolutionException exception) {
       // fitness function has not been set
       try {
         this.context.setFitnessFunction(this.badFitnessFunction);
+        fail("Exception should have been thrown on the previous line.");
       } catch (final FitnessException exception2) {
         // fitness function threw fitness exception
         try {
@@ -189,6 +193,7 @@ public class DefaultEvolutionContextTester {
 
     try {
       this.context.stepGeneration();
+      fail("Exception should have been thrown on the previous line.");
     } catch (final EvolutionException exception) {
       // mutator function has not been set
       this.context.setMutatorFunction(this.badMutatorFunction);
@@ -196,27 +201,42 @@ public class DefaultEvolutionContextTester {
 
     try {
       this.context.stepGeneration();
+      fail("Exception should have been thrown on the previous line.");
     } catch (final EvolutionException exception) {
       // selection function has not been set
-      this.context.setSelectionFunction(new FitnessProportionateSelection<Individual>());
+      this.context
+          .setSelectionFunction(new FitnessProportionateSelection<Individual>());
     }
 
     try {
       this.context.stepGeneration();
+      fail("Exception should have been thrown on the previous line.");
     } catch (final EvolutionException exception) {
-      // size of population is 1, but must be greater than 1
+      // crossover function has not been set
+      this.context.setCrossoverFunction(this.crossoverFunction);
+    }
+
+    this.context.currentPopulation().remove(0);
+    this.context.currentPopulation().remove(0);
+    
+    try {
+      this.context.stepGeneration();
+      fail("Exception should have been thrown on the previous line.");
+    } catch (final EvolutionException exception) {
+      exception.printStackTrace(System.err);
+      fail(exception.getMessage());
+    } catch (final RuntimeException exception) {
+      // add some individuals to the population
       this.context.currentPopulation().add(new ExampleIndividual());
       this.context.currentPopulation().add(new ExampleIndividual());
     }
 
     try {
       this.context.stepGeneration();
+      fail("Exception should have been thrown on the previous line.");
     } catch (final EvolutionException exception) {
-      // bad mutator function threw an exception
+      // mutation function threw an exception
       this.context.setMutatorFunction(this.goodMutatorFunction);
-      this.context.currentPopulation().add(new ExampleIndividual());
-      this.context.currentPopulation().add(new ExampleIndividual());
-      this.context.currentPopulation().add(new ExampleIndividual());
     }
 
     try {
@@ -225,6 +245,6 @@ public class DefaultEvolutionContextTester {
       exception.printStackTrace(System.err);
       fail(exception.getMessage());
     }
-
+    
   }
 }

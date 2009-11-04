@@ -32,7 +32,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ MonaCrossoverFunctionTester.class, 
     MonaEvolutionContextTester.class, MonaFitnessFunctionTester.class,
     MonaIndividualFactoryTester.class, MonaIndividualTester.class,
-    MonaMutatorFunctionTester.class })
+    MonaMutationFunctionTester.class })
 public class AllTest {
 
 }

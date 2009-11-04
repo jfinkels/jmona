@@ -1,5 +1,5 @@
 /**
- * MonaMutatorFunctionTester.java
+ * MonaMutationFunctionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -32,11 +32,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test class for the MonaMutatorFunction class.
+ * Test class for the MonaMutationFunction class.
  * 
  * @author jeff
  */
-public class MonaMutatorFunctionTester {
+public class MonaMutationFunctionTester {
 
   /** The height of the bounding rectangle. */
   public static final int HEIGHT = 200;
@@ -58,7 +58,7 @@ public class MonaMutatorFunctionTester {
   private Color color = null;
 
   /** The function under test. */
-  private MonaMutatorFunction function = null;
+  private MonaMutationFunction function = null;
 
   /** A polygon used for testing. */
   private Polygon polygon = null;
@@ -69,7 +69,7 @@ public class MonaMutatorFunctionTester {
     final int[] xpoints = new int[] { 1, 2, 3, 4 };
     final int[] ypoints = new int[] { 11, 12, 13, 14 };
     final int npoints = xpoints.length;
-    this.function = new MonaMutatorFunction();
+    this.function = new MonaMutationFunction();
     this.function.setWidth(WIDTH);
     this.function.setHeight(HEIGHT);
     this.polygon = new Polygon(xpoints, ypoints, npoints);
@@ -111,7 +111,7 @@ public class MonaMutatorFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.monalisa.MonaMutatorFunction#mutate(java.awt.Color)}.
+   * {@link jmona.example.monalisa.MonaMutationFunction#mutate(java.awt.Color)}.
    */
   @Test
   public void testMutateColor() {
@@ -122,7 +122,7 @@ public class MonaMutatorFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.monalisa.MonaMutatorFunction#mutate(jmona.example.monalisa.MonaIndividual)}
+   * {@link jmona.example.monalisa.MonaMutationFunction#mutate(jmona.example.monalisa.MonaIndividual)}
    * .
    */
   @Test
@@ -155,7 +155,7 @@ public class MonaMutatorFunctionTester {
   }
   /**
    * Test method for
-   * {@link jmona.example.monalisa.MonaMutatorFunction#mutate(java.awt.Polygon)}
+   * {@link jmona.example.monalisa.MonaMutationFunction#mutate(java.awt.Polygon)}
    * .
    */
   @Test

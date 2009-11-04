@@ -1,5 +1,5 @@
 /**
- * OnesMutatorFunctionTester.java
+ * OnesMutationFunctionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -30,11 +30,11 @@ import jmona.MutationException;
 import org.junit.Test;
 
 /**
- * Test class for the OnesMutatorFunction class.
+ * Test class for the OnesMutationFunction class.
  * 
  * @author jeff
  */
-public class OnesMutatorFunctionTester {
+public class OnesMutationFunctionTester {
 
   /** The length of the genes of the individuals to test. */
   public static final int GENE_LENGTH = 100;
@@ -43,13 +43,13 @@ public class OnesMutatorFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.ones.OnesMutatorFunction#mutate(jmona.example.ones.OnesIndividual)}
+   * {@link jmona.example.ones.OnesMutationFunction#mutate(jmona.example.ones.OnesIndividual)}
    * .
    */
   @Test
   public void testMutate() {
     // create the mutator function
-    final OnesMutatorFunction function = new OnesMutatorFunction();
+    final OnesMutationFunction function = new OnesMutationFunction();
 
     // create a list of all individuals.
     final List<OnesIndividual> allIndividuals = new Vector<OnesIndividual>();
@@ -96,7 +96,7 @@ public class OnesMutatorFunctionTester {
     result /= (double) allIndividuals.size();
 
     // determine the expected average mutations
-    final double expectedMutations = OnesMutatorFunction.PROB_BITWISE_MUTATION
+    final double expectedMutations = OnesMutationFunction.PROB_BITWISE_MUTATION
         * GENE_LENGTH;
 
     // the error tolerance
