@@ -20,6 +20,10 @@
 package jmona.gp;
 
 /**
+ * An internal Node of a Tree.
+ * 
+ * @param <V>
+ *          The type of value to which this Node evaluates.
  * @author jfinkels
  */
 public interface FunctionNode<V> extends Node<V> {

@@ -22,8 +22,10 @@ package jmona.gp;
 import jmona.IndividualFactory;
 
 /**
+ * A factory for creating Tree objects.
  * 
  * @param <V>
+ *          The type of value to which a Tree created by this factory evaluates.
  * @author jfinkels
  */
 public interface TreeFactory<V> extends IndividualFactory<Tree<V>> {

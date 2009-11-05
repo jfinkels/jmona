@@ -20,6 +20,8 @@
 package jmona.gp;
 
 /**
+ * A factory for creating FunctionNode objects.
+ * 
  * @param <V>
  *          The type of value to which a function node created by this factory
  *          evaluates.

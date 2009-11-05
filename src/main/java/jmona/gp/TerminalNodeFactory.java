@@ -20,6 +20,8 @@
 package jmona.gp;
 
 /**
+ * A factory for creating TerminalNode objects.
+ * 
  * @param <V>
  *          The type of value to which a terminal node created by this factory
  *          evaluates.
