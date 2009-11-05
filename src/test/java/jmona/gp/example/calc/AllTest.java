@@ -1,5 +1,5 @@
 /**
- * CalcEvolutionTester.java
+ * AllTest.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,16 +17,19 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.gp.example.calc.factories;
+package jmona.gp.example.calc;
 
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
-
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
 /**
- * @author jfinkels
+ * Runs all tests in this package.
+ * 
+ * @author jeff
  */
-@ContextConfiguration
-public class CalcEvolutionTester extends AbstractJUnit4SpringContextTests {
+@RunWith(Suite.class)
+@SuiteClasses({ CalcEvolutionTester.class })
+public class AllTest {
 
 }
