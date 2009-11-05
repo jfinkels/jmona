@@ -28,7 +28,7 @@ import jmona.gp.Tree;
 import jmona.impl.Util;
 
 /**
- * A base class for a Tree.
+ * A default implementation of a Tree.
  * 
  * @param <V>
  *          The type of value to which this Tree evaluates.
