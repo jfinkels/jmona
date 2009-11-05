@@ -1,5 +1,5 @@
 /**
- * GPFitnessFunction.java
+ * MultipleTestFitnessFunction.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -19,23 +19,24 @@
  */
 package jmona.gp.impl;
 
+import java.util.Set;
+
 import jmona.FitnessException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Tree;
 
 /**
- * A FitnessFunction which measures the distance between the value to which a
- * Tree evaluates and a target value, both of type {@code V}.
+ * A FitnessFunction which determines the (discrete) number of tests which a
+ * given individual passes.
  * 
  * @param <V>
- *          The type of value to which a Tree evaluates; can be measured with a
- *          Metric.
+ *          The type of value to which a Tree evaluates.
  * @author jfinkels
  */
-public class GPFitnessFunction<V> extends AbstractGPFitnessFunction<V> {
-
+public class MultipleTestFitnessFunction<V> extends
+    AbstractGPFitnessFunction<V> {
   /** The target value. */
-  private V target = null;
+  private Set<V> targets = null;
 
   /**
    * Determine the fitness of the specified individual by measuring its distance
@@ -55,29 +56,33 @@ public class GPFitnessFunction<V> extends AbstractGPFitnessFunction<V> {
       throw new FitnessException("No metric has been set.");
     }
 
-    if (this.target == null) {
-      throw new FitnessException("No target value has been set.");
+    if (this.targets == null) {
+      throw new FitnessException("No Set of target values has been set.");
     }
 
-    double result = 0.0;
+    int successes = 0;
     try {
-      result = this.metric().measure(
-          individual.evaluate(this.evaluationInput()), this.target);
+      for (final V target : this.targets) {
+        if (this.metric().measure(individual.evaluate(this.evaluationInput()),
+            target) == 0) {
+          successes += 1;
+        }
+      }
     } catch (final EvaluationException exception) {
-      throw new FitnessException("Failed to evaluate the Tree.", exception);
+      throw new FitnessException("Failed to evaluate a Tree.", exception);
     }
 
-    return result;
+    return successes;
   }
 
   /**
-   * Set the target value.
+   * Set the Set of target values.
    * 
-   * @param newTarget
-   *          Set the target value.
+   * @param newTargets
+   *          Set the Set of target values.
    */
-  public void setTarget(final V newTarget) {
-    this.target = newTarget;
+  public void setTargets(final Set<V> newTargets) {
+    this.targets = newTargets;
   }
 
 }
