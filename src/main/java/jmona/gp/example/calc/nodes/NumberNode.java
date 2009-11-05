@@ -21,15 +21,13 @@ package jmona.gp.example.calc.nodes;
 
 import jmona.gp.example.calc.functions.ConstantFunction;
 import jmona.gp.example.calc.functions.SingleInputFunction;
-import jmona.gp.impl.AbstractTerminalNode;
 
 /**
  * A Node containing a single value as a Double.
  * 
  * @author jfinkels
  */
-public class NumberNode extends
-    AbstractTerminalNode<SingleInputFunction<Object, Double>> {
+public class NumberNode extends AbstractCalcTerminalNode {
 
   /** The value of this Node. */
   private final ConstantFunction constantFunction;
@@ -41,6 +39,7 @@ public class NumberNode extends
    *          The initial value of this Node.
    */
   public NumberNode(final Double initialValue) {
+    super(initialValue.toString());
     this.constantFunction = new ConstantFunction(initialValue);
   }
 

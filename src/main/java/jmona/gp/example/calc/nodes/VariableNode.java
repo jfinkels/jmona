@@ -22,14 +22,31 @@ package jmona.gp.example.calc.nodes;
 import jmona.gp.EvaluationException;
 import jmona.gp.example.calc.functions.ConstantFunction;
 import jmona.gp.example.calc.functions.SingleInputFunction;
-import jmona.gp.impl.AbstractTerminalNode;
 
 /**
+ * A Node which evaluates to the value of the specified input value.
+ * 
  * @author jfinkels
  */
-public class VariableNode extends AbstractTerminalNode<SingleInputFunction<Object, Double>> {
-  
-  /* (non-Javadoc)
+public class VariableNode extends AbstractCalcTerminalNode {
+
+  /** The symbol which represents this Node. */
+  public static final String VARIABLE_SYMBOL = "x";
+
+  /** Instantiate this Node with the symbol at {@link #VARIABLE_SYMBOL}. */
+  public VariableNode() {
+    super(VARIABLE_SYMBOL);
+  }
+
+  /**
+   * Evaluate to a ConstantFunction which outputs the value of the first input
+   * parameter cast to a Double.
+   * 
+   * @param input
+   *          The input parameters with which to evaluate; the first parameter
+   *          will be cast to a Double.
+   * @throws EvaluationException
+   *           {@inheritDoc}
    * @see jmona.gp.Node#evaluate()
    */
   @Override
