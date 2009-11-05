@@ -25,6 +25,8 @@ import jmona.gp.EvaluationException;
 import jmona.gp.Tree;
 
 /**
+ * A FitnessFunction which measures the distance between the value to which a
+ * Tree evaluates and a target value, both of type {@code V}.
  * 
  * @param <V>
  *          The type of value to which a Tree evaluates; can be measured with a

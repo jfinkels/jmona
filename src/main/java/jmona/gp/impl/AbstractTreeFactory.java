@@ -21,7 +21,6 @@ package jmona.gp.impl;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Set;
 
 import jmona.InitializationException;
 import jmona.gp.FunctionNodeFactory;
@@ -41,41 +40,29 @@ public abstract class AbstractTreeFactory<V> implements TreeFactory<V> {
 
   /** The default maximum depth of a generated Tree. */
   public static final int DEFAULT_MAX_DEPTH = 3;
+  /** The factory which creates FunctionNode objects. */
+  private FunctionNodeFactory<V> functionNodeFactory = null;
   /** The maximum depth of a generated Tree. */
   private int maxDepth = DEFAULT_MAX_DEPTH;
-
+  /** The factory which creates TerminalNode objects. */
+  private TerminalNodeFactory<V> terminalNodeFactory = null;
+  /**
+   * The class of the Tree which this factory generates.
+   * 
+   * This class must have a constructor with a single argument of type Node.
+   */
   private Class<Tree<V>> treeClass = null;
 
-  public Class<Tree<V>> treeClass() {
-    return this.treeClass;
-  }
-
-  public void setTreeClass(final Class<Tree<V>> newTreeClass) {
-    this.treeClass = newTreeClass;
-  }
-
   /**
-   * Get the maximum depth of any generated Tree.
+   * Create a Tree by instantiating a Tree of class specified in the
+   * {@link #treeClass} property, and assigning its root to be a tree created by
+   * the {@link #createTree(int)} method.
    * 
-   * @return The maximum depth of any generated Tree.
-   */
-  public int maxDepth() {
-    return this.maxDepth;
-  }
-
-  /**
-   * Set the maximum depth of a generated Tree.
+   * The tree constructor must have a single argument of type Node.
    * 
-   * @param newMaxDepth
-   *          The maximum depth of a generated Tree.
-   */
-  public void setMaxDepth(final int newMaxDepth) {
-    this.maxDepth = newMaxDepth;
-  }
-
-  /*
-   * (non-Javadoc)
-   * 
+   * @throws InitializationException
+   *           If there is a problem invoking the constructor of the Tree class.
+   * @return A Tree of depth at most {@link #maxDepth}.
    * @see jmona.IndividualFactory#createIndividual()
    */
   @Override
@@ -102,28 +89,96 @@ public abstract class AbstractTreeFactory<V> implements TreeFactory<V> {
     return result;
   }
 
-  private TerminalNodeFactory<V> terminalNodeFactory = null;
-  private FunctionNodeFactory<V> functionNodeFactory = null;
+  /**
+   * Create a subtree of Node objects given the specified current (recursive)
+   * depth into the overall Tree.
+   * 
+   * @param currentDepth
+   *          The current (recursive) depth into the overall Tree.
+   * @return A Node with branches of depth at most {@code currentDepth - 1}.
+   * @throws InitializationException
+   *           If there is a problem creating this subtree.
+   */
+  protected abstract Node<V> createTree(final int currentDepth)
+      throws InitializationException;
 
-  public void setTerminalNodeFactory(
-      final TerminalNodeFactory<V> newTerminalNodeFactory) {
-    this.terminalNodeFactory = newTerminalNodeFactory;
-  }
-
-  public TerminalNodeFactory<V> terminalNodeFactory() {
-    return this.terminalNodeFactory;
-  }
-
+  /**
+   * Get the factory which creates FunctionNode objects.
+   * 
+   * @return The factory which creates FunctionNode objects.
+   */
   public FunctionNodeFactory<V> functionNodeFactory() {
     return this.functionNodeFactory;
   }
 
+  /**
+   * Get the maximum depth of any generated Tree.
+   * 
+   * @return The maximum depth of any generated Tree.
+   */
+  public int maxDepth() {
+    return this.maxDepth;
+  }
+
+  /**
+   * Set the factory which creates FunctionNode objects.
+   * 
+   * @param newFunctionNodeFactory
+   *          The factory which creates FunctionNode objects.
+   */
   public void setFunctionNodeFactory(
       final FunctionNodeFactory<V> newFunctionNodeFactory) {
     this.functionNodeFactory = newFunctionNodeFactory;
   }
 
-  protected abstract Node<V> createTree(final int currentDepth)
-      throws InitializationException;
+  /**
+   * Set the maximum depth of a generated Tree.
+   * 
+   * @param newMaxDepth
+   *          The maximum depth of a generated Tree.
+   */
+  public void setMaxDepth(final int newMaxDepth) {
+    this.maxDepth = newMaxDepth;
+  }
 
+  /**
+   * Set the factory which creates TerminalNode objects.
+   * 
+   * @param newTerminalNodeFactory
+   *          The factory which creates TerminalNode objects.
+   */
+  public void setTerminalNodeFactory(
+      final TerminalNodeFactory<V> newTerminalNodeFactory) {
+    this.terminalNodeFactory = newTerminalNodeFactory;
+  }
+
+  /**
+   * Set the class of the Tree which this factory generates.
+   * 
+   * This class must have a constructor with a single argument of type Node.
+   * 
+   * @param newTreeClass
+   *          The class of the Tree which this factory generates.
+   */
+  public void setTreeClass(final Class<Tree<V>> newTreeClass) {
+    this.treeClass = newTreeClass;
+  }
+
+  /**
+   * Get the factory which creates TerminalNode objects.
+   * 
+   * @return The factory which creates TerminalNode objects.
+   */
+  public TerminalNodeFactory<V> terminalNodeFactory() {
+    return this.terminalNodeFactory;
+  }
+
+  /**
+   * Get the class of the Tree which this factory generates.
+   * 
+   * @return The class of the Tree which this factory generates.
+   */
+  public Class<Tree<V>> treeClass() {
+    return this.treeClass;
+  }
 }

@@ -26,6 +26,9 @@ import jmona.gp.Tree;
 import jmona.gp.TreeFactory;
 
 /**
+ * A MutationFunction which replaces a random Node in a Tree with a randomly
+ * generated subtree.
+ * 
  * @param <V>
  *          The type of value to which a Tree Individual evaluates.
  * @author jfinkels
