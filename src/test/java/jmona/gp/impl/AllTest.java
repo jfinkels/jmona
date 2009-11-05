@@ -34,7 +34,8 @@ import org.junit.runners.Suite.SuiteClasses;
     DefaultTerminalNodeFactoryTester.class, DefaultTreeTester.class,
     FullTreeFactoryTester.class, GPCrossoverFunctionTester.class,
     GPEvolutionContextTester.class, GPFitnessFunctionTester.class,
-    GPMutationFunctionTester.class, GrowTreeFactoryTester.class })
+    GPMutationFunctionTester.class, GrowTreeFactoryTester.class,
+    TernaryNodeTester.class })
 public class AllTest {
 
 }
