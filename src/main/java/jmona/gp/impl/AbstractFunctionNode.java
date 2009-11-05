@@ -25,7 +25,7 @@ import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 
 /**
- * An inner Node representing an element from the function set.
+ * A base class for an inner Node representing an element from the function set.
  * 
  * @param <V>
  *          The type of value to which this Node evaluates.
