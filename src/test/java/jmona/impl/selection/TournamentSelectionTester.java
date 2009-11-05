@@ -1,5 +1,5 @@
 /**
- * AllTest.java
+ * TournamentSelectionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -19,18 +19,21 @@
  */
 package jmona.impl.selection;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
 
 /**
- * Runs all tests in this package.
- * 
- * @author jeff
+ * @author jfinkels
  */
-@RunWith(Suite.class)
-@SuiteClasses({ FitnessProportionateSelectionTester.class,
-    TournamentSelectionTester.class })
-public class AllTest {
+public class TournamentSelectionTester {
+
+  /**
+   * Test method for {@link jmona.impl.selection.TournamentSelection#select(java.util.Map)}.
+   */
+  @Test
+  public void testSelect() {
+    fail("Not yet implemented");
+  }
 
 }
