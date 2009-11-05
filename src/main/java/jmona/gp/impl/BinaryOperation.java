@@ -20,23 +20,27 @@
 package jmona.gp.impl;
 
 /**
- * A binary operation, or more formally, a function, <em>f: T x T &rarr; R</em>.
+ * A binary operation, or more formally, a function, <em>f: T x V &rarr; R</em>.
  * 
  * @param <T>
- *          The type of the domain of this binary operation (the input type).
+ *          The type of the left component of the domain of this binary
+ *          operation (the input type of the first parameter).
+ * @param <V>
+ *          The type of the right component of the domain of this binary
+ *          operation (the input type of the second parameter).
  * @param <R>
  *          The type of the codomain of this binary operation (the return type).
  * @author jfinkels
  */
-public interface BinaryOperation<T, R> {
+public interface BinaryOperation<T, V, R> {
   /**
    * Perform this operation on the specified inputs.
    * 
-   * @param object1
-   *          An object.
-   * @param object2
-   *          Another object.
+   * @param leftObject
+   *          An object of type T.
+   * @param rightObject
+   *          An object of type V.
    * @return The result of this operation on the two specified objects.
    */
-  R operate(final T object1, final T object2);
+  R operate(final T leftObject, final V rightObject);
 }

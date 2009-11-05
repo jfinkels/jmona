@@ -21,7 +21,7 @@ package jmona.gp.example.calc.operations;
 
 import jmona.gp.example.calc.functions.AdditionFunction;
 import jmona.gp.example.calc.functions.SingleInputFunction;
-import jmona.gp.impl.BinaryOperation;
+import jmona.gp.impl.UniformBinaryOperation;
 
 /**
  * An operation which provides simple addition of two real-valued
@@ -29,9 +29,8 @@ import jmona.gp.impl.BinaryOperation;
  * 
  * @author jfinkels
  */
-public class FunctionAddition
-    implements
-    BinaryOperation<SingleInputFunction<Object, Double>, SingleInputFunction<Object, Double>> {
+public class FunctionAddition implements
+    UniformBinaryOperation<SingleInputFunction<Object, Double>> {
 
   /** A singleton instance of this class. */
   private static final FunctionAddition INSTANCE = new FunctionAddition();

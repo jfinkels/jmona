@@ -19,20 +19,19 @@
  */
 package jmona.gp.example.calc.nodes;
 
-import jmona.gp.example.calc.functions.SingleInputFunction;
 import jmona.gp.example.calc.operations.FunctionDivision;
-import jmona.gp.impl.BinaryNode;
 
 /**
  * A node representing division of real numbers.
  * 
  * @author jfinkels
  */
-public class DivisionNode extends
-    BinaryNode<SingleInputFunction<Object, Double>> {
+public class DivisionNode extends AbstractCalcFunctionNode {
+  /** The symbol which represents this Node. */
+  public static final String SYMBOL = "/";
 
   /** Instantiate this Node using the FunctionDivision operation. */
   public DivisionNode() {
-    super(FunctionDivision.newInstance());
+    super(FunctionDivision.newInstance(), SYMBOL);
   }
 }

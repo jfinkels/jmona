@@ -1,5 +1,5 @@
 /**
- * MultiplicationNode.java
+ * UniformBinaryOperation.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,21 +17,15 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.gp.example.calc.nodes;
-
-import jmona.gp.example.calc.operations.FunctionMultiplication;
+package jmona.gp.impl;
 
 /**
- * A node representing multiplication of real numbers.
+ * A BinaryOperation with equal domain and codomain types.
  * 
+ * @param <T>
+ *          The type of the domain and codomain of this operation.
  * @author jfinkels
  */
-public class MultiplicationNode extends AbstractCalcFunctionNode {
-  /** The symbol which represents this Node. */
-  public static final String SYMBOL = "*";
+public interface UniformBinaryOperation<T> extends BinaryOperation<T, T, T> {
 
-  /** Instantiate this Node using the FunctionMultiplication operation. */
-  public MultiplicationNode() {
-    super(FunctionMultiplication.newInstance(), SYMBOL);
-  }
 }

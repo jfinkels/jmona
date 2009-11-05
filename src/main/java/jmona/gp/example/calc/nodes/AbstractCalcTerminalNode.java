@@ -1,5 +1,5 @@
 /**
- * MultiplicationNode.java
+ * AbstractCalcFunctionNode.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -19,19 +19,35 @@
  */
 package jmona.gp.example.calc.nodes;
 
-import jmona.gp.example.calc.operations.FunctionMultiplication;
+import jmona.gp.example.calc.functions.SingleInputFunction;
+import jmona.gp.impl.AbstractTerminalNode;
 
 /**
- * A node representing multiplication of real numbers.
+ * A base class for TerminalNode objects in the Calc evolution.
  * 
  * @author jfinkels
  */
-public class MultiplicationNode extends AbstractCalcFunctionNode {
+public abstract class AbstractCalcTerminalNode extends
+    AbstractTerminalNode<SingleInputFunction<Object, Double>> {
   /** The symbol which represents this Node. */
-  public static final String SYMBOL = "*";
+  private final String symbol;
 
-  /** Instantiate this Node using the FunctionMultiplication operation. */
-  public MultiplicationNode() {
-    super(FunctionMultiplication.newInstance(), SYMBOL);
+  /**
+   * Instantiate this node with the specified symbol which represents this Node.
+   * 
+   * @param initialSymbol
+   *          The symbol which represents this Node.
+   */
+  protected AbstractCalcTerminalNode(final String initialSymbol) {
+    this.symbol = initialSymbol;
+  }
+
+  /**
+   * Get the symbol which represents this Node.
+   * 
+   * @return The symbol which represents this Node.
+   */
+  public String toString() {
+    return this.symbol;
   }
 }

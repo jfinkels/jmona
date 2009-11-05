@@ -35,7 +35,7 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
   public static final int ARITY = 2;
 
   /** The binary operation which this Node represents. */
-  private BinaryOperation<V, V> operation = null;
+  private BinaryOperation<V, V, V> operation = null;
 
   /**
    * Instantiate this Node with the specified operation.
@@ -43,7 +43,7 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
    * @param initialOperation
    *          The operation to perform on the children of this Node.
    */
-  public BinaryNode(final BinaryOperation<V, V> initialOperation) {
+  public BinaryNode(final BinaryOperation<V, V, V> initialOperation) {
     this.operation = initialOperation;
   }
 
