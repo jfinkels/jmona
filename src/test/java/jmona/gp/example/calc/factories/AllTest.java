@@ -1,5 +1,5 @@
 /**
- * CalcTerminalNodeFactoryTester.java
+ * AllTest.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,23 +17,19 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.gp.exampe.calc.factories;
+package jmona.gp.example.calc.factories;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
 /**
- * @author jfinkels
+ * Runs all tests in this package.
+ * 
+ * @author jeff
  */
-public class CalcTerminalNodeFactoryTester {
-
-  /**
-   * Test method for {@link jmona.gp.example.calc.factories.CalcTerminalNodeFactory#createNode()}.
-   */
-  @Test
-  public void testCreateNode() {
-    fail("Not yet implemented");
-  }
+@RunWith(Suite.class)
+@SuiteClasses({ CalcTerminalNodeFactoryTester.class })
+public class AllTest {
 
 }
