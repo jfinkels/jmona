@@ -1,5 +1,5 @@
 /**
- * EuclideanMetricTester.java
+ * AllTest.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,33 +17,19 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmone.gp.impl.metrics;
+package jmona.gp.impl.metrics;
 
-import jmona.gp.impl.metrics.EuclideanMetric;
-
-import org.junit.Before;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
 /**
- * Test class for the EuclideanMetric class.
+ * Runs all tests in this package.
  * 
- * @author jfinkels
+ * @author jeff
  */
-public class EuclideanMetricTester extends
-    AbstractMetricTester<EuclideanMetric, Double> {
+@RunWith(Suite.class)
+@SuiteClasses({ EuclideanMetricTester.class })
+public class AllTest {
 
-  /** The x value for this test. */
-  public static final double X = 1.0;
-  /** The y value for this test. */
-  public static final double Y = 2.0;
-  /** The z value for this test. */
-  public static final double Z = -3.0;
-
-  /** Establish a fixture for tests in this class. */
-  @Before
-  public final void setUp() {
-    this.setMetric(new EuclideanMetric());
-    this.setX(X);
-    this.setY(Y);
-    this.setZ(Z);
-  }
 }
