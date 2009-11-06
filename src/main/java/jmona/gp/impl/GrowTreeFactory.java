@@ -50,11 +50,12 @@ public class GrowTreeFactory<V> extends AbstractTreeFactory<V> {
    */
   // TODO more thorough documentation for this method
   @Override
-  protected Node<V> createTree(int currentDepth) throws InitializationException {
+  protected Node<V> createTree(final int currentDepth)
+      throws InitializationException {
     Node<V> result = null;
 
     if (currentDepth == 1
-        || Util.RANDOM.nextDouble() < this.probabilityTerminal) {
+        || Util.RANDOM.nextDouble() <= this.probabilityTerminal) {
       result = this.terminalNodeFactory().createNode();
     } else {
       // create a function node
