@@ -19,14 +19,58 @@
  */
 package jmona.gp.example.calc;
 
+import jmona.CompletionCriteria;
+import jmona.CompletionException;
+import jmona.EvolutionContext;
+import jmona.EvolutionException;
+import jmona.gp.Tree;
+import jmona.gp.example.calc.functions.SingleInputFunction;
+
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-
 /**
+ * Test class for the Calc genetic programming example.
+ * 
  * @author jfinkels
  */
 @ContextConfiguration
 public class CalcEvolutionTester extends AbstractJUnit4SpringContextTests {
+  /**
+   * Get the completion criteria for this evolution from the Spring XML
+   * configuration file.
+   */
+  @Autowired
+  private CompletionCriteria<Tree<SingleInputFunction<Double, Double>>> completionCriteria = null;
 
+  /** Get the evolution context from the Spring XML configuration file. */
+  @Autowired
+  private EvolutionContext<Tree<SingleInputFunction<Double, Double>>> context = null;
+
+  /**
+   * Print the stack trace of the specified exception and fail the test.
+   * 
+   * @param exception
+   *          The exception which caused the test failure.
+   */
+  protected static void fail(final Throwable exception) {
+    exception.printStackTrace(System.err);
+    org.junit.Assert.fail(exception.getMessage());
+  }
+
+  /** Test the evolution. */
+  @Test
+  public final void testEvolution() {
+    try {
+      while (!this.completionCriteria.isSatisfied(this.context)) {
+        this.context.stepGeneration();
+      }
+    } catch (final CompletionException exception) {
+      fail(exception);
+    } catch (final EvolutionException exception) {
+      fail(exception);
+    }
+  }
 }

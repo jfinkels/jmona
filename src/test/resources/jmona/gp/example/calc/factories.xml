@@ -1,0 +1,60 @@
+<!--
+ factories.xml
+
+ Copyright 2009 Jeffrey Finkelstein
+ 
+ This file is part of jmona.
+ 
+ jmona is free software: you can redistribute it and/or modify it under the
+ terms of the GNU General Public License as published by the Free Software
+ Foundation, either version 3 of the License, or (at your option) any later
+ version.
+ 
+ jmona is distributed in the hope that it will be useful, but WITHOUT ANY
+ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License along with
+ jmona. If not, see <http://www.gnu.org/licenses/>.
+-->
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+  <bean id="terminalNodeFactory"
+    class="jmona.gp.example.calc.factories.CalcTerminalNodeFactory" />
+  
+  <bean id="functionNodeFactory"
+    class="jmona.gp.impl.DefaultFunctionNodeFactory">
+    <constructor-arg>
+      <set>
+        <bean class="java.lang.Class" factory-method="forName">
+          <constructor-arg value="jmona.gp.example.calc.nodes.AdditionNode" />
+        </bean>
+        <bean class="java.lang.Class" factory-method="forName">
+          <constructor-arg value="jmona.gp.example.calc.nodes.MultiplicationNode" />
+        </bean><!--
+        <bean class="java.lang.Class" factory-method="forName">
+          <constructor-arg value="jmona.gp.example.calc.nodes.DivisionNode" />
+        </bean>
+        <bean class="java.lang.Class" factory-method="forName">
+          <constructor-arg value="jmona.gp.example.calc.nodes.SubtractionNode" />
+        </bean>
+      --></set>
+    </constructor-arg>
+  </bean>
+    
+  <bean id="individualFactory" class="jmona.gp.impl.GrowTreeFactory">
+    <property name="treeClass" value="jmona.gp.impl.DefaultTree" />
+    <property name="probabilityTerminal" value="0.1" />
+    <property name="functionNodeFactory" ref="functionNodeFactory" />
+    <property name="terminalNodeFactory" ref="terminalNodeFactory" />
+  </bean>
+  
+  <bean id="populationFactory" class="jmona.impl.DefaultPopulationFactory">
+    <property name="individualFactory" ref="individualFactory" />
+  </bean>
+
+</beans>

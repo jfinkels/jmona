@@ -1,0 +1,62 @@
+<!--
+ functions.xml
+
+ Copyright 2009 Jeffrey Finkelstein
+ 
+ This file is part of jmona.
+ 
+ jmona is free software: you can redistribute it and/or modify it under the
+ terms of the GNU General Public License as published by the Free Software
+ Foundation, either version 3 of the License, or (at your option) any later
+ version.
+ 
+ jmona is distributed in the hope that it will be useful, but WITHOUT ANY
+ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License along with
+ jmona. If not, see <http://www.gnu.org/licenses/>.
+-->
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+  <!-- metrics -->
+
+  <bean id="metric" class="jmona.gp.example.calc.metrics.CalcMetric">
+    <property name="codomainMetric" ref="codomainMetric" />
+    <property name="inputs">
+      <set>
+        <value>0</value>
+        <value>1</value>
+        <value>-1</value>
+        <value>2</value>
+        <value>-2</value>
+        <value>3</value>
+        <value>-3</value>
+        <value>4</value>
+        <value>-4</value>
+        <value>5</value>
+        <value>-5</value>
+      </set>
+    </property>
+  </bean>
+  <bean id="codomainMetric" class="jmona.gp.impl.metrics.EuclideanMetric" />
+
+  <!-- target function -->
+  
+  <bean id="target" class="jmona.gp.example.calc.functions.SquareFunction" />
+
+  <!-- evolution functions -->
+
+  <bean id="selectionFunction" class="jmona.impl.selection.FitnessProportionateSelection" />
+  <bean id="crossoverFunction" class="jmona.gp.impl.GPCrossoverFunction" />
+  <bean id="mutationFunction" class="jmona.gp.impl.GPMutationFunction" />
+  <bean id="fitnessFunction" class="jmona.gp.impl.GPFitnessFunction">
+    <property name="target" ref="target" />
+    <property name="metric" ref="metric" />
+  </bean>
+
+</beans>
