@@ -21,7 +21,6 @@ package jmona.impl;
 
 import jmona.EvolutionContext;
 import jmona.Individual;
-import jmona.PostProcessor;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -36,8 +35,8 @@ import org.apache.log4j.Logger;
  *          be logged.
  * @author jeff
  */
-public class PopulationLoggingPostProcessor<T extends Individual> implements
-    PostProcessor<T> {
+public class PopulationLoggingPostProcessor<T extends Individual> extends
+    PeriodicPostProcessor<T> {
 
   /**
    * The default level at which to log the population from the EvolutionContext.
@@ -59,8 +58,10 @@ public class PopulationLoggingPostProcessor<T extends Individual> implements
    * @see jmona.PostProcessor#process(jmona.EvolutionContext)
    */
   @Override
-  public void process(final EvolutionContext<T> evolutionContext) {
-    LOG.log(this.loggingLevel, evolutionContext.currentPopulation());
+  protected void processAtInterval(final EvolutionContext<T> evolutionContext) {
+    LOG.log(this.loggingLevel, "Generation "
+        + evolutionContext.currentGeneration() + ": "
+        + evolutionContext.currentPopulation());
   }
 
   /**
