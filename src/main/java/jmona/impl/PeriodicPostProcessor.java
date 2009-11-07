@@ -28,6 +28,9 @@ import jmona.ProcessingException;
  * A PostProcessor which repeatedly performs some processing after a specified
  * number of generations only.
  * 
+ * @param <T>
+ *          The type of Individual in the EvolutionContext which this class
+ *          processes.
  * @author jeff
  */
 public abstract class PeriodicPostProcessor<T extends Individual> implements
