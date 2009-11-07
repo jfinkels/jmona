@@ -31,13 +31,14 @@ import jmona.Individual;
 import jmona.MutationException;
 import jmona.MutationFunction;
 import jmona.Population;
+import jmona.ga.impl.GAEvolutionContext;
 import jmona.impl.selection.FitnessProportionateSelection;
 
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test class for the DefaultEvolutionContext class.
+ * Test class for the GAEvolutionContext class.
  * 
  * @author jeff
  */
@@ -141,12 +142,12 @@ public class DefaultEvolutionContextTester {
     this.population.add(new ExampleIndividual());
 
     // instantiate a new evolution context
-    this.context = new DefaultEvolutionContext<Individual>(population);
+    this.context = new GAEvolutionContext<Individual>(population);
   }
 
   /**
    * Test method for
-   * {@link jmona.impl.DefaultEvolutionContext#DefaultEvolutionContext(jmona.Population)}
+   * {@link jmona.ga.impl.GAEvolutionContext#DefaultEvolutionContext(jmona.Population)}
    * .
    */
   @Test
@@ -158,7 +159,7 @@ public class DefaultEvolutionContextTester {
     assertEquals(1, this.population.size());
     this.context = null;
     try {
-      this.context = new DefaultEvolutionContext<Individual>(this.population);
+      this.context = new GAEvolutionContext<Individual>(this.population);
       fail("Exception should have been thrown on the previous line");
     } catch (final IllegalArgumentException exception) {
       assertSame(null, this.context);
@@ -166,7 +167,7 @@ public class DefaultEvolutionContextTester {
 
   }
 
-  /** Test method for {@link DefaultEvolutionContext#stepGeneration()}. */
+  /** Test method for {@link GAEvolutionContext#stepGeneration()}. */
   @Test
   public final void testStepGeneration() {
     this.context.setMutationProbability(1);

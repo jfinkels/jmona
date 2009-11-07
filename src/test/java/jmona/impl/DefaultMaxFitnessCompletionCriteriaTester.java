@@ -25,6 +25,7 @@ import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.FitnessException;
 import jmona.Population;
+import jmona.ga.impl.GAEvolutionContext;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -63,7 +64,7 @@ public class DefaultMaxFitnessCompletionCriteriaTester {
     this.population.add(new ExampleIndividual(1));
     this.population.add(new ExampleIndividual(2));
     
-    this.evolutionContext = new DefaultEvolutionContext<ExampleIndividual>(
+    this.evolutionContext = new GAEvolutionContext<ExampleIndividual>(
         this.population);
 
     try {

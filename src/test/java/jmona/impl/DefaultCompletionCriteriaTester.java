@@ -27,6 +27,7 @@ import jmona.FitnessException;
 import jmona.Individual;
 import jmona.MaxGenerationCompletionCriteria;
 import jmona.Population;
+import jmona.ga.impl.GAEvolutionContext;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -62,7 +63,7 @@ public class DefaultCompletionCriteriaTester {
     this.population.add(new ExampleIndividual(1));
     this.population.add(new ExampleIndividual(2));
 
-    this.evolutionContext = new DefaultEvolutionContext<ExampleIndividual>(
+    this.evolutionContext = new GAEvolutionContext<ExampleIndividual>(
         this.population);
 
     try {
@@ -101,7 +102,7 @@ public class DefaultCompletionCriteriaTester {
     final Population<Individual> population = new DefaultPopulation<Individual>();
     population.add(new ExampleIndividual());
     population.add(new ExampleIndividual());
-    final EvolutionContext<Individual> context = new DefaultEvolutionContext<Individual>(
+    final EvolutionContext<Individual> context = new GAEvolutionContext<Individual>(
         population);
 
     final MaxGenerationCompletionCriteria<Individual> criteria = new DefaultMaxGenerationCompletionCriteria<Individual>();

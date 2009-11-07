@@ -1,5 +1,5 @@
 /**
- * DefaultEvolutionContext.java
+ * GAEvolutionContext.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,13 +17,16 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.impl;
+package jmona.ga.impl;
 
 import jmona.EvolutionException;
 import jmona.FitnessException;
 import jmona.Individual;
 import jmona.MutationException;
 import jmona.Population;
+import jmona.impl.AbstractEvolutionContext;
+import jmona.impl.DefaultPopulation;
+import jmona.impl.Util;
 
 /**
  * A default implementation of the evolution context interface, which provides
@@ -33,7 +36,7 @@ import jmona.Population;
  *          The type of individual on which the evolution occurs.
  * @author jfinke
  */
-public class DefaultEvolutionContext<T extends Individual> extends
+public class GAEvolutionContext<T extends Individual> extends
     AbstractEvolutionContext<T> {
 
   /**
@@ -44,7 +47,7 @@ public class DefaultEvolutionContext<T extends Individual> extends
    *          The initial population.
    * @see AbstractEvolutionContext#AbstractEvolutionContext(Population)
    */
-  public DefaultEvolutionContext(final Population<T> initialPopulation) {
+  public GAEvolutionContext(final Population<T> initialPopulation) {
     super(initialPopulation);
   }
 

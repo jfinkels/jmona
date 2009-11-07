@@ -35,15 +35,15 @@
     <property name="maxGenerations" value="3" />
   </bean>
   
-  <bean id="evolutionContext1" class="jmona.impl.DefaultEvolutionContext">
+  <bean id="evolutionContext1" class="jmona.impl.GAEvolutionContext">
     <constructor-arg><null /></constructor-arg>
   </bean>
   
-  <bean id="evolutionContext2" class="jmona.impl.DefaultEvolutionContext">
+  <bean id="evolutionContext2" class="jmona.impl.GAEvolutionContext">
     <constructor-arg><null /></constructor-arg>
   </bean>
   
-  <bean id="evolutionContext3" class="jmona.impl.DefaultEvolutionContext">
+  <bean id="evolutionContext3" class="jmona.impl.GAEvolutionContext">
     <constructor-arg><null /></constructor-arg>
   </bean>
 
