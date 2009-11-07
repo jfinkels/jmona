@@ -20,7 +20,7 @@
 package jmona.gp.example.calc.nodes;
 
 import jmona.gp.EvaluationException;
-import jmona.gp.example.calc.functions.ConstantFunction;
+import jmona.gp.example.calc.functions.DoubleIdentityFunction;
 import jmona.gp.example.calc.functions.SingleInputFunction;
 
 /**
@@ -50,8 +50,8 @@ public class VariableNode extends AbstractCalcTerminalNode {
    * @see jmona.gp.Node#evaluate()
    */
   @Override
-  public SingleInputFunction<Object, Double> evaluate(final Object... input)
+  public SingleInputFunction<Double, Double> evaluate(final Object... input)
       throws EvaluationException {
-    return new ConstantFunction((Double) input[0]);
+    return DoubleIdentityFunction.newInstance();
   }
 }

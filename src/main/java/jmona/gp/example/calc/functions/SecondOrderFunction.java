@@ -25,12 +25,12 @@ package jmona.gp.example.calc.functions;
  * @author jfinkels
  */
 public abstract class SecondOrderFunction implements
-    SingleInputFunction<Object, Double> {
+    SingleInputFunction<Double, Double> {
 
   /** One of the functions on which to operate. */
-  private final SingleInputFunction<Object, Double> function1;
+  private final SingleInputFunction<Double, Double> function1;
   /** One of the functions on which to operate. */
-  private final SingleInputFunction<Object, Double> function2;
+  private final SingleInputFunction<Double, Double> function2;
 
   /**
    * Instantiate this class with the two specified functions lower order
@@ -42,8 +42,8 @@ public abstract class SecondOrderFunction implements
    *          Another function on which to operate.
    */
   public SecondOrderFunction(
-      final SingleInputFunction<Object, Double> initialFunction1,
-      final SingleInputFunction<Object, Double> initialFunction2) {
+      final SingleInputFunction<Double, Double> initialFunction1,
+      final SingleInputFunction<Double, Double> initialFunction2) {
     this.function1 = initialFunction1;
     this.function2 = initialFunction2;
   }
@@ -53,7 +53,7 @@ public abstract class SecondOrderFunction implements
    * 
    * @return The first function on which to operate.
    */
-  protected SingleInputFunction<Object, Double> function1() {
+  protected SingleInputFunction<Double, Double> function1() {
     return this.function1;
   }
 
@@ -62,7 +62,7 @@ public abstract class SecondOrderFunction implements
    * 
    * @return The second function on which to operate.
    */
-  protected SingleInputFunction<Object, Double> function2() {
+  protected SingleInputFunction<Double, Double> function2() {
     return this.function2;
   }
 

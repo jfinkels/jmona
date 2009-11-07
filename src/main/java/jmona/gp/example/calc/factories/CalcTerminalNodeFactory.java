@@ -34,7 +34,7 @@ import jmona.impl.Util;
  * @author jfinkels
  */
 public class CalcTerminalNodeFactory implements
-    TerminalNodeFactory<SingleInputFunction<Object, Double>> {
+    TerminalNodeFactory<SingleInputFunction<Double, Double>> {
 
   /** The maximum value for a NumberNode. */
   public static final int MAX_VALUE = 255;
@@ -48,9 +48,9 @@ public class CalcTerminalNodeFactory implements
    * @see jmona.gp.NodeFactory#createNode()
    */
   @Override
-  public TerminalNode<SingleInputFunction<Object, Double>> createNode()
+  public TerminalNode<SingleInputFunction<Double, Double>> createNode()
       throws InitializationException {
-    TerminalNode<SingleInputFunction<Object, Double>> result = null;
+    TerminalNode<SingleInputFunction<Double, Double>> result = null;
 
     if (Util.RANDOM.nextBoolean()) {
       result = new VariableNode();

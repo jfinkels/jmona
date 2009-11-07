@@ -28,7 +28,7 @@ import jmona.gp.impl.AbstractTerminalNode;
  * @author jfinkels
  */
 public abstract class AbstractCalcTerminalNode extends
-    AbstractTerminalNode<SingleInputFunction<Object, Double>> {
+    AbstractTerminalNode<SingleInputFunction<Double, Double>> {
   /** The symbol which represents this Node. */
   private final String symbol;
 

@@ -35,8 +35,8 @@ public class AdditionFunction extends SecondOrderFunction {
    *          Another function to sum.
    */
   public AdditionFunction(
-      final SingleInputFunction<Object, Double> initialFunction1,
-      final SingleInputFunction<Object, Double> initialFunction2) {
+      final SingleInputFunction<Double, Double> initialFunction1,
+      final SingleInputFunction<Double, Double> initialFunction2) {
     super(initialFunction1, initialFunction2);
   }
 
@@ -50,7 +50,7 @@ public class AdditionFunction extends SecondOrderFunction {
    * @see jmona.gp.example.calc.functions.SingleInputFunction#execute(java.lang.Object)
    */
   @Override
-  public Double execute(final Object input) {
+  public Double execute(final Double input) {
     return this.function1().execute(input) + this.function2().execute(input);
   }
 }

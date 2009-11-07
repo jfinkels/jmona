@@ -19,7 +19,7 @@
  */
 package jmona.gp.example.calc.nodes;
 
-import jmona.gp.example.calc.functions.ConstantFunction;
+import jmona.gp.example.calc.functions.DoubleConstantFunction;
 import jmona.gp.example.calc.functions.SingleInputFunction;
 
 /**
@@ -30,7 +30,7 @@ import jmona.gp.example.calc.functions.SingleInputFunction;
 public class NumberNode extends AbstractCalcTerminalNode {
 
   /** The value of this Node. */
-  private final ConstantFunction constantFunction;
+  private final SingleInputFunction<Double, Double> constantFunction;
 
   /**
    * Instantiate this Node with the specified initial value.
@@ -40,7 +40,7 @@ public class NumberNode extends AbstractCalcTerminalNode {
    */
   public NumberNode(final Double initialValue) {
     super(initialValue.toString());
-    this.constantFunction = new ConstantFunction(initialValue);
+    this.constantFunction = new DoubleConstantFunction(initialValue);
   }
 
   /**
@@ -52,7 +52,7 @@ public class NumberNode extends AbstractCalcTerminalNode {
    * @see jmona.gp.Node#evaluate()
    */
   @Override
-  public SingleInputFunction<Object, Double> evaluate(final Object... input) {
+  public SingleInputFunction<Double, Double> evaluate(final Object... input) {
     return this.constantFunction;
   }
 

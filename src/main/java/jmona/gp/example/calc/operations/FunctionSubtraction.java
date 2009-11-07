@@ -30,7 +30,7 @@ import jmona.gp.impl.UniformBinaryOperation;
  * @author jfinkels
  */
 public class FunctionSubtraction implements
-    UniformBinaryOperation<SingleInputFunction<Object, Double>> {
+    UniformBinaryOperation<SingleInputFunction<Double, Double>> {
 
   /** A singleton instance of this class. */
   private static final FunctionSubtraction INSTANCE = new FunctionSubtraction();
@@ -58,9 +58,9 @@ public class FunctionSubtraction implements
    *      java.lang.Object)
    */
   @Override
-  public SingleInputFunction<Object, Double> operate(
-      final SingleInputFunction<Object, Double> object1,
-      final SingleInputFunction<Object, Double> object2) {
+  public SingleInputFunction<Double, Double> operate(
+      final SingleInputFunction<Double, Double> object1,
+      final SingleInputFunction<Double, Double> object2) {
     return new SubtractionFunction(object1, object2);
   }
 }

@@ -29,7 +29,7 @@ import jmona.gp.impl.UniformBinaryOperation;
  * @author jfinkels
  */
 public abstract class AbstractCalcFunctionNode extends
-    BinaryNode<SingleInputFunction<Object, Double>> {
+    BinaryNode<SingleInputFunction<Double, Double>> {
   /** The symbol which represents this Node. */
   private final String symbol;
 
@@ -43,7 +43,7 @@ public abstract class AbstractCalcFunctionNode extends
    *          The symbol which represents this Node.
    */
   protected AbstractCalcFunctionNode(
-      final UniformBinaryOperation<SingleInputFunction<Object, Double>> initialOperation,
+      final UniformBinaryOperation<SingleInputFunction<Double, Double>> initialOperation,
       final String initialSymbol) {
     super(initialOperation);
     this.symbol = initialSymbol;

@@ -1,5 +1,5 @@
 /**
- * MultiplicationFunction.java
+ * SquareFunction.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -20,37 +20,22 @@
 package jmona.gp.example.calc.functions;
 
 /**
- * A function which returns the product of two specified functions.
+ * A function which returns the square of its input.
  * 
  * @author jfinkels
  */
-public class MultiplicationFunction extends SecondOrderFunction {
+public class SquareFunction implements SingleInputFunction<Double, Double> {
 
   /**
-   * Instantiate this class with the two specified functions to multiply.
-   * 
-   * @param initialFunction1
-   *          A function to multiply.
-   * @param initialFunction2
-   *          Another function to multiply.
-   */
-  public MultiplicationFunction(
-      final SingleInputFunction<Double, Double> initialFunction1,
-      final SingleInputFunction<Double, Double> initialFunction2) {
-    super(initialFunction1, initialFunction2);
-  }
-
-  /**
-   * Return the product of the image of the input under each of the functions
-   * specified in the constructor.
+   * Return the square of the specified input.
    * 
    * @param input
-   *          The input to both of the functions.
-   * @return The product of the two functions with the specified input.
+   *          A number.
+   * @return The square of the specified input.
    * @see jmona.gp.example.calc.functions.SingleInputFunction#execute(java.lang.Object)
    */
   @Override
   public Double execute(final Double input) {
-    return this.function1().execute(input) * this.function2().execute(input);
+    return Math.pow(input, 2);
   }
 }

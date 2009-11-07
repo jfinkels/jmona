@@ -20,14 +20,18 @@
 package jmona.gp.example.calc.functions;
 
 /**
- * A real valued function which always returns a constant value.
+ * A function which always returns a constant value.
  * 
+ * @param <T>
+ *          The type of the domain of this function.
+ * @param <R>
+ *          The type of the codomain of this function.
  * @author jfinkels
  */
-public class ConstantFunction implements SingleInputFunction<Object, Double> {
+public class ConstantFunction<T, R> implements SingleInputFunction<T, R> {
 
   /** The constant value of this function. */
-  private final Double value;
+  private final R value;
 
   /**
    * Instantiate this function with the specified constant value.
@@ -35,7 +39,7 @@ public class ConstantFunction implements SingleInputFunction<Object, Double> {
    * @param initialValue
    *          The constant value of this function.
    */
-  public ConstantFunction(final Double initialValue) {
+  public ConstantFunction(final R initialValue) {
     this.value = initialValue;
   }
 
@@ -48,7 +52,7 @@ public class ConstantFunction implements SingleInputFunction<Object, Double> {
    * @see jmona.gp.example.calc.functions.SingleInputFunction#execute(java.lang.Object)
    */
   @Override
-  public Double execute(final Object input) {
+  public R execute(final T input) {
     return this.value;
   }
 
