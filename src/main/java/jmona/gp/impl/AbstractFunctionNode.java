@@ -20,6 +20,7 @@
 package jmona.gp.impl;
 
 import java.util.List;
+import java.util.Vector;
 
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
@@ -38,7 +39,7 @@ public abstract class AbstractFunctionNode<V> extends AbstractNode<V> implements
    * Children of this Node. The size of this List must equal the "arity" of this
    * Node.
    */
-  private List<Node<V>> children = null;
+  private List<Node<V>> children = new Vector<Node<V>>();
 
   /**
    * {@inheritDoc}
