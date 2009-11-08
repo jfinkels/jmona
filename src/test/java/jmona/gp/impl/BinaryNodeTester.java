@@ -19,29 +19,71 @@
  */
 package jmona.gp.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+import jmona.gp.EvaluationException;
+import jmona.gp.TerminalNode;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the BinaryNode class.
+ * 
  * @author jfinkels
  */
 public class BinaryNodeTester {
 
-  /**
-   * Test method for {@link jmona.gp.impl.BinaryNode#BinaryNode(jmona.gp.impl.BinaryOperation)}.
-   */
-  @Test
-  public void testBinaryNode() {
-    fail("Not yet implemented");
+  /** The BinaryNode under test. */
+  private BinaryNode<Integer> node = null;
+  /** The left child Node. */
+  private TerminalNode<Integer> leftChild = null;
+  /** The right child Node. */
+  private TerminalNode<Integer> rightChild = null;
+  /** The value for the left child Node. */
+  public static final int LEFT_VALUE = 1;
+  /** The value for the right child Node. */
+  public static final int RIGHT_VALUE = 2;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.leftChild = new IntegerNode(LEFT_VALUE);
+    this.rightChild = new IntegerNode(RIGHT_VALUE);
+
+    this.node = new BinaryNode<Integer>(new ExampleBinaryOperation());
+    this.node.children().add(leftChild);
+    this.node.children().add(rightChild);
   }
 
   /**
-   * Test method for {@link jmona.gp.impl.BinaryNode#evaluate(java.lang.Object[])}.
+   * Print the stack trace of the specified exception and fail the test.
+   * 
+   * @param exception
+   *          The exception which caused the test failure.
+   */
+  protected static void fail(final Throwable exception) {
+    exception.printStackTrace(System.err);
+    org.junit.Assert.fail(exception.getMessage());
+  }
+
+  /**
+   * Test method for {@link jmona.gp.impl.BinaryNode#evaluate()}.
    */
   @Test
-  public void testEvaluate() {
-    fail("Not yet implemented");
+  public final void testEvaluate() {
+
+    try {
+      assertEquals(LEFT_VALUE, this.leftChild.evaluate().intValue());
+      assertEquals(RIGHT_VALUE, this.rightChild.evaluate().intValue());
+
+      final int result = node.evaluate();
+
+      assertEquals(LEFT_VALUE - RIGHT_VALUE, result);
+
+    } catch (final EvaluationException exception) {
+      fail(exception);
+    }
   }
 
   /**
@@ -49,7 +91,7 @@ public class BinaryNodeTester {
    */
   @Test
   public void testGetArity() {
-    fail("Not yet implemented");
+    assertEquals(BinaryNode.ARITY, this.node.getArity());
   }
 
   /**
@@ -57,7 +99,8 @@ public class BinaryNodeTester {
    */
   @Test
   public void testLeft() {
-    fail("Not yet implemented");
+    assertSame(this.leftChild, this.node.left());
+    assertSame(this.leftChild, this.node.children().get(0));
   }
 
   /**
@@ -65,7 +108,8 @@ public class BinaryNodeTester {
    */
   @Test
   public void testRight() {
-    fail("Not yet implemented");
+    assertSame(this.rightChild, this.node.right());
+    assertSame(this.rightChild, this.node.children().get(1));
   }
 
 }
