@@ -61,8 +61,8 @@ public class DefaultEvolutionContextTester {
     }
   };
 
-  /** A bad mutator function, which throws an exception. */
-  private final MutationFunction<Individual> badMutatorFunction = new MutationFunction<Individual>() {
+  /** A bad mutation function, which throws an exception. */
+  private final MutationFunction<Individual> badMutationFunction = new MutationFunction<Individual>() {
     /**
      * {@inheritDoc}
      * 
@@ -113,8 +113,8 @@ public class DefaultEvolutionContextTester {
     }
   };
 
-  /** A basic mutator function. */
-  private final MutationFunction<Individual> goodMutatorFunction = new MutationFunction<Individual>() {
+  /** A basic mutation function. */
+  private final MutationFunction<Individual> goodMutationFunction = new MutationFunction<Individual>() {
     /**
      * {@inheritDoc}
      * 
@@ -196,8 +196,8 @@ public class DefaultEvolutionContextTester {
       this.context.stepGeneration();
       fail("Exception should have been thrown on the previous line.");
     } catch (final EvolutionException exception) {
-      // mutator function has not been set
-      this.context.setMutatorFunction(this.badMutatorFunction);
+      // mutation function has not been set
+      this.context.setMutationFunction(this.badMutationFunction);
     }
 
     try {
@@ -237,7 +237,7 @@ public class DefaultEvolutionContextTester {
       fail("Exception should have been thrown on the previous line.");
     } catch (final EvolutionException exception) {
       // mutation function threw an exception
-      this.context.setMutatorFunction(this.goodMutatorFunction);
+      this.context.setMutationFunction(this.goodMutationFunction);
     }
 
     try {

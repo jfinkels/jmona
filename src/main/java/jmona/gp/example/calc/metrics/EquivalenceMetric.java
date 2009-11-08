@@ -21,8 +21,8 @@ package jmona.gp.example.calc.metrics;
 
 import java.util.Set;
 
+import jmona.Metric;
 import jmona.gp.example.calc.functions.SingleInputFunction;
-import jmona.gp.impl.Metric;
 
 /**
  * A metric which determines the closeness of two functions by comparing them
@@ -55,7 +55,7 @@ public class EquivalenceMetric<T, R> implements
    *          Another function.
    * @return The number of inputs for which the two specified functions are
    *         equivalent.
-   * @see jmona.gp.impl.Metric#measure(java.lang.Object, java.lang.Object)
+   * @see jmona.Metric#measure(java.lang.Object, java.lang.Object)
    */
   @Override
   public double measure(final SingleInputFunction<T, R> element1,

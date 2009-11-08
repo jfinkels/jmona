@@ -25,8 +25,7 @@ import jmona.Individual;
  * A Tree of Nodes, which is also an Individual.
  * 
  * @param <V>
- *          The return type of the {@link #evaluate(Object...)} method on this
- *          Tree.
+ *          The return type of the {@link #evaluate()} method on this Tree.
  * @author jfinkels
  */
 public interface Tree<V> extends Individual {
@@ -34,17 +33,15 @@ public interface Tree<V> extends Individual {
    * Evaluate this tree by recursively evaluating each Node starting from the
    * root.
    * 
-   * This method is equivalent to calling {@link Node#evaluate(Object...)} on
-   * the result of the {@link Tree#root()} method.
+   * This method is equivalent to calling {@link Node#evaluate()} on the result
+   * of the {@link Tree#root()} method.
    * 
-   * @param input
-   *          An array of input objects.
    * @return The overall evaluation of this tree by recursively evaluating each
    *         Node starting from the root.
    * @throws EvaluationException
    *           If there is a problem evaluating the Nodes of this Tree.
    */
-  V evaluate(final Object... input) throws EvaluationException;
+  V evaluate() throws EvaluationException;
 
   /**
    * Get a random Node in the Tree.

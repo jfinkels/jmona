@@ -46,13 +46,11 @@ public class NumberNode extends AbstractCalcTerminalNode {
   /**
    * Get the (constant) value of this Node.
    * 
-   * @param input
-   *          This parameter is ignored.
    * @return The value of this Node.
    * @see jmona.gp.Node#evaluate()
    */
   @Override
-  public SingleInputFunction<Double, Double> evaluate(final Object... input) {
+  public SingleInputFunction<Double, Double> evaluate() {
     return this.constantFunction;
   }
 

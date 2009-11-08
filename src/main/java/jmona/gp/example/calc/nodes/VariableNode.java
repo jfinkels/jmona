@@ -39,18 +39,14 @@ public class VariableNode extends AbstractCalcTerminalNode {
   }
 
   /**
-   * Evaluate to a ConstantFunction which outputs the value of the first input
-   * parameter cast to a Double.
+   * Evaluate to the identity function for Doubles.
    * 
-   * @param input
-   *          The input parameters with which to evaluate; the first parameter
-   *          will be cast to a Double.
    * @throws EvaluationException
    *           {@inheritDoc}
    * @see jmona.gp.Node#evaluate()
    */
   @Override
-  public SingleInputFunction<Double, Double> evaluate(final Object... input)
+  public SingleInputFunction<Double, Double> evaluate()
       throws EvaluationException {
     return DoubleIdentityFunction.newInstance();
   }

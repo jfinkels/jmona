@@ -201,11 +201,19 @@ public class MonaFitnessFunction implements FitnessFunction<MonaIndividual> {
      * Step 4: compute the sum of the distance between all pixels from the
      * target image and the generated image.
      */
-    double result = 0;
+    double totalDistance = 0;
     for (int i = 0; i < this.targetPixels.length; ++i) {
-      result += distance(generatedPixels[i], this.targetPixels[i]);
+      totalDistance += distance(generatedPixels[i], this.targetPixels[i]);
     }
 
+    // TODO this is not an elegant way to do this...make this more general
+    double result = 0.0;
+    if (totalDistance == 0) {
+      result = Double.POSITIVE_INFINITY;
+    } else {
+      result = 1 / totalDistance;
+    }
+    
     return result;
   }
 }

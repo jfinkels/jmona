@@ -35,13 +35,13 @@
     <property name="maxGenerations" value="10" />
   </bean>
 
-  <bean id="evolutionContext" class="jmona.impl.GAEvolutionContext">
+  <bean id="evolutionContext" class="jmona.ga.impl.GAEvolutionContext">
     <constructor-arg>
       <ref bean="population" />
     </constructor-arg>
     <property name="fitnessFunction" ref="fitnessFunction" />
     <property name="crossoverFunction" ref="crossoverFunction" />
-    <property name="mutatorFunction" ref="mutatorFunction" />
+    <property name="mutationFunction" ref="mutationFunction" />
     <property name="selectionFunction" ref="selectionFunction" />
   </bean>
 

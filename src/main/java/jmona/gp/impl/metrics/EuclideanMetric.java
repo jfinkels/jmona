@@ -19,7 +19,7 @@
  */
 package jmona.gp.impl.metrics;
 
-import jmona.gp.impl.Metric;
+import jmona.Metric;
 
 /**
  * The one-dimensional Euclidean metric, which measures the distance between two
@@ -42,7 +42,7 @@ public class EuclideanMetric implements Metric<Double> {
    *          Another number.
    * @return The absolute value of the difference of the two specified numbers,
    *         that is, <em>|element1 - element2|</em>.
-   * @see jmona.gp.impl.Metric#measure(Object, Object)
+   * @see jmona.Metric#measure(Object, Object)
    */
   @Override
   public double measure(final Double element1, final Double element2) {

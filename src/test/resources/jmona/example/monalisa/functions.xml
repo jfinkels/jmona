@@ -29,7 +29,7 @@
     <property name="targetImage" ref="targetImage" />
   </bean>
   
-  <bean id="mutatorFunction" class="jmona.example.monalisa.MonaMutationFunction">
+  <bean id="mutationFunction" class="jmona.example.monalisa.MonaMutationFunction">
     <property name="height" ref="height" />
     <property name="width" ref="width" />
   </bean>

@@ -41,15 +41,13 @@ public interface Node<V> {
   /**
    * Evaluate this Node with respect to its child Nodes.
    * 
-   * @param input
-   *          An array of input objects.
    * @return The overall evaluation of this Node with respect to its child
    *         Nodes.
    * @throws EvaluationException
    *           If there is a problem evaluating this Node (or one of its
    *           children).
    */
-  V evaluate(final Object... input) throws EvaluationException;
+  V evaluate() throws EvaluationException;
 
   /**
    * Get the "arity" of this Node, that is, how many children it has.

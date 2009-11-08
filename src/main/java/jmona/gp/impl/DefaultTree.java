@@ -52,13 +52,12 @@ public class DefaultTree<V> implements Tree<V> {
   /**
    * {@inheritDoc}
    * 
-   * @param input
-   *          {@inheritDoc}
+   * @return {@inheritDoc}
    * @see jmona.gp.Tree#evaluate(java.lang.Object[])
    */
   @Override
-  public V evaluate(final Object... input) throws EvaluationException {
-    return this.root.evaluate(input);
+  public V evaluate() throws EvaluationException {
+    return this.root.evaluate();
   }
 
   /**

@@ -50,17 +50,15 @@ public class TernaryNode<V> extends AbstractFunctionNode<V> {
   /**
    * {@inheritDoc}
    * 
-   * @param input
-   *          {@inheritDoc}
    * @return {@inheritDoc}
    * @throws EvaluationException
    *           {@inheritDoc}
    * @see jmona.gp.Node#evaluate()
    */
   @Override
-  public V evaluate(final Object... input) throws EvaluationException {
-    return this.operation.operate(this.left().evaluate(input), this.middle()
-        .evaluate(input), this.right().evaluate(input));
+  public V evaluate() throws EvaluationException {
+    return this.operation.operate(this.left().evaluate(), this.middle()
+        .evaluate(), this.right().evaluate());
   }
 
   /**

@@ -230,7 +230,7 @@ public class MonaFitnessFunctionTester {
     }
 
     final double epsilon = 0.0;
-    assertEquals(0.0, fitness, epsilon);
+    assertEquals(Double.POSITIVE_INFINITY, fitness, epsilon);
 
     final MonaIndividual individual2 = new MonaIndividual();
     try {
@@ -275,8 +275,8 @@ public class MonaFitnessFunctionTester {
 
     // TODO there is some non-deterministic behavior here... sometimes the
     // resuting image has pixels c0aa0055, sometimes x05500aa
-    final int kludge = 601;
-    assertTrue(fitness == 0 || (int) fitness == kludge);
+    final double kludge = 1 / 601;
+    assertTrue(fitness == Double.POSITIVE_INFINITY || (int) fitness == kludge);
   }
 
   /**

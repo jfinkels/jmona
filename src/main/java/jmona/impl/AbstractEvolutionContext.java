@@ -59,7 +59,7 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   private FitnessFunction<T> fitnessFunction = null;
   /** The current generation of the evolution. */
   private int generation = 0;
-  /** The mutator function for this context. */
+  /** The mutation function for this context. */
   private MutationFunction<T> mutationFunction = null;
   /** The current population. */
   private Population<T> population = null;
@@ -99,7 +99,7 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
       throw new EvolutionException("Fitness function has not been set.");
     }
     if (this.mutationFunction() == null) {
-      throw new EvolutionException("Mutator function has not been set.");
+      throw new EvolutionException("Mutation function has not been set.");
     }
     if (this.selectionFunction() == null) {
       throw new EvolutionException("Selection function has not been set.");
@@ -299,10 +299,10 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * 
    * @param function
    *          {@inheritDoc}
-   * @see jmona.EvolutionContext#setMutatorFunction(jmona.MutationFunction)
+   * @see jmona.EvolutionContext#setMutationFunction(jmona.MutationFunction)
    */
   @Override
-  public void setMutatorFunction(final MutationFunction<T> function) {
+  public void setMutationFunction(final MutationFunction<T> function) {
     this.mutationFunction = function;
   }
 

@@ -72,9 +72,9 @@ public interface EvolutionContext<T extends Individual> {
   double mutationProbability();
 
   /**
-   * Get the mutator function used by this context.
+   * Get the mutation function used by this context.
    * 
-   * @return The mutator function used by this context.
+   * @return The mutation function used by this context.
    */
   MutationFunction<T> mutationFunction();
 
@@ -122,12 +122,12 @@ public interface EvolutionContext<T extends Individual> {
   void setMutationProbability(final double newMutationProbability);
 
   /**
-   * Set the mutator function used by this context.
+   * Set the mutation function used by this context.
    * 
    * @param function
-   *          The mutator function used by this context.
+   *          The mutation function used by this context.
    */
-  void setMutatorFunction(final MutationFunction<T> function);
+  void setMutationFunction(final MutationFunction<T> function);
 
   /**
    * Set the selection function used by this context.

@@ -20,6 +20,8 @@
 package jmona.gp.impl;
 
 import jmona.FitnessException;
+import jmona.FitnessFunction;
+import jmona.Metric;
 import jmona.gp.EvaluationException;
 import jmona.gp.Tree;
 
@@ -32,7 +34,10 @@ import jmona.gp.Tree;
  *          Metric.
  * @author jfinkels
  */
-public class GPFitnessFunction<V> extends AbstractGPFitnessFunction<V> {
+public class GPFitnessFunction<V> implements FitnessFunction<Tree<V>> {
+
+  /** The metric with which to compare the evaluation of two Trees. */
+  private Metric<V> metric = null;
 
   /** The target value. */
   private V target = null;
@@ -51,7 +56,7 @@ public class GPFitnessFunction<V> extends AbstractGPFitnessFunction<V> {
   @Override
   public double fitness(final Tree<V> individual) throws FitnessException {
 
-    if (this.metric() == null) {
+    if (this.metric == null) {
       throw new FitnessException("No metric has been set.");
     }
 
@@ -61,13 +66,22 @@ public class GPFitnessFunction<V> extends AbstractGPFitnessFunction<V> {
 
     double result = 0.0;
     try {
-      result = this.metric().measure(
-          individual.evaluate(this.evaluationInput()), this.target);
+      result = this.metric.measure(individual.evaluate(), this.target);
     } catch (final EvaluationException exception) {
       throw new FitnessException("Failed to evaluate the Tree.", exception);
     }
 
     return result;
+  }
+
+  /**
+   * Set the metric with which to compare the evaluation of two Trees.
+   * 
+   * @param newMetric
+   *          The metric with which to compare the evaluation of two Trees.
+   */
+  public void setMetric(final Metric<V> newMetric) {
+    this.metric = newMetric;
   }
 
   /**

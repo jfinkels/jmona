@@ -31,6 +31,14 @@ public class OnesIndividual implements Individual {
   private short[] gene;
 
   /**
+   * Instantiation with default constructor disallowed except for subclasses of
+   * this class.
+   */
+  protected OnesIndividual() {
+    // intentionally unimplemented
+  }
+
+  /**
    * Instantiate the individual with the specified initial gene.
    * 
    * @param initialGene
