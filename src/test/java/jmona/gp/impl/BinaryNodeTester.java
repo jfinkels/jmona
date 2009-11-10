@@ -34,16 +34,27 @@ import org.junit.Test;
  */
 public class BinaryNodeTester {
 
-  /** The BinaryNode under test. */
-  private BinaryNode<Integer> node = null;
-  /** The left child Node. */
-  private TerminalNode<Integer> leftChild = null;
-  /** The right child Node. */
-  private TerminalNode<Integer> rightChild = null;
   /** The value for the left child Node. */
   public static final int LEFT_VALUE = 1;
   /** The value for the right child Node. */
   public static final int RIGHT_VALUE = 2;
+  /**
+   * Print the stack trace of the specified exception and fail the test.
+   * 
+   * @param exception
+   *          The exception which caused the test failure.
+   */
+  protected static void fail(final Throwable exception) {
+    exception.printStackTrace(System.err);
+    org.junit.Assert.fail(exception.getMessage());
+  }
+  /** The left child Node. */
+  private TerminalNode<Integer> leftChild = null;
+  /** The BinaryNode under test. */
+  private BinaryNode<Integer> node = null;
+
+  /** The right child Node. */
+  private TerminalNode<Integer> rightChild = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
@@ -54,17 +65,6 @@ public class BinaryNodeTester {
     this.node = new BinaryNode<Integer>(new ExampleBinaryOperation());
     this.node.children().add(leftChild);
     this.node.children().add(rightChild);
-  }
-
-  /**
-   * Print the stack trace of the specified exception and fail the test.
-   * 
-   * @param exception
-   *          The exception which caused the test failure.
-   */
-  protected static void fail(final Throwable exception) {
-    exception.printStackTrace(System.err);
-    org.junit.Assert.fail(exception.getMessage());
   }
 
   /**
