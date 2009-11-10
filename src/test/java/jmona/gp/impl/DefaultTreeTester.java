@@ -19,8 +19,23 @@
  */
 package jmona.gp.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import jmona.gp.EvaluationException;
+import jmona.gp.FunctionNode;
+import jmona.gp.Node;
+import jmona.gp.TerminalNode;
+import jmona.gp.Tree;
+
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -28,20 +43,79 @@ import org.junit.Test;
  */
 public class DefaultTreeTester {
 
+  /** The number of times to choose a random node. */
+  public static final int NUM_TESTS = 1000;
+
   /**
-   * Test method for {@link jmona.gp.impl.DefaultTree#DefaultTree(jmona.gp.Node)}.
+   * Print the stack trace of the specified exception and fail the test.
+   * 
+   * @param exception
+   *          The exception which caused the test failure.
    */
-  @Test
-  public void testDefaultTree() {
-    fail("Not yet implemented");
+  protected static void fail(final Throwable exception) {
+    exception.printStackTrace(System.err);
+    org.junit.Assert.fail(exception.getMessage());
+  }
+
+  /** A big tree. */
+  private DefaultTree<Integer> bigTree = null;
+  /** A function node in the big tree. */
+  private FunctionNode<Integer> bigTreeNode1 = null;
+  /** A terminal node in the big tree. */
+  private TerminalNode<Integer> bigTreeNode2 = null;
+  /** A terminal node in the big tree. */
+  private TerminalNode<Integer> bigTreeNode3 = null;
+
+  /** A small tree. */
+  private DefaultTree<Integer> smallTree = null;
+
+  /** A node in the small tree. */
+  private TerminalNode<Integer> smallTreeNode = null;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.smallTreeNode = new IntegerNode(1);
+    this.bigTreeNode1 = new ExampleBinaryNode();
+    this.bigTreeNode2 = new IntegerNode(2);
+    this.bigTreeNode3 = new IntegerNode(0);
+
+    this.smallTree = new DefaultTree<Integer>(this.smallTreeNode);
+
+    this.bigTreeNode1.children().add(this.bigTreeNode2);
+    this.bigTreeNode1.children().add(this.bigTreeNode3);
+    this.bigTree = new DefaultTree<Integer>(this.bigTreeNode1);
   }
 
   /**
-   * Test method for {@link jmona.gp.impl.DefaultTree#evaluate(java.lang.Object[])}.
+   * Test method for {@link jmona.gp.impl.DefaultTree#allNodes()}.
+   */
+  @Test
+  public void testAllNodes() {
+    final List<Node<Integer>> allBigTreeNodes = this.bigTree.allNodes();
+
+    assertTrue(allBigTreeNodes.contains(this.bigTreeNode1));
+    assertTrue(allBigTreeNodes.contains(this.bigTreeNode2));
+    assertTrue(allBigTreeNodes.contains(this.bigTreeNode3));
+    assertEquals(3, allBigTreeNodes.size());
+
+    final List<Node<Integer>> allSmallTreeNodes = this.smallTree.allNodes();
+
+    assertTrue(allSmallTreeNodes.contains(this.smallTreeNode));
+    assertEquals(1, allSmallTreeNodes.size());
+  }
+
+  /**
+   * Test method for {@link jmona.gp.impl.DefaultTree#evaluate()}.
    */
   @Test
   public void testEvaluate() {
-    fail("Not yet implemented");
+    try {
+      assertEquals(1, this.smallTree.evaluate().intValue());
+      assertEquals(2, this.bigTree.evaluate().intValue());
+    } catch (final EvaluationException exception) {
+      fail(exception);
+    }
   }
 
   /**
@@ -49,7 +123,47 @@ public class DefaultTreeTester {
    */
   @Test
   public void testRandomNode() {
-    fail("Not yet implemented");
+    final Tree<Integer> emptyTree = new DefaultTree<Integer>(null);
+
+    Node<Integer> node = null;
+    try {
+      node = emptyTree.randomNode();
+      org.junit.Assert
+          .fail("Exception should have been thrown on the previous line.");
+    } catch (final NullPointerException exception) {
+      assertNull(node);
+    }
+
+    final Map<Node<Integer>, Integer> selectionsMap = new HashMap<Node<Integer>, Integer>();
+
+    selectionsMap.put(this.bigTreeNode1, 0);
+    selectionsMap.put(this.bigTreeNode2, 0);
+    selectionsMap.put(this.bigTreeNode3, 0);
+
+    Node<Integer> choice = null;
+    Integer numSelections = null;
+    for (int i = 0; i < NUM_TESTS; ++i) {
+      assertSame(this.smallTreeNode, this.smallTree.randomNode());
+
+      choice = this.bigTree.randomNode();
+
+      System.out.println(choice);
+
+      assertNotNull(choice);
+
+      numSelections = selectionsMap.get(choice);
+
+      System.out.println(selectionsMap);
+
+      selectionsMap.put(choice, numSelections + 1);
+    }
+
+    final double expected = NUM_TESTS / selectionsMap.size();
+    final double epsilon = expected * 0.10;
+
+    for (final Integer count : selectionsMap.values()) {
+      assertEquals(expected, count, epsilon);
+    }
   }
 
   /**
@@ -57,7 +171,8 @@ public class DefaultTreeTester {
    */
   @Test
   public void testRoot() {
-    fail("Not yet implemented");
+    assertSame(this.bigTreeNode1, this.bigTree.root());
+    assertSame(this.smallTreeNode, this.smallTree.root());
   }
 
 }
