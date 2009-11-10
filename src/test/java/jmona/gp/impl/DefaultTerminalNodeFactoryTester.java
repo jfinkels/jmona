@@ -19,7 +19,14 @@
  */
 package jmona.gp.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import jmona.InitializationException;
+import jmona.gp.TerminalNode;
 
 import org.junit.Test;
 
@@ -27,21 +34,69 @@ import org.junit.Test;
  * @author jfinkels
  */
 public class DefaultTerminalNodeFactoryTester {
+  /** The number of times to create a Node with the factory under test. */
+  public static final int NUM_TESTS = 100;
 
   /**
-   * Test method for {@link jmona.gp.impl.DefaultTerminalNodeFactory#DefaultTerminalNodeFactory(java.util.Set)}.
+   * Print the stack trace of the specified exception and fail the test.
+   * 
+   * @param exception
+   *          The exception which caused the test failure.
    */
-  @Test
-  public void testDefaultTerminalNodeFactory() {
-    fail("Not yet implemented");
+  protected static void fail(final Throwable exception) {
+    exception.printStackTrace(System.err);
+    org.junit.Assert.fail(exception.getMessage());
   }
 
   /**
-   * Test method for {@link jmona.gp.impl.DefaultTerminalNodeFactory#nodeClasses()}.
+   * Test method for
+   * {@link jmona.gp.impl.DefaultTerminalNodeFactory#createNode()}.
+   */
+  @Test
+  public void testCreateNode() {
+    final Set<Class<TerminalNode<Integer>>> classesSet = new HashSet<Class<TerminalNode<Integer>>>();
+
+    try {
+      classesSet.add((Class<TerminalNode<Integer>>) Class
+          .forName("jmona.gp.impl.ExampleTerminalNode"));
+    } catch (final ClassNotFoundException exception) {
+      fail(exception);
+    }
+
+    final DefaultTerminalNodeFactory<Integer> factory = new DefaultTerminalNodeFactory<Integer>(
+        classesSet);
+
+    try {
+      for (int i = 0; i < NUM_TESTS; ++i) {
+        final TerminalNode<Integer> node = factory.createNode();
+        assertTrue(node instanceof ExampleTerminalNode);
+      }
+    } catch (final InitializationException exception) {
+      fail(exception);
+    }
+
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.gp.impl.DefaultTerminalNodeFactory#nodeClasses()}.
    */
   @Test
   public void testNodeClasses() {
-    fail("Not yet implemented");
+    final Set<Class<TerminalNode<Integer>>> classesSet = new HashSet<Class<TerminalNode<Integer>>>();
+
+    try {
+      classesSet.add((Class<TerminalNode<Integer>>) Class
+          .forName("jmona.gp.impl.ExampleTerminalNode"));
+    } catch (final ClassNotFoundException exception) {
+      fail(exception);
+    }
+
+    final DefaultTerminalNodeFactory<Integer> factory = new DefaultTerminalNodeFactory<Integer>(
+        classesSet);
+
+    assertTrue(factory.nodeClasses().contains(ExampleTerminalNode.class));
+    assertEquals(1, factory.nodeClasses().size());
   }
 
 }
