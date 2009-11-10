@@ -53,5 +53,4 @@ public class IntegerNode extends AbstractTerminalNode<Integer> {
   public Integer evaluate() throws EvaluationException {
     return this.value;
   }
-
 }
