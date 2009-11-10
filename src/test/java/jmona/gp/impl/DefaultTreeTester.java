@@ -44,7 +44,7 @@ import org.junit.Test;
 public class DefaultTreeTester {
 
   /** The number of times to choose a random node. */
-  public static final int NUM_TESTS = 1000;
+  public static final int NUM_TESTS = 10000;
 
   /**
    * Print the stack trace of the specified exception and fail the test.
@@ -143,21 +143,34 @@ public class DefaultTreeTester {
     Node<Integer> choice = null;
     Integer numSelections = null;
     for (int i = 0; i < NUM_TESTS; ++i) {
+      // every randomNode() call on a single-Node tree returns the root
       assertSame(this.smallTreeNode, this.smallTree.randomNode());
+      assertSame(this.smallTree.root(), this.smallTree.randomNode());
+      assertSame(this.smallTree.root(), this.smallTreeNode);
 
+      // choose a random node from the non-trivial tree
       choice = this.bigTree.randomNode();
-
-      System.out.println(choice);
-
+      
+      // the result of randomNode() should not be null
       assertNotNull(choice);
+      
+      // ensure the parent of the selected Node makes sense
+      if (choice == this.bigTreeNode1) {
+        assertSame(choice, this.bigTree.root());
+        assertNull(choice.parent());
+      } else {
+        assertTrue(choice == this.bigTreeNode1 || choice == this.bigTreeNode2);
+        assertNotNull(choice.parent());
+      }
 
+      // get the number of times this node has already been selected
       numSelections = selectionsMap.get(choice);
 
-      System.out.println(selectionsMap);
-
+      // increment the number of times this node has already been selected
       selectionsMap.put(choice, numSelections + 1);
     }
 
+    // get the approximate expected number of selections for each node
     final double expected = NUM_TESTS / selectionsMap.size();
     final double epsilon = expected * 0.10;
 
@@ -173,6 +186,9 @@ public class DefaultTreeTester {
   public void testRoot() {
     assertSame(this.bigTreeNode1, this.bigTree.root());
     assertSame(this.smallTreeNode, this.smallTree.root());
+
+    assertNull(this.bigTree.root().parent());
+    assertNull(this.smallTree.root().parent());
   }
 
 }
