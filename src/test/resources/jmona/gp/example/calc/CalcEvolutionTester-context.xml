@@ -31,17 +31,17 @@
     factory-method="createPopulation" />
 
   <bean id="completionCriteria" class="jmona.impl.DefaultCompletionCriteria" >
-    <property name="maxFitness" ref="11" />
+    <property name="maxFitness" value="11" />
     <property name="maxGenerations" value="100" />
   </bean>
 
-  <bean id="evolutionContext" class="jmona.impl.GAEvolutionContext">
+  <bean id="evolutionContext" class="jmona.gp.impl.GPEvolutionContext">
     <constructor-arg>
       <ref bean="population" />
     </constructor-arg>
     <property name="fitnessFunction" ref="fitnessFunction" />
     <property name="crossoverFunction" ref="crossoverFunction" />
-    <property name="mutatorFunction" ref="mutatorFunction" />
+    <property name="mutationFunction" ref="mutationFunction" />
     <property name="selectionFunction" ref="selectionFunction" />
   </bean>
 
