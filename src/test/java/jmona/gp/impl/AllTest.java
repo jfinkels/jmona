@@ -29,8 +29,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jeff
  */
 @RunWith(Suite.class)
-@SuiteClasses({ BinaryNodeTester.class,
-    DefaultFunctionNodeFactoryTester.class,
+@SuiteClasses({ AbstractNodeTester.class, AbstractTreeFactoryTester.class,
+    BinaryNodeTester.class, DefaultFunctionNodeFactoryTester.class,
     DefaultTerminalNodeFactoryTester.class, DefaultTreeTester.class,
     FullTreeFactoryTester.class, GPCrossoverFunctionTester.class,
     GPEvolutionContextTester.class, GPFitnessFunctionTester.class,
