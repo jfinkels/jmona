@@ -55,7 +55,7 @@ public class GrowTreeFactory<V> extends AbstractTreeFactory<V> {
     Node<V> result = null;
 
     if (currentDepth == 1
-        || Util.RANDOM.nextDouble() <= this.probabilityTerminal) {
+        || Util.RANDOM.nextDouble() < this.probabilityTerminal) {
       result = this.terminalNodeFactory().createNode();
     } else {
       // create a function node
@@ -65,8 +65,11 @@ public class GrowTreeFactory<V> extends AbstractTreeFactory<V> {
       final int arity = result.getArity();
 
       // add child trees
+      Node<V> child = null;
       for (int i = 0; i < arity; ++i) {
-        result.children().add(this.createTree(currentDepth - 1));
+        child = this.createTree(currentDepth - 1);
+        child.setParent(result);
+        result.children().add(child);
       }
     }
 
