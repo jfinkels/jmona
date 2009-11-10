@@ -109,41 +109,61 @@ public abstract class AbstractNode<V> implements Node<V> {
    */
   @Override
   public void swapWith(final Node<V> otherNode) {
-    // get the parent nodes
+    // get the parent of the other node before make any changes to it
     final Node<V> otherParent = otherNode.parent();
 
-    // iterate over all siblings of this Node (including this Node)
-    List<Node<V>> siblings = this.parent.children();
-    for (int i = 0; i < siblings.size(); ++i) {
-      if (siblings.get(i) == this) {
-        // remove this Node from the list of its siblings
-        siblings.remove(i);
+    List<Node<V>> siblings = null;
+    
+    // if this node is not the root
+    if (this.parent != null) {
 
-        // insert the other Node where this Node used to be
-        siblings.add(i, otherNode);
+      // get the siblings of this node
+      siblings = this.parent.children();
 
-        // set the parent of the other Node equal to the parent of this Node
-        otherNode.setParent(this.parent);
+      // iterate over all siblings of this Node (including this Node)
+      for (int i = 0; i < siblings.size(); ++i) {
+        
+        // if we have found this node in the list of siblings
+        if (siblings.get(i) == this) {
+        
+          // remove this Node from the list of its siblings
+          siblings.remove(i);
 
-        break;
+          // insert the other Node where this Node used to be
+          siblings.add(i, otherNode);
+
+          break;
+        }
       }
     }
+    
+    // set the parent of the other Node equal to the parent of this Node
+    otherNode.setParent(this.parent);
 
-    // iterate over all siblings of the other Node (including that Node)
-    siblings = otherParent.children();
-    for (int i = 0; i < siblings.size(); ++i) {
-      if (siblings.get(i) == otherNode) {
-        // remove the other Node from the list of its siblings
-        siblings.remove(i);
+    // if the other node was not the root
+    if (otherParent != null) {
 
-        // insert this Node where the other Node used to be
-        siblings.add(i, this);
+      // get the siblings of the other node
+      siblings = otherParent.children();
 
-        // set the parent of this Node equal to the parent of the other Node
-        this.setParent(otherParent);
+      // iterate over all siblings of the other Node (including that Node)
+      for (int i = 0; i < siblings.size(); ++i) {
+        
+        // if we have found the other node in the list of its siblings
+        if (siblings.get(i) == otherNode) {
 
-        break;
+          // remove the other Node from the list of its siblings
+          siblings.remove(i);
+
+          // insert this Node where the other Node used to be
+          siblings.add(i, this);
+
+          break;
+        }
       }
-    }
+    } 
+    
+    // set the parent of this Node equal to the parent of the other Node
+    this.setParent(otherParent);
   }
 }
