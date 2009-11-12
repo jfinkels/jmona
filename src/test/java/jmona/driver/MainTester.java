@@ -20,6 +20,7 @@
 package jmona.driver;
 
 import static org.junit.Assert.assertTrue;
+import jmona.Util;
 
 import org.junit.Test;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
@@ -70,18 +71,6 @@ public class MainTester {
   public static final String CONFIG_TOO_MANY_EC = "--config=src/test/resources/jmona/driver/TooManyEC-context.xml";
 
   /**
-   * Print the stack trace of the specified Throwable cause of the failure, then
-   * fail the current test.
-   * 
-   * @param cause
-   *          The cause for the test failure.
-   */
-  protected static final void fail(final Throwable cause) {
-    cause.printStackTrace(System.err);
-    org.junit.Assert.fail(cause.getMessage());
-  }
-
-  /**
    * Test method for {@link jmona.driver.Main#main(java.lang.String[])} with
    * several PostProcessors.
    */
@@ -102,13 +91,13 @@ public class MainTester {
     } catch (final BeanDefinitionStoreException exception) {
       assertTrue(exception instanceof BeanDefinitionStoreException);
     } catch (final RuntimeException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
     try {
       Main.main(new String[] { CONFIG_FILE_GOOD });
     } catch (final RuntimeException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
   }
 
