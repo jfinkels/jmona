@@ -21,15 +21,16 @@ package jmona.example.monalisa.output;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
 import jmona.ProcessingException;
+import jmona.Util;
 import jmona.example.monalisa.MonaIndividual;
 
-import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,18 +46,6 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 @ContextConfiguration
 public class ImageOutputPostProcessorTester extends
     AbstractJUnit4SpringContextTests {
-
-  /**
-   * Print the stack trace of the specified Throwable cause of the failure, then
-   * fail the current test.
-   * 
-   * @param cause
-   *          The cause for the test failure.
-   */
-  protected static final void fail(final Throwable cause) {
-    cause.printStackTrace(System.err);
-    org.junit.Assert.fail(cause.getMessage());
-  }
 
   /** An EvolutionContext to process. */
   @Autowired
@@ -83,9 +72,9 @@ public class ImageOutputPostProcessorTester extends
       this.evolutionContext.stepGeneration();
       this.processor.process(this.evolutionContext);
     } catch (final ProcessingException exception) {
-      fail(exception);
+      Util.fail(exception);
     } catch (final EvolutionException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
     final File outputFile1 = new File("target/generation0.png");
@@ -110,7 +99,7 @@ public class ImageOutputPostProcessorTester extends
     try {
       this.processor.processAtInterval(null);
     } catch (final ProcessingException exception) {
-      fail(exception);
+      Util.fail(exception);
     } catch (final NullPointerException exception) {
       assertTrue(exception instanceof NullPointerException);
     }
@@ -118,7 +107,7 @@ public class ImageOutputPostProcessorTester extends
     try {
       this.processor.processAtInterval(this.evolutionContext);
     } catch (final ProcessingException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
   }
@@ -143,16 +132,16 @@ public class ImageOutputPostProcessorTester extends
         this.evolutionContext.stepGeneration();
         assertFalse("File should not exist, but does.", outputFile.exists());
       } catch (final ProcessingException exception) {
-        fail(exception);
+        Util.fail(exception);
       } catch (final EvolutionException exception) {
-        fail(exception);
+        Util.fail(exception);
       }
     }
 
     try {
       this.processor.process(this.evolutionContext);
     } catch (final ProcessingException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
     assertTrue(outputFile.exists());
@@ -171,8 +160,7 @@ public class ImageOutputPostProcessorTester extends
 
     try {
       this.processor.processAtInterval(this.evolutionContext);
-      org.junit.Assert
-          .fail("An Exception should have been thrown on the previous line.");
+      fail("An Exception should have been thrown on the previous line.");
     } catch (final ProcessingException exception) {
       // height has not been set
       this.processor.setHeight(1);
@@ -183,8 +171,7 @@ public class ImageOutputPostProcessorTester extends
 
     try {
       this.processor.processAtInterval(this.evolutionContext);
-      org.junit.Assert
-          .fail("An Exception should have been thrown on the previous line.");
+      fail("An Exception should have been thrown on the previous line.");
     } catch (final ProcessingException exception) {
       // width has not been set
       this.processor.setWidth(1);
@@ -193,7 +180,7 @@ public class ImageOutputPostProcessorTester extends
     try {
       this.processor.processAtInterval(this.evolutionContext);
     } catch (final ProcessingException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
   }
 
