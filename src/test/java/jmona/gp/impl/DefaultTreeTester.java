@@ -113,7 +113,7 @@ public class DefaultTreeTester {
       Util.fail(exception);
     }
   }
-
+  
   /**
    * Test method for {@link jmona.gp.impl.DefaultTree#randomNode()}.
    */
@@ -173,7 +173,27 @@ public class DefaultTreeTester {
       assertEquals(expected, count, epsilon);
     }
   }
+  
+  @Test
+  public void swapRandomNodesWith() {
+    fail("Not yet implemented.");
+  }
 
+  @Test
+  public void swapNodes() {
+    fail("Not yet implemented.");
+  }
+  
+  @Test
+  public void swapRandomNodeWithRootOf() {
+    fail("Not yet implemented.");
+  }
+
+  @Test
+  public void swapRandomWith() {
+    fail("Not yet implemented.");
+  }
+  
   /**
    * Test method for {@link jmona.gp.impl.DefaultTree#root()}.
    */
