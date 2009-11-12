@@ -33,6 +33,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import jmona.FitnessException;
+import jmona.Util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -110,17 +111,6 @@ public class MonaFitnessFunctionTester {
   /** A polygon which will be filled white. */
   private Polygon whitePolygon;
 
-  /**
-   * Fail the test with the specified cause, and print its stack trace.
-   * 
-   * @param cause
-   *          The cause of the failure.
-   */
-  protected final void fail(final Throwable cause) {
-    cause.printStackTrace(System.err);
-    org.junit.Assert.fail(cause.getMessage());
-  }
-
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
@@ -141,9 +131,9 @@ public class MonaFitnessFunctionTester {
       this.overlappingImage = ImageIO.read(OVERLAPPING_TESTFILE);
       final BufferedImage bigImage = ImageIO.read(BIG_TESTFILE);
     } catch (final FileNotFoundException exception) {
-      fail(exception);
+      Util.fail(exception);
     } catch (final IOException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
   }
@@ -200,7 +190,7 @@ public class MonaFitnessFunctionTester {
     try {
       this.function.setTargetImage(this.colorsImage);
     } catch (final InterruptedException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
     final MonaIndividual individual = new MonaIndividual();
@@ -226,7 +216,7 @@ public class MonaFitnessFunctionTester {
     try {
       fitness = this.function.fitness(individual);
     } catch (final FitnessException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
     final double epsilon = 0.0;
@@ -236,7 +226,7 @@ public class MonaFitnessFunctionTester {
     try {
       fitness = this.function.fitness(individual2);
     } catch (final FitnessException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
     assertNotSame(0, fitness);
@@ -252,7 +242,7 @@ public class MonaFitnessFunctionTester {
     try {
       this.function.setTargetImage(this.overlappingImage);
     } catch (final InterruptedException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
     final Polygon redBox = new Polygon(ALL_COLUMNS, BOTH_ROWS, NUM_POINTS);
@@ -270,7 +260,7 @@ public class MonaFitnessFunctionTester {
     try {
       fitness = this.function.fitness(individual);
     } catch (final FitnessException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
     // TODO there is some non-deterministic behavior here... sometimes the

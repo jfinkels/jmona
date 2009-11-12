@@ -22,11 +22,13 @@ package jmona.example.monalisa;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.awt.Color;
 import java.awt.Polygon;
 
 import jmona.MutationException;
+import jmona.Util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -43,23 +45,10 @@ public class MonaMutationFunctionTester {
   /** The width of the bounding rectangle. */
   public static final int WIDTH = 100;
 
-  /**
-   * Print the stack trace of the specified exception and fail the test.
-   * 
-   * @param cause
-   *          The exception which caused the test failure.
-   */
-  protected static final void fail(final Throwable cause) {
-    cause.printStackTrace(System.err);
-    org.junit.Assert.fail(cause.getMessage());
-  }
-
   /** A color used for testing. */
   private Color color = null;
-
   /** The function under test. */
   private MonaMutationFunction function = null;
-
   /** A polygon used for testing. */
   private Polygon polygon = null;
 
@@ -84,8 +73,7 @@ public class MonaMutationFunctionTester {
     this.function.setWidth(-1);
     try {
       this.function.mutate(new MonaIndividual());
-      org.junit.Assert
-          .fail("Exception should have been thrown on the previous line.");
+      fail("Exception should have been thrown on the previous line.");
     } catch (final MutationException exception) {
       assertTrue(exception instanceof MutationException);
     }
@@ -93,8 +81,7 @@ public class MonaMutationFunctionTester {
     this.function.setHeight(-1);
     try {
       this.function.mutate(new MonaIndividual());
-      org.junit.Assert
-          .fail("Exception should have been thrown on the previous line.");
+      fail("Exception should have been thrown on the previous line.");
     } catch (final MutationException exception) {
       assertTrue(exception instanceof MutationException);
     }
@@ -102,8 +89,7 @@ public class MonaMutationFunctionTester {
     this.function.setWidth(WIDTH);
     try {
       this.function.mutate(new MonaIndividual());
-      org.junit.Assert
-          .fail("Exception should have been thrown on the previous line.");
+      fail("Exception should have been thrown on the previous line.");
     } catch (final MutationException exception) {
       assertTrue(exception instanceof MutationException);
     }
@@ -134,7 +120,7 @@ public class MonaMutationFunctionTester {
     try {
       this.function.mutate(individual);
     } catch (final MutationException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
     final Polygon mutantPolygon = (Polygon) individual.gene().keySet()
@@ -194,7 +180,7 @@ public class MonaMutationFunctionTester {
     try {
       this.function.mutate(individual);
     } catch (final MutationException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
     final Polygon mutantPolygon = individual.gene().keySet().toArray(

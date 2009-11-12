@@ -28,6 +28,7 @@ import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
 import jmona.Population;
+import jmona.Util;
 import jmona.example.monalisa.output.ImageWriter;
 
 import org.apache.log4j.Logger;
@@ -52,17 +53,6 @@ public class MonaEvolutionContextTester extends
 
   /** The filename at which to write a test image. */
   public static final String OUTPUT_FILENAME = "target/final.png";
-
-  /**
-   * Print the stack trace of the specified exception and fail the test.
-   * 
-   * @param exception
-   *          The exception which caused the test failure.
-   */
-  protected static void fail(final Throwable exception) {
-    exception.printStackTrace(System.err);
-    org.junit.Assert.fail(exception.getMessage());
-  }
 
   /**
    * Get the completion criteria for this evolution from the Spring XML
@@ -97,9 +87,9 @@ public class MonaEvolutionContextTester extends
         LOG.debug("Current generation: " + this.context.currentGeneration());
       }
     } catch (final CompletionException exception) {
-      fail(exception);
+      Util.fail(exception);
     } catch (final EvolutionException exception) {
-      fail(exception);
+      Util.fail(exception);
     } finally {
       // get the population at the last generation of the evolution
       final Population<MonaIndividual> currentPopulation = this.context
@@ -116,7 +106,7 @@ public class MonaEvolutionContextTester extends
       try {
         ImageWriter.writeImage(image, OUTPUT_FILENAME);
       } catch (final IOException exception) {
-        fail(exception);
+        Util.fail(exception);
       }
     }
   }
