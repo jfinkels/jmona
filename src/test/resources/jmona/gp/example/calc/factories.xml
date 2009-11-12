@@ -47,7 +47,6 @@
   </bean>
     
   <bean id="individualFactory" class="jmona.gp.impl.GrowTreeFactory">
-    <property name="treeClass" value="jmona.gp.impl.DefaultTree" />
     <property name="probabilityTerminal" value="0.1" />
     <property name="functionNodeFactory" ref="functionNodeFactory" />
     <property name="terminalNodeFactory" ref="terminalNodeFactory" />
