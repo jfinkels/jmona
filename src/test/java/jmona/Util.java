@@ -1,5 +1,5 @@
 /**
- * AllTest.java
+ * Util.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -19,20 +19,26 @@
  */
 package jmona;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
-
 /**
- * Runs all tests in this package.
+ * Utilities for testing, including a method which fails a test after outputting
+ * an Exception's message.
  * 
- * @author jeff
+ * @author jfinkels
  */
-@RunWith(Suite.class)
-@SuiteClasses({ CompletionExceptionTester.class,
-    EvolutionExceptionTester.class, FitnessExceptionTester.class,
-    InitializationExceptionTester.class, MutationExceptionTester.class,
-    ProcessingExceptionTester.class, UtilTester.class })
-public class AllTest {
+public class Util {
+  /**
+   * Print the stack trace of the specified exception and fail the test.
+   * 
+   * @param exception
+   *          The exception which caused the test failure.
+   */
+  public static void fail(final Throwable exception) {
+    exception.printStackTrace(System.err);
+    org.junit.Assert.fail(exception.getMessage());
+  }
 
+  /** Instantiation disallowed except by subclasses. */
+  protected Util() {
+    // intentionally unimplemented
+  }
 }

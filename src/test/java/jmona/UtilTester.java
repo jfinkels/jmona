@@ -1,5 +1,5 @@
 /**
- * AllTest.java
+ * UtilTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -19,20 +19,27 @@
  */
 package jmona;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 /**
- * Runs all tests in this package.
+ * Test class for the testing utility class.
  * 
- * @author jeff
+ * @author jfinkels
  */
-@RunWith(Suite.class)
-@SuiteClasses({ CompletionExceptionTester.class,
-    EvolutionExceptionTester.class, FitnessExceptionTester.class,
-    InitializationExceptionTester.class, MutationExceptionTester.class,
-    ProcessingExceptionTester.class, UtilTester.class })
-public class AllTest {
+public class UtilTester {
+
+  /**
+   * Test method for {@link jmona.Util#fail(java.lang.Throwable)}.
+   */
+  @Test
+  public void testFail() {
+    try {
+      Util.fail(new Exception());
+    } catch (final AssertionError error) {
+      assertTrue(error instanceof AssertionError);
+    }
+  }
 
 }
