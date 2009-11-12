@@ -19,45 +19,76 @@
  */
 package jmona.gp;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 /**
- * @author jfinkels
+ * Test class for the EvaluationException class.
+ * 
+ * @author jeff
  */
 public class EvaluationExceptionTester {
 
   /**
-   * Test method for {@link jmona.gp.EvaluationException#EvaluationException()}.
+   * Test method for {@link jmona.EvaluationException#EvaluationException()}.
    */
   @Test
   public void testEvaluationException() {
-    fail("Not yet implemented");
+    try {
+      throw new EvaluationException();
+    } catch (final EvaluationException exception) {
+      assertTrue(exception instanceof EvaluationException);
+    }
   }
 
   /**
-   * Test method for {@link jmona.gp.EvaluationException#EvaluationException(java.lang.String)}.
+   * Test method for
+   * {@link jmona.EvaluationException#EvaluationException(java.lang.String)}.
    */
   @Test
   public void testEvaluationExceptionString() {
-    fail("Not yet implemented");
+    final String message = "Hello, world!";
+    try {
+      throw new EvaluationException(message);
+    } catch (final EvaluationException exception) {
+      assertTrue(exception instanceof EvaluationException);
+      assertSame(message, exception.getMessage());
+    }
   }
 
   /**
-   * Test method for {@link jmona.gp.EvaluationException#EvaluationException(java.lang.Throwable)}.
-   */
-  @Test
-  public void testEvaluationExceptionThrowable() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.gp.EvaluationException#EvaluationException(java.lang.String, java.lang.Throwable)}.
+   * Test method for
+   * {@link jmona.EvaluationException#EvaluationException(java.lang.String, java.lang.Throwable)}
+   * .
    */
   @Test
   public void testEvaluationExceptionStringThrowable() {
-    fail("Not yet implemented");
+    final Throwable cause = new Exception();
+    final String message = "Hello, world!";
+    try {
+      throw new EvaluationException(message, cause);
+    } catch (final EvaluationException exception) {
+      assertTrue(exception instanceof EvaluationException);
+      assertSame(cause, exception.getCause());
+      assertSame(message, exception.getMessage());
+    }
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.EvaluationException#EvaluationException(java.lang.Throwable)}.
+   */
+  @Test
+  public void testEvaluationExceptionThrowable() {
+    final Throwable cause = new Exception();
+    try {
+      throw new EvaluationException(cause);
+    } catch (final EvaluationException exception) {
+      assertTrue(exception instanceof EvaluationException);
+      assertSame(cause, exception.getCause());
+    }
   }
 
 }
