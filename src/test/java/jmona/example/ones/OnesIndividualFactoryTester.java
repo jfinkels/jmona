@@ -22,6 +22,7 @@ package jmona.example.ones;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import jmona.InitializationException;
+import jmona.Util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -51,8 +52,7 @@ public class OnesIndividualFactoryTester {
     try {
       this.factory.createIndividual();
     } catch (final InitializationException exception) {
-      exception.printStackTrace(System.err);
-      fail(exception.getMessage());
+      Util.fail(exception);
     }
   }
 
@@ -66,8 +66,7 @@ public class OnesIndividualFactoryTester {
     try {
       individual = this.factory.createIndividual();
     } catch (final InitializationException exception) {
-      exception.printStackTrace(System.err);
-      fail(exception.getMessage());
+      Util.fail(exception);
     }
 
     assertEquals(OnesIndividualFactory.DEFAULT_LENGTH, individual.gene().length);

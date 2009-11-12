@@ -23,6 +23,7 @@ import jmona.CompletionCriteria;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
+import jmona.Util;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -42,18 +43,7 @@ public class OnesEvolutionContextTester extends
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger
       .getLogger(OnesEvolutionContextTester.class);
-
-  /**
-   * Print the stack trace of the specified exception and fail the test.
-   * 
-   * @param exception
-   *          The exception which caused the test failure.
-   */
-  protected static void fail(final Throwable exception) {
-    exception.printStackTrace(System.err);
-    org.junit.Assert.fail(exception.getMessage());
-  }
-
+  
   /**
    * Get the completion criteria for this evolution from the Spring XML
    * configuration file.
@@ -74,11 +64,11 @@ public class OnesEvolutionContextTester extends
         LOG.debug(this.context.currentPopulation());
       }
     } catch (NullPointerException exception) {
-      fail(exception);
+      Util.fail(exception);
     } catch (final CompletionException exception) {
-      fail(exception);
+      Util.fail(exception);
     } catch (final EvolutionException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
   }
 }
