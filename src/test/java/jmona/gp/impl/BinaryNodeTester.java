@@ -23,6 +23,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import jmona.gp.EvaluationException;
 import jmona.gp.TerminalNode;
+import jmona.gp.impl.example.ExampleBinaryOperation;
+import jmona.gp.impl.example.IntegerNode;
+import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -38,21 +41,11 @@ public class BinaryNodeTester {
   public static final int LEFT_VALUE = 1;
   /** The value for the right child Node. */
   public static final int RIGHT_VALUE = 2;
-  /**
-   * Print the stack trace of the specified exception and fail the test.
-   * 
-   * @param exception
-   *          The exception which caused the test failure.
-   */
-  protected static void fail(final Throwable exception) {
-    exception.printStackTrace(System.err);
-    org.junit.Assert.fail(exception.getMessage());
-  }
+
   /** The left child Node. */
   private TerminalNode<Integer> leftChild = null;
   /** The BinaryNode under test. */
   private BinaryNode<Integer> node = null;
-
   /** The right child Node. */
   private TerminalNode<Integer> rightChild = null;
 
@@ -82,16 +75,16 @@ public class BinaryNodeTester {
       assertEquals(LEFT_VALUE - RIGHT_VALUE, result);
 
     } catch (final EvaluationException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
   }
 
   /**
-   * Test method for {@link jmona.gp.impl.BinaryNode#getArity()}.
+   * Test method for {@link jmona.gp.impl.BinaryNode#arity()}.
    */
   @Test
   public void testGetArity() {
-    assertEquals(BinaryNode.ARITY, this.node.getArity());
+    assertEquals(BinaryNode.ARITY, this.node.arity());
   }
 
   /**

@@ -28,8 +28,8 @@ import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
 import jmona.Population;
-import jmona.Util;
 import jmona.example.monalisa.output.ImageWriter;
+import jmona.test.Util;
 
 import org.apache.log4j.Logger;
 import org.junit.After;

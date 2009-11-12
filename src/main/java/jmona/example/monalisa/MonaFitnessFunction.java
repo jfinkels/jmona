@@ -39,16 +39,12 @@ public class MonaFitnessFunction implements FitnessFunction<MonaIndividual> {
 
   /** The location of the alpha value of a pixel packed in an int. */
   public static final int ALPHA = 8 * 3;
-
   /** The location of the blue value of a pixel packed in an int. */
   public static final int BLUE = 8 * 0;
-
   /** A bit mask for a single byte. */
   public static final int BYTE_MASK = 0xFF;
-
   /** The location of the green value of a pixel packed in an int. */
   public static final int GREEN = 8 * 1;
-
   /** The location of the red value of a pixel packed in an int. */
   public static final int RED = 8 * 2;
 
@@ -91,7 +87,6 @@ public class MonaFitnessFunction implements FitnessFunction<MonaIndividual> {
   private int imageHeight = 0;
   /** The width of the target image. */
   private int imageWidth = 0;
-
   /** The target image with which to compare individuals. */
   private int[] targetPixels = null;
 

@@ -17,9 +17,15 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona;
+package jmona.test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import jmona.InitializationException;
+import jmona.gp.Tree;
+import jmona.gp.TreeFactory;
+import jmona.gp.impl.AbstractTreeFactory;
+import jmona.gp.impl.example.ExampleTreeFactory;
 
 import org.junit.Test;
 
@@ -31,7 +37,7 @@ import org.junit.Test;
 public class UtilTester {
 
   /**
-   * Test method for {@link jmona.Util#fail(java.lang.Throwable)}.
+   * Test method for {@link jmona.test.Util#fail(java.lang.Throwable)}.
    */
   @Test
   public void testFail() {
@@ -40,6 +46,25 @@ public class UtilTester {
     } catch (final AssertionError error) {
       assertTrue(error instanceof AssertionError);
     }
+  }
+
+  /**
+   * Test method for {@link jmona.test.Util#countNodes(jmona.gp.Tree)}.
+   */
+  @Test
+  public void testCountNodes() {
+    final TreeFactory<Integer> factory = new ExampleTreeFactory();
+
+    Tree<Integer> tree = null;
+    try {
+      tree = factory.createIndividual();
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+
+    final double epsilon = 0;
+    assertEquals(Math.pow(2, AbstractTreeFactory.DEFAULT_MAX_DEPTH) - 1,
+        Util.countNodes(tree), epsilon);
   }
 
 }

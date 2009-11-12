@@ -63,8 +63,7 @@ public class GPMutationFunction<V> implements MutationFunction<Tree<V>> {
   @Override
   public void mutate(final Tree<V> individual) throws MutationException {
     try {
-      individual.randomNode().replaceThisNodeWith(
-          this.treeFactory.createIndividual());
+      individual.swapRandomNodeWithRootOf(this.treeFactory.createIndividual());
     } catch (final InitializationException exception) {
       throw new MutationException("Failed to generate a random subtree.",
           exception);

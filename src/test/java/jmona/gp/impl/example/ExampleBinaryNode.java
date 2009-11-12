@@ -17,7 +17,9 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.gp.impl;
+package jmona.gp.impl.example;
+
+import jmona.gp.impl.BinaryNode;
 
 /**
  * An example BinaryNode for use in testing which utilizes the

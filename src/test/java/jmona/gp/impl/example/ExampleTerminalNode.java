@@ -1,5 +1,5 @@
 /**
- * EuclideanMetricTester.java
+ * ExampleTerminalNode.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,33 +17,18 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.gp.impl.metrics;
+package jmona.gp.impl.example;
 
-import jmona.gp.impl.metrics.EuclideanMetric;
-
-import org.junit.Before;
+import jmona.impl.Util;
 
 /**
- * Test class for the EuclideanMetric class.
+ * An example TerminalNode with a random integer value.
  * 
  * @author jfinkels
  */
-public class EuclideanMetricTester extends
-    AbstractMetricTester<EuclideanMetric, Double> {
-
-  /** The x value for this test. */
-  public static final double X = 1.0;
-  /** The y value for this test. */
-  public static final double Y = 2.0;
-  /** The z value for this test. */
-  public static final double Z = -3.0;
-
-  /** Establish a fixture for tests in this class. */
-  @Before
-  public final void setUp() {
-    this.setMetric(new EuclideanMetric());
-    this.setX(X);
-    this.setY(Y);
-    this.setZ(Z);
+public class ExampleTerminalNode extends IntegerNode {
+  /** Instantiate this Node with a random integer value. */
+  public ExampleTerminalNode() {
+    super(Util.RANDOM.nextInt());
   }
 }

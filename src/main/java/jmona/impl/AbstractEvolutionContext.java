@@ -91,21 +91,21 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * The necessary properties are the FitnessFunction, the MutationFunction, the
    * SelectionFunction, and the CrossoverFunction.
    * 
-   * @throws EvolutionException
+   * @throws NullPointerException
    *           If any of the necessary properties have not been set.
    */
-  protected void sanityCheck() throws EvolutionException {
+  protected void sanityCheck() {
     if (this.fitnessFunction() == null) {
-      throw new EvolutionException("Fitness function has not been set.");
+      throw new NullPointerException("Fitness function has not been set.");
     }
     if (this.mutationFunction() == null) {
-      throw new EvolutionException("Mutation function has not been set.");
+      throw new NullPointerException("Mutation function has not been set.");
     }
     if (this.selectionFunction() == null) {
-      throw new EvolutionException("Selection function has not been set.");
+      throw new NullPointerException("Selection function has not been set.");
     }
     if (this.crossoverFunction() == null) {
-      throw new EvolutionException("Crossover function has not been set.");
+      throw new NullPointerException("Crossover function has not been set.");
     }
   }
 

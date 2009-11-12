@@ -61,7 +61,11 @@ public class GAEvolutionContext<T extends Individual> extends
   @Override
   public void stepGeneration() throws EvolutionException {
     // perform a sanity check (i.e. make sure there are no null properties)
-    this.sanityCheck();
+    try {
+      this.sanityCheck();
+    } catch (final NullPointerException exception) {
+      throw new EvolutionException("Sanity check failed.", exception);
+    }
 
     // instantiate a population which will represent the next generation
     final Population<T> nextPopulation = new DefaultPopulation<T>();

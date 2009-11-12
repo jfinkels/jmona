@@ -28,7 +28,7 @@ import java.awt.Color;
 import java.awt.Polygon;
 
 import jmona.MutationException;
-import jmona.Util;
+import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;

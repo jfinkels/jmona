@@ -1,5 +1,5 @@
 /**
- * ExampleTerminalNode.java
+ * ExampleFunctionNodeFactory.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,18 +17,26 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.gp.impl;
+package jmona.gp.impl.example;
 
-import jmona.impl.Util;
+import jmona.InitializationException;
+import jmona.gp.FunctionNode;
+import jmona.gp.FunctionNodeFactory;
 
 /**
- * An example TerminalNode with a random integer value.
- * 
  * @author jfinkels
  */
-public class ExampleTerminalNode extends IntegerNode {
-  /** Instantiate this Node with a random integer value. */
-  public ExampleTerminalNode() {
-    super(Util.RANDOM.nextInt());
+public class ExampleFunctionNodeFactory implements FunctionNodeFactory<Integer> {
+
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see jmona.gp.NodeFactory#createNode()
+   */
+  @Override
+  public FunctionNode<Integer> createNode() throws InitializationException {
+    return new ExampleBinaryNode();
   }
+
 }

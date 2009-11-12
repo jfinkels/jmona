@@ -1,5 +1,5 @@
 /**
- * ExampleBinaryOperation.java
+ * ExampleTerminalNodeFactory.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,30 +17,25 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.gp.impl;
+package jmona.gp.impl.example;
+
+import jmona.InitializationException;
+import jmona.gp.TerminalNode;
+import jmona.gp.TerminalNodeFactory;
 
 /**
- * An example BinaryOperation which returns the difference between two integers.
- * 
  * @author jfinkels
  */
-public class ExampleBinaryOperation implements
-    BinaryOperation<Integer, Integer, Integer> {
+public class ExampleTerminalNodeFactory implements TerminalNodeFactory<Integer> {
 
-  /**
-   * Get the difference between the two specified integers.
+  /*
+   * (non-Javadoc)
    * 
-   * @param leftObject
-   *          The subtrahend.
-   * @param rightObject
-   *          The minuend.
-   * @return The difference between the two specified integers.
-   * @see jmona.gp.impl.BinaryOperation#operate(java.lang.Object,
-   *      java.lang.Object)
+   * @see jmona.gp.NodeFactory#createNode()
    */
   @Override
-  public Integer operate(final Integer leftObject, final Integer rightObject) {
-    return leftObject - rightObject;
+  public TerminalNode<Integer> createNode() throws InitializationException {
+    return new ExampleTerminalNode();
   }
 
 }

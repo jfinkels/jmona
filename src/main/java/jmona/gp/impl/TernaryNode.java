@@ -65,10 +65,10 @@ public class TernaryNode<V> extends AbstractFunctionNode<V> {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.gp.Node#getArity()
+   * @see jmona.gp.Node#arity()
    */
   @Override
-  public int getArity() {
+  public int arity() {
     return ARITY;
   }
 

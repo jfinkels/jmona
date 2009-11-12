@@ -19,37 +19,68 @@
  */
 package jmona.gp.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+import jmona.gp.EvaluationException;
+import jmona.gp.Node;
+import jmona.gp.impl.example.ExampleTernaryNode;
+import jmona.gp.impl.example.IntegerNode;
+import jmona.test.Util;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the TernaryNode class.
+ * 
  * @author jfinkels
  */
 public class TernaryNodeTester {
 
-  /**
-   * Test method for {@link jmona.gp.impl.TernaryNode#TernaryNode(jmona.gp.impl.TernaryOperation)}.
-   */
-  @Test
-  public void testTernaryNode() {
-    fail("Not yet implemented");
+  /** The value of the left child Node. */
+  public static final int LEFT_VALUE = 1;
+  /** The value of the middle child Node. */
+  public static final int MIDDLE_VALUE = 2;
+  /** The value of the right child Node. */
+  public static final int RIGHT_VALUE = 3;
+  /** The left child Node. */
+  private Node<Integer> leftChild = null;
+  /** The middle child Node. */
+  private Node<Integer> middleChild = null;
+  /** The Node under test. */
+  private TernaryNode<Integer> node = null;
+  /** The right child Node. */
+  private Node<Integer> rightChild = null;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.node = new ExampleTernaryNode();
+    this.leftChild = new IntegerNode(LEFT_VALUE);
+    this.middleChild = new IntegerNode(MIDDLE_VALUE);
+    this.rightChild = new IntegerNode(RIGHT_VALUE);
   }
 
   /**
-   * Test method for {@link jmona.gp.impl.TernaryNode#evaluate(java.lang.Object[])}.
+   * Test method for {@link jmona.gp.impl.TernaryNode#arity()}.
+   */
+  @Test
+  public void testArity() {
+    assertEquals(3, this.node.arity());
+    assertEquals(TernaryNode.ARITY, this.node.arity());
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.gp.impl.TernaryNode#evaluate(java.lang.Object[])}.
    */
   @Test
   public void testEvaluate() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.gp.impl.TernaryNode#getArity()}.
-   */
-  @Test
-  public void testGetArity() {
-    fail("Not yet implemented");
+    try {
+      assertEquals(LEFT_VALUE + MIDDLE_VALUE + RIGHT_VALUE, this.node.evaluate().intValue());
+    } catch (final EvaluationException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
@@ -57,7 +88,7 @@ public class TernaryNodeTester {
    */
   @Test
   public void testLeft() {
-    fail("Not yet implemented");
+    assertSame(this.leftChild, this.node.left());
   }
 
   /**
@@ -65,7 +96,7 @@ public class TernaryNodeTester {
    */
   @Test
   public void testMiddle() {
-    fail("Not yet implemented");
+    assertSame(this.middleChild, this.node.middle());
   }
 
   /**
@@ -73,7 +104,7 @@ public class TernaryNodeTester {
    */
   @Test
   public void testRight() {
-    fail("Not yet implemented");
+    assertSame(this.rightChild, this.node.right());
   }
 
 }

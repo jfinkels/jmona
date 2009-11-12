@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona;
+package jmona.impl.metrics;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -29,10 +29,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jeff
  */
 @RunWith(Suite.class)
-@SuiteClasses({ CompletionExceptionTester.class,
-    EvolutionExceptionTester.class, FitnessExceptionTester.class,
-    InitializationExceptionTester.class, MutationExceptionTester.class,
-    ProcessingExceptionTester.class })
+@SuiteClasses({ EuclideanMetricTester.class })
 public class AllTest {
 
 }

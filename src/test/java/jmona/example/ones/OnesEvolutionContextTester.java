@@ -23,7 +23,7 @@ import jmona.CompletionCriteria;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
-import jmona.Util;
+import jmona.test.Util;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;

@@ -44,7 +44,7 @@ public class GPCrossoverFunction<V> implements CrossoverFunction<Tree<V>> {
    */
   @Override
   public void crossover(final Tree<V> parent1, final Tree<V> parent2) {
-    parent1.randomNode().swapWith(parent2.randomNode());
+    parent1.swapRandomNodesWith(parent2);
   }
 
 }

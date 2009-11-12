@@ -19,21 +19,64 @@
  */
 package jmona.gp.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import jmona.InitializationException;
+import jmona.gp.EvaluationException;
+import jmona.gp.FunctionNodeFactory;
+import jmona.gp.Node;
+import jmona.gp.TerminalNode;
+import jmona.gp.TerminalNodeFactory;
+import jmona.gp.Tree;
+import jmona.gp.impl.example.ExampleFunctionNodeFactory;
+import jmona.gp.impl.example.ExampleTerminalNodeFactory;
+import jmona.gp.impl.example.ExampleTreeFactory;
+import jmona.test.Util;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the AbstractTreeFactory class.
+ * 
  * @author jfinkels
  */
 public class AbstractTreeFactoryTester {
+  /** The number of times to create an Individual. */
+  public static final int NUM_TESTS = 100;
+
+  /** The AbstractTreeFactory under test. */
+  private AbstractTreeFactory<Integer> factory = null;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.factory = new ExampleTreeFactory();
+  }
 
   /**
-   * Test method for {@link jmona.gp.impl.AbstractTreeFactory#createIndividual()}.
+   * Test method for
+   * {@link jmona.gp.impl.AbstractTreeFactory#createIndividual()}.
    */
   @Test
   public void testCreateIndividual() {
-    fail("Not yet implemented");
+    try {
+
+      Tree<Integer> individual = null;
+      for (int i = 0; i < NUM_TESTS; ++i) {
+        individual = this.factory.createIndividual();
+      }
+
+      assertTrue(individual instanceof DefaultTree<?>);
+      assertTrue(individual.evaluate() instanceof Integer);
+
+    } catch (final EvaluationException exception) {
+      Util.fail(exception);
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
@@ -41,15 +84,48 @@ public class AbstractTreeFactoryTester {
    */
   @Test
   public void testCreateTree() {
-    fail("Not yet implemented");
+
+    try {
+      this.factory.createTree(0);
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+
+    Node<Integer> node = null;
+    try {
+      node = this.factory.createTree(1);
+      assertNull(node.children());
+      assertTrue(node instanceof TerminalNode<?>);
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+
+    try {
+      node = this.factory.createTree(2);
+      assertEquals(2, node.children().size());
+      assertEquals(node.arity(), node.children().size());
+
+      assertNull(node.children().get(0).children());
+      assertTrue(node.children().get(0) instanceof TerminalNode<?>);
+
+      assertNull(node.children().get(1).children());
+      assertTrue(node.children().get(1) instanceof TerminalNode<?>);
+
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+
   }
 
   /**
-   * Test method for {@link jmona.gp.impl.AbstractTreeFactory#functionNodeFactory()}.
+   * Test method for
+   * {@link jmona.gp.impl.AbstractTreeFactory#functionNodeFactory()}.
    */
   @Test
   public void testFunctionNodeFactory() {
-    fail("Not yet implemented");
+    assertNull(this.factory.functionNodeFactory());
+
+    this.factory.setFunctionNodeFactory(new ExampleFunctionNodeFactory());
   }
 
   /**
@@ -57,55 +133,67 @@ public class AbstractTreeFactoryTester {
    */
   @Test
   public void testMaxDepth() {
-    fail("Not yet implemented");
+    assertEquals(AbstractTreeFactory.DEFAULT_MAX_DEPTH, this.factory.maxDepth());
+
+    final int newMaxDepth = 10;
+
+    this.factory.setMaxDepth(newMaxDepth);
+    assertEquals(newMaxDepth, this.factory.maxDepth());
   }
 
   /**
-   * Test method for {@link jmona.gp.impl.AbstractTreeFactory#setFunctionNodeFactory(jmona.gp.FunctionNodeFactory)}.
+   * Test method for
+   * {@link jmona.gp.impl.AbstractTreeFactory#setFunctionNodeFactory(jmona.gp.FunctionNodeFactory)}
+   * .
    */
   @Test
   public void testSetFunctionNodeFactory() {
-    fail("Not yet implemented");
+    assertNull(this.factory.functionNodeFactory());
+    final FunctionNodeFactory<Integer> nodeFactory = new ExampleFunctionNodeFactory();
+    this.factory.setFunctionNodeFactory(nodeFactory);
+    assertSame(nodeFactory, this.factory.functionNodeFactory());
   }
 
   /**
-   * Test method for {@link jmona.gp.impl.AbstractTreeFactory#setMaxDepth(int)}.
-   */
-  @Test
-  public void testSetMaxDepth() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.gp.impl.AbstractTreeFactory#setTerminalNodeFactory(jmona.gp.TerminalNodeFactory)}.
+   * Test method for
+   * {@link jmona.gp.impl.AbstractTreeFactory#setTerminalNodeFactory(jmona.gp.TerminalNodeFactory)}
+   * .
    */
   @Test
   public void testSetTerminalNodeFactory() {
-    fail("Not yet implemented");
+    assertNull(this.factory.terminalNodeFactory());
+    final TerminalNodeFactory<Integer> nodeFactory = new ExampleTerminalNodeFactory();
+    this.factory.setTerminalNodeFactory(nodeFactory);
+    assertSame(nodeFactory, this.factory.terminalNodeFactory());
   }
 
-  /**
-   * Test method for {@link jmona.gp.impl.AbstractTreeFactory#setTreeClass(java.lang.Class)}.
-   */
+  /** Test for a factory method which throws an Exception. */
   @Test
-  public void testSetTreeClass() {
-    fail("Not yet implemented");
-  }
+  public void testThrownException() {
+    final AbstractTreeFactory<Integer> badFactory = new AbstractTreeFactory<Integer>() {
+      /**
+       * Always throws an InitializationException.
+       * 
+       * @param currentDepth
+       *          This parameter is ignored.
+       * @return Never returns anything.
+       * @throws InitializationException
+       *           Always throws this Exception.
+       */
+      @Override
+      protected Node<Integer> createTree(final int currentDepth)
+          throws InitializationException {
+        throw new InitializationException();
+      }
+    };
 
-  /**
-   * Test method for {@link jmona.gp.impl.AbstractTreeFactory#terminalNodeFactory()}.
-   */
-  @Test
-  public void testTerminalNodeFactory() {
-    fail("Not yet implemented");
-  }
+    try {
+      badFactory.createIndividual();
+      org.junit.Assert
+          .fail("Exception should have been thrown on the previous line.");
+    } catch (final InitializationException exception) {
+      assertTrue(exception instanceof InitializationException);
+    }
 
-  /**
-   * Test method for {@link jmona.gp.impl.AbstractTreeFactory#treeClass()}.
-   */
-  @Test
-  public void testTreeClass() {
-    fail("Not yet implemented");
   }
-
 }

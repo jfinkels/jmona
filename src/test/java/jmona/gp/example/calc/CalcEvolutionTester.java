@@ -23,9 +23,9 @@ import jmona.CompletionCriteria;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
-import jmona.Util;
 import jmona.gp.Tree;
 import jmona.gp.example.calc.functions.SingleInputFunction;
+import jmona.test.Util;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

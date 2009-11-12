@@ -19,53 +19,48 @@
  */
 package jmona.gp.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import jmona.gp.impl.example.IntegerNode;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the AbstractNode class.
+ * 
  * @author jfinkels
  */
 public class AbstractNodeTester {
+
+  /** The Node under test. */
+  private AbstractNode<Integer> node = null;
+  /** A parent Node for the Node under test. */
+  private AbstractNode<Integer> parent = null;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.node = new IntegerNode(1);
+    this.parent = new IntegerNode(0);
+  }
 
   /**
    * Test method for {@link jmona.gp.impl.AbstractNode#parent()}.
    */
   @Test
   public void testParent() {
-    fail("Not yet implemented");
+    assertNull(this.node.parent());
   }
 
   /**
-   * Test method for {@link jmona.gp.impl.AbstractNode#replaceThisNodeWith(jmona.gp.Node)}.
-   */
-  @Test
-  public void testReplaceThisNodeWithNodeOfV() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.gp.impl.AbstractNode#replaceThisNodeWith(jmona.gp.Tree)}.
-   */
-  @Test
-  public void testReplaceThisNodeWithTreeOfV() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.gp.impl.AbstractNode#setParent(jmona.gp.Node)}.
+   * Test method for {@link jmona.gp.impl.AbstractNode#setParent(jmona.gp.Node)}
+   * .
    */
   @Test
   public void testSetParent() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.gp.impl.AbstractNode#swapWith(jmona.gp.Node)}.
-   */
-  @Test
-  public void testSwapWith() {
-    fail("Not yet implemented");
+    this.node.setParent(this.parent);
+    assertSame(this.parent, this.node.parent());
   }
 
 }

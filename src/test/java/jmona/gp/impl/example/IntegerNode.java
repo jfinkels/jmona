@@ -17,9 +17,10 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.gp.impl;
+package jmona.gp.impl.example;
 
 import jmona.gp.EvaluationException;
+import jmona.gp.impl.AbstractTerminalNode;
 
 /**
  * An example TerminalNode which contains an integer value.
@@ -52,5 +53,10 @@ public class IntegerNode extends AbstractTerminalNode<Integer> {
   @Override
   public Integer evaluate() throws EvaluationException {
     return this.value;
+  }
+  
+  @Override
+  public String toString() {
+    return String.valueOf(this.value);
   }
 }

@@ -19,25 +19,68 @@
  */
 package jmona.gp.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import jmona.MutationException;
+import jmona.gp.EvaluationException;
+import jmona.gp.Tree;
+import jmona.gp.impl.example.ExampleTerminalNode;
+import jmona.gp.impl.example.ExampleTreeFactory;
+import jmona.test.Util;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the GPMutationFunction class.
+ * 
  * @author jfinkels
  */
 public class GPMutationFunctionTester {
 
-  /**
-   * Test method for {@link jmona.gp.impl.GPMutationFunction#setTreeFactory(jmona.gp.TreeFactory)}.
-   */
-  @Test
-  public void testSetTreeFactory() {
-    fail("Not yet implemented");
+  /** The GPMutationFunction under test. */
+  private GPMutationFunction<Integer> function = null;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.function = new GPMutationFunction<Integer>();
   }
 
   /**
-   * Test method for {@link jmona.gp.impl.GPMutationFunction#mutate(jmona.gp.Tree)}.
+   * Test method for
+   * {@link jmona.gp.impl.GPMutationFunction#setTreeFactory(jmona.gp.TreeFactory)}
+   * .
+   */
+  @Test
+  public void testSetTreeFactory() {
+    final ExampleTreeFactory factory = new ExampleTreeFactory();
+   
+    try {
+      factory.setMaxDepth(0);
+
+      this.function.setTreeFactory(factory);
+
+      final ExampleTerminalNode root = new ExampleTerminalNode();
+      final Tree<Integer> tree = new DefaultTree<Integer>(root);
+
+      this.function.mutate(tree);
+
+      assertNotSame(root, tree.root());
+      assertTrue(tree.root() instanceof ExampleTerminalNode);
+      assertNotSame(root.evaluate(), tree.root().evaluate());
+
+    } catch (final EvaluationException exception) {
+      Util.fail(exception);
+    } catch (final MutationException exception) {
+      Util.fail(exception);
+    }
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.gp.impl.GPMutationFunction#mutate(jmona.gp.Tree)}.
    */
   @Test
   public void testMutate() {

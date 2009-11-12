@@ -20,7 +20,7 @@
 package jmona.driver;
 
 import static org.junit.Assert.assertTrue;
-import jmona.Util;
+import jmona.test.Util;
 
 import org.junit.Test;
 import org.springframework.beans.factory.BeanDefinitionStoreException;

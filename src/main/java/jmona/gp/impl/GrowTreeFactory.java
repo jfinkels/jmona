@@ -23,6 +23,8 @@ import jmona.InitializationException;
 import jmona.gp.Node;
 import jmona.impl.Util;
 
+import org.apache.log4j.Logger;
+
 /**
  * A TreeFactory which uses the "grow" method to generate a Tree, that is,
  * selecting whether to create a terminal node or a function node at each depth.
@@ -54,7 +56,7 @@ public class GrowTreeFactory<V> extends AbstractTreeFactory<V> {
       throws InitializationException {
     Node<V> result = null;
 
-    if (currentDepth == 1
+    if (currentDepth <= 1
         || Util.RANDOM.nextDouble() < this.probabilityTerminal) {
       result = this.terminalNodeFactory().createNode();
     } else {
@@ -62,7 +64,7 @@ public class GrowTreeFactory<V> extends AbstractTreeFactory<V> {
       result = this.functionNodeFactory().createNode();
 
       // determine its arity (that is, the number of children it needs)
-      final int arity = result.getArity();
+      final int arity = result.arity();
 
       // add child trees
       Node<V> child = null;
@@ -73,7 +75,7 @@ public class GrowTreeFactory<V> extends AbstractTreeFactory<V> {
       }
     }
 
-    return null;
+    return result;
   }
 
   /**

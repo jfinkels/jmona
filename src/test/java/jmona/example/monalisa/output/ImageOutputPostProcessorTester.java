@@ -28,8 +28,8 @@ import java.io.File;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
 import jmona.ProcessingException;
-import jmona.Util;
 import jmona.example.monalisa.MonaIndividual;
+import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;

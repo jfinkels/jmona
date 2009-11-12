@@ -55,10 +55,10 @@ public abstract class AbstractTerminalNode<V> extends AbstractNode<V> implements
    * Always returns {@value #ARITY}; a terminal node has no children.
    * 
    * @return 0
-   * @see jmona.gp.Node#getArity()
+   * @see jmona.gp.Node#arity()
    */
   @Override
-  public int getArity() {
+  public int arity() {
     return ARITY;
   }
 

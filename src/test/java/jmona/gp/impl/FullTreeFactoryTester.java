@@ -19,29 +19,28 @@
  */
 package jmona.gp.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 /**
+ * Test class for the FullTreeFactory class.
+ * 
  * @author jfinkels
  */
 public class FullTreeFactoryTester {
 
   /**
-   * Test method for {@link jmona.gp.impl.FullTreeFactory#setProbabilityTerminal(double)}.
+   * Test method for
+   * {@link jmona.gp.impl.FullTreeFactory#setProbabilityTerminal(double)}.
    */
   @Test
   public void testSetProbabilityTerminal() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.gp.impl.FullTreeFactory#FullTreeFactory()}.
-   */
-  @Test
-  public void testFullTreeFactory() {
-    fail("Not yet implemented");
+    try {
+      new FullTreeFactory<Object>().setProbabilityTerminal(1);
+    } catch (final RuntimeException exception) {
+      assertTrue(exception instanceof RuntimeException);
+    }
   }
 
 }

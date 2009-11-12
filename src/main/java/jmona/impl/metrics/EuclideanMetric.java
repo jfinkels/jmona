@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.gp.impl.metrics;
+package jmona.impl.metrics;
 
 import jmona.Metric;
 
@@ -28,9 +28,12 @@ import jmona.Metric;
  * The Euclidean distance between two numbers is defined as
  * <em>|element1 - element2|</em>.
  * 
+ * @param <T>
+ *          The type of Number on which to measure (any subclass of {@code
+ *          java.lang.Number}).
  * @author jfinkels
  */
-public class EuclideanMetric implements Metric<Double> {
+public class EuclideanMetric<T extends Number> implements Metric<T> {
 
   /**
    * Get the Euclidean distance between the two specified numbers, defined as
@@ -45,8 +48,8 @@ public class EuclideanMetric implements Metric<Double> {
    * @see jmona.Metric#measure(Object, Object)
    */
   @Override
-  public double measure(final Double element1, final Double element2) {
-    return Math.abs(element1 - element2);
+  public double measure(final T element1, final T element2) {
+    return Math.abs(element1.doubleValue() - element2.doubleValue());
   }
 
 }

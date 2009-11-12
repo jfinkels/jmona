@@ -58,7 +58,11 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
   @Override
   public void stepGeneration() throws EvolutionException {
     // perform sanity check
-    this.sanityCheck();
+    try {
+      this.sanityCheck();
+    } catch (final NullPointerException exception) {
+      throw new EvolutionException("Sanity check failed.", exception);
+    }
 
     // get the size of the current population
     final int currentSize = this.currentPopulation().size();

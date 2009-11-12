@@ -65,10 +65,10 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.gp.Node#getArity()
+   * @see jmona.gp.Node#arity()
    */
   @Override
-  public int getArity() {
+  public int arity() {
     return ARITY;
   }
 
@@ -90,5 +90,25 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
    */
   public Node<V> right() {
     return this.children().get(1);
+  }
+
+  /**
+   * Return the String representation of this Node, which is the left child,
+   * followed by the operation, followed by the right child.
+   * 
+   * @return The String representation of this Node.
+   */
+  @Override
+  public String toString() {
+    String result = null;
+
+    if (this.left() == null || this.right() == null || this.operation == null) {
+      result = super.toString();
+    } else {
+      result = "(" + this.left().toString() + this.operation.toString()
+          + this.right().toString() + ")";
+    }
+
+    return result;
   }
 }

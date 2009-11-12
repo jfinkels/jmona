@@ -27,26 +27,19 @@ import java.util.Set;
 
 import jmona.InitializationException;
 import jmona.gp.FunctionNode;
+import jmona.gp.impl.example.ExampleBinaryNode;
+import jmona.test.Util;
 
 import org.junit.Test;
 
 /**
+ * Test class for the DefaultFunctionNodeFactory class.
+ * 
  * @author jfinkels
  */
 public class DefaultFunctionNodeFactoryTester {
   /** The number of times to create a Node with the factory under test. */
   public static final int NUM_TESTS = 100;
-
-  /**
-   * Print the stack trace of the specified exception and fail the test.
-   * 
-   * @param exception
-   *          The exception which caused the test failure.
-   */
-  protected static void fail(final Throwable exception) {
-    exception.printStackTrace(System.err);
-    org.junit.Assert.fail(exception.getMessage());
-  }
 
   /**
    * Test method for
@@ -60,7 +53,7 @@ public class DefaultFunctionNodeFactoryTester {
       classesSet.add((Class<FunctionNode<Integer>>) Class
           .forName("jmona.gp.impl.ExampleBinaryNode"));
     } catch (final ClassNotFoundException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
     final DefaultFunctionNodeFactory<Integer> factory = new DefaultFunctionNodeFactory<Integer>(
@@ -72,7 +65,7 @@ public class DefaultFunctionNodeFactoryTester {
         assertTrue(node instanceof ExampleBinaryNode);
       }
     } catch (final InitializationException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
   }
@@ -89,7 +82,7 @@ public class DefaultFunctionNodeFactoryTester {
       classesSet.add((Class<FunctionNode<Integer>>) Class
           .forName("jmona.gp.impl.ExampleBinaryNode"));
     } catch (final ClassNotFoundException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
 
     final DefaultFunctionNodeFactory<Integer> factory = new DefaultFunctionNodeFactory<Integer>(

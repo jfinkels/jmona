@@ -33,7 +33,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import jmona.FitnessException;
-import jmona.Util;
+import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;

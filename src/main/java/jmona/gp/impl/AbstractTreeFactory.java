@@ -46,12 +46,6 @@ public abstract class AbstractTreeFactory<V> implements TreeFactory<V> {
   private int maxDepth = DEFAULT_MAX_DEPTH;
   /** The factory which creates TerminalNode objects. */
   private TerminalNodeFactory<V> terminalNodeFactory = null;
-  /**
-   * The class of the Tree which this factory generates.
-   * 
-   * This class must have a constructor with a single argument of type Node.
-   */
-  private Class<Tree<V>> treeClass = null;
 
   /**
    * Create a Tree by instantiating a Tree of class specified in the
@@ -67,26 +61,7 @@ public abstract class AbstractTreeFactory<V> implements TreeFactory<V> {
    */
   @Override
   public Tree<V> createIndividual() throws InitializationException {
-    Tree<V> result = null;
-    try {
-      final Constructor<Tree<V>> constructor = this.treeClass
-          .getConstructor(Node.class);
-      result = constructor.newInstance(this.createTree(this.maxDepth));
-    } catch (final SecurityException exception) {
-      throw new InitializationException(exception);
-    } catch (final NoSuchMethodException exception) {
-      throw new InitializationException(exception);
-    } catch (final IllegalArgumentException exception) {
-      throw new InitializationException(exception);
-    } catch (final InstantiationException exception) {
-      throw new InitializationException(exception);
-    } catch (final IllegalAccessException exception) {
-      throw new InitializationException(exception);
-    } catch (final InvocationTargetException exception) {
-      throw new InitializationException(exception);
-    }
-
-    return result;
+    return new DefaultTree<V>(this.createTree(this.maxDepth));
   }
 
   /**
@@ -153,32 +128,11 @@ public abstract class AbstractTreeFactory<V> implements TreeFactory<V> {
   }
 
   /**
-   * Set the class of the Tree which this factory generates.
-   * 
-   * This class must have a constructor with a single argument of type Node.
-   * 
-   * @param newTreeClass
-   *          The class of the Tree which this factory generates.
-   */
-  public void setTreeClass(final Class<Tree<V>> newTreeClass) {
-    this.treeClass = newTreeClass;
-  }
-
-  /**
    * Get the factory which creates TerminalNode objects.
    * 
    * @return The factory which creates TerminalNode objects.
    */
   public TerminalNodeFactory<V> terminalNodeFactory() {
     return this.terminalNodeFactory;
-  }
-
-  /**
-   * Get the class of the Tree which this factory generates.
-   * 
-   * @return The class of the Tree which this factory generates.
-   */
-  public Class<Tree<V>> treeClass() {
-    return this.treeClass;
   }
 }

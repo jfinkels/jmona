@@ -54,7 +54,7 @@ public interface Node<V> {
    * 
    * @return The "arity" of this Node.
    */
-  int getArity();
+  int arity();
 
   /**
    * Get the parent Node of this Node.
@@ -64,36 +64,10 @@ public interface Node<V> {
   Node<V> parent();
 
   /**
-   * Replace this Node with the specified new Node by replacing it in the parent
-   * Node's Set of child Nodes.
-   * 
-   * @param newNode
-   *          The Node with which to replace this one.
-   */
-  void replaceThisNodeWith(final Node<V> newNode);
-
-  /**
-   * Replace this Node with the specified new subtree by replacing it in the
-   * parent Node's Set of child Nodes.
-   * 
-   * @param newTree
-   *          The subtree with which to replace this Node.
-   */
-  void replaceThisNodeWith(final Tree<V> newTree);
-
-  /**
    * Set the parent of this Node.
    * 
    * @param newParent
    *          The parent of this Node.
    */
   void setParent(final Node<V> newParent);
-
-  /**
-   * Swap this Node with the specified other Node.
-   * 
-   * @param otherNode
-   *          The Node with which to swap.
-   */
-  void swapWith(final Node<V> otherNode);
 }

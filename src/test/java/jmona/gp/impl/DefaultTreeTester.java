@@ -24,6 +24,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,28 +35,22 @@ import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.gp.TerminalNode;
 import jmona.gp.Tree;
+import jmona.gp.impl.example.ExampleBinaryNode;
+import jmona.gp.impl.example.IntegerNode;
+import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the DefaultTree class.
+ * 
  * @author jfinkels
  */
 public class DefaultTreeTester {
 
   /** The number of times to choose a random node. */
   public static final int NUM_TESTS = 10000;
-
-  /**
-   * Print the stack trace of the specified exception and fail the test.
-   * 
-   * @param exception
-   *          The exception which caused the test failure.
-   */
-  protected static void fail(final Throwable exception) {
-    exception.printStackTrace(System.err);
-    org.junit.Assert.fail(exception.getMessage());
-  }
 
   /** A big tree. */
   private DefaultTree<Integer> bigTree = null;
@@ -65,10 +60,8 @@ public class DefaultTreeTester {
   private TerminalNode<Integer> bigTreeNode2 = null;
   /** A terminal node in the big tree. */
   private TerminalNode<Integer> bigTreeNode3 = null;
-
   /** A small tree. */
   private DefaultTree<Integer> smallTree = null;
-
   /** A node in the small tree. */
   private TerminalNode<Integer> smallTreeNode = null;
 
@@ -83,7 +76,10 @@ public class DefaultTreeTester {
     this.smallTree = new DefaultTree<Integer>(this.smallTreeNode);
 
     this.bigTreeNode1.children().add(this.bigTreeNode2);
+    this.bigTreeNode2.setParent(this.bigTreeNode1);
+    
     this.bigTreeNode1.children().add(this.bigTreeNode3);
+    this.bigTreeNode3.setParent(this.bigTreeNode1);
     this.bigTree = new DefaultTree<Integer>(this.bigTreeNode1);
   }
 
@@ -114,7 +110,7 @@ public class DefaultTreeTester {
       assertEquals(1, this.smallTree.evaluate().intValue());
       assertEquals(2, this.bigTree.evaluate().intValue());
     } catch (final EvaluationException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
   }
 
@@ -128,8 +124,7 @@ public class DefaultTreeTester {
     Node<Integer> node = null;
     try {
       node = emptyTree.randomNode();
-      org.junit.Assert
-          .fail("Exception should have been thrown on the previous line.");
+      fail("Exception should have been thrown on the previous line.");
     } catch (final NullPointerException exception) {
       assertNull(node);
     }
@@ -159,7 +154,7 @@ public class DefaultTreeTester {
         assertSame(choice, this.bigTree.root());
         assertNull(choice.parent());
       } else {
-        assertTrue(choice == this.bigTreeNode1 || choice == this.bigTreeNode2);
+        assertTrue(choice == this.bigTreeNode2 || choice == this.bigTreeNode3);
         assertNotNull(choice.parent());
       }
 

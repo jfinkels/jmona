@@ -17,7 +17,15 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona;
+package jmona.test;
+
+import java.util.List;
+import java.util.Vector;
+
+import jmona.gp.Node;
+import jmona.gp.Tree;
+
+import org.apache.log4j.Logger;
 
 /**
  * Utilities for testing, including a method which fails a test after outputting
@@ -35,6 +43,44 @@ public class Util {
   public static void fail(final Throwable exception) {
     exception.printStackTrace(System.err);
     org.junit.Assert.fail(exception.getMessage());
+  }
+
+  /**
+   * Count the number of Nodes in the specified Tree.
+   * 
+   * @param tree
+   *          A Tree.
+   * @return The number of Nodes in the specified Tree.
+   */
+  @SuppressWarnings("unchecked")
+  public static int countNodes(final Tree tree) {
+
+    // instantiate a list to hold all the nodes in this tree
+    final List<Node> result = new Vector<Node>();
+
+    // add the root to the list
+    result.add(tree.root());
+
+    // initialize the pointer representing the current node being examined
+    int i = 0;
+
+    // iterate over all nodes until each node has been examined
+    List<Node> children = null;
+    while (i < result.size()) {
+      // get the children of the current node
+      children = result.get(i).children();
+
+      // add this check for possible problematic Node.children() return values
+      if (children != null && children.size() > 0) {
+        // add the children to the list
+        result.addAll(children);
+      }
+
+      // increment the number of nodes examined
+      i += 1;
+    }
+
+    return result.size();
   }
 
   /** Instantiation disallowed except by subclasses. */

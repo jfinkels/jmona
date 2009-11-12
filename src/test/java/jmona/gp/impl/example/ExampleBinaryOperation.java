@@ -1,5 +1,5 @@
 /**
- * AbstractNode.java
+ * ExampleBinaryOperation.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,42 +17,36 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.gp.impl;
+package jmona.gp.impl.example;
 
-import jmona.gp.Node;
+import jmona.gp.impl.BinaryOperation;
 
 /**
- * A base class for a Node with a parent Node and a value.
+ * An example BinaryOperation which returns the difference between two integers.
  * 
- * @param <V>
- *          The type of value to which this Node evaluates.
  * @author jfinkels
  */
-public abstract class AbstractNode<V> implements Node<V> {
-
-  /** The parent of this Node. */
-  private Node<V> parent = null;
+public class ExampleBinaryOperation implements
+    BinaryOperation<Integer, Integer, Integer> {
 
   /**
-   * {@inheritDoc}
+   * Get the difference between the two specified integers.
    * 
-   * @return {@inheritDoc}
-   * @see jmona.gp.Node#parent()
+   * @param leftObject
+   *          The subtrahend.
+   * @param rightObject
+   *          The minuend.
+   * @return The difference between the two specified integers.
+   * @see jmona.gp.impl.BinaryOperation#operate(java.lang.Object,
+   *      java.lang.Object)
    */
   @Override
-  public Node<V> parent() {
-    return this.parent;
+  public Integer operate(final Integer leftObject, final Integer rightObject) {
+    return leftObject - rightObject;
   }
 
-  /**
-   * {@inheritDoc}
-   * 
-   * @param newParent
-   *          {@inheritDoc}
-   * @see jmona.gp.Node#setParent(Node)
-   */
   @Override
-  public void setParent(final Node<V> newParent) {
-    this.parent = newParent;
+  public String toString() {
+    return "-";
   }
 }
