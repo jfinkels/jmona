@@ -64,22 +64,4 @@ public interface Tree<V> extends Individual {
    *          The root Node of this Tree.
    */
   void setRoot(final Node<V> newRoot);
-
-  /**
-   * Swap a random Node in this tree with a random Node in the specified other
-   * Tree.
-   * 
-   * @param otherTree
-   *          The target Tree with which to swap a random Node.
-   */
-  void swapRandomNodesWith(final Tree<V> otherTree);
-
-  /**
-   * Swap a random Node in this Tree with the root of the specified other Tree.
-   * 
-   * @param otherTree
-   *          The target Tree with which to swap a random Node in this Tree for
-   *          its root.
-   */
-  void swapRandomNodeWithRootOf(final Tree<V> otherTree);
 }

@@ -21,6 +21,7 @@ package jmona.gp.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
@@ -77,7 +78,7 @@ public class DefaultTreeTester {
 
     this.bigTreeNode1.children().add(this.bigTreeNode2);
     this.bigTreeNode2.setParent(this.bigTreeNode1);
-    
+
     this.bigTreeNode1.children().add(this.bigTreeNode3);
     this.bigTreeNode3.setParent(this.bigTreeNode1);
     this.bigTree = new DefaultTree<Integer>(this.bigTreeNode1);
@@ -113,7 +114,7 @@ public class DefaultTreeTester {
       Util.fail(exception);
     }
   }
-  
+
   /**
    * Test method for {@link jmona.gp.impl.DefaultTree#randomNode()}.
    */
@@ -145,10 +146,10 @@ public class DefaultTreeTester {
 
       // choose a random node from the non-trivial tree
       choice = this.bigTree.randomNode();
-      
+
       // the result of randomNode() should not be null
       assertNotNull(choice);
-      
+
       // ensure the parent of the selected Node makes sense
       if (choice == this.bigTreeNode1) {
         assertSame(choice, this.bigTree.root());
@@ -173,27 +174,7 @@ public class DefaultTreeTester {
       assertEquals(expected, count, epsilon);
     }
   }
-  
-  @Test
-  public void swapRandomNodesWith() {
-    fail("Not yet implemented.");
-  }
 
-  @Test
-  public void swapNodes() {
-    fail("Not yet implemented.");
-  }
-  
-  @Test
-  public void swapRandomNodeWithRootOf() {
-    fail("Not yet implemented.");
-  }
-
-  @Test
-  public void swapRandomWith() {
-    fail("Not yet implemented.");
-  }
-  
   /**
    * Test method for {@link jmona.gp.impl.DefaultTree#root()}.
    */

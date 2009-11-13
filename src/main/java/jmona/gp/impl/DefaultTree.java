@@ -22,12 +22,9 @@ package jmona.gp.impl;
 import java.util.List;
 import java.util.Vector;
 
-import org.apache.log4j.Logger;
-
 import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
-import jmona.impl.Util;
 
 /**
  * A default implementation of a Tree.
@@ -37,9 +34,6 @@ import jmona.impl.Util;
  * @author jfinkels
  */
 public class DefaultTree<V> implements Tree<V> {
-
-  /** The Logger for this class. */
-  private static final Logger LOG = Logger.getLogger(DefaultTree.class);
 
   /** The root Node of this Tree. */
   private Node<V> root = null;
@@ -115,7 +109,7 @@ public class DefaultTree<V> implements Tree<V> {
     final List<Node<V>> allNodes = this.allNodes();
 
     // get a random node from the list of all nodes in the tree
-    return allNodes.get(Util.RANDOM.nextInt(allNodes.size()));
+    return allNodes.get(jmona.impl.Util.RANDOM.nextInt(allNodes.size()));
   }
 
   /**
@@ -140,123 +134,4 @@ public class DefaultTree<V> implements Tree<V> {
   public void setRoot(final Node<V> newRoot) {
     this.root = newRoot;
   }
-  
-  /**
-   * Swap the specified Node from the left Tree with the specified Node from the
-   * right Tree.
-   * 
-   * @param leftTree
-   *          The left Tree.
-   * @param leftNode
-   *          A Node to swap from the left Tree to the right Tree.
-   * @param rightTree
-   *          The right Tree.
-   * @param rightNode
-   *          A Node to swap from the right Tree to the left Tree.
-   */
-  // TODO this should be static, except for the generic type arguments
-  protected void swapNodes(final Tree<V> leftTree, final Node<V> leftNode,
-      final Tree<V> rightTree, final Node<V> rightNode) {
-
-    // get the parent of each of those Nodes
-    final Node<V> leftParent = leftNode.parent();
-    final Node<V> rightParent = rightNode.parent();
-
-    List<Node<V>> siblings = null;
-
-    // TODO this doesn't work; need to write test for TreeFactorys
-    
-    LOG.debug("left tree: " + leftTree);
-    LOG.debug("left tree root: " + leftTree.root());
-    LOG.debug("left node: " + leftNode);
-    LOG.debug("left node parent: " + leftParent);
-    
-    // if the Node from this tree is the root, set this root to the rightNode
-    if (leftNode.equals(leftTree.root())) {
-      leftTree.setRoot(rightNode);
-    } else { // leftNode is not the root of this Tree
-      
-      // get the siblings of leftNode
-      siblings = leftParent.children();
-
-      // iterate over each sibling
-      for (int i = 0; i < siblings.size(); ++i) {
-
-        // if the current Node is leftNode
-        if (siblings.get(i).equals(leftNode)) {
-
-          // remove leftNode from the list of children
-          siblings.remove(i);
-
-          // add the rightNode where leftNode used to be
-          siblings.add(i, rightNode);
-        }
-      }
-    }
-
-    // if the rightNode is the root, set the right Tree's root to leftNode
-    if (rightNode.equals(rightTree.root())) {
-      rightTree.setRoot(leftNode);
-    } else { // rightNode is not the root of the right Tree
-
-      // get the siblings of the rightNode
-      siblings = rightParent.children();
-
-      // iterate over each sibling
-      for (int i = 0; i < siblings.size(); ++i) {
-
-        // if the current Node is the rightNode
-        if (siblings.get(i).equals(leftNode)) {
-
-          // remove the rightNode from the list of children
-          siblings.remove(i);
-
-          // add leftNode where the rightNode used to be
-          siblings.add(i, leftNode);
-        }
-      }
-    }
-
-    // set the parents of each Node to the corresponding other Node's parent
-    leftNode.setParent(rightParent);
-    rightNode.setParent(leftParent);
-  }
-
-  /**
-   * {@inheritDoc}
-   * 
-   * @param otherTree
-   *          {@inheritDoc}
-   * @see jmona.gp.Tree#swapNodesWith(jmona.gp.Tree)
-   */
-  @Override
-  public void swapRandomNodesWith(final Tree<V> otherTree) {
-    this.swapRandomWith(otherTree, otherTree.randomNode());
-  }
-
-  /**
-   * {@inheritDoc}
-   * 
-   * @param otherTree
-   *          {@inheritDoc}
-   * @see jmona.gp.Tree#swapRandomNodeWithRootOf(jmona.gp.Tree)
-   */
-  @Override
-  public void swapRandomNodeWithRootOf(final Tree<V> otherTree) {
-    this.swapRandomWith(otherTree, otherTree.root());
-  }
-
-  /**
-   * Swap a random Node in this Tree with the specified other Node from the
-   * specified other Tree.
-   * 
-   * @param otherTree
-   *          Another Tree.
-   * @param otherNode
-   *          The Node to swap with a random Node in this Tree.
-   */
-  protected void swapRandomWith(final Tree<V> otherTree, final Node<V> otherNode) {
-    this.swapNodes(this, this.randomNode(), otherTree, otherNode);
-  }
-
 }
