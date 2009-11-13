@@ -19,12 +19,14 @@
  */
 package jmona.gp.impl;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import jmona.MutationException;
 import jmona.gp.EvaluationException;
+import jmona.gp.Node;
 import jmona.gp.Tree;
+import jmona.gp.impl.example.ExampleBinaryNode;
 import jmona.gp.impl.example.ExampleTerminalNode;
 import jmona.gp.impl.example.ExampleTreeFactory;
 import jmona.test.Util;
@@ -56,7 +58,7 @@ public class GPMutationFunctionTester {
   @Test
   public void testSetTreeFactory() {
     final ExampleTreeFactory factory = new ExampleTreeFactory();
-   
+
     try {
       factory.setMaxDepth(0);
 
@@ -84,7 +86,43 @@ public class GPMutationFunctionTester {
    */
   @Test
   public void testMutate() {
-    fail("Not yet implemented");
+    this.function.setTreeFactory(new ExampleTreeFactory());
+
+    // create three nodes to put into a tree
+    final Node<Integer> root = new ExampleBinaryNode();
+    final Node<Integer> leftChild = new ExampleTerminalNode();
+    final Node<Integer> rightChild = new ExampleTerminalNode();
+
+    // add the child Nodes to the list of children of the root node
+    root.children().add(leftChild);
+    root.children().add(rightChild);
+
+    // set the parent of each child Node to the root Node
+    leftChild.setParent(root);
+    rightChild.setParent(root);
+
+    // instantiate a new tree with the given root Node
+    final Tree<Integer> tree = new DefaultTree<Integer>(root);
+
+    // mutate the Tree
+    try {
+      this.function.mutate(tree);
+    } catch (final MutationException exception) {
+      Util.fail(exception);
+    }
+
+    if (tree.root().equals(root)
+        && tree.root().children().get(0).equals(leftChild)) {
+      assertNotNull(tree.root().children().get(1));
+      assertNotSame(rightChild, tree.root().children().get(1));
+    } else if (tree.root().equals(root)
+        && tree.root().children().get(1).equals(rightChild)) {
+      assertNotNull(tree.root().children().get(0));
+      assertNotSame(leftChild, tree.root().children().get(0));
+    } else {
+      assertNotSame(tree.root(), root);
+    }
+
   }
 
 }
