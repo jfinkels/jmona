@@ -61,6 +61,7 @@ public abstract class AbstractTreeFactory<V> implements TreeFactory<V> {
    */
   @Override
   public Tree<V> createIndividual() throws InitializationException {
+    // TODO I don't want this to be tied to a specified implementation of Tree
     return new DefaultTree<V>(this.createTree(this.maxDepth));
   }
 
