@@ -51,7 +51,7 @@ public class DefaultTerminalNodeFactoryTester {
 
     try {
       classesSet.add((Class<TerminalNode<Integer>>) Class
-          .forName("jmona.gp.impl.ExampleTerminalNode"));
+          .forName("jmona.gp.impl.example.ExampleTerminalNode"));
     } catch (final ClassNotFoundException exception) {
       Util.fail(exception);
     }
@@ -80,7 +80,7 @@ public class DefaultTerminalNodeFactoryTester {
 
     try {
       classesSet.add((Class<TerminalNode<Integer>>) Class
-          .forName("jmona.gp.impl.ExampleTerminalNode"));
+          .forName("jmona.gp.impl.example.ExampleTerminalNode"));
     } catch (final ClassNotFoundException exception) {
       Util.fail(exception);
     }

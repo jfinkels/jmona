@@ -51,7 +51,7 @@ public class DefaultFunctionNodeFactoryTester {
 
     try {
       classesSet.add((Class<FunctionNode<Integer>>) Class
-          .forName("jmona.gp.impl.ExampleBinaryNode"));
+          .forName("jmona.gp.impl.example.ExampleBinaryNode"));
     } catch (final ClassNotFoundException exception) {
       Util.fail(exception);
     }
@@ -80,7 +80,7 @@ public class DefaultFunctionNodeFactoryTester {
 
     try {
       classesSet.add((Class<FunctionNode<Integer>>) Class
-          .forName("jmona.gp.impl.ExampleBinaryNode"));
+          .forName("jmona.gp.impl.example.ExampleBinaryNode"));
     } catch (final ClassNotFoundException exception) {
       Util.fail(exception);
     }
