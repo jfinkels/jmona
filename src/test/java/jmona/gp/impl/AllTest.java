@@ -36,7 +36,7 @@ import org.junit.runners.Suite.SuiteClasses;
     FullTreeFactoryTester.class, GPCrossoverFunctionTester.class,
     GPEvolutionContextTester.class, GPFitnessFunctionTester.class,
     GPMutationFunctionTester.class, GrowTreeFactoryTester.class,
-    TernaryNodeTester.class })
+    TernaryNodeTester.class, UtilTester.class })
 public class AllTest {
 
 }
