@@ -44,7 +44,8 @@ public class GPCrossoverFunction<V> implements CrossoverFunction<Tree<V>> {
    */
   @Override
   public void crossover(final Tree<V> parent1, final Tree<V> parent2) {
-    parent1.swapRandomNodesWith(parent2);
+    jmona.gp.impl.Util.swapNodes(parent1, parent1.randomNode(), parent2,
+        parent2.randomNode());
   }
 
 }
