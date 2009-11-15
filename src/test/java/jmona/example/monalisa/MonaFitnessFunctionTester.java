@@ -129,7 +129,7 @@ public class MonaFitnessFunctionTester {
     try {
       this.colorsImage = ImageIO.read(COLORS_TESTFILE);
       this.overlappingImage = ImageIO.read(OVERLAPPING_TESTFILE);
-      final BufferedImage bigImage = ImageIO.read(BIG_TESTFILE);
+      ImageIO.read(BIG_TESTFILE);
     } catch (final FileNotFoundException exception) {
       Util.fail(exception);
     } catch (final IOException exception) {
