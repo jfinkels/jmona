@@ -19,37 +19,56 @@
  */
 package jmona.gp.example.calc.functions;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the ConstantFunction class.
+ * 
  * @author jfinkels
  */
 public class ConstantFunctionTester {
-
-  /**
-   * Test method for {@link jmona.gp.example.calc.functions.ConstantFunction#ConstantFunction(java.lang.Double)}.
-   */
-  @Test
-  public void testConstantFunction() {
-    fail("Not yet implemented");
+  /** The constant value of the function under test. */
+  public static final double CONSTANT_VALUE = 1.0;
+  /** The increment for the input value to the constant function. */
+  public static final double INCREMENT = 0.5;
+  /** The maximum input value to the constant function. */
+  public static final double MAX_INPUT = 100.0;
+  /** The minimum input value to the constant function. */
+  public static final double MIN_INPUT = -100.0;
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
+  /** The constant function under test in this class. */
+  private ConstantFunction<Double, Double> function = null;
+  
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.function = new ConstantFunction<Double, Double>(CONSTANT_VALUE);
   }
-
   /**
-   * Test method for {@link jmona.gp.example.calc.functions.ConstantFunction#execute(java.lang.Object)}.
+   * Test method for
+   * {@link jmona.gp.example.calc.functions.ConstantFunction#execute(java.lang.Object)}
+   * .
    */
   @Test
   public void testExecute() {
-    fail("Not yet implemented");
+    for (double i = MIN_INPUT; i < MAX_INPUT; i += INCREMENT) {
+      assertEquals(CONSTANT_VALUE, this.function.execute(i), ZERO_DELTA);
+    }
   }
 
   /**
-   * Test method for {@link jmona.gp.example.calc.functions.ConstantFunction#toString()}.
+   * Test method for
+   * {@link jmona.gp.example.calc.functions.ConstantFunction#toString()}.
    */
   @Test
   public void testToString() {
-    fail("Not yet implemented");
+    assertTrue(this.function.toString()
+        .contains(String.valueOf(CONSTANT_VALUE)));
   }
 
 }

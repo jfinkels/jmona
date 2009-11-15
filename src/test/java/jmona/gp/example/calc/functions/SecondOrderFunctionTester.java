@@ -19,37 +19,50 @@
  */
 package jmona.gp.example.calc.functions;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertSame;
+import jmona.gp.example.calc.operations.Util;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the SecondOrderFunction class.
+ * 
  * @author jfinkels
  */
 public class SecondOrderFunctionTester {
 
-  /**
-   * Test method for {@link jmona.gp.example.calc.functions.SecondOrderFunction#SecondOrderFunction(jmona.gp.example.calc.functions.SingleInputFunction, jmona.gp.example.calc.functions.SingleInputFunction)}.
-   */
-  @Test
-  public void testSecondOrderFunction() {
-    fail("Not yet implemented");
+  /** The function under test. */
+  private SecondOrderFunction function = null;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.function = new SecondOrderFunction(Util.ZERO_FUNCTION,
+        Util.ONE_FUNCTION) {
+      @Override
+      public Double execute(final Double input) {
+        return null;
+      }
+    };
   }
 
   /**
-   * Test method for {@link jmona.gp.example.calc.functions.SecondOrderFunction#function1()}.
+   * Test method for
+   * {@link jmona.gp.example.calc.functions.SecondOrderFunction#function1()}.
    */
   @Test
   public void testFunction1() {
-    fail("Not yet implemented");
+    assertSame(Util.ZERO_FUNCTION, this.function.function1());
   }
 
   /**
-   * Test method for {@link jmona.gp.example.calc.functions.SecondOrderFunction#function2()}.
+   * Test method for
+   * {@link jmona.gp.example.calc.functions.SecondOrderFunction#function2()}.
    */
   @Test
   public void testFunction2() {
-    fail("Not yet implemented");
+    assertSame(Util.ONE_FUNCTION, this.function.function2());
   }
 
 }
