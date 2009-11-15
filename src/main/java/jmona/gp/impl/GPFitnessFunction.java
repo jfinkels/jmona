@@ -51,6 +51,7 @@ public class GPFitnessFunction<V> implements FitnessFunction<Tree<V>> {
    * 
    * @see jmona.FitnessFunction#fitness(jmona.Individual)
    */
+  // TODO change this to be a counter for number of successes
   @Override
   public double fitness(final Tree<V> individual) throws FitnessException {
     // sanity checks
