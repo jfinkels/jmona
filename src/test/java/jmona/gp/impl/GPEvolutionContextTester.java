@@ -19,21 +19,80 @@
  */
 package jmona.gp.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import jmona.EvolutionException;
+import jmona.FitnessException;
+import jmona.InitializationException;
+import jmona.Population;
+import jmona.gp.Tree;
+import jmona.gp.TreeFactory;
+import jmona.gp.impl.example.ExampleTreeFactory;
+import jmona.impl.DefaultPopulation;
+import jmona.impl.metrics.EuclideanMetric;
+import jmona.impl.selection.FitnessProportionateSelection;
+import jmona.test.Util;
 
+import org.apache.log4j.Logger;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the GPEvolutionContext class.
+ * 
  * @author jfinkels
  */
 public class GPEvolutionContextTester {
 
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(GPEvolutionContextTester.class);
+  /** The EvolutionContext under test. */
+  private GPEvolutionContext<Integer> context = null;
+  /** The initial population for the EvolutionContext under test. */
+  private Population<Tree<Integer>> population = null;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    final TreeFactory<Integer> factory = new ExampleTreeFactory();
+    this.population = new DefaultPopulation<Tree<Integer>>();
+    try {
+      this.population.add(factory.createIndividual());
+      this.population.add(factory.createIndividual());
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+    this.context = new GPEvolutionContext<Integer>(this.population);
+    this.context.setCrossoverFunction(new GPCrossoverFunction<Integer>());
+    this.context.setMutationFunction(new GPMutationFunction<Integer>());
+    this.context
+        .setSelectionFunction(new FitnessProportionateSelection<Tree<Integer>>());
+
+    final GPFitnessFunction<Integer> fitnessFunction = new GPFitnessFunction<Integer>();
+    fitnessFunction.setMetric(new EuclideanMetric<Integer>());
+    fitnessFunction.setTarget(0);
+
+    try {
+      this.context.setFitnessFunction(fitnessFunction);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
+  }
+
   /**
-   * Test method for {@link jmona.gp.impl.GPEvolutionContext#GPEvolutionContext(jmona.Population)}.
+   * Test method for
+   * {@link jmona.gp.impl.GPEvolutionContext#GP1EvolutionContext(jmona.Population)}
+   * .
    */
   @Test
   public void testGPEvolutionContext() {
-    fail("Not yet implemented");
+    try {
+      new GPEvolutionContext<Integer>(new DefaultPopulation<Tree<Integer>>());
+      fail("Exception should have been thrown on the previous line.");
+    } catch (final IllegalArgumentException exception) {
+      assertTrue(exception instanceof IllegalArgumentException);
+    }
   }
 
   /**
@@ -41,7 +100,16 @@ public class GPEvolutionContextTester {
    */
   @Test
   public void testStepGeneration() {
-    fail("Not yet implemented");
+
+    LOG.debug(this.context.currentPopulation());
+
+    try {
+      this.context.stepGeneration();
+    } catch (final EvolutionException exception) {
+      Util.fail(exception);
+    }
+
+    LOG.debug(this.context.currentPopulation());
   }
 
 }
