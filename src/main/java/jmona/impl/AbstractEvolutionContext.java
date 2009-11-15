@@ -24,7 +24,6 @@ import java.util.Map;
 
 import jmona.CrossoverFunction;
 import jmona.EvolutionContext;
-import jmona.EvolutionException;
 import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.Individual;
@@ -46,6 +45,8 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * selected for breeding.
    */
   public static final double DEFAULT_CROSSOVER_PROBABILITY = 0.6;
+  /** The default probability of mutating an Individual. */
+  public static final double DEFAULT_MUTATION_PROBABILITY = 0.1;
   /** The crossover function. */
   private CrossoverFunction<T> crossoverFunction = null;
   /**
@@ -61,6 +62,8 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   private int generation = 0;
   /** The mutation function for this context. */
   private MutationFunction<T> mutationFunction = null;
+  /** The probability of mutating an Individual. */
+  private double mutationProbability = DEFAULT_MUTATION_PROBABILITY;
   /** The current population. */
   private Population<T> population = null;
   /** The selection function for this context. */
@@ -82,32 +85,6 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
           "The initial population must be of size greater than or equal to 2.");
     }
     this.population = initialPopulation;
-  }
-
-  /**
-   * Perform some sanity checks, that is, check that all necessary properties
-   * have been set.
-   * 
-   * The necessary properties are the FitnessFunction, the MutationFunction, the
-   * SelectionFunction, and the CrossoverFunction. The functions are checked in
-   * that order.
-   * 
-   * @throws NullPointerException
-   *           If any of the necessary properties have not been set.
-   */
-  protected void sanityCheck() {
-    if (this.fitnessFunction() == null) {
-      throw new NullPointerException("Fitness function has not been set.");
-    }
-    if (this.mutationFunction() == null) {
-      throw new NullPointerException("Mutation function has not been set.");
-    }
-    if (this.selectionFunction() == null) {
-      throw new NullPointerException("Selection function has not been set.");
-    }
-    if (this.crossoverFunction() == null) {
-      throw new NullPointerException("Crossover function has not been set.");
-    }
   }
 
   /**
@@ -193,6 +170,17 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   }
 
   /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.EvolutionContext#mutationProbability()
+   */
+  @Override
+  public double mutationProbability() {
+    return this.mutationProbability;
+  }
+
+  /**
    * Reset the mapping from individual in the current population to its fitness.
    * 
    * @throws FitnessException
@@ -204,6 +192,32 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
     for (final T individual : this.population) {
       this.currentFitnesses.put(individual, this.fitnessFunction
           .fitness(individual));
+    }
+  }
+
+  /**
+   * Perform some sanity checks, that is, check that all necessary properties
+   * have been set.
+   * 
+   * The necessary properties are the FitnessFunction, the MutationFunction, the
+   * SelectionFunction, and the CrossoverFunction. The functions are checked in
+   * that order.
+   * 
+   * @throws NullPointerException
+   *           If any of the necessary properties have not been set.
+   */
+  protected void sanityCheck() {
+    if (this.fitnessFunction() == null) {
+      throw new NullPointerException("Fitness function has not been set.");
+    }
+    if (this.mutationFunction() == null) {
+      throw new NullPointerException("Mutation function has not been set.");
+    }
+    if (this.selectionFunction() == null) {
+      throw new NullPointerException("Selection function has not been set.");
+    }
+    if (this.crossoverFunction() == null) {
+      throw new NullPointerException("Crossover function has not been set.");
     }
   }
 
@@ -241,7 +255,6 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   public void setCrossoverProbability(final double newCrossoverProbability) {
     this.crossoverProbability = newCrossoverProbability;
   }
-
   /**
    * Set the current population.
    * 
@@ -269,8 +282,17 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
     this.recalculateFitnesses();
   }
 
-  public static final double DEFAULT_MUTATION_PROBABILITY = 0.1;
-  private double mutationProbability = DEFAULT_MUTATION_PROBABILITY;
+  /**
+   * {@inheritDoc}
+   * 
+   * @param function
+   *          {@inheritDoc}
+   * @see jmona.EvolutionContext#setMutationFunction(jmona.MutationFunction)
+   */
+  @Override
+  public void setMutationFunction(final MutationFunction<T> function) {
+    this.mutationFunction = function;
+  }
 
   /**
    * {@inheritDoc}
@@ -282,29 +304,6 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   @Override
   public void setMutationProbability(final double newMutationProbability) {
     this.mutationProbability = newMutationProbability;
-  }
-
-  /**
-   * {@inheritDoc}
-   * 
-   * @return {@inheritDoc}
-   * @see jmona.EvolutionContext#mutationProbability()
-   */
-  @Override
-  public double mutationProbability() {
-    return this.mutationProbability;
-  }
-
-  /**
-   * {@inheritDoc}
-   * 
-   * @param function
-   *          {@inheritDoc}
-   * @see jmona.EvolutionContext#setMutationFunction(jmona.MutationFunction)
-   */
-  @Override
-  public void setMutationFunction(final MutationFunction<T> function) {
-    this.mutationFunction = function;
   }
 
   /**
