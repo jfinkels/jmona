@@ -27,19 +27,21 @@ import jmona.CrossoverFunction;
 import jmona.impl.Util;
 
 /**
- * A crossover function which swaps a random polygon/color pair from two parents
- * to produce two offspring.
+ * A crossover function which swaps a random polygon/color pair in two specified
+ * parent Individuals.
  * 
  * @author jeff
  */
 public class MonaCrossoverFunction implements CrossoverFunction<MonaIndividual> {
 
   /**
-   * Swap a random polygon/color pair from the parents to produce the children.
+   * Swap a random polygon/color pair in the parent Individuals.
    * 
-   * @param parents
-   *          The individual to cross over a random polygon/color pair.
-   * @return A copy of the parents with a random polygon/color pair swapped.
+   * @param parent1
+   *          A MonaIndividual.
+   * @param parent2
+   *          Another MonaIndividual
+   * 
    * @see jmona.CrossoverFunction#crossover(jmona.Pair)
    */
   @Override
