@@ -134,4 +134,14 @@ public class DefaultTree<V> implements Tree<V> {
   public void setRoot(final Node<V> newRoot) {
     this.root = newRoot;
   }
+
+  /**
+   * Return the String representation of this Tree.
+   * 
+   * @return The String representation of this Tree.
+   */
+  @Override
+  public String toString() {
+    return "Tree[" + this.root + "]";
+  }
 }
