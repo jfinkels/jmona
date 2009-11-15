@@ -24,30 +24,21 @@ import static org.junit.Assert.assertTrue;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.FitnessException;
-import jmona.Individual;
-import jmona.MaxGenerationCompletionCriteria;
 import jmona.Population;
-import jmona.ga.impl.GAEvolutionContext;
+import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
+import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the DefaultCompletionCriteria class.
+ * 
  * @author jfinkels
  */
 public class DefaultCompletionCriteriaTester {
-  /**
-   * Print the stack trace of the specified exception and fail the test.
-   * 
-   * @param exception
-   *          The exception which caused the test failure.
-   */
-  protected static void fail(final Throwable exception) {
-    exception.printStackTrace(System.err);
-    org.junit.Assert.fail(exception.getMessage());
-  }
 
   /** The completion criteria under test. */
   private DefaultCompletionCriteria<ExampleIndividual> completionCriteria = null;
@@ -65,13 +56,12 @@ public class DefaultCompletionCriteriaTester {
     this.population.add(new ExampleIndividual(1));
     this.population.add(new ExampleIndividual(2));
 
-    this.evolutionContext = new GAEvolutionContext<ExampleIndividual>(
-        this.population);
+    this.evolutionContext = new ExampleEvolutionContext(this.population);
 
     try {
       this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
     } catch (final FitnessException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
   }
 
@@ -82,7 +72,6 @@ public class DefaultCompletionCriteriaTester {
    */
   @Test
   public void testIsSatisfiedMaxFitness() {
-
     try {
       assertFalse(this.completionCriteria.isSatisfied(this.evolutionContext));
 
@@ -90,7 +79,7 @@ public class DefaultCompletionCriteriaTester {
           DefaultMaxFitnessCompletionCriteria.DEFAULT_MAX_FITNESS));
       assertTrue(this.completionCriteria.isSatisfied(this.evolutionContext));
     } catch (final CompletionException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
   }
 
@@ -101,22 +90,14 @@ public class DefaultCompletionCriteriaTester {
    */
   @Test
   public void testIsSatisfiedMaxGeneration() {
-    final Population<Individual> population = new DefaultPopulation<Individual>();
-    population.add(new ExampleIndividual());
-    population.add(new ExampleIndividual());
-    final EvolutionContext<Individual> context = new GAEvolutionContext<Individual>(
-        population);
-
-    final MaxGenerationCompletionCriteria<Individual> criteria = new DefaultMaxGenerationCompletionCriteria<Individual>();
-
     try {
-      criteria.setMaxGenerations(0);
-      assertTrue(criteria.isSatisfied(context));
+      this.completionCriteria.setMaxGenerations(0);
+      assertTrue(this.completionCriteria.isSatisfied(this.evolutionContext));
 
-      criteria.setMaxGenerations(2);
-      assertFalse(criteria.isSatisfied(context));
+      this.completionCriteria.setMaxGenerations(2);
+      assertFalse(this.completionCriteria.isSatisfied(this.evolutionContext));
     } catch (final CompletionException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
   }
 }
