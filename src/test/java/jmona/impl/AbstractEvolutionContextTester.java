@@ -19,21 +19,96 @@
  */
 package jmona.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import jmona.EvolutionException;
+import jmona.Population;
+import jmona.test.Util;
 
+import org.apache.log4j.Logger;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the AbstractEvolutionContext class.
+ * 
  * @author jfinkels
  */
 public class AbstractEvolutionContextTester {
 
+  /** The context under test in this class. */
+  private AbstractEvolutionContext<ExampleIndividual> context = null;
+
+  /** An example EvolutionContext. */
+  private class ExampleEvolutionContext extends
+      AbstractEvolutionContext<ExampleIndividual> {
+
+    /** The Logger for this class. */
+    private final transient Logger log = Logger
+        .getLogger(ExampleEvolutionContext.class);
+
+    /**
+     * Instantiate this EvolutionContext with the specified initial population.
+     * 
+     * @param initialPopulation
+     *          The initial population of the context.
+     */
+    public ExampleEvolutionContext(
+        final Population<ExampleIndividual> initialPopulation) {
+      super(initialPopulation);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @throws {@inheritDoc}
+     * @see jmona.EvolutionContext#stepGeneration()
+     */
+    @Override
+    public void stepGeneration() throws EvolutionException {
+      this.log.debug("Stepping generation...");
+    }
+
+  }
+  
+  private Population<ExampleIndividual> population = null;
+  
+  @Before
+  public final void setUp() {
+    this.population = new DefaultPopulation<ExampleIndividual>();
+    this.population.add(new ExampleIndividual());
+    this.population.add(new ExampleIndividual());
+    
+    this.context = new ExampleEvolutionContext(this.population);
+  }
+
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#AbstractEvolutionContext(jmona.Population)}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#AbstractEvolutionContext(jmona.Population)}
+   * .
    */
   @Test
   public void testAbstractEvolutionContext() {
-    fail("Not yet implemented");
+    final Population<ExampleIndividual> initialPopulation = new DefaultPopulation<ExampleIndividual>();
+    try {
+      this.context = new ExampleEvolutionContext(initialPopulation);
+    } catch (final IllegalArgumentException exception) {
+      assertTrue(exception instanceof IllegalArgumentException);
+    }
+
+    initialPopulation.add(new ExampleIndividual());
+    try {
+      this.context = new ExampleEvolutionContext(initialPopulation);
+    } catch (final IllegalArgumentException exception) {
+      assertTrue(exception instanceof IllegalArgumentException);
+    }
+
+    initialPopulation.add(new ExampleIndividual());
+    try {
+      this.context = new ExampleEvolutionContext(initialPopulation);
+    } catch (final IllegalArgumentException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
@@ -45,7 +120,8 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#crossoverFunction()}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#crossoverFunction()}.
    */
   @Test
   public void testCrossoverFunction() {
@@ -53,7 +129,8 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#crossoverProbability()}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#crossoverProbability()}.
    */
   @Test
   public void testCrossoverProbability() {
@@ -61,7 +138,8 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#currentFitnesses()}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#currentFitnesses()}.
    */
   @Test
   public void testCurrentFitnesses() {
@@ -69,7 +147,8 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#currentGeneration()}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#currentGeneration()}.
    */
   @Test
   public void testCurrentGeneration() {
@@ -77,7 +156,8 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#currentPopulation()}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#currentPopulation()}.
    */
   @Test
   public void testCurrentPopulation() {
@@ -85,7 +165,8 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#fitnessFunction()}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#fitnessFunction()}.
    */
   @Test
   public void testFitnessFunction() {
@@ -93,7 +174,8 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#incrementGeneration()}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#incrementGeneration()}.
    */
   @Test
   public void testIncrementGeneration() {
@@ -101,7 +183,8 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#mutationFunction()}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#mutationFunction()}.
    */
   @Test
   public void testMutationFunction() {
@@ -109,7 +192,8 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#recalculateFitnesses()}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#recalculateFitnesses()}.
    */
   @Test
   public void testRecalculateFitnesses() {
@@ -117,7 +201,8 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#selectionFunction()}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#selectionFunction()}.
    */
   @Test
   public void testSelectionFunction() {
@@ -125,7 +210,9 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#setCrossoverFunction(jmona.CrossoverFunction)}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#setCrossoverFunction(jmona.CrossoverFunction)}
+   * .
    */
   @Test
   public void testSetCrossoverFunction() {
@@ -133,7 +220,9 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#setCrossoverProbability(double)}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#setCrossoverProbability(double)}
+   * .
    */
   @Test
   public void testSetCrossoverProbability() {
@@ -141,7 +230,9 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#setCurrentPopulation(jmona.Population)}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#setCurrentPopulation(jmona.Population)}
+   * .
    */
   @Test
   public void testSetCurrentPopulation() {
@@ -149,7 +240,9 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#setFitnessFunction(jmona.FitnessFunction)}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#setFitnessFunction(jmona.FitnessFunction)}
+   * .
    */
   @Test
   public void testSetFitnessFunction() {
@@ -157,7 +250,8 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#setMutationProbability(double)}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#setMutationProbability(double)}.
    */
   @Test
   public void testSetMutationProbability() {
@@ -165,7 +259,8 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#mutationProbability()}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#mutationProbability()}.
    */
   @Test
   public void testMutationProbability() {
@@ -173,7 +268,9 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#setMutationFunction(jmona.MutationFunction)}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#setMutationFunction(jmona.MutationFunction)}
+   * .
    */
   @Test
   public void testSetMutationFunction() {
@@ -181,7 +278,9 @@ public class AbstractEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#setSelectionFunction(jmona.SelectionFunction)}.
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#setSelectionFunction(jmona.SelectionFunction)}
+   * .
    */
   @Test
   public void testSetSelectionFunction() {
