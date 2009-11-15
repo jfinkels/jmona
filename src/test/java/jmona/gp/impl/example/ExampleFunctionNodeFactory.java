@@ -24,14 +24,18 @@ import jmona.gp.FunctionNode;
 import jmona.gp.FunctionNodeFactory;
 
 /**
+ * An example FunctionNodeFactory.
+ * 
  * @author jfinkels
  */
 public class ExampleFunctionNodeFactory implements FunctionNodeFactory<Integer> {
 
-
-  /*
-   * (non-Javadoc)
+  /**
+   * Create an ExampleBinaryNode.
    * 
+   * @return An ExampleBinaryNode
+   * @throws InitializationException
+   *           Never throws this Exception.
    * @see jmona.gp.NodeFactory#createNode()
    */
   @Override

@@ -24,13 +24,18 @@ import jmona.gp.TerminalNode;
 import jmona.gp.TerminalNodeFactory;
 
 /**
+ * An example TerminalNodeFactory.
+ * 
  * @author jfinkels
  */
 public class ExampleTerminalNodeFactory implements TerminalNodeFactory<Integer> {
 
-  /*
-   * (non-Javadoc)
+  /**
+   * Creates an ExampleTerminalNode.
    * 
+   * @return An ExampleTerminalNode.
+   * @throws InitializationException
+   *           Never throws this Exception.
    * @see jmona.gp.NodeFactory#createNode()
    */
   @Override
