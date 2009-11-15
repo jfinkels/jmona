@@ -19,13 +19,28 @@
  */
 package jmona.impl;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import jmona.CrossoverFunction;
 import jmona.EvolutionException;
+import jmona.FitnessException;
+import jmona.FitnessFunction;
+import jmona.MutationFunction;
 import jmona.Population;
+import jmona.SelectionFunction;
+import jmona.impl.example.ExampleCrossoverFunction;
+import jmona.impl.example.ExampleEvolutionContext;
+import jmona.impl.example.ExampleFitnessFunction;
+import jmona.impl.example.ExampleIndividual;
+import jmona.impl.example.ExampleMutationFunction;
+import jmona.impl.selection.FitnessProportionateSelection;
 import jmona.test.Util;
 
-import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,50 +51,59 @@ import org.junit.Test;
  */
 public class AbstractEvolutionContextTester {
 
+  /** The amount by which to change the fitnesses of individuals. */
+  public static final double INCREMENT = 0.1;
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
   /** The context under test in this class. */
   private AbstractEvolutionContext<ExampleIndividual> context = null;
-
-  /** An example EvolutionContext. */
-  private class ExampleEvolutionContext extends
-      AbstractEvolutionContext<ExampleIndividual> {
-
-    /** The Logger for this class. */
-    private final transient Logger log = Logger
-        .getLogger(ExampleEvolutionContext.class);
-
-    /**
-     * Instantiate this EvolutionContext with the specified initial population.
-     * 
-     * @param initialPopulation
-     *          The initial population of the context.
-     */
-    public ExampleEvolutionContext(
-        final Population<ExampleIndividual> initialPopulation) {
-      super(initialPopulation);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @throws {@inheritDoc}
-     * @see jmona.EvolutionContext#stepGeneration()
-     */
-    @Override
-    public void stepGeneration() throws EvolutionException {
-      this.log.debug("Stepping generation...");
-    }
-
-  }
-  
+  /** A crossover function. */
+  private CrossoverFunction<ExampleIndividual> crossoverFunction = null;
+  /** An empty Population. */
+  private Population<ExampleIndividual> emptyPopulation = null;
+  /** A fitness function. */
+  private FitnessFunction<ExampleIndividual> fitnessFunction = null;
+  /** An Individual to be placed into a Population. */
+  private ExampleIndividual individual1 = null;
+  /** An Individual to be placed into a Population. */
+  private ExampleIndividual individual2 = null;
+  /** A mutation function. */
+  private MutationFunction<ExampleIndividual> mutationFunction = null;
+  /** A Population. */
   private Population<ExampleIndividual> population = null;
-  
+  /** A selection function. */
+  private SelectionFunction<ExampleIndividual> selectionFunction = null;
+  /** An AbstractEvolutionContext which has no functions set. */
+  private AbstractEvolutionContext<ExampleIndividual> unsetContext = null;
+
+  /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
+    this.emptyPopulation = new DefaultPopulation<ExampleIndividual>();
     this.population = new DefaultPopulation<ExampleIndividual>();
-    this.population.add(new ExampleIndividual());
-    this.population.add(new ExampleIndividual());
-    
+
+    this.individual1 = new ExampleIndividual();
+    this.individual2 = new ExampleIndividual();
+
+    this.population.add(this.individual1);
+    this.population.add(this.individual2);
+
+    this.crossoverFunction = new ExampleCrossoverFunction();
+    this.selectionFunction = new FitnessProportionateSelection<ExampleIndividual>();
+    this.mutationFunction = new ExampleMutationFunction();
+    this.fitnessFunction = new ExampleFitnessFunction();
+
+    this.unsetContext = new ExampleEvolutionContext(this.population);
     this.context = new ExampleEvolutionContext(this.population);
+
+    this.context.setCrossoverFunction(this.crossoverFunction);
+    this.context.setMutationFunction(this.mutationFunction);
+    this.context.setSelectionFunction(this.selectionFunction);
+    try {
+      this.context.setFitnessFunction(this.fitnessFunction);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
@@ -89,34 +113,25 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testAbstractEvolutionContext() {
-    final Population<ExampleIndividual> initialPopulation = new DefaultPopulation<ExampleIndividual>();
     try {
-      this.context = new ExampleEvolutionContext(initialPopulation);
+      this.context = new ExampleEvolutionContext(this.emptyPopulation);
     } catch (final IllegalArgumentException exception) {
       assertTrue(exception instanceof IllegalArgumentException);
     }
 
-    initialPopulation.add(new ExampleIndividual());
+    this.emptyPopulation.add(this.individual1);
     try {
-      this.context = new ExampleEvolutionContext(initialPopulation);
+      this.context = new ExampleEvolutionContext(this.emptyPopulation);
     } catch (final IllegalArgumentException exception) {
       assertTrue(exception instanceof IllegalArgumentException);
     }
 
-    initialPopulation.add(new ExampleIndividual());
+    this.emptyPopulation.add(this.individual2);
     try {
-      this.context = new ExampleEvolutionContext(initialPopulation);
+      this.context = new ExampleEvolutionContext(this.emptyPopulation);
     } catch (final IllegalArgumentException exception) {
       Util.fail(exception);
     }
-  }
-
-  /**
-   * Test method for {@link jmona.impl.AbstractEvolutionContext#sanityCheck()}.
-   */
-  @Test
-  public void testSanityCheck() {
-    fail("Not yet implemented");
   }
 
   /**
@@ -125,7 +140,8 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testCrossoverFunction() {
-    fail("Not yet implemented");
+    assertNull(this.unsetContext.crossoverFunction());
+    assertSame(this.crossoverFunction, this.context.crossoverFunction());
   }
 
   /**
@@ -134,7 +150,8 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testCrossoverProbability() {
-    fail("Not yet implemented");
+    assertEquals(AbstractEvolutionContext.DEFAULT_CROSSOVER_PROBABILITY,
+        this.context.crossoverProbability(), ZERO_DELTA);
   }
 
   /**
@@ -143,7 +160,14 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testCurrentFitnesses() {
-    fail("Not yet implemented");
+    assertNotNull(this.context.currentFitnesses());
+
+    assertEquals(2, this.context.currentFitnesses().size());
+
+    assertEquals(this.individual1.fitness(), this.context.currentFitnesses()
+        .get(this.individual1), ZERO_DELTA);
+    assertEquals(this.individual2.fitness(), this.context.currentFitnesses()
+        .get(this.individual2), ZERO_DELTA);
   }
 
   /**
@@ -152,7 +176,17 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testCurrentGeneration() {
-    fail("Not yet implemented");
+    assertEquals(0, this.context.currentGeneration());
+    assertEquals(0, this.unsetContext.currentGeneration());
+
+    try {
+      this.context.stepGeneration();
+    } catch (final EvolutionException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(1, this.context.currentGeneration());
+
   }
 
   /**
@@ -161,7 +195,7 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testCurrentPopulation() {
-    fail("Not yet implemented");
+    assertSame(this.population, this.context.currentPopulation());
   }
 
   /**
@@ -170,7 +204,8 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testFitnessFunction() {
-    fail("Not yet implemented");
+    assertNull(this.unsetContext.fitnessFunction());
+    assertSame(this.fitnessFunction, this.context.fitnessFunction());
   }
 
   /**
@@ -179,7 +214,10 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testIncrementGeneration() {
-    fail("Not yet implemented");
+    final int before = this.context.currentGeneration();
+    this.context.incrementGeneration();
+    final int after = this.context.currentGeneration();
+    assertEquals(1, after - before);
   }
 
   /**
@@ -188,7 +226,18 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testMutationFunction() {
-    fail("Not yet implemented");
+    assertNull(this.unsetContext.mutationFunction());
+    assertSame(this.mutationFunction, this.context.mutationFunction());
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#mutationProbability()}.
+   */
+  @Test
+  public void testMutationProbability() {
+    assertEquals(AbstractEvolutionContext.DEFAULT_MUTATION_PROBABILITY,
+        this.context.mutationProbability(), ZERO_DELTA);
   }
 
   /**
@@ -197,7 +246,94 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testRecalculateFitnesses() {
-    fail("Not yet implemented");
+    assertEquals(this.individual1.fitness(), this.context.currentFitnesses()
+        .get(this.individual1), ZERO_DELTA);
+    assertEquals(this.individual2.fitness(), this.context.currentFitnesses()
+        .get(this.individual2), ZERO_DELTA);
+
+    this.individual1.setFitness(this.individual1.fitness() + INCREMENT);
+    this.individual2.setFitness(this.individual2.fitness() - INCREMENT);
+
+    try {
+      this.context.recalculateFitnesses();
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(this.individual1.fitness(), this.context.currentFitnesses()
+        .get(this.individual1), ZERO_DELTA);
+    assertEquals(this.individual2.fitness(), this.context.currentFitnesses()
+        .get(this.individual2), ZERO_DELTA);
+  }
+
+  /**
+   * Test method for {@link jmona.impl.AbstractEvolutionContext#sanityCheck()}.
+   */
+  @Test
+  public void testSanityCheck() {
+    try {
+      this.unsetContext.sanityCheck();
+      fail("Exception should have been thrown on the previous line.");
+    } catch (final NullPointerException exception) {
+      // fitness function has not been set
+      assertNull(this.unsetContext.fitnessFunction());
+      assertNull(this.unsetContext.mutationFunction());
+      assertNull(this.unsetContext.selectionFunction());
+      assertNull(this.unsetContext.crossoverFunction());
+      try {
+        this.unsetContext.setFitnessFunction(new ExampleFitnessFunction());
+      } catch (final FitnessException fitnessException) {
+        Util.fail(fitnessException);
+      }
+    }
+
+    try {
+      this.unsetContext.sanityCheck();
+      fail("Exception should have been thrown on the previous line.");
+    } catch (final NullPointerException exception) {
+      // mutation function has not been set
+      assertNotNull(this.unsetContext.fitnessFunction());
+      assertNull(this.unsetContext.mutationFunction());
+      assertNull(this.unsetContext.selectionFunction());
+      assertNull(this.unsetContext.crossoverFunction());
+      this.unsetContext.setMutationFunction(new ExampleMutationFunction());
+    }
+
+    try {
+      this.unsetContext.sanityCheck();
+      fail("Exception should have been thrown on the previous line.");
+    } catch (final NullPointerException exception) {
+      // selection function has not been set
+      assertNotNull(this.unsetContext.fitnessFunction());
+      assertNotNull(this.unsetContext.mutationFunction());
+      assertNull(this.unsetContext.selectionFunction());
+      assertNull(this.unsetContext.crossoverFunction());
+      this.unsetContext
+          .setSelectionFunction(new FitnessProportionateSelection<ExampleIndividual>());
+    }
+
+    try {
+      this.unsetContext.sanityCheck();
+      fail("Exception should have been thrown on the previous line.");
+    } catch (final NullPointerException exception) {
+      // crossover function has not been set
+      assertNotNull(this.unsetContext.fitnessFunction());
+      assertNotNull(this.unsetContext.mutationFunction());
+      assertNotNull(this.unsetContext.selectionFunction());
+      assertNull(this.unsetContext.crossoverFunction());
+      this.unsetContext.setCrossoverFunction(new ExampleCrossoverFunction());
+    }
+
+    try {
+      // all functions have been set
+      assertNotNull(this.unsetContext.fitnessFunction());
+      assertNotNull(this.unsetContext.mutationFunction());
+      assertNotNull(this.unsetContext.selectionFunction());
+      assertNotNull(this.unsetContext.crossoverFunction());
+      this.unsetContext.sanityCheck();
+    } catch (final NullPointerException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
@@ -206,7 +342,8 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testSelectionFunction() {
-    fail("Not yet implemented");
+    assertNull(this.unsetContext.selectionFunction());
+    assertSame(this.selectionFunction, this.context.selectionFunction());
   }
 
   /**
@@ -216,7 +353,12 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testSetCrossoverFunction() {
-    fail("Not yet implemented");
+    final CrossoverFunction<ExampleIndividual> newFunction = new ExampleCrossoverFunction();
+
+    this.context.setCrossoverFunction(newFunction);
+
+    assertSame(newFunction, this.context.crossoverFunction());
+    assertNotSame(this.crossoverFunction, this.context.crossoverFunction());
   }
 
   /**
@@ -226,7 +368,10 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testSetCrossoverProbability() {
-    fail("Not yet implemented");
+    final double newProbability = this.context.crossoverProbability() / 2.0;
+    this.context.setCrossoverProbability(newProbability);
+    assertEquals(newProbability, this.context.crossoverProbability(),
+        ZERO_DELTA);
   }
 
   /**
@@ -236,7 +381,10 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testSetCurrentPopulation() {
-    fail("Not yet implemented");
+    final Population<ExampleIndividual> newPopulation = new DefaultPopulation<ExampleIndividual>();
+    this.context.setCurrentPopulation(newPopulation);
+    assertSame(newPopulation, this.context.currentPopulation());
+    assertNotSame(this.population, this.context.currentPopulation());
   }
 
   /**
@@ -246,25 +394,16 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testSetFitnessFunction() {
-    fail("Not yet implemented");
-  }
+    final FitnessFunction<ExampleIndividual> newFunction = new ExampleFitnessFunction();
 
-  /**
-   * Test method for
-   * {@link jmona.impl.AbstractEvolutionContext#setMutationProbability(double)}.
-   */
-  @Test
-  public void testSetMutationProbability() {
-    fail("Not yet implemented");
-  }
+    try {
+      this.context.setFitnessFunction(newFunction);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
 
-  /**
-   * Test method for
-   * {@link jmona.impl.AbstractEvolutionContext#mutationProbability()}.
-   */
-  @Test
-  public void testMutationProbability() {
-    fail("Not yet implemented");
+    assertSame(newFunction, this.context.fitnessFunction());
+    assertNotSame(this.fitnessFunction, this.context.fitnessFunction());
   }
 
   /**
@@ -274,7 +413,23 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testSetMutationFunction() {
-    fail("Not yet implemented");
+    final MutationFunction<ExampleIndividual> newFunction = new ExampleMutationFunction();
+
+    this.context.setMutationFunction(newFunction);
+
+    assertSame(newFunction, this.context.mutationFunction());
+    assertNotSame(this.mutationFunction, this.context.mutationFunction());
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.impl.AbstractEvolutionContext#setMutationProbability(double)}.
+   */
+  @Test
+  public void testSetMutationProbability() {
+    final double newProbability = this.context.mutationProbability() / 2.0;
+    this.context.setMutationProbability(newProbability);
+    assertEquals(newProbability, this.context.mutationProbability(), ZERO_DELTA);
   }
 
   /**
@@ -284,7 +439,12 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testSetSelectionFunction() {
-    fail("Not yet implemented");
+    final SelectionFunction<ExampleIndividual> newFunction = new FitnessProportionateSelection<ExampleIndividual>();
+
+    this.context.setSelectionFunction(newFunction);
+
+    assertSame(newFunction, this.context.selectionFunction());
+    assertNotSame(this.selectionFunction, this.context.selectionFunction());
   }
 
 }
