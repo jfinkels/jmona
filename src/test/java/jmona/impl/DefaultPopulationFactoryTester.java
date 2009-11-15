@@ -28,6 +28,7 @@ import jmona.IndividualFactory;
 import jmona.InitializationException;
 import jmona.Population;
 import jmona.PopulationFactory;
+import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Before;
 import org.junit.Test;

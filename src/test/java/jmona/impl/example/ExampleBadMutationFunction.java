@@ -1,5 +1,5 @@
 /**
- * ExampleFitnessFunction.java
+ * ExampleBadMutationFunction.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,32 +17,32 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.impl;
+package jmona.impl.example;
 
-import jmona.FitnessException;
-import jmona.FitnessFunction;
+import jmona.MutationException;
+import jmona.MutationFunction;
 
 /**
- * An example FitnessFunction which simply gets the fitness of an Individual
- * from its fitness property.
+ * An example MutationFunction which always throws a MutationException.
  * 
  * @author jfinkels
  */
-public class ExampleFitnessFunction implements
-    FitnessFunction<ExampleIndividual> {
+public class ExampleBadMutationFunction implements
+    MutationFunction<ExampleIndividual> {
+
   /**
-   * Get the fitness from the fitness property of the specified Individual.
+   * Always throws a MutationException.
    * 
    * @param individual
-   *          The Individual whose fitness will be determined.
-   * @return The fitness of the Individual as determined from its fitness
-   *         property.
-   * @throws FitnessException
-   *           Never throws this exception.
+   *          This parameter is ignored.
+   * @throws MutationException
+   *           Always throws this Exception.
+   * @see jmona.MutationFunction#mutate(jmona.Individual)
    */
   @Override
-  public double fitness(final ExampleIndividual individual)
-      throws FitnessException {
-    return individual.fitness();
+  public void mutate(final ExampleIndividual individual)
+      throws MutationException {
+    throw new MutationException("This is a bad mutation function.");
   }
+
 }

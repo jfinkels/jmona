@@ -28,6 +28,8 @@ import jmona.Individual;
 import jmona.MaxGenerationCompletionCriteria;
 import jmona.Population;
 import jmona.ga.impl.GAEvolutionContext;
+import jmona.impl.example.ExampleFitnessFunction;
+import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Before;
 import org.junit.Test;
