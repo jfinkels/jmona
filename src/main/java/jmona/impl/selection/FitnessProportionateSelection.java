@@ -37,6 +37,7 @@ import jmona.impl.Util;
  * @author jfinkels
  */
 // TODO allow for stochastic universal sampling
+// TODO what happens on Double.POSITIVE_INFINITY fitnesses?
 public class FitnessProportionateSelection<T extends Individual> implements
     SelectionFunction<T> {
 
