@@ -29,6 +29,9 @@ import jmona.gp.impl.BinaryOperation;
 public class ExampleBinaryOperation implements
     BinaryOperation<Integer, Integer, Integer> {
 
+  /** The symbol of this operation. */
+  public static final String SYMBOL = "-";
+
   /**
    * Get the difference between the two specified integers.
    * 
@@ -45,8 +48,13 @@ public class ExampleBinaryOperation implements
     return leftObject - rightObject;
   }
 
+  /**
+   * Return the String representation of this operation.
+   * 
+   * @return The String representation of this operation.
+   */
   @Override
   public String toString() {
-    return "-";
+    return SYMBOL;
   }
 }
