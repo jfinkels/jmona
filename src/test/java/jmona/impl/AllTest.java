@@ -29,8 +29,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jeff
  */
 @RunWith(Suite.class)
-@SuiteClasses({ DefaultCompletionCriteriaTester.class,
-    DefaultEvolutionContextTester.class,
+@SuiteClasses({ AbstractEvolutionContextTester.class,
+    DefaultCompletionCriteriaTester.class, DefaultEvolutionContextTester.class,
     DefaultMaxFitnessCompletionCriteriaTester.class,
     DefaultMaxGenerationCompletionCriteriaTester.class,
     DefaultPopulationFactoryTester.class,
