@@ -29,6 +29,9 @@ import jmona.gp.impl.TernaryOperation;
 public class ExampleTernaryOperation implements
     TernaryOperation<Integer, Integer, Integer, Integer> {
 
+  /** The String representation of this operation. */
+  public static final String SYMBOL = "SUM";
+
   /**
    * Get the sum of the three specified integers.
    * 
@@ -48,8 +51,13 @@ public class ExampleTernaryOperation implements
     return leftObject + middleObject + rightObject;
   }
 
+  /**
+   * Get the String representation of this operation.
+   * 
+   * @return The String representation of this operation.
+   */
   @Override
   public String toString() {
-    return "-";
+    return SYMBOL;
   }
 }
