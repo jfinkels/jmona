@@ -32,11 +32,7 @@ import org.apache.log4j.Logger;
  * 
  * @author jfinkels
  */
-// TODO tests for this class
 public class Util {
-
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger.getLogger(Util.class);
 
   /**
    * Replace the specified existing Node in the specified Tree with the
@@ -113,13 +109,6 @@ public class Util {
     final Node<V> rightParent = rightNode.parent();
 
     List<Node<V>> siblings = null;
-
-    // TODO this doesn't work; need to write test for TreeFactorys
-
-    LOG.debug("left tree: " + leftTree);
-    LOG.debug("left tree root: " + leftTree.root());
-    LOG.debug("left node: " + leftNode);
-    LOG.debug("left node parent: " + leftParent);
 
     // if the Node from this tree is the root, set this root to the rightNode
     if (leftNode.equals(leftTree.root())) {
