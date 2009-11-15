@@ -3,9 +3,8 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: Jeffrey
-    Description: 
-Slightly modified version of Sun Checks that better matches the default code formatter setting of Eclipse.
+    Checkstyle-Configuration: jmona
+    Description: none
 -->
 <!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
 <module name="Checker">
@@ -33,7 +32,9 @@ Slightly modified version of Sun Checks that better matches the default code for
         <module name="RedundantImport"/>
         <module name="UnusedImports"/>
         <module name="FileLength"/>
-        <module name="LineLength"/>
+        <module name="LineLength">
+            <property name="severity" value="ignore"/>
+        </module>
         <module name="MethodLength"/>
         <module name="ParameterNumber"/>
         <module name="EmptyForIteratorPad"/>
