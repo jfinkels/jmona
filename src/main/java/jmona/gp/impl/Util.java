@@ -24,8 +24,6 @@ import java.util.List;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 
-import org.apache.log4j.Logger;
-
 /**
  * A utility class for this package containing a method which swaps Nodes within
  * two Trees.

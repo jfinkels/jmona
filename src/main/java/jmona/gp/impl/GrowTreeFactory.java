@@ -23,8 +23,6 @@ import jmona.InitializationException;
 import jmona.gp.Node;
 import jmona.impl.Util;
 
-import org.apache.log4j.Logger;
-
 /**
  * A TreeFactory which uses the "grow" method to generate a Tree, that is,
  * selecting whether to create a terminal node or a function node at each depth.

@@ -25,8 +25,6 @@ import java.util.Vector;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 
-import org.apache.log4j.Logger;
-
 /**
  * Utilities for testing, including a method which fails a test after outputting
  * an Exception's message.
