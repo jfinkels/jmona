@@ -89,7 +89,8 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * have been set.
    * 
    * The necessary properties are the FitnessFunction, the MutationFunction, the
-   * SelectionFunction, and the CrossoverFunction.
+   * SelectionFunction, and the CrossoverFunction. The functions are checked in
+   * that order.
    * 
    * @throws NullPointerException
    *           If any of the necessary properties have not been set.
