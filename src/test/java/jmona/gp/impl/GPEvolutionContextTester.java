@@ -98,10 +98,12 @@ public class GPEvolutionContextTester {
   /**
    * Test method for {@link jmona.gp.impl.GPEvolutionContext#stepGeneration()}.
    */
+  // TODO make assertions that some individuals have changed
   @Test
   public void testStepGeneration() {
 
-    LOG.debug(this.context.currentPopulation());
+    final Population<Tree<Integer>> before = this.context.currentPopulation();
+    LOG.debug(before);
 
     try {
       this.context.stepGeneration();
@@ -109,7 +111,9 @@ public class GPEvolutionContextTester {
       Util.fail(exception);
     }
 
-    LOG.debug(this.context.currentPopulation());
+    final Population<Tree<Integer>> after = this.context.currentPopulation();
+    LOG.debug(after);
+    
   }
 
 }
