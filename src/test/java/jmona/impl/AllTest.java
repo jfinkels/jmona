@@ -34,7 +34,7 @@ import org.junit.runners.Suite.SuiteClasses;
     DefaultMaxFitnessCompletionCriteriaTester.class,
     DefaultMaxGenerationCompletionCriteriaTester.class,
     DefaultPopulationFactoryTester.class,
-    PopulationLoggingPostProcessorTester.class })
+    PopulationLoggingPostProcessorTester.class, UtilTester.class })
 public class AllTest {
 
 }
