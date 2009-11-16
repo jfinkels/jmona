@@ -21,6 +21,7 @@ package jmona.impl;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.FitnessException;
@@ -46,6 +47,7 @@ public class DefaultMaxFitnessCompletionCriteriaTester {
   private EvolutionContext<ExampleIndividual> evolutionContext = null;
   /** The population in the evolution context. */
   private Population<ExampleIndividual> population = null;
+  private EvolutionContext<ExampleIndividual> emptyContext = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
@@ -55,6 +57,9 @@ public class DefaultMaxFitnessCompletionCriteriaTester {
     this.population = new DefaultPopulation<ExampleIndividual>();
     this.population.add(new ExampleIndividual(1));
     this.population.add(new ExampleIndividual(2));
+
+    this.emptyContext = new GAEvolutionContext<ExampleIndividual>(
+        this.population);
 
     this.evolutionContext = new GAEvolutionContext<ExampleIndividual>(
         this.population);
@@ -73,7 +78,15 @@ public class DefaultMaxFitnessCompletionCriteriaTester {
    */
   @Test
   public void testIsSatisfied() {
+
     try {
+      this.completionCriteria.isSatisfied(this.emptyContext);
+      fail("Exception should have been thrown on previous line.");
+    } catch (final CompletionException exception) {
+      assertTrue(exception instanceof CompletionException);
+    }
+
+    try {      
       assertFalse(this.completionCriteria.isSatisfied(this.evolutionContext));
       this.population.add(new ExampleIndividual(
           DefaultMaxFitnessCompletionCriteria.DEFAULT_MAX_FITNESS));
