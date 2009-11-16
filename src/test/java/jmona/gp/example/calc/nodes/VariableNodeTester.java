@@ -19,21 +19,41 @@
  */
 package jmona.gp.example.calc.nodes;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import jmona.gp.EvaluationException;
+import jmona.test.Util;
 
 import org.junit.Test;
 
 /**
+ * Test class for the VariableNode class.
+ * 
  * @author jfinkels
  */
 public class VariableNodeTester {
+  /** The value by which to increment the input to the function. */
+  public static final double INCREMENT = 0.1;
+  /** The maximum value of the input to the function. */
+  public static final double MAX_VALUE = 100.0;
+  /** The minimum value of the input to the function. */
+  public static final double MIN_VALUE = 0.0;
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
 
   /**
-   * Test method for {@link jmona.gp.example.calc.nodes.VariableNode#evaluate(java.lang.Object[])}.
+   * Test method for {@link jmona.gp.example.calc.nodes.VariableNode#evaluate()}
+   * .
    */
   @Test
   public void testEvaluate() {
-    fail("Not yet implemented");
+    final VariableNode node = new VariableNode();
+    try {
+      for (double x = MIN_VALUE; x < MAX_VALUE; x += INCREMENT) {
+        assertEquals(x, node.evaluate().execute(x), ZERO_DELTA);
+      }
+    } catch (final EvaluationException exception) {
+      Util.fail(exception);
+    }
   }
 
 }

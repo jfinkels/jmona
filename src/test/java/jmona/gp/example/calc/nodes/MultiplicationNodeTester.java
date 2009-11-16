@@ -19,21 +19,49 @@
  */
 package jmona.gp.example.calc.nodes;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import jmona.gp.EvaluationException;
+import jmona.test.Util;
 
 import org.junit.Test;
 
 /**
+ * Test class for the MultiplicationNode class.
+ * 
  * @author jfinkels
  */
 public class MultiplicationNodeTester {
+  /** The value by which to increment the input to the function. */
+  public static final double INCREMENT = 0.1;
+  /** The maximum value of the input to the function. */
+  public static final double MAX_VALUE = 100.0;
+  /** The minimum value of the input to the function. */
+  public static final double MIN_VALUE = 0.0;
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
 
   /**
-   * Test method for {@link jmona.gp.example.calc.nodes.MultiplicationNode#MultiplicationNode()}.
+   * Test method for
+   * {@link jmona.gp.example.calc.nodes.MultiplicationNode#MultiplicationNode()}.
    */
   @Test
   public void testMultiplicationNode() {
-    fail("Not yet implemented");
+    final MultiplicationNode node = new MultiplicationNode();
+
+    final double leftValue = 1.0;
+    final double rightValue = 2.0;
+
+    node.children().add(new NumberNode(leftValue));
+    node.children().add(new NumberNode(rightValue));
+
+    try {
+      for (double x = MIN_VALUE; x < MAX_VALUE; x += INCREMENT) {
+        assertEquals(leftValue * rightValue, node.evaluate().execute(x),
+            ZERO_DELTA);
+      }
+    } catch (final EvaluationException exception) {
+      Util.fail(exception);
+    }
   }
 
 }

@@ -19,29 +19,37 @@
  */
 package jmona.gp.example.calc.nodes;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 /**
+ * Test class for the NumberNode class.
+ * 
  * @author jfinkels
  */
 public class NumberNodeTester {
+  /** The value by which to increment the input to the function. */
+  public static final double INCREMENT = 0.1;
+  /** The maximum value of the input to the function. */
+  public static final double MAX_VALUE = 100.0;
+  /** The minimum value of the input to the function. */
+  public static final double MIN_VALUE = 0.0;
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
 
   /**
-   * Test method for {@link jmona.gp.example.calc.nodes.NumberNode#NumberNode(java.lang.Double)}.
-   */
-  @Test
-  public void testNumberNode() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.gp.example.calc.nodes.NumberNode#evaluate(java.lang.Object[])}.
+   * Test method for {@link jmona.gp.example.calc.nodes.NumberNode#evaluate()} .
    */
   @Test
   public void testEvaluate() {
-    fail("Not yet implemented");
+
+    final double value = 10.0;
+    final NumberNode node = new NumberNode(value);
+
+    for (double x = MIN_VALUE; x < MAX_VALUE; x += INCREMENT) {
+      assertEquals(value, node.evaluate().execute(x), ZERO_DELTA);
+    }
   }
 
 }
