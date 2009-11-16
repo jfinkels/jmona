@@ -19,29 +19,41 @@
  */
 package jmona.gp.example.calc.functions;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import jmona.gp.example.calc.operations.Util;
 
 import org.junit.Test;
 
 /**
+ * Test class for the SubtractionFunction class.
+ * 
  * @author jfinkels
  */
 public class SubtractionFunctionTester {
 
-  /**
-   * Test method for {@link jmona.gp.example.calc.functions.SubtractionFunction#SubtractionFunction(jmona.gp.example.calc.functions.SingleInputFunction, jmona.gp.example.calc.functions.SingleInputFunction)}.
-   */
-  @Test
-  public void testSubtractionFunction() {
-    fail("Not yet implemented");
-  }
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
 
   /**
-   * Test method for {@link jmona.gp.example.calc.functions.SubtractionFunction#execute(java.lang.Object)}.
+   * Test method for
+   * {@link jmona.gp.example.calc.functions.SubtractionFunction#execute(java.lang.Double)}
+   * .
    */
   @Test
   public void testExecute() {
-    fail("Not yet implemented");
+    SubtractionFunction function = null;
+
+    function = new SubtractionFunction(Util.ONE_FUNCTION, Util.ONE_FUNCTION);
+    assertEquals(Util.ZERO_FUNCTION.execute(0.0), function.execute(0.0),
+        ZERO_DELTA);
+
+    function = new SubtractionFunction(Util.ONE_FUNCTION, Util.ZERO_FUNCTION);
+    assertEquals(Util.ONE_FUNCTION.execute(0.0), function.execute(0.0),
+        ZERO_DELTA);
+
+    function = new SubtractionFunction(Util.TWO_FUNCTION, Util.ZERO_FUNCTION);
+    assertEquals(Util.TWO_FUNCTION.execute(0.0), function.execute(0.0),
+        ZERO_DELTA);
   }
 
 }
