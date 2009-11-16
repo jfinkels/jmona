@@ -44,18 +44,20 @@ public class Util {
    *         {@code null} if something crazy happened.
    */
   public static final <T> T randomFromSet(final Set<T> set) {
+    // generate the random index which defines which element to choose
     int selection = RANDOM.nextInt(set.size());
+    
+    // get an iterator over the set
     final Iterator<T> iterator = set.iterator();
+    
+    // iterate over all elements of the set until the selection has been reached
     T element = null;
-    while (iterator.hasNext()) {
+    while (iterator.hasNext() && selection > 0) {
       element = iterator.next();
-      if (selection == 0) {
-        return element;
-      } else {
-        selection -= 1;
-      }
+      selection -= 1;
     }
-    return null;
+    
+    return element;
   }
 
   /** Instantiation disallowed. */
