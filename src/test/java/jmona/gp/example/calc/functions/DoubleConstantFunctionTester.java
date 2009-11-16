@@ -1,5 +1,5 @@
 /**
- * AllTest.java
+ * DoubleConstantFunctionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -19,21 +19,31 @@
  */
 package jmona.gp.example.calc.functions;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
 
 /**
- * Runs all tests in this package.
+ * Test class for the DoubleConstantFunction class.
  * 
- * @author jeff
+ * @author jfinkels
  */
-@RunWith(Suite.class)
-@SuiteClasses({ AdditionFunctionTester.class, ConstantFunctionTester.class,
-    DivisionFunctionTester.class, DoubleConstantFunctionTester.class,
-    DoubleIdentityFunctionTester.class, IdentityFunctionTester.class,
-    MultiplicationFunctionTester.class, SecondOrderFunctionTester.class,
-    SubtractionFunctionTester.class })
-public class AllTest {
+public class DoubleConstantFunctionTester {
+
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
+
+  /**
+   * Test method for
+   * {@link jmona.gp.example.calc.functions.DoubleConstantFunction#DoubleConstantFunction(java.lang.Double)}
+   * .
+   */
+  @Test
+  public void testDoubleConstantFunction() {
+    final DoubleConstantFunction function = new DoubleConstantFunction(1.0);
+    assertEquals(1.0, function.execute(0.0), ZERO_DELTA);
+    assertEquals(1.0, function.execute(1.0), ZERO_DELTA);
+    assertEquals(1.0, function.execute(2.0), ZERO_DELTA);
+  }
 
 }

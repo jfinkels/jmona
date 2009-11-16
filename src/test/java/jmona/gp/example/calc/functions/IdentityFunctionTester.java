@@ -1,5 +1,5 @@
 /**
- * AllTest.java
+ * IdentityFunctionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -19,21 +19,33 @@
  */
 package jmona.gp.example.calc.functions;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import static org.junit.Assert.assertSame;
+
+import org.junit.Test;
 
 /**
- * Runs all tests in this package.
+ * Test class for the IdentityFunction class.
  * 
- * @author jeff
+ * @author jfinkels
  */
-@RunWith(Suite.class)
-@SuiteClasses({ AdditionFunctionTester.class, ConstantFunctionTester.class,
-    DivisionFunctionTester.class, DoubleConstantFunctionTester.class,
-    DoubleIdentityFunctionTester.class, IdentityFunctionTester.class,
-    MultiplicationFunctionTester.class, SecondOrderFunctionTester.class,
-    SubtractionFunctionTester.class })
-public class AllTest {
+public class IdentityFunctionTester {
+
+  /**
+   * Test method for
+   * {@link jmona.gp.example.calc.functions.IdentityFunction#execute(java.lang.Object)}
+   * .
+   */
+  @Test
+  public void testExecute() {
+    final IdentityFunction<Object> function = new IdentityFunction<Object>();
+
+    final Object input1 = new Object();
+    final Object input2 = new Object();
+    final Object input3 = new Object();
+
+    assertSame(input1, function.execute(input1));
+    assertSame(input2, function.execute(input2));
+    assertSame(input3, function.execute(input3));
+  }
 
 }
