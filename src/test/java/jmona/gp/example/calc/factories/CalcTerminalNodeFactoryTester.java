@@ -19,21 +19,45 @@
  */
 package jmona.gp.example.calc.factories;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import jmona.InitializationException;
+import jmona.gp.TerminalNode;
+import jmona.gp.example.calc.functions.SingleInputFunction;
+import jmona.gp.example.calc.nodes.NumberNode;
+import jmona.gp.example.calc.nodes.VariableNode;
+import jmona.test.Util;
 
 import org.junit.Test;
 
 /**
+ * Test class for the CalcTerminalNodeFactory class.
+ * 
  * @author jfinkels
  */
 public class CalcTerminalNodeFactoryTester {
 
   /**
-   * Test method for {@link jmona.gp.example.calc.factories.CalcTerminalNodeFactory#createNode()}.
+   * Test method for
+   * {@link jmona.gp.example.calc.factories.CalcTerminalNodeFactory#createNode()}
+   * .
    */
   @Test
   public void testCreateNode() {
-    fail("Not yet implemented");
+    final CalcTerminalNodeFactory factory = new CalcTerminalNodeFactory();
+
+    TerminalNode<SingleInputFunction<Double, Double>> node = null;
+    try {
+      node = factory.createNode();
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+    
+    assertTrue(node instanceof VariableNode || node instanceof NumberNode);
+    assertEquals(0, node.arity());
+    assertNull(node.children());
+    
   }
 
 }
