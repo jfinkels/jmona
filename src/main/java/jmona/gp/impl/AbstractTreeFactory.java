@@ -45,11 +45,8 @@ public abstract class AbstractTreeFactory<V> implements TreeFactory<V> {
   private TerminalNodeFactory<V> terminalNodeFactory = null;
 
   /**
-   * Create a Tree by instantiating a Tree of class specified in the
-   * {@link #treeClass} property, and assigning its root to be a tree created by
-   * the {@link #createTree(int)} method.
-   * 
-   * The tree constructor must have a single argument of type Node.
+   * Create a Tree by instantiating a DefaultTree and assigning its root to be a
+   * tree created by the {@link #createTree(int)} method.
    * 
    * @throws InitializationException
    *           If there is a problem invoking the constructor of the Tree class.

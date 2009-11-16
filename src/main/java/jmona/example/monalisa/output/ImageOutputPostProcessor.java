@@ -64,7 +64,7 @@ public class ImageOutputPostProcessor extends
     return String.format(this.outputDir + "generation%1$d.png",
         currentGeneration);
   }
-  
+
   /**
    * Write the first Individual in the current population of the specified
    * EvolutionContext out to an image.
@@ -79,7 +79,7 @@ public class ImageOutputPostProcessor extends
    * @throws ProcessingException
    *           If the height or width of the output image has not been set, or
    *           if there is a problem writing the image to disk.
-   * @see jmona.IntervalPostProcessor#processAtInterval(jmona.EvolutionContext)
+   * @see jmona.impl.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
    */
   @Override
   protected void processAtInterval(

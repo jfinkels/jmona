@@ -42,7 +42,7 @@ public class MonaCrossoverFunction implements CrossoverFunction<MonaIndividual> 
    * @param parent2
    *          Another MonaIndividual
    * 
-   * @see jmona.CrossoverFunction#crossover(jmona.Pair)
+   * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
    */
   @Override
   public void crossover(final MonaIndividual parent1,

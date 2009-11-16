@@ -40,7 +40,7 @@ public class GPCrossoverFunction<V> implements CrossoverFunction<Tree<V>> {
    *          A Tree.
    * @param parent2
    *          Another Tree.
-   * @see jmona.CrossoverFunction#crossover()
+   * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
    */
   @Override
   public void crossover(final Tree<V> parent1, final Tree<V> parent2) {

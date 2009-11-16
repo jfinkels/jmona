@@ -90,7 +90,7 @@ public class DefaultTree<V> implements Tree<V> {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.gp.Tree#evaluate(java.lang.Object[])
+   * @see jmona.gp.Tree#evaluate()
    */
   @Override
   public V evaluate() throws EvaluationException {

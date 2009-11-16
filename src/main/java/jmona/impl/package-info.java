@@ -23,14 +23,14 @@
  * 
  * Among other classes, this package provides:
  * <ul>
- * <li>{@link AbstractEvolutionContext}, a base class for
+ * <li>{@link jmona.impl.AbstractEvolutionContext}, a base class for
  * {@link jmona.EvolutionContext} implementations</li>
- * <li>{@link DefaultCompletionCriteria}, a default
+ * <li>{@link jmona.impl.DefaultCompletionCriteria}, a default
  * {@link jmona.CompletionCriteria} implementation which checks for maximum
  * fitness and for maximum number of generations</li>
- * <li>{@link DefaultPopulation}, a <code>Vector</code>-based default
- * implementation of a {@linkplain jmona.Population}</li>
- * <li>{@link PeriodicPostProcessor}, a base class for
+ * <li>{@link jmona.impl.DefaultPopulation}, a <code>Vector</code>-based default
+ * implementation of a {@link jmona.Population}</li>
+ * <li>{@link jmona.impl.PeriodicPostProcessor}, a base class for
  * {@link jmona.PostProcessor} implementations which execute periodically.</li>
  * </ul>
  * 

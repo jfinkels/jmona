@@ -37,7 +37,7 @@ public class OnesCrossoverFunction implements CrossoverFunction<OnesIndividual> 
    *          An individual.
    * @param parent2
    *          Another individual.
-   * @see jmona.CrossoverFunction#crossover(jmona.Pair)
+   * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
    */
   @Override
   public void crossover(final OnesIndividual parent1,

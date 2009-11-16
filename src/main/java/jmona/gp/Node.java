@@ -25,7 +25,7 @@ import java.util.List;
  * A Node which can be recursively evaluated.
  * 
  * @param <V>
- *          The return type of the {@link #evaluate(Object...)} method on this
+ *          The return type of the {@link #evaluate()} method on this
  *          Node.
  * @author jfinkels
  */
