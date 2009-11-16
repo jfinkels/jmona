@@ -38,6 +38,9 @@ import org.junit.Test;
  */
 public class CalcTerminalNodeFactoryTester {
 
+  /** The number of times to repeat the test. */
+  public static final int NUM_TESTS = 1000;
+
   /**
    * Test method for
    * {@link jmona.gp.example.calc.factories.CalcTerminalNodeFactory#createNode()}
@@ -47,17 +50,37 @@ public class CalcTerminalNodeFactoryTester {
   public void testCreateNode() {
     final CalcTerminalNodeFactory factory = new CalcTerminalNodeFactory();
 
-    TerminalNode<SingleInputFunction<Double, Double>> node = null;
-    try {
-      node = factory.createNode();
-    } catch (final InitializationException exception) {
-      Util.fail(exception);
+    int numNumberNodes = 0;
+    int numVariableNodes = 0;
+
+    for (int i = 0; i < NUM_TESTS; ++i) {
+      TerminalNode<SingleInputFunction<Double, Double>> node = null;
+      try {
+        node = factory.createNode();
+      } catch (final InitializationException exception) {
+        Util.fail(exception);
+      }
+
+      assertTrue(node instanceof VariableNode || node instanceof NumberNode);
+      assertEquals(0, node.arity());
+      assertNull(node.children());
+
+      if (node instanceof VariableNode) {
+        numVariableNodes += 1;
+      } else {
+        numNumberNodes += 1;
+      }
     }
-    
-    assertTrue(node instanceof VariableNode || node instanceof NumberNode);
-    assertEquals(0, node.arity());
-    assertNull(node.children());
-    
+
+    assertEquals(NUM_TESTS, numVariableNodes + numNumberNodes);
+
+    final double mean = (numVariableNodes + numNumberNodes) / 2.0;
+
+    final double delta = mean * 0.1;
+
+    assertEquals(mean, numVariableNodes, delta);
+    assertEquals(mean, numNumberNodes, delta);
+
   }
 
 }
