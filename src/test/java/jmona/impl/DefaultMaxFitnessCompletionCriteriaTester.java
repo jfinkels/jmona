@@ -28,6 +28,7 @@ import jmona.Population;
 import jmona.ga.impl.GAEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
+import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -38,17 +39,6 @@ import org.junit.Test;
  * @author jfinkels
  */
 public class DefaultMaxFitnessCompletionCriteriaTester {
-
-  /**
-   * Print the stack trace of the specified exception and fail the test.
-   * 
-   * @param exception
-   *          The exception which caused the test failure.
-   */
-  protected static void fail(final Throwable exception) {
-    exception.printStackTrace(System.err);
-    org.junit.Assert.fail(exception.getMessage());
-  }
 
   /** The completion criteria under test. */
   private DefaultMaxFitnessCompletionCriteria<ExampleIndividual> completionCriteria = null;
@@ -61,18 +51,18 @@ public class DefaultMaxFitnessCompletionCriteriaTester {
   @Before
   public final void setUp() {
     this.completionCriteria = new DefaultMaxFitnessCompletionCriteria<ExampleIndividual>();
-    
+
     this.population = new DefaultPopulation<ExampleIndividual>();
     this.population.add(new ExampleIndividual(1));
     this.population.add(new ExampleIndividual(2));
-    
+
     this.evolutionContext = new GAEvolutionContext<ExampleIndividual>(
         this.population);
 
     try {
       this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
     } catch (final FitnessException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
   }
 
@@ -89,7 +79,7 @@ public class DefaultMaxFitnessCompletionCriteriaTester {
           DefaultMaxFitnessCompletionCriteria.DEFAULT_MAX_FITNESS));
       assertTrue(this.completionCriteria.isSatisfied(this.evolutionContext));
     } catch (final CompletionException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
   }
 
@@ -105,7 +95,7 @@ public class DefaultMaxFitnessCompletionCriteriaTester {
       this.completionCriteria.setMaxFitness(1);
       assertTrue(this.completionCriteria.isSatisfied(this.evolutionContext));
     } catch (final CompletionException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
   }
 
