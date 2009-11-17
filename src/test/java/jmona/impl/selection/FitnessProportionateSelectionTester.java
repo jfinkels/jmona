@@ -66,15 +66,9 @@ public class FitnessProportionateSelectionTester {
   public void testEqualWeightSelect() {
     final Map<ExampleIndividual, Double> fitnesses = new HashMap<ExampleIndividual, Double>();
 
-    ExampleIndividual individual = null;
-    try {
-      individual = this.function.select(fitnesses);
-      fail("Exception should have been thrown on the previous line.");
-    } catch (final IllegalArgumentException exception) {
-      assertNull(individual);
-    }
+    assertNull(this.function.select(fitnesses));
 
-    individual = new ExampleIndividual();
+    ExampleIndividual individual = new ExampleIndividual();
     fitnesses.put(individual, 1.0);
     for (int i = 0; i < NUM_SELECTIONS; ++i) {
       assertSame(individual, this.function.select(fitnesses));
