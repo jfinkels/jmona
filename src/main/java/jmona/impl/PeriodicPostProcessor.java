@@ -85,7 +85,7 @@ public abstract class PeriodicPostProcessor<T extends Individual> implements
    * @param newPeriod
    *          The period at which to process.
    */
-  public void setPeriod(final int newPeriod) {
+  public synchronized void setPeriod(final int newPeriod) {
     this.period = newPeriod;
   }
 }
