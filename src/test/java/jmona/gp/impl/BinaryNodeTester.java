@@ -21,6 +21,7 @@ package jmona.gp.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import jmona.gp.EvaluationException;
 import jmona.gp.TerminalNode;
 import jmona.gp.impl.example.ExampleBinaryOperation;
@@ -46,6 +47,8 @@ public class BinaryNodeTester {
   private TerminalNode<Integer> leftChild = null;
   /** The BinaryNode under test. */
   private BinaryNode<Integer> node = null;
+  /** The operation for the Node. */
+  private BinaryOperation<Integer, Integer, Integer> operation = null;
   /** The right child Node. */
   private TerminalNode<Integer> rightChild = null;
 
@@ -55,9 +58,13 @@ public class BinaryNodeTester {
     this.leftChild = new IntegerNode(LEFT_VALUE);
     this.rightChild = new IntegerNode(RIGHT_VALUE);
 
-    this.node = new BinaryNode<Integer>(new ExampleBinaryOperation());
+    this.operation = new ExampleBinaryOperation();
+
+    this.node = new BinaryNode<Integer>(this.operation);
     this.node.children().add(leftChild);
     this.node.children().add(rightChild);
+    this.leftChild.setParent(this.node);
+    this.rightChild.setParent(this.node);
   }
 
   /**
@@ -103,6 +110,19 @@ public class BinaryNodeTester {
   public void testRight() {
     assertSame(this.rightChild, this.node.right());
     assertSame(this.rightChild, this.node.children().get(1));
+  }
+
+  /**
+   * Test method for {@link jmona.gp.impl.BinaryNode#toString()}.
+   */
+  @Test
+  public void testToString() {
+    final BinaryNode<Object> emptyNode = new BinaryNode<Object>(null);
+
+    assertTrue(emptyNode.toString().contains("jmona.gp.impl.BinaryNode"));
+
+    assertEquals("(" + String.valueOf(LEFT_VALUE) + this.operation.toString()
+        + String.valueOf(RIGHT_VALUE) + ")", this.node.toString());
   }
 
 }
