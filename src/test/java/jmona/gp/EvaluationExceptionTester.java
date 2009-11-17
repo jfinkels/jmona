@@ -32,7 +32,7 @@ import org.junit.Test;
 public class EvaluationExceptionTester {
 
   /**
-   * Test method for {@link jmona.EvaluationException#EvaluationException()}.
+   * Test method for {@link jmona.gp.EvaluationException#EvaluationException()}.
    */
   @Test
   public void testEvaluationException() {
@@ -45,7 +45,7 @@ public class EvaluationExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.EvaluationException#EvaluationException(java.lang.String)}.
+   * {@link jmona.gp.EvaluationException#EvaluationException(java.lang.String)}.
    */
   @Test
   public void testEvaluationExceptionString() {
@@ -60,7 +60,7 @@ public class EvaluationExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.EvaluationException#EvaluationException(java.lang.String, java.lang.Throwable)}
+   * {@link jmona.gp.EvaluationException#EvaluationException(java.lang.String, java.lang.Throwable)}
    * .
    */
   @Test
@@ -78,7 +78,8 @@ public class EvaluationExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.EvaluationException#EvaluationException(java.lang.Throwable)}.
+   * {@link jmona.gp.EvaluationException#EvaluationException(java.lang.Throwable)}
+   * .
    */
   @Test
   public void testEvaluationExceptionThrowable() {

@@ -59,11 +59,11 @@ public class TernaryNodeTester {
     this.leftChild = new IntegerNode(LEFT_VALUE);
     this.middleChild = new IntegerNode(MIDDLE_VALUE);
     this.rightChild = new IntegerNode(RIGHT_VALUE);
-    
+
     this.node.children().add(this.leftChild);
     this.node.children().add(this.middleChild);
     this.node.children().add(this.rightChild);
-    
+
     this.leftChild.setParent(this.node);
     this.middleChild.setParent(this.node);
     this.rightChild.setParent(this.node);
@@ -79,13 +79,13 @@ public class TernaryNodeTester {
   }
 
   /**
-   * Test method for
-   * {@link jmona.gp.impl.TernaryNode#evaluate(java.lang.Object[])}.
+   * Test method for {@link jmona.gp.impl.TernaryNode#evaluate()}.
    */
   @Test
   public void testEvaluate() {
     try {
-      assertEquals(LEFT_VALUE + MIDDLE_VALUE + RIGHT_VALUE, this.node.evaluate().intValue());
+      assertEquals(LEFT_VALUE + MIDDLE_VALUE + RIGHT_VALUE, this.node
+          .evaluate().intValue());
     } catch (final EvaluationException exception) {
       Util.fail(exception);
     }

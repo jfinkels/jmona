@@ -76,8 +76,7 @@ public class GPFitnessFunctionTester {
   }
 
   /**
-   * Test method for
-   * {@link jmona.gp.impl.GPFitnessFunction#setMetric(jmona.gp.impl.Metric)}.
+   * Test method for {@link jmona.gp.impl.GPFitnessFunction#setMetric(Metric)}.
    */
   @Test
   public void testSetMetric() {

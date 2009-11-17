@@ -82,7 +82,7 @@ public class GPEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.gp.impl.GPEvolutionContext#GP1EvolutionContext(jmona.Population)}
+   * {@link jmona.gp.impl.GPEvolutionContext#GPEvolutionContext(jmona.Population)}
    * .
    */
   @Test
@@ -113,7 +113,7 @@ public class GPEvolutionContextTester {
 
     final Population<Tree<Integer>> after = this.context.currentPopulation();
     LOG.debug(after);
-    
+
   }
 
 }
