@@ -34,5 +34,9 @@
   <bean id="evolutionContext3" class="jmona.impl.GAEvolutionContext">
     <constructor-arg><null /></constructor-arg>
   </bean>
-
+  
+  <bean id="completionCriteria" class="jmona.impl.DefaultMaxGenerationCompletionCriteria" >
+    <property name="maxGenerations" value="1" />
+  </bean>
+  
 </beans>
