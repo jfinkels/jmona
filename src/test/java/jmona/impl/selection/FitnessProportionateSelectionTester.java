@@ -118,12 +118,24 @@ public class FitnessProportionateSelectionTester {
   /**
    * Test method for
    * {@link jmona.impl.selection.FitnessProportionateSelection#select(java.util.Map)}
+   * with a fitnesses map with no elements.
+   */
+  @Test
+  public void testSelectionEmptyMap() {
+    final Map<ExampleIndividual, Double> fitnesses = new HashMap<ExampleIndividual, Double>();
+    final ExampleIndividual individual = this.function.select(fitnesses);
+    assertNull(individual);
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.impl.selection.FitnessProportionateSelection#select(java.util.Map)}
    * on Individual of unequal weight.
    */
   @Test
   public void testUnequalWeightSelect() {
     final Map<ExampleIndividual, Double> fitnesses = new HashMap<ExampleIndividual, Double>();
-    
+
     ExampleIndividual individual = new ExampleIndividual();
 
     fitnesses.put(individual, 1.0);

@@ -73,6 +73,11 @@ public class FitnessProportionateSelection<T extends Individual> implements
     // get the sum of all fitnesses
     final double fitnessesSum = sum(fitnesses.values());
 
+    // if the map is empty, return null
+    if (fitnesses.size() == 0) {
+      return null;
+    }
+
     // if no individual has any fitness, just return a random one
     if (fitnessesSum == 0.0) {
       final Set<T> individuals = fitnesses.keySet();
