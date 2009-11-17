@@ -102,7 +102,8 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
   public String toString() {
     String result = null;
 
-    if (this.left() == null || this.right() == null || this.operation == null) {
+    if (this.children().size() < 2 || this.left() == null
+        || this.right() == null || this.operation == null) {
       result = super.toString();
     } else {
       result = "(" + this.left().toString() + this.operation.toString()
