@@ -52,7 +52,7 @@ public class Util {
     
     // iterate over all elements of the set until the selection has been reached
     T element = null;
-    while (iterator.hasNext() && selection > 0) {
+    while (iterator.hasNext() && selection >= 0) {
       element = iterator.next();
       selection -= 1;
     }

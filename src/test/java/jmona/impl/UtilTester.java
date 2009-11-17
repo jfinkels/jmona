@@ -20,6 +20,7 @@
 package jmona.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -68,11 +69,28 @@ public class UtilTester {
     }
 
     final double meanSelections = (double) sum / selectionsMap.size();
-    
+
     final double delta = meanSelections * 0.1;
-    
+
     for (final Integer selection : selectionsMap.values()) {
       assertEquals(meanSelections, selection, delta);
+    }
+  }
+
+  /**
+   * Test for randomly selecting an Object uniformly from a set with only one
+   * element.
+   */
+  @Test
+  public void testRandomFromSingletonSet() {
+    final Set<Object> set = new HashSet<Object>();
+    final Object object = new Object();
+    set.add(object);
+
+    Object choice = null;
+    for (int i = 0; i < NUM_TESTS; ++i) {
+      choice = Util.randomFromSet(set);
+      assertSame(object, choice);
     }
   }
 
