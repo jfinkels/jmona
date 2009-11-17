@@ -114,7 +114,7 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * 
    * @return The current map from individuals to their corresponding fitnesses.
    */
-  protected Map<T, Double> currentFitnesses() {
+  protected synchronized Map<T, Double> currentFitnesses() {
     return this.currentFitnesses;
   }
 
@@ -125,7 +125,7 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * @see jmona.EvolutionContext#currentGeneration()
    */
   @Override
-  public int currentGeneration() {
+  public synchronized int currentGeneration() {
     return this.generation;
   }
 
@@ -147,7 +147,7 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * @see jmona.EvolutionContext#fitnessFunction()
    */
   @Override
-  public FitnessFunction<T> fitnessFunction() {
+  public synchronized FitnessFunction<T> fitnessFunction() {
     return this.fitnessFunction;
   }
 
