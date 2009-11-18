@@ -20,7 +20,7 @@
 package jmona.gp;
 
 /**
- * This Exception is thrown if there is a problem breeding two Individuals.
+ * This Exception is thrown if there is a problem evaluating an Individual.
  * 
  * @author jeff
  */
