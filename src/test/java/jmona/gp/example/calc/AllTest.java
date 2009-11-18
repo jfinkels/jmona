@@ -29,7 +29,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jeff
  */
 @RunWith(Suite.class)
-@SuiteClasses({ CalcEvolutionTester.class })
+@SuiteClasses({ CalcEvolutionTester.class, FunctionEquivalenceTester.class })
 public class AllTest {
 
 }

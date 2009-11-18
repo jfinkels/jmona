@@ -33,10 +33,10 @@ import org.junit.runners.Suite.SuiteClasses;
     AbstractTreeFactoryTester.class, BinaryNodeTester.class,
     DefaultFunctionNodeFactoryTester.class,
     DefaultTerminalNodeFactoryTester.class, DefaultTreeTester.class,
-    FullTreeFactoryTester.class, GPCrossoverFunctionTester.class,
-    GPEvolutionContextTester.class, GPFitnessFunctionTester.class,
-    GPMutationFunctionTester.class, GrowTreeFactoryTester.class,
-    TernaryNodeTester.class, UtilTester.class })
+    EqualityTesterTester.class, FullTreeFactoryTester.class,
+    GPCrossoverFunctionTester.class, GPEvolutionContextTester.class,
+    GPFitnessFunctionTester.class, GPMutationFunctionTester.class,
+    GrowTreeFactoryTester.class, TernaryNodeTester.class, UtilTester.class })
 public class AllTest {
 
 }
