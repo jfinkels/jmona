@@ -21,6 +21,10 @@ package jmona.gp.impl;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import jmona.EvolutionException;
 import jmona.FitnessException;
 import jmona.InitializationException;
@@ -29,7 +33,6 @@ import jmona.gp.Tree;
 import jmona.gp.TreeFactory;
 import jmona.gp.impl.example.ExampleTreeFactory;
 import jmona.impl.DefaultPopulation;
-import jmona.impl.metrics.EuclideanMetric;
 import jmona.impl.selection.FitnessProportionateSelection;
 import jmona.test.Util;
 
@@ -69,8 +72,12 @@ public class GPEvolutionContextTester {
     this.context
         .setSelectionFunction(new FitnessProportionateSelection<Tree<Integer>>());
 
-    final GPFitnessFunction<Integer> fitnessFunction = new GPFitnessFunction<Integer>();
-    fitnessFunction.setMetric(new EuclideanMetric<Integer>());
+    final Set<Object> evaluationInputs = new HashSet<Object>();
+    evaluationInputs.add(new Object());
+
+    final GPFitnessFunction<Integer, Object> fitnessFunction = new GPFitnessFunction<Integer, Object>();
+    fitnessFunction.setEquivalenceTester(new EqualityTester<Integer>());
+    fitnessFunction.setEvaluationInputs(evaluationInputs);
     fitnessFunction.setTarget(0);
 
     try {

@@ -20,12 +20,15 @@
 package jmona.gp.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import jmona.FitnessException;
-import jmona.Metric;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.IntegerNode;
-import jmona.impl.metrics.EuclideanMetric;
 import jmona.test.Util;
 
 import org.junit.Before;
@@ -39,12 +42,19 @@ import org.junit.Test;
 public class GPFitnessFunctionTester {
 
   /** The function under test. */
-  private GPFitnessFunction<Integer> function = null;
+  private GPFitnessFunction<Integer, Object> function = null;
+  /** The Set of objects for use in evaluating equality of Trees. */
+  private Set<Object> inputs = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.function = new GPFitnessFunction<Integer>();
+    this.function = new GPFitnessFunction<Integer, Object>();
+
+    this.inputs = new HashSet<Object>();
+    this.inputs.add(new Object());
+    this.inputs.add(new Object());
+    this.inputs.add(new Object());
   }
 
   /**
@@ -53,46 +63,53 @@ public class GPFitnessFunctionTester {
    */
   @Test
   public void testFitness() {
-    final Metric<Integer> metric = new EuclideanMetric<Integer>();
-    this.function.setMetric(metric);
+    // set the necessary properties
+    this.function.setEvaluationInputs(this.inputs);
+    this.function.setEquivalenceTester(new EqualityTester<Integer>());
     this.function.setTarget(0);
 
+    // create a tree with a single Node
     final Node<Integer> root = new IntegerNode(0);
     final Tree<Integer> tree0 = new DefaultTree<Integer>(root);
 
     try {
       double epsilon = 0.0;
-      assertEquals(Double.POSITIVE_INFINITY, this.function.fitness(tree0),
-          epsilon);
+      assertEquals(this.inputs.size(), this.function.fitness(tree0), epsilon);
 
       this.function.setTarget(1);
-      assertEquals(1, this.function.fitness(tree0), epsilon);
+      assertEquals(0, this.function.fitness(tree0), epsilon);
 
       this.function.setTarget(2);
-      assertEquals(1.0 / 2.0, this.function.fitness(tree0), epsilon);
+      assertEquals(0, this.function.fitness(tree0), epsilon);
     } catch (final FitnessException exception) {
       Util.fail(exception);
     }
   }
 
   /**
-   * Test method for {@link jmona.gp.impl.GPFitnessFunction#setMetric(Metric)}.
+   * Test method for {@link jmona.gp.impl.GPFitnessFunction#sanityCheck()}.
    */
   @Test
-  public void testSetMetric() {
-    final Metric<Integer> metric = new EuclideanMetric<Integer>();
-    this.function.setMetric(metric);
-    this.function.setTarget(0);
-
-    final Node<Integer> root = new IntegerNode(0);
-    final Tree<Integer> tree0 = new DefaultTree<Integer>(root);
-
+  public void testSanityCheck() {
     try {
-      double epsilon = 0.0;
-      assertEquals(Double.POSITIVE_INFINITY, this.function.fitness(tree0),
-          epsilon);
-    } catch (final FitnessException exception) {
-      Util.fail(exception);
+      this.function.sanityCheck();
+      fail("Exception should have been thrown on the previous line.");
+    } catch (final NullPointerException exception) {
+      this.function.setEvaluationInputs(this.inputs);
+    }
+    
+    try {
+      this.function.sanityCheck();
+      fail("Exception should have been thrown on the previous line.");
+    } catch (final NullPointerException exception) {
+      this.function.setEquivalenceTester(new EqualityTester<Integer>());
+    }
+    
+    try {
+      this.function.sanityCheck();
+      fail("Exception should have been thrown on the previous line.");
+    } catch (final NullPointerException exception) {
+      this.function.setTarget(0);
     }
   }
 }

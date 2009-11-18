@@ -23,11 +23,25 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-  <!-- metrics -->
+  <!-- equivalence tester -->
 
-  <bean id="metric" class="jmona.gp.example.calc.metrics.CalcMetric">
-    <property name="codomainMetric" ref="codomainMetric" />
-    <property name="inputs">
+  <bean id="equivalenceTester"
+        class="jmona.gp.example.calc.FucntionEquivalenceTester" />
+
+  <!-- target function -->
+  
+  <bean id="target" class="jmona.gp.example.calc.functions.SquareFunction" />
+
+  <!-- evolution functions -->
+
+  <bean id="selectionFunction" 
+        class="jmona.impl.selection.FitnessProportionateSelection" />
+  <bean id="crossoverFunction" class="jmona.gp.impl.GPCrossoverFunction" />
+  <bean id="mutationFunction" class="jmona.gp.impl.GPMutationFunction" />
+  <bean id="fitnessFunction" class="jmona.gp.impl.GPFitnessFunction">
+    <property name="target" ref="target" />
+    <property name="equivalenceTester" ref="equivalenceTester" />
+    <property name="evaluationInputs">
       <set>
         <value>0</value>
         <value>1</value>
@@ -42,21 +56,6 @@
         <value>-5</value>
       </set>
     </property>
-  </bean>
-  <bean id="codomainMetric" class="jmona.gp.impl.metrics.EuclideanMetric" />
-
-  <!-- target function -->
-  
-  <bean id="target" class="jmona.gp.example.calc.functions.SquareFunction" />
-
-  <!-- evolution functions -->
-
-  <bean id="selectionFunction" class="jmona.impl.selection.FitnessProportionateSelection" />
-  <bean id="crossoverFunction" class="jmona.gp.impl.GPCrossoverFunction" />
-  <bean id="mutationFunction" class="jmona.gp.impl.GPMutationFunction" />
-  <bean id="fitnessFunction" class="jmona.gp.impl.GPFitnessFunction">
-    <property name="target" ref="target" />
-    <property name="metric" ref="metric" />
   </bean>
 
 </beans>
