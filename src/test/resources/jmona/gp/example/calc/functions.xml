@@ -26,7 +26,7 @@
   <!-- equivalence tester -->
 
   <bean id="equivalenceTester"
-        class="jmona.gp.example.calc.FucntionEquivalenceTester" />
+        class="jmona.gp.example.calc.FunctionEquivalenceTester" />
 
   <!-- target function -->
   
@@ -37,23 +37,17 @@
   <bean id="selectionFunction" 
         class="jmona.impl.selection.FitnessProportionateSelection" />
   <bean id="crossoverFunction" class="jmona.gp.impl.GPCrossoverFunction" />
-  <bean id="mutationFunction" class="jmona.gp.impl.GPMutationFunction" />
+  <bean id="mutationFunction" class="jmona.gp.impl.GPMutationFunction">
+    <property name="treeFactory" ref="individualFactory" />
+  </bean>
   <bean id="fitnessFunction" class="jmona.gp.impl.GPFitnessFunction">
     <property name="target" ref="target" />
     <property name="equivalenceTester" ref="equivalenceTester" />
     <property name="evaluationInputs">
       <set>
-        <value>0</value>
-        <value>1</value>
-        <value>-1</value>
-        <value>2</value>
-        <value>-2</value>
-        <value>3</value>
-        <value>-3</value>
-        <value>4</value>
-        <value>-4</value>
-        <value>5</value>
-        <value>-5</value>
+        <bean id="input1" class="java.lang.Double">
+          <constructor-arg value="1.0" />
+        </bean>
       </set>
     </property>
   </bean>
