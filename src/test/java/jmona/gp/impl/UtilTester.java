@@ -72,7 +72,7 @@ public class UtilTester {
     this.leftTreeRightChild.setParent(this.leftTreeRoot);
     this.rightTreeLeftChild.setParent(this.rightTreeRoot);
     this.rightTreeRightChild.setParent(this.rightTreeRoot);
-    
+
     this.leftTree = new DefaultTree<Integer>(this.leftTreeRoot);
     this.rightTree = new DefaultTree<Integer>(this.rightTreeRoot);
   }
@@ -85,9 +85,9 @@ public class UtilTester {
   @Test
   public void testReplaceNode() {
     Util.replaceNode(this.leftTree, this.leftTreeRoot, this.rightTreeRoot);
-    assertSame(this.leftTree.root(), this.rightTreeRoot);
-    assertSame(this.leftTree.root().children().get(0), this.rightTreeLeftChild);
-    assertSame(this.leftTree.root().children().get(1), this.rightTreeRightChild);
+    assertSame(this.rightTreeRoot, this.leftTree.root());
+    assertSame(this.rightTreeLeftChild, this.leftTree.root().children().get(0));
+    assertSame(this.rightTreeRightChild, this.leftTree.root().children().get(1));
   }
 
   /**
@@ -98,13 +98,15 @@ public class UtilTester {
   @Test
   public void testReplaceNode2() {
     Util.replaceNode(this.leftTree, this.leftTreeLeftChild, this.rightTreeRoot);
-    assertSame(this.leftTree.root(), this.leftTreeRoot);
-    assertSame(this.leftTree.root().children().get(0), this.rightTreeRoot);
-    assertSame(this.leftTree.root().children().get(1), this.leftTreeRightChild);
-    assertSame(this.leftTree.root().children().get(0).children().get(0),
-        this.rightTreeLeftChild);
-    assertSame(this.leftTree.root().children().get(0).children().get(1),
-        this.rightTreeRightChild);
+    assertSame(this.leftTreeRoot, this.leftTree.root());
+    assertSame(this.rightTreeRoot, this.leftTree.root().children().get(0));
+    assertSame(this.leftTreeRightChild, this.leftTree.root().children().get(1));
+    assertSame(this.rightTreeLeftChild, this.leftTree.root().children().get(0)
+        .children().get(0));
+
+    assertSame(this.rightTreeRightChild, this.leftTree.root().children().get(0)
+        .children().get(1));
+
   }
 
   /**
@@ -116,9 +118,9 @@ public class UtilTester {
   public void testReplaceNode3() {
     Util.replaceNode(this.leftTree, this.leftTreeLeftChild,
         this.rightTreeRightChild);
-    assertSame(this.leftTree.root(), this.leftTreeRoot);
-    assertSame(this.leftTree.root().children().get(0), this.rightTreeRightChild);
-    assertSame(this.leftTree.root().children().get(1), this.leftTreeRightChild);
+    assertSame(this.leftTreeRoot, this.leftTree.root());
+    assertSame(this.rightTreeRightChild, this.leftTree.root().children().get(0));
+    assertSame(this.leftTreeRightChild, this.leftTree.root().children().get(1));
   }
 
   /**
@@ -130,10 +132,87 @@ public class UtilTester {
   public void testSwapNodes() {
     Util.swapNodes(this.leftTree, this.leftTreeRoot, this.rightTree,
         this.rightTreeRoot);
-    assertSame(this.leftTree.root(), this.rightTreeRoot);
-    assertSame(this.rightTree.root(), this.leftTreeRoot);
+    assertSame(this.rightTreeRoot, this.leftTree.root());
+    assertSame(this.leftTreeRoot, this.rightTree.root());
     assertNull(this.leftTree.root().parent());
     assertNull(this.rightTree.root().parent());
+  }
+
+  /** Test for performing multiple swaps on the same Trees. */
+  @Test
+  public void testMultipleSwaps() {
+
+    // swap the left tree root with the right tree root
+    Util.swapNodes(this.leftTree, this.leftTree.root(), this.rightTree,
+        this.rightTree.root());
+
+    assertSame(this.leftTreeRoot, this.rightTree.root());
+    assertSame(this.leftTreeLeftChild, this.rightTree.root().children().get(0));
+    assertSame(this.leftTreeRightChild, this.rightTree.root().children().get(1));
+
+    assertSame(this.rightTreeRoot, this.leftTree.root());
+    assertSame(this.rightTreeLeftChild, this.leftTree.root().children().get(0));
+    assertSame(this.rightTreeRightChild, this.leftTree.root().children().get(1));
+
+    assertSame(this.leftTreeRoot, this.rightTree.root().children().get(0)
+        .parent());
+    assertSame(this.leftTreeRoot, this.rightTree.root().children().get(1)
+        .parent());
+    assertSame(this.rightTreeRoot, this.leftTree.root().children().get(0)
+        .parent());
+    assertSame(this.rightTreeRoot, this.leftTree.root().children().get(1)
+        .parent());
+
+    assertNull(this.rightTree.root().parent());
+    assertNull(this.leftTree.root().parent());
+
+    // swap left child in the left tree with right child in the right tree
+    Util.swapNodes(this.leftTree, this.leftTree.root().children().get(0),
+        this.rightTree, this.rightTree.root().children().get(1));
+
+    assertSame(this.leftTreeRoot, this.rightTree.root());
+    assertSame(this.leftTreeLeftChild, this.rightTree.root().children().get(0));
+    assertSame(this.rightTreeLeftChild, this.rightTree.root().children().get(1));
+    assertSame(this.rightTreeRoot, this.leftTree.root());
+    assertSame(this.leftTreeRightChild, this.leftTree.root().children().get(0));
+    assertSame(this.rightTreeRightChild, this.leftTree.root().children().get(1));
+
+    assertSame(this.leftTreeRoot, this.rightTree.root().children().get(0)
+        .parent());
+    assertSame(this.leftTreeRoot, this.rightTree.root().children().get(1)
+        .parent());
+    assertSame(this.rightTreeRoot, this.leftTree.root().children().get(0)
+        .parent());
+    assertSame(this.rightTreeRoot, this.leftTree.root().children().get(1)
+        .parent());
+
+    assertNull(this.rightTree.root().parent());
+    assertNull(this.leftTree.root().parent());
+
+    // swap the right child of the left tree with the root of the right tree
+    Util.swapNodes(this.leftTree, this.leftTree.root().children().get(1),
+        this.rightTree, this.rightTree.root());
+
+    assertSame(this.rightTreeRoot, this.leftTree.root());
+    assertSame(this.rightTreeRightChild, this.rightTree.root());
+    assertSame(this.leftTreeRightChild, this.leftTree.root().children().get(0));
+    assertSame(this.leftTreeRoot, this.leftTree.root().children().get(1));
+    assertSame(this.leftTreeLeftChild, this.leftTree.root().children().get(1)
+        .children().get(0));
+    assertSame(this.rightTreeLeftChild, this.leftTree.root().children().get(1)
+        .children().get(1));
+
+    assertSame(this.rightTreeRoot, this.leftTree.root().children().get(0)
+        .parent());
+    assertSame(this.rightTreeRoot, this.leftTree.root().children().get(1)
+        .parent());
+    assertSame(this.leftTreeRoot, this.leftTree.root().children().get(1)
+        .children().get(0).parent());
+    assertSame(this.leftTreeRoot, this.leftTree.root().children().get(1)
+        .children().get(1).parent());
+
+    assertNull(this.rightTree.root().parent());
+    assertNull(this.leftTree.root().parent());
   }
 
 }
