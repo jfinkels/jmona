@@ -61,6 +61,14 @@ public class CalcEvolutionTester extends AbstractJUnit4SpringContextTests {
       Util.fail(exception);
     } catch (final EvolutionException exception) {
       Util.fail(exception);
+    } catch (final NullPointerException exception) {
+      Util.fail(exception);
+    } catch (final RuntimeException exception) {
+      Util.fail(exception);
+    } catch (final StackOverflowError error) {
+      Util.fail(error);
+    } catch (final AssertionError error) {
+      Util.fail(error);
     }
   }
 }
