@@ -28,6 +28,8 @@ import jmona.impl.AbstractEvolutionContext;
 import jmona.impl.DefaultPopulation;
 import jmona.impl.Util;
 
+import org.apache.log4j.Logger;
+
 /**
  * A default EvolutionContext for a Genetic Programming evolution.
  * 
@@ -48,6 +50,10 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
     super(initialPopulation);
   }
 
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(GPEvolutionContext.class);
+
   /**
    * 
    * @throws EvolutionException
@@ -64,6 +70,9 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
       throw new EvolutionException("Sanity check failed.", exception);
     }
 
+    LOG.debug("Starting evolution step " + this.currentGeneration());
+    LOG.debug("Current population: " + this.currentPopulation());
+    
     // get the size of the current population
     final int currentSize = this.currentPopulation().size();
 
@@ -75,45 +84,75 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
     // initialize a new population to hold the next generation
     final Population<Tree<V>> nextGeneration = new DefaultPopulation<Tree<V>>();
 
-    // select one individual, because each op. requires at least one individual
-    final Tree<V> individual1 = this.selectionFunction().select(
-        this.currentFitnesses());
+    Tree<V> individual1 = null;
 
     try {
       // while the size of the next generation is less than the size of the
       // current generation
       while (nextGeneration.size() < currentSize) {
 
+        // select one individual, because each op. requires at least one
+        individual1 = this.selectionFunction().select(this.currentFitnesses());
+
+        LOG.debug("Selected individual 1: " + individual1);
+        
         // choose variation operation probabilistically
         // TODO I am ignoring the crossoverProbability property
         if (Util.RANDOM.nextDouble() < this.mutationProbability()
-            || nextGeneration.size() == currentSize - 1) {
+            || nextGeneration.size() >= currentSize - 1) {
+
+          LOG.debug("Performing mutation on individual1...");
 
           // perform mutation
           this.mutationFunction().mutate(individual1);
 
+          LOG.debug("...mutation complete.");
+          
         } else { // variation operation is crossover
 
           // select another individual
           final Tree<V> individual2 = this.selectionFunction().select(
               this.currentFitnesses());
 
+          LOG.debug("Selected individual 2: " + individual2);
+
+          LOG.debug("Performing crossover on the two individuals...");
+          
           // perform crossover
           this.crossoverFunction().crossover(individual1, individual2);
-
+          
+          LOG.debug("...crossover complete.");
+          
+          LOG.debug("New individual 2: " + individual2);
+          
+          LOG.debug("Adding individual 2 to the next generation.");
+          
           // add the second individual to the next generation
           nextGeneration.add(individual2);
         }
 
+        LOG.debug("New individual 1: " + individual1);
+        
+        LOG.debug("Adding individual 1 to the next generation.");
+        
         // add the original individual to the next generation
         nextGeneration.add(individual1);
+        
+        LOG.debug("Next generation size: " + nextGeneration.size());
       }
 
+      LOG.debug("Setting current population to be the next generation.");
+      
       // set the current population to the next generation
       this.setCurrentPopulation(nextGeneration);
 
+      LOG.debug("Recalculating fitnesses...");
+      
       // recalculate the fitnesses of the current generation
       this.recalculateFitnesses();
+      
+      LOG.debug("...recalculation of fitnesses complete.");
+      
     } catch (final FitnessException exception) {
       throw new EvolutionException(
           "Failed determining fitness of an individual.", exception);
