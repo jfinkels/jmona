@@ -29,6 +29,6 @@ import jmona.impl.Util;
 public class ExampleTerminalNode extends IntegerNode {
   /** Instantiate this Node with a random integer value. */
   public ExampleTerminalNode() {
-    super(Util.RANDOM.nextInt());
+    super(Math.abs(Util.RANDOM.nextInt()));
   }
 }
