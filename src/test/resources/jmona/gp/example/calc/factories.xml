@@ -23,8 +23,21 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-  <bean id="terminalNodeFactory"
-    class="jmona.gp.example.calc.factories.CalcTerminalNodeFactory" />
+  <!-- use this bean to allow for constants and variables in the formula -->
+  <!--<bean id="terminalNodeFactory"
+    class="jmona.gp.example.calc.factories.CalcTerminalNodeFactory" />-->
+  
+  <!-- use this bean to allow for only variables in the formula -->
+  <bean id="terminalNodeFactory" class="jmona.gp.impl.DefaultTerminalNodeFactory">
+    <constructor-arg>
+      <set>
+        <bean class="java.lang.Class" factory-method="forName">
+          <constructor-arg value="jmona.gp.example.calc.nodes.VariableNode" />
+        </bean>
+      </set>
+    </constructor-arg>
+  </bean>
+  
   
   <bean id="functionNodeFactory"
     class="jmona.gp.impl.DefaultFunctionNodeFactory">
@@ -35,19 +48,20 @@
         </bean>
         <bean class="java.lang.Class" factory-method="forName">
           <constructor-arg value="jmona.gp.example.calc.nodes.MultiplicationNode" />
-        </bean><!--
+        </bean>
         <bean class="java.lang.Class" factory-method="forName">
           <constructor-arg value="jmona.gp.example.calc.nodes.DivisionNode" />
         </bean>
         <bean class="java.lang.Class" factory-method="forName">
           <constructor-arg value="jmona.gp.example.calc.nodes.SubtractionNode" />
         </bean>
-      --></set>
+      </set>
     </constructor-arg>
   </bean>
     
   <bean id="individualFactory" class="jmona.gp.impl.GrowTreeFactory">
     <property name="probabilityTerminal" value="0.1" />
+    <property name="maxDepth" value="3" />
     <property name="functionNodeFactory" ref="functionNodeFactory" />
     <property name="terminalNodeFactory" ref="terminalNodeFactory" />
   </bean>
