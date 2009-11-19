@@ -35,6 +35,9 @@ public class FunctionMultiplication implements
   /** A singleton instance of this class. */
   private static final FunctionMultiplication INSTANCE = new FunctionMultiplication();
 
+  /** The String symbol which represents this operation. */
+  public static final String SYMBOL = "*";
+
   /**
    * Get a singleton instance of this class.
    * 
@@ -62,5 +65,15 @@ public class FunctionMultiplication implements
       final SingleInputFunction<Double, Double> object1,
       final SingleInputFunction<Double, Double> object2) {
     return new MultiplicationFunction(object1, object2);
+  }
+
+  /**
+   * Get the String which represents this operation.
+   * 
+   * @return The String which represents this operation.
+   */
+  @Override
+  public String toString() {
+    return SYMBOL;
   }
 }
