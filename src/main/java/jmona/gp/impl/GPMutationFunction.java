@@ -62,6 +62,10 @@ public class GPMutationFunction<V> implements MutationFunction<Tree<V>> {
    */
   @Override
   public void mutate(final Tree<V> individual) throws MutationException {
+    if (this.treeFactory == null) {
+      throw new MutationException("TreeFactory has not been set.");
+    }
+    
     try {
       final Tree<V> newTree = this.treeFactory.createIndividual();
       Util.replaceNode(individual, individual.randomNode(), newTree.root());
