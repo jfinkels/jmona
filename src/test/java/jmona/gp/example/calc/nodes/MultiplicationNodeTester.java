@@ -23,6 +23,7 @@ import static org.junit.Assert.assertEquals;
 import jmona.gp.EvaluationException;
 import jmona.test.Util;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -40,28 +41,52 @@ public class MultiplicationNodeTester {
   /** Zero. */
   public static final double ZERO_DELTA = 0.0;
 
+  @Before
+  public final void setUp() {
+    this.node = new MultiplicationNode();
+    this.leftChild = new NumberNode(LEFT_VALUE);
+    this.rightChild = new NumberNode(RIGHT_VALUE);
+
+    this.node.children().add(this.leftChild);
+    this.node.children().add(this.rightChild);
+    this.leftChild.setParent(this.node);
+    this.rightChild.setParent(this.node);
+
+  }
+
+  public static final double LEFT_VALUE = 1.0;
+  public static final double RIGHT_VALUE = 2.0;
+
+  private MultiplicationNode node = null;
+  private NumberNode leftChild = null;
+  private NumberNode rightChild = null;
+
   /**
    * Test method for
-   * {@link jmona.gp.example.calc.nodes.MultiplicationNode#MultiplicationNode()}.
+   * {@link jmona.gp.example.calc.nodes.MultiplicationNode#MultiplicationNode()}
+   * .
    */
   @Test
   public void testMultiplicationNode() {
-    final MultiplicationNode node = new MultiplicationNode();
-
-    final double leftValue = 1.0;
-    final double rightValue = 2.0;
-
-    node.children().add(new NumberNode(leftValue));
-    node.children().add(new NumberNode(rightValue));
 
     try {
       for (double x = MIN_VALUE; x < MAX_VALUE; x += INCREMENT) {
-        assertEquals(leftValue * rightValue, node.evaluate().execute(x),
+        assertEquals(LEFT_VALUE * RIGHT_VALUE, node.evaluate().execute(x),
             ZERO_DELTA);
       }
     } catch (final EvaluationException exception) {
       Util.fail(exception);
     }
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.gp.example.calc.nodes.MultiplicationNode#toString()}.
+   */
+  @Test
+  public void testToString() {
+    assertEquals("(" + LEFT_VALUE + "*" + RIGHT_VALUE + ")", this.node
+        .toString());
   }
 
 }
