@@ -19,21 +19,21 @@
  */
 package jmona.gp.example.calc.nodes;
 
+import jmona.gp.example.calc.functions.SingleInputFunction;
 import jmona.gp.example.calc.operations.FunctionAddition;
+import jmona.gp.impl.BinaryNode;
 
 /**
  * A node representing addition of real numbers.
  * 
  * @author jfinkels
  */
-public class AdditionNode extends AbstractCalcFunctionNode {
-
-  /** The symbol which represents this Node. */
-  public static final String SYMBOL = "+";
+public class AdditionNode extends
+    BinaryNode<SingleInputFunction<Double, Double>> {
 
   /** Instantiate this Node using the FunctionAddition operation. */
   public AdditionNode() {
-    super(FunctionAddition.newInstance(), SYMBOL);
+    super(FunctionAddition.newInstance());
   }
 
 }

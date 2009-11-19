@@ -19,19 +19,20 @@
  */
 package jmona.gp.example.calc.nodes;
 
+import jmona.gp.example.calc.functions.SingleInputFunction;
 import jmona.gp.example.calc.operations.FunctionSubtraction;
+import jmona.gp.impl.BinaryNode;
 
 /**
  * A node representing subtraction of real numbers.
  * 
  * @author jfinkels
  */
-public class SubtractionNode extends AbstractCalcFunctionNode {
-  /** The symbol which represents this Node. */
-  public static final String SYMBOL = "-";
+public class SubtractionNode extends
+    BinaryNode<SingleInputFunction<Double, Double>> {
 
   /** Instantiate this Node using the FunctionSubtraction operation. */
   public SubtractionNode() {
-    super(FunctionSubtraction.newInstance(), SYMBOL);
+    super(FunctionSubtraction.newInstance());
   }
 }

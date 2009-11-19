@@ -19,19 +19,20 @@
  */
 package jmona.gp.example.calc.nodes;
 
+import jmona.gp.example.calc.functions.SingleInputFunction;
 import jmona.gp.example.calc.operations.FunctionMultiplication;
+import jmona.gp.impl.BinaryNode;
 
 /**
  * A node representing multiplication of real numbers.
  * 
  * @author jfinkels
  */
-public class MultiplicationNode extends AbstractCalcFunctionNode {
-  /** The symbol which represents this Node. */
-  public static final String SYMBOL = "*";
+public class MultiplicationNode extends
+    BinaryNode<SingleInputFunction<Double, Double>> {
 
   /** Instantiate this Node using the FunctionMultiplication operation. */
   public MultiplicationNode() {
-    super(FunctionMultiplication.newInstance(), SYMBOL);
+    super(FunctionMultiplication.newInstance());
   }
 }
