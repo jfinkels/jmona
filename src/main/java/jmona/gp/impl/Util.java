@@ -61,6 +61,8 @@ public class Util {
       tree.setRoot(newNode);
     } else {
 
+      // TODO got a NullPointerException here from a mutation
+
       // get the siblings of the existing Node
       final List<Node<V>> siblings = existingParent.children();
 
@@ -143,7 +145,7 @@ public class Util {
       for (int i = 0; i < siblings.size(); ++i) {
 
         // if the current Node is the rightNode
-        if (siblings.get(i).equals(leftNode)) {
+        if (siblings.get(i).equals(rightNode)) {
 
           // remove the rightNode from the list of children
           siblings.remove(i);
