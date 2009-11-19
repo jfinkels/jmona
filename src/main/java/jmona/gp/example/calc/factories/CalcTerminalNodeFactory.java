@@ -36,8 +36,15 @@ import jmona.impl.Util;
 public class CalcTerminalNodeFactory implements
     TerminalNodeFactory<SingleInputFunction<Double, Double>> {
 
+  /** The default maximum value for a NumberNode. */
+  public static final int DEFAULT_MAX_VALUE = 2;
+  /** The default minimum value for a NumberNode. */
+  public static final int DEFAULT_MIN_VALUE = 1;
+
   /** The maximum value for a NumberNode. */
-  public static final int MAX_VALUE = 255;
+  private int maxValue = DEFAULT_MAX_VALUE;
+  /** The minimum value for a NumberNode. */
+  private int minValue = DEFAULT_MIN_VALUE;
 
   /**
    * Create a TerminalNode of type {@link VariableNode} or {@link NumberNode}.
@@ -55,10 +62,30 @@ public class CalcTerminalNodeFactory implements
     if (Util.RANDOM.nextBoolean()) {
       result = new VariableNode();
     } else {
-      result = new NumberNode((double) Util.RANDOM.nextInt(MAX_VALUE));
+      result = new NumberNode(
+          (double) (Util.RANDOM.nextInt(this.maxValue) + this.minValue));
     }
 
     return result;
+  }
+
+  /**
+   * Set the maximum value for a NumberNode.
+   * 
+   * @param newMaxValue
+   *          The maximum value for a NumberNode.
+   */
+  public void setMaxValue(final int newMaxValue) {
+    this.maxValue = newMaxValue;
+  }
+  /**
+   * Set the minimum value for a NumberNode.
+   * 
+   * @param newMinValue
+   *          The minimum value for a NumberNode.
+   */
+  public void setMinValue(final int newMinValue) {
+    this.minValue = newMinValue;
   }
 
 }
