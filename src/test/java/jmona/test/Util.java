@@ -50,11 +50,10 @@ public class Util {
    *          A Tree.
    * @return The number of Nodes in the specified Tree.
    */
-  @SuppressWarnings("unchecked")
-  public static int countNodes(final Tree tree) {
+  public static <V> int countNodes(final Tree<V> tree) {
 
     // instantiate a list to hold all the nodes in this tree
-    final List<Node> result = new Vector<Node>();
+    final List<Node<V>> result = new Vector<Node<V>>();
 
     // add the root to the list
     result.add(tree.root());
@@ -63,7 +62,7 @@ public class Util {
     int i = 0;
 
     // iterate over all nodes until each node has been examined
-    List<Node> children = null;
+    List<Node<V>> children = null;
     while (i < result.size()) {
       // get the children of the current node
       children = result.get(i).children();
