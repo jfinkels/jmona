@@ -49,38 +49,39 @@ public class DefaultTree<V> implements Tree<V> {
   }
 
   /**
-   * Get all Nodes in this tree.
+   * Get a List of all Nodes in this tree.
    * 
-   * @return All Nodes in this tree.
+   * Returns an empty List if the tree has no root.
+   * 
+   * @return A List of all Nodes in this tree.
    */
   protected List<Node<V>> allNodes() {
-    if (this.root == null) {
-      throw new NullPointerException("The root of this tree is null.");
-    }
-
     // instantiate a list to hold all the nodes in this tree
     final List<Node<V>> result = new Vector<Node<V>>();
 
-    // add the root to the list
-    result.add(this.root);
+    // if the root is null, return an empty list
+    if (this.root != null) {
+      // add the root to the list
+      result.add(this.root);
 
-    // initialize the pointer representing the current node being examined
-    int i = 0;
+      // initialize the pointer representing the current node being examined
+      int i = 0;
 
-    // iterate over all nodes until each node has been examined
-    List<Node<V>> children = null;
-    while (i < result.size()) {
-      // get the children of the current node
-      children = result.get(i).children();
+      // iterate over all nodes until each node has been examined
+      List<Node<V>> children = null;
+      while (i < result.size()) {
+        // get the children of the current node
+        children = result.get(i).children();
 
-      // add this check for possible problematic Node.children() return values
-      if (children != null && children.size() > 0) {
-        // add the children to the list
-        result.addAll(children);
+        // add this check for possible problematic Node.children() return values
+        if (children != null && children.size() > 0) {
+          // add the children to the list
+          result.addAll(children);
+        }
+
+        // increment the number of nodes examined
+        i += 1;
       }
-
-      // increment the number of nodes examined
-      i += 1;
     }
 
     return result;
