@@ -18,16 +18,11 @@
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * Provides a default implementation of the framework for an instance of genetic
- * programming.
- * 
- * For more information, see:
- * <ul>
- * <li><a href="http://en.wikipedia.org/wiki/Genetic_programming">Wikipedia
- * article on genetic programming</a></li>
- * </ul>
+ * Provides an interface for genetic programming based on the {@link jmona}
+ * evolutionary algorithms interface package and the {@link jmona.impl}
+ * evolutionary algorithms implementation package.
  * 
  * @author jfinkels
  */
-package jmona.gp.impl;
+package jmona.gp;
 

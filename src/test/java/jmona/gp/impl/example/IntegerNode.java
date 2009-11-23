@@ -54,7 +54,12 @@ public class IntegerNode extends AbstractTerminalNode<Integer> {
   public Integer evaluate() throws EvaluationException {
     return this.value;
   }
-  
+
+  /**
+   * Get the value of this Node.
+   * 
+   * @return The value of this Node.
+   */
   @Override
   public String toString() {
     return String.valueOf(this.value);

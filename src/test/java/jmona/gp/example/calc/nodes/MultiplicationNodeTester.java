@@ -41,6 +41,7 @@ public class MultiplicationNodeTester {
   /** Zero. */
   public static final double ZERO_DELTA = 0.0;
 
+  /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
     this.node = new MultiplicationNode();
@@ -51,14 +52,18 @@ public class MultiplicationNodeTester {
     this.node.children().add(this.rightChild);
     this.leftChild.setParent(this.node);
     this.rightChild.setParent(this.node);
-
   }
 
+  /** The value of the left Node. */
   public static final double LEFT_VALUE = 1.0;
+  /** The value of the right Node. */
   public static final double RIGHT_VALUE = 2.0;
 
+  /** The Node under test. */
   private MultiplicationNode node = null;
+  /** The left child Node. */
   private NumberNode leftChild = null;
+  /** The right child Node. */
   private NumberNode rightChild = null;
 
   /**
