@@ -125,7 +125,7 @@ public class DefaultTreeTester {
     try {
       node = emptyTree.randomNode();
       fail("Exception should have been thrown on the previous line.");
-    } catch (final NullPointerException exception) {
+    } catch (final IllegalArgumentException exception) {
       assertNull(node);
     }
 
