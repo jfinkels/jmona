@@ -21,10 +21,17 @@ package jmona.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+import java.util.Vector;
+
 import jmona.InitializationException;
+import jmona.gp.Node;
 import jmona.gp.Tree;
 import jmona.gp.TreeFactory;
 import jmona.gp.impl.AbstractTreeFactory;
+import jmona.gp.impl.DefaultTree;
+import jmona.gp.impl.example.ExampleBinaryNode;
 import jmona.gp.impl.example.ExampleTreeFactory;
 
 import org.junit.Test;
@@ -63,8 +70,59 @@ public class UtilTester {
     }
 
     final double epsilon = 0;
-    assertEquals(Math.pow(2, AbstractTreeFactory.DEFAULT_MAX_DEPTH) - 1,
-        Util.countNodes(tree), epsilon);
+    assertEquals(Math.pow(2, AbstractTreeFactory.DEFAULT_MAX_DEPTH) - 1, Util
+        .countNodes(tree), epsilon);
+  }
+
+  @Test
+  public void testAllNodes() {
+    // initialize a list of known nodes
+    final List<Node<Integer>> allNodes = new Vector<Node<Integer>>();
+
+    // initialize a root for the tree
+    final Node<Integer> root = new ExampleBinaryNode();
+    final Tree<Integer> tree = new DefaultTree<Integer>(root);
+
+    // add the root to the list of known nodes
+    allNodes.add(root);
+
+    List<Node<Integer>> utilAllNodes = Util.allNodes(tree);
+
+    assertEquals(allNodes.size(), utilAllNodes.size());
+    for (final Node<Integer> node : allNodes) {
+      assertTrue(utilAllNodes.contains(node));
+    }
+
+    // initialize a left child for the tree
+    final Node<Integer> leftChild = new ExampleBinaryNode();
+    leftChild.setParent(root);
+    root.children().add(leftChild);
+
+    // add the left child node to the list of known nodes
+    allNodes.add(leftChild);
+
+    utilAllNodes = Util.allNodes(tree);
+
+    assertEquals(allNodes.size(), utilAllNodes.size());
+    for (final Node<Integer> node : allNodes) {
+      assertTrue(utilAllNodes.contains(node));
+    }
+
+    // initialize a right child for the tree
+    final Node<Integer> rightChild = new ExampleBinaryNode();
+    rightChild.setParent(root);
+    root.children().add(rightChild);
+
+    // add the right child node to the list of known nodes
+    allNodes.add(rightChild);
+
+    utilAllNodes = Util.allNodes(tree);
+
+    assertEquals(allNodes.size(), utilAllNodes.size());
+    for (final Node<Integer> node : allNodes) {
+      assertTrue(utilAllNodes.contains(node));
+    }
+
   }
 
 }
