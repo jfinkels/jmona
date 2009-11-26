@@ -68,7 +68,10 @@ public class GPEvolutionContextTester {
     }
     this.context = new GPEvolutionContext<Integer>(this.population);
     this.context.setCrossoverFunction(new GPCrossoverFunction<Integer>());
-    this.context.setMutationFunction(new GPMutationFunction<Integer>());
+    final GPMutationFunction<Integer> mutationFunction = new GPMutationFunction<Integer>();
+    mutationFunction.setTreeFactory(new ExampleTreeFactory());
+    this.context.setMutationFunction(mutationFunction);
+
     this.context
         .setSelectionFunction(new FitnessProportionateSelection<Tree<Integer>>());
 
