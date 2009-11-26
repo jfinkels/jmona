@@ -102,6 +102,8 @@ public class DefaultTree<V> implements Tree<V> {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
+   * @throws IllegalArgumentException
+   *           If this Tree is empty.
    * @see jmona.gp.Tree#randomNode()
    */
   @Override
