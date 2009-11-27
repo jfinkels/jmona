@@ -25,6 +25,8 @@ import jmona.Individual;
 import jmona.SelectionFunction;
 
 /**
+ * A tournament selection algorithm.
+ * 
  * @param <T>
  *          The type of Individual to select.
  * @author jfinkels
