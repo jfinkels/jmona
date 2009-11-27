@@ -19,13 +19,19 @@
  */
 package jmona.gp.impl;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
 import jmona.gp.Node;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleBinaryNode;
 import jmona.gp.impl.example.IntegerNode;
+import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -37,6 +43,8 @@ import org.junit.Test;
  */
 public class GPCrossoverFunctionTester {
 
+  /** The number of tests to run. */
+  public static final int NUM_TESTS = 1000;
   /** The function under test. */
   private GPCrossoverFunction<Integer> function = null;
   /** The left child in the right Tree. */
@@ -49,6 +57,7 @@ public class GPCrossoverFunctionTester {
   private Node<Integer> root2 = null;
   /** The left Tree. */
   private Tree<Integer> tree1 = null;
+
   /** The right Tree. */
   private Tree<Integer> tree2 = null;
 
@@ -61,10 +70,10 @@ public class GPCrossoverFunctionTester {
     this.rightChild = new IntegerNode(1);
 
     this.root1 = new ExampleBinaryNode();
-    
+
     this.root1.children().add(this.leftChild);
     this.leftChild.setParent(root1);
-    
+
     this.root1.children().add(this.rightChild);
     this.rightChild.setParent(this.root1);
 
@@ -101,6 +110,179 @@ public class GPCrossoverFunctionTester {
       assertSame(this.root1, this.tree1.root());
       assertSame(this.rightChild, this.tree1.root().children().get(1));
       assertSame(this.root2, this.tree1.root().children().get(0));
+    }
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.gp.impl.GPCrossoverFunction#crossover(Tree, Tree)} using
+   * multiple crossovers on a single pair of Trees.
+   */
+  @Test
+  public void testMultipleCrossoversSinglePair() {
+    List<Node<Integer>> preLeftNodes = Util.allNodes(this.tree1);
+    List<Node<Integer>> preRightNodes = Util.allNodes(this.tree2);
+
+    List<Node<Integer>> postLeftNodes = null;
+    List<Node<Integer>> postRightNodes = null;
+
+    Node<Integer> currentNode = null;
+    for (int i = 0; i < NUM_TESTS; ++i) {
+
+      // perform the crossover
+      this.function.crossover(this.tree1, this.tree2);
+
+      // get the left nodes and right nodes after crossover
+      postLeftNodes = Util.allNodes(this.tree1);
+      postRightNodes = Util.allNodes(this.tree2);
+
+      // if the roots switched
+      if (preLeftNodes.get(0).equals(postRightNodes.get(0))) {
+        assertTrue(Util.areEqual(postLeftNodes, preRightNodes));
+        assertTrue(Util.areEqual(postRightNodes, preLeftNodes));
+      }
+
+      // iterate over each Node in the new left tree
+      for (int j = 0; j < postLeftNodes.size(); ++j) {
+
+        // get the current node
+        currentNode = postLeftNodes.get(j);
+
+        // assert that the current Node was in exactly one of the pre-Trees
+        assertTrue(preLeftNodes.contains(currentNode)
+            ^ preRightNodes.contains(currentNode));
+
+        // if the current Node is a root
+        if (currentNode.equals(this.tree1.root())
+            || currentNode.equals(this.tree2.root())) {
+          assertNull(currentNode.parent());
+          if (currentNode.children() != null) {
+            for (final Node<Integer> child : currentNode.children()) {
+              assertSame(currentNode, child.parent());
+            }
+          }
+        } else {
+          assertNotNull(currentNode.parent());
+          assertTrue(currentNode.parent().equals(this.tree1.root())
+              || currentNode.parent().equals(this.tree2.root()));
+          assertNull(currentNode.children());
+        }
+
+      }
+      // iterate over each Node in the new right tree
+      for (int j = 0; j < postRightNodes.size(); ++j) {
+
+        // get the current node
+        currentNode = postRightNodes.get(j);
+
+        // assert that the current Node was in exactly one of the pre-Trees
+        assertTrue(preLeftNodes.contains(currentNode)
+            ^ preRightNodes.contains(currentNode));
+
+        // if the current Node is a root
+        if (currentNode.equals(this.tree1.root())
+            || currentNode.equals(this.tree2.root())) {
+          assertNull(currentNode.parent());
+          if (currentNode.children() != null) {
+            for (final Node<Integer> child : currentNode.children()) {
+              assertSame(currentNode, child.parent());
+            }
+          }
+        } else {
+          assertNotNull(currentNode.parent());
+          assertTrue(currentNode.parent().equals(this.tree1.root())
+              || currentNode.parent().equals(this.tree2.root()));
+          assertNull(currentNode.children());
+        }
+      }
+
+      preLeftNodes = postLeftNodes;
+      preRightNodes = postRightNodes;
+    }
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.gp.impl.GPCrossoverFunction#crossover(Tree, Tree)} using
+   * crossover on a multiple pairs of Trees.
+   */
+  @Test
+  public void testSingleCrossoverMultiplePairs() {
+    final List<Node<Integer>> preLeftNodes = Util.allNodes(this.tree1);
+    final List<Node<Integer>> preRightNodes = Util.allNodes(this.tree2);
+
+    List<Node<Integer>> postLeftNodes = null;
+    List<Node<Integer>> postRightNodes = null;
+
+    Node<Integer> currentNode = null;
+    for (int i = 0; i < NUM_TESTS; ++i) {
+      this.setUp();
+      this.function.crossover(this.tree1, this.tree2);
+
+      // get the left nodes and right nodes after crossover
+      postLeftNodes = Util.allNodes(this.tree1);
+      postRightNodes = Util.allNodes(this.tree2);
+
+      // if the roots switched
+      if (preLeftNodes.get(0).equals(postRightNodes.get(0))) {
+        assertTrue(Util.areEqual(postLeftNodes, preRightNodes));
+        assertTrue(Util.areEqual(postRightNodes, preLeftNodes));
+      }
+
+      // iterate over each Node in the new left tree
+      for (int j = 0; j < postLeftNodes.size(); ++j) {
+
+        // get the current node
+        currentNode = postLeftNodes.get(j);
+
+        // assert that the current Node was in exactly one of the pre-Trees
+        assertTrue(preLeftNodes.contains(currentNode)
+            ^ preRightNodes.contains(currentNode));
+
+        // if the current Node is a root
+        if (currentNode.equals(this.tree1.root())
+            || currentNode.equals(this.tree2.root())) {
+          assertNull(currentNode.parent());
+          if (currentNode.children() != null) {
+            for (final Node<Integer> child : currentNode.children()) {
+              assertSame(currentNode, child.parent());
+            }
+          }
+        } else {
+          assertNotNull(currentNode.parent());
+          assertTrue(currentNode.parent().equals(this.tree1.root())
+              || currentNode.parent().equals(this.tree2.root()));
+          assertNull(currentNode.children());
+        }
+
+      }
+      // iterate over each Node in the new right tree
+      for (int j = 0; j < postRightNodes.size(); ++j) {
+
+        // get the current node
+        currentNode = postRightNodes.get(j);
+
+        // assert that the current Node was in exactly one of the pre-Trees
+        assertTrue(preLeftNodes.contains(currentNode)
+            ^ preRightNodes.contains(currentNode));
+
+        // if the current Node is a root
+        if (currentNode.equals(this.tree1.root())
+            || currentNode.equals(this.tree2.root())) {
+          assertNull(currentNode.parent());
+          if (currentNode.children() != null) {
+            for (final Node<Integer> child : currentNode.children()) {
+              assertSame(currentNode, child.parent());
+            }
+          }
+        } else {
+          assertNotNull(currentNode.parent());
+          assertTrue(currentNode.parent().equals(this.tree1.root())
+              || currentNode.parent().equals(this.tree2.root()));
+          assertNull(currentNode.children());
+        }
+      }
+
     }
   }
 
