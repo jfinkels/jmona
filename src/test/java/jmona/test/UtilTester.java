@@ -20,6 +20,7 @@
 package jmona.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
@@ -42,37 +43,6 @@ import org.junit.Test;
  * @author jfinkels
  */
 public class UtilTester {
-
-  /**
-   * Test method for {@link jmona.test.Util#fail(java.lang.Throwable)}.
-   */
-  @Test
-  public void testFail() {
-    try {
-      Util.fail(new Exception());
-    } catch (final AssertionError error) {
-      assertTrue(error instanceof AssertionError);
-    }
-  }
-
-  /**
-   * Test method for {@link jmona.test.Util#countNodes(jmona.gp.Tree)}.
-   */
-  @Test
-  public void testCountNodes() {
-    final TreeFactory<Integer> factory = new ExampleTreeFactory();
-
-    Tree<Integer> tree = null;
-    try {
-      tree = factory.createIndividual();
-    } catch (final InitializationException exception) {
-      Util.fail(exception);
-    }
-
-    final double epsilon = 0;
-    assertEquals(Math.pow(2, AbstractTreeFactory.DEFAULT_MAX_DEPTH) - 1, Util
-        .countNodes(tree), epsilon);
-  }
 
   @Test
   public void testAllNodes() {
@@ -123,6 +93,74 @@ public class UtilTester {
       assertTrue(utilAllNodes.contains(node));
     }
 
+  }
+
+  /**
+   * Test method for {@link jmona.test.Util#areEqual(List, List)}.
+   */
+  @Test
+  public void testAreEqual() {
+    final List<Object> list1 = new Vector<Object>();
+    final List<Object> list2 = new Vector<Object>();
+    final List<Object> list3 = new Vector<Object>();
+
+    final Object object1 = new Object();
+    final Object object2 = new Object();
+    final Object object3 = new Object();
+
+    list1.add(object1);
+    list1.add(object2);
+    list1.add(object3);
+
+    list2.add(object1);
+    list2.add(object3);
+    list2.add(object2);
+
+    list3.add(object1);
+    list3.add(object2);
+
+    assertTrue(Util.areEqual(list1, list1));
+    assertTrue(Util.areEqual(list2, list2));
+    assertTrue(Util.areEqual(list3, list3));
+
+    assertFalse(Util.areEqual(list1, list2));
+    assertFalse(Util.areEqual(list2, list1));
+    assertFalse(Util.areEqual(list1, list3));
+    assertFalse(Util.areEqual(list3, list1));
+    assertFalse(Util.areEqual(list2, list3));
+    assertFalse(Util.areEqual(list3, list2));
+
+  }
+
+  /**
+   * Test method for {@link jmona.test.Util#countNodes(jmona.gp.Tree)}.
+   */
+  @Test
+  public void testCountNodes() {
+    final TreeFactory<Integer> factory = new ExampleTreeFactory();
+
+    Tree<Integer> tree = null;
+    try {
+      tree = factory.createIndividual();
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+
+    final double epsilon = 0;
+    assertEquals(Math.pow(2, AbstractTreeFactory.DEFAULT_MAX_DEPTH) - 1, Util
+        .countNodes(tree), epsilon);
+  }
+
+  /**
+   * Test method for {@link jmona.test.Util#fail(java.lang.Throwable)}.
+   */
+  @Test
+  public void testFail() {
+    try {
+      Util.fail(new Exception());
+    } catch (final AssertionError error) {
+      assertTrue(error instanceof AssertionError);
+    }
   }
 
 }
