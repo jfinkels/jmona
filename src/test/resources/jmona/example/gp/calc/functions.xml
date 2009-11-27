@@ -36,10 +36,12 @@
 
   <bean id="selectionFunction" 
         class="jmona.impl.selection.FitnessProportionateSelection" />
+  <!--<bean id="crossoverFunction" class="jmona.impl.IdentityCrossoverFunction" />-->
   <bean id="crossoverFunction" class="jmona.gp.impl.GPCrossoverFunction" />
-  <bean id="mutationFunction" class="jmona.gp.impl.GPMutationFunction">
+  <bean id="mutationFunction" class="jmona.impl.IdentityMutationFunction" />  
+  <!--<bean id="mutationFunction" class="jmona.gp.impl.GPMutationFunction">
     <property name="treeFactory" ref="individualFactory" />
-  </bean>
+  </bean>-->
   <bean id="fitnessFunction" class="jmona.gp.impl.GPFitnessFunction">
     <property name="target" ref="target" />
     <property name="equivalenceTester" ref="equivalenceTester" />
