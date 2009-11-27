@@ -24,6 +24,8 @@ import java.util.List;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 
+import org.apache.log4j.Logger;
+
 /**
  * A utility class for this package containing a method which swaps Nodes within
  * two Trees.
@@ -31,6 +33,9 @@ import jmona.gp.Tree;
  * @author jfinkels
  */
 public class Util {
+
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger.getLogger(Util.class);
 
   /**
    * Replace the specified existing Node in the specified Tree with the
@@ -104,13 +109,24 @@ public class Util {
   public static <V> void swapNodes(final Tree<V> leftTree,
       final Node<V> leftNode, final Tree<V> rightTree, final Node<V> rightNode) {
 
+    // TODO something is going wrong here!!!
+    
+    LOG.debug("Left tree: " + leftTree);
+    LOG.debug("Left node: " + leftNode);
+    LOG.debug("Left node parent: " + leftNode.parent());
+    LOG.debug("Left node children: " + leftNode.children());
+    LOG.debug("Right tree: " + rightTree);
+    LOG.debug("Right node: " + rightNode);
+    LOG.debug("Right node parent: " + rightNode.parent());
+    LOG.debug("Right node children: " + rightNode.children());
+
     // get the parent of each of those Nodes
     final Node<V> leftParent = leftNode.parent();
     final Node<V> rightParent = rightNode.parent();
 
     List<Node<V>> siblings = null;
 
-    // if the Node from this tree is the root, set this root to the rightNode
+    // if the Node from the left tree is the root, set the root to rightNode
     if (leftNode.equals(leftTree.root())) {
       leftTree.setRoot(rightNode);
     } else { // leftNode is not the root of this Tree
