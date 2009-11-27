@@ -35,13 +35,11 @@ public class ExampleTreeFactory extends AbstractTreeFactory<Integer> {
    * 
    * @param currentDepth
    *          The depth of the Tree.
-   * @throws InitializationException
-   *           {@inheritDoc}
+   * @return A complete binary Tree of the specified depth.
    * @see jmona.gp.impl.AbstractTreeFactory#createTree(int)
    */
   @Override
-  protected Node<Integer> createTree(final int currentDepth)
-      throws InitializationException {
+  protected Node<Integer> createTree(final int currentDepth) {
 
     Node<Integer> result = null;
     Node<Integer> child = null;
