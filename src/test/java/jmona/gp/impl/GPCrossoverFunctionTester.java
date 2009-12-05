@@ -27,12 +27,15 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import jmona.InitializationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleBinaryNode;
+import jmona.gp.impl.example.ExampleTreeFactory;
 import jmona.gp.impl.example.IntegerNode;
 import jmona.test.Util;
 
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -110,6 +113,35 @@ public class GPCrossoverFunctionTester {
       assertSame(this.root1, this.tree1.root());
       assertSame(this.rightChild, this.tree1.root().children().get(1));
       assertSame(this.root2, this.tree1.root().children().get(0));
+    }
+  }
+
+  /**
+   * Test method for performing many crossovers on two random trees.
+   */
+  @Test
+  public void testManyCrossoversOnRandomTrees() {
+    // initialize a tree factory
+    final ExampleTreeFactory factory = new ExampleTreeFactory();
+
+    final int numRandomPairs = 3;
+
+    for (int i = 0; i < numRandomPairs; ++i) {
+      try {
+        // initialize two random trees
+        final Tree<Integer> leftTree = factory.createIndividual();
+        final Tree<Integer> rightTree = factory.createIndividual();
+
+        // perform crossover on the two trees
+        for (int j = 0; j < NUM_TESTS; ++j) {
+          this.function.crossover(leftTree, rightTree);
+        }
+
+      } catch (final InitializationException exception) {
+        Util.fail(exception);
+      } catch (final NullPointerException exception) {
+        Util.fail(exception);
+      }
     }
   }
 
@@ -208,8 +240,8 @@ public class GPCrossoverFunctionTester {
    */
   @Test
   public void testSingleCrossoverMultiplePairs() {
-    final List<Node<Integer>> preLeftNodes = Util.allNodes(this.tree1);
-    final List<Node<Integer>> preRightNodes = Util.allNodes(this.tree2);
+    List<Node<Integer>> preLeftNodes = Util.allNodes(this.tree1);
+    List<Node<Integer>> preRightNodes = Util.allNodes(this.tree2);
 
     List<Node<Integer>> postLeftNodes = null;
     List<Node<Integer>> postRightNodes = null;
@@ -217,6 +249,10 @@ public class GPCrossoverFunctionTester {
     Node<Integer> currentNode = null;
     for (int i = 0; i < NUM_TESTS; ++i) {
       this.setUp();
+
+      preLeftNodes = Util.allNodes(this.tree1);
+      preRightNodes = Util.allNodes(this.tree2);
+
       this.function.crossover(this.tree1, this.tree2);
 
       // get the left nodes and right nodes after crossover
