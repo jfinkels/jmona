@@ -45,6 +45,4 @@
     <property name="selectionFunction" ref="selectionFunction" />
   </bean>
 
-  <bean id="postProcessor1" class="jmona.impl.PopulationLoggingPostProcessor" />
-
 </beans>
