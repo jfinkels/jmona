@@ -50,26 +50,34 @@ public class GPEvolutionContextTester {
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger
       .getLogger(GPEvolutionContextTester.class);
+  /** The number of generations for the evolution to run. */
+  public static final int NUM_GENERATIONS = 10;
+  /** The number of individuals to add to the evolution context. */
+  public static final int NUM_INDIVIDUALS = 100;
   /** The EvolutionContext under test. */
   private GPEvolutionContext<Integer> context = null;
+
+  /** The tree factory for creating initial random Trees. */
+  private TreeFactory<Integer> factory = null;
+
   /** The initial population for the EvolutionContext under test. */
   private Population<Tree<Integer>> population = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    final TreeFactory<Integer> factory = new ExampleTreeFactory();
+    this.factory = new ExampleTreeFactory();
     this.population = new DefaultPopulation<Tree<Integer>>();
     try {
-      this.population.add(factory.createIndividual());
-      this.population.add(factory.createIndividual());
+      this.population.add(this.factory.createIndividual());
+      this.population.add(this.factory.createIndividual());
     } catch (final InitializationException exception) {
       Util.fail(exception);
     }
     this.context = new GPEvolutionContext<Integer>(this.population);
     this.context.setCrossoverFunction(new GPCrossoverFunction<Integer>());
     final GPMutationFunction<Integer> mutationFunction = new GPMutationFunction<Integer>();
-    mutationFunction.setTreeFactory(new ExampleTreeFactory());
+    mutationFunction.setTreeFactory(this.factory);
     this.context.setMutationFunction(mutationFunction);
 
     this.context
@@ -90,6 +98,29 @@ public class GPEvolutionContextTester {
     }
   }
 
+  /** Test method for running a full evolution. */
+  @Test
+  // TODO make assertions about the population before and after the evolution
+  public void testEvolution() {
+    try {
+
+      // add some extra Trees into the population
+      for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
+        this.context.currentPopulation().add(this.factory.createIndividual());
+      }
+
+      // run the evolution for multiple generations
+      for (int i = 0; i < NUM_GENERATIONS; ++i) {
+        this.context.stepGeneration();
+      }
+
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    } catch (final EvolutionException exception) {
+      Util.fail(exception);
+    }
+  }
+
   /**
    * Test method for
    * {@link jmona.gp.impl.GPEvolutionContext#GPEvolutionContext(jmona.Population)}
@@ -104,7 +135,6 @@ public class GPEvolutionContextTester {
       assertTrue(exception instanceof IllegalArgumentException);
     }
   }
-
   /**
    * Test method for {@link jmona.gp.impl.GPEvolutionContext#stepGeneration()}.
    */
@@ -124,6 +154,14 @@ public class GPEvolutionContextTester {
     final Population<Tree<Integer>> after = this.context.currentPopulation();
     LOG.debug(after);
 
+    try {
+      this.context.stepGeneration();
+    } catch (final EvolutionException exception) {
+      Util.fail(exception);
+    }
+
+    final Population<Tree<Integer>> after2 = this.context.currentPopulation();
+    LOG.debug(after2);
   }
 
 }
