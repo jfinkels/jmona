@@ -20,11 +20,14 @@
 package jmona.gp.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import jmona.InitializationException;
 import jmona.gp.EvaluationException;
+import jmona.gp.FunctionNode;
 import jmona.gp.FunctionNodeFactory;
 import jmona.gp.Node;
 import jmona.gp.TerminalNode;
@@ -110,6 +113,37 @@ public class AbstractTreeFactoryTester {
 
       assertNull(node.children().get(1).children());
       assertTrue(node.children().get(1) instanceof TerminalNode<?>);
+
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+
+    try {
+      node = this.factory.createTree(3);
+      assertEquals(2, node.children().size());
+      assertEquals(node.arity(), node.children().size());
+
+      assertNotNull(node.children().get(0).children());
+      assertEquals(node.children().get(0).arity(), node.children().get(0)
+          .children().size());
+      assertFalse(node.children().get(0) instanceof TerminalNode<?>);
+      assertTrue(node.children().get(0) instanceof FunctionNode<?>);
+
+      assertNotNull(node.children().get(1).children());
+      assertEquals(node.children().get(1).arity(), node.children().get(1)
+          .children().size());
+      assertFalse(node.children().get(1) instanceof TerminalNode<?>);
+      assertTrue(node.children().get(1) instanceof FunctionNode<?>);
+
+      final Tree<Integer> tree = new DefaultTree<Integer>(node);
+      for (final Node<Integer> treeNode : Util.allNodes(tree)) {
+        if (treeNode.equals(tree.root())) {
+          assertNull(treeNode.parent());
+        } else if (treeNode instanceof TerminalNode<?>) {
+          assertTrue(treeNode.children() == null
+              || treeNode.children().size() == 0);
+        }
+      }
 
     } catch (final InitializationException exception) {
       Util.fail(exception);
