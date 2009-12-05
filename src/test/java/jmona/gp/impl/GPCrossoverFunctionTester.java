@@ -35,7 +35,6 @@ import jmona.gp.impl.example.ExampleTreeFactory;
 import jmona.gp.impl.example.IntegerNode;
 import jmona.test.Util;
 
-import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
