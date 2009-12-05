@@ -27,6 +27,7 @@ import jmona.example.gp.calc.functions.SingleInputFunction;
 import jmona.gp.Tree;
 import jmona.test.Util;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -39,13 +40,16 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  */
 @ContextConfiguration
 public class CalcEvolutionTester extends AbstractJUnit4SpringContextTests {
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(CalcEvolutionTester.class);
+
   /**
    * Get the completion criteria for this evolution from the Spring XML
    * configuration file.
    */
   @Autowired
   private CompletionCriteria<Tree<SingleInputFunction<Double, Double>>> completionCriteria = null;
-
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
   private EvolutionContext<Tree<SingleInputFunction<Double, Double>>> context = null;
@@ -56,6 +60,7 @@ public class CalcEvolutionTester extends AbstractJUnit4SpringContextTests {
     try {
       while (!this.completionCriteria.isSatisfied(this.context)) {
         this.context.stepGeneration();
+        LOG.debug(this.context.currentPopulation());
       }
     } catch (final CompletionException exception) {
       Util.fail(exception);
