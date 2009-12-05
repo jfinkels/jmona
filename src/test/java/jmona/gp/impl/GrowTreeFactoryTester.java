@@ -20,9 +20,16 @@
 package jmona.gp.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+import java.util.Vector;
+
 import jmona.InitializationException;
+import jmona.gp.Node;
 import jmona.gp.TerminalNode;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleFunctionNodeFactory;
@@ -58,6 +65,8 @@ public class GrowTreeFactoryTester {
    */
   @Test
   public void testCreateTree() {
+    this.factory.setMaxDepth(10);
+
     Tree<Integer> tree = null;
     try {
       tree = this.factory.createIndividual();
@@ -69,6 +78,55 @@ public class GrowTreeFactoryTester {
     final int depth = this.factory.maxDepth();
 
     assertTrue(numNodes <= Math.pow(2, depth) - 1);
+
+    // instantiate a list to hold all the nodes in this tree
+    final List<Node<Integer>> allNodes = new Vector<Node<Integer>>();
+
+    // add the root to the list
+    allNodes.add(tree.root());
+
+    // initialize the pointer representing the current node being examined
+    int i = 0;
+
+    // iterate over all nodes until each node has been examined
+    List<Node<Integer>> children = null;
+    Node<Integer> currentNode = null;
+    Node<Integer> parent = null;
+    int parentIndex = 0;
+    while (i < allNodes.size()) {
+      // get the current Node
+      currentNode = allNodes.get(i);
+
+      // if the current Node is not the root
+      if (i > 0) {
+        parent = currentNode.parent();
+        assertNotNull(parent);
+        assertTrue(allNodes.contains(parent));
+        parentIndex = allNodes.indexOf(parent);
+        assertTrue(parentIndex < i);
+      }
+
+      // get the children of the current node
+      children = currentNode.children();
+
+      // add this check for possible problematic Node.children() return values
+      if (children != null && children.size() > 0) {
+        for (final Node<Integer> child : children) {
+          assertNotNull(child);
+          assertFalse(allNodes.contains(child));
+        }
+
+        // add the children to the list
+        allNodes.addAll(children);
+      }
+
+      // increment the number of nodes examined
+      i += 1;
+    }
+
+    for (final Node<Integer> node : allNodes) {
+      assertEquals(allNodes.indexOf(node), allNodes.lastIndexOf(node));
+    }
   }
 
   /**
