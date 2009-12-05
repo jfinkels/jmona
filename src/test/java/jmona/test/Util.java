@@ -73,8 +73,46 @@ public class Util {
   }
 
   /**
+   * Determine whether the two specified Lists contain the same elements in the
+   * same order.
+   * 
+   * @param <E>
+   *          The type of element contained in the Lists.
+   * @param leftList
+   *          A List.
+   * @param rightList
+   *          Another List.
+   * @return Whether the two Lists contain the same elements in the same order.
+   */
+  public static <E> boolean areEqual(final List<E> leftList,
+      final List<E> rightList) {
+
+    // get the size of the left list
+    final int leftListSize = leftList.size();
+
+    // if the two lists do not have the same size, they cannot be equal
+    if (leftListSize != rightList.size()) {
+      return false;
+    }
+
+    // iterate over each element in the lists
+    for (int i = 0; i < leftListSize; ++i) {
+
+      // if the current element in the left list is not equal to the
+      // corresponding element in the right list, the lists are not equal
+      if (!leftList.get(i).equals(rightList.get(i))) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  /**
    * Count the number of Nodes in the specified Tree.
    * 
+   * @param <V>
+   *          The type of value to which the specified Tree evaluates.
    * @param tree
    *          A Tree.
    * @return The number of Nodes in the specified Tree.
@@ -123,41 +161,5 @@ public class Util {
   /** Instantiation disallowed except by subclasses. */
   protected Util() {
     // intentionally unimplemented
-  }
-
-  /**
-   * Determine whether the two specified Lists contain the same elements in the
-   * same order.
-   * 
-   * @param <E>
-   *          The type of element contained in the Lists.
-   * @param leftList
-   *          A List.
-   * @param rightList
-   *          Another List.
-   * @return Whether the two Lists contain the same elements in the same order.
-   */
-  public static <E> boolean areEqual(final List<E> leftList,
-      final List<E> rightList) {
-
-    // get the size of the left list
-    final int leftListSize = leftList.size();
-
-    // if the two lists do not have the same size, they cannot be equal
-    if (leftListSize != rightList.size()) {
-      return false;
-    }
-
-    // iterate over each element in the lists
-    for (int i = 0; i < leftListSize; ++i) {
-
-      // if the current element in the left list is not equal to the
-      // corresponding element in the right list, the lists are not equal
-      if (!leftList.get(i).equals(rightList.get(i))) {
-        return false;
-      }
-    }
-
-    return true;
   }
 }
