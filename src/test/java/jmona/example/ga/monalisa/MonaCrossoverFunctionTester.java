@@ -40,7 +40,8 @@ public class MonaCrossoverFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.ga.monalisa.MonaCrossoverFunction#crossover(jmona.Pair)}.
+   * {@link jmona.example.ga.monalisa.MonaCrossoverFunction#crossover(jmona.Individual, jmona.Individual)}
+   * .
    */
   @Test
   public void testCrossover() {

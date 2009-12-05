@@ -35,7 +35,8 @@ public class OnesCrossoverFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.ga.ones.OnesCrossoverFunction#crossover(jmona.Pair)}.
+   * {@link jmona.example.ga.ones.OnesCrossoverFunction#crossover(jmona.Individua, jmona.Individual)}
+   * .
    */
   @Test
   public final void testCrossover() {
