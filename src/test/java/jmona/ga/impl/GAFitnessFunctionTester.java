@@ -19,21 +19,55 @@
  */
 package jmona.ga.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+import jmona.FitnessException;
+import jmona.impl.example.ExampleIndividual;
+import jmona.impl.example.ExampleMetric;
+import jmona.test.Util;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the GAFitnessFunction class.
+ * 
  * @author jfinkels
  */
 public class GAFitnessFunctionTester {
 
+  /** The target fitness for ExampleIndividuals. */
+  private static final int TARGET_FITNESS = 100;
+
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
+
+  /** The function under test. */
+  private GAFitnessFunction<ExampleIndividual> function = null;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.function = new GAFitnessFunction<ExampleIndividual>();
+  }
+
   /**
-   * Test method for {@link jmona.ga.impl.GAFitnessFunction#fitness(jmona.Individual)}.
+   * Test method for
+   * {@link jmona.ga.impl.GAFitnessFunction#fitness(jmona.Individual)}.
    */
   @Test
   public void testFitness() {
-    fail("Not yet implemented");
+    this.function.setMetric(new ExampleMetric());
+    this.function.setTarget(new ExampleIndividual(TARGET_FITNESS));
+
+    try {
+      assertEquals(2.0 / TARGET_FITNESS, this.function
+          .fitness(new ExampleIndividual(TARGET_FITNESS / 2)), ZERO_DELTA);
+      assertEquals(1.0 / TARGET_FITNESS, this.function
+          .fitness(new ExampleIndividual(0)), ZERO_DELTA);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
@@ -41,23 +75,45 @@ public class GAFitnessFunctionTester {
    */
   @Test
   public void testSanityCheck() {
-    fail("Not yet implemented");
+    try {
+      this.function.sanityCheck();
+      fail("Exception should have been thrown on the previous line.");
+    } catch (final NullPointerException exception) {
+      // metric has not been set
+      this.function.setMetric(new ExampleMetric());
+    }
+
+    try {
+      this.function.sanityCheck();
+      fail("Exception should have been thrown on the previous line.");
+    } catch (final NullPointerException exception) {
+      // target has not been set
+      this.function.setTarget(new ExampleIndividual(TARGET_FITNESS));
+    }
+
+    try {
+      this.function.sanityCheck();
+    } catch (final NullPointerException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
-   * Test method for {@link jmona.ga.impl.GAFitnessFunction#setMetric(jmona.Metric)}.
+   * Test method for
+   * {@link jmona.ga.impl.GAFitnessFunction#setMetric(jmona.Metric)}.
    */
   @Test
   public void testSetMetric() {
-    fail("Not yet implemented");
+    this.function.setMetric(new ExampleMetric());
   }
 
   /**
-   * Test method for {@link jmona.ga.impl.GAFitnessFunction#setTarget(jmona.Individual)}.
+   * Test method for
+   * {@link jmona.ga.impl.GAFitnessFunction#setTarget(jmona.Individual)}.
    */
   @Test
   public void testSetTarget() {
-    fail("Not yet implemented");
+    this.function.setTarget(new ExampleIndividual(TARGET_FITNESS));
   }
 
 }
