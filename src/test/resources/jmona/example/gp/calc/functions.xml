@@ -48,7 +48,37 @@
     <property name="evaluationInputs">
       <set>
         <bean id="input1" class="java.lang.Double">
+          <constructor-arg value="0.0" />
+        </bean>
+        <bean id="input2" class="java.lang.Double">
+          <constructor-arg value="-0.5" />
+        </bean>
+        <bean id="input3" class="java.lang.Double">
+          <constructor-arg value="0.5" />
+        </bean>
+        <bean id="input4" class="java.lang.Double">
+          <constructor-arg value="-1.0" />
+        </bean>
+        <bean id="input5" class="java.lang.Double">
           <constructor-arg value="1.0" />
+        </bean>
+        <bean id="input6" class="java.lang.Double">
+          <constructor-arg value="-1.5" />
+        </bean>
+        <bean id="input7" class="java.lang.Double">
+          <constructor-arg value="1.5" />
+        </bean>
+        <bean id="input8" class="java.lang.Double">
+          <constructor-arg value="-2.0" />
+        </bean>
+        <bean id="input9" class="java.lang.Double">
+          <constructor-arg value="3.0" />
+        </bean>
+        <bean id="input10" class="java.lang.Double">
+          <constructor-arg value="-4.0" />
+        </bean>
+        <bean id="input11" class="java.lang.Double">
+          <constructor-arg value="7.0" />
         </bean>
       </set>
     </property>
