@@ -40,7 +40,7 @@ public class MainTester {
    * A Spring XML configuration file containing an EvolutionContext and a
    * CompletionCriteria.
    */
-  public static final String CONFIG_FILE_GOOD = "--config=src/test/resources/jmona/example/ones/OnesEvolutionContextTester-context.xml";
+  public static final String CONFIG_FILE_GOOD = "--config=src/test/resources/jmona/example/ga/ones/OnesEvolutionContextTester-context.xml";
   /**
    * A Spring XML configuration file containing too few of both EvolutionContext
    * and CompletionCriteria beans.
