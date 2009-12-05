@@ -19,7 +19,6 @@
  */
 package jmona.gp.impl.example;
 
-import jmona.InitializationException;
 import jmona.gp.Node;
 import jmona.gp.impl.AbstractTreeFactory;
 
