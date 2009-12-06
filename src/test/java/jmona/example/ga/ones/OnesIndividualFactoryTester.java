@@ -32,7 +32,7 @@ import org.junit.Test;
 /**
  * Test class for the OnesIndividualFactory class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class OnesIndividualFactoryTester {
 

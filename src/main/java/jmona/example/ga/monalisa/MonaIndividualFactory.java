@@ -28,7 +28,7 @@ import jmona.impl.Util;
 /**
  * A factory for creating MonaIndividuals with random polygons.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class MonaIndividualFactory implements IndividualFactory<MonaIndividual> {
 

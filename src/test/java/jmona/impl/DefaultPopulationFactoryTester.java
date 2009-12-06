@@ -36,7 +36,7 @@ import org.junit.Test;
 /**
  * Test class for the DefaultPopulationFactory class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class DefaultPopulationFactoryTester {
 

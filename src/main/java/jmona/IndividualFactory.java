@@ -25,7 +25,7 @@ package jmona;
  * 
  * @param <T>
  *          The type of Individual to generate.
- * @author jeff
+ * @author jfinkels
  */
 public interface IndividualFactory<T extends Individual> {
   /**

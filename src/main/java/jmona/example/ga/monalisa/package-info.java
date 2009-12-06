@@ -21,7 +21,7 @@
  * An example evolution implementation in which the selection pressure is toward
  * individuals which more closely represent a specified target image.
  * 
- * @author jeff
+ * @author jfinkels
  */
 package jmona.example.ga.monalisa;
 

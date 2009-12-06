@@ -22,7 +22,7 @@ package jmona.gp;
 /**
  * This Exception is thrown if there is a problem evaluating an Individual.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class EvaluationException extends Exception {
 

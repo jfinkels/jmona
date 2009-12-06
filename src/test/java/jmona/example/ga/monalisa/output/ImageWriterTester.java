@@ -39,7 +39,7 @@ import org.junit.Test;
 /**
  * Test class for the ImageWriter class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class ImageWriterTester {
 

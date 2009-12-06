@@ -23,7 +23,7 @@
  * {@link jmona.ga.impl.GAEvolutionContext}, which provides the context in
  * which an evolution can run.
  * 
- * @author jeff
+ * @author jfinkels
  */
 package jmona.ga.impl;
 

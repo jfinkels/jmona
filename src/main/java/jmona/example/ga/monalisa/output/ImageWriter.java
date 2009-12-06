@@ -35,7 +35,7 @@ import jmona.example.ga.monalisa.MonaIndividual;
 /**
  * An utility class for outputting images.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class ImageWriter {
 

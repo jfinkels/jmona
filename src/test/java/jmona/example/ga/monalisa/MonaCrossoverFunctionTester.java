@@ -34,7 +34,7 @@ import org.junit.Test;
 /**
  * Test class for the MonaCrossoverFunction class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class MonaCrossoverFunctionTester {
 

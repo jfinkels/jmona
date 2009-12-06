@@ -35,7 +35,7 @@ import jmona.impl.Util;
  * A mutation function which mutates with a certain probability the polygons (and
  * corresponding colors) in the gene of an individual.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class MonaMutationFunction implements MutationFunction<MonaIndividual> {
 

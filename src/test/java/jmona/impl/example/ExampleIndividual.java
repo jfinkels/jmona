@@ -25,7 +25,7 @@ import jmona.Individual;
  * A basic implementation of an Individual which has a built-in fitness
  * property.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class ExampleIndividual implements Individual {
   /** The fitness of this Individual. */

@@ -35,7 +35,7 @@ import org.junit.Test;
 /**
  * Test class for the MonaIndividualFactory class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 // TODO strict inequality or non-strict inequality?
 public class MonaIndividualFactoryTester {

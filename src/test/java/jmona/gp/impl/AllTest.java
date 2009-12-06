@@ -26,7 +26,7 @@ import org.junit.runners.Suite.SuiteClasses;
 /**
  * Runs all tests in this package.
  * 
- * @author jeff
+ * @author jfinkels
  */
 @RunWith(Suite.class)
 @SuiteClasses({ AbstractNodeFactoryTester.class, AbstractNodeTester.class,

@@ -24,7 +24,7 @@ package jmona;
  * {@link PostProcessor#process(EvolutionContext)} method.
  * 
  * @see PostProcessor#process(EvolutionContext)
- * @author jeff
+ * @author jfinkels
  */
 public class ProcessingException extends Exception {
 

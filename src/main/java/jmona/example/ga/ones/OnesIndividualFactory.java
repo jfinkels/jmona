@@ -26,7 +26,7 @@ import jmona.impl.Util;
 /**
  * A factory for creating OnesIndividuals with random bitstring genes.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class OnesIndividualFactory implements IndividualFactory<OnesIndividual> {
 

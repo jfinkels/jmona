@@ -34,7 +34,7 @@ import org.junit.Test;
 /**
  * Test class for the OnesMutationFunction class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class OnesMutationFunctionTester {
 

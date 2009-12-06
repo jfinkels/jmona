@@ -33,7 +33,7 @@ package jmona;
  * 
  * @param <T>
  *          The type of Individual in the population which is generated.
- * @author jeff
+ * @author jfinkels
  */
 public interface PopulationFactory<T extends Individual> {
 

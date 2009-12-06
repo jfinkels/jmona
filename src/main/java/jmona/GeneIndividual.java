@@ -25,7 +25,7 @@ package jmona;
  * @param <T>
  *          The type of the gene.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public interface GeneIndividual<T> extends Individual {
   /**

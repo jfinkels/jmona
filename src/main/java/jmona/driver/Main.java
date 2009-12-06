@@ -37,7 +37,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
  * Runs an arbitrary evolution from an XML application context specified by the
  * <code>--config</code> option.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class Main {
   /** The long name of the option for specifying a configuration file. */

@@ -29,7 +29,7 @@ import jmona.MaxGenerationCompletionCriteria;
  * 
  * @param <T>
  *          The type of Individual being evolved.
- * @author jeff
+ * @author jfinkels
  */
 public class DefaultMaxGenerationCompletionCriteria<T extends Individual>
     implements MaxGenerationCompletionCriteria<T> {

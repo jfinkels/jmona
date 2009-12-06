@@ -25,7 +25,7 @@ package jmona;
  * 
  * @param <T>
  *          The type of Individual in the EvolutionContext to process.
- * @author jeff
+ * @author jfinkels
  */
 public interface PostProcessor<T extends Individual> {
 

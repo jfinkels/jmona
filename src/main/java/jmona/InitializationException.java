@@ -23,7 +23,7 @@ package jmona;
  * This Exception is thrown when there is a problem during initialization of
  * Individuals or Populations.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class InitializationException extends Exception {
 

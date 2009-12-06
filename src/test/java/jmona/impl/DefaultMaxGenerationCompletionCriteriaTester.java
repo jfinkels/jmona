@@ -35,7 +35,7 @@ import org.junit.Test;
 /**
  * Test class for the MaxGenerationCompletionCriteria class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class DefaultMaxGenerationCompletionCriteriaTester {
 

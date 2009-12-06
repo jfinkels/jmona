@@ -31,7 +31,7 @@ import jmona.GeneIndividual;
  * An individual containing a mapping from polygons to corresponding colors for
  * those polygons.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class MonaIndividual implements GeneIndividual<Map<Polygon, Color>> {
 

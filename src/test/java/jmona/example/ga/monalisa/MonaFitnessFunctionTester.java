@@ -43,7 +43,7 @@ import org.junit.Test;
 /**
  * Test class for the MonaFitnessFunction class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class MonaFitnessFunctionTester {
   /** The coordinates for a rectangle in all columns of a 5x2 image. */

@@ -27,7 +27,7 @@ import org.junit.Test;
 /**
  * Test class for the MutationException class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class MutationExceptionTester {
 

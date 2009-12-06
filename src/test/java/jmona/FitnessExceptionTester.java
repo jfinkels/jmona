@@ -27,7 +27,7 @@ import org.junit.Test;
 /**
  * Test class for the FitnessException class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class FitnessExceptionTester {
 

@@ -28,7 +28,7 @@ import org.junit.Test;
 /**
  * Test class for the OnesFitnessFunction class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class OnesFitnessFunctionTester {
 

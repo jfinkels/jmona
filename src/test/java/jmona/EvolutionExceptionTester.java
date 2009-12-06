@@ -27,7 +27,7 @@ import org.junit.Test;
 /**
  * Test class for the EvolutionException class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class EvolutionExceptionTester {
 

@@ -22,7 +22,7 @@
  * individuals with genes containing more &quot;1&quot; bits than &quot;0&quot;
  * bits.
  * 
- * @author jeff
+ * @author jfinkels
  */
 package jmona.example.ga.ones;
 

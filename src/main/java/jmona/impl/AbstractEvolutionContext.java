@@ -36,7 +36,7 @@ import jmona.SelectionFunction;
  * 
  * @param <T>
  *          The type of individual to evolve.
- * @author jeff
+ * @author jfinkels
  */
 public abstract class AbstractEvolutionContext<T extends Individual> implements
     EvolutionContext<T> {

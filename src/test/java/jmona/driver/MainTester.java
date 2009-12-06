@@ -28,7 +28,7 @@ import org.springframework.beans.factory.BeanDefinitionStoreException;
 /**
  * Test class for the Main class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class MainTester {
 

@@ -33,7 +33,7 @@ import jmona.FitnessFunction;
  * A fitness function which returns the total distance of a specified individual
  * from a given target image. A pixel is four bytes of data packed with
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class MonaFitnessFunction implements FitnessFunction<MonaIndividual> {
 

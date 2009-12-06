@@ -42,7 +42,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 /**
  * Test class for the ImageOutputPostProcessor class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 @ContextConfiguration
 public class ImageOutputPostProcessorTester extends

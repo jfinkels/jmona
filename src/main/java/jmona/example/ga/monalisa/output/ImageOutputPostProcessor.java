@@ -32,7 +32,7 @@ import org.apache.log4j.Logger;
 /**
  * A PostProcessor which writes an Individual out to an image on the filesystem.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class ImageOutputPostProcessor extends
     PeriodicPostProcessor<MonaIndividual> {

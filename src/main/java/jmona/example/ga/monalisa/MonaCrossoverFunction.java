@@ -30,7 +30,7 @@ import jmona.impl.Util;
  * A crossover function which swaps a random polygon/color pair in two specified
  * parent Individuals.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class MonaCrossoverFunction implements CrossoverFunction<MonaIndividual> {
 

@@ -29,7 +29,7 @@ import org.junit.Test;
 /**
  * Test class for the OnesCrossoverFunction class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class OnesCrossoverFunctionTester {
 

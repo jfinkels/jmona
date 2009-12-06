@@ -34,7 +34,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 /**
  * Test class for the PopulationLoggingPostProcessor class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 @ContextConfiguration(locations = "classpath:/jmona/example/ga/ones/OnesEvolutionContextTester-context.xml")
 @SuppressWarnings("unchecked")

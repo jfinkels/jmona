@@ -29,7 +29,7 @@ package jmona;
  * @param <T>
  *          The type of the Individual in the evolution whose completion
  *          criteria this object encapsulates.
- * @author jeff
+ * @author jfinkels
  */
 public interface CompletionCriteria<T extends Individual> {
   /**

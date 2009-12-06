@@ -30,7 +30,7 @@ import jmona.Population;
  * @param <T>
  *          The type of individual in the population to create.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class DefaultPopulationFactory<T extends Individual> extends
     AbstractPopulationFactory<T> {

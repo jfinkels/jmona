@@ -33,7 +33,7 @@ import org.apache.log4j.Logger;
  * @param <T>
  *          The type of Individual in the EvolutionContext whose population will
  *          be logged.
- * @author jeff
+ * @author jfinkels
  */
 public class PopulationLoggingPostProcessor<T extends Individual> extends
     PeriodicPostProcessor<T> {

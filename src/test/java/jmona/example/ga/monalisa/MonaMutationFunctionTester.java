@@ -38,7 +38,7 @@ import org.junit.Test;
 /**
  * Test class for the MonaMutationFunction class.
  * 
- * @author jeff
+ * @author jfinkels
  */
 public class MonaMutationFunctionTester {
 
