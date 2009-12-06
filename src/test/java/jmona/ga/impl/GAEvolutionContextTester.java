@@ -19,17 +19,21 @@
  */
 package jmona.ga.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
 /**
+ * Test class for the GAEvolutionContext class.
+ * 
  * @author jfinkels
  */
 public class GAEvolutionContextTester {
 
   /**
-   * Test method for {@link jmona.ga.impl.GAEvolutionContext#GAEvolutionContext(jmona.Population)}.
+   * Test method for
+   * {@link jmona.ga.impl.GAEvolutionContext#GAEvolutionContext(jmona.Population)}
+   * .
    */
   @Test
   public void testGAEvolutionContext() {
