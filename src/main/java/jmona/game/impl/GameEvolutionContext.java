@@ -154,8 +154,8 @@ public class GameEvolutionContext<S extends Strategy> extends
 
     // select strategies from the current population to go to the next one
     while (nextPopulation.size() < this.currentPopulation().size()) {
-      nextPopulation.add(this.selectionFunction().select(
-          this.currentFitnesses()));
+      nextPopulation.add((S) this.selectionFunction().select(
+          this.currentFitnesses()).clone());
     }
 
     // set the population for the next generation

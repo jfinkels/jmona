@@ -32,6 +32,17 @@ import jmona.ImmutablePair;
 public class PavlovStrategy extends IPDStrategy {
 
   /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.example.game.ipd.strategy.IPDStrategy#clone()
+   */
+  @Override
+  public PavlovStrategy clone() {
+    return new PavlovStrategy();
+  }
+
+  /**
    * Returns a cooperate action if this strategy and the adversary did the same
    * action last round, and returns a defect action if this strategy and the
    * adversary did opposite actions last round.

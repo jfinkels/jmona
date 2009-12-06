@@ -27,6 +27,17 @@ package jmona.example.game.ipd.strategy;
 public class CooperativeStrategy extends IPDStrategy {
 
   /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.example.game.ipd.strategy.IPDStrategy#clone()
+   */
+  @Override
+  public CooperativeStrategy clone() {
+    return new CooperativeStrategy();
+  }
+
+  /**
    * Always cooperate.
    * 
    * @return A cooperate Action.

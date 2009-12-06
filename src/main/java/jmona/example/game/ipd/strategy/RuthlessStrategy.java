@@ -27,6 +27,17 @@ package jmona.example.game.ipd.strategy;
 public class RuthlessStrategy extends IPDStrategy {
 
   /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.example.game.ipd.strategy.IPDStrategy#clone()
+   */
+  @Override
+  public RuthlessStrategy clone() {
+    return new RuthlessStrategy();
+  }
+
+  /**
    * Always defect.
    * 
    * @return A defect Action.

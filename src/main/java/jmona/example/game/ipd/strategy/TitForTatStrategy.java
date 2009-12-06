@@ -30,6 +30,17 @@ import jmona.ImmutablePair;
 public class TitForTatStrategy extends IPDStrategy {
 
   /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.example.game.ipd.strategy.IPDStrategy#clone()
+   */
+  @Override
+  public TitForTatStrategy clone() {
+    return new TitForTatStrategy();
+  }
+
+  /**
    * Returns whatever action the adversary did in the previous iteration.
    * 
    * @return Whatever action the adversary did in the previous iteration.

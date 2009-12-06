@@ -22,11 +22,22 @@ package jmona.example.game.ipd.strategy;
 import jmona.impl.Util;
 
 /**
- * A strategy which chooses to cooperate or defect randomly. 
+ * A strategy which chooses to cooperate or defect randomly.
  * 
  * @author jfinkels
  */
 public class RandomStrategy extends IPDStrategy {
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.example.game.ipd.strategy.IPDStrategy#clone()
+   */
+  @Override
+  public RandomStrategy clone() {
+    return new RandomStrategy();
+  }
 
   /**
    * Return either a cooperate action or a defect action, chosen randomly with
