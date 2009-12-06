@@ -20,8 +20,13 @@
 package jmona.game;
 
 /**
+ * An encapsulation of the result of a single execution of a Game.
+ * 
+ * @param <S>
+ *          The type of Strategy which plays the Game for which this class
+ *          encapsulates a result.
  * @author jfinkels
  */
 public interface GameResult<S extends Strategy> {
-  
+
 }

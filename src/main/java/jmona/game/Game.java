@@ -20,6 +20,10 @@
 package jmona.game;
 
 /**
+ * A Game which can be played by a Strategy object of type S.
+ * 
+ * @param <S>
+ *          The type of Strategy which plays this Game.
  * @author jfinkels
  */
 public interface Game<S extends Strategy> {

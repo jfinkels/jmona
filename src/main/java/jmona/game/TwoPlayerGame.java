@@ -20,9 +20,24 @@
 package jmona.game;
 
 /**
+ * A Game in which two Strategy objects compete.
+ * 
+ * @param <S>
+ *          The type of Strategy which plays this Game.
  * @author jfinkels
  */
 public interface TwoPlayerGame<S extends Strategy> extends Game<S> {
+  /**
+   * Play this game with the two specified Strategy objects as adversaries.
+   * 
+   * @param strategy1
+   *          A strategy for playing this Game.
+   * @param strategy2
+   *          Another strategy for playing this Game.
+   * @return The result of playing this Game with the two specified Strategy
+   *         objects as adversaries.
+   * @throws GameplayException
+   */
   TwoPlayerGameResult<S> play(final S strategy1, final S strategy2)
       throws GameplayException;
 }
