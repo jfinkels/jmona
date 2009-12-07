@@ -29,10 +29,9 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jfinkels
  */
 @RunWith(Suite.class)
-@SuiteClasses({ MonaCrossoverFunctionTester.class, 
-    MonaEvolutionContextTester.class, MonaFitnessFunctionTester.class,
-    MonaIndividualFactoryTester.class, MonaIndividualTester.class,
-    MonaMutationFunctionTester.class })
+@SuiteClasses({ MonaCrossoverFunctionTester.class, MonaEvolutionTester.class,
+    MonaFitnessFunctionTester.class, MonaIndividualFactoryTester.class,
+    MonaIndividualTester.class, MonaMutationFunctionTester.class })
 public class AllTest {
 
 }

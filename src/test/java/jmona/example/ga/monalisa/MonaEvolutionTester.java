@@ -1,5 +1,5 @@
 /**
- * MonaEvolutionContextTester.java
+ * MonaEvolutionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -45,12 +45,11 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * @author jfinkels
  */
 @ContextConfiguration
-public class MonaEvolutionContextTester extends
-    AbstractJUnit4SpringContextTests {
+public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
 
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger
-      .getLogger(MonaEvolutionContextTester.class);
+      .getLogger(MonaEvolutionTester.class);
 
   /** The filename at which to write a test image. */
   public static final String OUTPUT_FILENAME = "target/final.png";
