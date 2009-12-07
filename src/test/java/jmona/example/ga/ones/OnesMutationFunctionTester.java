@@ -102,7 +102,7 @@ public class OnesMutationFunctionTester {
         * GENE_LENGTH;
 
     // the error tolerance
-    final double epsilon = expectedMutations * .10;
+    final double epsilon = expectedMutations * .20;
 
     // TODO use standard deviation or something more official for epsilon
     assertEquals(expectedMutations, result, epsilon);
