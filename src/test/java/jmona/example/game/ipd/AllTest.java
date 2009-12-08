@@ -29,7 +29,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jfinkels
  */
 @RunWith(Suite.class)
-@SuiteClasses({ IPDGameTester.class, IPDStrategyFactoryTester.class })
+@SuiteClasses({ IPDGameTester.class, IPDEvolutionTester.class,
+    IPDStrategyFactoryTester.class })
 public class AllTest {
 
 }
