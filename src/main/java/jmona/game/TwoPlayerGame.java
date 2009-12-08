@@ -37,6 +37,7 @@ public interface TwoPlayerGame<S extends Strategy> extends Game<S> {
    * @return The result of playing this Game with the two specified Strategy
    *         objects as adversaries.
    * @throws GameplayException
+   *           If there is a problem during gameplay.
    */
   TwoPlayerGameResult<S> play(final S strategy1, final S strategy2)
       throws GameplayException;
