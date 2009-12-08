@@ -44,6 +44,7 @@ import org.junit.Test;
  */
 public class UtilTester {
 
+  /** Test method for {@link jmona.test.Util#allNodes(Tree)}. */
   @Test
   public void testAllNodes() {
     // initialize a list of known nodes
@@ -158,6 +159,16 @@ public class UtilTester {
   public void testFail() {
     try {
       Util.fail(new Exception());
+    } catch (final AssertionError error) {
+      assertTrue(error instanceof AssertionError);
+    }
+  }
+
+  /** Test method for {@link jmona.test.Util#shouldHaveThrownException()}. */
+  @Test
+  public void testShouldHaveThrownException() {
+    try {
+      Util.shouldHaveThrownException();
     } catch (final AssertionError error) {
       assertTrue(error instanceof AssertionError);
     }

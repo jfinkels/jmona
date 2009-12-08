@@ -158,6 +158,15 @@ public class Util {
     org.junit.Assert.fail(exception.getMessage());
   }
 
+  /**
+   * Fail with the message that an Exception should have been thrown on the
+   * previous line.
+   */
+  public static void shouldHaveThrownException() {
+    org.junit.Assert
+        .fail("Exception should have been thrown on previous line.");
+  }
+
   /** Instantiation disallowed except by subclasses. */
   protected Util() {
     // intentionally unimplemented
