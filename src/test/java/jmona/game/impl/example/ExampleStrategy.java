@@ -20,13 +20,42 @@
 package jmona.game.impl.example;
 
 import jmona.game.Strategy;
+import jmona.impl.Util;
 
 /**
- * An example strategy.
+ * An example strategy with a score property.
  * 
  * @author jfinkels
  */
 public class ExampleStrategy implements Strategy {
+
+  /** The score of this strategy. */
+  private final double score;
+
+  /** Instantiate this Strategy with a random score between 0 and 1. */
+  public ExampleStrategy() {
+    this(Util.RANDOM.nextDouble());
+  }
+
+  /**
+   * Instantiate this Strategy with a score.
+   * 
+   * @param initialScore
+   *          The score of this Strategy.
+   */
+  public ExampleStrategy(final double initialScore) {
+    this.score = initialScore;
+  }
+
+  /**
+   * Return a new ExampleStrategy object with the same score.
+   * 
+   * @return A new ExampleStrategy object with the same score.
+   */
+  @Override
+  public ExampleStrategy clone() {
+    return new ExampleStrategy(this.score);
+  }
 
   /**
    * {@inheritDoc}
@@ -38,9 +67,13 @@ public class ExampleStrategy implements Strategy {
     // intentionally unimplemented
   }
 
-  @Override
-  public ExampleStrategy clone() {
-    return new ExampleStrategy();
+  /**
+   * Get the score of this Strategy.
+   * 
+   * @return The score of this Strategy.
+   */
+  public double score() {
+    return this.score;
   }
 
 }
