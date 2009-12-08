@@ -19,41 +19,84 @@
  */
 package jmona.game.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
+import jmona.Population;
+import jmona.game.impl.example.ExampleGame;
+import jmona.game.impl.example.ExampleStrategy;
+import jmona.impl.DefaultPopulation;
+import jmona.impl.selection.FitnessProportionateSelection;
+import jmona.test.Util;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the GameEvolutionContext class.
+ * 
  * @author jfinkels
  */
 public class GameEvolutionContextTester {
+
+  /** The context under test. */
+  private GameEvolutionContext<ExampleStrategy> context = null;
+  /** The population in the EvolutionContext. */
+  private Population<ExampleStrategy> population = null;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.population = new DefaultPopulation<ExampleStrategy>();
+    this.population.add(new ExampleStrategy());
+    this.population.add(new ExampleStrategy());
+
+    this.context = new GameEvolutionContext<ExampleStrategy>(this.population);
+    this.context.setGame(new ExampleGame());
+    this.context
+        .setSelectionFunction(new FitnessProportionateSelection<ExampleStrategy>());
+  }
 
   /**
    * Test method for {@link jmona.game.impl.GameEvolutionContext#sanityCheck()}.
    */
   @Test
   public void testSanityCheck() {
-    fail("Not yet implemented");
+    this.context = new GameEvolutionContext<ExampleStrategy>(this.population);
+    try {
+      this.context.sanityCheck();
+      Util.shouldHaveThrownException();
+    } catch (final NullPointerException exception) {
+      this.context.setGame(new ExampleGame());
+    }
+
+    try {
+      this.context.sanityCheck();
+      Util.shouldHaveThrownException();
+    } catch (final NullPointerException exception) {
+      // selection function has not been set
+      this.context
+          .setSelectionFunction(new FitnessProportionateSelection<ExampleStrategy>());
+    }
+
+    try {
+      this.context.sanityCheck();
+    } catch (final NullPointerException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
-   * Test method for {@link jmona.game.impl.GameEvolutionContext#GameEvolutionContext(jmona.Population)}.
-   */
-  @Test
-  public void testGameEvolutionContext() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.game.impl.GameEvolutionContext#setGame(jmona.game.TwoPlayerGame)}.
+   * Test method for
+   * {@link jmona.game.impl.GameEvolutionContext#setGame(jmona.game.TwoPlayerGame)}
+   * .
    */
   @Test
   public void testSetGame() {
-    fail("Not yet implemented");
+    this.context.setGame(new ExampleGame());
   }
 
   /**
-   * Test method for {@link jmona.game.impl.GameEvolutionContext#stepGeneration()}.
+   * Test method for
+   * {@link jmona.game.impl.GameEvolutionContext#stepGeneration()}.
    */
   @Test
   public void testStepGeneration() {
