@@ -19,7 +19,8 @@
  */
 package jmona.game.impl;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
+import jmona.EvolutionException;
 import jmona.Population;
 import jmona.game.impl.example.ExampleGame;
 import jmona.game.impl.example.ExampleStrategy;
@@ -27,6 +28,7 @@ import jmona.impl.DefaultPopulation;
 import jmona.impl.selection.FitnessProportionateSelection;
 import jmona.test.Util;
 
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -100,7 +102,22 @@ public class GameEvolutionContextTester {
    */
   @Test
   public void testStepGeneration() {
-    fail("Not yet implemented");
+    
+    int beforeSize = this.context.currentPopulation().size();
+    
+    LOG.debug(this.context.currentPopulation());
+    try {
+      this.context.stepGeneration();
+    } catch (final EvolutionException exception) {
+      Util.fail(exception);
+    }
+    LOG.debug(this.context.currentPopulation());
+    
+    assertEquals(beforeSize, this.context.currentPopulation());
+    
   }
 
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(GameEvolutionContextTester.class);
 }

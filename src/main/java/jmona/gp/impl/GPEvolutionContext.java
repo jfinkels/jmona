@@ -19,10 +19,12 @@
  */
 package jmona.gp.impl;
 
+import jmona.CrossoverException;
 import jmona.EvolutionException;
 import jmona.FitnessException;
 import jmona.MutationException;
 import jmona.Population;
+import jmona.SelectionException;
 import jmona.gp.Tree;
 import jmona.impl.AbstractEvolutionContext;
 import jmona.impl.DefaultPopulation;
@@ -119,13 +121,26 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
       // recalculate the fitnesses of the current generation
       this.recalculateFitnesses();
 
-    } catch (final FitnessException exception) {
+    } catch (final CrossoverException exception) {
+
       throw new EvolutionException(
-          "Failed determining fitness of an individual.", exception);
+          "Failed to perform crossover on two Individuals.", exception);
+
+    } catch (final FitnessException exception) {
+
+      throw new EvolutionException(
+          "Failed determining fitness of an Individual.", exception);
+
     } catch (final MutationException exception) {
-      throw new EvolutionException("Failed mutating an individual.", exception);
+
+      throw new EvolutionException("Failed mutating an Individual.", exception);
+
+    } catch (final SelectionException exception) {
+
+      throw new EvolutionException("Failed to select an Individual.", exception);
+
     }
-    
+
     // increment the generation number
     this.incrementGeneration();
   }

@@ -36,6 +36,9 @@ public interface CrossoverFunction<T extends Individual> {
    *          One parent Individual.
    * @param parent2
    *          Another parent Individual.
+   * @throws CrossoverException
+   *           If there is a problem performing crossover on the two specified
+   *           Individuals.
    */
-  void crossover(final T parent1, final T parent2);
+  void crossover(final T parent1, final T parent2) throws CrossoverException;
 }

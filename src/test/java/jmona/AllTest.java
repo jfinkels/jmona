@@ -30,9 +30,10 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses({ CompletionExceptionTester.class,
-    EvolutionExceptionTester.class, FitnessExceptionTester.class,
-    InitializationExceptionTester.class, MutationExceptionTester.class,
-    ProcessingExceptionTester.class })
+    CrossoverExceptionTester.class, EvolutionExceptionTester.class,
+    FitnessExceptionTester.class, InitializationExceptionTester.class,
+    MutationExceptionTester.class, ProcessingExceptionTester.class,
+    SelectionExceptionTester.class })
 public class AllTest {
 
 }

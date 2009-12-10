@@ -37,6 +37,8 @@ public interface SelectionFunction<T extends Individual> {
    * @param fitnesses
    *          A mapping from Individuals to corresponding fitness scores.
    * @return An Individual chosen from the specified map.
+   * @throws SelectionException
+   *           If there is a problem during selection of an Individual.
    */
-  T select(final Map<T, Double> fitnesses);
+  T select(final Map<T, Double> fitnesses) throws SelectionException;
 }

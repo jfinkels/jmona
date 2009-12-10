@@ -19,11 +19,13 @@
  */
 package jmona.ga.impl;
 
+import jmona.CrossoverException;
 import jmona.EvolutionException;
 import jmona.FitnessException;
 import jmona.Individual;
 import jmona.MutationException;
 import jmona.Population;
+import jmona.SelectionException;
 import jmona.impl.AbstractEvolutionContext;
 import jmona.impl.DefaultPopulation;
 import jmona.impl.Util;
@@ -125,11 +127,25 @@ public class GAEvolutionContext<T extends Individual> extends
 
       // recalculate the fitnesses of the current generation
       this.recalculateFitnesses();
-    } catch (final MutationException exception) {
-      throw new EvolutionException("Failed mutating an individual.", exception);
+
+    } catch (final CrossoverException exception) {
+
+      throw new EvolutionException(
+          "Failed to perform crossover on two Individuals.", exception);
+
     } catch (final FitnessException exception) {
+
       throw new EvolutionException(
           "Failed determining fitness of an individual.", exception);
+
+    } catch (final MutationException exception) {
+
+      throw new EvolutionException("Failed mutating an individual.", exception);
+
+    } catch (final SelectionException exception) {
+
+      throw new EvolutionException("Failed selecting an Individual.", exception);
+
     }
 
     // increment the generation number
