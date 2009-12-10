@@ -53,7 +53,7 @@ public class RuthlessStrategyTester {
   public void testNextAction() {
     final RuthlessStrategy strategy = new RuthlessStrategy();
     for (int i = 0; i < NUM_ACTIONS; ++i) {
-      assertSame(Action.COOPERATE, strategy.nextAction());
+      assertSame(Action.DEFECT, strategy.nextAction());
     }
   }
 
