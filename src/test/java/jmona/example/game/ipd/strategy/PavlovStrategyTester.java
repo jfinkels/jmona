@@ -19,29 +19,71 @@
  */
 package jmona.example.game.ipd.strategy;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
+import jmona.ImmutablePair;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the PavlovStrategy class.
+ * 
  * @author jfinkels
  */
 public class PavlovStrategyTester {
 
-  /**
-   * Test method for {@link jmona.example.game.ipd.strategy.PavlovStrategy#nextAction()}.
-   */
-  @Test
-  public void testNextAction() {
-    fail("Not yet implemented");
+  /** The strategy under test. */
+  private PavlovStrategy strategy = null;
+
+  /** Establish a fixture for test in this class. */
+  @Before
+  public final void setUp() {
+    this.strategy = new PavlovStrategy();
   }
 
   /**
-   * Test method for {@link jmona.example.game.ipd.strategy.PavlovStrategy#clone()}.
+   * Test method for
+   * {@link jmona.example.game.ipd.strategy.PavlovStrategy#clone()}.
    */
   @Test
   public void testClone() {
-    fail("Not yet implemented");
+    final PavlovStrategy clone = this.strategy.clone();
+    assertNotSame(clone, this.strategy);
+    assertTrue(clone instanceof PavlovStrategy);
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.example.game.ipd.strategy.PavlovStrategy#nextAction()}.
+   */
+  @Test
+  public void testNextAction() {
+
+    // first action should always be cooperate
+
+    assertEquals(Action.COOPERATE, this.strategy.nextAction());
+
+    // next action should cooperate if the previous actions were the same
+
+    this.strategy.addToMemory(new ImmutablePair<Action, Action>(Action.DEFECT,
+        Action.DEFECT));
+    assertEquals(Action.COOPERATE, this.strategy.nextAction());
+
+    this.strategy.addToMemory(new ImmutablePair<Action, Action>(
+        Action.COOPERATE, Action.COOPERATE));
+    assertEquals(Action.COOPERATE, this.strategy.nextAction());
+
+    // next action should defect if the previous actions were different
+
+    this.strategy.addToMemory(new ImmutablePair<Action, Action>(Action.DEFECT,
+        Action.COOPERATE));
+    assertEquals(Action.DEFECT, this.strategy.nextAction());
+
+    this.strategy.addToMemory(new ImmutablePair<Action, Action>(
+        Action.COOPERATE, Action.DEFECT));
+    assertEquals(Action.DEFECT, this.strategy.nextAction());
   }
 
 }

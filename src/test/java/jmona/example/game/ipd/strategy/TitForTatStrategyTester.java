@@ -19,29 +19,61 @@
  */
 package jmona.example.game.ipd.strategy;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
+import jmona.ImmutablePair;
 
 import org.junit.Test;
 
 /**
+ * Test class for the TitForTatStrategy class.
+ * 
  * @author jfinkels
  */
 public class TitForTatStrategyTester {
 
   /**
-   * Test method for {@link jmona.example.game.ipd.strategy.TitForTatStrategy#nextAction()}.
-   */
-  @Test
-  public void testNextAction() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.example.game.ipd.strategy.TitForTatStrategy#clone()}.
+   * Test method for
+   * {@link jmona.example.game.ipd.strategy.TitForTatStrategy#clone()}.
    */
   @Test
   public void testClone() {
-    fail("Not yet implemented");
+    final TitForTatStrategy strategy = new TitForTatStrategy();
+    assertNotSame(strategy.clone(), strategy);
+    assertTrue(strategy.clone() instanceof TitForTatStrategy);
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.example.game.ipd.strategy.TitForTatStrategy#nextAction()}.
+   */
+  @Test
+  public void testNextAction() {
+
+    final TitForTatStrategy strategy = new TitForTatStrategy();
+
+    // first action should always be cooperate
+
+    assertEquals(Action.COOPERATE, strategy.nextAction());
+
+    // next action should do what the previous adversary did
+
+    strategy.addToMemory(new ImmutablePair<Action, Action>(Action.DEFECT,
+        Action.DEFECT));
+    assertEquals(Action.DEFECT, strategy.nextAction());
+
+    strategy.addToMemory(new ImmutablePair<Action, Action>(Action.COOPERATE,
+        Action.COOPERATE));
+    assertEquals(Action.COOPERATE, strategy.nextAction());
+
+    strategy.addToMemory(new ImmutablePair<Action, Action>(Action.DEFECT,
+        Action.COOPERATE));
+    assertEquals(Action.COOPERATE, strategy.nextAction());
+
+    strategy.addToMemory(new ImmutablePair<Action, Action>(Action.COOPERATE,
+        Action.DEFECT));
+    assertEquals(Action.DEFECT, strategy.nextAction());
   }
 
 }
