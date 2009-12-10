@@ -21,6 +21,7 @@ package jmona.game.impl;
 
 import jmona.EvolutionException;
 import jmona.Population;
+import jmona.SelectionException;
 import jmona.game.GameplayException;
 import jmona.game.Strategy;
 import jmona.game.TwoPlayerGame;
@@ -31,6 +32,9 @@ import jmona.impl.DefaultPopulation;
 import org.apache.log4j.Logger;
 
 /**
+ * A context for playing Strategy objects against one another and reproducing
+ * the most successful ones, without mutation or crossover.
+ * 
  * @param <S>
  *          The type of Strategy to play a game against one another.
  * @author jfinkels
@@ -152,10 +156,15 @@ public class GameEvolutionContext<S extends Strategy> extends
     // initialize a population to hold the selections for the next generation
     Population<S> nextPopulation = new DefaultPopulation<S>();
 
-    // select strategies from the current population to go to the next one
-    while (nextPopulation.size() < this.currentPopulation().size()) {
-      nextPopulation.add((S) this.selectionFunction().select(
-          this.currentFitnesses()).clone());
+    try {
+      // select strategies from the current population to go to the next one
+      // TODO is it right to clone every strategy?
+      while (nextPopulation.size() < this.currentPopulation().size()) {
+        nextPopulation.add((S) this.selectionFunction().select(
+            this.currentFitnesses()).clone());
+      }
+    } catch (final SelectionException exception) {
+      throw new EvolutionException("Failed to select an Individual.", exception);
     }
 
     // set the population for the next generation
