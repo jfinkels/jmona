@@ -48,7 +48,7 @@ public class FitnessProportionateSelectionTester {
   public static final int NUM_SELECTIONS = 100000;
 
   /** The SelectionFunction under test. */
-  private SelectionFunction<ExampleIndividual> function = null;
+  private FitnessProportionateSelection<ExampleIndividual> function = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
