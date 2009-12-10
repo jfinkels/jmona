@@ -19,29 +19,46 @@
  */
 package jmona.example.game.ipd.strategy;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
 
 /**
+ * Test class for the CooperativeStrategy class.
+ * 
  * @author jfinkels
  */
 public class CooperativeStrategyTester {
 
-  /**
-   * Test method for {@link jmona.example.game.ipd.strategy.CooperativeStrategy#nextAction()}.
-   */
-  @Test
-  public void testNextAction() {
-    fail("Not yet implemented");
-  }
+  /** The number of actions to get from a strategy. */
+  public static final int NUM_ACTIONS = 100;
 
   /**
-   * Test method for {@link jmona.example.game.ipd.strategy.CooperativeStrategy#clone()}.
+   * Test method for
+   * {@link jmona.example.game.ipd.strategy.CooperativeStrategy#clone()}.
    */
   @Test
   public void testClone() {
-    fail("Not yet implemented");
+    final CooperativeStrategy strategy = new CooperativeStrategy();
+    final CooperativeStrategy clone = strategy.clone();
+    assertNotSame(strategy, clone);
+    for (int i = 0; i < NUM_ACTIONS; ++i) {
+      assertSame(strategy.nextAction(), clone.nextAction());
+    }
+
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.example.game.ipd.strategy.CooperativeStrategy#nextAction()}.
+   */
+  @Test
+  public void testNextAction() {
+    final CooperativeStrategy strategy = new CooperativeStrategy();
+    for (int i = 0; i < NUM_ACTIONS; ++i) {
+      assertSame(Action.COOPERATE, strategy.nextAction());
+    }
   }
 
 }

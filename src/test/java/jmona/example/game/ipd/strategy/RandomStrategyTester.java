@@ -19,29 +19,59 @@
  */
 package jmona.example.game.ipd.strategy;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 /**
+ * Test class for the RandomStrategy class.
+ * 
  * @author jfinkels
  */
 public class RandomStrategyTester {
 
-  /**
-   * Test method for {@link jmona.example.game.ipd.strategy.RandomStrategy#nextAction()}.
-   */
-  @Test
-  public void testNextAction() {
-    fail("Not yet implemented");
-  }
+  /** The number of actions to get from a strategy. */
+  public static final int NUM_ACTIONS = 10000;
 
   /**
-   * Test method for {@link jmona.example.game.ipd.strategy.RandomStrategy#clone()}.
+   * Test method for
+   * {@link jmona.example.game.ipd.strategy.RandomStrategy#clone()}.
    */
   @Test
   public void testClone() {
-    fail("Not yet implemented");
+    final RandomStrategy strategy = new RandomStrategy();
+    final RandomStrategy clone = strategy.clone();
+    assertNotSame(strategy, clone);
+    assertTrue(clone instanceof RandomStrategy);
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.example.game.ipd.strategy.RandomStrategy#nextAction()}.
+   */
+  @Test
+  public void testNextAction() {
+    final RandomStrategy strategy = new RandomStrategy();
+
+    int defectCount = 0;
+    int cooperateCount = 0;
+
+    Action action = null;
+    for (int i = 0; i < NUM_ACTIONS; ++i) {
+      action = strategy.nextAction();
+      if (action.equals(Action.COOPERATE)) {
+        cooperateCount += 1;
+      } else {
+        defectCount += 1;
+      }
+    }
+
+    final int expected = NUM_ACTIONS / 2;
+    final double delta = expected * 0.1;
+    assertEquals(expected, cooperateCount, delta);
+    assertEquals(expected, defectCount, delta);
   }
 
 }

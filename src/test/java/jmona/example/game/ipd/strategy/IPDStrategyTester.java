@@ -19,69 +19,104 @@
  */
 package jmona.example.game.ipd.strategy;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import jmona.ImmutablePair;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the IPDStrategy class.
+ * 
  * @author jfinkels
  */
 public class IPDStrategyTester {
 
+  /** The strategy under test. */
+  private IPDStrategy strategy = null;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.strategy = new CooperativeStrategy();
+  }
+
   /**
-   * Test method for {@link jmona.example.game.ipd.strategy.IPDStrategy#addToMemory(jmona.ImmutablePair)}.
+   * Test method for
+   * {@link jmona.example.game.ipd.strategy.IPDStrategy#addToMemory(jmona.ImmutablePair)}
+   * .
    */
   @Test
   public void testAddToMemory() {
-    fail("Not yet implemented");
+    final ImmutablePair<Action, Action> pair1 = new ImmutablePair<Action, Action>(
+        Action.DEFECT, Action.DEFECT);
+    final ImmutablePair<Action, Action> pair2 = new ImmutablePair<Action, Action>(
+        Action.DEFECT, Action.COOPERATE);
+    final ImmutablePair<Action, Action> pair3 = new ImmutablePair<Action, Action>(
+        Action.COOPERATE, Action.COOPERATE);
+    final ImmutablePair<Action, Action> pair4 = new ImmutablePair<Action, Action>(
+        Action.COOPERATE, Action.DEFECT);
+
+    this.strategy.addToMemory(pair1);
+    this.strategy.addToMemory(pair2);
+    this.strategy.addToMemory(pair3);
+
+    // this test only makes sense if the memory length is three
+    // TODO generalize this test to any memory length
+    assertEquals(3, this.strategy.memoryLength());
+
+    assertSame(pair1, this.strategy.memory().get(0));
+    assertSame(pair2, this.strategy.memory().get(1));
+    assertSame(pair3, this.strategy.memory().get(2));
+    assertFalse(this.strategy.memory().contains(pair4));
+
+    this.strategy.addToMemory(pair4);
+
+    assertSame(pair2, this.strategy.memory().get(0));
+    assertSame(pair3, this.strategy.memory().get(1));
+    assertSame(pair4, this.strategy.memory().get(2));
+    assertFalse(this.strategy.memory().contains(pair1));
   }
 
   /**
-   * Test method for {@link jmona.example.game.ipd.strategy.IPDStrategy#clone()}.
-   */
-  @Test
-  public void testClone() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.example.game.ipd.strategy.IPDStrategy#memory()}.
+   * Test method for
+   * {@link jmona.example.game.ipd.strategy.IPDStrategy#memory()}.
    */
   @Test
   public void testMemory() {
-    fail("Not yet implemented");
+    assertTrue(this.strategy.memory().isEmpty());
+    final ImmutablePair<Action, Action> pair = new ImmutablePair<Action, Action>(
+        Action.COOPERATE, Action.COOPERATE);
+    this.strategy.addToMemory(pair);
+    assertTrue(this.strategy.memory().contains(pair));
   }
 
   /**
-   * Test method for {@link jmona.example.game.ipd.strategy.IPDStrategy#memoryLength()}.
+   * Test method for
+   * {@link jmona.example.game.ipd.strategy.IPDStrategy#memoryLength()}.
    */
   @Test
   public void testMemoryLength() {
-    fail("Not yet implemented");
+    assertEquals(IPDStrategy.DEFAULT_MEMORY_LENGTH, this.strategy
+        .memoryLength());
+    this.strategy.setMemoryLength(1);
+    assertEquals(1, this.strategy.memoryLength());
   }
 
   /**
-   * Test method for {@link jmona.example.game.ipd.strategy.IPDStrategy#nextAction()}.
-   */
-  @Test
-  public void testNextAction() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.example.game.ipd.strategy.IPDStrategy#reset()}.
+   * Test method for {@link jmona.example.game.ipd.strategy.IPDStrategy#reset()}
+   * .
    */
   @Test
   public void testReset() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.example.game.ipd.strategy.IPDStrategy#setMemoryLength(int)}.
-   */
-  @Test
-  public void testSetMemoryLength() {
-    fail("Not yet implemented");
+    this.strategy.addToMemory(new ImmutablePair<Action, Action>(Action.DEFECT,
+        Action.COOPERATE));
+    assertFalse(this.strategy.memory().isEmpty());
+    this.strategy.reset();
+    assertTrue(this.strategy.memory().isEmpty());
   }
 
 }

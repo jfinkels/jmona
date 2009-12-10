@@ -28,20 +28,33 @@ import org.junit.Test;
  */
 public class RuthlessStrategyTester {
 
-  /**
-   * Test method for {@link jmona.example.game.ipd.strategy.RuthlessStrategy#nextAction()}.
-   */
-  @Test
-  public void testNextAction() {
-    fail("Not yet implemented");
-  }
+  /** The number of actions to get from a strategy. */
+  public static final int NUM_ACTIONS = 100;
 
   /**
-   * Test method for {@link jmona.example.game.ipd.strategy.RuthlessStrategy#clone()}.
+   * Test method for
+   * {@link jmona.example.game.ipd.strategy.RuthlessStrategy#clone()}.
    */
   @Test
   public void testClone() {
-    fail("Not yet implemented");
+    final RuthlessStrategy strategy = new RuthlessStrategy();
+    final RuthlessStrategy clone = strategy.clone();
+    assertNotSame(strategy, clone);
+    for (int i = 0; i < NUM_ACTIONS; ++i) {
+      assertSame(strategy.nextAction(), clone.nextAction());
+    }
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.example.game.ipd.strategy.RuthlessStrategy#nextAction()}.
+   */
+  @Test
+  public void testNextAction() {
+    final RuthlessStrategy strategy = new RuthlessStrategy();
+    for (int i = 0; i < NUM_ACTIONS; ++i) {
+      assertSame(Action.COOPERATE, strategy.nextAction());
+    }
   }
 
 }
