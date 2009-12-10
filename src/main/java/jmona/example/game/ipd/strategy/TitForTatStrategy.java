@@ -37,7 +37,11 @@ public class TitForTatStrategy extends IPDStrategy {
    */
   @Override
   public TitForTatStrategy clone() {
-    return new TitForTatStrategy();
+    final TitForTatStrategy result = new TitForTatStrategy();
+    for (final ImmutablePair<Action, Action> actions : this.memory()) {
+      result.addToMemory(actions);
+    }
+    return result;
   }
 
   /**
