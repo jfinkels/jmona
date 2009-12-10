@@ -20,7 +20,6 @@
 package jmona.example.game.ipd;
 
 import jmona.IndividualFactory;
-import jmona.InitializationException;
 import jmona.example.game.ipd.strategy.CooperativeStrategy;
 import jmona.example.game.ipd.strategy.IPDStrategy;
 import jmona.example.game.ipd.strategy.PavlovStrategy;
@@ -30,19 +29,23 @@ import jmona.example.game.ipd.strategy.TitForTatStrategy;
 import jmona.impl.Util;
 
 /**
+ * A factory which creates IPDStrategy objects at random.
+ * 
  * @author jfinkels
  */
 public class IPDStrategyFactory implements IndividualFactory<IPDStrategy> {
 
+  /** The number of strategies from which to choose. */
   public static final int NUMBER_OF_STRATEGIES = 5;
 
-  /*
-   * (non-Javadoc)
+  /**
+   * Create a Strategy chosen randomly from all IPDStrategy subclasses.
    * 
+   * @return A Strategy chosen randomly from all IPDStrategy subclasses.
    * @see jmona.IndividualFactory#createIndividual()
    */
   @Override
-  public IPDStrategy createIndividual() throws InitializationException {
+  public IPDStrategy createIndividual() {
 
     IPDStrategy result = null;
 
