@@ -94,6 +94,24 @@ public class DefaultTwoPlayerGameResult<S extends Strategy> implements
   }
 
   /**
+   * Get a String representation of the content of this GameResult.
+   * 
+   * @return A String representation
+   */
+  @Override
+  public String toString() {
+    final StringBuilder result = new StringBuilder();
+
+    result.append("Result[");
+    result.append("strategy1score=" + this.scoreOfStrategy1);
+    result.append(",strategy2score=" + this.scoreOfStrategy2);
+    result.append(",winner=" + this.winner);
+    result.append("]");
+
+    return result.toString();
+  }
+
+  /**
    * Get the strategy which won the game.
    * 
    * @return The strategy which won the game.
