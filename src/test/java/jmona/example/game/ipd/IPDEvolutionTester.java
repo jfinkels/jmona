@@ -19,6 +19,9 @@
  */
 package jmona.example.game.ipd;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import jmona.CompletionCriteria;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
@@ -58,15 +61,30 @@ public class IPDEvolutionTester extends AbstractJUnit4SpringContextTests {
   /** Test method for an iterated prisoner's dilemma evolution. */
   @Test
   public final void testIPDEvolution() {
+    final Map<Class<? extends IPDStrategy>, Integer> results = new HashMap<Class<? extends IPDStrategy>, Integer>();
+
     try {
       while (!this.completionCriteria.isSatisfied(this.context)) {
         this.context.stepGeneration();
-        LOG.debug(this.context.currentPopulation());
+
+        for (final IPDStrategy strategy : this.context.currentPopulation()) {
+          if (results.containsKey(strategy.getClass())) {
+            results.put(strategy.getClass(),
+                results.get(strategy.getClass()) + 1);
+          } else {
+            results.put(strategy.getClass(), 1);
+          }
+        }
+        
+        LOG.debug(results);
+        
+        results.clear();
       }
     } catch (final CompletionException exception) {
       Util.fail(exception);
     } catch (final EvolutionException exception) {
       Util.fail(exception);
     }
+    
   }
 }
