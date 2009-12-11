@@ -24,18 +24,14 @@ package jmona.example.gp.calc.functions;
  * 
  * @author jfinkels
  */
-public class SquareFunction implements SingleInputFunction<Double, Double> {
+public class SquareFunction extends PolynomialFunction {
 
   /**
-   * Return the square of the specified input.
-   * 
-   * @param input
-   *          A number.
-   * @return The square of the specified input.
-   * @see jmona.example.gp.calc.functions.SingleInputFunction#execute(java.lang.Object)
+   * Instantiate this function as a polynomial with coefficients 0 for degree
+   * zero, 0 for degree one, and 1 for degree two.
    */
-  @Override
-  public Double execute(final Double input) {
-    return Math.pow(input, 2);
+  public SquareFunction() {
+    super(new double[] { 0, 0, 1 });
   }
+
 }
