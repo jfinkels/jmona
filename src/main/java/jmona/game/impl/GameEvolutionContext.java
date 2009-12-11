@@ -114,10 +114,10 @@ public class GameEvolutionContext<S extends Strategy> extends
         strategy2 = this.currentPopulation().get(j);
 
         try {
-          LOG.debug("Playing game between " + strategy1 + " and " + strategy2
-              + "...");
+          //LOG.debug("Playing game between " + strategy1 + " and " + strategy2
+              //+ "...");
           gameResult = this.game.play(strategy1, strategy2);
-          LOG.debug("...complete.");
+          //LOG.debug("...complete.");
         } catch (final GameplayException exception) {
           throw new EvolutionException("Failed to complete a game.", exception);
         }
@@ -126,7 +126,7 @@ public class GameEvolutionContext<S extends Strategy> extends
         strategy1.reset();
         strategy2.reset();
 
-        LOG.debug("Result: " + gameResult);
+        //LOG.debug("Result: " + gameResult);
 
         Double currentScore = null;
         if (this.currentFitnesses().containsKey(strategy1)) {
