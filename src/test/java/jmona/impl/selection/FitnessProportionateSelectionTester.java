@@ -28,7 +28,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import jmona.Individual;
-import jmona.SelectionFunction;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Before;
