@@ -1,5 +1,5 @@
 /**
- * IntNode.java
+ * IntegerNode.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
