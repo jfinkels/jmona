@@ -38,10 +38,8 @@ public class GAFitnessFunctionTester {
 
   /** The target fitness for ExampleIndividuals. */
   private static final int TARGET_FITNESS = 100;
-
   /** Zero. */
   public static final double ZERO_DELTA = 0.0;
-
   /** The function under test. */
   private GAFitnessFunction<ExampleIndividual> function = null;
 
