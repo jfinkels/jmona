@@ -98,7 +98,8 @@ public class TournamentSelection<T extends Individual> implements
       competitors.add(Util.randomFromSet(fitnesses.keySet()));
     }
 
-    // sort the list of competitors based on their fitnesses
+    // sort the list of competitors in increasing order based on their
+    // fitnesses, with the most fit individual at the end of the list
     Collections.sort(competitors, new FitnessComparator<T>(fitnesses));
 
     // choose a random double
@@ -108,23 +109,20 @@ public class TournamentSelection<T extends Individual> implements
     double probability = this.selectionProbability;
 
     // the competitor which will eventually be selected
-    int chosenCompetitor = 0;
+    int chosenCompetitor = competitors.size() - 1;
 
     // until the chosen random number is less than 'probability'...
-    while (choice > probability || chosenCompetitor >= competitors.size()) {
+    while (choice > probability || chosenCompetitor < 0) {
       // increment the probability
       // TODO double check this math!!! check out how JGAP does it
       probability += probability * (1 - this.selectionProbability);
 
-      // increment the number of the competitor to select as winner
-      chosenCompetitor += 1;
+      // decrement the number of the competitor to select as winner
+      chosenCompetitor -= 1;
     }
 
-    // if the chosen competitor is greater than the number of competitors, just
-    // choose the last competitor
-    if (chosenCompetitor >= competitors.size()) {
-      chosenCompetitor = competitors.size() - 1;
-    }
+    // make sure the index of the chosen competitor is not less than zero
+    chosenCompetitor = Math.max(0, chosenCompetitor);
 
     return competitors.get(chosenCompetitor);
   }
