@@ -30,7 +30,7 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses({ CalcEvolutionTester.class,
-    FunctionEquivalenceTesterTester.class })
+    FunctionEquivalenceTesterTester.class, PolynomialEvolutionTester.class })
 public class AllTest {
 
 }
