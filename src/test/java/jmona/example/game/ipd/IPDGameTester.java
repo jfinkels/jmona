@@ -19,7 +19,8 @@
  */
 package jmona.example.game.ipd;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import jmona.example.game.ipd.strategy.CooperativeStrategy;
 import jmona.example.game.ipd.strategy.IPDStrategy;
 import jmona.example.game.ipd.strategy.RuthlessStrategy;
@@ -27,7 +28,7 @@ import jmona.game.GameplayException;
 import jmona.game.TwoPlayerGameResult;
 import jmona.test.Util;
 
-import org.apache.log4j.Logger;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -37,16 +38,25 @@ import org.junit.Test;
  */
 public class IPDGameTester {
 
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(IPDGameTester.class);
-
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
+  /** A strategy. */
+  private IPDStrategy cooperativeStrategy = null;
   /** The game under test. */
   private IPDGame game = null;
+  /** Another strategy. */
+  private IPDStrategy ruthlessStrategy = null;
 
   /** Establish a fixture for tests in this class. */
+  @Before
   public final void setUp() {
     this.game = new IPDGame();
+
+    // only do one iteration
+    this.game.setIterations(1);
+
+    this.cooperativeStrategy = new CooperativeStrategy();
+    this.ruthlessStrategy = new RuthlessStrategy();
   }
 
   /**
@@ -56,33 +66,37 @@ public class IPDGameTester {
    */
   @Test
   public void testPlay() {
-    fail("Not yet implemented");
-    IPDStrategy strategy1 = new CooperativeStrategy();
-    IPDStrategy strategy2 = new CooperativeStrategy();
     TwoPlayerGameResult<IPDStrategy> result = null;
     try {
-      result = this.game.play(strategy1, strategy2);
+      result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
     } catch (final GameplayException exception) {
       Util.fail(exception);
     }
 
-    LOG.debug(result);
+    assertEquals(IPDGame.DEFAULT_SUCKERS_PAYOFF, result.scoreOfStrategy1(),
+        ZERO_DELTA);
+    assertEquals(IPDGame.DEFAULT_TEMPTATION, result.scoreOfStrategy2(),
+        ZERO_DELTA);
+    assertSame(this.ruthlessStrategy, result.winner());
 
-    strategy2 = new RuthlessStrategy();
     try {
-      result = this.game.play(strategy1, strategy2);
-    } catch (final GameplayException exception) {
-      Util.fail(exception);
-    }
-    
-    strategy1 = new RuthlessStrategy();
-    try {
-      result = this.game.play(strategy1, strategy2);
+      result = this.game.play(this.cooperativeStrategy,
+          this.cooperativeStrategy);
     } catch (final GameplayException exception) {
       Util.fail(exception);
     }
 
-    LOG.debug(result);
+    assertEquals(result.scoreOfStrategy1(), result.scoreOfStrategy2(),
+        ZERO_DELTA);
+
+    try {
+      result = this.game.play(this.ruthlessStrategy, this.ruthlessStrategy);
+    } catch (final GameplayException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(result.scoreOfStrategy1(), result.scoreOfStrategy2(),
+        ZERO_DELTA);
   }
 
   /**
@@ -90,15 +104,43 @@ public class IPDGameTester {
    */
   @Test
   public void testSetIterations() {
-    fail("Not yet implemented");
     int newIterations = 0;
     this.game.setIterations(newIterations);
 
-    newIterations = 1;
+    TwoPlayerGameResult<IPDStrategy> result = null;
+    try {
+      result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
+    } catch (final GameplayException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(0.0, result.scoreOfStrategy1(), ZERO_DELTA);
+    assertEquals(0.0, result.scoreOfStrategy2(), ZERO_DELTA);
+
     this.game.setIterations(newIterations);
+    try {
+      result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
+    } catch (final GameplayException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(0.0, result.scoreOfStrategy1(), ZERO_DELTA);
+    assertEquals(IPDGame.DEFAULT_TEMPTATION * newIterations, result
+        .scoreOfStrategy2(), ZERO_DELTA);
+    assertSame(this.ruthlessStrategy, result.winner());
 
     newIterations = 2;
     this.game.setIterations(newIterations);
+    try {
+      result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
+    } catch (final GameplayException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(0.0, result.scoreOfStrategy1(), ZERO_DELTA);
+    assertEquals(IPDGame.DEFAULT_TEMPTATION * newIterations, result
+        .scoreOfStrategy2(), ZERO_DELTA);
+    assertSame(this.ruthlessStrategy, result.winner());
   }
 
   /**
@@ -108,12 +150,30 @@ public class IPDGameTester {
    */
   @Test
   public void testSetPunishmentForMutualDefection() {
-    fail("Not yet implemented");
+
     int punishmentPayoff = 0;
     this.game.setPunishmentForMutualDefection(punishmentPayoff);
 
+    TwoPlayerGameResult<IPDStrategy> result = null;
+    try {
+      result = this.game.play(this.ruthlessStrategy, this.ruthlessStrategy);
+    } catch (final GameplayException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(punishmentPayoff, result.scoreOfStrategy1(), ZERO_DELTA);
+    assertEquals(punishmentPayoff, result.scoreOfStrategy2(), ZERO_DELTA);
+
     punishmentPayoff = 10;
     this.game.setPunishmentForMutualDefection(punishmentPayoff);
+    try {
+      result = this.game.play(this.ruthlessStrategy, this.ruthlessStrategy);
+    } catch (final GameplayException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(punishmentPayoff, result.scoreOfStrategy1(), ZERO_DELTA);
+    assertEquals(punishmentPayoff, result.scoreOfStrategy2(), ZERO_DELTA);
   }
 
   /**
@@ -122,12 +182,31 @@ public class IPDGameTester {
    */
   @Test
   public void testSetRewardForMutualCooperation() {
-    fail("Not yet implemented");
     int rewardPayoff = 0;
     this.game.setRewardForMutualCooperation(rewardPayoff);
 
+    TwoPlayerGameResult<IPDStrategy> result = null;
+    try {
+      result = this.game.play(this.cooperativeStrategy,
+          this.cooperativeStrategy);
+    } catch (final GameplayException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(rewardPayoff, result.scoreOfStrategy1(), ZERO_DELTA);
+    assertEquals(rewardPayoff, result.scoreOfStrategy2(), ZERO_DELTA);
+
     rewardPayoff = 10;
     this.game.setRewardForMutualCooperation(rewardPayoff);
+    try {
+      result = this.game.play(this.cooperativeStrategy,
+          this.cooperativeStrategy);
+    } catch (final GameplayException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(rewardPayoff, result.scoreOfStrategy1(), ZERO_DELTA);
+    assertEquals(rewardPayoff, result.scoreOfStrategy2(), ZERO_DELTA);
   }
 
   /**
@@ -136,13 +215,31 @@ public class IPDGameTester {
    */
   @Test
   public void testSetSuckersPayoff() {
-    fail("Not yet implemented");
-
     int newSuckersPayoff = 0;
     this.game.setSuckersPayoff(newSuckersPayoff);
 
+    TwoPlayerGameResult<IPDStrategy> result = null;
+    try {
+      result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
+    } catch (final GameplayException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(newSuckersPayoff, result.scoreOfStrategy1(), ZERO_DELTA);
+    assertEquals(IPDGame.DEFAULT_TEMPTATION, result.scoreOfStrategy2(),
+        ZERO_DELTA);
+
     newSuckersPayoff = 10;
     this.game.setSuckersPayoff(newSuckersPayoff);
+    try {
+      result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
+    } catch (final GameplayException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(newSuckersPayoff, result.scoreOfStrategy1(), ZERO_DELTA);
+    assertEquals(IPDGame.DEFAULT_TEMPTATION, result.scoreOfStrategy2(),
+        ZERO_DELTA);
   }
 
   /**
@@ -151,13 +248,32 @@ public class IPDGameTester {
    */
   @Test
   public void testSetTemptationToDefect() {
-    fail("Not yet implemented");
-
     int newTemptationPayoff = 0;
     this.game.setTemptationToDefect(newTemptationPayoff);
 
+    TwoPlayerGameResult<IPDStrategy> result = null;
+    try {
+      result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
+    } catch (final GameplayException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(IPDGame.DEFAULT_SUCKERS_PAYOFF, result.scoreOfStrategy1(),
+        ZERO_DELTA);
+    assertEquals(newTemptationPayoff, result.scoreOfStrategy2(), ZERO_DELTA);
+
     newTemptationPayoff = 10;
     this.game.setTemptationToDefect(newTemptationPayoff);
+
+    try {
+      result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
+    } catch (final GameplayException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(IPDGame.DEFAULT_SUCKERS_PAYOFF, result.scoreOfStrategy1(),
+        ZERO_DELTA);
+    assertEquals(newTemptationPayoff, result.scoreOfStrategy2(), ZERO_DELTA);
   }
 
 }
