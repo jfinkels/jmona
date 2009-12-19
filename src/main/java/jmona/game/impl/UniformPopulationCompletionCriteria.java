@@ -19,11 +19,10 @@
  */
 package jmona.game.impl;
 
-import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.Population;
 import jmona.game.Strategy;
-import jmona.impl.DefaultCompletionCriteria;
+import jmona.impl.DefaultMaxGenerationCompletionCriteria;
 
 /**
  * Determines whether a Population in an EvolutionContext contains only
@@ -34,7 +33,7 @@ import jmona.impl.DefaultCompletionCriteria;
  * @author jfinkels
  */
 public class UniformPopulationCompletionCriteria<S extends Strategy> extends
-    DefaultCompletionCriteria<S> {
+    DefaultMaxGenerationCompletionCriteria<S> {
 
   /**
    * Determines whether the current Population in the specified EvolutionContext
@@ -44,15 +43,12 @@ public class UniformPopulationCompletionCriteria<S extends Strategy> extends
    *          The EvolutionContext containing the Population.
    * @return Whether the current Population in the specified EvolutionContext
    *         contains only Individuals of one class.
-   * @throws CompletionException
-   *           If this method in the superclass throws a CompletionException.
    * @see jmona.CompletionCriteria#isSatisfied(jmona.EvolutionContext)
    */
   @Override
-  public boolean isSatisfied(final EvolutionContext<S> context)
-      throws CompletionException {
+  public boolean isSatisfied(final EvolutionContext<S> context) {
 
-    // if the default criteria are met, then return true
+    // if the maximum number of generations have passed, return true
     if (super.isSatisfied(context)) {
       return true;
     }
