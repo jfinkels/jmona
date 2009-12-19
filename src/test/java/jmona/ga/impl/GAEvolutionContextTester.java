@@ -19,7 +19,19 @@
  */
 package jmona.ga.impl;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import jmona.EvolutionException;
+import jmona.FitnessException;
+import jmona.Population;
+import jmona.impl.DefaultPopulation;
+import jmona.impl.example.ExampleCrossoverFunction;
+import jmona.impl.example.ExampleFitnessFunction;
+import jmona.impl.example.ExampleIndividual;
+import jmona.impl.example.ExampleMutationFunction;
+import jmona.impl.selection.FitnessProportionateSelection;
+import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -31,21 +43,52 @@ import org.junit.Test;
 public class GAEvolutionContextTester {
 
   /**
-   * Test method for
-   * {@link jmona.ga.impl.GAEvolutionContext#GAEvolutionContext(jmona.Population)}
-   * .
-   */
-  @Test
-  public void testGAEvolutionContext() {
-    fail("Not yet implemented");
-  }
-
-  /**
    * Test method for {@link jmona.ga.impl.GAEvolutionContext#stepGeneration()}.
    */
   @Test
   public void testStepGeneration() {
-    fail("Not yet implemented");
+    // create two individuals to put into a population
+    final ExampleIndividual individual1 = new ExampleIndividual();
+    final ExampleIndividual individual2 = new ExampleIndividual();
+
+    // put those two individuals in a population
+    final Population<ExampleIndividual> population = new DefaultPopulation<ExampleIndividual>();
+    population.add(individual1);
+    population.add(individual2);
+
+    // instantiate a new EvolutionContext
+    final GAEvolutionContext<ExampleIndividual> context = new GAEvolutionContext<ExampleIndividual>(
+        population);
+
+    // set the necessary functions on the context
+    context.setCrossoverFunction(new ExampleCrossoverFunction());
+    context.setMutationFunction(new ExampleMutationFunction());
+    context.setSelectionFunction(new FitnessProportionateSelection<ExampleIndividual>());
+    try {
+      context.setFitnessFunction(new ExampleFitnessFunction());
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
+    
+    assertEquals(0, context.currentGeneration());
+
+    assertEquals(2, context.currentPopulation().size());
+
+    assertTrue(context.currentPopulation().contains(individual1));
+    assertTrue(context.currentPopulation().contains(individual2));
+
+    try {
+      context.stepGeneration();
+    } catch (final EvolutionException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(1, context.currentGeneration());
+
+    assertEquals(2, context.currentPopulation().size());
+    
+    assertFalse(context.currentPopulation().contains(individual1));
+    assertFalse(context.currentPopulation().contains(individual2));
   }
 
 }
