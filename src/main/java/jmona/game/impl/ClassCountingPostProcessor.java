@@ -65,7 +65,7 @@ public class ClassCountingPostProcessor<S extends Strategy> extends
       }
     }
 
-    LOG.debug(results);
+    LOG.info(results);
   }
 
 }
