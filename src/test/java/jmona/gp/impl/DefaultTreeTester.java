@@ -21,6 +21,7 @@ package jmona.gp.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
@@ -39,6 +40,7 @@ import jmona.gp.impl.example.ExampleBinaryNode;
 import jmona.gp.impl.example.IntegerNode;
 import jmona.test.Util;
 
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -49,9 +51,12 @@ import org.junit.Test;
  */
 public class DefaultTreeTester {
 
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(DefaultTreeTester.class);
+
   /** The number of times to choose a random node. */
   public static final int NUM_TESTS = 10000;
-
   /** A big tree. */
   private DefaultTree<Integer> bigTree = null;
   /** A function node in the big tree. */
@@ -99,6 +104,50 @@ public class DefaultTreeTester {
 
     assertTrue(allSmallTreeNodes.contains(this.smallTreeNode));
     assertEquals(1, allSmallTreeNodes.size());
+  }
+
+  /** Test method for {@link jmona.gp.impl.DefaultTree#deepCopy()}. */
+  @Test
+  public void testDeepCopy() {
+    // copy the original tree
+    final Tree<Integer> copy = this.bigTree.deepCopy();
+
+    // the copy should not refer to the same object as the original
+    assertNotSame(copy, this.bigTree);
+    
+    // get all the nodes
+    final List<Node<Integer>> allCopyNodes = Util.allNodes(copy);
+    final List<Node<Integer>> allOriginalNodes = Util.allNodes(bigTree);
+
+    // the copied tree and original tree should have the same number of nodes
+    assertEquals(allOriginalNodes.size(), allCopyNodes.size());
+
+    try {
+
+      // iterate over all nodes in the trees
+      Node<Integer> originalNode = null;
+      Node<Integer> copyNode = null;
+      for (int i = 0; i < allOriginalNodes.size(); ++i) {
+
+        // get the original node and the copy
+        originalNode = allOriginalNodes.get(i);
+        copyNode = allCopyNodes.get(i);
+
+        LOG.debug("Original node (hashcode " + originalNode.hashCode() + " ): "
+            + originalNode);
+        LOG.debug("Copy node (hashcode " + copyNode.hashCode() + " ): "
+            + copyNode);
+
+        // assert that the original and the copy do not refer to the same object
+        assertNotSame(originalNode, copyNode);
+
+        // assert that their contents are equal
+        assertEquals(originalNode.evaluate().intValue(), copyNode.evaluate()
+            .intValue());
+      }
+    } catch (final EvaluationException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**

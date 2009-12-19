@@ -59,14 +59,6 @@ public abstract class IPDStrategy implements Strategy {
   }
 
   /**
-   * {@inheritDoc}
-   * 
-   * @return {@inheritDoc}
-   */
-  @Override
-  public abstract IPDStrategy clone();
-
-  /**
    * Get the memory of past actions.
    * 
    * @return The memory of past actions.

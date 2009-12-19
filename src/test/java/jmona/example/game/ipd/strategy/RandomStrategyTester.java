@@ -37,12 +37,12 @@ public class RandomStrategyTester {
 
   /**
    * Test method for
-   * {@link jmona.example.game.ipd.strategy.RandomStrategy#clone()}.
+   * {@link jmona.example.game.ipd.strategy.RandomStrategy#deepCopy()}.
    */
   @Test
-  public void testClone() {
+  public void testDeepCopy() {
     final RandomStrategy strategy = new RandomStrategy();
-    final RandomStrategy clone = strategy.clone();
+    final RandomStrategy clone = strategy.deepCopy();
     assertNotSame(strategy, clone);
     assertTrue(clone instanceof RandomStrategy);
   }

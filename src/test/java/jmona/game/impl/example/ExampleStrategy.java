@@ -19,6 +19,7 @@
  */
 package jmona.game.impl.example;
 
+import jmona.Individual;
 import jmona.game.Strategy;
 import jmona.impl.Util;
 
@@ -55,6 +56,17 @@ public class ExampleStrategy implements Strategy {
   @Override
   public ExampleStrategy clone() {
     return new ExampleStrategy(this.score);
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.Individual#deepCopy()
+   */
+  @Override
+  public Individual deepCopy() {
+    return new ExampleStrategy();
   }
 
   /**

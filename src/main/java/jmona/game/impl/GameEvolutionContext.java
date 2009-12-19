@@ -29,8 +29,6 @@ import jmona.game.TwoPlayerGameResult;
 import jmona.impl.AbstractEvolutionContext;
 import jmona.impl.DefaultPopulation;
 
-import org.apache.log4j.Logger;
-
 /**
  * A context for playing Strategy objects against one another and reproducing
  * the most successful ones, without mutation or crossover.
@@ -41,10 +39,6 @@ import org.apache.log4j.Logger;
  */
 public class GameEvolutionContext<S extends Strategy> extends
     AbstractEvolutionContext<S> {
-
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(GameEvolutionContext.class);
 
   /** The game to play in this evolution. */
   private TwoPlayerGame<S> game = null;
@@ -114,10 +108,7 @@ public class GameEvolutionContext<S extends Strategy> extends
         strategy2 = this.currentPopulation().get(j);
 
         try {
-          //LOG.debug("Playing game between " + strategy1 + " and " + strategy2
-              //+ "...");
           gameResult = this.game.play(strategy1, strategy2);
-          //LOG.debug("...complete.");
         } catch (final GameplayException exception) {
           throw new EvolutionException("Failed to complete a game.", exception);
         }
@@ -125,8 +116,6 @@ public class GameEvolutionContext<S extends Strategy> extends
         // at the end of the game, reset the strategies
         strategy1.reset();
         strategy2.reset();
-
-        //LOG.debug("Result: " + gameResult);
 
         Double currentScore = null;
         if (this.currentFitnesses().containsKey(strategy1)) {
@@ -161,7 +150,7 @@ public class GameEvolutionContext<S extends Strategy> extends
       // TODO is it right to clone every strategy?
       while (nextPopulation.size() < this.currentPopulation().size()) {
         nextPopulation.add((S) this.selectionFunction().select(
-            this.currentFitnesses()).clone());
+            this.currentFitnesses()).deepCopy());
       }
     } catch (final SelectionException exception) {
       throw new EvolutionException("Failed to select an Individual.", exception);

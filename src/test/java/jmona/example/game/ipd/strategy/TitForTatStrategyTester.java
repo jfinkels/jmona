@@ -35,13 +35,13 @@ public class TitForTatStrategyTester {
 
   /**
    * Test method for
-   * {@link jmona.example.game.ipd.strategy.TitForTatStrategy#clone()}.
+   * {@link jmona.example.game.ipd.strategy.TitForTatStrategy#deepCopy()}.
    */
   @Test
-  public void testClone() {
+  public void testDeepCopy() {
     final TitForTatStrategy strategy = new TitForTatStrategy();
-    assertNotSame(strategy.clone(), strategy);
-    assertTrue(strategy.clone() instanceof TitForTatStrategy);
+    assertNotSame(strategy.deepCopy(), strategy);
+    assertTrue(strategy.deepCopy() instanceof TitForTatStrategy);
   }
 
   /**

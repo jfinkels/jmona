@@ -44,6 +44,18 @@ public class NumberNode extends AbstractCalcTerminalNode {
   }
 
   /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.gp.Node#deepCopy()
+   */
+  @Override
+  public NumberNode deepCopy() {
+    // instantiate a new NumberNode with the value of the constant function
+    return new NumberNode(this.constantFunction.execute(null));
+  }
+
+  /**
    * Get the (constant) value of this Node.
    * 
    * @return The value of this Node.

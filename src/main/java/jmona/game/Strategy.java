@@ -29,14 +29,4 @@ import jmona.Individual;
 public interface Strategy extends Individual {
   /** Reset the strategy to an initial state. */
   void reset();
-
-  /**
-   * Clone this Strategy.
-   * 
-   * Implementing classes should alter the signature of this method so that it
-   * returns an object of the same class as the implementing class.
-   * 
-   * @return A cloned copy of this Strategy.
-   */
-  Strategy clone();
 }

@@ -45,11 +45,11 @@ public class PavlovStrategyTester {
 
   /**
    * Test method for
-   * {@link jmona.example.game.ipd.strategy.PavlovStrategy#clone()}.
+   * {@link jmona.example.game.ipd.strategy.PavlovStrategy#deepCopy()}.
    */
   @Test
-  public void testClone() {
-    final PavlovStrategy clone = this.strategy.clone();
+  public void testDeepCopy() {
+    final PavlovStrategy clone = this.strategy.deepCopy();
     assertNotSame(clone, this.strategy);
     assertTrue(clone instanceof PavlovStrategy);
   }

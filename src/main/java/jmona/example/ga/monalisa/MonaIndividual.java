@@ -44,7 +44,8 @@ public class MonaIndividual implements GeneIndividual<Map<Polygon, Color>> {
    * 
    * @return A cloned copy of this individual.
    */
-  public MonaIndividual copy() {
+  @Override
+  public MonaIndividual deepCopy() {
     // create a clone
     final MonaIndividual result = new MonaIndividual();
 

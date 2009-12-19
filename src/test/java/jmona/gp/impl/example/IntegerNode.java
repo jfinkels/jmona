@@ -22,6 +22,8 @@ package jmona.gp.impl.example;
 import jmona.gp.EvaluationException;
 import jmona.gp.impl.AbstractTerminalNode;
 
+import org.apache.log4j.Logger;
+
 /**
  * An example TerminalNode which contains an integer value.
  * 
@@ -40,6 +42,18 @@ public class IntegerNode extends AbstractTerminalNode<Integer> {
    */
   public IntegerNode(final int initialValue) {
     this.value = initialValue;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.gp.Node#deepCopy()
+   */
+  @Override
+  public IntegerNode deepCopy() {
+    final IntegerNode result = new IntegerNode(this.value);
+    return result;
   }
 
   /**

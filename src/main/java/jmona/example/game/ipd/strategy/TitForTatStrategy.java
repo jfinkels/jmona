@@ -33,10 +33,9 @@ public class TitForTatStrategy extends IPDStrategy {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.example.game.ipd.strategy.IPDStrategy#clone()
    */
   @Override
-  public TitForTatStrategy clone() {
+  public TitForTatStrategy deepCopy() {
     final TitForTatStrategy result = new TitForTatStrategy();
     for (final ImmutablePair<Action, Action> actions : this.memory()) {
       result.addToMemory(actions);

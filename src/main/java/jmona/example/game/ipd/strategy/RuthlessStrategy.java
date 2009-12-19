@@ -30,10 +30,9 @@ public class RuthlessStrategy extends IPDStrategy {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.example.game.ipd.strategy.IPDStrategy#clone()
    */
   @Override
-  public RuthlessStrategy clone() {
+  public RuthlessStrategy deepCopy() {
     return new RuthlessStrategy();
   }
 

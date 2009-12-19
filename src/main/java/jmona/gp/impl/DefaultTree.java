@@ -91,6 +91,16 @@ public class DefaultTree<V> implements Tree<V> {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
+   * @see jmona.gp.Tree#deepCopy()
+   */
+  public Tree<V> deepCopy() {
+    return new DefaultTree<V>(this.root.deepCopy());
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
    * @see jmona.gp.Tree#evaluate()
    */
   @Override

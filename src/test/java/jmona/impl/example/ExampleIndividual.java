@@ -47,6 +47,17 @@ public class ExampleIndividual implements Individual {
   }
 
   /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.Individual#deepCopy()
+   */
+  @Override
+  public Individual deepCopy() {
+    return new ExampleIndividual();
+  }
+
+  /**
    * Get the fitness of this Individual.
    * 
    * @return The fitness of this Individual.

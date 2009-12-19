@@ -25,5 +25,24 @@ package jmona;
  * @author jfinke
  */
 public interface Individual {
-
+  /**
+   * Return a new instance of this class, recursively performing a deep copy on
+   * all of the fields of this object as well.
+   * 
+   * Implementing classes should ensure that no object referenced from this
+   * object is also referenced from the object which is returned by this method.
+   * 
+   * Implementing classes should alter the signature of this method so that it
+   * returns an Object of the same class in which the method is implemented.
+   * 
+   * This could potentially cause complications and unexpected behavior in the
+   * case of, for example, circular references among objects.
+   * 
+   * For more information, see <a
+   * href="http://en.wikipedia.org/wiki/Object_copy#Copying_in_Java">the
+   * Wikipedia article on deep copying</a>.
+   * 
+   * @return A deep copy of this object.
+   */
+  Individual deepCopy();
 }

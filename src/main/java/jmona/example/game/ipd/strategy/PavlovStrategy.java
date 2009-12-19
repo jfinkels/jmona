@@ -35,10 +35,9 @@ public class PavlovStrategy extends IPDStrategy {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.example.game.ipd.strategy.IPDStrategy#clone()
    */
   @Override
-  public PavlovStrategy clone() {
+  public PavlovStrategy deepCopy() {
     final PavlovStrategy result = new PavlovStrategy();
     
     // copy the memory

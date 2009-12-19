@@ -36,12 +36,12 @@ public class CooperativeStrategyTester {
 
   /**
    * Test method for
-   * {@link jmona.example.game.ipd.strategy.CooperativeStrategy#clone()}.
+   * {@link jmona.example.game.ipd.strategy.CooperativeStrategy#deepCopy()}.
    */
   @Test
-  public void testClone() {
+  public void testDeepCopy() {
     final CooperativeStrategy strategy = new CooperativeStrategy();
-    final CooperativeStrategy clone = strategy.clone();
+    final CooperativeStrategy clone = strategy.deepCopy();
     assertNotSame(strategy, clone);
     for (int i = 0; i < NUM_ACTIONS; ++i) {
       assertSame(strategy.nextAction(), clone.nextAction());

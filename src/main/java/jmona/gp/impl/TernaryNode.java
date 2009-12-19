@@ -51,6 +51,32 @@ public class TernaryNode<V> extends AbstractFunctionNode<V> {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
+   * @see jmona.gp.Node#deepCopy()
+   */
+  @Override
+  public TernaryNode<V> deepCopy() {
+    // instantiate a new binary node with the same operation (the operation
+    // doesn't need to be copied because it acts like a static class; it
+    // maintains no state
+    final TernaryNode<V> result = new TernaryNode<V>(this.operation);
+
+    // using regular for loop instead of "for each" iterator so that the indices
+    // of the children are the same in this node and its copy
+    Node<V> child = null;
+    for (int i = 0; i < this.children().size(); ++i) {
+      child = this.children().get(i).deepCopy();
+
+      result.children().add(child);
+      child.setParent(result);
+    }
+
+    return result;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
    * @throws EvaluationException
    *           {@inheritDoc}
    * @see jmona.gp.Node#evaluate()

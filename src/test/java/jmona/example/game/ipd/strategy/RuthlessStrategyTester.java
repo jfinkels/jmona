@@ -33,12 +33,12 @@ public class RuthlessStrategyTester {
 
   /**
    * Test method for
-   * {@link jmona.example.game.ipd.strategy.RuthlessStrategy#clone()}.
+   * {@link jmona.example.game.ipd.strategy.RuthlessStrategy#deepCopy()}.
    */
   @Test
-  public void testClone() {
+  public void testDeepCopy() {
     final RuthlessStrategy strategy = new RuthlessStrategy();
-    final RuthlessStrategy clone = strategy.clone();
+    final RuthlessStrategy clone = strategy.deepCopy();
     assertNotSame(strategy, clone);
     for (int i = 0; i < NUM_ACTIONS; ++i) {
       assertSame(strategy.nextAction(), clone.nextAction());

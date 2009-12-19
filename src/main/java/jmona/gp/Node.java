@@ -25,8 +25,7 @@ import java.util.List;
  * A Node which can be recursively evaluated.
  * 
  * @param <V>
- *          The return type of the {@link #evaluate()} method on this
- *          Node.
+ *          The return type of the {@link #evaluate()} method on this Node.
  * @author jfinkels
  */
 public interface Node<V> {
@@ -37,6 +36,13 @@ public interface Node<V> {
    * @return The children of this Node.
    */
   List<Node<V>> children();
+
+  /**
+   * Recursively create deep copy of this Node and all its children.
+   * 
+   * @return A deep copy of this Node and all its children.
+   */
+  Node<V> deepCopy();
 
   /**
    * Evaluate this Node with respect to its child Nodes.

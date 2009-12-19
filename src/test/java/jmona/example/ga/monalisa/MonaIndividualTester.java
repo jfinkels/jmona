@@ -50,7 +50,7 @@ public class MonaIndividualTester {
     
     original.gene().put(polygon, color);
 
-    final MonaIndividual clone = original.copy();
+    final MonaIndividual clone = original.deepCopy();
 
     assertNotSame(original, clone);
     assertNotSame(original.gene(), clone.gene());

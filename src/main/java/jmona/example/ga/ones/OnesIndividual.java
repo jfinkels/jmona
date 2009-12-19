@@ -31,14 +31,6 @@ public class OnesIndividual implements Individual {
   private short[] gene;
 
   /**
-   * Instantiation with default constructor disallowed except for subclasses of
-   * this class.
-   */
-  protected OnesIndividual() {
-    // intentionally unimplemented
-  }
-
-  /**
    * Instantiate the individual with the specified initial gene.
    * 
    * @param initialGene
@@ -46,6 +38,17 @@ public class OnesIndividual implements Individual {
    */
   public OnesIndividual(final short[] initialGene) {
     this.gene = initialGene.clone();
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.Individual#deepCopy()
+   */
+  @Override
+  public OnesIndividual deepCopy() {
+    return new OnesIndividual(this.gene);
   }
 
   /**

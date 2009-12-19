@@ -32,10 +32,9 @@ public class RandomStrategy extends IPDStrategy {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.example.game.ipd.strategy.IPDStrategy#clone()
    */
   @Override
-  public RandomStrategy clone() {
+  public RandomStrategy deepCopy() {
     return new RandomStrategy();
   }
 

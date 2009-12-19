@@ -30,10 +30,9 @@ public class CooperativeStrategy extends IPDStrategy {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.example.game.ipd.strategy.IPDStrategy#clone()
    */
   @Override
-  public CooperativeStrategy clone() {
+  public CooperativeStrategy deepCopy() {
     return new CooperativeStrategy();
   }
 

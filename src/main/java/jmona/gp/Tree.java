@@ -29,6 +29,7 @@ import jmona.Individual;
  * @author jfinkels
  */
 public interface Tree<V> extends Individual {
+
   /**
    * Evaluate this tree by recursively evaluating each Node starting from the
    * root.

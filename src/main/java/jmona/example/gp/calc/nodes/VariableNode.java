@@ -39,6 +39,17 @@ public class VariableNode extends AbstractCalcTerminalNode {
   }
 
   /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.gp.Node#deepCopy()
+   */
+  @Override
+  public VariableNode deepCopy() {
+    return new VariableNode();
+  }
+
+  /**
    * Evaluate to the identity function for Doubles.
    * 
    * @throws EvaluationException
