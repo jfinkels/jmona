@@ -24,6 +24,7 @@
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
   <import resource="./factories.xml" />
+  <import resource="./square-target.xml" />
   <import resource="./functions.xml" />
   
   <bean id="population" 
