@@ -89,8 +89,10 @@ public class GAEvolutionContext<T extends Individual> extends
         /**
          * Step 1: select two individuals
          */
-        individual1 = this.selectionFunction().select(this.currentFitnesses());
-        individual2 = this.selectionFunction().select(this.currentFitnesses());
+        individual1 = (T) this.selectionFunction().select(
+            this.currentFitnesses()).deepCopy();
+        individual2 = (T) this.selectionFunction().select(
+            this.currentFitnesses()).deepCopy();
 
         /**
          * Step 2: Perform crossover with probability p_crossover
