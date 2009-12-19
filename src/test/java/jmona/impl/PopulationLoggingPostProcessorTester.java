@@ -36,7 +36,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * 
  * @author jfinkels
  */
-@ContextConfiguration(locations = "classpath:/jmona/example/ga/ones/OnesEvolutionContextTester-context.xml")
+@ContextConfiguration(locations = "classpath:/jmona/example/ga/ones/OnesEvolutionTester-context.xml")
 @SuppressWarnings("unchecked")
 public class PopulationLoggingPostProcessorTester extends
     AbstractJUnit4SpringContextTests {
