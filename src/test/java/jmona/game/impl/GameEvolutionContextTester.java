@@ -113,7 +113,7 @@ public class GameEvolutionContextTester {
     }
     LOG.debug(this.context.currentPopulation());
     
-    assertEquals(beforeSize, this.context.currentPopulation());
+    assertEquals(beforeSize, this.context.currentPopulation().size());
     
   }
 
