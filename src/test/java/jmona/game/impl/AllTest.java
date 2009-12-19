@@ -29,8 +29,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jfinkels
  */
 @RunWith(Suite.class)
-@SuiteClasses({ DefaultTwoPlayerGameResultTester.class,
-    GameEvolutionContextTester.class })
+@SuiteClasses({ ClassCountingPostProcessor.class,
+    DefaultTwoPlayerGameResultTester.class, GameEvolutionContextTester.class })
 public class AllTest {
 
 }
