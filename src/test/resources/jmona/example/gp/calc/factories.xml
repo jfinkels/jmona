@@ -24,11 +24,11 @@
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
   <!-- use this bean to allow for constants and variables in the formula -->
-  <!--<bean id="terminalNodeFactory"
-    class="jmona.example.gp.calc.factories.CalcTerminalNodeFactory" />-->
+  <bean id="terminalNodeFactory"
+    class="jmona.example.gp.calc.factories.CalcTerminalNodeFactory" />
   
   <!-- use this bean to allow for only variables in the formula -->
-  <bean id="terminalNodeFactory" class="jmona.gp.impl.DefaultTerminalNodeFactory">
+  <!--<bean id="terminalNodeFactory" class="jmona.gp.impl.DefaultTerminalNodeFactory">
     <constructor-arg>
       <set>
         <bean class="java.lang.Class" factory-method="forName">
@@ -36,7 +36,7 @@
         </bean>
       </set>
     </constructor-arg>
-  </bean>
+  </bean>-->
   
   
   <bean id="functionNodeFactory"
