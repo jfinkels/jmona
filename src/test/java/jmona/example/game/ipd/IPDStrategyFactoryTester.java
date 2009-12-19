@@ -19,21 +19,27 @@
  */
 package jmona.example.game.ipd;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import jmona.example.game.ipd.strategy.IPDStrategy;
 
 import org.junit.Test;
 
 /**
+ * Test class for the IPDStrategyFactory class.
+ * 
  * @author jfinkels
  */
 public class IPDStrategyFactoryTester {
 
   /**
-   * Test method for {@link jmona.example.game.ipd.IPDStrategyFactory#createIndividual()}.
+   * Test method for
+   * {@link jmona.example.game.ipd.IPDStrategyFactory#createIndividual()}.
    */
   @Test
   public void testCreateIndividual() {
-    fail("Not yet implemented");
+    final IPDStrategyFactory factory = new IPDStrategyFactory();
+    final IPDStrategy strategy = factory.createIndividual();
+    assertTrue(strategy instanceof IPDStrategy);
   }
 
 }
