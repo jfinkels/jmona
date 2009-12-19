@@ -153,7 +153,7 @@ public class Util {
    * @param exception
    *          The exception which caused the test failure.
    */
-  public static void fail(final Throwable exception) {
+  public static synchronized void fail(final Throwable exception) {
     exception.printStackTrace(System.err);
     org.junit.Assert.fail(exception.getMessage());
   }
