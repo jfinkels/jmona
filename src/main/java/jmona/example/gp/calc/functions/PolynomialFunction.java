@@ -33,6 +33,13 @@ package jmona.example.gp.calc.functions;
 public class PolynomialFunction implements SingleInputFunction<Double, Double> {
 
   /**
+   * The String representing the format in which to output one variable, with
+   * its coefficient, and its degree in the polynomial, when returned by the
+   * {@link PolynomialFunction#toString()} method.
+   */
+  public static final String FORMAT_STRING = "+%.4g*x^%d";
+
+  /**
    * The coefficients of this polynomial, where the index in the array
    * corresponds to the degree of the variable.
    */
@@ -45,8 +52,15 @@ public class PolynomialFunction implements SingleInputFunction<Double, Double> {
    * @param initialCoefficients
    *          The initial array of coefficients, where the index in the array
    *          corresponds to the degree of the variable.
+   * @throws IllegalArgumentException
+   *           If the input array is null or of length zero.
    */
   public PolynomialFunction(final double[] initialCoefficients) {
+    if (initialCoefficients == null || initialCoefficients.length == 0) {
+      throw new IllegalArgumentException(
+          "Array must be non-null and non-empty.");
+    }
+
     this.coefficients = initialCoefficients.clone();
   }
 
@@ -80,5 +94,24 @@ public class PolynomialFunction implements SingleInputFunction<Double, Double> {
     }
 
     return result;
+  }
+
+  /**
+   * Return the String representation of this polynomial, with real coefficients
+   * rounded to two decimal places.
+   * 
+   * @return The String representation of this polynomial.
+   */
+  @Override
+  public String toString() {
+    final StringBuilder result = new StringBuilder();
+
+    result.append(this.coefficients[0]);
+
+    for (int i = 1; i < this.coefficients.length; ++i) {
+      result.append(String.format(FORMAT_STRING, this.coefficients[i], i));
+    }
+
+    return result.toString();
   }
 }

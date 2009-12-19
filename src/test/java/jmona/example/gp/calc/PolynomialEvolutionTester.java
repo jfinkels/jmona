@@ -34,16 +34,16 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 /**
- * Test class for the Calc genetic programming example for matching a square
- * function.
+ * Test class for the Calc genetic programming evolution for matching a
+ * polynomial function.
  * 
  * @author jfinkels
  */
 @ContextConfiguration
-public class CalcEvolutionTester extends AbstractJUnit4SpringContextTests {
+public class PolynomialEvolutionTester extends AbstractJUnit4SpringContextTests {
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger
-      .getLogger(CalcEvolutionTester.class);
+      .getLogger(PolynomialEvolutionTester.class);
 
   /**
    * Get the completion criteria for this evolution from the Spring XML
@@ -59,16 +59,18 @@ public class CalcEvolutionTester extends AbstractJUnit4SpringContextTests {
   @Test
   public final void testEvolution() {
     try {
-      LOG.debug("About to start evolution loop.");
       while (!this.completionCriteria.isSatisfied(this.context)) {
-        LOG.debug("About to step generation...");
         this.context.stepGeneration();
-        LOG.debug("...generation step complete.");
-        LOG.debug(this.context.currentPopulation());
+        LOG.debug("Generation " + this.context.currentGeneration());
+        LOG.debug("  " + this.context.currentPopulation());
       }
     } catch (final CompletionException exception) {
       Util.fail(exception);
     } catch (final EvolutionException exception) {
+      Util.fail(exception);
+    } catch (final StackOverflowError error) {
+      Util.fail(error);
+    } catch (final NullPointerException exception) {
       Util.fail(exception);
     }
   }

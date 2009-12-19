@@ -23,6 +23,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,8 +34,15 @@ import org.junit.Test;
  */
 public class PolynomialFunctionTester {
 
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(PolynomialFunctionTester.class);
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
+
   /** The coefficients in the polynomial. */
   private double[] coefficients = null;
+
   /** The function under test. */
   private PolynomialFunction function = null;
 
@@ -44,20 +52,6 @@ public class PolynomialFunctionTester {
     this.coefficients = new double[] { 1, 2, 1 }; // x^2 + 2x + 1 = (x + 1)^2
     this.function = new PolynomialFunction(this.coefficients);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.example.gp.calc.functions.PolynomialFunction#PolynomialFunction(double[])}
-   * .
-   */
-  @Test
-  public void testPolynomialFunction() {
-    assertArrayEquals(this.coefficients, this.function.coefficients(),
-        ZERO_DELTA);
-  }
-
-  /** Zero. */
-  public static final double ZERO_DELTA = 0.0;
 
   /**
    * Test method for
@@ -83,5 +77,25 @@ public class PolynomialFunctionTester {
       assertEquals(expectedOutputs[i], this.function.execute(inputs[i])
           .doubleValue(), ZERO_DELTA);
     }
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.example.gp.calc.functions.PolynomialFunction#PolynomialFunction(double[])}
+   * .
+   */
+  @Test
+  public void testPolynomialFunction() {
+    assertArrayEquals(this.coefficients, this.function.coefficients(),
+        ZERO_DELTA);
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.example.gp.calc.functions.PolynomialFunction#toString()}.
+   */
+  @Test
+  public void testToString() {
+    LOG.debug(this.function.toString());
   }
 }
