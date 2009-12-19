@@ -22,8 +22,6 @@ package jmona.gp.impl.example;
 import jmona.gp.EvaluationException;
 import jmona.gp.impl.AbstractTerminalNode;
 
-import org.apache.log4j.Logger;
-
 /**
  * An example TerminalNode which contains an integer value.
  * 
