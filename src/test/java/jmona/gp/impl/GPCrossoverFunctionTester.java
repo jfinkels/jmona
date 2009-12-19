@@ -59,7 +59,6 @@ public class GPCrossoverFunctionTester {
   private Node<Integer> root2 = null;
   /** The left Tree. */
   private Tree<Integer> tree1 = null;
-
   /** The right Tree. */
   private Tree<Integer> tree2 = null;
 
