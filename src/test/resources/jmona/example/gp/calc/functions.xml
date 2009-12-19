@@ -28,10 +28,6 @@
   <bean id="equivalenceTester"
         class="jmona.example.gp.calc.FunctionEquivalenceTester" />
 
-  <!-- target function -->
-  
-  <bean id="target" class="jmona.example.gp.calc.functions.SquareFunction" />
-
   <!-- evolution functions -->
 
   <bean id="selectionFunction" 
