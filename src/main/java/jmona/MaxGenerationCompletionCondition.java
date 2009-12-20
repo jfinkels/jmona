@@ -1,5 +1,5 @@
 /**
- * MaxGenerationCompletionCriteria.java
+ * MaxGenerationCompletionCondition.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -20,7 +20,7 @@
 package jmona;
 
 /**
- * A CompletionCriteria which tests for completion based on the number of
+ * A CompletionCondition which tests for completion based on the number of
  * generations which have passed in an EvolutionContext.
  * 
  * That is, once a certain number of generations have passed, the criteria has
@@ -31,8 +31,8 @@ package jmona;
  *          for completion.
  * @author jfinkels
  */
-public interface MaxGenerationCompletionCriteria<T extends Individual> extends
-    CompletionCriteria<T> {
+public interface MaxGenerationCompletionCondition<T extends Individual> extends
+    CompletionCondition<T> {
   /**
    * Set the maximum number of generations for this evolution.
    * 

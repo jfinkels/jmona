@@ -1,5 +1,5 @@
 /**
- * DefaultMaxFitnessCompletionCriteriaTester.java
+ * DefaultCompletionConditionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -21,12 +21,11 @@ package jmona.impl;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.FitnessException;
 import jmona.Population;
-import jmona.ga.impl.GAEvolutionContext;
+import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
 import jmona.test.Util;
@@ -35,35 +34,29 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test class for the DefaultMaxFitnessCompletionCriteria class.
+ * Test class for the DefaultCompletionCondition class.
  * 
  * @author jfinkels
  */
-public class DefaultMaxFitnessCompletionCriteriaTester {
+public class DefaultCompletionConditionTester {
 
   /** The completion criteria under test. */
-  private DefaultMaxFitnessCompletionCriteria<ExampleIndividual> completionCriteria = null;
+  private DefaultCompletionCondition<ExampleIndividual> completionCondition = null;
   /** The evolution context on which to test the completion criteria. */
   private EvolutionContext<ExampleIndividual> evolutionContext = null;
   /** The population in the evolution context. */
   private Population<ExampleIndividual> population = null;
-  /** An EvolutionContext with no functions set. */
-  private EvolutionContext<ExampleIndividual> emptyContext = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.completionCriteria = new DefaultMaxFitnessCompletionCriteria<ExampleIndividual>();
+    this.completionCondition = new DefaultCompletionCondition<ExampleIndividual>();
 
     this.population = new DefaultPopulation<ExampleIndividual>();
     this.population.add(new ExampleIndividual(1));
     this.population.add(new ExampleIndividual(2));
 
-    this.emptyContext = new GAEvolutionContext<ExampleIndividual>(
-        this.population);
-
-    this.evolutionContext = new GAEvolutionContext<ExampleIndividual>(
-        this.population);
+    this.evolutionContext = new ExampleEvolutionContext(this.population);
 
     try {
       this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
@@ -74,24 +67,17 @@ public class DefaultMaxFitnessCompletionCriteriaTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.DefaultMaxFitnessCompletionCriteria#isSatisfied(jmona.EvolutionContext)}
-   * .
+   * {@link jmona.impl.DefaultCompletionCondition#isSatisfied(jmona.EvolutionContext)}
+   * due to maximum fitness.
    */
   @Test
-  public void testIsSatisfied() {
-
+  public void testIsSatisfiedMaxFitness() {
     try {
-      this.completionCriteria.isSatisfied(this.emptyContext);
-      fail("Exception should have been thrown on previous line.");
-    } catch (final CompletionException exception) {
-      assertTrue(exception instanceof CompletionException);
-    }
+      assertFalse(this.completionCondition.isSatisfied(this.evolutionContext));
 
-    try {      
-      assertFalse(this.completionCriteria.isSatisfied(this.evolutionContext));
       this.population.add(new ExampleIndividual(
-          DefaultMaxFitnessCompletionCriteria.DEFAULT_MAX_FITNESS));
-      assertTrue(this.completionCriteria.isSatisfied(this.evolutionContext));
+          DefaultMaxFitnessCompletionCondition.DEFAULT_MAX_FITNESS));
+      assertTrue(this.completionCondition.isSatisfied(this.evolutionContext));
     } catch (final CompletionException exception) {
       Util.fail(exception);
     }
@@ -99,18 +85,19 @@ public class DefaultMaxFitnessCompletionCriteriaTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.DefaultMaxFitnessCompletionCriteria#setMaxFitness(double)}
-   * .
+   * {@link jmona.impl.DefaultCompletionCondition#isSatisfied(jmona.EvolutionContext)}
+   * due to maximum generation met.
    */
   @Test
-  public void testSetMaxFitness() {
+  public void testIsSatisfiedMaxGeneration() {
     try {
-      assertFalse(this.completionCriteria.isSatisfied(this.evolutionContext));
-      this.completionCriteria.setMaxFitness(1);
-      assertTrue(this.completionCriteria.isSatisfied(this.evolutionContext));
+      this.completionCondition.setMaxGenerations(0);
+      assertTrue(this.completionCondition.isSatisfied(this.evolutionContext));
+
+      this.completionCondition.setMaxGenerations(2);
+      assertFalse(this.completionCondition.isSatisfied(this.evolutionContext));
     } catch (final CompletionException exception) {
       Util.fail(exception);
     }
   }
-
 }

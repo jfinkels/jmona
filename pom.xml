@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
                       http://maven.apache.org/maven-v4_0_0.xsd">
 
@@ -57,10 +58,14 @@
 
   <properties>
     <!-- dependency versions -->
-    <jopt-simple.version>3.2-rc1</jopt-simple.version>
+    <jopt-simple.version>3.2</jopt-simple.version>
     <junit.version>4.7</junit.version>
     <log4j.version>1.2.14</log4j.version>
-    <spring.version>2.5.6.SEC01</spring.version>
+    <spring.version>3.0.0.RELEASE</spring.version>
+
+    <!-- plugin versions -->
+    <git.provider.version>1.2</git.provider.version>
+    <findbugs.version>2.1</findbugs.version>
     
     <!-- Java runtime/JDK versions -->
     <java.source.version>1.6</java.source.version>
@@ -69,9 +74,37 @@
     <!-- configuration variables -->
     <checkstyle.config>src/main/resources/checkstyle.xml</checkstyle.config>
     <mainClass>jmona.driver.Main</mainClass>
+
+    <!-- character encodings -->    
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.inputEncoding>UTF-8</project.build.inputEncoding>
+    <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+    <project.build.encoding>UTF-8</project.build.encoding>
+    <project.reporting.sourceEncoding>UTF-8</project.reporting.sourceEncoding>
+    <project.reporting.inputEncoding>UTF-8</project.reporting.inputEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.reporting.encoding>UTF-8</project.reporting.encoding>
   </properties>
 
   <build>
+    <!--<pluginManagement>
+      <plugins>
+        <plugin>  Changelog generation from SCM  
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-changelog-plugin</artifactId>
+          <configuration>
+            <outputEncoding>UTF-8</outputEncoding>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.apache.maven.scm</groupId>
+              <artifactId>maven-scm-provider-gitexe</artifactId>
+              <version>${git.provider.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>-->
     <plugins>
       <plugin> <!-- force JDK and JRE versions -->
         <groupId>org.apache.maven.plugins</groupId>
@@ -99,8 +132,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
         <configuration>
-          <inputEncoding>UTF-8</inputEncoding>
-          <outputEncoding>UTF-8</outputEncoding>
+          <!--<inputEncoding>UTF-8</inputEncoding>-->
+          <!--<outputEncoding>UTF-8</outputEncoding>-->
         </configuration>
       </plugin>
       
@@ -108,9 +141,10 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
         <configuration>
-          <encoding>UTF-8</encoding>
+          <!--<encoding>UTF-8</encoding>-->
         </configuration>
       </plugin>
+      
     </plugins>
   </build>
 
@@ -133,16 +167,26 @@
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
           <configLocation>${checkstyle.config}</configLocation>
-          <encoding>UTF-8</encoding>
+          <!--<encoding>UTF-8</encoding>-->
         </configuration>
       </plugin>
+      
+      <!--<plugin>  Changelog generation from SCM   
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+      </plugin>-->
+
+      <!--<plugin>
+        <groupId>org.apache.maven.scm</groupId>
+        <artifactId>maven-scm-provider-gitexe</artifactId>
+      </plugin>-->
 
       <plugin> <!-- Javadoc generation -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
-          <docencoding>UTF-8</docencoding>
-          <encoding>UTF-8</encoding>
+          <!--<docencoding>UTF-8</docencoding>-->
+          <!--<encoding>UTF-8</encoding>-->
         </configuration>
       </plugin>
 
@@ -150,7 +194,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
         <configuration>
-          <sourceEncoding>UTF-8</sourceEncoding>
+          <!--<sourceEncoding>UTF-8</sourceEncoding>-->
           <targetJdk>1.6</targetJdk>
         </configuration>
       </plugin>
@@ -159,8 +203,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
         <configuration>
-          <inputEncoding>UTF-8</inputEncoding>
-          <outputEncoding>UTF-8</outputEncoding>
+          <!--<inputEncoding>UTF-8</inputEncoding>-->
+          <!--<outputEncoding>UTF-8</outputEncoding>-->
         </configuration>
       </plugin>
 
@@ -169,6 +213,11 @@
         <artifactId>jdepend-maven-plugin</artifactId>
       </plugin>
       
+      <!--<plugin>  security checks 
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>ounce-maven-plugin</artifactId>
+      </plugin>-->
+
       <plugin> <!-- NCSS metrics -->
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>javancss-maven-plugin</artifactId>
@@ -183,13 +232,28 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>taglist-maven-plugin</artifactId>
         <configuration>
-          <encoding>UTF-8</encoding>
+          <!--<encoding>UTF-8</encoding>-->
         </configuration>
+      </plugin>
+      
+      <plugin> <!-- checks for newer versions -->
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>dependency-updates-report</report>
+              <report>plugin-updates-report</report>
+              <report>property-updates-report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
       </plugin>
 
       <plugin> <!-- FindBugs report -->
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
+        <version>${findbugs.version}</version>
         <configuration>
           <threshold>Low</threshold>
           <effort>Max</effort>
@@ -223,8 +287,23 @@
     </developer>
   </developers>
 
+  <issueManagement>
+    <system>GitHub Issue Tracker</system>
+    <url>http://github.com/jfinkels/jmona/issues</url>
+  </issueManagement>
+  
+  <mailingLists>
+    <mailingList>
+      <archive>http://n3.nabble.com/jmona-f94687.html</archive>
+      <name>jmona</name>
+      <subscribe>http://n3.nabble.com/subscriptions/Subscribe.jtp?node=94687</subscribe>
+      <unsubscribe>http://n3.nabble.com/subscriptions/Subscribe.jtp?node=94687</unsubscribe>
+    </mailingList>
+  </mailingLists>
+  
   <scm>
-    <connection>scm:git:git://www.github.com/jfinkels/jmona.git</connection>
+    <connection>scm:git:git://github.com/jfinkels/jmona.git</connection>
+    <developerConnection>scm:git@github.com:jfinkels/jmona.git</developerConnection>
     <url>http://github.com/jfinkels/jmona</url>
   </scm>
 </project>

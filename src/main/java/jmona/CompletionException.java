@@ -21,7 +21,7 @@ package jmona;
 
 /**
  * This Exception is thrown when there is a problem determining if a
- * CompletionCriteria has satisfied.
+ * CompletionCondition has satisfied.
  * 
  * @author jfinkels
  */

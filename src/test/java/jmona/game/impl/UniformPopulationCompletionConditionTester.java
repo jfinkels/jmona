@@ -1,5 +1,5 @@
 /**
- * MaxGenerationCompletionCriteriaTester.java
+ * UniformPopulationCompletionConditionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,53 +17,45 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.impl;
+package jmona.game.impl;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-import jmona.CompletionException;
-import jmona.EvolutionContext;
-import jmona.Individual;
-import jmona.MaxGenerationCompletionCriteria;
 import jmona.Population;
-import jmona.ga.impl.GAEvolutionContext;
+import jmona.impl.DefaultPopulation;
+import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Test;
 
 /**
- * Test class for the MaxGenerationCompletionCriteria class.
+ * Test class for the UniformPopulationCompletionCondition class.
  * 
  * @author jfinkels
  */
-public class DefaultMaxGenerationCompletionCriteriaTester {
+public class UniformPopulationCompletionConditionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.DefaultMaxGenerationCompletionCriteria#isSatisfied(jmona.EvolutionContext)}
+   * {@link jmona.game.impl.UniformPopulationCompletionCondition#isSatisfied(jmona.EvolutionContext)}
    * .
    */
   @Test
   public void testIsSatisfied() {
-    final Population<Individual> population = new DefaultPopulation<Individual>();
+    final UniformPopulationCompletionCondition<ExampleIndividual> criteria = new UniformPopulationCompletionCondition<ExampleIndividual>();
+
+    final Population<ExampleIndividual> population = new DefaultPopulation<ExampleIndividual>();
     population.add(new ExampleIndividual());
     population.add(new ExampleIndividual());
-    final EvolutionContext<Individual> context = new GAEvolutionContext<Individual>(
+
+    final ExampleEvolutionContext context = new ExampleEvolutionContext(
         population);
 
-    final MaxGenerationCompletionCriteria<Individual> criteria = new DefaultMaxGenerationCompletionCriteria<Individual>();
+    assertTrue(criteria.isSatisfied(context));
+    population.add(new ExampleIndividual() {
+    });
+    assertFalse(criteria.isSatisfied(context));
 
-    try {
-      criteria.setMaxGenerations(0);
-      assertTrue(criteria.isSatisfied(context));
-
-      criteria.setMaxGenerations(2);
-      assertFalse(criteria.isSatisfied(context));
-    } catch (final CompletionException exception) {
-      exception.printStackTrace(System.err);
-      fail(exception.getMessage());
-    }
   }
 
 }

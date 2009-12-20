@@ -1,5 +1,5 @@
 /**
- * MaxFitnessCompletionCriteria.java
+ * MaxFitnessCompletionCondition.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -20,7 +20,7 @@
 package jmona;
 
 /**
- * A CompletionCriteria which tests for completion based on whether the current
+ * A CompletionCondition which tests for completion based on whether the current
  * population in an EvolutionContext contains an Individual with a maximum
  * fitness.
  * 
@@ -29,8 +29,8 @@ package jmona;
  *          for completion.
  * @author jfinkels
  */
-public interface MaxFitnessCompletionCriteria<T extends Individual> extends
-    CompletionCriteria<T> {
+public interface MaxFitnessCompletionCondition<T extends Individual> extends
+    CompletionCondition<T> {
 
   /**
    * Set the maximum fitness of an Individual in the EvolutionContext to be
@@ -38,7 +38,7 @@ public interface MaxFitnessCompletionCriteria<T extends Individual> extends
    * 
    * If an Individual in the EvolutionContext tested has a fitness greater than
    * or equal to the maximum fitness specified by this method, then the
-   * CompletionCriteria has been met.
+   * CompletionCondition has been met.
    * 
    * @param newMaxFitness
    *          The maximum fitness of an Individual in the EvolutionContext to be

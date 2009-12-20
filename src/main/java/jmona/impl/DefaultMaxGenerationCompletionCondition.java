@@ -1,5 +1,5 @@
 /**
- * DefaultCompletionCriteria.java
+ * DefaultCompletionCondition.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -21,7 +21,7 @@ package jmona.impl;
 
 import jmona.EvolutionContext;
 import jmona.Individual;
-import jmona.MaxGenerationCompletionCriteria;
+import jmona.MaxGenerationCompletionCondition;
 
 /**
  * An object which checks if the specified maximum number of generations has
@@ -31,8 +31,8 @@ import jmona.MaxGenerationCompletionCriteria;
  *          The type of Individual being evolved.
  * @author jfinkels
  */
-public class DefaultMaxGenerationCompletionCriteria<T extends Individual>
-    implements MaxGenerationCompletionCriteria<T> {
+public class DefaultMaxGenerationCompletionCondition<T extends Individual>
+    implements MaxGenerationCompletionCondition<T> {
 
   /** The default maximum number of generations in the evolution. */
   public static final int DEFAULT_MAX_GENERATIONS = Integer.MAX_VALUE;
@@ -49,7 +49,7 @@ public class DefaultMaxGenerationCompletionCriteria<T extends Individual>
    * @param context
    *          {@inheritDoc}
    * @return Whether the maximum number of generations has already occurred.
-   * @see jmona.CompletionCriteria#isSatisfied(jmona.EvolutionContext)
+   * @see jmona.CompletionCondition#isSatisfied(jmona.EvolutionContext)
    */
   @Override
   public boolean isSatisfied(final EvolutionContext<T> context) {
