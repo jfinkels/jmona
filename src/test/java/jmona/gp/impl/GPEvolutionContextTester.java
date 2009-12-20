@@ -19,6 +19,8 @@
  */
 package jmona.gp.impl;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -56,10 +58,8 @@ public class GPEvolutionContextTester {
   public static final int NUM_INDIVIDUALS = 100;
   /** The EvolutionContext under test. */
   private GPEvolutionContext<Integer> context = null;
-
   /** The tree factory for creating initial random Trees. */
   private TreeFactory<Integer> factory = null;
-
   /** The initial population for the EvolutionContext under test. */
   private Population<Tree<Integer>> population = null;
 
@@ -135,6 +135,32 @@ public class GPEvolutionContextTester {
       assertTrue(exception instanceof IllegalArgumentException);
     }
   }
+
+  /** Test for throwing exceptions. */
+  @Test
+  public void testExceptions() {
+    this.context.currentPopulation().clear();
+    try {
+      this.context.stepGeneration();
+      Util.shouldHaveThrownException();
+    } catch (final EvolutionException exception) {
+      Util.fail(exception);
+    } catch (final RuntimeException exception) {
+      assertEquals(0, this.context.currentPopulation().size());
+      assertTrue(exception instanceof RuntimeException);
+    }
+
+    this.context.setCrossoverFunction(null);
+    
+    try {
+      this.context.stepGeneration();
+      Util.shouldHaveThrownException();
+    } catch (final EvolutionException exception) {
+      assertTrue(exception.getCause() instanceof NullPointerException);
+      assertNull(this.context.crossoverFunction());
+    }
+  }
+
   /**
    * Test method for {@link jmona.gp.impl.GPEvolutionContext#stepGeneration()}.
    */
