@@ -20,7 +20,6 @@
 package jmona.impl.selection;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
@@ -92,12 +91,8 @@ public class FitnessProportionateSelection<T extends Individual> implements
     double currentPointer = 0.0;
     double currentFitness = 0.0;
 
-    // TODO iterators are ugly
     // iterate over all entries in the fitnesses map
-    final Iterator<Entry<T, Double>> iterator = fitnesses.entrySet().iterator();
-    Entry<T, Double> entry = null;
-    while (iterator.hasNext()) {
-      entry = iterator.next();
+    for (final Entry<T, Double> entry : fitnesses.entrySet()) {
       currentFitness = entry.getValue();
       if (currentPointer < selectionPointer
           && currentPointer + currentFitness >= selectionPointer) {
