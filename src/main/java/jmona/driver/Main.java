@@ -27,6 +27,7 @@ import jmona.EvolutionContext;
 import jmona.EvolutionException;
 import jmona.PostProcessor;
 import jmona.ProcessingException;
+import jmona.impl.Util;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
@@ -104,13 +105,11 @@ public class Main {
           + "CompletionCondition beans, but must contain only 1.");
     }
 
-    // get the evolution context and completion criteria
-    // (kind of goofy but necessary way to get an element from a map, i think)
-    // TODO is there a cleaner way of getting an element from a map?
-    final EvolutionContext evolutionContext = evolutionContextsMap.values()
-        .iterator().next();
-    final CompletionCondition completionCondition = completionCriteriaMap
-        .values().iterator().next();
+    // get the evolution context and completion condition from their maps
+    final EvolutionContext evolutionContext = Util
+        .firstValue(evolutionContextsMap);
+    final CompletionCondition completionCondition = Util
+        .firstValue(completionCriteriaMap);
 
     try {
       // while the criteria has not been satisfied, create the next generation
