@@ -1,5 +1,5 @@
 /**
- * UniformPopulationCompletionCriteria.java
+ * UniformPopulationCompletionCondition.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -22,7 +22,7 @@ package jmona.game.impl;
 import jmona.EvolutionContext;
 import jmona.Individual;
 import jmona.Population;
-import jmona.impl.DefaultMaxGenerationCompletionCriteria;
+import jmona.impl.DefaultMaxGenerationCompletionCondition;
 
 /**
  * Determines whether a Population in an EvolutionContext contains only
@@ -32,8 +32,8 @@ import jmona.impl.DefaultMaxGenerationCompletionCriteria;
  *          The type of Individual in the Population.
  * @author jfinkels
  */
-public class UniformPopulationCompletionCriteria<T extends Individual> extends
-    DefaultMaxGenerationCompletionCriteria<T> {
+public class UniformPopulationCompletionCondition<T extends Individual> extends
+    DefaultMaxGenerationCompletionCondition<T> {
 
   /**
    * Determines whether the current Population in the specified EvolutionContext
@@ -43,7 +43,7 @@ public class UniformPopulationCompletionCriteria<T extends Individual> extends
    *          The EvolutionContext containing the Population.
    * @return Whether the current Population in the specified EvolutionContext
    *         contains only Individuals of one class.
-   * @see jmona.CompletionCriteria#isSatisfied(jmona.EvolutionContext)
+   * @see jmona.CompletionCondition#isSatisfied(jmona.EvolutionContext)
    */
   @Override
   public boolean isSatisfied(final EvolutionContext<T> context) {

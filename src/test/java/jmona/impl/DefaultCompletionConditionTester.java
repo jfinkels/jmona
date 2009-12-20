@@ -1,5 +1,5 @@
 /**
- * DefaultCompletionCriteriaTester.java
+ * DefaultCompletionConditionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -34,14 +34,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test class for the DefaultCompletionCriteria class.
+ * Test class for the DefaultCompletionCondition class.
  * 
  * @author jfinkels
  */
-public class DefaultCompletionCriteriaTester {
+public class DefaultCompletionConditionTester {
 
   /** The completion criteria under test. */
-  private DefaultCompletionCriteria<ExampleIndividual> completionCriteria = null;
+  private DefaultCompletionCondition<ExampleIndividual> completionCriteria = null;
   /** The evolution context on which to test the completion criteria. */
   private EvolutionContext<ExampleIndividual> evolutionContext = null;
   /** The population in the evolution context. */
@@ -50,7 +50,7 @@ public class DefaultCompletionCriteriaTester {
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.completionCriteria = new DefaultCompletionCriteria<ExampleIndividual>();
+    this.completionCriteria = new DefaultCompletionCondition<ExampleIndividual>();
 
     this.population = new DefaultPopulation<ExampleIndividual>();
     this.population.add(new ExampleIndividual(1));
@@ -67,7 +67,7 @@ public class DefaultCompletionCriteriaTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.DefaultCompletionCriteria#isSatisfied(jmona.EvolutionContext)}
+   * {@link jmona.impl.DefaultCompletionCondition#isSatisfied(jmona.EvolutionContext)}
    * due to maximum fitness.
    */
   @Test
@@ -76,7 +76,7 @@ public class DefaultCompletionCriteriaTester {
       assertFalse(this.completionCriteria.isSatisfied(this.evolutionContext));
 
       this.population.add(new ExampleIndividual(
-          DefaultMaxFitnessCompletionCriteria.DEFAULT_MAX_FITNESS));
+          DefaultMaxFitnessCompletionCondition.DEFAULT_MAX_FITNESS));
       assertTrue(this.completionCriteria.isSatisfied(this.evolutionContext));
     } catch (final CompletionException exception) {
       Util.fail(exception);
@@ -85,7 +85,7 @@ public class DefaultCompletionCriteriaTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.DefaultCompletionCriteria#isSatisfied(jmona.EvolutionContext)}
+   * {@link jmona.impl.DefaultCompletionCondition#isSatisfied(jmona.EvolutionContext)}
    * due to maximum generation met.
    */
   @Test

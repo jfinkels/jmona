@@ -23,7 +23,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import jmona.CompletionCriteria;
+import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
@@ -59,7 +59,7 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
    * configuration file.
    */
   @Autowired
-  private CompletionCriteria<MonaIndividual> completionCriteria = null;
+  private CompletionCondition<MonaIndividual> completionCondition = null;
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
@@ -83,7 +83,7 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
     final int width = (Integer) this.applicationContext.getBean("width");
 
     try {
-      while (!this.completionCriteria.isSatisfied(this.context)) {
+      while (!this.completionCondition.isSatisfied(this.context)) {
         this.context.stepGeneration();
         LOG.debug("Current generation: " + this.context.currentGeneration());
       }

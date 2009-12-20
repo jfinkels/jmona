@@ -1,5 +1,5 @@
 /**
- * UniformPopulationCompletionCriteriaTester.java
+ * UniformPopulationCompletionConditionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -29,20 +29,20 @@ import jmona.impl.example.ExampleIndividual;
 import org.junit.Test;
 
 /**
- * Test class for the UniformPopulationCompletionCriteria class.
+ * Test class for the UniformPopulationCompletionCondition class.
  * 
  * @author jfinkels
  */
-public class UniformPopulationCompletionCriteriaTester {
+public class UniformPopulationCompletionConditionTester {
 
   /**
    * Test method for
-   * {@link jmona.game.impl.UniformPopulationCompletionCriteria#isSatisfied(jmona.EvolutionContext)}
+   * {@link jmona.game.impUniformPopulationCompletionConditionion#isSatisfied(jmona.EvolutionContext)}
    * .
    */
   @Test
   public void testIsSatisfied() {
-    final UniformPopulationCompletionCriteria<ExampleIndividual> criteria = new UniformPopulationCompletionCriteria<ExampleIndividual>();
+    final UniformPopulationCompletionCondition<ExampleIndividual> criteria = new UniformPopulationCompletionCondition<ExampleIndividual>();
 
     final Population<ExampleIndividual> population = new DefaultPopulation<ExampleIndividual>();
     population.add(new ExampleIndividual());
@@ -57,5 +57,4 @@ public class UniformPopulationCompletionCriteriaTester {
     assertFalse(criteria.isSatisfied(context));
 
   }
-
 }

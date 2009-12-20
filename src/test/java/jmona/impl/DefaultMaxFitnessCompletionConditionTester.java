@@ -1,5 +1,5 @@
 /**
- * DefaultMaxFitnessCompletionCriteriaTester.java
+ * DefaultMaxFitnessCompletionConditionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -35,14 +35,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test class for the DefaultMaxFitnessCompletionCriteria class.
+ * Test class for the DefaultMaxFitnessCompletionCondition class.
  * 
  * @author jfinkels
  */
-public class DefaultMaxFitnessCompletionCriteriaTester {
+public class DefaultMaxFitnessCompletionConditionTester {
 
   /** The completion criteria under test. */
-  private DefaultMaxFitnessCompletionCriteria<ExampleIndividual> completionCriteria = null;
+  private DefaultMaxFitnessCompletionCondition<ExampleIndividual> completionCriteria = null;
   /** The evolution context on which to test the completion criteria. */
   private EvolutionContext<ExampleIndividual> evolutionContext = null;
   /** The population in the evolution context. */
@@ -53,7 +53,7 @@ public class DefaultMaxFitnessCompletionCriteriaTester {
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.completionCriteria = new DefaultMaxFitnessCompletionCriteria<ExampleIndividual>();
+    this.completionCriteria = new DefaultMaxFitnessCompletionCondition<ExampleIndividual>();
 
     this.population = new DefaultPopulation<ExampleIndividual>();
     this.population.add(new ExampleIndividual(1));
@@ -74,7 +74,7 @@ public class DefaultMaxFitnessCompletionCriteriaTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.DefaultMaxFitnessCompletionCriteria#isSatisfied(jmona.EvolutionContext)}
+   * {@link jmona.impl.DefaultMaxFitnessCompletionCondition#isSatisfied(jmona.EvolutionContext)}
    * .
    */
   @Test
@@ -87,10 +87,10 @@ public class DefaultMaxFitnessCompletionCriteriaTester {
       assertTrue(exception instanceof CompletionException);
     }
 
-    try {      
+    try {
       assertFalse(this.completionCriteria.isSatisfied(this.evolutionContext));
       this.population.add(new ExampleIndividual(
-          DefaultMaxFitnessCompletionCriteria.DEFAULT_MAX_FITNESS));
+          DefaultMaxFitnessCompletionCondition.DEFAULT_MAX_FITNESS));
       assertTrue(this.completionCriteria.isSatisfied(this.evolutionContext));
     } catch (final CompletionException exception) {
       Util.fail(exception);
@@ -99,7 +99,7 @@ public class DefaultMaxFitnessCompletionCriteriaTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.DefaultMaxFitnessCompletionCriteria#setMaxFitness(double)}
+   * {@link jmona.impl.DefaultMaxFitnessCompletionCondition#setMaxFitness(double)}
    * .
    */
   @Test

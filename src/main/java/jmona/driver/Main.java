@@ -21,7 +21,7 @@ package jmona.driver;
 
 import java.util.Map;
 
-import jmona.CompletionCriteria;
+import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
@@ -56,7 +56,7 @@ public class Main {
 
   /**
    * Run the {@link EvolutionContext#stepGeneration()} method until the
-   * CompletionCriteria is met, executing any PostProcessors after each
+   * CompletionConditionon is met, executing any PostProcessors after each
    * generation step.
    * 
    * Provide the location of the Spring XML configuration file by using the
@@ -85,8 +85,8 @@ public class Main {
     // get the evolution contexts, completion criteria, and post processors
     final Map<String, EvolutionContext> evolutionContextsMap = applicationContext
         .getBeansOfType(EvolutionContext.class);
-    final Map<String, CompletionCriteria> completionCriteriaMap = applicationContext
-        .getBeansOfType(CompletionCriteria.class);
+    final Map<String, CompletionCondition> completionCriteriaMap = applicationContext
+        .getBeansOfType(CompletionCondition.class);
     final Map<String, PostProcessor> postProcessorMap = applicationContext
         .getBeansOfType(PostProcessor.class);
 
@@ -101,7 +101,7 @@ public class Main {
     if (completionCriteriaMap.size() != 1) {
       throw new RuntimeException("Application context contains "
           + completionCriteriaMap.size()
-          + " CompletionCriteria beans, but must contain only 1.");
+          + "CompletionCondition beans, but must contain only 1.");
     }
 
     // get the evolution context and completion criteria
@@ -109,12 +109,12 @@ public class Main {
     // TODO is there a cleaner way of getting an element from a map?
     final EvolutionContext evolutionContext = evolutionContextsMap.values()
         .iterator().next();
-    final CompletionCriteria completionCriteria = completionCriteriaMap
+    final CompletionCondition completionCondition = completionCriteriaMap
         .values().iterator().next();
 
     try {
       // while the criteria has not been satisfied, create the next generation
-      while (!completionCriteria.isSatisfied(evolutionContext)) {
+      while (!completionCondition.isSatisfied(evolutionContext)) {
         // create the next generation in the evolution
         evolutionContext.stepGeneration();
 

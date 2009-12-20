@@ -38,16 +38,16 @@ public class MainTester {
   public static final String CONFIG_FILE_BAD = "--config=/improbable/path/name/bOgUsFiLe.DoEs.N#t.3Xi5t";
   /**
    * A Spring XML configuration file containing an EvolutionContext and a
-   * CompletionCriteria.
+   * CompletionConditionn.
    */
   public static final String CONFIG_FILE_GOOD = "--config=src/test/resources/jmona/example/ga/ones/OnesEvolutionTester-context.xml";
   /**
    * A Spring XML configuration file containing too few of both EvolutionContext
-   * and CompletionCriteria beans.
+   * andCompletionConditionon beans.
    */
   public static final String CONFIG_TOO_FEW_BOTH = "--config=src/test/resources/jmona/driver/TooFewBoth-context.xml";
   /**
-   * A Spring XML configuration file containing too few CompletionCriteria
+   * A Spring XML configuration file containing too feCompletionConditionion
    * beans.
    */
   public static final String CONFIG_TOO_FEW_CC = "--config=src/test/resources/jmona/driver/TooFewCC-context.xml";
@@ -57,11 +57,11 @@ public class MainTester {
   public static final String CONFIG_TOO_FEW_EC = "--config=src/test/resources/jmona/driver/TooFewEC-context.xml";
   /**
    * A Spring XML configuration file containing too many EvolutionContext and
-   * CompletionCriteria beans.
+  CompletionConditiontion beans.
    */
   public static final String CONFIG_TOO_MANY_BOTH = "--config=src/test/resources/jmona/driver/TooManyBoth-context.xml";
   /**
-   * A Spring XML configuration file containing too many CompletionCriteria
+   * A Spring XML configuration file containing too mCompletionConditionition
    * beans.
    */
   public static final String CONFIG_TOO_MANY_CC = "--config=src/test/resources/jmona/driver/TooManyCC-context.xml";
@@ -116,7 +116,7 @@ public class MainTester {
       assertTrue(exception instanceof RuntimeException);
     }
 
-    // too few CompletionCriteria beans
+    // tooCompletionConditiondition beans
     try {
       Main.main(new String[] { CONFIG_TOO_FEW_CC });
       org.junit.Assert
@@ -137,12 +137,11 @@ public class MainTester {
 
   /**
    * Test method for {@link jmona.driver.Main#main(java.lang.String[])} when the
-   * specified configuration file does has too many EvolutionContext and/or
-   * CompletionCriteria beans.
+   * specified configuration file does has too many EvolutionContext and/orCompletionConditionndition beans.
    */
   @Test
   public void testTooManyBeans() {
-    // too many CompletionCriteria beans
+    // toCompletionConditionondition beans
     try {
       Main.main(new String[] { CONFIG_TOO_MANY_CC });
       org.junit.Assert

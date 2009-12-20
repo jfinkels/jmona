@@ -22,7 +22,7 @@ package jmona.example.game.ipd;
 import java.util.HashMap;
 import java.util.Map;
 
-import jmona.CompletionCriteria;
+import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
@@ -53,7 +53,7 @@ public class IPDEvolutionTester extends AbstractJUnit4SpringContextTests {
    * configuration file.
    */
   @Autowired
-  private CompletionCriteria<IPDStrategy> completionCriteria = null;
+  private CompletionCondition<IPDStrategy> completionCondition = null;
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
@@ -66,7 +66,7 @@ public class IPDEvolutionTester extends AbstractJUnit4SpringContextTests {
     final Map<Class<? extends IPDStrategy>, Integer> results = new HashMap<Class<? extends IPDStrategy>, Integer>();
 
     try {
-      while (!this.completionCriteria.isSatisfied(this.context)) {
+      while (!this.completionCondition.isSatisfied(this.context)) {
         this.context.stepGeneration();
 
         for (final IPDStrategy strategy : this.context.currentPopulation()) {

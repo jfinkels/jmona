@@ -25,7 +25,7 @@ import static org.junit.Assert.fail;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.Individual;
-import jmona.MaxGenerationCompletionCriteria;
+import jmona.MaxGenerationCompletionCondition;
 import jmona.Population;
 import jmona.ga.impl.GAEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
@@ -33,15 +33,15 @@ import jmona.impl.example.ExampleIndividual;
 import org.junit.Test;
 
 /**
- * Test class for the MaxGenerationCompletionCriteria class.
+ * Test class for the MaxGenerationCompletionCondition class.
  * 
  * @author jfinkels
  */
-public class DefaultMaxGenerationCompletionCriteriaTester {
+public class DefaultMaxGenerationCompletionConditionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.DefaultMaxGenerationCompletionCriteria#isSatisfied(jmona.EvolutionContext)}
+   * {@link jmona.impl.DefaultMaxGenerationCompletionCondition#isSatisfied(jmona.EvolutionContext)}
    * .
    */
   @Test
@@ -52,7 +52,7 @@ public class DefaultMaxGenerationCompletionCriteriaTester {
     final EvolutionContext<Individual> context = new GAEvolutionContext<Individual>(
         population);
 
-    final MaxGenerationCompletionCriteria<Individual> criteria = new DefaultMaxGenerationCompletionCriteria<Individual>();
+    final MaxGenerationCompletionCondition<Individual> criteria = new DefaultMaxGenerationCompletionCondition<Individual>();
 
     try {
       criteria.setMaxGenerations(0);

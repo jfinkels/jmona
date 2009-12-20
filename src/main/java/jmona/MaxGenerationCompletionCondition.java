@@ -1,5 +1,5 @@
 /**
- * MaxFitnessCompletionCriteria.java
+ * MaxGenerationCompletionCondition.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -20,29 +20,27 @@
 package jmona;
 
 /**
- * A CompletionCriteria which tests for completion based on whether the current
- * population in an EvolutionContext contains an Individual with a maximum
- * fitness.
+ * A CompletionCondition which tests for completion based on the number of
+ * generations which have passed in an EvolutionContext.
+ * 
+ * That is, once a certain number of generations have passed, the criteria has
+ * been satisfied.
  * 
  * @param <T>
  *          The type of Individual in the EvolutionContext which will be tested
  *          for completion.
  * @author jfinkels
  */
-public interface MaxFitnessCompletionCriteria<T extends Individual> extends
-    CompletionCriteria<T> {
-
+public interface MaxGenerationCompletionCondition<T extends Individual> extends
+    CompletionCondition<T> {
   /**
-   * Set the maximum fitness of an Individual in the EvolutionContext to be
-   * tested for completion.
+   * Set the maximum number of generations for this evolution.
    * 
-   * If an Individual in the EvolutionContext tested has a fitness greater than
-   * or equal to the maximum fitness specified by this method, then the
-   * CompletionCriteria has been met.
+   * If the number of generations in the evolution meets or exceeds this value,
+   * then the evolution stops.
    * 
-   * @param newMaxFitness
-   *          The maximum fitness of an Individual in the EvolutionContext to be
-   *          tested for completion.
+   * @param newMaxGenerations
+   *          The maximum number of generations for this evolution.
    */
-  void setMaxFitness(final double newMaxFitness);
+  void setMaxGenerations(final int newMaxGenerations);
 }

@@ -35,7 +35,7 @@
     <constructor-arg><null /></constructor-arg>
   </bean>
   
-  <bean id="completionCriteria" class="jmona.impl.DefaultMaxGenerationCompletionCriteria" >
+  <bean id="completionCondition" class="jmona.impl.DefaultMaxGenerationCompletionCondition" >
     <property name="maxGenerations" value="1" />
   </bean>
   

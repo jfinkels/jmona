@@ -19,7 +19,7 @@
  */
 package jmona.example.ga.ones;
 
-import jmona.CompletionCriteria;
+import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
@@ -49,7 +49,7 @@ public class OnesEvolutionTester extends AbstractJUnit4SpringContextTests {
    * configuration file.
    */
   @Autowired
-  private CompletionCriteria<OnesIndividual> completionCriteria = null;
+  private CompletionCondition<OnesIndividual> completionCondition = null;
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
@@ -60,7 +60,7 @@ public class OnesEvolutionTester extends AbstractJUnit4SpringContextTests {
   @DirtiesContext
   public final void testOnesEvolution() {
     try {
-      while (!this.completionCriteria.isSatisfied(this.context)) {
+      while (!this.completionCondition.isSatisfied(this.context)) {
         this.context.stepGeneration();
         LOG.debug(this.context.currentPopulation());
       }
