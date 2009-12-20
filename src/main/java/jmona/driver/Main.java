@@ -21,7 +21,7 @@ package jmona.driver;
 
 import java.util.Map;
 
-import jmona.CompletionCondition;
+import jmona.CompletionCriteria;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
@@ -56,7 +56,7 @@ public class Main {
 
   /**
    * Run the {@link EvolutionContext#stepGeneration()} method until the
-   * CompletionCondition is met, executing any PostProcessors after each
+   * CompletionCriteria is met, executing any PostProcessors after each
    * generation step.
    * 
    * Provide the location of the Spring XML configuration file by using the
@@ -85,8 +85,8 @@ public class Main {
     // get the evolution contexts, completion criteria, and post processors
     final Map<String, EvolutionContext> evolutionContextsMap = applicationContext
         .getBeansOfType(EvolutionContext.class);
-    final Map<String, CompletionCondition> completionConditionMap = applicationContext
-        .getBeansOfType(CompletionCondition.class);
+    final Map<String, CompletionCriteria> completionCriteriaMap = applicationContext
+        .getBeansOfType(CompletionCriteria.class);
     final Map<String, PostProcessor> postProcessorMap = applicationContext
         .getBeansOfType(PostProcessor.class);
 
@@ -98,10 +98,10 @@ public class Main {
     }
 
     // assert that there is only one completion criteria bean in the app context
-    if (completionConditionMap.size() != 1) {
+    if (completionCriteriaMap.size() != 1) {
       throw new RuntimeException("Application context contains "
-          + completionConditionMap.size()
-          + " CompletionCondition beans, but must contain only 1.");
+          + completionCriteriaMap.size()
+          + " CompletionCriteria beans, but must contain only 1.");
     }
 
     // get the evolution context and completion criteria
@@ -109,12 +109,12 @@ public class Main {
     // TODO is there a cleaner way of getting an element from a map?
     final EvolutionContext evolutionContext = evolutionContextsMap.values()
         .iterator().next();
-    final CompletionCondition completionCondition = completionConditionMap
+    final CompletionCriteria completionCriteria = completionCriteriaMap
         .values().iterator().next();
 
     try {
       // while the criteria has not been satisfied, create the next generation
-      while (!completionCondition.isSatisfied(evolutionContext)) {
+      while (!completionCriteria.isSatisfied(evolutionContext)) {
         // create the next generation in the evolution
         evolutionContext.stepGeneration();
 

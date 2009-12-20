@@ -19,7 +19,7 @@
  */
 package jmona.example.gp.calc;
 
-import jmona.CompletionCondition;
+import jmona.CompletionCriteria;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
@@ -51,7 +51,7 @@ public class PolynomialEvolutionTester extends AbstractJUnit4SpringContextTests 
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<Tree<SingleInputFunction<Double, Double>>> completionCondition = null;
+  private CompletionCriteria<Tree<SingleInputFunction<Double, Double>>> completionCriteria = null;
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
   private EvolutionContext<Tree<SingleInputFunction<Double, Double>>> context = null;
@@ -61,7 +61,7 @@ public class PolynomialEvolutionTester extends AbstractJUnit4SpringContextTests 
   @DirtiesContext
   public final void testEvolution() {
     try {
-      while (!this.completionCondition.isSatisfied(this.context)) {
+      while (!this.completionCriteria.isSatisfied(this.context)) {
         this.context.stepGeneration();
         LOG.debug("Generation " + this.context.currentGeneration());
         LOG.debug("  " + this.context.currentPopulation());

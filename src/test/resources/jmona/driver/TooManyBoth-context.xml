@@ -23,15 +23,15 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-  <bean id="completionCondition1" class="jmona.impl.DefaultMaxGenerationCompletionCondition" >
+  <bean id="completionCriteria1" class="jmona.impl.DefaultMaxGenerationCompletionCriteria" >
     <property name="maxGenerations" value="1" />
   </bean>
   
-  <bean id="completionCondition2" class="jmona.impl.DefaultMaxGenerationCompletionCondition" >
+  <bean id="completionCriteria2" class="jmona.impl.DefaultMaxGenerationCompletionCriteria" >
     <property name="maxGenerations" value="2" />
   </bean>
   
-  <bean id="completionCondition3" class="jmona.impl.DefaultMaxGenerationCompletionCondition" >
+  <bean id="completionCriteria3" class="jmona.impl.DefaultMaxGenerationCompletionCriteria" >
     <property name="maxGenerations" value="3" />
   </bean>
   

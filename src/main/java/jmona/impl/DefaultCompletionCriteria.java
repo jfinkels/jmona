@@ -1,5 +1,5 @@
 /**
- * DefaultCompletionCondition.java
+ * DefaultCompletionCriteria.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -22,11 +22,11 @@ package jmona.impl;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.Individual;
-import jmona.MaxFitnessCompletionCondition;
-import jmona.MaxGenerationCompletionCondition;
+import jmona.MaxFitnessCompletionCriteria;
+import jmona.MaxGenerationCompletionCriteria;
 
 /**
- * A CompletionCondition which tests for a maximum number of generations passed
+ * A CompletionCriteria which tests for a maximum number of generations passed
  * or an Individual in the current population of the EvolutionContext with the
  * maximum fitness.
  * 
@@ -35,13 +35,13 @@ import jmona.MaxGenerationCompletionCondition;
  *          for completion.
  * @author jfinkels
  */
-public class DefaultCompletionCondition<T extends Individual> implements
-    MaxFitnessCompletionCondition<T>, MaxGenerationCompletionCondition<T> {
+public class DefaultCompletionCriteria<T extends Individual> implements
+    MaxFitnessCompletionCriteria<T>, MaxGenerationCompletionCriteria<T> {
 
-  /** The CompletionCondition for maximum fitness in the EvolutionContext. */
-  private final MaxFitnessCompletionCondition<T> maxFitnessCompletionCondition = new DefaultMaxFitnessCompletionCondition<T>();
-  /** The CompletionCondition for maximum number of generations passed. */
-  private final MaxGenerationCompletionCondition<T> maxGenerationCompletionCondition = new DefaultMaxGenerationCompletionCondition<T>();
+  /** The CompletionCriteria for maximum fitness in the EvolutionContext. */
+  private final MaxFitnessCompletionCriteria<T> maxFitnessCompletionCriteria = new DefaultMaxFitnessCompletionCriteria<T>();
+  /** The CompletionCriteria for maximum number of generations passed. */
+  private final MaxGenerationCompletionCriteria<T> maxGenerationCompletionCriteria = new DefaultMaxGenerationCompletionCriteria<T>();
 
   /**
    * Whether the maximum number of generations has passed, or whether the
@@ -50,12 +50,12 @@ public class DefaultCompletionCondition<T extends Individual> implements
    * 
    * @param context
    *          {@inheritDoc}
-   * @see jmona.CompletionCondition#isSatisfied(jmona.EvolutionContext)
+   * @see jmona.CompletionCriteria#isSatisfied(jmona.EvolutionContext)
    */
   @Override
   public boolean isSatisfied(final EvolutionContext<T> context)
       throws CompletionException {
-    return (this.maxFitnessCompletionCondition.isSatisfied(context) || this.maxGenerationCompletionCondition
+    return (this.maxFitnessCompletionCriteria.isSatisfied(context) || this.maxGenerationCompletionCriteria
         .isSatisfied(context));
   }
 
@@ -64,11 +64,11 @@ public class DefaultCompletionCondition<T extends Individual> implements
    * 
    * @param newMaxFitness
    *          {@inheritDoc}
-   * @see jmona.MaxFitnessCompletionCondition#setMaxFitness(double)
+   * @see jmona.MaxFitnessCompletionCriteria#setMaxFitness(double)
    */
   @Override
   public void setMaxFitness(final double newMaxFitness) {
-    this.maxFitnessCompletionCondition.setMaxFitness(newMaxFitness);
+    this.maxFitnessCompletionCriteria.setMaxFitness(newMaxFitness);
   }
 
   /**
@@ -76,11 +76,11 @@ public class DefaultCompletionCondition<T extends Individual> implements
    * 
    * @param newMaxGenerations
    *          {@inheritDoc}
-   * @see jmona.MaxGenerationCompletionCondition#setMaxGenerations(int)
+   * @see jmona.MaxGenerationCompletionCriteria#setMaxGenerations(int)
    */
   @Override
   public void setMaxGenerations(final int newMaxGenerations) {
-    this.maxGenerationCompletionCondition.setMaxGenerations(newMaxGenerations);
+    this.maxGenerationCompletionCriteria.setMaxGenerations(newMaxGenerations);
   }
 
 }

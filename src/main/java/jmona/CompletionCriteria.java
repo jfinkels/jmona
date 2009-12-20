@@ -1,5 +1,5 @@
 /**
- * CompletionCondition.java
+ * CompletionCriteria.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -31,7 +31,7 @@ package jmona;
  *          criteria this object encapsulates.
  * @author jfinkels
  */
-public interface CompletionCondition<T extends Individual> {
+public interface CompletionCriteria<T extends Individual> {
   /**
    * Whether the criteria for completion of the evolution have been met.
    * 

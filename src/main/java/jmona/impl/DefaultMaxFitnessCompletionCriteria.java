@@ -1,5 +1,5 @@
 /**
- * DefaultMaxFitnessCompletionCondition.java
+ * DefaultMaxFitnessCompletionCriteria.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -24,10 +24,10 @@ import jmona.EvolutionContext;
 import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.Individual;
-import jmona.MaxFitnessCompletionCondition;
+import jmona.MaxFitnessCompletionCriteria;
 
 /**
- * CompletionCondition used to determine whether an EvolutionContext contains an
+ * CompletionCriteria used to determine whether an EvolutionContext contains an
  * Individual with a maximum fitness value.
  * 
  * @param <T>
@@ -35,8 +35,8 @@ import jmona.MaxFitnessCompletionCondition;
  *          completion.
  * @author jfinkels
  */
-public class DefaultMaxFitnessCompletionCondition<T extends Individual>
-    implements MaxFitnessCompletionCondition<T> {
+public class DefaultMaxFitnessCompletionCriteria<T extends Individual>
+    implements MaxFitnessCompletionCriteria<T> {
 
   /** The default maximum fitness of an Individual. */
   public static final double DEFAULT_MAX_FITNESS = Double.MAX_VALUE;
@@ -56,7 +56,7 @@ public class DefaultMaxFitnessCompletionCondition<T extends Individual>
    * @throws CompletionException
    *           If the fitness function of the EvolutionContext throws a
    *           FitnessException.
-   * @see jmona.CompletionCondition#isSatisfied(jmona.EvolutionContext)
+   * @see jmona.CompletionCriteria#isSatisfied(jmona.EvolutionContext)
    */
   @Override
   public boolean isSatisfied(final EvolutionContext<T> context)
@@ -86,7 +86,7 @@ public class DefaultMaxFitnessCompletionCondition<T extends Individual>
    * 
    * @param newMaxFitness
    *          {@inheritDoc}
-   * @see jmona.MaxFitnessCompletionCondition#setMaxFitness(double)
+   * @see jmona.MaxFitnessCompletionCriteria#setMaxFitness(double)
    */
   @Override
   public void setMaxFitness(final double newMaxFitness) {

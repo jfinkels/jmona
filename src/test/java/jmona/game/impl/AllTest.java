@@ -31,7 +31,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ ClassCountingPostProcessorTester.class,
     DefaultTwoPlayerGameResultTester.class, GameEvolutionContextTester.class,
-    UniformPopulationCompletionConditionTester.class })
+    UniformPopulationCompletionCriteriaTester.class })
 public class AllTest {
 
 }

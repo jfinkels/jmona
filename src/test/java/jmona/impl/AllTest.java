@@ -30,9 +30,9 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses({ AbstractEvolutionContextTester.class,
-    DefaultCompletionConditionTester.class,
-    DefaultMaxFitnessCompletionConditionTester.class,
-    DefaultMaxGenerationCompletionConditionTester.class,
+    DefaultCompletionCriteriaTester.class,
+    DefaultMaxFitnessCompletionCriteriaTester.class,
+    DefaultMaxGenerationCompletionCriteriaTester.class,
     DefaultPopulationFactoryTester.class,
     IdentityCrossoverFunctionTester.class,
     PopulationLoggingPostProcessorTester.class, UtilTester.class })

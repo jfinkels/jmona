@@ -42,10 +42,6 @@ import org.junit.Test;
  */
 public class CalcTerminalNodeFactoryTester {
 
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(CalcTerminalNodeFactoryTester.class);
-
   /** The number of times to repeat the test. */
   public static final int NUM_TESTS = 1000;
 
@@ -91,19 +87,13 @@ public class CalcTerminalNodeFactoryTester {
 
   }
 
-  /**
-   * Test method for
-   * {@link jmona.gp.calc.factories.CalcTerminalNodeFactory#setMaxValue(int)}
-   * and
-   * {@link jmona.gp.calc.factories.CalcTerminalNodeFactory#setMinValue(int)}.
-   */
   @Test
   public void testSetMaxAndMinValues() {
     final CalcTerminalNodeFactory factory = new CalcTerminalNodeFactory();
-
+    
     final Random random = new Random();
     int newMinValue = random.nextInt(100);
-    int newMaxValue = newMinValue + random.nextInt(100) + 1;
+    int newMaxValue = newMinValue + random.nextInt(100);
 
     factory.setMinValue(newMinValue);
     factory.setMaxValue(newMaxValue);
@@ -128,4 +118,7 @@ public class CalcTerminalNodeFactoryTester {
       Util.fail(exception);
     }
   }
+  
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger.getLogger(CalcTerminalNodeFactoryTester.class);
 }

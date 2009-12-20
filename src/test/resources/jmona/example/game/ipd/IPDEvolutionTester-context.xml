@@ -34,8 +34,8 @@
     factory-bean="populationFactory" 
     factory-method="createPopulation" />
 
-  <bean id="completionCondition"
-    class="jmona.game.impl.UniformPopulationCompletionCondition">
+  <bean id="completionCriteria"
+    class="jmona.game.impl.UniformPopulationCompletionCriteria">
     <property name="maxGenerations" value="10" />
   </bean>
   
