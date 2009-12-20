@@ -39,7 +39,6 @@ import jmona.SelectionFunction;
  *          The type of individual to evolve.
  * @author jfinkels
  */
-// TODO auto-increment after stepGeneration in this class?
 public abstract class AbstractEvolutionContext<T extends Individual> implements
     EvolutionContext<T> {
   /**
