@@ -23,12 +23,12 @@ import jmona.CompletionCriteria;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
-import jmona.example.ga.ones.OnesIndividual;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
@@ -57,6 +57,7 @@ public class OnesEvolutionTester extends AbstractJUnit4SpringContextTests {
 
   /** Test method for a Ones evolution. */
   @Test
+  @DirtiesContext
   public final void testOnesEvolution() {
     try {
       while (!this.completionCriteria.isSatisfied(this.context)) {

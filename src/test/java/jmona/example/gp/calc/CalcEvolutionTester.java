@@ -30,6 +30,7 @@ import jmona.test.Util;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
@@ -57,6 +58,7 @@ public class CalcEvolutionTester extends AbstractJUnit4SpringContextTests {
 
   /** Test the evolution. */
   @Test
+  @DirtiesContext
   public final void testEvolution() {
     try {
       LOG.debug("About to start evolution loop.");

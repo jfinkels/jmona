@@ -32,6 +32,7 @@ import jmona.test.Util;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
@@ -60,6 +61,7 @@ public class IPDEvolutionTester extends AbstractJUnit4SpringContextTests {
 
   /** Test method for an iterated prisoner's dilemma evolution. */
   @Test
+  @DirtiesContext
   public final void testIPDEvolution() {
     final Map<Class<? extends IPDStrategy>, Integer> results = new HashMap<Class<? extends IPDStrategy>, Integer>();
 
@@ -75,9 +77,9 @@ public class IPDEvolutionTester extends AbstractJUnit4SpringContextTests {
             results.put(strategy.getClass(), 1);
           }
         }
-        
+
         LOG.debug(results);
-        
+
         results.clear();
       }
     } catch (final CompletionException exception) {
@@ -85,6 +87,6 @@ public class IPDEvolutionTester extends AbstractJUnit4SpringContextTests {
     } catch (final EvolutionException exception) {
       Util.fail(exception);
     }
-    
+
   }
 }

@@ -28,7 +28,6 @@ import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
 import jmona.Population;
-import jmona.example.ga.monalisa.MonaIndividual;
 import jmona.example.ga.monalisa.output.ImageWriter;
 import jmona.test.Util;
 
@@ -36,6 +35,7 @@ import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
@@ -76,6 +76,7 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
 
   /** Test method for a Mona evolution. */
   @Test
+  @DirtiesContext
   public final void testEvolution() {
     // could not autowire because spring could distinguish between these 2 beans
     final int height = (Integer) this.applicationContext.getBean("height");
