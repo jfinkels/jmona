@@ -22,14 +22,17 @@ package jmona.example.gp.calc.factories;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
+import java.util.Random;
+
 import jmona.InitializationException;
-import jmona.example.gp.calc.factories.CalcTerminalNodeFactory;
 import jmona.example.gp.calc.functions.SingleInputFunction;
 import jmona.example.gp.calc.nodes.NumberNode;
 import jmona.example.gp.calc.nodes.VariableNode;
 import jmona.gp.TerminalNode;
 import jmona.test.Util;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -84,4 +87,38 @@ public class CalcTerminalNodeFactoryTester {
 
   }
 
+  @Test
+  public void testSetMaxAndMinValues() {
+    final CalcTerminalNodeFactory factory = new CalcTerminalNodeFactory();
+    
+    final Random random = new Random();
+    int newMinValue = random.nextInt(100);
+    int newMaxValue = newMinValue + random.nextInt(100);
+
+    factory.setMinValue(newMinValue);
+    factory.setMaxValue(newMaxValue);
+
+    LOG.debug(newMinValue);
+    LOG.debug(newMaxValue);
+    try {
+
+      TerminalNode<SingleInputFunction<Double, Double>> node = null;
+      double value = 0.0;
+      for (int i = 0; i < NUM_TESTS; ++i) {
+
+        node = factory.createNode();
+
+        if (node instanceof NumberNode) {
+          value = ((NumberNode) node).evaluate().execute(null);
+          LOG.debug(value);
+          assertTrue(value <= newMaxValue && value >= newMinValue);
+        }
+      }
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+  }
+  
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger.getLogger(CalcTerminalNodeFactoryTester.class);
 }
