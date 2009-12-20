@@ -66,8 +66,6 @@ public class IPDStrategyFactory implements IndividualFactory<IPDStrategy> {
       result = new RuthlessStrategy();
       break;
     case 4:
-      result = new RandomStrategy();
-      break;
     default:
       result = new RandomStrategy();
       break;
