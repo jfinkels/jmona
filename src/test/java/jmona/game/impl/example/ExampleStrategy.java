@@ -35,7 +35,7 @@ public class ExampleStrategy implements Strategy {
 
   /** Instantiate this Strategy with a random score between 0 and 1. */
   public ExampleStrategy() {
-    this(Util.RANDOM.nextDouble());
+    this(Math.random());
   }
 
   /**

@@ -114,7 +114,7 @@ public class MonaMutationFunction implements MutationFunction<MonaIndividual> {
     Polygon currentPolygon = null, mutatedPolygon = null;
     Color currentColor = null, mutatedColor = null;
     for (final Entry<Polygon, Color> entry : polygons.entrySet()) {
-      if (Util.RANDOM.nextDouble() <= this.mutationProbability) {
+      if (Math.random() <= this.mutationProbability) {
         // get the current polygon and color from the map
         currentPolygon = entry.getKey();
         currentColor = entry.getValue();
@@ -158,8 +158,8 @@ public class MonaMutationFunction implements MutationFunction<MonaIndividual> {
     final int mutationPoint = Util.RANDOM.nextInt(result.npoints);
 
     // mutate the x and y values of the point
-    result.xpoints[mutationPoint] = (int) (Util.RANDOM.nextDouble() * this.width);
-    result.ypoints[mutationPoint] = (int) (Util.RANDOM.nextDouble() * this.height);
+    result.xpoints[mutationPoint] = (int) (Math.random() * this.width);
+    result.ypoints[mutationPoint] = (int) (Math.random() * this.height);
 
     return result;
   }

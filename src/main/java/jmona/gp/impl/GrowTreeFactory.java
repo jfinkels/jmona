@@ -54,8 +54,7 @@ public class GrowTreeFactory<V> extends AbstractTreeFactory<V> {
       throws InitializationException {
     Node<V> result = null;
 
-    if (currentDepth <= 1
-        || Util.RANDOM.nextDouble() < this.probabilityTerminal) {
+    if (currentDepth <= 1 || Math.random() < this.probabilityTerminal) {
       result = this.terminalNodeFactory().createNode();
     } else {
       // create a function node

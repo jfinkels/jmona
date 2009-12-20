@@ -28,7 +28,6 @@ import jmona.Population;
 import jmona.SelectionException;
 import jmona.impl.AbstractEvolutionContext;
 import jmona.impl.DefaultPopulation;
-import jmona.impl.Util;
 
 /**
  * A default implementation of the evolution context interface, which provides
@@ -96,17 +95,17 @@ public class GAEvolutionContext<T extends Individual> extends
         /**
          * Step 2: Perform crossover with probability p_crossover
          */
-        if (Util.RANDOM.nextDouble() < this.crossoverProbability()) {
+        if (Math.random() < this.crossoverProbability()) {
           this.crossoverFunction().crossover(individual1, individual2);
         }
 
         /**
          * Step 3: Perform mutation with probability p_mutation
          */
-        if (Util.RANDOM.nextDouble() < this.mutationProbability()) {
+        if (Math.random() < this.mutationProbability()) {
           this.mutationFunction().mutate(individual1);
         }
-        if (Util.RANDOM.nextDouble() < this.mutationProbability()) {
+        if (Math.random() < this.mutationProbability()) {
           this.mutationFunction().mutate(individual2);
         }
 

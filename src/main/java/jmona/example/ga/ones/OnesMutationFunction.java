@@ -48,7 +48,7 @@ public class OnesMutationFunction implements MutationFunction<OnesIndividual> {
 
     // iterate over each bit in the gene
     for (int i = 0; i < gene.length; ++i) {
-      if (Util.RANDOM.nextDouble() <= PROB_BITWISE_MUTATION) {
+      if (Math.random() <= PROB_BITWISE_MUTATION) {
         gene[i] = (short) Math.abs(gene[i] - 1);
       }
     }

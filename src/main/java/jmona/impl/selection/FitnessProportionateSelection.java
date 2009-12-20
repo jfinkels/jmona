@@ -82,7 +82,7 @@ public class FitnessProportionateSelection<T extends Individual> implements
     }
 
     // choose a number between 0 and the sum of all fitnesses
-    final double selectionPointer = Util.RANDOM.nextDouble() * fitnessesSum;
+    final double selectionPointer = Math.random() * fitnessesSum;
 
     // initialize some local variables
     double currentPointer = 0.0;

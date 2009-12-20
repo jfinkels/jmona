@@ -111,7 +111,7 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
 
         // choose variation operation probabilistically
         // TODO I am ignoring the crossoverProbability property
-        if (Util.RANDOM.nextDouble() < this.mutationProbability()
+        if (Math.random() < this.mutationProbability()
             || nextGeneration.size() >= currentSize - 1) {
 
           LOG.debug("About to perform mutation...");
