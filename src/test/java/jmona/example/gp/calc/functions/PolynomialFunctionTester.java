@@ -22,6 +22,8 @@ package jmona.example.gp.calc.functions;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import jmona.test.Util;
 
 import org.apache.log4j.Logger;
 import org.junit.Before;
@@ -88,6 +90,18 @@ public class PolynomialFunctionTester {
   public void testPolynomialFunction() {
     assertArrayEquals(this.coefficients, this.function.coefficients(),
         ZERO_DELTA);
+    try {
+      new PolynomialFunction(null);
+      Util.shouldHaveThrownException();
+    } catch (final IllegalArgumentException exception) {
+      assertTrue(exception instanceof IllegalArgumentException);
+    }
+
+    try {
+      new PolynomialFunction(new double[] {});
+    } catch (final IllegalArgumentException exception) {
+      assertTrue(exception instanceof IllegalArgumentException);
+    }
   }
 
   /**
