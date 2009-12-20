@@ -20,14 +20,17 @@
 package jmona.gp.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import jmona.FitnessException;
+import jmona.InitializationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
+import jmona.gp.impl.example.ExampleTreeFactory;
 import jmona.gp.impl.example.IntegerNode;
 import jmona.test.Util;
 
@@ -93,23 +96,34 @@ public class GPFitnessFunctionTester {
   public void testSanityCheck() {
     try {
       this.function.sanityCheck();
-      fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final NullPointerException exception) {
       this.function.setEvaluationInputs(this.inputs);
     }
     
     try {
       this.function.sanityCheck();
-      fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final NullPointerException exception) {
       this.function.setEquivalenceTester(new EqualityTester<Integer>());
     }
     
     try {
       this.function.sanityCheck();
-      fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final NullPointerException exception) {
       this.function.setTarget(0);
+    }
+    
+    this.function.setTarget(null);
+    final ExampleTreeFactory factory = new ExampleTreeFactory();
+    try {
+      this.function.fitness(factory.createIndividual());
+      Util.shouldHaveThrownException();
+    } catch (final FitnessException exception) {
+      assertTrue(exception.getCause() instanceof NullPointerException);
+    } catch (InitializationException exception) {
+      Util.fail(exception);
     }
   }
 }
