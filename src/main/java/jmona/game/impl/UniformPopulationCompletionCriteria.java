@@ -20,20 +20,20 @@
 package jmona.game.impl;
 
 import jmona.EvolutionContext;
+import jmona.Individual;
 import jmona.Population;
-import jmona.game.Strategy;
 import jmona.impl.DefaultMaxGenerationCompletionCriteria;
 
 /**
  * Determines whether a Population in an EvolutionContext contains only
  * Individuals of one class.
  * 
- * @param <S>
- *          The type of Strategy in the evolution to be checked for completion.
+ * @param <T>
+ *          The type of Individual in the Population.
  * @author jfinkels
  */
-public class UniformPopulationCompletionCriteria<S extends Strategy> extends
-    DefaultMaxGenerationCompletionCriteria<S> {
+public class UniformPopulationCompletionCriteria<T extends Individual> extends
+    DefaultMaxGenerationCompletionCriteria<T> {
 
   /**
    * Determines whether the current Population in the specified EvolutionContext
@@ -46,7 +46,7 @@ public class UniformPopulationCompletionCriteria<S extends Strategy> extends
    * @see jmona.CompletionCriteria#isSatisfied(jmona.EvolutionContext)
    */
   @Override
-  public boolean isSatisfied(final EvolutionContext<S> context) {
+  public boolean isSatisfied(final EvolutionContext<T> context) {
 
     // if the maximum number of generations have passed, return true
     if (super.isSatisfied(context)) {
@@ -54,13 +54,13 @@ public class UniformPopulationCompletionCriteria<S extends Strategy> extends
     }
 
     // get the current population from the evolution context
-    final Population<S> population = context.currentPopulation();
+    final Population<T> population = context.currentPopulation();
 
     // get a class for comparison with classes of the rest of the population
-    final Class<S> someClass = (Class<S>) population.get(0).getClass();
+    final Class<T> someClass = (Class<T>) population.get(0).getClass();
 
     // iterate over every individual in the population
-    for (final S strategy : population) {
+    for (final T strategy : population) {
 
       // if any strategy is of a different class the population is not uniform
       if (!strategy.getClass().equals(someClass)) {
