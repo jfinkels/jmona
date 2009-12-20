@@ -22,6 +22,7 @@ package jmona.impl.selection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Vector;
 
 import jmona.Individual;
@@ -80,18 +81,32 @@ public class TournamentSelection<T extends Individual> implements
     // initialize a list of competitors for the tournament
     final List<T> competitors = new Vector<T>();
 
-    // fill the list of competitors with random Individuals (with replacement)
-    // TODO allow random without replacement
-    while (competitors.size() < this.tournamentSize) {
-      competitors.add(Util.randomFromSet(fitnesses.keySet()));
-    }
+    // if there are fewer individuals than the size of the tournament, add all
+    if (fitnesses.size() <= this.tournamentSize) {
+      competitors.addAll(fitnesses.keySet());
+    } else {
 
+      // get the set of individuals from which to choose competitors
+      final Set<T> possibleCompetitors = fitnesses.keySet();
+      
+      // while the number of competitors in the tournament has not yet met size
+      T chosenIndividual = null;
+      while (competitors.size() < this.tournamentSize) {
+
+        // TODO improve efficiency of this method
+        do {
+          chosenIndividual = Util.randomFromSet(possibleCompetitors);
+        } while (competitors.contains(chosenIndividual));
+
+        competitors.add(chosenIndividual);
+      }
+    }
     // sort the list of competitors in increasing order based on their
     // fitnesses, with the most fit individual at the end of the list
     Collections.sort(competitors, new FitnessComparator<T>(fitnesses));
 
     // choose a random double
-    final double choice = Util.RANDOM.nextDouble();
+    final double choice = Math.random();
 
     // the initial probability of choosing the top competitor
     double probability = this.selectionProbability;
