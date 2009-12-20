@@ -61,8 +61,6 @@ public class Util {
       tree.setRoot(newNode);
     } else {
 
-      // TODO got a NullPointerException here from a mutation
-
       // get the siblings of the existing Node
       final List<Node<V>> siblings = existingParent.children();
 
