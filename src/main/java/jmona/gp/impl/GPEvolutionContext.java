@@ -69,7 +69,7 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
    */
   // TODO documentation for this method
   @Override
-  public void stepGeneration() throws EvolutionException {
+  protected void executeGenerationStep() throws EvolutionException {
     // perform sanity check
     try {
       this.sanityCheck();
@@ -154,27 +154,16 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
       this.recalculateFitnesses();
 
     } catch (final CrossoverException exception) {
-
       throw new EvolutionException(
           "Failed to perform crossover on two Individuals.", exception);
-
     } catch (final FitnessException exception) {
-
       throw new EvolutionException(
           "Failed determining fitness of an Individual.", exception);
-
     } catch (final MutationException exception) {
-
       throw new EvolutionException("Failed mutating an Individual.", exception);
-
     } catch (final SelectionException exception) {
-
       throw new EvolutionException("Failed to select an Individual.", exception);
-
     }
-
-    // increment the generation number
-    this.incrementGeneration();
 
     LOG.debug("...complete.");
   }

@@ -80,16 +80,16 @@ public class GameEvolutionContext<S extends Strategy> extends
     this.game = newGame;
   }
 
-  /*
-   * (non-Javadoc)
-   * 
+  /**
    * A GameEvolution only requires a selection function; it doesn't use a
    * crossover function or a mutation function.
    * 
-   * @see jmona.EvolutionContext#stepGeneration()
+   * @throws EvolutionException
+   *           {@inheritDoc}
    */
   @Override
-  public void stepGeneration() throws EvolutionException {
+  // TODO documentation
+  protected void executeGenerationStep() throws EvolutionException {
     // perform a sanity check (i.e. make sure there are no null properties)
     try {
       this.sanityCheck();
@@ -161,10 +161,6 @@ public class GameEvolutionContext<S extends Strategy> extends
 
     // reset the current known fitnesses for the next generation
     this.currentFitnesses().clear();
-
-    // increment the generation number
-    this.incrementGeneration();
-
   }
 
 }

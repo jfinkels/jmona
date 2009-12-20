@@ -57,11 +57,10 @@ public class GAEvolutionContext<T extends Individual> extends
    * 
    * @throws EvolutionException
    *           {@inheritDoc}
-   * @see jmona.EvolutionContext#stepGeneration()
    */
   // TODO documentation for this method
   @Override
-  public void stepGeneration() throws EvolutionException {
+  public void executeGenerationStep() throws EvolutionException {
     // perform a sanity check (i.e. make sure there are no null properties)
     try {
       this.sanityCheck();
@@ -131,26 +130,15 @@ public class GAEvolutionContext<T extends Individual> extends
       this.recalculateFitnesses();
 
     } catch (final CrossoverException exception) {
-
       throw new EvolutionException(
           "Failed to perform crossover on two Individuals.", exception);
-
     } catch (final FitnessException exception) {
-
       throw new EvolutionException(
           "Failed determining fitness of an individual.", exception);
-
     } catch (final MutationException exception) {
-
       throw new EvolutionException("Failed mutating an individual.", exception);
-
     } catch (final SelectionException exception) {
-
       throw new EvolutionException("Failed selecting an Individual.", exception);
-
     }
-
-    // increment the generation number
-    this.incrementGeneration();
   }
 }

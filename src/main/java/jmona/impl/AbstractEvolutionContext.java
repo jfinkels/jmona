@@ -24,6 +24,7 @@ import java.util.Map;
 
 import jmona.CrossoverFunction;
 import jmona.EvolutionContext;
+import jmona.EvolutionException;
 import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.Individual;
@@ -142,6 +143,15 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   }
 
   /**
+   * Perform the steps necessary for selection, variation, and fitness
+   * calculation for this EvolutionContext.
+   * 
+   * @throws EvolutionException
+   *           If there is a problem during the evolution.
+   */
+  protected abstract void executeGenerationStep() throws EvolutionException;
+
+  /**
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
@@ -150,13 +160,6 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   @Override
   public synchronized FitnessFunction<T> fitnessFunction() {
     return this.fitnessFunction;
-  }
-
-  /**
-   * Increment the number of the current generation.
-   */
-  protected synchronized void incrementGeneration() {
-    this.generation++;
   }
 
   /**
@@ -318,5 +321,18 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   @Override
   public void setSelectionFunction(final SelectionFunction<T> function) {
     this.selectionFunction = function;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @throws EvolutionException
+   *           {@inheritDoc}
+   */
+  @Override
+  public void stepGeneration() throws EvolutionException {
+    this.executeGenerationStep();
+
+    this.generation += 1;
   }
 }

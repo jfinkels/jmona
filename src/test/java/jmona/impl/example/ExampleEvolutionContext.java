@@ -19,7 +19,6 @@
  */
 package jmona.impl.example;
 
-import jmona.EvolutionException;
 import jmona.Population;
 import jmona.impl.AbstractEvolutionContext;
 
@@ -44,15 +43,11 @@ public class ExampleEvolutionContext extends
   }
 
   /**
-   * Increments the current generation number.
-   * 
-   * @throws EvolutionException
-   *           Never throws this Exception.
-   * @see jmona.EvolutionContext#stepGeneration()
+   * Does nothing.
    */
   @Override
-  public void stepGeneration() throws EvolutionException {
-    this.incrementGeneration();
+  public void executeGenerationStep() {
+    // intentionally unimplemented
   }
 
 }

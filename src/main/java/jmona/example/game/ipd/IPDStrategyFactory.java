@@ -19,13 +19,11 @@
  */
 package jmona.example.game.ipd;
 
+import java.util.Set;
+
 import jmona.IndividualFactory;
-import jmona.example.game.ipd.strategy.CooperativeStrategy;
+import jmona.InitializationException;
 import jmona.example.game.ipd.strategy.IPDStrategy;
-import jmona.example.game.ipd.strategy.PavlovStrategy;
-import jmona.example.game.ipd.strategy.RandomStrategy;
-import jmona.example.game.ipd.strategy.RuthlessStrategy;
-import jmona.example.game.ipd.strategy.TitForTatStrategy;
 import jmona.impl.Util;
 
 /**
@@ -37,41 +35,43 @@ public class IPDStrategyFactory implements IndividualFactory<IPDStrategy> {
 
   /** The number of strategies from which to choose. */
   public static final int NUMBER_OF_STRATEGIES = 5;
+  /** The Set of Classes from which an IPDStrategy will be instantiated. */
+  private Set<Class<? extends IPDStrategy>> strategyClasses = null;
 
   /**
    * Create a Strategy chosen randomly from all IPDStrategy subclasses.
    * 
    * @return A Strategy chosen randomly from all IPDStrategy subclasses.
+   * @throws InitializationException
+   *           If a Strategy cannot be created given only its class.
    * @see jmona.IndividualFactory#createIndividual()
    */
   @Override
-  public IPDStrategy createIndividual() {
+  public IPDStrategy createIndividual() throws InitializationException {
 
-    IPDStrategy result = null;
+    final Class<? extends IPDStrategy> resultClass = Util
+        .randomFromSet(this.strategyClasses);
 
-    // TODO do this in a way so that its not hardcoded
-    final int choice = Util.RANDOM.nextInt(NUMBER_OF_STRATEGIES);
-
-    switch (choice) {
-    case 0:
-      result = new CooperativeStrategy();
-      break;
-    case 1:
-      result = new PavlovStrategy();
-      break;
-    case 2:
-      result = new TitForTatStrategy();
-      break;
-    case 3:
-      result = new RuthlessStrategy();
-      break;
-    case 4:
-    default:
-      result = new RandomStrategy();
-      break;
+    try {
+      return resultClass.newInstance();
+    } catch (final InstantiationException exception) {
+      throw new InitializationException("Failed to create a Strategy.",
+          exception);
+    } catch (final IllegalAccessException exception) {
+      throw new InitializationException("Failed to create a Strategy.",
+          exception);
     }
+  }
 
-    return result;
+  /**
+   * Set the Set of Classes from which an IPDStrategy will be instantiated.
+   * 
+   * @param newStrategyClasses
+   *          The Set of Classes from which an IPDStrategy will be instantiated.
+   */
+  public void setStrategyClasses(
+      final Set<Class<? extends IPDStrategy>> newStrategyClasses) {
+    this.strategyClasses = newStrategyClasses;
   }
 
 }

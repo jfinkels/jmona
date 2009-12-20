@@ -19,8 +19,22 @@
  */
 package jmona.example.game.ipd;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import jmona.InitializationException;
+import jmona.example.game.ipd.strategy.CooperativeStrategy;
 import jmona.example.game.ipd.strategy.IPDStrategy;
+import jmona.example.game.ipd.strategy.PavlovStrategy;
+import jmona.example.game.ipd.strategy.RandomStrategy;
+import jmona.example.game.ipd.strategy.RuthlessStrategy;
+import jmona.example.game.ipd.strategy.TitForTatStrategy;
+import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -31,6 +45,9 @@ import org.junit.Test;
  */
 public class IPDStrategyFactoryTester {
 
+  /** Number of tests to run. */
+  public static final int NUM_TESTS = 10000;
+
   /**
    * Test method for
    * {@link jmona.example.game.ipd.IPDStrategyFactory#createIndividual()}.
@@ -38,8 +55,47 @@ public class IPDStrategyFactoryTester {
   @Test
   public void testCreateIndividual() {
     final IPDStrategyFactory factory = new IPDStrategyFactory();
-    final IPDStrategy strategy = factory.createIndividual();
-    assertTrue(strategy instanceof IPDStrategy);
+    final Set<Class<? extends IPDStrategy>> newStrategyClasses = new HashSet<Class<? extends IPDStrategy>>();
+    newStrategyClasses.add(TitForTatStrategy.class);
+
+    factory.setStrategyClasses(newStrategyClasses);
+    IPDStrategy strategy = null;
+    try {
+      for (int i = 0; i < NUM_TESTS; ++i) {
+        strategy = factory.createIndividual();
+        assertTrue(strategy instanceof TitForTatStrategy);
+      }
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+
+    newStrategyClasses.add(PavlovStrategy.class);
+    newStrategyClasses.add(RuthlessStrategy.class);
+    newStrategyClasses.add(CooperativeStrategy.class);
+    newStrategyClasses.add(RandomStrategy.class);
+
+    final Map<Class<? extends IPDStrategy>, Integer> numSelections = new HashMap<Class<? extends IPDStrategy>, Integer>();
+
+    try {
+      for (int i = 0; i < NUM_TESTS; ++i) {
+        strategy = factory.createIndividual();
+        if (numSelections.containsKey(strategy.getClass())) {
+          numSelections.put(strategy.getClass(), numSelections.get(strategy
+              .getClass()) + 1);
+        } else {
+          numSelections.put(strategy.getClass(), 1);
+        }
+      }
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+
+    final int expectedSelections = NUM_TESTS / newStrategyClasses.size();
+    final double delta = expectedSelections * 0.10;
+
+    for (final Integer actualSelections : numSelections.values()) {
+      assertEquals(expectedSelections, actualSelections, delta);
+    }
   }
 
 }

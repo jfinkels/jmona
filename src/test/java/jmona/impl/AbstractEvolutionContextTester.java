@@ -187,6 +187,15 @@ public class AbstractEvolutionContextTester {
 
     assertEquals(1, this.context.currentGeneration());
 
+    try {
+      this.context.stepGeneration();
+    } catch (final EvolutionException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(2, this.context.currentGeneration());
+
+    
   }
 
   /**
@@ -206,18 +215,6 @@ public class AbstractEvolutionContextTester {
   public void testFitnessFunction() {
     assertNull(this.unsetContext.fitnessFunction());
     assertSame(this.fitnessFunction, this.context.fitnessFunction());
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.impl.AbstractEvolutionContext#incrementGeneration()}.
-   */
-  @Test
-  public void testIncrementGeneration() {
-    final int before = this.context.currentGeneration();
-    this.context.incrementGeneration();
-    final int after = this.context.currentGeneration();
-    assertEquals(1, after - before);
   }
 
   /**
