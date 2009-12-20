@@ -23,6 +23,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import jmona.game.impl.example.ExampleStrategy;
 
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,6 +34,9 @@ import org.junit.Test;
  */
 public class DefaultTwoPlayerGameResultTester {
 
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(DefaultTwoPlayerGameResultTester.class);
   /** The score for strategy 1. */
   public static final double SCORE1 = 2.0;
   /** The score for strategy 2. */
@@ -43,6 +47,7 @@ public class DefaultTwoPlayerGameResultTester {
   public static final ExampleStrategy STRATEGY2 = new ExampleStrategy();
   /** Zero. */
   public static final double ZERO_DELTA = 0.0;
+
   /** The GameResult under test. */
   private DefaultTwoPlayerGameResult<ExampleStrategy> gameResult = null;
 
@@ -110,6 +115,15 @@ public class DefaultTwoPlayerGameResultTester {
   }
 
   /**
+   * Test method for
+   * {@link jmona.game.impl.DefaultTwoPlayerGameResult#toString()} .
+   */
+  @Test
+  public void testToString() {
+    LOG.debug(this.gameResult.toString());
+  }
+
+  /**
    * Test method for {@link jmona.game.impl.DefaultTwoPlayerGameResult#winner()}
    * .
    */
@@ -117,5 +131,4 @@ public class DefaultTwoPlayerGameResultTester {
   public void testWinner() {
     assertSame(STRATEGY2, this.gameResult.winner());
   }
-
 }
