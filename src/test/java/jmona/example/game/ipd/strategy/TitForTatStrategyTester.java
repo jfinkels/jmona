@@ -21,7 +21,7 @@ package jmona.example.game.ipd.strategy;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertSame;
 import jmona.ImmutablePair;
 
 import org.junit.Test;
@@ -40,8 +40,15 @@ public class TitForTatStrategyTester {
   @Test
   public void testDeepCopy() {
     final TitForTatStrategy strategy = new TitForTatStrategy();
-    assertNotSame(strategy.deepCopy(), strategy);
-    assertTrue(strategy.deepCopy() instanceof TitForTatStrategy);
+
+    final ImmutablePair<Action, Action> pair = new ImmutablePair<Action, Action>(
+        Action.DEFECT, Action.COOPERATE);
+    strategy.addToMemory(pair);
+    
+    final TitForTatStrategy clone = strategy.deepCopy();
+    assertNotSame(clone, strategy);
+    assertEquals(1, clone.memory().size());
+    assertSame(pair, clone.memory().get(0));
   }
 
   /**

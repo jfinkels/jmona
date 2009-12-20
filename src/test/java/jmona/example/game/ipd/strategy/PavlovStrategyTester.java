@@ -21,6 +21,7 @@ package jmona.example.game.ipd.strategy;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import jmona.ImmutablePair;
 
@@ -49,9 +50,14 @@ public class PavlovStrategyTester {
    */
   @Test
   public void testDeepCopy() {
-    final PavlovStrategy clone = this.strategy.deepCopy();
-    assertNotSame(clone, this.strategy);
-    assertTrue(clone instanceof PavlovStrategy);
+    final ImmutablePair<Action, Action> pair = new ImmutablePair<Action, Action>(
+        Action.DEFECT, Action.COOPERATE);
+    strategy.addToMemory(pair);
+
+    final PavlovStrategy clone = strategy.deepCopy();
+    assertNotSame(clone, strategy);
+    assertEquals(1, clone.memory().size());
+    assertSame(pair, clone.memory().get(0));
   }
 
   /**
