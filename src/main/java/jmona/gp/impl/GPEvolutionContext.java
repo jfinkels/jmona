@@ -91,8 +91,6 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
     Tree<V> individual1 = null;
     Tree<V> individual2 = null;
 
-    assert this.currentFitnesses().size() == this.currentPopulation().size();
-
     LOG.debug("Creating next generation...");
 
     try {
