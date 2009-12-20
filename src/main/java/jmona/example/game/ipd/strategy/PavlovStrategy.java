@@ -39,13 +39,13 @@ public class PavlovStrategy extends IPDStrategy {
   @Override
   public PavlovStrategy deepCopy() {
     final PavlovStrategy result = new PavlovStrategy();
-    
+
     // copy the memory
     // TODO figure out if these are in the right order
     for (final ImmutablePair<Action, Action> actions : this.memory()) {
       result.addToMemory(actions);
     }
-    
+
     return result;
   }
 

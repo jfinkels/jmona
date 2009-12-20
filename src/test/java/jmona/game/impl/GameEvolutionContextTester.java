@@ -40,8 +40,12 @@ import org.junit.Test;
  */
 public class GameEvolutionContextTester {
 
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(GameEvolutionContextTester.class);
   /** The context under test. */
   private GameEvolutionContext<ExampleStrategy> context = null;
+
   /** The population in the EvolutionContext. */
   private Population<ExampleStrategy> population = null;
 
@@ -125,8 +129,4 @@ public class GameEvolutionContextTester {
     assertEquals(beforeSize, this.context.currentPopulation().size());
 
   }
-
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(GameEvolutionContextTester.class);
 }

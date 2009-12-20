@@ -63,13 +63,14 @@ public class GAEvolutionContextTester {
     // set the necessary functions on the context
     context.setCrossoverFunction(new ExampleCrossoverFunction());
     context.setMutationFunction(new ExampleMutationFunction());
-    context.setSelectionFunction(new FitnessProportionateSelection<ExampleIndividual>());
+    context
+        .setSelectionFunction(new FitnessProportionateSelection<ExampleIndividual>());
     try {
       context.setFitnessFunction(new ExampleFitnessFunction());
     } catch (final FitnessException exception) {
       Util.fail(exception);
     }
-    
+
     assertEquals(0, context.currentGeneration());
 
     assertEquals(2, context.currentPopulation().size());
@@ -86,7 +87,7 @@ public class GAEvolutionContextTester {
     assertEquals(1, context.currentGeneration());
 
     assertEquals(2, context.currentPopulation().size());
-    
+
     assertFalse(context.currentPopulation().contains(individual1));
     assertFalse(context.currentPopulation().contains(individual2));
   }

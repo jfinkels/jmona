@@ -29,7 +29,6 @@ import jmona.EvolutionContext;
 import jmona.EvolutionException;
 import jmona.ProcessingException;
 import jmona.example.ga.monalisa.MonaIndividual;
-import jmona.example.ga.monalisa.output.ImageOutputPostProcessor;
 import jmona.test.Util;
 
 import org.junit.Before;
@@ -126,7 +125,7 @@ public class ImageOutputPostProcessorTester extends
 
     final File outputFile = new File("target/generation4.png");
     assertTrue(!outputFile.exists() || outputFile.delete());
-    
+
     for (int i = 0; i < newPeriod - 1; ++i) {
       try {
         this.processor.process(this.evolutionContext);

@@ -19,8 +19,6 @@
  */
 package jmona.gp.impl;
 
-import org.apache.log4j.Logger;
-
 import jmona.CrossoverException;
 import jmona.EvolutionException;
 import jmona.FitnessException;
@@ -31,6 +29,8 @@ import jmona.gp.Tree;
 import jmona.impl.AbstractEvolutionContext;
 import jmona.impl.DefaultPopulation;
 import jmona.impl.Util;
+
+import org.apache.log4j.Logger;
 
 /**
  * A default EvolutionContext for a Genetic Programming evolution.

@@ -25,8 +25,8 @@ package jmona.example.game.ipd.strategy;
  * @author jfinkels
  */
 public enum Action {
-  /** A defect action. */
-  DEFECT,
   /** A cooperate action. */
-  COOPERATE
+  COOPERATE,
+  /** A defect action. */
+  DEFECT
 }

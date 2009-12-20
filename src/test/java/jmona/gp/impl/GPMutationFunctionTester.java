@@ -52,36 +52,6 @@ public class GPMutationFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.gp.impl.GPMutationFunction#setTreeFactory(jmona.gp.TreeFactory)}
-   * .
-   */
-  @Test
-  public void testSetTreeFactory() {
-    final ExampleTreeFactory factory = new ExampleTreeFactory();
-
-    try {
-      factory.setMaxDepth(0);
-
-      this.function.setTreeFactory(factory);
-
-      final ExampleTerminalNode root = new ExampleTerminalNode();
-      final Tree<Integer> tree = new DefaultTree<Integer>(root);
-
-      this.function.mutate(tree);
-
-      assertNotSame(root, tree.root());
-      assertTrue(tree.root() instanceof ExampleTerminalNode);
-      assertNotSame(root.evaluate(), tree.root().evaluate());
-
-    } catch (final EvaluationException exception) {
-      Util.fail(exception);
-    } catch (final MutationException exception) {
-      Util.fail(exception);
-    }
-  }
-
-  /**
-   * Test method for
    * {@link jmona.gp.impl.GPMutationFunction#mutate(jmona.gp.Tree)}.
    */
   @Test
@@ -123,6 +93,36 @@ public class GPMutationFunctionTester {
       assertNotSame(tree.root(), root);
     }
 
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.gp.impl.GPMutationFunction#setTreeFactory(jmona.gp.TreeFactory)}
+   * .
+   */
+  @Test
+  public void testSetTreeFactory() {
+    final ExampleTreeFactory factory = new ExampleTreeFactory();
+
+    try {
+      factory.setMaxDepth(0);
+
+      this.function.setTreeFactory(factory);
+
+      final ExampleTerminalNode root = new ExampleTerminalNode();
+      final Tree<Integer> tree = new DefaultTree<Integer>(root);
+
+      this.function.mutate(tree);
+
+      assertNotSame(root, tree.root());
+      assertTrue(tree.root() instanceof ExampleTerminalNode);
+      assertNotSame(root.evaluate(), tree.root().evaluate());
+
+    } catch (final EvaluationException exception) {
+      Util.fail(exception);
+    } catch (final MutationException exception) {
+      Util.fail(exception);
+    }
   }
 
 }

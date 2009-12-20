@@ -91,47 +91,6 @@ public class MonaFitnessFunction implements FitnessFunction<MonaIndividual> {
   private int[] targetPixels = null;
 
   /**
-   * Set the target image for comparison in the {@link #fitness(MonaIndividual)}
-   * method.
-   * 
-   * @param targetImage
-   *          The new target image for comparison in the
-   *          {@link #fitness(MonaIndividual)} method.
-   * @throws InterruptedException
-   *           If there is a problem grabbing the pixel values from the target
-   *           image.
-   */
-  public void setTargetImage(final BufferedImage targetImage)
-      throws InterruptedException {
-    // get the width and height of the image
-    this.imageWidth = targetImage.getWidth();
-    this.imageHeight = targetImage.getHeight();
-
-    // TODO must image type be known to calculate pixel distances?
-    // if targetImage.getType() == BufferedImage.TYPE_INT_ARGB
-    // else if targetImage.getType() == BufferedImage.TYPE_INT_ARGB_PRE
-    // TODO getting TYPE_CUSTOM from images i created using GIMP
-
-    // instantiate a new int array of the same size as the target image
-    // Note: this can potentially be large, may require increasing heap size
-    this.targetPixels = new int[this.imageWidth * this.imageHeight];
-
-    // parameters for the pixelgrabber
-    final int startX = 0;
-    final int startY = 0;
-    final int arrayOffset = 0;
-    final int scanlineWidth = this.imageWidth;
-
-    // instantiate a pixelgrabber
-    final PixelGrabber pixelGrabber = new PixelGrabber(targetImage, startX,
-        startY, this.imageWidth, this.imageHeight, this.targetPixels,
-        arrayOffset, scanlineWidth);
-
-    // read the pixels from the image into the int array
-    pixelGrabber.grabPixels();
-  }
-
-  /**
    * Determine the total distance between the image represented by the gene of
    * the specified individual and the target image.
    * 
@@ -208,7 +167,48 @@ public class MonaFitnessFunction implements FitnessFunction<MonaIndividual> {
     } else {
       result = 1 / totalDistance;
     }
-    
+
     return result;
+  }
+
+  /**
+   * Set the target image for comparison in the {@link #fitness(MonaIndividual)}
+   * method.
+   * 
+   * @param targetImage
+   *          The new target image for comparison in the
+   *          {@link #fitness(MonaIndividual)} method.
+   * @throws InterruptedException
+   *           If there is a problem grabbing the pixel values from the target
+   *           image.
+   */
+  public void setTargetImage(final BufferedImage targetImage)
+      throws InterruptedException {
+    // get the width and height of the image
+    this.imageWidth = targetImage.getWidth();
+    this.imageHeight = targetImage.getHeight();
+
+    // TODO must image type be known to calculate pixel distances?
+    // if targetImage.getType() == BufferedImage.TYPE_INT_ARGB
+    // else if targetImage.getType() == BufferedImage.TYPE_INT_ARGB_PRE
+    // TODO getting TYPE_CUSTOM from images i created using GIMP
+
+    // instantiate a new int array of the same size as the target image
+    // Note: this can potentially be large, may require increasing heap size
+    this.targetPixels = new int[this.imageWidth * this.imageHeight];
+
+    // parameters for the pixelgrabber
+    final int startX = 0;
+    final int startY = 0;
+    final int arrayOffset = 0;
+    final int scanlineWidth = this.imageWidth;
+
+    // instantiate a pixelgrabber
+    final PixelGrabber pixelGrabber = new PixelGrabber(targetImage, startX,
+        startY, this.imageWidth, this.imageHeight, this.targetPixels,
+        arrayOffset, scanlineWidth);
+
+    // read the pixels from the image into the int array
+    pixelGrabber.grabPixels();
   }
 }

@@ -43,12 +43,12 @@ public class DefaultMaxFitnessCompletionConditionTester {
 
   /** The completion criteria under test. */
   private DefaultMaxFitnessCompletionCondition<ExampleIndividual> completionCriteria = null;
+  /** An EvolutionContext with no functions set. */
+  private EvolutionContext<ExampleIndividual> emptyContext = null;
   /** The evolution context on which to test the completion criteria. */
   private EvolutionContext<ExampleIndividual> evolutionContext = null;
   /** The population in the evolution context. */
   private Population<ExampleIndividual> population = null;
-  /** An EvolutionContext with no functions set. */
-  private EvolutionContext<ExampleIndividual> emptyContext = null;
 
   /** Establish a fixture for tests in this class. */
   @Before

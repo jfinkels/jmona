@@ -41,17 +41,6 @@ public abstract class AbstractTerminalNode<V> extends AbstractNode<V> implements
   public static final int ARITY = 0;
 
   /**
-   * Always return {@code null}; a terminal node has no children.
-   * 
-   * @return Always returns {@code null}.
-   * @see jmona.gp.Node#children()
-   */
-  @Override
-  public List<Node<V>> children() {
-    return null;
-  }
-
-  /**
    * Always returns {@value #ARITY}; a terminal node has no children.
    * 
    * @return 0
@@ -60,6 +49,17 @@ public abstract class AbstractTerminalNode<V> extends AbstractNode<V> implements
   @Override
   public int arity() {
     return ARITY;
+  }
+
+  /**
+   * Always return {@code null}; a terminal node has no children.
+   * 
+   * @return Always returns {@code null}.
+   * @see jmona.gp.Node#children()
+   */
+  @Override
+  public List<Node<V>> children() {
+    return null;
   }
 
 }

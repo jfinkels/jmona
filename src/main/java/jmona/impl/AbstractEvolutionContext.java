@@ -256,6 +256,7 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   public void setCrossoverProbability(final double newCrossoverProbability) {
     this.crossoverProbability = newCrossoverProbability;
   }
+
   /**
    * Set the current population.
    * 

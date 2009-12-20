@@ -57,7 +57,7 @@ public class MainTester {
   public static final String CONFIG_TOO_FEW_EC = "--config=src/test/resources/jmona/driver/TooFewEC-context.xml";
   /**
    * A Spring XML configuration file containing too many EvolutionContext and
-  CompletionConditiontion beans.
+   * CompletionConditiontion beans.
    */
   public static final String CONFIG_TOO_MANY_BOTH = "--config=src/test/resources/jmona/driver/TooManyBoth-context.xml";
   /**
@@ -137,7 +137,8 @@ public class MainTester {
 
   /**
    * Test method for {@link jmona.driver.Main#main(java.lang.String[])} when the
-   * specified configuration file does has too many EvolutionContext and/orCompletionConditionndition beans.
+   * specified configuration file does has too many EvolutionContext
+   * and/orCompletionConditionndition beans.
    */
   @Test
   public void testTooManyBeans() {

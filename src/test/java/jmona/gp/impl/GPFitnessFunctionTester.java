@@ -99,21 +99,21 @@ public class GPFitnessFunctionTester {
     } catch (final NullPointerException exception) {
       this.function.setEvaluationInputs(this.inputs);
     }
-    
+
     try {
       this.function.sanityCheck();
       Util.shouldHaveThrownException();
     } catch (final NullPointerException exception) {
       this.function.setEquivalenceTester(new EqualityTester<Integer>());
     }
-    
+
     try {
       this.function.sanityCheck();
       Util.shouldHaveThrownException();
     } catch (final NullPointerException exception) {
       this.function.setTarget(0);
     }
-    
+
     this.function.setTarget(null);
     final ExampleTreeFactory factory = new ExampleTreeFactory();
     try {

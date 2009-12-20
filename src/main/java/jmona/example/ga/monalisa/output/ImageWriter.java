@@ -59,14 +59,14 @@ public class ImageWriter {
     // create an image on which to draw the polygons from the individual
     final BufferedImage result = new BufferedImage(width, height,
         BufferedImage.TYPE_INT_ARGB_PRE);
-    
+
     // get the graphics object for this image
     final Graphics2D graphics = result.createGraphics();
 
     // draw the black background
     graphics.setColor(Color.BLACK);
     graphics.fill(new Rectangle2D.Double(0, 0, width, height));
-    
+
     // draw and fill the polygons
     for (final Entry<Polygon, Color> entry : individual.gene().entrySet()) {
       graphics.setColor(entry.getValue());

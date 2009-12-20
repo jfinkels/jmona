@@ -33,8 +33,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import jmona.FitnessException;
-import jmona.example.ga.monalisa.MonaFitnessFunction;
-import jmona.example.ga.monalisa.MonaIndividual;
 import jmona.test.Util;
 
 import org.junit.Before;

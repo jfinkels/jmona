@@ -39,20 +39,15 @@ public class TournamentSelection<T extends Individual> implements
     SelectionFunction<T> {
 
   /**
+   * The default probability of selecting the top competitor in the tournament.
+   */
+  public static final double DEFAULT_SELECTION_PROBABILITY = 0.9;
+  /**
    * The default number of Individuals to be chosen at random to compete in the
    * tournament.
    */
   public static final int DEFAULT_TOURNAMENT_SIZE = 10;
-  /**
-   * The number of Individuals to be chosen at random to compete in the
-   * tournament.
-   */
-  private int tournamentSize = DEFAULT_TOURNAMENT_SIZE;
 
-  /**
-   * The default probability of selecting the top competitor in the tournament.
-   */
-  public static final double DEFAULT_SELECTION_PROBABILITY = 0.9;
   /**
    * The probability of selecting the top competitor in the tournament.
    * 
@@ -63,18 +58,11 @@ public class TournamentSelection<T extends Individual> implements
    */
   // TODO is that math correct?
   private double selectionProbability = DEFAULT_SELECTION_PROBABILITY;
-
   /**
-   * Set the number of Individuals to be chosen at random to compete in the
+   * The number of Individuals to be chosen at random to compete in the
    * tournament.
-   * 
-   * @param newTournamentSize
-   *          The number of Individuals to be chosen at random to compete in the
-   *          tournament.
    */
-  public void setTournamentSize(final int newTournamentSize) {
-    this.tournamentSize = newTournamentSize;
-  }
+  private int tournamentSize = DEFAULT_TOURNAMENT_SIZE;
 
   /**
    * 
@@ -125,6 +113,18 @@ public class TournamentSelection<T extends Individual> implements
     chosenCompetitor = Math.max(0, chosenCompetitor);
 
     return competitors.get(chosenCompetitor);
+  }
+
+  /**
+   * Set the number of Individuals to be chosen at random to compete in the
+   * tournament.
+   * 
+   * @param newTournamentSize
+   *          The number of Individuals to be chosen at random to compete in the
+   *          tournament.
+   */
+  public void setTournamentSize(final int newTournamentSize) {
+    this.tournamentSize = newTournamentSize;
   }
 
 }

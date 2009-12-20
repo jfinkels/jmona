@@ -22,7 +22,7 @@ package jmona;
 /**
  * This Exception is thrown when there is a problem during selection of an
  * Individual based on its fitness.
- *
+ * 
  * @see jmona.SelectionFunction#select(java.util.Map)
  * @author jfinkels
  */
@@ -50,16 +50,6 @@ public class SelectionException extends Exception {
   }
 
   /**
-   * Instantiate this Exception with the specified cause.
-   * 
-   * @param cause
-   *          The cause of this Exception.
-   */
-  public SelectionException(final Throwable cause) {
-    super(cause);
-  }
-
-  /**
    * Instantiate this Exception with the specified human-readable message and
    * the specified cause.
    * 
@@ -70,6 +60,16 @@ public class SelectionException extends Exception {
    */
   public SelectionException(final String message, final Throwable cause) {
     super(message, cause);
+  }
+
+  /**
+   * Instantiate this Exception with the specified cause.
+   * 
+   * @param cause
+   *          The cause of this Exception.
+   */
+  public SelectionException(final Throwable cause) {
+    super(cause);
   }
 
 }

@@ -22,8 +22,6 @@ package jmona.example.ga.ones;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import jmona.InitializationException;
-import jmona.example.ga.ones.OnesIndividual;
-import jmona.example.ga.ones.OnesIndividualFactory;
 import jmona.test.Util;
 
 import org.junit.Before;

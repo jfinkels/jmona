@@ -51,6 +51,17 @@ public class TernaryNode<V> extends AbstractFunctionNode<V> {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
+   * @see jmona.gp.Node#arity()
+   */
+  @Override
+  public int arity() {
+    return ARITY;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
    * @see jmona.gp.Node#deepCopy()
    */
   @Override
@@ -85,17 +96,6 @@ public class TernaryNode<V> extends AbstractFunctionNode<V> {
   public V evaluate() throws EvaluationException {
     return this.operation.operate(this.left().evaluate(), this.middle()
         .evaluate(), this.right().evaluate());
-  }
-
-  /**
-   * {@inheritDoc}
-   * 
-   * @return {@inheritDoc}
-   * @see jmona.gp.Node#arity()
-   */
-  @Override
-  public int arity() {
-    return ARITY;
   }
 
   /**

@@ -21,7 +21,6 @@ package jmona.example.gp.calc.functions;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import jmona.example.gp.calc.functions.ConstantFunction;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -44,12 +43,13 @@ public class ConstantFunctionTester {
   public static final double ZERO_DELTA = 0.0;
   /** The constant function under test in this class. */
   private ConstantFunction<Double, Double> function = null;
-  
+
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
     this.function = new ConstantFunction<Double, Double>(CONSTANT_VALUE);
   }
+
   /**
    * Test method for
    * {@link jmona.example.gp.calc.functions.ConstantFunction#execute(java.lang.Object)}

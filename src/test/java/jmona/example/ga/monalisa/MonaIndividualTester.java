@@ -27,8 +27,6 @@ import static org.junit.Assert.assertTrue;
 import java.awt.Color;
 import java.awt.Polygon;
 
-import jmona.example.ga.monalisa.MonaIndividual;
-
 import org.junit.Test;
 
 /**
@@ -44,25 +42,25 @@ public class MonaIndividualTester {
   @Test
   public void testCopy() {
     final MonaIndividual original = new MonaIndividual();
-    
+
     final Polygon polygon = new Polygon();
-    final Color color = new Color(0); 
-    
+    final Color color = new Color(0);
+
     original.gene().put(polygon, color);
 
     final MonaIndividual clone = original.deepCopy();
 
     assertNotSame(original, clone);
     assertNotSame(original.gene(), clone.gene());
-    
+
     assertTrue(original.gene().containsKey(polygon));
     assertTrue(original.gene().containsValue(color));
-    
+
     assertEquals(original.gene().size(), clone.gene().size());
-    
+
     assertFalse(clone.gene().containsKey(polygon));
     assertTrue(clone.gene().containsValue(color));
-    
+
   }
 
 }

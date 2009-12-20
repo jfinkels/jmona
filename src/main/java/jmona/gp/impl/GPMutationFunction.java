@@ -39,17 +39,6 @@ public class GPMutationFunction<V> implements MutationFunction<Tree<V>> {
   private TreeFactory<V> treeFactory = null;
 
   /**
-   * Set the TreeFactory which will be used by the {@link #mutate(Tree)} method.
-   * 
-   * @param newTreeFactory
-   *          The TreeFactory which will be used by the {@code #mutate(Tree)}
-   *          method.
-   */
-  public void setTreeFactory(final TreeFactory<V> newTreeFactory) {
-    this.treeFactory = newTreeFactory;
-  }
-
-  /**
    * Replace a random Node from the specified Tree with a randomly generated
    * subtree.
    * 
@@ -65,7 +54,7 @@ public class GPMutationFunction<V> implements MutationFunction<Tree<V>> {
     if (this.treeFactory == null) {
       throw new MutationException("TreeFactory has not been set.");
     }
-    
+
     try {
       final Tree<V> newTree = this.treeFactory.createIndividual();
       Util.replaceNode(individual, individual.randomNode(), newTree.root());
@@ -73,6 +62,17 @@ public class GPMutationFunction<V> implements MutationFunction<Tree<V>> {
       throw new MutationException("Failed to generate a random subtree.",
           exception);
     }
+  }
+
+  /**
+   * Set the TreeFactory which will be used by the {@link #mutate(Tree)} method.
+   * 
+   * @param newTreeFactory
+   *          The TreeFactory which will be used by the {@code #mutate(Tree)}
+   *          method.
+   */
+  public void setTreeFactory(final TreeFactory<V> newTreeFactory) {
+    this.treeFactory = newTreeFactory;
   }
 
 }

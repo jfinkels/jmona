@@ -50,6 +50,17 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
   /**
    * {@inheritDoc}
    * 
+   * @return {@inheritDoc}
+   * @see jmona.gp.Node#arity()
+   */
+  @Override
+  public int arity() {
+    return ARITY;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
    * This method handles setting the new parent on the copied child Node
    * objects, and adding those copied child Node objects to the copy of this
    * Node.
@@ -90,17 +101,6 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
   public V evaluate() throws EvaluationException {
     return this.operation.operate(this.left().evaluate(), this.right()
         .evaluate());
-  }
-
-  /**
-   * {@inheritDoc}
-   * 
-   * @return {@inheritDoc}
-   * @see jmona.gp.Node#arity()
-   */
-  @Override
-  public int arity() {
-    return ARITY;
   }
 
   /**

@@ -20,8 +20,6 @@
 package jmona.example.gp.calc.nodes;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.gp.calc.nodes.MultiplicationNode;
-import jmona.example.gp.calc.nodes.NumberNode;
 import jmona.gp.EvaluationException;
 import jmona.test.Util;
 
@@ -36,13 +34,25 @@ import org.junit.Test;
 public class MultiplicationNodeTester {
   /** The value by which to increment the input to the function. */
   public static final double INCREMENT = 0.1;
+  /** The value of the left Node. */
+  public static final double LEFT_VALUE = 1.0;
   /** The maximum value of the input to the function. */
   public static final double MAX_VALUE = 100.0;
   /** The minimum value of the input to the function. */
   public static final double MIN_VALUE = 0.0;
+
+  /** The value of the right Node. */
+  public static final double RIGHT_VALUE = 2.0;
+
   /** Zero. */
   public static final double ZERO_DELTA = 0.0;
+  /** The left child Node. */
+  private NumberNode leftChild = null;
 
+  /** The Node under test. */
+  private MultiplicationNode node = null;
+  /** The right child Node. */
+  private NumberNode rightChild = null;
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
@@ -55,18 +65,6 @@ public class MultiplicationNodeTester {
     this.leftChild.setParent(this.node);
     this.rightChild.setParent(this.node);
   }
-
-  /** The value of the left Node. */
-  public static final double LEFT_VALUE = 1.0;
-  /** The value of the right Node. */
-  public static final double RIGHT_VALUE = 2.0;
-
-  /** The Node under test. */
-  private MultiplicationNode node = null;
-  /** The left child Node. */
-  private NumberNode leftChild = null;
-  /** The right child Node. */
-  private NumberNode rightChild = null;
 
   /**
    * Test method for

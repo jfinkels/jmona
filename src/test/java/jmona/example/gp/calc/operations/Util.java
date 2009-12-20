@@ -39,7 +39,7 @@ public class Util {
   /** The ConstantFunction which always returns 0.0. */
   public static final ConstantFunction<Double, Double> ZERO_FUNCTION = new ConstantFunction<Double, Double>(
       0.0);
-  
+
   /** Instantiate disallowed. */
   protected Util() {
     // intentionally unimplemented

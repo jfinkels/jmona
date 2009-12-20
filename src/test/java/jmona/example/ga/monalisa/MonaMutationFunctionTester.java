@@ -28,8 +28,6 @@ import java.awt.Color;
 import java.awt.Polygon;
 
 import jmona.MutationException;
-import jmona.example.ga.monalisa.MonaIndividual;
-import jmona.example.ga.monalisa.MonaMutationFunction;
 import jmona.test.Util;
 
 import org.junit.Before;
@@ -99,7 +97,8 @@ public class MonaMutationFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.ga.monalisa.MonaMutationFunction#mutate(java.awt.Color)}.
+   * {@link jmona.example.ga.monalisa.MonaMutationFunction#mutate(java.awt.Color)}
+   * .
    */
   @Test
   public void testMutateColor() {
@@ -141,6 +140,7 @@ public class MonaMutationFunctionTester {
     }
     assertTrue(different);
   }
+
   /**
    * Test method for
    * {@link jmona.example.ga.monalisa.MonaMutationFunction#mutate(java.awt.Polygon)}

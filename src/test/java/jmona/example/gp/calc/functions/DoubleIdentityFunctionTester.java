@@ -20,8 +20,6 @@
 package jmona.example.gp.calc.functions;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.gp.calc.functions.DoubleIdentityFunction;
-import jmona.example.gp.calc.functions.IdentityFunction;
 
 import org.junit.Test;
 

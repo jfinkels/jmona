@@ -26,8 +26,6 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.MutationException;
-import jmona.example.ga.ones.OnesIndividual;
-import jmona.example.ga.ones.OnesMutationFunction;
 
 import org.junit.Test;
 

@@ -19,9 +19,7 @@
  */
 package jmona.example.ga.ones;
 
-import static org.junit.Assert.*;
-import jmona.example.ga.ones.OnesFitnessFunction;
-import jmona.example.ga.ones.OnesIndividual;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -41,7 +39,7 @@ public class OnesFitnessFunctionTester {
   public void testFitness() {
     final OnesFitnessFunction function = new OnesFitnessFunction();
     OnesIndividual individual = new OnesIndividual(new short[] { 0, 1, 0, 1 });
-    
+
     final double epsilon = 0;
     assertEquals(2, function.fitness(individual), epsilon);
 

@@ -21,8 +21,6 @@ package jmona.example.ga.ones;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import jmona.example.ga.ones.OnesCrossoverFunction;
-import jmona.example.ga.ones.OnesIndividual;
 
 import org.junit.Test;
 

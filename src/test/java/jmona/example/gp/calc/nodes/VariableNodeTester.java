@@ -20,7 +20,6 @@
 package jmona.example.gp.calc.nodes;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.gp.calc.nodes.VariableNode;
 import jmona.gp.EvaluationException;
 import jmona.test.Util;
 

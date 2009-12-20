@@ -19,7 +19,8 @@
  */
 package jmona.example.game.ipd.strategy;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
 

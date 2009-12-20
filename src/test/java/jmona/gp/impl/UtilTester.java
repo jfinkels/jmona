@@ -77,67 +77,6 @@ public class UtilTester {
     this.rightTree = new DefaultTree<Integer>(this.rightTreeRoot);
   }
 
-  /**
-   * Test method for
-   * {@link jmona.gp.impl.Util#replaceNode(jmona.gp.Tree, jmona.gp.Node, jmona.gp.Node)}
-   * .
-   */
-  @Test
-  public void testReplaceNode() {
-    Util.replaceNode(this.leftTree, this.leftTreeRoot, this.rightTreeRoot);
-    assertSame(this.rightTreeRoot, this.leftTree.root());
-    assertSame(this.rightTreeLeftChild, this.leftTree.root().children().get(0));
-    assertSame(this.rightTreeRightChild, this.leftTree.root().children().get(1));
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.gp.impl.Util#replaceNode(jmona.gp.Tree, jmona.gp.Node, jmona.gp.Node)}
-   * .
-   */
-  @Test
-  public void testReplaceNode2() {
-    Util.replaceNode(this.leftTree, this.leftTreeLeftChild, this.rightTreeRoot);
-    assertSame(this.leftTreeRoot, this.leftTree.root());
-    assertSame(this.rightTreeRoot, this.leftTree.root().children().get(0));
-    assertSame(this.leftTreeRightChild, this.leftTree.root().children().get(1));
-    assertSame(this.rightTreeLeftChild, this.leftTree.root().children().get(0)
-        .children().get(0));
-
-    assertSame(this.rightTreeRightChild, this.leftTree.root().children().get(0)
-        .children().get(1));
-
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.gp.impl.Util#replaceNode(jmona.gp.Tree, jmona.gp.Node, jmona.gp.Node)}
-   * .
-   */
-  @Test
-  public void testReplaceNode3() {
-    Util.replaceNode(this.leftTree, this.leftTreeLeftChild,
-        this.rightTreeRightChild);
-    assertSame(this.leftTreeRoot, this.leftTree.root());
-    assertSame(this.rightTreeRightChild, this.leftTree.root().children().get(0));
-    assertSame(this.leftTreeRightChild, this.leftTree.root().children().get(1));
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.gp.impl.Util#swapNodes(jmona.gp.Tree, jmona.gp.Node, jmona.gp.Tree, jmona.gp.Node)}
-   * .
-   */
-  @Test
-  public void testSwapNodes() {
-    Util.swapNodes(this.leftTree, this.leftTreeRoot, this.rightTree,
-        this.rightTreeRoot);
-    assertSame(this.rightTreeRoot, this.leftTree.root());
-    assertSame(this.leftTreeRoot, this.rightTree.root());
-    assertNull(this.leftTree.root().parent());
-    assertNull(this.rightTree.root().parent());
-  }
-
   /** Test for performing multiple swaps on the same Trees. */
   @Test
   public void testMultipleSwaps() {
@@ -213,6 +152,67 @@ public class UtilTester {
 
     assertNull(this.rightTree.root().parent());
     assertNull(this.leftTree.root().parent());
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.gp.impl.Util#replaceNode(jmona.gp.Tree, jmona.gp.Node, jmona.gp.Node)}
+   * .
+   */
+  @Test
+  public void testReplaceNode() {
+    Util.replaceNode(this.leftTree, this.leftTreeRoot, this.rightTreeRoot);
+    assertSame(this.rightTreeRoot, this.leftTree.root());
+    assertSame(this.rightTreeLeftChild, this.leftTree.root().children().get(0));
+    assertSame(this.rightTreeRightChild, this.leftTree.root().children().get(1));
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.gp.impl.Util#replaceNode(jmona.gp.Tree, jmona.gp.Node, jmona.gp.Node)}
+   * .
+   */
+  @Test
+  public void testReplaceNode2() {
+    Util.replaceNode(this.leftTree, this.leftTreeLeftChild, this.rightTreeRoot);
+    assertSame(this.leftTreeRoot, this.leftTree.root());
+    assertSame(this.rightTreeRoot, this.leftTree.root().children().get(0));
+    assertSame(this.leftTreeRightChild, this.leftTree.root().children().get(1));
+    assertSame(this.rightTreeLeftChild, this.leftTree.root().children().get(0)
+        .children().get(0));
+
+    assertSame(this.rightTreeRightChild, this.leftTree.root().children().get(0)
+        .children().get(1));
+
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.gp.impl.Util#replaceNode(jmona.gp.Tree, jmona.gp.Node, jmona.gp.Node)}
+   * .
+   */
+  @Test
+  public void testReplaceNode3() {
+    Util.replaceNode(this.leftTree, this.leftTreeLeftChild,
+        this.rightTreeRightChild);
+    assertSame(this.leftTreeRoot, this.leftTree.root());
+    assertSame(this.rightTreeRightChild, this.leftTree.root().children().get(0));
+    assertSame(this.leftTreeRightChild, this.leftTree.root().children().get(1));
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.gp.impl.Util#swapNodes(jmona.gp.Tree, jmona.gp.Node, jmona.gp.Tree, jmona.gp.Node)}
+   * .
+   */
+  @Test
+  public void testSwapNodes() {
+    Util.swapNodes(this.leftTree, this.leftTreeRoot, this.rightTree,
+        this.rightTreeRoot);
+    assertSame(this.rightTreeRoot, this.leftTree.root());
+    assertSame(this.leftTreeRoot, this.rightTree.root());
+    assertNull(this.leftTree.root().parent());
+    assertNull(this.rightTree.root().parent());
   }
 
 }

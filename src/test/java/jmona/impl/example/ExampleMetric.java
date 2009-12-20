@@ -26,11 +26,14 @@ import jmona.Metric;
  */
 public class ExampleMetric implements Metric<ExampleIndividual> {
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see jmona.Metric#measure(java.lang.Object, java.lang.Object)
    */
   @Override
-  public double measure(final ExampleIndividual element1, final ExampleIndividual element2) {
+  public double measure(final ExampleIndividual element1,
+      final ExampleIndividual element2) {
     return Math.abs(element1.fitness() - element2.fitness());
   }
 

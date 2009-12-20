@@ -104,73 +104,19 @@ public class IPDGame implements TwoPlayerGame<IPDStrategy> {
 
   /** The default number of iterations over which to play the game. */
   public static final int DEFAULT_ITERATIONS = 50;
-  /** The number of iterations over which to play the game. */
-  private int iterations = DEFAULT_ITERATIONS;
-
-  /**
-   * Set the number of iterations over which to play the game.
-   * 
-   * @param newIterations
-   *          The number of iterations over which to play the game.
-   */
-  public void setIterations(final int newIterations) {
-    this.iterations = newIterations;
-  }
-
-  public static final int DEFAULT_TEMPTATION = 5;
-  public static final int DEFAULT_SUCKERS_PAYOFF = 0;
   public static final int DEFAULT_PUNISHMENT = 1;
+
   public static final int DEFAULT_REWARD = 3;
 
-  private int temptationPayoff = DEFAULT_TEMPTATION;
-  private int suckersPayoff = DEFAULT_SUCKERS_PAYOFF;
+  public static final int DEFAULT_SUCKERS_PAYOFF = 0;
+  public static final int DEFAULT_TEMPTATION = 5;
+  /** The number of iterations over which to play the game. */
+  private int iterations = DEFAULT_ITERATIONS;
   private int punishmentForMutualDefection = DEFAULT_PUNISHMENT;
+
   private int rewardForMutualCooperation = DEFAULT_REWARD;
-
-  /**
-   * Set the reward for mutual cooperation, that is, the payoff for both
-   * strategies when both cooperate.
-   * 
-   * @param rewardPayoff
-   *          The payoff for both strategies when both cooperate.
-   */
-  public void setRewardForMutualCooperation(final int rewardPayoff) {
-    this.rewardForMutualCooperation = rewardPayoff;
-  }
-
-  /**
-   * Set the punishment for mutual defection, that is, the payoff for both
-   * strategies when both defect.
-   * 
-   * @param punishmentPayoff
-   *          The payoff for both strategies when both defect.
-   */
-  public void setPunishmentForMutualDefection(final int punishmentPayoff) {
-    this.punishmentForMutualDefection = punishmentPayoff;
-  }
-
-  /**
-   * Set the payoff for when a strategy cooperates and the adversary defects.
-   * 
-   * @param newSuckersPayoff
-   *          The payoff for when a strategy cooperates and the adversary
-   *          defects.
-   */
-  public void setSuckersPayoff(final int newSuckersPayoff) {
-    this.suckersPayoff = newSuckersPayoff;
-  }
-
-  /**
-   * Set the payoff for when a strategy defects and the adversary cooperates.
-   * 
-   * @param newTemptationPayoff
-   *          The payoff for when a strategy defects and the adversary
-   *          cooperates.
-   */
-  public void setTemptationToDefect(final int newTemptationPayoff) {
-    this.temptationPayoff = newTemptationPayoff;
-  }
-
+  private int suckersPayoff = DEFAULT_SUCKERS_PAYOFF;
+  private int temptationPayoff = DEFAULT_TEMPTATION;
   /**
    * 
    * @param strategy1
@@ -261,6 +207,60 @@ public class IPDGame implements TwoPlayerGame<IPDStrategy> {
     result.setWinner(winner);
 
     return result;
+  }
+
+  /**
+   * Set the number of iterations over which to play the game.
+   * 
+   * @param newIterations
+   *          The number of iterations over which to play the game.
+   */
+  public void setIterations(final int newIterations) {
+    this.iterations = newIterations;
+  }
+
+  /**
+   * Set the punishment for mutual defection, that is, the payoff for both
+   * strategies when both defect.
+   * 
+   * @param punishmentPayoff
+   *          The payoff for both strategies when both defect.
+   */
+  public void setPunishmentForMutualDefection(final int punishmentPayoff) {
+    this.punishmentForMutualDefection = punishmentPayoff;
+  }
+
+  /**
+   * Set the reward for mutual cooperation, that is, the payoff for both
+   * strategies when both cooperate.
+   * 
+   * @param rewardPayoff
+   *          The payoff for both strategies when both cooperate.
+   */
+  public void setRewardForMutualCooperation(final int rewardPayoff) {
+    this.rewardForMutualCooperation = rewardPayoff;
+  }
+
+  /**
+   * Set the payoff for when a strategy cooperates and the adversary defects.
+   * 
+   * @param newSuckersPayoff
+   *          The payoff for when a strategy cooperates and the adversary
+   *          defects.
+   */
+  public void setSuckersPayoff(final int newSuckersPayoff) {
+    this.suckersPayoff = newSuckersPayoff;
+  }
+
+  /**
+   * Set the payoff for when a strategy defects and the adversary cooperates.
+   * 
+   * @param newTemptationPayoff
+   *          The payoff for when a strategy defects and the adversary
+   *          cooperates.
+   */
+  public void setTemptationToDefect(final int newTemptationPayoff) {
+    this.temptationPayoff = newTemptationPayoff;
   }
 
 }

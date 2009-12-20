@@ -30,6 +30,13 @@ import java.util.List;
  */
 public interface Node<V> {
   /**
+   * Get the "arity" of this Node, that is, how many children it has.
+   * 
+   * @return The "arity" of this Node.
+   */
+  int arity();
+
+  /**
    * Get a List of the children of this Node. The size of this List must be
    * exactly equal to the "arity" of this Node.
    * 
@@ -54,13 +61,6 @@ public interface Node<V> {
    *           children).
    */
   V evaluate() throws EvaluationException;
-
-  /**
-   * Get the "arity" of this Node, that is, how many children it has.
-   * 
-   * @return The "arity" of this Node.
-   */
-  int arity();
 
   /**
    * Get the parent Node of this Node.

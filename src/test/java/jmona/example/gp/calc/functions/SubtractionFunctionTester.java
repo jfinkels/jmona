@@ -20,7 +20,6 @@
 package jmona.example.gp.calc.functions;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.gp.calc.functions.SubtractionFunction;
 import jmona.example.gp.calc.operations.Util;
 
 import org.junit.Test;

@@ -49,16 +49,6 @@ public class CompletionException extends Exception {
   }
 
   /**
-   * Instantiate this Exception with the specified cause.
-   * 
-   * @param cause
-   *          The cause of this Exception.
-   */
-  public CompletionException(final Throwable cause) {
-    super(cause);
-  }
-
-  /**
    * Instantiate this Exception with the specified human-readable message and
    * the specified cause.
    * 
@@ -69,6 +59,16 @@ public class CompletionException extends Exception {
    */
   public CompletionException(final String message, final Throwable cause) {
     super(message, cause);
+  }
+
+  /**
+   * Instantiate this Exception with the specified cause.
+   * 
+   * @param cause
+   *          The cause of this Exception.
+   */
+  public CompletionException(final Throwable cause) {
+    super(cause);
   }
 
 }

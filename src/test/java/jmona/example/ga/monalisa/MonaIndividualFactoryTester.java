@@ -26,9 +26,6 @@ import java.awt.Color;
 import java.awt.Polygon;
 import java.util.Map.Entry;
 
-import jmona.example.ga.monalisa.MonaIndividual;
-import jmona.example.ga.monalisa.MonaIndividualFactory;
-
 import org.junit.Before;
 import org.junit.Test;
 

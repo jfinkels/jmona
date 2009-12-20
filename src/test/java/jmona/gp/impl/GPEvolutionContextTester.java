@@ -121,21 +121,6 @@ public class GPEvolutionContextTester {
     }
   }
 
-  /**
-   * Test method for
-   * {@link jmona.gp.impl.GPEvolutionContext#GPEvolutionContext(jmona.Population)}
-   * .
-   */
-  @Test
-  public void testGPEvolutionContext() {
-    try {
-      new GPEvolutionContext<Integer>(new DefaultPopulation<Tree<Integer>>());
-      fail("Exception should have been thrown on the previous line.");
-    } catch (final IllegalArgumentException exception) {
-      assertTrue(exception instanceof IllegalArgumentException);
-    }
-  }
-
   /** Test for throwing exceptions. */
   @Test
   public void testExceptions() {
@@ -151,13 +136,28 @@ public class GPEvolutionContextTester {
     }
 
     this.context.setCrossoverFunction(null);
-    
+
     try {
       this.context.stepGeneration();
       Util.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
       assertTrue(exception.getCause() instanceof NullPointerException);
       assertNull(this.context.crossoverFunction());
+    }
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.gp.impl.GPEvolutionContext#GPEvolutionContext(jmona.Population)}
+   * .
+   */
+  @Test
+  public void testGPEvolutionContext() {
+    try {
+      new GPEvolutionContext<Integer>(new DefaultPopulation<Tree<Integer>>());
+      fail("Exception should have been thrown on the previous line.");
+    } catch (final IllegalArgumentException exception) {
+      assertTrue(exception instanceof IllegalArgumentException);
     }
   }
 

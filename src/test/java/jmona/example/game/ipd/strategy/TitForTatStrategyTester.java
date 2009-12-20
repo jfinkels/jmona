@@ -44,7 +44,7 @@ public class TitForTatStrategyTester {
     final ImmutablePair<Action, Action> pair = new ImmutablePair<Action, Action>(
         Action.DEFECT, Action.COOPERATE);
     strategy.addToMemory(pair);
-    
+
     final TitForTatStrategy clone = strategy.deepCopy();
     assertNotSame(clone, strategy);
     assertEquals(1, clone.memory().size());

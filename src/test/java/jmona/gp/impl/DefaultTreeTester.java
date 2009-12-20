@@ -114,7 +114,7 @@ public class DefaultTreeTester {
 
     // the copy should not refer to the same object as the original
     assertNotSame(copy, this.bigTree);
-    
+
     // get all the nodes
     final List<Node<Integer>> allCopyNodes = Util.allNodes(copy);
     final List<Node<Integer>> allOriginalNodes = Util.allNodes(bigTree);

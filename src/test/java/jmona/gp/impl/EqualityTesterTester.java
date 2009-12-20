@@ -43,14 +43,14 @@ public class EqualityTesterTester {
     final Object object1 = new Object();
     final Object object2 = new Object();
     final Object object3 = object1;
-    
+
     assertTrue(tester.areEquivalent(object1, object1, input));
     assertTrue(tester.areEquivalent(object2, object2, input));
     assertTrue(tester.areEquivalent(object3, object3, input));
-    
+
     assertTrue(tester.areEquivalent(object1, object3, input));
     assertTrue(tester.areEquivalent(object3, object1, input));
-    
+
     assertFalse(tester.areEquivalent(object1, object2, input));
     assertFalse(tester.areEquivalent(object3, object2, input));
     assertFalse(tester.areEquivalent(object2, object1, input));

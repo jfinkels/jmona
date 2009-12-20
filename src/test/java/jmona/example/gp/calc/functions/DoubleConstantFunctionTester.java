@@ -19,8 +19,7 @@
  */
 package jmona.example.gp.calc.functions;
 
-import static org.junit.Assert.*;
-import jmona.example.gp.calc.functions.DoubleConstantFunction;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 

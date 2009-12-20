@@ -21,7 +21,6 @@ package jmona.example.gp.calc;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import jmona.example.gp.calc.FunctionEquivalenceTester;
 import jmona.example.gp.calc.functions.SingleInputFunction;
 import jmona.example.gp.calc.operations.Util;
 import jmona.gp.EquivalenceTester;

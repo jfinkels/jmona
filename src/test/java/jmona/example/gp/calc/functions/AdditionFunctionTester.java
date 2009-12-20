@@ -20,7 +20,6 @@
 package jmona.example.gp.calc.functions;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.gp.calc.functions.AdditionFunction;
 import jmona.example.gp.calc.operations.Util;
 
 import org.junit.Test;
@@ -47,11 +46,11 @@ public class AdditionFunctionTester {
     function = new AdditionFunction(Util.ONE_FUNCTION, Util.ONE_FUNCTION);
     assertEquals(Util.TWO_FUNCTION.execute(0.0), function.execute(0.0),
         ZERO_DELTA);
-    
+
     function = new AdditionFunction(Util.ONE_FUNCTION, Util.ZERO_FUNCTION);
     assertEquals(Util.ONE_FUNCTION.execute(0.0), function.execute(0.0),
         ZERO_DELTA);
-    
+
     function = new AdditionFunction(Util.ZERO_FUNCTION, Util.TWO_FUNCTION);
     assertEquals(Util.TWO_FUNCTION.execute(0.0), function.execute(0.0),
         ZERO_DELTA);

@@ -65,18 +65,18 @@ public interface EvolutionContext<T extends Individual> {
   FitnessFunction<T> fitnessFunction();
 
   /**
-   * Get the probability of mutation for selected Individuals.
-   * 
-   * @return The probability of mutation for selected Individuals.
-   */
-  double mutationProbability();
-
-  /**
    * Get the mutation function used by this context.
    * 
    * @return The mutation function used by this context.
    */
   MutationFunction<T> mutationFunction();
+
+  /**
+   * Get the probability of mutation for selected Individuals.
+   * 
+   * @return The probability of mutation for selected Individuals.
+   */
+  double mutationProbability();
 
   /**
    * Get the selection function used by this context.
@@ -114,20 +114,20 @@ public interface EvolutionContext<T extends Individual> {
       throws FitnessException;
 
   /**
-   * Set the probability of mutation for selected Individuals.
-   * 
-   * @param newMutationProbability
-   *          The probability of mutation for selected Individuals.
-   */
-  void setMutationProbability(final double newMutationProbability);
-
-  /**
    * Set the mutation function used by this context.
    * 
    * @param function
    *          The mutation function used by this context.
    */
   void setMutationFunction(final MutationFunction<T> function);
+
+  /**
+   * Set the probability of mutation for selected Individuals.
+   * 
+   * @param newMutationProbability
+   *          The probability of mutation for selected Individuals.
+   */
+  void setMutationProbability(final double newMutationProbability);
 
   /**
    * Set the selection function used by this context.

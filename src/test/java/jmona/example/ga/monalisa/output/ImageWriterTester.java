@@ -30,7 +30,6 @@ import java.io.File;
 import java.io.IOException;
 
 import jmona.example.ga.monalisa.MonaIndividual;
-import jmona.example.ga.monalisa.output.ImageWriter;
 
 import org.apache.log4j.Logger;
 import org.junit.After;
@@ -55,7 +54,7 @@ public class ImageWriterTester {
   public final void tearDown() {
     final File outputFile = new File(OUTPUT_FILENAME);
     if (outputFile.exists() && !outputFile.delete()) {
-        LOG.debug("Failed to delete output file at " + OUTPUT_FILENAME);
+      LOG.debug("Failed to delete output file at " + OUTPUT_FILENAME);
     }
   }
 

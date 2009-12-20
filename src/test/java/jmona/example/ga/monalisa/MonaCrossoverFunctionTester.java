@@ -26,9 +26,6 @@ import static org.junit.Assert.assertSame;
 import java.awt.Color;
 import java.awt.Polygon;
 
-import jmona.example.ga.monalisa.MonaCrossoverFunction;
-import jmona.example.ga.monalisa.MonaIndividual;
-
 import org.junit.Test;
 
 /**

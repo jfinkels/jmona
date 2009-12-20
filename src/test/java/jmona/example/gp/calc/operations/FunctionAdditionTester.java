@@ -21,7 +21,6 @@ package jmona.example.gp.calc.operations;
 
 import static org.junit.Assert.assertEquals;
 import jmona.example.gp.calc.functions.SingleInputFunction;
-import jmona.example.gp.calc.operations.FunctionAddition;
 import jmona.gp.impl.UniformBinaryOperation;
 
 import org.junit.Test;
@@ -46,7 +45,7 @@ public class FunctionAdditionTester {
     final UniformBinaryOperation<SingleInputFunction<Double, Double>> operation = FunctionAddition
         .newInstance();
     SingleInputFunction<Double, Double> result = null;
-    
+
     // 0 + 0 = 0
     result = operation.operate(Util.ZERO_FUNCTION, Util.ZERO_FUNCTION);
     assertEquals(Util.ZERO_FUNCTION.execute(0.0), result.execute(0.0),
@@ -66,7 +65,7 @@ public class FunctionAdditionTester {
     result = operation.operate(Util.ZERO_FUNCTION, Util.TWO_FUNCTION);
     assertEquals(Util.TWO_FUNCTION.execute(0.0), result.execute(0.0),
         ZERO_DELTA);
-    
+
     // 2 + 0 = 2
     result = operation.operate(Util.TWO_FUNCTION, Util.ZERO_FUNCTION);
     assertEquals(Util.TWO_FUNCTION.execute(0.0), result.execute(0.0),

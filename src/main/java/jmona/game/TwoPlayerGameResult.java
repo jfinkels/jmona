@@ -23,10 +23,15 @@ package jmona.game;
  * @author jfinkels
  */
 public interface TwoPlayerGameResult<S extends Strategy> extends GameResult<S> {
-  void setWinner(final S newWinner);
-  S winner();
-  void setScoreOfStrategy1(final double newScoreOfStrategy1);
-  void setScoreOfStrategy2(final double newScoreOfStrategy2);
   double scoreOfStrategy1();
+
   double scoreOfStrategy2();
+
+  void setScoreOfStrategy1(final double newScoreOfStrategy1);
+
+  void setScoreOfStrategy2(final double newScoreOfStrategy2);
+
+  void setWinner(final S newWinner);
+
+  S winner();
 }

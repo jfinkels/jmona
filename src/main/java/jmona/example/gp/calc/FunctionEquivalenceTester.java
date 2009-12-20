@@ -34,7 +34,7 @@ import jmona.gp.EquivalenceTester;
  */
 public class FunctionEquivalenceTester<S, T> implements
     EquivalenceTester<SingleInputFunction<S, T>, S> {
-  
+
   /**
    * Whether the two specified functions have the same output on the specified
    * input.

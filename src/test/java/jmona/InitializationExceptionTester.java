@@ -32,7 +32,8 @@ import org.junit.Test;
 public class InitializationExceptionTester {
 
   /**
-   * Test method for {@link jmona.InitializationException#InitializationException()}.
+   * Test method for
+   * {@link jmona.InitializationException#InitializationException()}.
    */
   @Test
   public void testInitializationException() {
@@ -45,7 +46,8 @@ public class InitializationExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.InitializationException#InitializationException(java.lang.String)}.
+   * {@link jmona.InitializationException#InitializationException(java.lang.String)}
+   * .
    */
   @Test
   public void testInitializationExceptionString() {
@@ -78,7 +80,8 @@ public class InitializationExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.InitializationException#InitializationException(java.lang.Throwable)}.
+   * {@link jmona.InitializationException#InitializationException(java.lang.Throwable)}
+   * .
    */
   @Test
   public void testInitializationExceptionThrowable() {

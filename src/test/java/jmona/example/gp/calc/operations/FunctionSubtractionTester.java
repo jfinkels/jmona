@@ -21,7 +21,6 @@ package jmona.example.gp.calc.operations;
 
 import static org.junit.Assert.assertEquals;
 import jmona.example.gp.calc.functions.SingleInputFunction;
-import jmona.example.gp.calc.operations.FunctionSubtraction;
 import jmona.gp.impl.UniformBinaryOperation;
 
 import org.junit.Test;

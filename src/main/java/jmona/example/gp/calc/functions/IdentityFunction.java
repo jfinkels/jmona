@@ -27,7 +27,7 @@ package jmona.example.gp.calc.functions;
  * @author jfinkels
  */
 public class IdentityFunction<T> implements SingleInputFunction<T, T> {
-  
+
   /**
    * Return exactly the specified input.
    * 

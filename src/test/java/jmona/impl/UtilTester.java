@@ -36,6 +36,9 @@ import org.junit.Test;
  */
 public class UtilTester {
 
+  /** The number of times to repeat the test. */
+  public static final int NUM_TESTS = 10000;
+
   /**
    * Test method for {@link jmona.impl.Util#randomFromSet(java.util.Set)}.
    */
@@ -93,8 +96,5 @@ public class UtilTester {
       assertSame(object, choice);
     }
   }
-
-  /** The number of times to repeat the test. */
-  public static final int NUM_TESTS = 10000;
 
 }

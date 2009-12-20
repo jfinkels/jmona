@@ -32,16 +32,6 @@ import jmona.impl.Util;
  */
 public class MonaIndividualFactory implements IndividualFactory<MonaIndividual> {
 
-  /** The default initial number of polygons in a created individual. */
-  public static final int DEFAULT_INITIAL_POLYGONS = 128;
-  /** The default maximum number of points in a polygon. */
-  public static final int DEFAULT_MAX_POINTS = 10;
-  /** The default maximum x value of a polygon. */
-  public static final int DEFAULT_MAX_X = 256;
-  /** The default maximum y value of a polygon. */
-  public static final int DEFAULT_MAX_Y = 256;
-  /** The default minimum number of points in a polygon. */
-  public static final int DEFAULT_MIN_POINTS = 3;
   /** The maximum value for a red, green, blue, or alpha color value. */
   public static final int MAX_VALUE = 256;
   /**
@@ -52,6 +42,16 @@ public class MonaIndividualFactory implements IndividualFactory<MonaIndividual> 
   /** The default alpha values for colors in the individuals. */
   public static final int DEFAULT_ALPHA_VALUE = MAX_VALUE
       / DEFAULT_ALPHA_VALUE_SCALE;
+  /** The default initial number of polygons in a created individual. */
+  public static final int DEFAULT_INITIAL_POLYGONS = 128;
+  /** The default maximum number of points in a polygon. */
+  public static final int DEFAULT_MAX_POINTS = 10;
+  /** The default maximum x value of a polygon. */
+  public static final int DEFAULT_MAX_X = 256;
+  /** The default maximum y value of a polygon. */
+  public static final int DEFAULT_MAX_Y = 256;
+  /** The default minimum number of points in a polygon. */
+  public static final int DEFAULT_MIN_POINTS = 3;
 
   /** The fixed alpha value for all colors in the individuals. */
   private int alphaValue = DEFAULT_ALPHA_VALUE;
@@ -61,21 +61,10 @@ public class MonaIndividualFactory implements IndividualFactory<MonaIndividual> 
   private int maxPoints = DEFAULT_MAX_POINTS;
   /** The maximum x value of a polygon. */
   private int maxX = DEFAULT_MAX_X;
-
   /** The maximum y value of a polygon. */
   private int maxY = DEFAULT_MAX_Y;
   /** The minimum number of points in a polygon. */
   private int minPoints = DEFAULT_MIN_POINTS;
-
-  /**
-   * Set the fixed alpha value for all colors in created individuals.
-   * 
-   * @param newAlphaValue
-   *          The fixed alpha value for all colors in created individuals.
-   */
-  public void setAlphaValue(final int newAlphaValue) {
-    this.alphaValue = newAlphaValue;
-  }
 
   /**
    * Create a new individual with a gene consisting of a random number of random
@@ -125,6 +114,16 @@ public class MonaIndividualFactory implements IndividualFactory<MonaIndividual> 
     }
 
     return result;
+  }
+
+  /**
+   * Set the fixed alpha value for all colors in created individuals.
+   * 
+   * @param newAlphaValue
+   *          The fixed alpha value for all colors in created individuals.
+   */
+  public void setAlphaValue(final int newAlphaValue) {
+    this.alphaValue = newAlphaValue;
   }
 
   /**
