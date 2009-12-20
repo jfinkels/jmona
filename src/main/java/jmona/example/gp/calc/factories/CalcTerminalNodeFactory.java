@@ -59,11 +59,13 @@ public class CalcTerminalNodeFactory implements
       throws InitializationException {
     TerminalNode<SingleInputFunction<Double, Double>> result = null;
 
+    final int difference = this.maxValue - this.minValue;
+
     if (Util.RANDOM.nextBoolean()) {
       result = new VariableNode();
     } else {
-      result = new NumberNode(
-          (double) (Util.RANDOM.nextInt(this.maxValue) + this.minValue));
+      result = new NumberNode((double) (this.minValue + Util.RANDOM
+          .nextInt(difference)));
     }
 
     return result;
@@ -78,6 +80,7 @@ public class CalcTerminalNodeFactory implements
   public void setMaxValue(final int newMaxValue) {
     this.maxValue = newMaxValue;
   }
+
   /**
    * Set the minimum value for a NumberNode.
    * 
