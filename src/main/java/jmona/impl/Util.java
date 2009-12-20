@@ -20,6 +20,7 @@
 package jmona.impl;
 
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -30,8 +31,23 @@ import java.util.Set;
  */
 public class Util {
   /** Random number generator. */
-  // TODO Math.random() does this already...
   public static final Random RANDOM = new Random();
+
+  /**
+   * Get the first value from the specified Map as returned by the iterator over
+   * the Set of values in the Map.
+   * 
+   * @param <K>
+   *          The type of keys in the specified Map.
+   * @param <V>
+   *          The type of values in the specified Map.
+   * @param map
+   *          The Map from which to retrieve the first value.
+   * @return The first value from the specified Map.
+   */
+  public static final <K, V> V firstValue(final Map<K, V> map) {
+    return map.values().iterator().next();
+  }
 
   /**
    * Return an element from the set chosen with uniform distribution over all
