@@ -91,6 +91,14 @@ public class CalcTerminalNodeFactoryTester {
 
   }
 
+  /**
+   * Test for
+   * {@link jmona.example.gp.calc.factories.CalcTerminalNodeFactory#setMinValue(int)}
+   * and
+   * {@link jmona.example.gp.calc.factories.CalcTerminalNodeFactory#setMaxValue(int)}
+   * .
+   * 
+   */
   @Test
   public void testSetMaxAndMinValues() {
     final CalcTerminalNodeFactory factory = new CalcTerminalNodeFactory();
