@@ -40,6 +40,21 @@ public class UtilTester {
   public static final int NUM_TESTS = 10000;
 
   /**
+   * Test method for {@link jmona.impl.Util#firstValue(Map)}.
+   */
+  @Test
+  public void testFirstValue() {
+    final Map<Object, Object> map = new HashMap<Object, Object>();
+    final Object object1 = new Object();
+    final Object object2 = new Object();
+    final Object object3 = new Object();
+    map.put(object1, object2);
+    map.put(object3, object3);
+
+    assertSame(object2, Util.firstValue(map));
+  }
+
+  /**
    * Test method for {@link jmona.impl.Util#randomFromSet(java.util.Set)}.
    */
   @Test
