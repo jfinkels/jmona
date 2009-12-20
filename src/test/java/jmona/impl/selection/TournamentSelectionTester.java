@@ -27,9 +27,12 @@ import java.util.Map;
 import jmona.impl.example.ExampleIndividual;
 
 import org.apache.log4j.Logger;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the TournamentSelection class.
+ * 
  * @author jfinkels
  */
 public class TournamentSelectionTester {
@@ -40,6 +43,25 @@ public class TournamentSelectionTester {
 
   /** The number of selections to make. */
   public static final int NUM_SELECTIONS = 1000;
+  /** The fitnesses from which to select. */
+  private Map<ExampleIndividual, Double> fitnesses = null;
+  /** The SelectionFunction under test. */
+  private TournamentSelection<ExampleIndividual> function = null;
+  /** An ExampleIndividual. */
+  private ExampleIndividual individual1 = null;
+  /** Another ExampleIndividual. */
+  private ExampleIndividual individual2 = null;
+
+  /** Establish a test fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.function = new TournamentSelection<ExampleIndividual>();
+    this.fitnesses = new HashMap<ExampleIndividual, Double>();
+    this.individual1 = new ExampleIndividual(2);
+    this.individual2 = new ExampleIndividual(1);
+    this.fitnesses.put(this.individual1, this.individual1.fitness());
+    this.fitnesses.put(this.individual2, this.individual1.fitness());
+  }
 
   /**
    * Test method for
@@ -47,25 +69,16 @@ public class TournamentSelectionTester {
    */
   @Test
   public void testSelect() {
-    final TournamentSelection<ExampleIndividual> function = new TournamentSelection<ExampleIndividual>();
-
-    final Map<ExampleIndividual, Double> fitnesses = new HashMap<ExampleIndividual, Double>();
-    final ExampleIndividual individual1 = new ExampleIndividual(2);
-    final ExampleIndividual individual2 = new ExampleIndividual(1);
-
-    fitnesses.put(individual1, individual1.fitness());
-    fitnesses.put(individual2, individual2.fitness());
-
     int selectionsOfIndividual1 = 0;
     int selectionsOfIndividual2 = 0;
 
     ExampleIndividual selectedIndividual = null;
     for (int i = 0; i < NUM_SELECTIONS; ++i) {
-      selectedIndividual = function.select(fitnesses);
+      selectedIndividual = function.select(this.fitnesses);
 
-      if (selectedIndividual.equals(individual1)) {
+      if (selectedIndividual.equals(this.individual1)) {
         selectionsOfIndividual1 += 1;
-      } else if (selectedIndividual.equals(individual2)) {
+      } else if (selectedIndividual.equals(this.individual2)) {
         selectionsOfIndividual2 += 1;
       } else {
         fail("Something crazy has happened.");
@@ -85,5 +98,16 @@ public class TournamentSelectionTester {
     // assertEquals(expectedSelections1, selectionsOfIndividual1, delta);
     // assertEquals(expectedSelections2, selectionsOfIndividual2, delta);
 
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.impl.selection.TournamentSelection#setTournamentSize(int)}.
+   */
+  @Test
+  public void testSetTournamentSize() {
+    final int newTournamentSize = 10;
+    this.function.setTournamentSize(newTournamentSize);
+    // TODO assertions
   }
 }
