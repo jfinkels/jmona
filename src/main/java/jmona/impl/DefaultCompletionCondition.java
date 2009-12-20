@@ -50,7 +50,7 @@ public class DefaultCompletionCondition<T extends Individual> implements
    * 
    * @param context
    *          {@inheritDoc}
-   * @see jmCompletionConditionition#isSatisfied(jmona.EvolutionContext)
+   * @see jmona.CompletionCondition#isSatisfied(jmona.EvolutionContext)
    */
   @Override
   public boolean isSatisfied(final EvolutionContext<T> context)
@@ -64,7 +64,7 @@ public class DefaultCompletionCondition<T extends Individual> implements
    * 
    * @param newMaxFitness
    *          {@inheritDoc}
-   * @see jmona.MaxFitnessCompletionCriteria#setMaxFitness(double)
+   * @see jmona.MaxFitnessCompletionCondition#setMaxFitness(double)
    */
   @Override
   public void setMaxFitness(final double newMaxFitness) {

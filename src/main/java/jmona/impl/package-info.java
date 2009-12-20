@@ -25,7 +25,7 @@
  * <ul>
  * <li>{@link jmona.impl.AbstractEvolutionContext}, a base class for
  * {@link jmona.EvolutionContext} implementations</li>
- * <li>{@link jmona.impl.DefaultCompletionCriteria}, a default
+ * <li>{@link jmona.impl.DefaultCompletionCondition}, a default
  * {@link jmona.CompletionCondition} implementation which checks for maximum
  * fitness and for maximum number of generations</li>
  * <li>{@link jmona.impl.DefaultPopulation}, a <code>Vector</code>-based default

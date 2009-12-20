@@ -56,7 +56,7 @@ public class DefaultMaxFitnessCompletionCondition<T extends Individual>
    * @throws CompletionException
    *           If the fitness function of the EvolutionContext throws a
    *           FitnessException.
-   * @see CompletionConditionndition#isSatisfied(jmona.EvolutionContext)
+   * @see jmona.CompletionCondition#isSatisfied(jmona.EvolutionContext)
    */
   @Override
   public boolean isSatisfied(final EvolutionContext<T> context)
@@ -86,7 +86,7 @@ public class DefaultMaxFitnessCompletionCondition<T extends Individual>
    * 
    * @param newMaxFitness
    *          {@inheritDoc}
-   * @see jMaxFitnessCompletionConditiondition#setMaxFitness(double)
+   * @see jmona.MaxFitnessCompletionCondition#setMaxFitness(double)
    */
   @Override
   public void setMaxFitness(final double newMaxFitness) {
