@@ -21,7 +21,6 @@ package jmona.impl.selection;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
 
 import jmona.Individual;
@@ -79,9 +78,7 @@ public class FitnessProportionateSelection<T extends Individual> implements
 
     // if no individual has any fitness, just return a random one
     if (fitnessesSum == 0.0) {
-      final Set<T> individuals = fitnesses.keySet();
-      // TODO unchecked cast
-      return (T) individuals.toArray()[Util.RANDOM.nextInt(individuals.size())];
+      return Util.randomFromSet(fitnesses.keySet());
     }
 
     // choose a number between 0 and the sum of all fitnesses
