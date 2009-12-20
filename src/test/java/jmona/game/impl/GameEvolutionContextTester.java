@@ -20,6 +20,7 @@
 package jmona.game.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import jmona.EvolutionException;
 import jmona.Population;
 import jmona.game.impl.example.ExampleGame;
@@ -84,6 +85,14 @@ public class GameEvolutionContextTester {
     } catch (final NullPointerException exception) {
       Util.fail(exception);
     }
+
+    this.context.setGame(null);
+    try {
+      this.context.stepGeneration();
+      Util.shouldHaveThrownException();
+    } catch (final EvolutionException exception) {
+      assertTrue(exception.getCause() instanceof NullPointerException);
+    }
   }
 
   /**
@@ -102,9 +111,9 @@ public class GameEvolutionContextTester {
    */
   @Test
   public void testStepGeneration() {
-    
+
     int beforeSize = this.context.currentPopulation().size();
-    
+
     LOG.debug(this.context.currentPopulation());
     try {
       this.context.stepGeneration();
@@ -112,9 +121,9 @@ public class GameEvolutionContextTester {
       Util.fail(exception);
     }
     LOG.debug(this.context.currentPopulation());
-    
+
     assertEquals(beforeSize, this.context.currentPopulation().size());
-    
+
   }
 
   /** The Logger for this class. */
