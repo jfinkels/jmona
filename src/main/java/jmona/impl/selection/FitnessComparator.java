@@ -19,6 +19,7 @@
  */
 package jmona.impl.selection;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Map;
 
@@ -32,7 +33,11 @@ import jmona.Individual;
  *          The type of Individual whose fitness will be compared.
  * @author jfinkels
  */
-public class FitnessComparator<T extends Individual> implements Comparator<T> {
+public class FitnessComparator<T extends Individual> implements Comparator<T>,
+    Serializable {
+
+  /** Default generated serial version UID. */
+  private static final long serialVersionUID = -5790092957097751794L;
 
   /** The mapping from Individual to its corresponding fitness. */
   private Map<T, Double> fitnesses = null;
