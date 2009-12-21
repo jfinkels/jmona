@@ -54,7 +54,7 @@ public class BinaryStringIteratorTester {
 
   /**
    * Test method for
-   * {@link jmona.ga.impl.BinaryStringIterator#BitStringIterator(jmona.ga.BinaryString)}
+   * {@link jmona.ga.impl.BinaryStringIterator#BinaryStringIterator(jmona.ga.BinaryString)}
    * .
    */
   @Test
@@ -81,7 +81,7 @@ public class BinaryStringIteratorTester {
    */
   @Test
   public void testNext() {
-    
+
     while (this.iterator.hasNext()) {
       assertEquals(0, this.iterator.next().intValue());
     }
