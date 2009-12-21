@@ -37,7 +37,7 @@ public class UniformPopulationCompletionConditionTester {
 
   /**
    * Test method for
-   * {@link jmona.game.impUniformPopulationCompletionConditionion#isSatisfied(jmona.EvolutionContext)}
+   * {@link jmona.game.impl.UniformPopulationCompletionConditionion#isSatisfied(jmona.EvolutionContext)}
    * .
    */
   @Test

@@ -65,7 +65,7 @@ public class AbstractBinaryStringCrossoverFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.ga.impl.AbstractBinaryStringCrossoverFunction#swapBit(jmona.ga.impl.BinaryString, jmona.ga.impl.BinaryString, int)}
+   * {@link jmona.ga.impl.AbstractBinaryStringCrossoverFunction#swapBit(jmona.ga.BinaryString, jmona.ga.BinaryString, int)}
    * .
    */
   @Test
@@ -98,7 +98,7 @@ public class AbstractBinaryStringCrossoverFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.ga.impl.AbstractBinaryStringCrossoverFunction#swapBits(jmona.ga.impl.BinaryString, jmona.ga.impl.BinaryString, int, int)}
+   * {@link jmona.ga.impl.AbstractBinaryStringCrossoverFunction#swapBits(jmona.ga.BinaryString, jmona.ga.BinaryString, int, int)}
    * .
    */
   @Test
@@ -147,7 +147,7 @@ public class AbstractBinaryStringCrossoverFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.ga.impl.AbstractBinaryStringCrossoverFunction#crossover(jmona.ga.impl.BinaryString, jmona.ga.impl.BinaryString)}
+   * {@link jmona.ga.impl.AbstractBinaryStringCrossoverFunction#crossover(jmona.ga.BinaryString, jmona.ga.BinaryString)}
    * .
    */
   @Test

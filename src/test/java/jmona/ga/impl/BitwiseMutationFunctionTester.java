@@ -42,7 +42,7 @@ public class BitwiseMutationFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.ga.impl.BitwiseMutationFunction#mutate(jmona.ga.impl.CharArrayBinaryString)}
+   * {@link jmona.ga.impl.BitwiseMutationFunction#mutate(jmona.ga.BinaryString)}
    * .
    */
   @Test

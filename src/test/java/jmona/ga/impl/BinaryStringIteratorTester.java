@@ -54,7 +54,7 @@ public class BinaryStringIteratorTester {
 
   /**
    * Test method for
-   * {@link jmona.ga.impl.BinaryStringIterator#BitStringIterator(jmona.ga.impl.CharArrayBinaryString)}
+   * {@link jmona.ga.impl.BinaryStringIterator#BitStringIterator(jmona.ga.BinaryString)}
    * .
    */
   @Test

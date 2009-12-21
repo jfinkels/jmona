@@ -32,7 +32,7 @@ import org.junit.Test;
 public class GameplayExceptionTester {
 
   /**
-   * Test method for {@link jmona.GameplayException#GameplayException()}.
+   * Test method for {@link jmona.game.GameplayException#GameplayException()}.
    */
   @Test
   public void testGameplayException() {
@@ -45,7 +45,7 @@ public class GameplayExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.GameplayException#GameplayException(java.lang.String)}.
+   * {@link jmona.game.GameplayException#GameplayException(java.lang.String)}.
    */
   @Test
   public void testGameplayExceptionString() {
@@ -60,7 +60,7 @@ public class GameplayExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.GameplayException#GameplayException(java.lang.String, java.lang.Throwable)}
+   * {@link jmona.game.GameplayException#GameplayException(java.lang.String, java.lang.Throwable)}
    * .
    */
   @Test
@@ -78,7 +78,8 @@ public class GameplayExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.GameplayException#GameplayException(java.lang.Throwable)}.
+   * {@link jmona.game.GameplayException#GameplayException(java.lang.Throwable)}
+   * .
    */
   @Test
   public void testGameplayExceptionThrowable() {

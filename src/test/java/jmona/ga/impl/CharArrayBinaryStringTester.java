@@ -24,7 +24,6 @@ import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 import jmona.ga.BinaryString;
 
-import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -65,7 +64,8 @@ public class CharArrayBinaryStringTester {
   }
 
   /**
-   * Test method for {@link jmona.ga.impl.CharArrayBinaryString#BitString(int)}.
+   * Test method for
+   * {@link jmona.ga.impl.CharArrayBinaryString#CharArrayBinaryString(int)}.
    */
   @Test
   public void testBitStringInt() {
@@ -77,7 +77,8 @@ public class CharArrayBinaryStringTester {
 
   /**
    * Test method for
-   * {@link jmona.ga.impl.CharArrayBinaryString#BitString(int, boolean)}.
+   * {@link jmona.ga.impl.CharArrayBinaryString#CharArrayBinaryString(int, boolean)}
+   * .
    */
   @Test
   public void testBitStringIntBoolean() {
@@ -101,7 +102,8 @@ public class CharArrayBinaryStringTester {
 
   /**
    * Test method for
-   * {@link jmona.ga.impl.CharArrayBinaryString#BitString(int, char[])}.
+   * {@link jmona.ga.impl.CharArrayBinaryString#CharArrayBinaryString(int, char[])}
+   * .
    */
   @Test
   public void testBitStringIntCharArray() {
@@ -256,7 +258,7 @@ public class CharArrayBinaryStringTester {
         assertEquals('0', result.charAt(i));
       }
     }
-    
+
     int numberOfOnes = 0;
     for (int i = 0; i < LENGTH; ++i) {
       if (result.charAt(i) == '1') {
@@ -264,7 +266,7 @@ public class CharArrayBinaryStringTester {
       }
     }
     assertEquals(numberOfOnes, this.bitstring.bitCount());
-    
+
   }
 
 }
