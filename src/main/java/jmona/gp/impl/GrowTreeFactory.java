@@ -21,7 +21,6 @@ package jmona.gp.impl;
 
 import jmona.InitializationException;
 import jmona.gp.Node;
-import jmona.impl.Util;
 
 /**
  * A TreeFactory which uses the "grow" method to generate a Tree, that is,
