@@ -23,11 +23,31 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
   
-  <bean id="individualFactory" class="jmona.example.game.ipd.IPDStrategyFactory" />
+  <bean id="individualFactory" class="jmona.example.game.ipd.IPDStrategyFactory">
+    <property name="strategyClasses">
+      <set>
+        <bean class="java.lang.Class" factory-method="forName">
+          <constructor-arg value="jmona.example.game.ipd.strategy.PavlovStrategy" />
+        </bean>
+        <bean class="java.lang.Class" factory-method="forName">
+          <constructor-arg value="jmona.example.game.ipd.strategy.RuthlessStrategy" />
+        </bean>
+        <bean class="java.lang.Class" factory-method="forName">
+          <constructor-arg value="jmona.example.game.ipd.strategy.CooperativeStrategy" />
+        </bean>
+        <bean class="java.lang.Class" factory-method="forName">
+          <constructor-arg value="jmona.example.game.ipd.strategy.RandomStrategy" />
+        </bean>
+        <bean class="java.lang.Class" factory-method="forName">
+          <constructor-arg value="jmona.example.game.ipd.strategy.TitForTatStrategy" />
+        </bean>
+      </set>
+    </property>
+  </bean>
   
   <bean id="populationFactory" class="jmona.impl.DefaultPopulationFactory">
     <property name="individualFactory" ref="individualFactory" />
-    <property name="size" value="100" />
+    <property name="size" value="70" />
   </bean>
 
   <bean id="population" 
