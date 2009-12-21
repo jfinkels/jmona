@@ -90,7 +90,7 @@
     <version.java.target>1.6</version.java.target>
 
     <!-- configuration variables -->
-    <config.checkstyle>checkstyle.xml</config.checkstyle>
+    <config.checkstyle>src/main/resources/checkstyle.xml</config.checkstyle>
     <mainClass>jmona.driver.Main</mainClass>
     
     <!-- character encodings -->
