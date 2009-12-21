@@ -21,6 +21,7 @@ package jmona.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -49,9 +50,10 @@ public class UtilTester {
     final Object object2 = new Object();
     final Object object3 = new Object();
     map.put(object1, object2);
-    map.put(object3, object3);
+    map.put(object2, object3);
 
-    assertSame(object2, Util.firstValue(map));
+    final Object result = Util.firstValue(map);
+    assertTrue(result.equals(object2) || result.equals(object3));
   }
 
   /**
