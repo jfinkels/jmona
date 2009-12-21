@@ -46,7 +46,9 @@ public class IPDGameTester {
   private IPDGame game = null;
   /** Another strategy. */
   private IPDStrategy ruthlessStrategy = null;
-
+  /** A payoff value. */
+  public static final int PAYOFF = 10;
+  
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
@@ -164,7 +166,7 @@ public class IPDGameTester {
     assertEquals(punishmentPayoff, result.scoreOfStrategy1(), ZERO_DELTA);
     assertEquals(punishmentPayoff, result.scoreOfStrategy2(), ZERO_DELTA);
 
-    punishmentPayoff = 10;
+    punishmentPayoff = PAYOFF;
     this.game.setPunishmentForMutualDefection(punishmentPayoff);
     try {
       result = this.game.play(this.ruthlessStrategy, this.ruthlessStrategy);
@@ -196,7 +198,7 @@ public class IPDGameTester {
     assertEquals(rewardPayoff, result.scoreOfStrategy1(), ZERO_DELTA);
     assertEquals(rewardPayoff, result.scoreOfStrategy2(), ZERO_DELTA);
 
-    rewardPayoff = 10;
+    rewardPayoff = PAYOFF;
     this.game.setRewardForMutualCooperation(rewardPayoff);
     try {
       result = this.game.play(this.cooperativeStrategy,
@@ -229,7 +231,7 @@ public class IPDGameTester {
     assertEquals(IPDGame.DEFAULT_TEMPTATION, result.scoreOfStrategy2(),
         ZERO_DELTA);
 
-    newSuckersPayoff = 10;
+    newSuckersPayoff = PAYOFF;
     this.game.setSuckersPayoff(newSuckersPayoff);
     try {
       result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
@@ -262,7 +264,7 @@ public class IPDGameTester {
         ZERO_DELTA);
     assertEquals(newTemptationPayoff, result.scoreOfStrategy2(), ZERO_DELTA);
 
-    newTemptationPayoff = 10;
+    newTemptationPayoff = PAYOFF;
     this.game.setTemptationToDefect(newTemptationPayoff);
 
     try {
