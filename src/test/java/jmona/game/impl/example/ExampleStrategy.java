@@ -21,7 +21,6 @@ package jmona.game.impl.example;
 
 import jmona.Individual;
 import jmona.game.Strategy;
-import jmona.impl.Util;
 
 /**
  * An example strategy with a score property.
@@ -49,16 +48,6 @@ public class ExampleStrategy implements Strategy {
   }
 
   /**
-   * Return a new ExampleStrategy object with the same score.
-   * 
-   * @return A new ExampleStrategy object with the same score.
-   */
-  @Override
-  public ExampleStrategy clone() {
-    return new ExampleStrategy(this.score);
-  }
-
-  /**
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
@@ -66,7 +55,7 @@ public class ExampleStrategy implements Strategy {
    */
   @Override
   public Individual deepCopy() {
-    return new ExampleStrategy();
+    return new ExampleStrategy(this.score);
   }
 
   /**
