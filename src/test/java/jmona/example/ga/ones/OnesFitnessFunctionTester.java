@@ -42,31 +42,22 @@ public class OnesFitnessFunctionTester {
    */
   @Test
   public void testFitness() {
+    final int length = 10;
     final OnesFitnessFunction function = new OnesFitnessFunction();
-    final BinaryString individual = new CharArrayBinaryString(4, false);
+    final BinaryString individual = new CharArrayBinaryString(length, false);
 
     assertEquals(0, function.fitness(individual), ZERO_DELTA);
 
-    individual.flipBit(0);
-    assertEquals(1, function.fitness(individual), ZERO_DELTA);
+    for (int i = 0; i < length; ++i) {
+      individual.flipBit(i);
+      assertEquals(i + 1, function.fitness(individual), ZERO_DELTA);
+    }
 
-    individual.flipBit(1);
-    assertEquals(2, function.fitness(individual), ZERO_DELTA);
+    for (int i = length - 1; i >= 0; --i) {
+      individual.flipBit(i);
+      assertEquals(i, function.fitness(individual), ZERO_DELTA);
+    }
 
-    individual.flipBit(2);
-    assertEquals(3, function.fitness(individual), ZERO_DELTA);
-
-    individual.flipBit(3);
-    assertEquals(4, function.fitness(individual), ZERO_DELTA);
-
-    individual.flipBit(2);
-    assertEquals(3, function.fitness(individual), ZERO_DELTA);
-
-    individual.flipBit(1);
-    assertEquals(2, function.fitness(individual), ZERO_DELTA);
-
-    individual.flipBit(0);
-    assertEquals(1, function.fitness(individual), ZERO_DELTA);
   }
 
 }
