@@ -37,10 +37,11 @@ import org.junit.Test;
 public class MonaIndividualTester {
 
   /**
-   * Test method for {@link jmona.example.ga.monalisa.MonaIndividual#copy()}.
+   * Test method for {@link jmona.example.ga.monalisa.MonaIndividual#deepCopy()}
+   * .
    */
   @Test
-  public void testCopy() {
+  public void testDeepCopy() {
     final MonaIndividual original = new MonaIndividual();
 
     final Polygon polygon = new Polygon();
