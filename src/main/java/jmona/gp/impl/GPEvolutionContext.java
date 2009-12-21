@@ -28,9 +28,6 @@ import jmona.SelectionException;
 import jmona.gp.Tree;
 import jmona.impl.AbstractEvolutionContext;
 import jmona.impl.DefaultPopulation;
-import jmona.impl.Util;
-
-import org.apache.log4j.Logger;
 
 /**
  * A default EvolutionContext for a Genetic Programming evolution.
@@ -40,10 +37,6 @@ import org.apache.log4j.Logger;
  * @author jfinkels
  */
 public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
-
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(GPEvolutionContext.class);
 
   /**
    * Instantiate this EvolutionContext by calling the corresponding constructor
@@ -91,53 +84,31 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
     Tree<V> individual1 = null;
     Tree<V> individual2 = null;
 
-    LOG.debug("Creating next generation...");
-
     try {
       // while the size of the next generation is less than the size of the
       // current generation
       while (nextGeneration.size() < currentSize) {
 
-        LOG.debug("Next generation size is " + nextGeneration.size()
-            + " less than " + currentSize);
-
-        LOG.debug("Initial fitnesses " + this.currentFitnesses());
-
         // select one individual, because each op. requires at least one
         individual1 = (Tree<V>) this.selectionFunction().select(
             this.currentFitnesses()).deepCopy();
-
-        LOG.debug("Selected individual1: " + individual1);
 
         // choose variation operation probabilistically
         // TODO I am ignoring the crossoverProbability property
         if (Math.random() < this.mutationProbability()
             || nextGeneration.size() >= currentSize - 1) {
 
-          LOG.debug("About to perform mutation...");
-
           // perform mutation
           this.mutationFunction().mutate(individual1);
-
-          LOG.debug("...mutation complete.");
 
         } else { // variation operation is crossover
 
           // select another individual (different from the first!)
-          LOG.debug("About to select individual2...");
-          LOG.debug("  fitnesses: " + this.currentFitnesses());
           individual2 = (Tree<V>) this.selectionFunction().select(
               this.currentFitnesses()).deepCopy();
 
-          LOG.debug("...selection complete.");
-          LOG.debug("    individual2: " + individual2);
-
-          LOG.debug("About to perform crossover...");
-
           // perform crossover
           this.crossoverFunction().crossover(individual1, individual2);
-
-          LOG.debug("...crossover complete.");
 
           // add the second individual to the next generation
           nextGeneration.add(individual2);
@@ -164,7 +135,5 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
     } catch (final SelectionException exception) {
       throw new EvolutionException("Failed to select an Individual.", exception);
     }
-
-    LOG.debug("...complete.");
   }
 }
