@@ -67,15 +67,18 @@ public class TournamentSelectionTester {
    * Test method for
    * {@link jmona.impl.selection.TournamentSelection#select(java.util.Map)}.
    */
-  @Test
+  //@Test
   public void testSelect() {
-    int selectionsOfIndividual1 = 0;
+    fail("Not yet implemented.");
+/*    int selectionsOfIndividual1 = 0;
     int selectionsOfIndividual2 = 0;
 
     ExampleIndividual selectedIndividual = null;
     for (int i = 0; i < NUM_SELECTIONS; ++i) {
       selectedIndividual = function.select(this.fitnesses);
-
+      
+      LOG.debug("Selected individual: " + selectedIndividual);
+      
       if (selectedIndividual.equals(this.individual1)) {
         selectionsOfIndividual1 += 1;
       } else if (selectedIndividual.equals(this.individual2)) {
@@ -97,7 +100,7 @@ public class TournamentSelectionTester {
     // TODO correct assertions
     // assertEquals(expectedSelections1, selectionsOfIndividual1, delta);
     // assertEquals(expectedSelections2, selectionsOfIndividual2, delta);
-
+*/
   }
 
   /**

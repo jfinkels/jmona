@@ -26,8 +26,11 @@ import java.util.Set;
 import java.util.Vector;
 
 import jmona.Individual;
+import jmona.SelectionException;
 import jmona.SelectionFunction;
 import jmona.impl.Util;
+
+import org.apache.log4j.Logger;
 
 /**
  * A tournament selection algorithm.
@@ -77,27 +80,24 @@ public class TournamentSelection<T extends Individual> implements
    */
   // TODO documentation for this method
   @Override
-  public T select(final Map<T, Double> fitnesses) {
-    // initialize a list of competitors for the tournament
+  public T select(final Map<T, Double> fitnesses) throws SelectionException {
+    throw new SelectionException("Not yet implemented.");
+    
+/*    // initialize a list of competitors for the tournament
     final List<T> competitors = new Vector<T>();
 
     // if there are fewer individuals than the size of the tournament, add all
     if (fitnesses.size() <= this.tournamentSize) {
       competitors.addAll(fitnesses.keySet());
     } else {
-
       // get the set of individuals from which to choose competitors
       final Set<T> possibleCompetitors = fitnesses.keySet();
-      
+
       // while the number of competitors in the tournament has not yet met size
+      // TODO random selection without replacement
       T chosenIndividual = null;
       while (competitors.size() < this.tournamentSize) {
-
-        // TODO improve efficiency of this method
-        do {
-          chosenIndividual = Util.randomFromSet(possibleCompetitors);
-        } while (competitors.contains(chosenIndividual));
-
+        chosenIndividual = Util.randomFromSet(possibleCompetitors);
         competitors.add(chosenIndividual);
       }
     }
@@ -116,6 +116,7 @@ public class TournamentSelection<T extends Individual> implements
 
     // until the chosen random number is less than 'probability'...
     while (choice > probability || chosenCompetitor < 0) {
+
       // increment the probability
       // TODO double check this math!!! check out how JGAP does it
       probability += probability * (1 - this.selectionProbability);
@@ -128,7 +129,7 @@ public class TournamentSelection<T extends Individual> implements
     chosenCompetitor = Math.max(0, chosenCompetitor);
 
     return competitors.get(chosenCompetitor);
-  }
+*/  }
 
   /**
    * Set the number of Individuals to be chosen at random to compete in the
