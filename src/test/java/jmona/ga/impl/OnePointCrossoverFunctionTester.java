@@ -1,5 +1,5 @@
 /**
- * AllTest.java
+ * OnePointCrossoverFunctionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -19,22 +19,32 @@
  */
 package jmona.ga.impl;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import jmona.ImmutablePair;
+
+import org.junit.Test;
 
 /**
- * Runs all tests in this package.
+ * Test class for the OnePointCrossoverFunction class.
  * 
  * @author jfinkels
  */
-@RunWith(Suite.class)
-@SuiteClasses({ AbstractBinaryStringCrossoverFunctionTester.class,
-    BinaryStringFactoryTester.class, BinaryStringIteratorTester.class,
-    CharArrayBinaryStringTester.class, BitwiseMutationFunctionTester.class,
-    GAEvolutionContextTester.class, GAFitnessFunctionTester.class,
-    OnePointCrossoverFunctionTester.class,
-    TwoPointCrossoverFunctionTester.class })
-public class AllTest {
+public class OnePointCrossoverFunctionTester {
+
+  /**
+   * Test method for
+   * {@link jmona.ga.impl.OnePointCrossoverFunction#sliceStartEnd(int)}.
+   */
+  @Test
+  public void testSliceStartEnd() {
+    final OnePointCrossoverFunction function = new OnePointCrossoverFunction();
+
+    final int length = 14;
+    final ImmutablePair<Integer, Integer> pair = function.sliceStartEnd(length);
+
+    assertTrue(pair.left() >= 0 && pair.left() <= length);
+    assertEquals(length, pair.right().intValue());
+  }
 
 }

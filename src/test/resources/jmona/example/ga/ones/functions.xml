@@ -23,9 +23,9 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-  <bean id="crossoverFunction" class="jmona.example.ga.ones.OnesCrossoverFunction" />
+  <bean id="crossoverFunction" class="jmona.ga.impl.TwoPointCrossoverFunction" />
   <bean id="fitnessFunction" class="jmona.example.ga.ones.OnesFitnessFunction" />
-  <bean id="mutationFunction" class="jmona.example.ga.ones.OnesMutationFunction" />
+  <bean id="mutationFunction" class="jmona.ga.impl.BitwiseMutationFunction" />
   <bean id="selectionFunction" class="jmona.impl.selection.FitnessProportionateSelection" />
 
 </beans>

@@ -23,6 +23,7 @@ import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
+import jmona.ga.BinaryString;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
@@ -49,20 +50,22 @@ public class OnesEvolutionTester extends AbstractJUnit4SpringContextTests {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<OnesIndividual> completionCondition = null;
+  private CompletionCondition<BinaryString> completionCondition = null;
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
-  private EvolutionContext<OnesIndividual> context = null;
+  private EvolutionContext<BinaryString> context = null;
 
   /** Test method for a Ones evolution. */
   @Test
   @DirtiesContext
   public final void testOnesEvolution() {
     try {
+      LOG.debug("initial population: " + this.context.currentPopulation());
       while (!this.completionCondition.isSatisfied(this.context)) {
         this.context.stepGeneration();
-        LOG.debug(this.context.currentPopulation());
+        LOG.debug("Generation " + this.context.currentGeneration() + ": "
+            + this.context.currentPopulation());
       }
     } catch (NullPointerException exception) {
       Util.fail(exception);

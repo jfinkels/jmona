@@ -20,6 +20,8 @@
 package jmona.example.ga.ones;
 
 import static org.junit.Assert.assertEquals;
+import jmona.ga.BinaryString;
+import jmona.ga.impl.CharArrayBinaryString;
 
 import org.junit.Test;
 
@@ -30,27 +32,41 @@ import org.junit.Test;
  */
 public class OnesFitnessFunctionTester {
 
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
+
   /**
    * Test method for
-   * {@link jmona.example.ga.ones.OnesFitnessFunction#fitness(jmona.example.ga.ones.OnesIndividual)}
+   * {@link jmona.example.ga.ones.OnesFitnessFunction#fitness(jmona.ga.impl.BinaryString)}
    * .
    */
   @Test
   public void testFitness() {
     final OnesFitnessFunction function = new OnesFitnessFunction();
-    OnesIndividual individual = new OnesIndividual(new short[] { 0, 1, 0, 1 });
+    final BinaryString individual = new CharArrayBinaryString(4, false);
 
-    final double epsilon = 0;
-    assertEquals(2, function.fitness(individual), epsilon);
+    assertEquals(0, function.fitness(individual), ZERO_DELTA);
 
-    individual = new OnesIndividual(new short[] { 1, 0, 1, 0 });
-    assertEquals(2, function.fitness(individual), epsilon);
+    individual.flipBit(0);
+    assertEquals(1, function.fitness(individual), ZERO_DELTA);
 
-    individual = new OnesIndividual(new short[] { 1, 1, 1, 1 });
-    assertEquals(4, function.fitness(individual), epsilon);
+    individual.flipBit(1);
+    assertEquals(2, function.fitness(individual), ZERO_DELTA);
 
-    individual = new OnesIndividual(new short[] {});
-    assertEquals(0, function.fitness(individual), epsilon);
+    individual.flipBit(2);
+    assertEquals(3, function.fitness(individual), ZERO_DELTA);
+
+    individual.flipBit(3);
+    assertEquals(4, function.fitness(individual), ZERO_DELTA);
+
+    individual.flipBit(2);
+    assertEquals(3, function.fitness(individual), ZERO_DELTA);
+
+    individual.flipBit(1);
+    assertEquals(2, function.fitness(individual), ZERO_DELTA);
+
+    individual.flipBit(0);
+    assertEquals(1, function.fitness(individual), ZERO_DELTA);
   }
 
 }

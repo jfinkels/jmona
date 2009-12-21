@@ -24,16 +24,16 @@
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
   <bean id="geneLength" class="java.lang.Integer">
-    <constructor-arg value="4" />
+    <constructor-arg value="20" />
   </bean>
 
-  <bean id="individualFactory" class="jmona.example.ga.ones.OnesIndividualFactory">
+  <bean id="individualFactory" class="jmona.ga.impl.BinaryStringFactory">
     <property name="length" ref="geneLength" />
   </bean>
   
   <bean id="populationFactory" class="jmona.impl.DefaultPopulationFactory">
     <property name="individualFactory" ref="individualFactory" />
-    <property name="size" value="4" />
+    <property name="size" value="20" />
   </bean>
 
 </beans>

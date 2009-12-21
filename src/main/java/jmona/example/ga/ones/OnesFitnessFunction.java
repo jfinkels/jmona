@@ -20,6 +20,7 @@
 package jmona.example.ga.ones;
 
 import jmona.FitnessFunction;
+import jmona.ga.BinaryString;
 
 /**
  * A fitness function which gives higher fitness to individuals with a greater
@@ -27,7 +28,7 @@ import jmona.FitnessFunction;
  * 
  * @author jfinke
  */
-public class OnesFitnessFunction implements FitnessFunction<OnesIndividual> {
+public class OnesFitnessFunction implements FitnessFunction<BinaryString> {
 
   /**
    * Get the number of ones in the gene of the specified individual.
@@ -38,14 +39,8 @@ public class OnesFitnessFunction implements FitnessFunction<OnesIndividual> {
    * @see jmona.FitnessFunction#fitness(jmona.Individual)
    */
   @Override
-  public double fitness(final OnesIndividual individual) {
-    double result = 0.0;
-
-    for (final short bit : individual.gene()) {
-      result += bit;
-    }
-
-    return result;
+  public double fitness(final BinaryString individual) {
+    return individual.bitCount();
   }
 
 }

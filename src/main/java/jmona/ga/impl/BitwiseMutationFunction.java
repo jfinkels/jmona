@@ -1,5 +1,5 @@
 /**
- * OnesMutationFunction.java
+ * BitwiseMutationFunction.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,43 +17,50 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.ga.ones;
+package jmona.ga.impl;
 
-import jmona.MutationException;
 import jmona.MutationFunction;
-import jmona.impl.Util;
+import jmona.ga.BinaryString;
 
 /**
  * A class which mutates genes by flipping bits with a certain probability.
  * 
  * @author jfinke
  */
-public class OnesMutationFunction implements MutationFunction<OnesIndividual> {
-  /** The probability of a bitwise mutation. */
-  public static final double PROB_BITWISE_MUTATION = 0.05;
+public class BitwiseMutationFunction implements MutationFunction<BinaryString> {
+  /** The default probability of flipping a single bit. */
+  public static final double DEFAULT_MUTATION_PROBABILITY = 0.05;
+  /** The probability of flipping a single bit. */
+  private double mutationProbability = DEFAULT_MUTATION_PROBABILITY;
 
   /**
    * Perform a bitwise mutation on bits in the gene of the specified individual.
    * 
    * @param individual
    *          The individual whose gene will be mutated.
-   * @throws MutationException
-   *           {@inheritDoc}
    * @see jmona.MutationFunction#mutate(jmona.Individual)
    */
   @Override
-  public void mutate(final OnesIndividual individual) throws MutationException {
-    // get the gene
-    final short[] gene = individual.gene();
+  public void mutate(final BinaryString individual) {
+    // iterate over each bit in the binary string
+    for (int i = 0; i < individual.length(); ++i) {
 
-    // iterate over each bit in the gene
-    for (int i = 0; i < gene.length; ++i) {
-      if (Math.random() <= PROB_BITWISE_MUTATION) {
-        gene[i] = (short) Math.abs(gene[i] - 1);
+      // if a mutation is needed
+      if (Math.random() <= this.mutationProbability) {
+
+        // flip the bit
+        individual.flipBit(i);
       }
     }
+  }
 
-    // set the gene on the individual
-    individual.setGene(gene);
+  /**
+   * Set the probability of flipping a bit.
+   * 
+   * @param newMutationProbability
+   *          The probability of flipping a bit.
+   */
+  public void setMutationProbability(final double newMutationProbability) {
+    this.mutationProbability = newMutationProbability;
   }
 }
