@@ -20,18 +20,55 @@
 package jmona.game;
 
 /**
+ * The result of a two player game.
+ * 
+ * @param <S>
+ *          The type of Strategy which plays a Game.
  * @author jfinkels
  */
 public interface TwoPlayerGameResult<S extends Strategy> extends GameResult<S> {
+  /**
+   * Get the score of strategy 1 at the end of a game.
+   * 
+   * @return The score of strategy 1 at the end of a game.
+   */
   double scoreOfStrategy1();
 
+  /**
+   * Get the score of strategy 2 at the end of a game.
+   * 
+   * @return The score of strategy 2 at the end of a game.
+   */
   double scoreOfStrategy2();
 
+  /**
+   * Set the score of strategy 1 at the end of a game.
+   * 
+   * @param newScoreOfStrategy1
+   *          The score of strategy 1 at the end of a game.
+   */
   void setScoreOfStrategy1(final double newScoreOfStrategy1);
 
+  /**
+   * Set the score of strategy 2 at the end of a game.
+   * 
+   * @param newScoreOfStrategy2
+   *          The score of strategy 2 at the end of a game.
+   */
   void setScoreOfStrategy2(final double newScoreOfStrategy2);
 
+  /**
+   * Set the winning Strategy of the game.
+   * 
+   * @param newWinner
+   *          The winning Strategy of the game.
+   */
   void setWinner(final S newWinner);
 
+  /**
+   * Get the winning Strategy of the game.
+   * 
+   * @return The winning Strategy of the game.
+   */
   S winner();
 }

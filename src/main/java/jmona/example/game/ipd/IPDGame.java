@@ -104,19 +104,25 @@ public class IPDGame implements TwoPlayerGame<IPDStrategy> {
 
   /** The default number of iterations over which to play the game. */
   public static final int DEFAULT_ITERATIONS = 50;
+  /** The default punishment payoff for mutual defection. */
   public static final int DEFAULT_PUNISHMENT = 1;
-
+  /** The default reward payoff for mutual cooperation. */
   public static final int DEFAULT_REWARD = 3;
-
+  /** The default sucker's payoff for cooperating when the adversary defects. */
   public static final int DEFAULT_SUCKERS_PAYOFF = 0;
+  /** The default temptation payoff to defect when the adversary cooperates. */
   public static final int DEFAULT_TEMPTATION = 5;
   /** The number of iterations over which to play the game. */
   private int iterations = DEFAULT_ITERATIONS;
+  /** The punishment payoff for mutual defection. */
   private int punishmentForMutualDefection = DEFAULT_PUNISHMENT;
-
+  /** The reward payoff for mutual cooperation. */
   private int rewardForMutualCooperation = DEFAULT_REWARD;
+  /** The sucker's payoff for cooperating when the adversary defects. */
   private int suckersPayoff = DEFAULT_SUCKERS_PAYOFF;
+  /** The temptation payoff to defect when the adversary cooperates. */
   private int temptationPayoff = DEFAULT_TEMPTATION;
+
   /**
    * 
    * @param strategy1

@@ -36,14 +36,13 @@ public class DefaultTwoPlayerGameResult<S extends Strategy> implements
   private double scoreOfStrategy1 = 0;
   /** The score of strategy 2 at the end of the game. */
   private double scoreOfStrategy2 = 0;
-
   /** The strategy which won the game. */
   private S winner;
 
   /**
-   * Get the score of strategy 1 at the end of the game.
+   * {@inheritDoc}
    * 
-   * @return The score of strategy 1 at the end of the game.
+   * @return {@inheritDoc}
    */
   @Override
   public double scoreOfStrategy1() {
@@ -51,9 +50,9 @@ public class DefaultTwoPlayerGameResult<S extends Strategy> implements
   }
 
   /**
-   * Get the score of strategy 2 at the end of the game.
+   * {@inheritDoc}
    * 
-   * @return The score of strategy 2 at the end of the game.
+   * @return {@inheritDoc}
    */
   @Override
   public double scoreOfStrategy2() {
@@ -61,10 +60,10 @@ public class DefaultTwoPlayerGameResult<S extends Strategy> implements
   }
 
   /**
-   * Set the score of strategy 1 at the end of the game.
+   * {@inheritDoc}
    * 
    * @param newScoreOfStrategy1
-   *          The score of strategy 1 at the end of the game.
+   *          {@inheritDoc}
    */
   @Override
   public void setScoreOfStrategy1(final double newScoreOfStrategy1) {
@@ -72,10 +71,10 @@ public class DefaultTwoPlayerGameResult<S extends Strategy> implements
   }
 
   /**
-   * Set the score of strategy 2 at the end of the game.
+   * {@inheritDoc}
    * 
    * @param newScoreOfStrategy2
-   *          The score of strategy 2 at the end of the game.
+   *          {@inheritDoc}
    */
   @Override
   public void setScoreOfStrategy2(final double newScoreOfStrategy2) {
@@ -83,10 +82,10 @@ public class DefaultTwoPlayerGameResult<S extends Strategy> implements
   }
 
   /**
-   * Set the strategy which won the game.
+   * {@inheritDoc}
    * 
    * @param newWinner
-   *          The strategy which won the game.
+   *          {@inheritDoc}
    */
   @Override
   public void setWinner(final S newWinner) {
@@ -96,7 +95,7 @@ public class DefaultTwoPlayerGameResult<S extends Strategy> implements
   /**
    * Get a String representation of the content of this GameResult.
    * 
-   * @return A String representation
+   * @return A String representation of the content of this GameResult.
    */
   @Override
   public String toString() {
@@ -112,9 +111,9 @@ public class DefaultTwoPlayerGameResult<S extends Strategy> implements
   }
 
   /**
-   * Get the strategy which won the game.
+   * {@inheritDoc}
    * 
-   * @return The strategy which won the game.
+   * @return {@inheritDoc}
    */
   @Override
   public S winner() {

@@ -18,10 +18,8 @@
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * Provides some basic metric functions, including:
- * <ul>
- * <li>Euclidean metric (distance on the real line)</li>
- * </ul>
+ * Provides the one-dimensional Euclidean metric function, which determines the
+ * distance between two points on the real line.
  * 
  * For more information, see:
  * <ul>
