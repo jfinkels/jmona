@@ -46,9 +46,10 @@ import org.junit.Test;
  */
 public class GrowTreeFactoryTester {
 
+  /** The maximum depth of a created Tree. */
+  public static final int DEPTH = 10;
   /** The number of tests to run. */
   public static final int NUM_TESTS = 1000;
-
   /** The factory under test. */
   private GrowTreeFactory<Integer> factory = null;
 
@@ -65,7 +66,7 @@ public class GrowTreeFactoryTester {
    */
   @Test
   public void testCreateTree() {
-    this.factory.setMaxDepth(10);
+    this.factory.setMaxDepth(DEPTH);
 
     Tree<Integer> tree = null;
     try {

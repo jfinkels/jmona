@@ -23,6 +23,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+import java.util.Vector;
+
 import jmona.ImmutablePair;
 
 import org.junit.Before;
@@ -51,34 +55,49 @@ public class IPDStrategyTester {
    */
   @Test
   public void testAddToMemory() {
-    final ImmutablePair<Action, Action> pair1 = new ImmutablePair<Action, Action>(
-        Action.DEFECT, Action.DEFECT);
-    final ImmutablePair<Action, Action> pair2 = new ImmutablePair<Action, Action>(
-        Action.DEFECT, Action.COOPERATE);
-    final ImmutablePair<Action, Action> pair3 = new ImmutablePair<Action, Action>(
-        Action.COOPERATE, Action.COOPERATE);
-    final ImmutablePair<Action, Action> pair4 = new ImmutablePair<Action, Action>(
-        Action.COOPERATE, Action.DEFECT);
+    final int memoryLength = this.strategy.memoryLength();
 
-    this.strategy.addToMemory(pair1);
-    this.strategy.addToMemory(pair2);
-    this.strategy.addToMemory(pair3);
+    final List<ImmutablePair<Action, Action>> allPairs = new Vector<ImmutablePair<Action, Action>>();
 
-    // this test only makes sense if the memory length is three
-    // TODO generalize this test to any memory length
-    assertEquals(3, this.strategy.memoryLength());
+    final int numberOfPairs = 10;
 
-    assertSame(pair1, this.strategy.memory().get(0));
-    assertSame(pair2, this.strategy.memory().get(1));
-    assertSame(pair3, this.strategy.memory().get(2));
-    assertFalse(this.strategy.memory().contains(pair4));
+    // there are four possible permutations of two actions
+    final int numberOfPermutations = 4;
 
-    this.strategy.addToMemory(pair4);
+    Action left = null;
+    Action right = null;
+    for (int i = 0; i < numberOfPairs; ++i) {
 
-    assertSame(pair2, this.strategy.memory().get(0));
-    assertSame(pair3, this.strategy.memory().get(1));
-    assertSame(pair4, this.strategy.memory().get(2));
-    assertFalse(this.strategy.memory().contains(pair1));
+      left = Action.COOPERATE;
+      right = Action.COOPERATE;
+
+      if (i % numberOfPermutations == 0) {
+        right = Action.DEFECT;
+      } else if (i % numberOfPermutations == 1) {
+        left = Action.DEFECT;
+      } else if (i % numberOfPermutations == 2) {
+        left = Action.DEFECT;
+        right = Action.DEFECT;
+      }
+
+      allPairs.add(new ImmutablePair<Action, Action>(left, right));
+    }
+
+    for (int i = 0; i < allPairs.size(); ++i) {
+
+      this.strategy.addToMemory(allPairs.get(i));
+
+      assertTrue(this.strategy.memory().size() <= this.strategy.memoryLength());
+
+      for (int j = 0; j < memoryLength && i - j >= 0; ++j) {
+        assertSame(allPairs.get(i - j), this.strategy.memory().get(
+            this.strategy.memory().size() - j - 1));
+      }
+    }
+
+    for (int i = 0; i < allPairs.size() - memoryLength; ++i) {
+      assertFalse(this.strategy.memory().contains(allPairs.get(i)));
+    }
   }
 
   /**

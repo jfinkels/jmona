@@ -32,7 +32,6 @@ import jmona.example.gp.calc.nodes.VariableNode;
 import jmona.gp.TerminalNode;
 import jmona.test.Util;
 
-import org.apache.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -42,10 +41,11 @@ import org.junit.Test;
  */
 public class CalcTerminalNodeFactoryTester {
 
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(CalcTerminalNodeFactoryTester.class);
-
+  /**
+   * The maximum value for a NumberNode created from the
+   * CalcTerminalNodeFactory.
+   */
+  public static final int MAX_VALUE = 100;
   /** The number of times to repeat the test. */
   public static final int NUM_TESTS = 1000;
 
@@ -104,14 +104,12 @@ public class CalcTerminalNodeFactoryTester {
     final CalcTerminalNodeFactory factory = new CalcTerminalNodeFactory();
 
     final Random random = new Random();
-    int newMinValue = random.nextInt(100);
-    int newMaxValue = newMinValue + random.nextInt(100);
+    int newMinValue = random.nextInt(MAX_VALUE);
+    int newMaxValue = newMinValue + random.nextInt(MAX_VALUE);
 
     factory.setMinValue(newMinValue);
     factory.setMaxValue(newMaxValue);
 
-    LOG.debug(newMinValue);
-    LOG.debug(newMaxValue);
     try {
 
       TerminalNode<SingleInputFunction<Double, Double>> node = null;
@@ -122,7 +120,6 @@ public class CalcTerminalNodeFactoryTester {
 
         if (node instanceof NumberNode) {
           value = ((NumberNode) node).evaluate().execute(null);
-          LOG.debug(value);
           assertTrue(value <= newMaxValue && value >= newMinValue);
         }
       }
