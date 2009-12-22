@@ -43,7 +43,8 @@ import org.junit.Test;
 public class GAEvolutionContextTester {
 
   /**
-   * Test method for {@link jmona.ga.impl.GAEvolutionContext#stepGeneration()}.
+   * Test method for
+   * {@link jmona.ga.impl.GAEvolutionContext#executeGenerationStep()}.
    */
   @Test
   public void testStepGeneration() {
@@ -79,17 +80,34 @@ public class GAEvolutionContextTester {
     assertTrue(context.currentPopulation().contains(individual2));
 
     try {
-      context.stepGeneration();
+      context.executeGenerationStep();
     } catch (final EvolutionException exception) {
       Util.fail(exception);
     }
-
-    assertEquals(1, context.currentGeneration());
 
     assertEquals(2, context.currentPopulation().size());
 
     assertFalse(context.currentPopulation().contains(individual1));
     assertFalse(context.currentPopulation().contains(individual2));
+
+    context.currentPopulation().remove(0);
+    try {
+      context.executeGenerationStep();
+      Util.shouldHaveThrownException();
+    } catch (final EvolutionException exception) {
+      Util.fail(exception);
+    } catch (final RuntimeException exception) {
+      assertTrue(exception instanceof RuntimeException);
+    }
+
+    context.setMutationFunction(null);
+    try {
+      context.executeGenerationStep();
+      Util.shouldHaveThrownException();
+    } catch (final EvolutionException exception) {
+      assertTrue(exception.getCause() instanceof NullPointerException);
+    }
+
   }
 
 }

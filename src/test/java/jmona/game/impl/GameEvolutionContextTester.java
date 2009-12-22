@@ -23,13 +23,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import jmona.EvolutionException;
 import jmona.Population;
+import jmona.game.GameplayException;
+import jmona.game.impl.example.ExampleBadGame;
 import jmona.game.impl.example.ExampleGame;
 import jmona.game.impl.example.ExampleStrategy;
 import jmona.impl.DefaultPopulation;
 import jmona.impl.selection.FitnessProportionateSelection;
 import jmona.test.Util;
 
-import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -40,12 +41,8 @@ import org.junit.Test;
  */
 public class GameEvolutionContextTester {
 
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(GameEvolutionContextTester.class);
   /** The context under test. */
   private GameEvolutionContext<ExampleStrategy> context = null;
-
   /** The population in the EvolutionContext. */
   private Population<ExampleStrategy> population = null;
 
@@ -106,7 +103,13 @@ public class GameEvolutionContextTester {
    */
   @Test
   public void testSetGame() {
-    this.context.setGame(new ExampleGame());
+    this.context.setGame(new ExampleBadGame());
+    try {
+      this.context.executeGenerationStep();
+      Util.shouldHaveThrownException();
+    } catch (final EvolutionException exception) {
+      assertTrue(exception.getCause() instanceof GameplayException);
+    }
   }
 
   /**
@@ -118,13 +121,11 @@ public class GameEvolutionContextTester {
 
     int beforeSize = this.context.currentPopulation().size();
 
-    LOG.debug(this.context.currentPopulation());
     try {
       this.context.stepGeneration();
     } catch (final EvolutionException exception) {
       Util.fail(exception);
     }
-    LOG.debug(this.context.currentPopulation());
 
     assertEquals(beforeSize, this.context.currentPopulation().size());
 
