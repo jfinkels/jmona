@@ -64,4 +64,14 @@ public class ImmutablePair<S, T> {
   public T right() {
     return this.right;
   }
+
+  /**
+   * Get the String representation of this pair.
+   * 
+   * @return The String representation of this pair.
+   */
+  @Override
+  public String toString() {
+    return "(" + left.toString() + ", " + right.toString() + ")";
+  }
 }
