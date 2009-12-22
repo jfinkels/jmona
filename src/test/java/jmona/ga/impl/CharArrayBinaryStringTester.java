@@ -23,6 +23,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 import jmona.ga.BinaryString;
+import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -124,6 +125,26 @@ public class CharArrayBinaryStringTester {
       } else {
         assertEquals(0, bit);
       }
+    }
+  }
+
+  /**
+   * Test method for {@link jmona.ga.impl.CharArrayBinaryString#checkIndex()}.
+   */
+  @Test
+  public void testCheckIndex() {
+    try {
+      this.bitstring.flipBit(LENGTH);
+      Util.shouldHaveThrownException();
+    } catch (final IllegalArgumentException exception) {
+      assertTrue(exception instanceof IllegalArgumentException);
+    }
+    
+    try {
+      this.bitstring.flipBit(LENGTH + 1);
+      Util.shouldHaveThrownException();
+    } catch (final IllegalArgumentException exception) {
+      assertTrue(exception instanceof IllegalArgumentException);
     }
   }
 
