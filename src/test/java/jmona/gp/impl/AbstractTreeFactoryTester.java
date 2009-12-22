@@ -47,9 +47,10 @@ import org.junit.Test;
  * @author jfinkels
  */
 public class AbstractTreeFactoryTester {
+  /** The depth of a created tree. */
+  public static final int DEPTH = 3;
   /** The number of times to create an Individual. */
   public static final int NUM_TESTS = 100;
-
   /** The AbstractTreeFactory under test. */
   private AbstractTreeFactory<Integer> factory = null;
 
@@ -119,7 +120,7 @@ public class AbstractTreeFactoryTester {
     }
 
     try {
-      node = this.factory.createTree(3);
+      node = this.factory.createTree(DEPTH);
       assertEquals(2, node.children().size());
       assertEquals(node.arity(), node.children().size());
 
