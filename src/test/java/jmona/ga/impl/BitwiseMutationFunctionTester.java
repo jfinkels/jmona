@@ -92,4 +92,49 @@ public class BitwiseMutationFunctionTester {
     // TODO use standard deviation or something more official for epsilon
     assertEquals(expectedMutations, mean, delta);
   }
+
+  /**
+   * Test method for
+   * {@link jmona.ga.impl.BitwiseMutationFunction#setMutationProbability(double)}
+   * .
+   */
+  @Test
+  public void testSetMutationProbability() {
+    final BitwiseMutationFunction function = new BitwiseMutationFunction();
+    
+    // no mutations
+    int newMutationProbability = 0;
+    function.setMutationProbability(newMutationProbability);
+
+    // create a list of all individuals.
+    final List<BinaryString> allIndividuals = new Vector<BinaryString>();
+    
+    // initialize binary strings, all initially 0
+    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
+      allIndividuals.add(new CharArrayBinaryString(LENGTH));
+    }
+
+    for (final BinaryString individual : allIndividuals) {
+      
+      function.mutate(individual);
+
+      for (final byte bit : individual) {
+        assertEquals(0, bit);
+      }
+    }
+
+    // every bit gets mutated
+    newMutationProbability = 1;
+    function.setMutationProbability(newMutationProbability);
+    
+    for (final BinaryString individual : allIndividuals) {
+      
+      function.mutate(individual);
+      
+      for (final byte bit : individual) {
+        assertEquals(1, bit);
+      }
+    }
+    
+  }
 }
