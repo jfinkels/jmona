@@ -20,6 +20,7 @@
 package jmona.ga.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import jmona.FitnessException;
 import jmona.impl.example.ExampleIndividual;
@@ -55,14 +56,22 @@ public class GAFitnessFunctionTester {
    */
   @Test
   public void testFitness() {
+    final ExampleIndividual target = new ExampleIndividual(TARGET_FITNESS);
     this.function.setMetric(new ExampleMetric());
-    this.function.setTarget(new ExampleIndividual(TARGET_FITNESS));
+    this.function.setTarget(target);
 
     try {
       assertEquals(2.0 / TARGET_FITNESS, this.function
           .fitness(new ExampleIndividual(TARGET_FITNESS / 2)), ZERO_DELTA);
       assertEquals(1.0 / TARGET_FITNESS, this.function
           .fitness(new ExampleIndividual(0)), ZERO_DELTA);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
+
+    try {
+      assertEquals(Double.POSITIVE_INFINITY, this.function.fitness(target),
+          ZERO_DELTA);
     } catch (final FitnessException exception) {
       Util.fail(exception);
     }
@@ -93,6 +102,18 @@ public class GAFitnessFunctionTester {
       this.function.sanityCheck();
     } catch (final NullPointerException exception) {
       Util.fail(exception);
+    }
+  }
+
+  /** Test method for when Exceptions are thrown. */
+  @Test
+  public void testExceptions() {
+    this.function.setMetric(null);
+    try {
+      this.function.fitness(new ExampleIndividual());
+      Util.shouldHaveThrownException();
+    } catch (final FitnessException exception) {
+      assertTrue(exception.getCause() instanceof NullPointerException);
     }
   }
 
