@@ -20,8 +20,8 @@
 package jmona;
 
 /**
- * A class which provides a single method which performs an in-place crossover
- * between genes of individuals in the specified population.
+ * A class which provides a single method which performs a crossover (in place)
+ * between genes of Individuals.
  * 
  * @param <T>
  *          The type of Individual whose genes will be crossed over.
@@ -30,15 +30,16 @@ package jmona;
 public interface CrossoverFunction<T extends Individual> {
 
   /**
-   * Crossover the genes of the specified parents, in-place.
+   * Crossover the genes of the specified individual (in-place).
    * 
-   * @param parent1
-   *          One parent Individual.
-   * @param parent2
-   *          Another parent Individual.
+   * @param individual1
+   *          An Individual.
+   * @param individual2
+   *          Another Individual.
    * @throws CrossoverException
    *           If there is a problem performing crossover on the two specified
    *           Individuals.
    */
-  void crossover(final T parent1, final T parent2) throws CrossoverException;
+  void crossover(final T individual1, final T individual2)
+      throws CrossoverException;
 }
