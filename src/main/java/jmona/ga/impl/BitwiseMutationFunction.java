@@ -19,7 +19,6 @@
  */
 package jmona.ga.impl;
 
-import jmona.MutationFunction;
 import jmona.ga.BinaryString;
 
 /**
@@ -27,12 +26,7 @@ import jmona.ga.BinaryString;
  * 
  * @author jfinke
  */
-public class BitwiseMutationFunction implements MutationFunction<BinaryString> {
-  /** The default probability of flipping a single bit. */
-  public static final double DEFAULT_MUTATION_PROBABILITY = 0.05;
-  /** The probability of flipping a single bit. */
-  private double mutationProbability = DEFAULT_MUTATION_PROBABILITY;
-
+public class BitwiseMutationFunction extends AbstractMutationFunction<BinaryString> {
   /**
    * Perform a bitwise mutation on bits in the gene of the specified individual.
    * 
@@ -46,21 +40,11 @@ public class BitwiseMutationFunction implements MutationFunction<BinaryString> {
     for (int i = 0; i < individual.length(); ++i) {
 
       // if a mutation is needed
-      if (Math.random() <= this.mutationProbability) {
+      if (Math.random() <= this.mutationProbability()) {
 
         // flip the bit
         individual.flipBit(i);
       }
     }
-  }
-
-  /**
-   * Set the probability of flipping a bit.
-   * 
-   * @param newMutationProbability
-   *          The probability of flipping a bit.
-   */
-  public void setMutationProbability(final double newMutationProbability) {
-    this.mutationProbability = newMutationProbability;
   }
 }
