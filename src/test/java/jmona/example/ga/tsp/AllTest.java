@@ -29,8 +29,9 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jfinkels
  */
 @RunWith(Suite.class)
-@SuiteClasses({ AdjacencyMatrixGraphTester.class, TourTester.class,
-    TSPCrossoverFunctionTester.class, TSPFitnessFunctionTester.class,
+@SuiteClasses({ AdjacencyMatrixGraphTester.class, TourFactoryTester.class,
+    TourTester.class, TSPCrossoverFunctionTester.class,
+    TSPEvolutionTester.class, TSPFitnessFunctionTester.class,
     TSPMutationFunctionTester.class })
 public class AllTest {
 
