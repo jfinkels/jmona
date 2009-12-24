@@ -19,32 +19,26 @@
  */
 package jmona.ga.impl;
 
+import jmona.MutationFunction;
 import jmona.ga.BinaryString;
+import jmona.impl.Util;
 
 /**
- * A class which mutates genes by flipping bits with a certain probability.
+ * A class which mutates genes by flipping a random bit.
  * 
  * @author jfinke
  */
-public class BitwiseMutationFunction extends AbstractMutationFunction<BinaryString> {
+public class BitwiseMutationFunction implements MutationFunction<BinaryString> {
   /**
-   * Perform a bitwise mutation on bits in the gene of the specified individual.
+   * Flip a random bit in the specified binary string.
    * 
    * @param individual
-   *          The individual whose gene will be mutated.
+   *          The binary string in which to flip a random bit.
    * @see jmona.MutationFunction#mutate(jmona.Individual)
    */
   @Override
   public void mutate(final BinaryString individual) {
-    // iterate over each bit in the binary string
-    for (int i = 0; i < individual.length(); ++i) {
-
-      // if a mutation is needed
-      if (Math.random() <= this.mutationProbability()) {
-
-        // flip the bit
-        individual.flipBit(i);
-      }
-    }
+    final int bitToFlip = Util.RANDOM.nextInt(individual.size());
+    individual.flipBit(bitToFlip);
   }
 }
