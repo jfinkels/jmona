@@ -57,13 +57,13 @@ public class BinaryStringFactoryTester {
   public void testSetLength() {
     BinaryString individual = this.factory.createIndividual();
 
-    assertEquals(BinaryStringFactory.DEFAULT_LENGTH, individual.length());
+    assertEquals(BinaryStringFactory.DEFAULT_LENGTH, individual.size());
 
     final int newLength = 100;
     this.factory.setLength(newLength);
     individual = this.factory.createIndividual();
 
-    assertEquals(newLength, individual.length());
+    assertEquals(newLength, individual.size());
 
   }
 
