@@ -43,6 +43,12 @@ public class ExampleFitnessFunction implements
   @Override
   public double fitness(final ExampleIndividual individual)
       throws FitnessException {
+    final double fitness = individual.fitness();
+
+    if (fitness < 0) {
+      throw new FitnessException("Fitness is negative.");
+    }
+
     return individual.fitness();
   }
 }
