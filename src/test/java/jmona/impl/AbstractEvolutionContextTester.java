@@ -82,8 +82,8 @@ public class AbstractEvolutionContextTester {
     this.emptyPopulation = new DefaultPopulation<ExampleIndividual>();
     this.population = new DefaultPopulation<ExampleIndividual>();
 
-    this.individual1 = new ExampleIndividual();
-    this.individual2 = new ExampleIndividual();
+    this.individual1 = new ExampleIndividual(0);
+    this.individual2 = new ExampleIndividual(1);
 
     this.population.add(this.individual1);
     this.population.add(this.individual2);
