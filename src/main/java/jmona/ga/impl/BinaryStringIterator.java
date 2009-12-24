@@ -19,7 +19,7 @@
  */
 package jmona.ga.impl;
 
-import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 import jmona.ga.BinaryString;
@@ -29,10 +29,10 @@ import jmona.ga.BinaryString;
  * 
  * @author jfinkels
  */
-class BinaryStringIterator implements Iterator<Byte> {
+class BinaryStringIterator implements ListIterator<Byte> {
 
   /** The binary string over which this object iterates. */
-  private final BinaryString charArrayBinaryString;
+  private final BinaryString binaryString;
   /** The pointer to the current bit in the binary string. */
   private int pointer = -1;
 
@@ -43,7 +43,39 @@ class BinaryStringIterator implements Iterator<Byte> {
    *          The binary string over which to iterate.
    */
   public BinaryStringIterator(final BinaryString initialBinaryString) {
-    this.charArrayBinaryString = initialBinaryString;
+    this.binaryString = initialBinaryString;
+  }
+
+  /**
+   * Instantiate this Iterator with access to the specified binary string, and
+   * with the specified starting index into the binary string.
+   * 
+   * @param initialBinaryString
+   *          The binary string over which to iterate.
+   * @param initialIndex
+   *          The starting index of this iterator in the specified binary
+   *          string.
+   */
+  public BinaryStringIterator(final BinaryString initialBinaryString,
+      final int initialIndex) {
+    this(initialBinaryString);
+    this.pointer = initialIndex;
+  }
+
+  /**
+   * This operation is unsupported.
+   * 
+   * @param bit
+   *          This parameter is ignored.
+   * @throws UnsupportedOperationException
+   *           Always throws this Exception.
+   * @see java.util.ListIterator#add(java.lang.Object)
+   */
+  @Override
+  public void add(final Byte bit) {
+    throw new UnsupportedOperationException(
+        "The length of this binary string cannot be changed.");
+
   }
 
   /**
@@ -54,7 +86,18 @@ class BinaryStringIterator implements Iterator<Byte> {
    */
   @Override
   public boolean hasNext() {
-    return this.pointer < (this.charArrayBinaryString.length() - 1);
+    return this.pointer < (this.binaryString.size() - 1);
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see java.util.ListIterator#hasPrevious()
+   */
+  @Override
+  public boolean hasPrevious() {
+    return (this.pointer > 0 && this.pointer <= this.binaryString.size());
   }
 
   /**
@@ -69,13 +112,52 @@ class BinaryStringIterator implements Iterator<Byte> {
   public Byte next() {
     this.pointer += 1;
 
-    if (this.pointer >= this.charArrayBinaryString.length()) {
+    if (this.pointer >= this.binaryString.size()) {
+      this.pointer -= 1;
       throw new NoSuchElementException(
           "This binary string contains no more elements.");
     }
 
-    final Byte result = this.charArrayBinaryString.getBit(this.pointer);
+    final Byte result = this.binaryString.get(this.pointer);
     return result;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see java.util.ListIterator#nextIndex()
+   */
+  @Override
+  public int nextIndex() {
+    return Math.min(this.pointer + 1, this.binaryString.size());
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see java.util.ListIterator#previous()
+   */
+  @Override
+  public Byte previous() {
+    if (this.pointer == 0) {
+      throw new NoSuchElementException("There is no previous element.");
+    }
+
+    this.pointer -= 1;
+    return this.binaryString.get(this.pointer);
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see java.util.ListIterator#previousIndex()
+   */
+  @Override
+  public int previousIndex() {
+    return this.pointer - 1;
   }
 
   /**
@@ -89,7 +171,19 @@ class BinaryStringIterator implements Iterator<Byte> {
   @Override
   public void remove() {
     throw new UnsupportedOperationException(
-        "This operation is not supported on binary strings.");
+        "The length of this binary string cannot be changed.");
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @param value
+   *          {@inheritDoc}
+   * @see java.util.ListIterator#set(java.lang.Object)
+   */
+  @Override
+  public void set(final Byte value) {
+    this.binaryString.set(this.pointer, value);
   }
 
 }

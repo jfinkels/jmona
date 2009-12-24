@@ -19,7 +19,10 @@
  */
 package jmona.ga.impl;
 
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 import jmona.ga.BinaryString;
 import jmona.impl.Util;
@@ -46,6 +49,20 @@ public class CharArrayBinaryString implements BinaryString {
    * characters.
    */
   public static final String CHAR_BINARY_FORMAT = "%" + Character.SIZE + "s";
+
+  /**
+   * Check whether the specified value is 0 or 1.
+   * 
+   * @param value
+   *          The value to check.
+   * @throws IllegalArgumentException
+   *           If the specified value is not 0 or 1.
+   */
+  private static void checkValue(final byte value) {
+    if (value != 0 && value != 1) {
+      throw new IllegalArgumentException("Value must be 0 or 1, not " + value);
+    }
+  }
 
   /**
    * Get the block which contains the bit at the specified index.
@@ -118,13 +135,13 @@ public class CharArrayBinaryString implements BinaryString {
         this.bitstring[i] = (char) Util.RANDOM.nextInt();
       }
 
-    // get the last block in the array which contains bits for this bitstring
-    int containingBlock = containingBlock(this.length - 1);
-    
-    // get the distance of the last bit from the right
-    int shift = shiftWithinBlock(containingBlock, this.length - 1);
-    
-    this.bitstring[containingBlock] &= -1 << shift;  
+      // get the last block in the array which contains bits for this bitstring
+      int containingBlock = containingBlock(this.length - 1);
+
+      // get the distance of the last bit from the right
+      int shift = shiftWithinBlock(containingBlock, this.length - 1);
+
+      this.bitstring[containingBlock] &= -1 << shift;
     }
   }
 
@@ -141,6 +158,74 @@ public class CharArrayBinaryString implements BinaryString {
       final char[] initialBitstring) {
     this.length = initialLength;
     this.bitstring = initialBitstring.clone();
+  }
+
+  /**
+   * This operation is unsupported.
+   * 
+   * @param bit
+   *          This parameter is ignored.
+   * @return Never returns.
+   * @throws UnsupportedOperationException
+   *           Always throws this Exception.
+   * @see java.util.Collection#add(java.lang.Object)
+   */
+  @Override
+  public boolean add(final Byte bit) {
+    throw new UnsupportedOperationException(
+        "The length of this binary string cannot be changed.");
+  }
+
+  /**
+   * This operation is unsupported.
+   * 
+   * @param index
+   *          This parameter is ignored.
+   * @param value
+   *          This parameter is ignored.
+   * @throws UnsupportedOperationException
+   *           Always throws this Exception.
+   * @see java.util.List#add(int, java.lang.Object)
+   */
+  @Override
+  public void add(final int index, final Byte value) {
+    throw new UnsupportedOperationException(
+        "The length of this binary string cannot be changed.");
+
+  }
+
+  /**
+   * This operation is unsupported.
+   * 
+   * @param c
+   *          This parameter is ignored.
+   * @return Never returns.
+   * @throws UnsupportedOperationException
+   *           Always throws this Exception.
+   * @see java.util.Collection#addAll(java.util.Collection)
+   */
+  @Override
+  public boolean addAll(final Collection<? extends Byte> c) {
+    throw new UnsupportedOperationException(
+        "The length of this binary string cannot be changed.");
+  }
+
+  /**
+   * This operation is unsupported.
+   * 
+   * @param index
+   *          This parameter is ignored.
+   * @param c
+   *          This parameter is ignored.
+   * @return Never returns.
+   * @throws UnsupportedOperationException
+   *           Always throws this Exception.
+   * @see java.util.List#addAll(int, java.util.Collection)
+   */
+  @Override
+  public boolean addAll(final int index, final Collection<? extends Byte> c) {
+    throw new UnsupportedOperationException(
+        "The length of this binary string cannot be changed.");
   }
 
   /**
@@ -179,6 +264,57 @@ public class CharArrayBinaryString implements BinaryString {
   }
 
   /**
+   * This operation is unsupported.
+   * 
+   * @throws UnsupportedOperationException
+   *           Always throws this Exception.
+   * @see java.util.Collection#clear()
+   */
+  @Override
+  public void clear() {
+    throw new UnsupportedOperationException(
+        "The length of this binary string cannot be changed.");
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @param o
+   *          {@inheritDoc}
+   * @return {@inheritDoc}
+   * @see java.util.Collection#contains(java.lang.Object)
+   */
+  @Override
+  public boolean contains(final Object o) {
+    final byte value = (Byte) o;
+    for (final Byte bit : this) {
+      if (value == bit.intValue()) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @param c
+   *          {@inheritDoc}
+   * @return {@inheritDoc}
+   * @see java.util.Collection#containsAll(java.util.Collection)
+   */
+  @Override
+  public boolean containsAll(final Collection<?> c) {
+    for (final Object o : c) {
+      if (!this.contains(o)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
@@ -208,17 +344,15 @@ public class CharArrayBinaryString implements BinaryString {
   }
 
   /**
-   * {@inheritDoc}
+   * Get the value of the bit at the specified index.
    * 
    * @param index
-   *          {@inheritDoc}
-   * @return {@inheritDoc}
-   * @throws IllegalArgumentException
-   *           If the specified index is greater than or equal to the length of
-   *           this binary string.
+   *          The index of the bit to get.
+   * @return The value of the bit at the specified index.
+   * @see java.util.List#get(int)
    */
   @Override
-  public byte getBit(final int index) {
+  public Byte get(final int index) {
     this.checkIndex(index);
 
     final int containingBlock = containingBlock(index);
@@ -231,6 +365,41 @@ public class CharArrayBinaryString implements BinaryString {
       result = 1;
     }
     return result;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @param o
+   *          {@inheritDoc}
+   * @return {@inheritDoc}
+   * @see java.util.List#indexOf(java.lang.Object)
+   */
+  @Override
+  public int indexOf(final Object o) {
+    final Byte value = (Byte) o;
+
+    int i = 0;
+    while (i < this.length) {
+      if (this.get(i).equals(value)) {
+        return i;
+      }
+
+      i += 1;
+    }
+
+    return -1;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see java.util.Collection#isEmpty()
+   */
+  @Override
+  public boolean isEmpty() {
+    return this.length == 0;
   }
 
   /**
@@ -249,10 +418,226 @@ public class CharArrayBinaryString implements BinaryString {
   /**
    * {@inheritDoc}
    * 
+   * @param o
+   *          {@inheritDoc}
    * @return {@inheritDoc}
+   * @see java.util.List#lastIndexOf(java.lang.Object)
    */
-  public int length() {
+  @Override
+  public int lastIndexOf(final Object o) {
+
+    final Byte value = (Byte) o;
+
+    int i = this.length - 1;
+    while (i >= 0) {
+      if (this.get(i).equals(value)) {
+        return i;
+      }
+
+      i -= 1;
+    }
+
+    return i;
+
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see java.util.List#listIterator()
+   */
+  @Override
+  public ListIterator<Byte> listIterator() {
+    return new BinaryStringIterator(this);
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @param index
+   *          {@inheritDoc}
+   * @return {@inheritDoc}
+   * @see java.util.List#listIterator(int)
+   */
+  @Override
+  public ListIterator<Byte> listIterator(final int index) {
+    return new BinaryStringIterator(this, index);
+  }
+
+  /**
+   * This operation is unsupported.
+   * 
+   * @param index
+   *          This parameter is ignored.
+   * @return Never returns.
+   * @throws UnsupportedOperationException
+   *           Always throws this Exception.
+   * @see java.util.List#remove(int)
+   */
+  @Override
+  public Byte remove(final int index) {
+    throw new UnsupportedOperationException(
+        "The length of this binary string cannot be changed.");
+  }
+
+  /**
+   * This operation is unsupported.
+   * 
+   * @param object
+   *          This parameter is ignored.
+   * @return Never returns.
+   * @throws UnsupportedOperationException
+   *           Always throws this Exception.
+   * @see java.util.List#remove(Object)
+   */
+  @Override
+  public boolean remove(final Object object) {
+    throw new UnsupportedOperationException(
+        "The length of this binary string cannot be changed.");
+  }
+
+  /**
+   * This operation is unsupported.
+   * 
+   * @param collection
+   *          This parameter is ignored.
+   * @return Never returns.
+   * @throws UnsupportedOperationException
+   *           Always throws this Exception.
+   * @see java.util.Collection#removeAll(java.util.Collection)
+   */
+  @Override
+  public boolean removeAll(final Collection<?> collection) {
+    throw new UnsupportedOperationException(
+        "The length of this binary string cannot be changed.");
+  }
+
+  /**
+   * This operation is unsupported.
+   * 
+   * @param collection
+   *          This parameter is ignored.
+   * @return Never returns.
+   * @throws UnsupportedOperationException
+   *           Always throws this Exception.
+   * @see java.util.Collection#retainAll(java.util.Collection)
+   */
+  @Override
+  public boolean retainAll(final Collection<?> collection) {
+    throw new UnsupportedOperationException(
+        "The length of this binary string cannot be changed.");
+  }
+
+  /**
+   * Set the bit at the specified index to the specified value (which must be 0
+   * or 1).
+   * 
+   * @param index
+   *          The index of the bit to set.
+   * @param value
+   *          The value to set the bit.
+   * @return The previous value of the bit at the specified index.
+   * @throws IllegalArgumentException
+   *           If the specified value is not 0 or 1, or if the specified index
+   *           is greater than or equal to the length of the binary string.
+   * @see java.util.List#set(int, java.lang.Object)
+   */
+  @Override
+  public Byte set(final int index, final Byte value) {
+    this.checkIndex(index);
+    checkValue(value);
+
+    byte previousValue = this.get(index);
+
+    if ((value == 1 && previousValue == 0)
+        || (value == 0 && previousValue == 1)) {
+      this.flipBit(index);
+    }
+
+    return previousValue;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see java.util.Collection#size()
+   */
+  @Override
+  public int size() {
     return this.length;
+  }
+
+  /**
+   * This operation is unsupported.
+   * 
+   * @param fromIndex
+   *          This parameter is ignored.
+   * @param toIndex
+   *          This parameter is ignored.
+   * @return Never returns.
+   * @throws UnsupportedOperationException
+   *           Always throws this Exception.
+   * @see java.util.List#subList(int, int)
+   */
+  @Override
+  public List<Byte> subList(final int fromIndex, final int toIndex) {
+    throw new UnsupportedOperationException(
+        "This operation is unsupported on binary strings.");
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see java.util.Collection#toArray()
+   */
+  @Override
+  public Byte[] toArray() {
+    final Byte[] result = new Byte[this.length];
+
+    for (int i = 0; i < this.length; ++i) {
+      result[i] = this.get(i);
+    }
+
+    return result;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @param <T>
+   *          The type of Object in the array.
+   * @param array
+   *          {@inheritDoc}
+   * @return {@inheritDoc}
+   * @see java.util.Collection#toArray(Object[])
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public <T> T[] toArray(final T[] array) {
+
+    if (array.length < this.length) {
+      final Byte[] result = new Byte[this.length];
+
+      for (int i = 0; i < this.length; ++i) {
+        result[i] = this.get(i);
+      }
+
+      return (T[]) result;
+    } else {
+      if (array.length > this.length) {
+        array[this.length] = null;
+      }
+
+      for (int i = 0; i < this.length; ++i) {
+        array[i] = (T) this.get(i);
+      }
+
+      return array;
+    }
+
   }
 
   /**

@@ -19,6 +19,8 @@
  */
 package jmona.ga;
 
+import java.util.List;
+
 import jmona.Individual;
 
 /**
@@ -26,7 +28,7 @@ import jmona.Individual;
  * 
  * @author jfinkels
  */
-public interface BinaryString extends Individual, Iterable<Byte> {
+public interface BinaryString extends Individual, List<Byte> {
   /**
    * Get the number of one-bits in this binary string.
    * 
@@ -43,19 +45,4 @@ public interface BinaryString extends Individual, Iterable<Byte> {
    */
   void flipBit(final int index);
 
-  /**
-   * Get the value of the bit at the specified index.
-   * 
-   * @param index
-   *          The index of the bit to get.
-   * @return The value of the bit at the specified index.
-   */
-  byte getBit(final int index);
-
-  /**
-   * The length of this binary string, in number of bits.
-   * 
-   * @return The length of this binary string, in number of bits.
-   */
-  int length();
 }
