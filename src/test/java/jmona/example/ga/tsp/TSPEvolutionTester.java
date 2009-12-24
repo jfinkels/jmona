@@ -23,8 +23,6 @@ import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
-import jmona.example.ga.ones.OnesEvolutionTester;
-import jmona.ga.BinaryString;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
@@ -70,6 +68,8 @@ public class TSPEvolutionTester extends AbstractJUnit4SpringContextTests {
     } catch (final CompletionException exception) {
       Util.fail(exception);
     } catch (final EvolutionException exception) {
+      Util.fail(exception);
+    } catch (final ArrayIndexOutOfBoundsException exception) {
       Util.fail(exception);
     }
   }

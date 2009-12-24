@@ -1,5 +1,5 @@
 /**
- * TSPCrossoverFunction.java
+ * AllTest.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,23 +17,21 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.ga.tsp;
+package jmona.example.ga.tsp.mutation;
 
-import jmona.CrossoverFunction;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
 /**
+ * Runs all tests in this package.
+ * 
  * @author jfinkels
  */
-public class TSPCrossoverFunction implements CrossoverFunction<Tour> {
-
-  /*
-   * (non-Javadoc)
-   * 
-   * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
-   */
-  @Override
-  public void crossover(final Tour individual1, final Tour individual2) {
-    
-  }
+@RunWith(Suite.class)
+@SuiteClasses({ DisplacementMutationFunctionTester.class,
+    InsertionMutationFunctionTester.class,
+    InversionMutationFunctionTester.class, SwapMutationFunctionTester.class })
+public class AllTest {
 
 }

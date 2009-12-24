@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.ga.tsp.input;
+package jmona.example.ga.tsp.io;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -29,6 +29,8 @@ import java.util.Vector;
 import jmona.example.ga.tsp.AdjacencyMatrixGraph;
 import jmona.example.ga.tsp.DirectedGraph;
 
+import org.apache.log4j.Logger;
+
 /**
  * A class which reads graphs from files.
  * 
@@ -37,7 +39,11 @@ import jmona.example.ga.tsp.DirectedGraph;
 public class TSPGraphReader {
 
   /** A regular expression matching any whitespace character. */
-  public static final String WHITESPACE = "\\s";
+  public static final String WHITESPACE = "\\s+";
+  
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(TSPGraphReader.class);
 
   /**
    * Generate a DirectedGraph from the adjacency matrix described in the
@@ -53,9 +59,13 @@ public class TSPGraphReader {
    */
   public static DirectedGraph<Integer, Double> fromFile(final File file)
       throws IOException {
+    LOG.debug("Reading from file: " + file);
+    
     // instantiate a list for all lines
     final List<String[]> allLines = allLines(file);
 
+    LOG.debug("Number of lines read: " + allLines.size());
+    
     // get the number of vertices in the graph
     final int numberOfVertices = allLines.size();
 
@@ -67,10 +77,14 @@ public class TSPGraphReader {
     int j = 0;
     for (final String[] weights : allLines) {
 
+      LOG.debug("weights: " + weights[0] + ", " + weights[1] + ", " + weights[2]);
+      
       // iterate over each edge weight in the line
       j = 0;
       for (final String weight : weights) {
 
+        LOG.debug("weight = " + weight);
+        
         // put that value in the adjacency matrix
         adjacencyMatrix[i][j] = Double.valueOf(weight);
 
@@ -99,21 +113,30 @@ public class TSPGraphReader {
    *           If there is a problem reading from the specified File.
    */
   protected static List<String[]> allLines(final File file) throws IOException {
-    // create a file reader
-    final BufferedReader reader = new BufferedReader(new FileReader(file));
-
+    BufferedReader reader = null;
     final List<String[]> result = new Vector<String[]>();
 
-    String currentLine = reader.readLine();
-    while (currentLine != null) {
-      if (!currentLine.isEmpty()) {
-        result.add(currentLine.split(WHITESPACE));
-      }
-      currentLine = reader.readLine();
-    }
+    LOG.debug("Reading from file: " + file);
+    
+    try {
+      // create a file reader
+      reader = new BufferedReader(new FileReader(file));
 
-    // close the file
-    reader.close();
+      LOG.debug("Created reader: " + reader);
+      
+      // add each line, split on whitespace, to the result list
+      String currentLine = reader.readLine();
+      while (currentLine != null) {
+        LOG.debug("Current line: " + currentLine);
+        if (!currentLine.isEmpty()) {
+          result.add(currentLine.trim().split(WHITESPACE));
+        }
+        currentLine = reader.readLine();
+      }
+    } finally {
+      // close the file
+      reader.close();
+    }
 
     return result;
   }

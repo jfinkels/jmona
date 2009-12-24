@@ -1,5 +1,5 @@
 /**
- * TSPCrossoverFunctionTester.java
+ * EdgeRecombinationCrossoverFunction.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,23 +17,27 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.ga.tsp;
+package jmona.example.ga.tsp.crossover;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+import jmona.CrossoverException;
+import jmona.CrossoverFunction;
+import jmona.example.ga.tsp.Tour;
 
 /**
+ * ERX, by Matthew Wall
+ * 
  * @author jfinkels
  */
-public class TSPCrossoverFunctionTester {
+public class EdgeRecombinationCrossoverFunction implements CrossoverFunction<Tour> {
 
-  /**
-   * Test method for {@link jmona.example.ga.tsp.TSPCrossoverFunction#crossover(jmona.example.ga.tsp.Tour, jmona.example.ga.tsp.Tour)}.
+  /* (non-Javadoc)
+   * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
    */
-  @Test
-  public void testCrossover() {
-    fail("Not yet implemented");
+  @Override
+  public void crossover(final Tour tour1, final Tour tour2)
+      throws CrossoverException {
+    // TODO Auto-generated method stub
+    
   }
 
 }
