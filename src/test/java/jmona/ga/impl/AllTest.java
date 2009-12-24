@@ -31,7 +31,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ AbstractBinaryStringCrossoverFunctionTester.class,
     BinaryStringFactoryTester.class, BinaryStringIteratorTester.class,
-    CharArrayBinaryStringTester.class, BitwiseMutationFunctionTester.class,
+    BitwiseMutationFunctionTester.class, CharArrayBinaryStringTester.class,
     GAEvolutionContextTester.class, GAFitnessFunctionTester.class,
     OnePointCrossoverFunctionTester.class,
     TwoPointCrossoverFunctionTester.class })
