@@ -24,7 +24,7 @@
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
   <bean id="individualFactory" class="jmona.example.ga.tsp.TourFactory">
-    <property name="numberOfCities" ref="numberOfCities" />
+    <constructor-arg ref="numberOfCities" />
   </bean>
   
   <bean id="populationFactory" class="jmona.impl.DefaultPopulationFactory">
