@@ -48,14 +48,16 @@ public class GAEvolutionContextTester {
    */
   @Test
   public void testStepGeneration() {
-    // create two individuals to put into a population
+    // create three individuals to put into a population
     final ExampleIndividual individual1 = new ExampleIndividual();
     final ExampleIndividual individual2 = new ExampleIndividual();
+    final ExampleIndividual individual3 = new ExampleIndividual();
 
-    // put those two individuals in a population
+    // put those three individuals in a population
     final Population<ExampleIndividual> population = new DefaultPopulation<ExampleIndividual>();
     population.add(individual1);
     population.add(individual2);
+    population.add(individual3);
 
     // instantiate a new EvolutionContext
     final GAEvolutionContext<ExampleIndividual> context = new GAEvolutionContext<ExampleIndividual>(
@@ -74,7 +76,7 @@ public class GAEvolutionContextTester {
 
     assertEquals(0, context.currentGeneration());
 
-    assertEquals(2, context.currentPopulation().size());
+    assertEquals(population.size(), context.currentPopulation().size());
 
     assertTrue(context.currentPopulation().contains(individual1));
     assertTrue(context.currentPopulation().contains(individual2));
@@ -84,12 +86,22 @@ public class GAEvolutionContextTester {
     } catch (final EvolutionException exception) {
       Util.fail(exception);
     }
-
-    assertEquals(2, context.currentPopulation().size());
+    
+    assertEquals(population.size(), context.currentPopulation().size());
 
     assertFalse(context.currentPopulation().contains(individual1));
     assertFalse(context.currentPopulation().contains(individual2));
+    assertFalse(context.currentPopulation().contains(individual3));
+    
+    context.currentPopulation().remove(0);
+    try {
+      context.executeGenerationStep();
+    } catch (final EvolutionException exception) {
+      Util.fail(exception);
+    }
 
+    assertEquals(population.size() - 1, context.currentPopulation().size());
+    
     context.currentPopulation().remove(0);
     try {
       context.executeGenerationStep();

@@ -118,8 +118,8 @@ public class GAEvolutionContext<T extends Individual> extends
 
       // if the population size was an odd number, just add one more individual
       if ((currentSize & 1) == 1) {
-        nextPopulation.add(this.selectionFunction().select(
-            this.currentFitnesses()));
+        nextPopulation.add((T) this.selectionFunction().select(
+            this.currentFitnesses()).deepCopy());
       }
 
       // set the current population to the next generation
