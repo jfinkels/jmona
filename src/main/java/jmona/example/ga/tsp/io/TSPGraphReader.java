@@ -29,8 +29,6 @@ import java.util.Vector;
 import jmona.example.ga.tsp.AdjacencyMatrixGraph;
 import jmona.example.ga.tsp.DirectedGraph;
 
-import org.apache.log4j.Logger;
-
 /**
  * A class which reads graphs from files.
  * 
@@ -41,10 +39,6 @@ public class TSPGraphReader {
   /** A regular expression matching any whitespace character. */
   public static final String WHITESPACE = "\\s+";
   
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(TSPGraphReader.class);
-
   /**
    * Generate a DirectedGraph from the adjacency matrix described in the
    * specified File.
@@ -59,12 +53,9 @@ public class TSPGraphReader {
    */
   public static DirectedGraph<Integer, Double> fromFile(final File file)
       throws IOException {
-    LOG.debug("Reading from file: " + file);
     
     // instantiate a list for all lines
     final List<String[]> allLines = allLines(file);
-
-    LOG.debug("Number of lines read: " + allLines.size());
     
     // get the number of vertices in the graph
     final int numberOfVertices = allLines.size();
@@ -77,13 +68,9 @@ public class TSPGraphReader {
     int j = 0;
     for (final String[] weights : allLines) {
 
-      LOG.debug("weights: " + weights[0] + ", " + weights[1] + ", " + weights[2]);
-      
       // iterate over each edge weight in the line
       j = 0;
       for (final String weight : weights) {
-
-        LOG.debug("weight = " + weight);
         
         // put that value in the adjacency matrix
         adjacencyMatrix[i][j] = Double.valueOf(weight);
@@ -116,18 +103,13 @@ public class TSPGraphReader {
     BufferedReader reader = null;
     final List<String[]> result = new Vector<String[]>();
 
-    LOG.debug("Reading from file: " + file);
-    
     try {
       // create a file reader
       reader = new BufferedReader(new FileReader(file));
 
-      LOG.debug("Created reader: " + reader);
-      
       // add each line, split on whitespace, to the result list
       String currentLine = reader.readLine();
       while (currentLine != null) {
-        LOG.debug("Current line: " + currentLine);
         if (!currentLine.isEmpty()) {
           result.add(currentLine.trim().split(WHITESPACE));
         }
