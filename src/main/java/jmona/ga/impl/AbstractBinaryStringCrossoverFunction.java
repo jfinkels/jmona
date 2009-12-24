@@ -20,7 +20,7 @@
 package jmona.ga.impl;
 
 import jmona.CrossoverFunction;
-import jmona.ImmutablePair;
+import jmona.Pair;
 import jmona.ga.BinaryString;
 
 /**
@@ -45,7 +45,7 @@ public abstract class AbstractBinaryStringCrossoverFunction implements
   protected static void swapBit(final BinaryString individual1,
       final BinaryString individual2, final int index) {
     // if the two bits are different, flip them; if they are the same do nothing
-    if (individual1.getBit(index) != individual2.getBit(index)) {
+    if (individual1.get(index) != individual2.get(index)) {
       individual1.flipBit(index);
       individual2.flipBit(index);
     }
@@ -80,12 +80,13 @@ public abstract class AbstractBinaryStringCrossoverFunction implements
    * @param individual2
    *          Another binary string.
    */
+  // TODO if end < start, swap (0, end) and (start, length)
   @Override
   public void crossover(final BinaryString individual1,
       final BinaryString individual2) {
-    final int length = individual1.length();
+    final int length = individual1.size();
 
-    final ImmutablePair<Integer, Integer> sliceIndices = this
+    final Pair<Integer, Integer> sliceIndices = this
         .sliceStartEnd(length);
 
     final int start = sliceIndices.left();
@@ -103,7 +104,7 @@ public abstract class AbstractBinaryStringCrossoverFunction implements
    *          The length of the binary strings.
    * @return The start and end indices of the range of bits to swap.
    */
-  protected abstract ImmutablePair<Integer, Integer> sliceStartEnd(
+  protected abstract Pair<Integer, Integer> sliceStartEnd(
       final int length);
 
 }

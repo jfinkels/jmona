@@ -22,7 +22,7 @@ package jmona.example.game.ipd.strategy;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.ImmutablePair;
+import jmona.Pair;
 import jmona.game.Strategy;
 
 /**
@@ -38,7 +38,7 @@ public abstract class IPDStrategy implements Strategy {
    * The queue of most recent actions performed by this strategy and the
    * adversary.
    */
-  private List<ImmutablePair<Action, Action>> memory = new Vector<ImmutablePair<Action, Action>>();
+  private List<Pair<Action, Action>> memory = new Vector<Pair<Action, Action>>();
 
   /** The length of this strategy's memory for past actions. */
   private int memoryLength = DEFAULT_MEMORY_LENGTH;
@@ -50,7 +50,7 @@ public abstract class IPDStrategy implements Strategy {
    * @param actions
    *          The pair of actions to remember.
    */
-  public void addToMemory(final ImmutablePair<Action, Action> actions) {
+  public void addToMemory(final Pair<Action, Action> actions) {
     while (this.memory.size() >= this.memoryLength) {
       this.memory.remove(0);
     }
@@ -63,7 +63,7 @@ public abstract class IPDStrategy implements Strategy {
    * 
    * @return The memory of past actions.
    */
-  protected List<ImmutablePair<Action, Action>> memory() {
+  protected List<Pair<Action, Action>> memory() {
     return this.memory;
   }
 

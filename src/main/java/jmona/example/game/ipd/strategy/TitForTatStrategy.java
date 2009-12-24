@@ -19,7 +19,7 @@
  */
 package jmona.example.game.ipd.strategy;
 
-import jmona.ImmutablePair;
+import jmona.Pair;
 
 /**
  * A strategy which cooperates on the first iteration, then does whatever the
@@ -37,7 +37,7 @@ public class TitForTatStrategy extends IPDStrategy {
   @Override
   public TitForTatStrategy deepCopy() {
     final TitForTatStrategy result = new TitForTatStrategy();
-    for (final ImmutablePair<Action, Action> actions : this.memory()) {
+    for (final Pair<Action, Action> actions : this.memory()) {
       result.addToMemory(actions);
     }
     return result;
@@ -56,7 +56,7 @@ public class TitForTatStrategy extends IPDStrategy {
     Action result = Action.COOPERATE;
 
     // if there is a history of past actions from which to read
-    ImmutablePair<Action, Action> lastAction = null;
+    Pair<Action, Action> lastAction = null;
     if (this.memory().size() > 0) {
 
       // get the most recent pair of actions

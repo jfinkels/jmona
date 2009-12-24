@@ -21,7 +21,7 @@ package jmona.ga.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import jmona.ImmutablePair;
+import jmona.Pair;
 
 import org.junit.Test;
 
@@ -41,7 +41,7 @@ public class OnePointCrossoverFunctionTester {
     final OnePointCrossoverFunction function = new OnePointCrossoverFunction();
 
     final int length = 14;
-    final ImmutablePair<Integer, Integer> pair = function.sliceStartEnd(length);
+    final Pair<Integer, Integer> pair = function.sliceStartEnd(length);
 
     assertTrue(pair.left() >= 0 && pair.left() <= length);
     assertEquals(length, pair.right().intValue());

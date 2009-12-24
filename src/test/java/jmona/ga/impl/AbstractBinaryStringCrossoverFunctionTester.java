@@ -20,7 +20,7 @@
 package jmona.ga.impl;
 
 import static org.junit.Assert.assertEquals;
-import jmona.ImmutablePair;
+import jmona.Pair;
 import jmona.ga.BinaryString;
 
 import org.junit.Before;
@@ -47,8 +47,8 @@ public class AbstractBinaryStringCrossoverFunctionTester {
   public final void setUp() {
     this.function = new AbstractBinaryStringCrossoverFunction() {
       @Override
-      protected ImmutablePair<Integer, Integer> sliceStartEnd(final int length) {
-        return new ImmutablePair<Integer, Integer>(0, length);
+      protected Pair<Integer, Integer> sliceStartEnd(final int length) {
+        return new Pair<Integer, Integer>(0, length);
       }
 
     };
@@ -78,11 +78,11 @@ public class AbstractBinaryStringCrossoverFunctionTester {
 
     for (int i = 0; i < LENGTH; ++i) {
       if (i == index) {
-        assertEquals(1, this.individual1.getBit(i));
-        assertEquals(0, this.individual2.getBit(i));
+        assertEquals(1, this.individual1.get(i).intValue());
+        assertEquals(0, this.individual2.get(i).intValue());
       } else {
-        assertEquals(0, this.individual1.getBit(i));
-        assertEquals(1, this.individual2.getBit(i));
+        assertEquals(0, this.individual1.get(i).intValue());
+        assertEquals(1, this.individual2.get(i).intValue());
       }
     }
 
@@ -90,8 +90,8 @@ public class AbstractBinaryStringCrossoverFunctionTester {
         this.individual2, index);
 
     for (int i = 0; i < LENGTH; ++i) {
-      assertEquals(0, this.individual1.getBit(i));
-      assertEquals(1, this.individual2.getBit(i));
+      assertEquals(0, this.individual1.get(i).intValue());
+      assertEquals(1, this.individual2.get(i).intValue());
     }
 
   }
@@ -103,25 +103,18 @@ public class AbstractBinaryStringCrossoverFunctionTester {
    */
   @Test
   public void testSwapBits() {
-    System.out.println(this.individual1);
-    System.out.println(this.individual2);
-
     final int start = 3;
     final int end = 9;
     AbstractBinaryStringCrossoverFunction.swapBits(this.individual1,
         this.individual2, start, end);
 
-    System.out.println(this.individual1);
-    System.out.println(this.individual2);
-    
     for (int i = 0; i < LENGTH; ++i) {
-      System.out.println(i);
       if (i >= start && i < end) {
-        assertEquals(1, this.individual1.getBit(i));
-        assertEquals(0, this.individual2.getBit(i));
+        assertEquals(1, this.individual1.get(i).intValue());
+        assertEquals(0, this.individual2.get(i).intValue());
       } else {
-        assertEquals(0, this.individual1.getBit(i));
-        assertEquals(1, this.individual2.getBit(i));
+        assertEquals(0, this.individual1.get(i).intValue());
+        assertEquals(1, this.individual2.get(i).intValue());
       }
     }
 
@@ -129,8 +122,8 @@ public class AbstractBinaryStringCrossoverFunctionTester {
         this.individual2, start, end);
 
     for (int i = 0; i < LENGTH; ++i) {
-      assertEquals(0, this.individual1.getBit(i));
-      assertEquals(1, this.individual2.getBit(i));
+      assertEquals(0, this.individual1.get(i).intValue());
+      assertEquals(1, this.individual2.get(i).intValue());
     }
   }
 
@@ -155,8 +148,8 @@ public class AbstractBinaryStringCrossoverFunctionTester {
     this.function.crossover(this.individual1, this.individual2);
 
     for (int i = 0; i < LENGTH; ++i) {
-      assertEquals(1, this.individual1.getBit(i));
-      assertEquals(0, this.individual2.getBit(i));
+      assertEquals(1, this.individual1.get(i).intValue());
+      assertEquals(0, this.individual2.get(i).intValue());
     }
   }
 

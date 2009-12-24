@@ -19,7 +19,7 @@
  */
 package jmona.example.game.ipd;
 
-import jmona.ImmutablePair;
+import jmona.Pair;
 import jmona.example.game.ipd.strategy.Action;
 import jmona.example.game.ipd.strategy.IPDStrategy;
 import jmona.game.GameplayException;
@@ -148,8 +148,8 @@ public class IPDGame implements TwoPlayerGame<IPDStrategy> {
     // perform the prisoner's dilemma game over multiple iterations
     Action actionOfStrategy1 = null;
     Action actionOfStrategy2 = null;
-    ImmutablePair<Action, Action> actionsPerformedStrategy1 = null;
-    ImmutablePair<Action, Action> actionsPerformedStrategy2 = null;
+    Pair<Action, Action> actionsPerformedStrategy1 = null;
+    Pair<Action, Action> actionsPerformedStrategy2 = null;
     for (int i = 0; i < this.iterations; ++i) {
       actionOfStrategy1 = strategy1.nextAction();
       actionOfStrategy2 = strategy2.nextAction();
@@ -187,9 +187,9 @@ public class IPDGame implements TwoPlayerGame<IPDStrategy> {
       }
 
       // make pairs of actions performed to give to the memory of each strategy
-      actionsPerformedStrategy1 = new ImmutablePair<Action, Action>(
+      actionsPerformedStrategy1 = new Pair<Action, Action>(
           actionOfStrategy1, actionOfStrategy2);
-      actionsPerformedStrategy2 = new ImmutablePair<Action, Action>(
+      actionsPerformedStrategy2 = new Pair<Action, Action>(
           actionOfStrategy2, actionOfStrategy1);
 
       // add the actions to the memory of each strategy

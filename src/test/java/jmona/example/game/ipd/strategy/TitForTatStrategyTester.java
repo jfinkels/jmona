@@ -22,7 +22,7 @@ package jmona.example.game.ipd.strategy;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
-import jmona.ImmutablePair;
+import jmona.Pair;
 
 import org.junit.Test;
 
@@ -41,7 +41,7 @@ public class TitForTatStrategyTester {
   public void testDeepCopy() {
     final TitForTatStrategy strategy = new TitForTatStrategy();
 
-    final ImmutablePair<Action, Action> pair = new ImmutablePair<Action, Action>(
+    final Pair<Action, Action> pair = new Pair<Action, Action>(
         Action.DEFECT, Action.COOPERATE);
     strategy.addToMemory(pair);
 
@@ -66,19 +66,19 @@ public class TitForTatStrategyTester {
 
     // next action should do what the previous adversary did
 
-    strategy.addToMemory(new ImmutablePair<Action, Action>(Action.DEFECT,
+    strategy.addToMemory(new Pair<Action, Action>(Action.DEFECT,
         Action.DEFECT));
     assertEquals(Action.DEFECT, strategy.nextAction());
 
-    strategy.addToMemory(new ImmutablePair<Action, Action>(Action.COOPERATE,
+    strategy.addToMemory(new Pair<Action, Action>(Action.COOPERATE,
         Action.COOPERATE));
     assertEquals(Action.COOPERATE, strategy.nextAction());
 
-    strategy.addToMemory(new ImmutablePair<Action, Action>(Action.DEFECT,
+    strategy.addToMemory(new Pair<Action, Action>(Action.DEFECT,
         Action.COOPERATE));
     assertEquals(Action.COOPERATE, strategy.nextAction());
 
-    strategy.addToMemory(new ImmutablePair<Action, Action>(Action.COOPERATE,
+    strategy.addToMemory(new Pair<Action, Action>(Action.COOPERATE,
         Action.DEFECT));
     assertEquals(Action.DEFECT, strategy.nextAction());
   }

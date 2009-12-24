@@ -1,5 +1,5 @@
 /**
- * ImmutablePair.java
+ * Pair.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -20,7 +20,7 @@
 package jmona;
 
 /**
- * An immutable 2-tuple of objects.
+ * A 2-tuple of objects.
  * 
  * @param <S>
  *          The type of the left object.
@@ -28,7 +28,7 @@ package jmona;
  *          The type of the right object.
  * @author jfinkels
  */
-public class ImmutablePair<S, T> {
+public class Pair<S, T> {
   /** The left object. */
   private final S left;
   /** The right object. */
@@ -42,7 +42,7 @@ public class ImmutablePair<S, T> {
    * @param initialRight
    *          The initial right object.
    */
-  public ImmutablePair(final S initialLeft, final T initialRight) {
+  public Pair(final S initialLeft, final T initialRight) {
     this.left = initialLeft;
     this.right = initialRight;
   }

@@ -19,7 +19,7 @@
  */
 package jmona.ga.impl;
 
-import jmona.ImmutablePair;
+import jmona.Pair;
 import jmona.impl.Util;
 
 /**
@@ -41,10 +41,10 @@ public class OnePointCrossoverFunction extends
    * @see jmona.ga.impl.AbstractBinaryStringCrossoverFunction#sliceStartEnd(int)
    */
   @Override
-  protected ImmutablePair<Integer, Integer> sliceStartEnd(final int length) {
+  protected Pair<Integer, Integer> sliceStartEnd(final int length) {
     final int start = Util.RANDOM.nextInt(length);
 
-    return new ImmutablePair<Integer, Integer>(start, length);
+    return new Pair<Integer, Integer>(start, length);
   }
 
 }
