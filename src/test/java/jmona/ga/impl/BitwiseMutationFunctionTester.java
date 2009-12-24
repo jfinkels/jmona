@@ -20,10 +20,6 @@
 package jmona.ga.impl;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.List;
-import java.util.Vector;
-
 import jmona.ga.BinaryString;
 
 import org.junit.Test;
@@ -49,92 +45,18 @@ public class BitwiseMutationFunctionTester {
   public void testMutate() {
     // create the mutator function
     final BitwiseMutationFunction function = new BitwiseMutationFunction();
-
-    // create a list of all individuals.
-    final List<BinaryString> allIndividuals = new Vector<BinaryString>();
-
-    // initialize binary strings, all initially 0
+    
+    BinaryString individual = null;
     for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
-
-      // create a binary string with all 0s and add it to the list
-      allIndividuals.add(new CharArrayBinaryString(LENGTH));
-    }
-
-    // iterate over each individual
-    for (final BinaryString individual : allIndividuals) {
-
-      // mutate the current individual
-      function.mutate(individual);
-    }
-
-    // iterate over all individuals
-    int sum = 0;
-    for (final BinaryString individual : allIndividuals) {
-
-      // iterate over each bit in the gene of the individual
-      for (final byte bit : individual) {
-
-        // increment the number of mutations each time there is a one
-        sum += bit;
-      }
-    }
-
-    // determine the arithmetic mean of mutations over all individuals
-    final double mean = (double) sum / allIndividuals.size();
-
-    // determine the expected average mutations
-    final double expectedMutations = BitwiseMutationFunction.DEFAULT_MUTATION_PROBABILITY
-        * LENGTH;
-
-    // the error tolerance
-    final double delta = expectedMutations * .20;
-
-    // TODO use standard deviation or something more official for epsilon
-    assertEquals(expectedMutations, mean, delta);
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.ga.impl.BitwiseMutationFunction#setMutationProbability(double)}
-   * .
-   */
-  @Test
-  public void testSetMutationProbability() {
-    final BitwiseMutationFunction function = new BitwiseMutationFunction();
-    
-    // no mutations
-    int newMutationProbability = 0;
-    function.setMutationProbability(newMutationProbability);
-
-    // create a list of all individuals.
-    final List<BinaryString> allIndividuals = new Vector<BinaryString>();
-    
-    // initialize binary strings, all initially 0
-    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
-      allIndividuals.add(new CharArrayBinaryString(LENGTH));
-    }
-
-    for (final BinaryString individual : allIndividuals) {
       
-      function.mutate(individual);
-
-      for (final byte bit : individual) {
-        assertEquals(0, bit);
-      }
-    }
-
-    // every bit gets mutated
-    newMutationProbability = 1;
-    function.setMutationProbability(newMutationProbability);
-    
-    for (final BinaryString individual : allIndividuals) {
+      // create a binary string with all 0s
+      individual = new CharArrayBinaryString(LENGTH);
       
+      // flip one bit at random
       function.mutate(individual);
       
-      for (final byte bit : individual) {
-        assertEquals(1, bit);
-      }
+      assertEquals(1, individual.bitCount());
     }
-    
+
   }
 }
