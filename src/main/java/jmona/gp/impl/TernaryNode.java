@@ -71,15 +71,8 @@ public class TernaryNode<V> extends AbstractFunctionNode<V> {
     // maintains no state
     final TernaryNode<V> result = new TernaryNode<V>(this.operation);
 
-    // using regular for loop instead of "for each" iterator so that the indices
-    // of the children are the same in this node and its copy
-    Node<V> child = null;
-    for (int i = 0; i < this.children().size(); ++i) {
-      child = this.children().get(i).deepCopy();
-
-      result.children().add(child);
-      child.setParent(result);
-    }
+    // copy the children and attach them to the copy of this Node
+    deepCopyChildren(result, this.children());
 
     return result;
   }

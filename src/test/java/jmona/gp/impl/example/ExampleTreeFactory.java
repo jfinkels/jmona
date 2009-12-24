@@ -19,7 +19,9 @@
  */
 package jmona.gp.impl.example;
 
+import jmona.gp.FunctionNode;
 import jmona.gp.Node;
+import jmona.gp.impl.AbstractFunctionNode;
 import jmona.gp.impl.AbstractTreeFactory;
 
 /**
@@ -49,12 +51,14 @@ public class ExampleTreeFactory extends AbstractTreeFactory<Integer> {
 
       for (int i = 0; i < result.arity(); ++i) {
         child = this.createTree(currentDepth - 1);
-        result.children().add(child);
-        child.setParent(result);
+
+        AbstractFunctionNode.attachChildToParent(
+            (FunctionNode<Integer>) result, child);
+        // result.children().add(child);
+        // child.setParent(result);
       }
     }
 
     return result;
   }
-
 }

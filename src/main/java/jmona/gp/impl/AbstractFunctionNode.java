@@ -36,6 +36,51 @@ public abstract class AbstractFunctionNode<V> extends AbstractNode<V> implements
     FunctionNode<V> {
 
   /**
+   * Attach the specified child Node to the specified parent Node by setting the
+   * child's parent to the specified parent Node and by adding the child Node to
+   * the specified parent's List of child Nodes.
+   * 
+   * @param <T>
+   *          The type of value to which the specified Nodes evaluate.
+   * @param parent
+   *          The parent Node.
+   * @param child
+   *          The child Node.
+   */
+  public static <T> void attachChildToParent(final FunctionNode<T> parent,
+      final Node<T> child) {
+    parent.children().add(child);
+    child.setParent(parent);
+  }
+
+  /**
+   * Helper method for performing a deep copy on the specified List of children
+   * Nodes, and attaching them to the specified parent.
+   * 
+   * @param <T>
+   *          The type of value to which the specified Nodes evaluate.
+   * @param clonedParent
+   *          The parent of the specified children.
+   * @param childrenToCopy
+   *          The List of children to copy and attach to the specified parent
+   *          Node.
+   */
+  protected static <T> void deepCopyChildren(
+      final FunctionNode<T> clonedParent, final List<Node<T>> childrenToCopy) {
+
+    // iterate over each child Node to be copied
+    Node<T> clonedChild = null;
+    for (final Node<T> child : childrenToCopy) {
+
+      // copy the child node
+      clonedChild = child.deepCopy();
+
+      // attach the cloned child to the cloned parent
+      attachChildToParent(clonedParent, clonedChild);
+    }
+  }
+
+  /**
    * Children of this Node. The size of this List must equal the "arity" of this
    * Node.
    */

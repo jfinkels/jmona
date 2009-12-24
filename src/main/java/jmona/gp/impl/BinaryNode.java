@@ -72,19 +72,12 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
   public BinaryNode<V> deepCopy() {
     // instantiate a new binary node with the same operation (the operation
     // doesn't need to be copied because it acts like a static class; it
-    // maintains no state
+    // maintains no state)
     // TODO need to copy operation?
     final BinaryNode<V> result = new BinaryNode<V>(this.operation);
 
-    // using regular for loop instead of "for each" iterator so that the indices
-    // of the children are the same in this node and its copy
-    Node<V> child = null;
-    for (int i = 0; i < this.children().size(); ++i) {
-      child = this.children().get(i).deepCopy();
-
-      result.children().add(child);
-      child.setParent(result);
-    }
+    // copy the children and attach them to the copy of this Node
+    deepCopyChildren(result, this.children());
 
     return result;
   }

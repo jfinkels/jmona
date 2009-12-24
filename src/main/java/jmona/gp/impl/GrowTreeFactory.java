@@ -20,6 +20,7 @@
 package jmona.gp.impl;
 
 import jmona.InitializationException;
+import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 
 /**
@@ -66,8 +67,11 @@ public class GrowTreeFactory<V> extends AbstractTreeFactory<V> {
       Node<V> child = null;
       for (int i = 0; i < arity; ++i) {
         child = this.createTree(currentDepth - 1);
-        child.setParent(result);
-        result.children().add(child);
+
+        AbstractFunctionNode.attachChildToParent((FunctionNode<V>) result,
+            child);
+        // child.setParent(result);
+        // result.children().add(child);
       }
     }
 
