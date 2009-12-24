@@ -23,9 +23,37 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-  <bean id="crossoverFunction" class="jmona.example.ga.tsp.TSPCrossoverFunction" />
-  <bean id="fitnessFunction" class="jmona.example.ga.tsp.TSPFitnessFunction" />
-  <bean id="mutationFunction" class="jmona.example.ga.tsp.TSPMutationFunction" />
-  <bean id="selectionFunction" class="jmona.impl.selection.FitnessProportionateSelection" />
+  <!-- the graph to use for the traveling salesman problem evolution -->
+  
+  <bean id="graph" class="jmona.example.ga.tsp.io.TSPGraphReader"
+    factory-method="fromFile">
+    <constructor-arg ref="dataFile" />    
+  </bean>
+  
+  <bean id="crossoverFunction" 
+    class="jmona.example.ga.tsp.crossover.CycleCrossoverFunction" />
+  <!--<bean id="crossoverFunction" 
+    class="jmona.example.ga.tsp.crossover.EdgeRecombinationCrossoverFunction" />-->
+  <!--<bean id="crossoverFunction" 
+    class="jmona.example.ga.tsp.crossover.OrderedCrossoverFunction" />-->
+  <!--<bean id="crossoverFunction" 
+    class="jmona.example.ga.tsp.crossover.PartiallyMatchedCrossoverFunction" />-->
+
+  <!--<bean id="mutationFunction" 
+    class="jmona.example.ga.tsp.mutation.DisplacementMutationFunction" />-->
+  <!--<bean id="mutationFunction" 
+    class="jmona.example.ga.tsp.mutation.InsertionMutationFunction" />-->
+  <bean id="mutationFunction" 
+    class="jmona.example.ga.tsp.mutation.InversionMutationFunction" />
+  <!--<bean id="mutationFunction" 
+    class="jmona.example.ga.tsp.mutation.SwapMutationFunction" />-->
+
+
+  <bean id="selectionFunction" 
+    class="jmona.impl.selection.FitnessProportionateSelection" />
+
+  <bean id="fitnessFunction" class="jmona.example.ga.tsp.TSPFitnessFunction">
+    <constructor-arg ref="graph" />
+  </bean>
 
 </beans>
