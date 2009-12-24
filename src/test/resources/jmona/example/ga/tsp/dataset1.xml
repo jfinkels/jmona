@@ -30,7 +30,7 @@
   </bean>
 
   <bean id="dataFile" class="java.io.File" >
-    <constructor-arg value="tsp-data1.txt" />
+    <constructor-arg value="src/test/resources/jmona/example/ga/tsp/tsp-data1.txt" />
   </bean>
-  
+
 </beans>
