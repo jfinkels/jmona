@@ -57,7 +57,7 @@ public class AdjacencyMatrixGraph implements DirectedGraph<Integer, Double> {
    *          The target vertex.
    * @return The weight of the edge incident to both specified vertices,
    *         directed from the source vertex to the target vertex.
-   * @see jmona.example.ga.tsp.Graph#edgeBetween(java.lang.Object,
+   * @see jmona.example.ga.tsp.DirectedGraph#edgeBetween(java.lang.Object,
    *      java.lang.Object)
    */
   @Override
