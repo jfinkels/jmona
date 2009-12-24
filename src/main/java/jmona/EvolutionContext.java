@@ -26,6 +26,7 @@ package jmona;
  *          The type of Individual on which this evolution occurs.
  * @author jfinke
  */
+// TODO allow multiple MutationFunctions or CrossoverFunctions?
 public interface EvolutionContext<T extends Individual> {
 
   /**
