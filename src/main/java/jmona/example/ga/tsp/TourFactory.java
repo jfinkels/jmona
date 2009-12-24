@@ -19,11 +19,9 @@
  */
 package jmona.example.ga.tsp;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Collections;
 
 import jmona.IndividualFactory;
-import jmona.impl.Util;
 
 /**
  * A factory which generates random Tours.
@@ -58,22 +56,15 @@ public class TourFactory implements IndividualFactory<Tour> {
   @Override
   public Tour createIndividual() {
 
-    final Set<Integer> cities = new HashSet<Integer>();
-
+    final Tour result = new Tour();
+    
     for (int i = 0; i < this.numberOfCities; ++i) {
-      cities.add(i);
+      result.add(i);
     }
-
-    final Tour tour = new Tour();
-
-    Integer chosenCity = null;
-    while (!cities.isEmpty()) {
-      chosenCity = Util.randomFromSet(cities);
-      cities.remove(chosenCity);
-      tour.add(chosenCity);
-    }
-
-    return tour;
+    
+    Collections.shuffle(result);
+    
+    return result;
   }
 
 }
