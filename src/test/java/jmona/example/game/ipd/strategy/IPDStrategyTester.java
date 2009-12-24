@@ -27,7 +27,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.ImmutablePair;
+import jmona.Pair;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -50,14 +50,14 @@ public class IPDStrategyTester {
 
   /**
    * Test method for
-   * {@link jmona.example.game.ipd.strategy.IPDStrategy#addToMemory(jmona.ImmutablePair)}
+   * {@link jmona.example.game.ipd.strategy.IPDStrategy#addToMemory(jmona.Pair)}
    * .
    */
   @Test
   public void testAddToMemory() {
     final int memoryLength = this.strategy.memoryLength();
 
-    final List<ImmutablePair<Action, Action>> allPairs = new Vector<ImmutablePair<Action, Action>>();
+    final List<Pair<Action, Action>> allPairs = new Vector<Pair<Action, Action>>();
 
     final int numberOfPairs = 10;
 
@@ -80,7 +80,7 @@ public class IPDStrategyTester {
         right = Action.DEFECT;
       }
 
-      allPairs.add(new ImmutablePair<Action, Action>(left, right));
+      allPairs.add(new Pair<Action, Action>(left, right));
     }
 
     for (int i = 0; i < allPairs.size(); ++i) {
@@ -107,7 +107,7 @@ public class IPDStrategyTester {
   @Test
   public void testMemory() {
     assertTrue(this.strategy.memory().isEmpty());
-    final ImmutablePair<Action, Action> pair = new ImmutablePair<Action, Action>(
+    final Pair<Action, Action> pair = new Pair<Action, Action>(
         Action.COOPERATE, Action.COOPERATE);
     this.strategy.addToMemory(pair);
     assertTrue(this.strategy.memory().contains(pair));
@@ -131,7 +131,7 @@ public class IPDStrategyTester {
    */
   @Test
   public void testReset() {
-    this.strategy.addToMemory(new ImmutablePair<Action, Action>(Action.DEFECT,
+    this.strategy.addToMemory(new Pair<Action, Action>(Action.DEFECT,
         Action.COOPERATE));
     assertFalse(this.strategy.memory().isEmpty());
     this.strategy.reset();
