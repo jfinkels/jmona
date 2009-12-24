@@ -35,7 +35,7 @@
     <property name="maxGenerations" value="3" />
   </bean>
   
-  <bean id="evolutionContext" class="jmona.impl.GAEvolutionContext">
+  <bean id="evolutionContext" class="jmona.ga.impl.GAEvolutionContext">
     <constructor-arg><null /></constructor-arg>
   </bean>  
 

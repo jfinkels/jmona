@@ -23,15 +23,15 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
   
-  <bean id="evolutionContext1" class="jmona.impl.GAEvolutionContext">
+  <bean id="evolutionContext1" class="jmona.ga.impl.GAEvolutionContext">
     <constructor-arg><null /></constructor-arg>
   </bean>
   
-  <bean id="evolutionContext2" class="jmona.impl.GAEvolutionContext">
+  <bean id="evolutionContext2" class="jmona.ga.impl.GAEvolutionContext">
     <constructor-arg><null /></constructor-arg>
   </bean>
   
-  <bean id="evolutionContext3" class="jmona.impl.GAEvolutionContext">
+  <bean id="evolutionContext3" class="jmona.ga.impl.GAEvolutionContext">
     <constructor-arg><null /></constructor-arg>
   </bean>
   
