@@ -24,7 +24,6 @@ import static org.junit.Assert.assertTrue;
 import jmona.MutationException;
 import jmona.test.Util;
 
-import org.apache.log4j.Logger;
 import org.junit.Test;
 
 /**
