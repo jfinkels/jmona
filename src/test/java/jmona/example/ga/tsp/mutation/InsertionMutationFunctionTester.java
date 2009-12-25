@@ -20,6 +20,7 @@
 package jmona.example.ga.tsp.mutation;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import jmona.MutationException;
 import jmona.test.Util;
 
@@ -46,6 +47,7 @@ public class InsertionMutationFunctionTester extends
   @Test
   public void testMutate() {
     for (int j = 0; j < NUM_TESTS; ++j) {
+      this.setUp();
 
       try {
         this.function().mutate(this.tour());
@@ -53,7 +55,10 @@ public class InsertionMutationFunctionTester extends
         Util.fail(exception);
       }
 
-      assertEquals(AbstractTSPMutationFunctionTester.LENGTH, this.tour().size());
+      assertEquals(LENGTH, this.tour().size());
+      for (int i = 0; i < LENGTH; ++i) {
+        assertTrue(this.tour().contains(i));
+      }
 
       int firstChange = 0;
       for (int i = 0; i < this.tour().size(); ++i) {
@@ -71,6 +76,8 @@ public class InsertionMutationFunctionTester extends
         }
       }
 
+      // TODO check the case of final element being moved
+
       // if a city was moved to a location previous to its original location
       // for example:
       //
@@ -80,11 +87,11 @@ public class InsertionMutationFunctionTester extends
         assertEquals(lastChange, this.tour().get(firstChange).intValue());
 
         for (int i = firstChange + 1; i <= lastChange; ++i) {
-          assertEquals(i + 1, this.tour().get(i).intValue());
+          assertEquals(i - 1, this.tour().get(i).intValue());
         }
 
-        for (int i = lastChange + 1; i > lastChange || i < firstChange; i = (i + 1)
-            % this.tour().size()) {
+        for (int i = (lastChange + 1) % this.tour().size(); i > lastChange
+            || i < firstChange; i = (i + 1) % this.tour().size()) {
           assertEquals(i, this.tour().get(i).intValue());
         }
       }
