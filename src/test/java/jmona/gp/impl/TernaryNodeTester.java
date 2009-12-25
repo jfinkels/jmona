@@ -37,6 +37,8 @@ import org.junit.Test;
  */
 public class TernaryNodeTester {
 
+  /** The arity of a ternary node. */
+  public static final int ARITY = 3;
   /** The value of the left child Node. */
   public static final int LEFT_VALUE = 1;
   /** The value of the middle child Node. */
@@ -74,8 +76,29 @@ public class TernaryNodeTester {
    */
   @Test
   public void testArity() {
-    assertEquals(3, this.node.arity());
+    assertEquals(ARITY, this.node.arity());
     assertEquals(TernaryNode.ARITY, this.node.arity());
+  }
+
+  /**
+   * Test method for {@link jmona.gp.impl.TernaryNode#deepCopy()}.
+   */
+  @Test
+  public void testDeepCopy() {
+    final TernaryNode<Integer> clonedNode = this.node.deepCopy();
+
+    try {
+      Node<Integer> child = null;
+      Node<Integer> clonedChild = null;
+      for (int i = 0; i < this.node.children().size(); ++i) {
+        child = this.node.children().get(i);
+        clonedChild = clonedNode.children().get(i);
+        assertEquals(child.evaluate().intValue(), clonedChild.evaluate()
+            .intValue());
+      }
+    } catch (final EvaluationException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
