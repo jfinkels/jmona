@@ -20,9 +20,11 @@
 package jmona.example.ga.tsp.mutation;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import jmona.MutationException;
 import jmona.test.Util;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -48,10 +50,17 @@ public class SwapMutationFunctionTester extends
   public void testMutate() {
     for (int j = 0; j < NUM_TESTS; ++j) {
 
+      this.setUp();
+      
       try {
         this.function().mutate(this.tour());
       } catch (final MutationException exception) {
         Util.fail(exception);
+      }
+
+      assertEquals(LENGTH, this.tour().size());
+      for (int i = 0; i < LENGTH; ++i) {
+        assertTrue(this.tour().contains(i));
       }
 
       int changed = 0;
@@ -64,7 +73,7 @@ public class SwapMutationFunctionTester extends
 
       final int swappedCity = this.tour().get(changed);
 
-      assertEquals(swappedCity, this.tour().get(swappedCity).intValue());
+      assertEquals(changed, this.tour().get(swappedCity).intValue());
     }
 
   }
