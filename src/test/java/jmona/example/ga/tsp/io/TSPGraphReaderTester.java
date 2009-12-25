@@ -25,7 +25,6 @@ import java.io.File;
 import java.io.IOException;
 
 import jmona.example.ga.tsp.DirectedGraph;
-import jmona.example.ga.tsp.io.TSPGraphReader;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -37,10 +36,12 @@ import org.junit.Test;
  */
 public class TSPGraphReaderTester {
 
-  /** The location of the test file. */
-  public static final String TESTFILE = "src/test/resources/jmona/example/ga/tsp/input/test-graph.txt";
   /** The number of vertices in the test file. */
   public static final int NUM_VERTICES = 2;
+  /** The location of the test file. */
+  public static final String TESTFILE = "src/test/resources/jmona/example/ga/tsp/io/test-graph.txt";
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
 
   /**
    * Test method for
@@ -62,8 +63,5 @@ public class TSPGraphReaderTester {
     }
 
   }
-
-  /** Zero. */
-  public static final double ZERO_DELTA = 0.0;
 
 }
