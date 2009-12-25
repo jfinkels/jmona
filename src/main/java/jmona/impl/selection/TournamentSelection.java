@@ -19,21 +19,16 @@
  */
 package jmona.impl.selection;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.Vector;
 
 import jmona.Individual;
-import jmona.SelectionException;
 import jmona.SelectionFunction;
 import jmona.impl.Util;
 
-import org.apache.log4j.Logger;
-
 /**
- * A tournament selection algorithm.
+ * A tournament selection.
  * 
  * @param <T>
  *          The type of Individual to select.
@@ -43,25 +38,10 @@ public class TournamentSelection<T extends Individual> implements
     SelectionFunction<T> {
 
   /**
-   * The default probability of selecting the top competitor in the tournament.
-   */
-  public static final double DEFAULT_SELECTION_PROBABILITY = 0.9;
-  /**
    * The default number of Individuals to be chosen at random to compete in the
    * tournament.
    */
-  public static final int DEFAULT_TOURNAMENT_SIZE = 10;
-
-  /**
-   * The probability of selecting the top competitor in the tournament.
-   * 
-   * Let {@code p} be the value of this field. Then the probability of selecting
-   * the second place competitor in the tournament is {@code p*(1-p)}, the
-   * probability of selecting the third place competitor is {@code p*(p*(1-p))},
-   * and so on.
-   */
-  // TODO is that math correct?
-  private double selectionProbability = DEFAULT_SELECTION_PROBABILITY;
+  public static final int DEFAULT_TOURNAMENT_SIZE = 5;
   /**
    * The number of Individuals to be chosen at random to compete in the
    * tournament.
@@ -70,66 +50,67 @@ public class TournamentSelection<T extends Individual> implements
 
   /**
    * 
-   * Currently chooses competitors for the tournament randomly
-   * <em>with replacement</em>, so the one Individual could be in mutiple
-   * competitor spots in the tournament.
-   * 
    * @param fitnesses
    *          {@inheritDoc}
    * @see jmona.SelectionFunction#select(java.util.Map)
    */
   // TODO documentation for this method
   @Override
-  public T select(final Map<T, Double> fitnesses) throws SelectionException {
-    throw new SelectionException("Not yet implemented.");
-    
-/*    // initialize a list of competitors for the tournament
-    final List<T> competitors = new Vector<T>();
+  public T select(final Map<T, Double> fitnesses) {
 
-    // if there are fewer individuals than the size of the tournament, add all
+    final Set<T> allIndividuals = new HashSet<T>();
+    for (final T individual : fitnesses.keySet()) {
+      allIndividuals.add(individual);
+    }
+
+    Set<T> competitors = null;
     if (fitnesses.size() <= this.tournamentSize) {
-      competitors.addAll(fitnesses.keySet());
+      competitors = allIndividuals;
     } else {
-      // get the set of individuals from which to choose competitors
-      final Set<T> possibleCompetitors = fitnesses.keySet();
+      // initialize a new empty set for the competitors in the tournament
+      competitors = new HashSet<T>();
 
-      // while the number of competitors in the tournament has not yet met size
-      // TODO random selection without replacement
-      T chosenIndividual = null;
+      // while the set of competitors is less than the tournament size
+      T randomCompetitor = null;
       while (competitors.size() < this.tournamentSize) {
-        chosenIndividual = Util.randomFromSet(possibleCompetitors);
-        competitors.add(chosenIndividual);
+
+        // choose a random competitor from the list of all individuals
+        randomCompetitor = Util.randomFromSet(allIndividuals);
+
+        // remove that individual from the list of all individuals, so it can't
+        // be chosen again
+        allIndividuals.remove(randomCompetitor);
+
+        // add the chosen individual to the set of competitors
+        competitors.add(randomCompetitor);
       }
     }
-    // sort the list of competitors in increasing order based on their
-    // fitnesses, with the most fit individual at the end of the list
-    Collections.sort(competitors, new FitnessComparator<T>(fitnesses));
 
-    // choose a random double
-    final double choice = Math.random();
+    T champion = null;
+    double championFitness = Double.NEGATIVE_INFINITY;
+    double competitorFitness = Double.NEGATIVE_INFINITY;
 
-    // the initial probability of choosing the top competitor
-    double probability = this.selectionProbability;
+    // iterate over each competitor in the set of competitors
+    for (final T competitor : competitors) {
 
-    // the competitor which will eventually be selected
-    int chosenCompetitor = competitors.size() - 1;
+      // get the fitness of the current competitor
+      competitorFitness = fitnesses.get(competitor);
 
-    // until the chosen random number is less than 'probability'...
-    while (choice > probability || chosenCompetitor < 0) {
+      // if the fitness of the current competitor is greater than the fitness of
+      // the current champion
+      if (competitorFitness > championFitness) {
 
-      // increment the probability
-      // TODO double check this math!!! check out how JGAP does it
-      probability += probability * (1 - this.selectionProbability);
+        // set the champion fitness to be the fitness of the current competitor
+        championFitness = competitorFitness;
 
-      // decrement the number of the competitor to select as winner
-      chosenCompetitor -= 1;
+        // set the champion to be the current competitor
+        champion = competitor;
+
+      }
     }
 
-    // make sure the index of the chosen competitor is not less than zero
-    chosenCompetitor = Math.max(0, chosenCompetitor);
-
-    return competitors.get(chosenCompetitor);
-*/  }
+    return champion;
+  }
 
   /**
    * Set the number of Individuals to be chosen at random to compete in the

@@ -19,14 +19,17 @@
  */
 package jmona.impl.selection;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import jmona.impl.example.ExampleIndividual;
 
-import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,70 +40,68 @@ import org.junit.Test;
  */
 public class TournamentSelectionTester {
 
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(TournamentSelectionTester.class);
-
+  /** The number of individuals in the tournament. */
+  public static final int NUM_INDIVIDUALS = 5;
   /** The number of selections to make. */
   public static final int NUM_SELECTIONS = 1000;
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
+  /** All individuals in the tournament. */
+  private List<ExampleIndividual> allIndividuals = null;
   /** The fitnesses from which to select. */
   private Map<ExampleIndividual, Double> fitnesses = null;
   /** The SelectionFunction under test. */
   private TournamentSelection<ExampleIndividual> function = null;
-  /** An ExampleIndividual. */
-  private ExampleIndividual individual1 = null;
-  /** Another ExampleIndividual. */
-  private ExampleIndividual individual2 = null;
 
   /** Establish a test fixture for tests in this class. */
   @Before
   public final void setUp() {
     this.function = new TournamentSelection<ExampleIndividual>();
     this.fitnesses = new HashMap<ExampleIndividual, Double>();
-    this.individual1 = new ExampleIndividual(2);
-    this.individual2 = new ExampleIndividual(1);
-    this.fitnesses.put(this.individual1, this.individual1.fitness());
-    this.fitnesses.put(this.individual2, this.individual1.fitness());
+
+    this.allIndividuals = new Vector<ExampleIndividual>();
+    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
+      this.allIndividuals.add(new ExampleIndividual(i));
+    }
+
+    for (final ExampleIndividual individual : this.allIndividuals) {
+      this.fitnesses.put(individual, individual.fitness());
+    }
   }
 
   /**
    * Test method for
    * {@link jmona.impl.selection.TournamentSelection#select(java.util.Map)}.
    */
-  //@Test
+  @Test
   public void testSelect() {
-    fail("Not yet implemented.");
-/*    int selectionsOfIndividual1 = 0;
-    int selectionsOfIndividual2 = 0;
-
-    ExampleIndividual selectedIndividual = null;
     for (int i = 0; i < NUM_SELECTIONS; ++i) {
-      selectedIndividual = function.select(this.fitnesses);
-      
-      LOG.debug("Selected individual: " + selectedIndividual);
-      
-      if (selectedIndividual.equals(this.individual1)) {
-        selectionsOfIndividual1 += 1;
-      } else if (selectedIndividual.equals(this.individual2)) {
-        selectionsOfIndividual2 += 1;
-      } else {
-        fail("Something crazy has happened.");
-      }
+      final ExampleIndividual selectedIndividual = this.function
+          .select(this.fitnesses);
+      assertSame(this.allIndividuals.get((int) selectedIndividual.fitness()),
+          selectedIndividual);
     }
 
-    final int expectedSelections1 = (int) (TournamentSelection.DEFAULT_SELECTION_PROBABILITY * NUM_SELECTIONS);
-    final int expectedSelections2 = NUM_SELECTIONS - expectedSelections1;
-    final double delta = NUM_SELECTIONS * 0.05;
+    assertEquals(NUM_INDIVIDUALS, this.fitnesses.size());
 
-    LOG.debug(selectionsOfIndividual1);
-    LOG.debug(expectedSelections1);
-    LOG.debug(selectionsOfIndividual2);
-    LOG.debug(expectedSelections2);
+    for (final ExampleIndividual individual : this.allIndividuals) {
+      assertTrue(this.fitnesses.containsKey(individual));
+      assertEquals(individual.fitness(), this.fitnesses.get(individual),
+          ZERO_DELTA);
+    }
 
-    // TODO correct assertions
-    // assertEquals(expectedSelections1, selectionsOfIndividual1, delta);
-    // assertEquals(expectedSelections2, selectionsOfIndividual2, delta);
-*/
+    // add some more individuals to the fitnesses map
+    ExampleIndividual individual = null;
+    for (int i = NUM_INDIVIDUALS; i < 2 * NUM_INDIVIDUALS; ++i) {
+      individual = new ExampleIndividual(i);
+      this.allIndividuals.add(individual);
+      this.fitnesses.put(individual, individual.fitness());
+    }
+
+    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
+      individual = this.function.select(this.fitnesses);
+      // TODO assertions to make here?
+    }
   }
 
   /**
@@ -111,6 +112,6 @@ public class TournamentSelectionTester {
   public void testSetTournamentSize() {
     final int newTournamentSize = 10;
     this.function.setTournamentSize(newTournamentSize);
-    // TODO assertions
+    // TODO assertions to make here?
   }
 }
