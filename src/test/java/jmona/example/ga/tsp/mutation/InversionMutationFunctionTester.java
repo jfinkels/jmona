@@ -20,6 +20,7 @@
 package jmona.example.ga.tsp.mutation;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import jmona.MutationException;
 import jmona.test.Util;
 
@@ -59,6 +60,9 @@ public class InversionMutationFunctionTester extends
       }
 
       assertEquals(LENGTH, this.tour().size());
+      for (int i = 0; i < LENGTH; ++i) {
+        assertTrue(this.tour().contains(i));
+      }
 
       // find the first city which is different from the pre-mutation tour city
       int start = 0;
