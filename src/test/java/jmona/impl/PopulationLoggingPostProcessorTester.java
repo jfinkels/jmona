@@ -22,6 +22,7 @@ package jmona.impl;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
 import jmona.ProcessingException;
+import jmona.test.Util;
 
 import org.apache.log4j.Level;
 import org.junit.Before;
@@ -36,27 +37,14 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * 
  * @author jfinkels
  */
-@ContextConfiguration(locations = "classpath:/jmona/example/ga/ones/OnesEvolutionTester-context.xml")
+@ContextConfiguration(locations = "classpath:/jmona/example/ones/OnesEvolutionTester-context.xml")
 @SuppressWarnings("unchecked")
 public class PopulationLoggingPostProcessorTester extends
     AbstractJUnit4SpringContextTests {
 
-  /**
-   * Helper method for printing the stack trace of an Exception and failing the
-   * test.
-   * 
-   * @param cause
-   *          The cause of the test failure.
-   */
-  protected static void fail(final Throwable cause) {
-    cause.printStackTrace(System.err);
-    org.junit.Assert.fail(cause.getMessage());
-  }
-
   /** The EvolutionContext from which to get a population for logging. */
   @Autowired
   private EvolutionContext evolutionContext = null;
-
   /** The PostProcessor under test. */
   private PopulationLoggingPostProcessor processor = null;
 
@@ -79,9 +67,9 @@ public class PopulationLoggingPostProcessorTester extends
       this.evolutionContext.stepGeneration();
       processor.process(evolutionContext);
     } catch (final EvolutionException exception) {
-      fail(exception);
+      Util.fail(exception);
     } catch (final ProcessingException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
   }
 
@@ -96,7 +84,7 @@ public class PopulationLoggingPostProcessorTester extends
     try {
       this.processor.process(this.evolutionContext);
     } catch (final ProcessingException exception) {
-      fail(exception);
+      Util.fail(exception);
     }
   }
 }

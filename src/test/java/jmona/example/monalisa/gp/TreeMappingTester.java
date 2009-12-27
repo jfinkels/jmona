@@ -41,9 +41,6 @@ import org.junit.Test;
  */
 public class TreeMappingTester {
 
-  public static final int WIDTH = 10;
-  public static final int HEIGHT = 20;
-
   /**
    * Test method for
    * {@link jmona.example.monalisa.gp.TreeMapping#execute(jmona.gp.Tree)}.

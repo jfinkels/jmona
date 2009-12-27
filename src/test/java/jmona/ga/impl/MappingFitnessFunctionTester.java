@@ -62,8 +62,16 @@ public class MappingFitnessFunctionTester {
   @Test
   public void testFitness() {
     try {
+      double expectedFitness = 0.0;
       for (int i = MIN_VALUE; i < MAX_VALUE; ++i) {
-        assertEquals(1 / i, this.function.fitness(new ExampleIndividual(i)),
+
+        if (i == 0) {
+          expectedFitness = Double.POSITIVE_INFINITY;
+        } else {
+          expectedFitness = Math.abs(1.0 / i);
+        }
+        
+        assertEquals(expectedFitness, this.function.fitness(new ExampleIndividual(i)),
             ZERO_DELTA);
       }
     } catch (final FitnessException exception) {

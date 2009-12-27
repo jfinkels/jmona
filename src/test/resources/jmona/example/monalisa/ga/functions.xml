@@ -25,7 +25,7 @@
 
   <!-- the mapping from MonaIndividual to BufferedImage -->
 
-  <bean id="mapping" class="jmona.example.monalisa.MonaMapping">
+  <bean id="mapping" class="jmona.example.monalisa.ga.MonaMapping">
     <constructor-arg ref="width" />
     <constructor-arg ref="height" />
   </bean>
