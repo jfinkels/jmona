@@ -22,6 +22,8 @@ package jmona.impl.metrics;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import jmona.Metric;
+import jmona.MetricException;
+import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -89,40 +91,45 @@ public class AbstractMetricTester<E, M extends Metric<E>> {
    */
   @Test
   public void testMeasure() {
-    // property 1: non-negativity
-    assertTrue(metric.measure(x, x) >= 0);
-    assertTrue(metric.measure(x, y) >= 0);
-    assertTrue(metric.measure(x, z) >= 0);
-    assertTrue(metric.measure(y, x) >= 0);
-    assertTrue(metric.measure(y, y) >= 0);
-    assertTrue(metric.measure(y, z) >= 0);
-    assertTrue(metric.measure(z, x) >= 0);
-    assertTrue(metric.measure(z, y) >= 0);
-    assertTrue(metric.measure(z, z) >= 0);
+    try {
 
-    // property 2: identity of indiscernibles
-    assertEquals(0, metric.measure(x, x), 0);
-    assertEquals(0, metric.measure(y, y), 0);
-    assertEquals(0, metric.measure(z, z), 0);
+      // property 1: non-negativity
+      assertTrue(this.metric.measure(x, x) >= 0);
+      assertTrue(this.metric.measure(x, y) >= 0);
+      assertTrue(this.metric.measure(x, z) >= 0);
+      assertTrue(this.metric.measure(y, x) >= 0);
+      assertTrue(this.metric.measure(y, y) >= 0);
+      assertTrue(this.metric.measure(y, z) >= 0);
+      assertTrue(this.metric.measure(z, x) >= 0);
+      assertTrue(this.metric.measure(z, y) >= 0);
+      assertTrue(this.metric.measure(z, z) >= 0);
 
-    // property 3: symmetry
-    assertEquals(metric.measure(x, x), metric.measure(x, x), 0);
-    assertEquals(metric.measure(x, y), metric.measure(y, x), 0);
-    assertEquals(metric.measure(x, z), metric.measure(z, x), 0);
-    assertEquals(metric.measure(y, x), metric.measure(x, y), 0);
-    assertEquals(metric.measure(y, y), metric.measure(y, y), 0);
-    assertEquals(metric.measure(y, z), metric.measure(z, y), 0);
-    assertEquals(metric.measure(z, x), metric.measure(x, z), 0);
-    assertEquals(metric.measure(z, y), metric.measure(y, z), 0);
-    assertEquals(metric.measure(z, z), metric.measure(z, z), 0);
+      // property 2: identity of indiscernibles
+      assertEquals(0, this.metric.measure(x, x), 0);
+      assertEquals(0, this.metric.measure(y, y), 0);
+      assertEquals(0, this.metric.measure(z, z), 0);
 
-    // property 4: triangle inequality
-    assertTrue(metric.measure(x, y) <= metric.measure(x, z)
-        + metric.measure(z, y));
-    assertTrue(metric.measure(x, z) <= metric.measure(x, y)
-        + metric.measure(y, z));
-    assertTrue(metric.measure(y, z) <= metric.measure(y, x)
-        + metric.measure(x, z));
+      // property 3: symmetry
+      assertEquals(this.metric.measure(x, x), this.metric.measure(x, x), 0);
+      assertEquals(this.metric.measure(x, y), this.metric.measure(y, x), 0);
+      assertEquals(this.metric.measure(x, z), this.metric.measure(z, x), 0);
+      assertEquals(this.metric.measure(y, x), this.metric.measure(x, y), 0);
+      assertEquals(this.metric.measure(y, y), this.metric.measure(y, y), 0);
+      assertEquals(this.metric.measure(y, z), this.metric.measure(z, y), 0);
+      assertEquals(this.metric.measure(z, x), this.metric.measure(x, z), 0);
+      assertEquals(this.metric.measure(z, y), this.metric.measure(y, z), 0);
+      assertEquals(this.metric.measure(z, z), this.metric.measure(z, z), 0);
+
+      // property 4: triangle inequality
+      assertTrue(this.metric.measure(x, y) <= this.metric.measure(x, z)
+          + this.metric.measure(z, y));
+      assertTrue(this.metric.measure(x, z) <= this.metric.measure(x, y)
+          + this.metric.measure(y, z));
+      assertTrue(this.metric.measure(y, z) <= this.metric.measure(y, x)
+          + this.metric.measure(x, z));
+    } catch (final MetricException exception) {
+      Util.fail(exception);
+    }
   }
 
 }

@@ -20,6 +20,8 @@
 package jmona.example.gp.calc.nodes;
 
 import static org.junit.Assert.assertEquals;
+import jmona.MappingException;
+import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -46,9 +48,12 @@ public class NumberNodeTester {
 
     final double value = 10.0;
     final NumberNode node = new NumberNode(value);
-
-    for (double x = MIN_VALUE; x < MAX_VALUE; x += INCREMENT) {
-      assertEquals(value, node.evaluate().execute(x), ZERO_DELTA);
+    try {
+      for (double x = MIN_VALUE; x < MAX_VALUE; x += INCREMENT) {
+        assertEquals(value, node.evaluate().execute(x), ZERO_DELTA);
+      }
+    } catch (final MappingException exception) {
+      Util.fail(exception);
     }
   }
 

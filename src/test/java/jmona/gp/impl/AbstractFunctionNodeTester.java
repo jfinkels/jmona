@@ -26,6 +26,7 @@ import static org.junit.Assert.assertSame;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
@@ -81,7 +82,11 @@ public class AbstractFunctionNodeTester {
     children.add(child1);
     children.add(child2);
 
-    AbstractFunctionNode.deepCopyChildren(parent, children);
+    try {
+      AbstractFunctionNode.deepCopyChildren(parent, children);
+    } catch (final CopyingException exception) {
+      Util.fail(exception);
+    }
 
     assertNotSame(parent.children().get(0), children.get(0));
     assertNotSame(parent.children().get(1), children.get(1));

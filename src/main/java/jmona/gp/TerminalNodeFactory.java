@@ -19,6 +19,8 @@
  */
 package jmona.gp;
 
+import jmona.InitializationException;
+
 /**
  * A factory for creating TerminalNode objects.
  * 
@@ -27,6 +29,13 @@ package jmona.gp;
  *          evaluates.
  * @author jfinkels
  */
-public interface TerminalNodeFactory<V> extends NodeFactory<V, TerminalNode<V>> {
-
+public interface TerminalNodeFactory<V> {
+  /**
+   * Create a TerminalNode.
+   * 
+   * @return A TerminalNode with evaluation type V.
+   * @throws InitializationException
+   *           If there is a problem creating a Node.
+   */
+  TerminalNode<V> createNode() throws InitializationException;
 }

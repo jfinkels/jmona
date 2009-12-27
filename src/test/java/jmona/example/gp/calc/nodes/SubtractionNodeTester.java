@@ -20,6 +20,7 @@
 package jmona.example.gp.calc.nodes;
 
 import static org.junit.Assert.assertEquals;
+import jmona.MappingException;
 import jmona.gp.EvaluationException;
 import jmona.test.Util;
 
@@ -60,6 +61,8 @@ public class SubtractionNodeTester {
             ZERO_DELTA);
       }
     } catch (final EvaluationException exception) {
+      Util.fail(exception);
+    } catch (final MappingException exception) {
       Util.fail(exception);
     }
   }

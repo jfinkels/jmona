@@ -29,8 +29,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jfinkels
  */
 @RunWith(Suite.class)
-@SuiteClasses({ AbstractFunctionNodeTester.class,
-    AbstractNodeFactoryTester.class, AbstractNodeTester.class,
+@SuiteClasses({ AbstractFunctionNodeTester.class, AbstractNodeTester.class,
     AbstractTreeFactoryTester.class, BinaryNodeTester.class,
     DefaultFunctionNodeFactoryTester.class,
     DefaultTerminalNodeFactoryTester.class, DefaultTreeTester.class,

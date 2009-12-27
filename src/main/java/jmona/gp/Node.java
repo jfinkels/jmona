@@ -21,6 +21,8 @@ package jmona.gp;
 
 import java.util.List;
 
+import jmona.DeepCopyable;
+
 /**
  * A Node which can be recursively evaluated.
  * 
@@ -28,7 +30,7 @@ import java.util.List;
  *          The return type of the {@link #evaluate()} method on this Node.
  * @author jfinkels
  */
-public interface Node<V> {
+public interface Node<V> extends DeepCopyable<Node<V>> {
   /**
    * Get the "arity" of this Node, that is, how many children it has.
    * 
@@ -49,8 +51,8 @@ public interface Node<V> {
    * 
    * @return A deep copy of this Node and all its children.
    */
-  Node<V> deepCopy();
-
+/*  Node<V> deepCopy();
+*/
   /**
    * Evaluate this Node with respect to its child Nodes.
    * 

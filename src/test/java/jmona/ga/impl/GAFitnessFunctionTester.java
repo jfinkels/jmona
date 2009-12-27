@@ -84,7 +84,7 @@ public class GAFitnessFunctionTester {
   public void testSanityCheck() {
     try {
       this.function.sanityCheck();
-      fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final NullPointerException exception) {
       // metric has not been set
       this.function.setMetric(new ExampleMetric());
@@ -92,7 +92,7 @@ public class GAFitnessFunctionTester {
 
     try {
       this.function.sanityCheck();
-      fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final NullPointerException exception) {
       // target has not been set
       this.function.setTarget(new ExampleIndividual(TARGET_FITNESS));

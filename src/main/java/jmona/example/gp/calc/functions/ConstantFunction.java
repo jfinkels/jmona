@@ -19,6 +19,8 @@
  */
 package jmona.example.gp.calc.functions;
 
+import jmona.SingleInputFunction;
+
 /**
  * A function which always returns a constant value.
  * 
@@ -49,7 +51,7 @@ public class ConstantFunction<T, R> implements SingleInputFunction<T, R> {
    * @param input
    *          This parameter is ignored.
    * @return The constant value specified in the constructor.
-   * @see jmona.example.gp.calc.functions.SingleInputFunction#execute(java.lang.Object)
+   * @see jmona.SingleInputFunction#execute(java.lang.Object)
    */
   @Override
   public R execute(final T input) {

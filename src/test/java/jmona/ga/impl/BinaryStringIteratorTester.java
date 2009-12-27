@@ -28,7 +28,6 @@ import java.util.NoSuchElementException;
 import jmona.ga.BinaryString;
 import jmona.test.Util;
 
-import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -101,10 +100,6 @@ public class BinaryStringIteratorTester {
 
     assertTrue(this.iterator.hasPrevious());
   }
-
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(BinaryStringIteratorTester.class);
 
   /**
    * Test method for {@link jmona.ga.impl.BinaryStringIterator#nextIndex()}.

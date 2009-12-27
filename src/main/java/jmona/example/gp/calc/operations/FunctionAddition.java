@@ -19,8 +19,8 @@
  */
 package jmona.example.gp.calc.operations;
 
+import jmona.SingleInputFunction;
 import jmona.example.gp.calc.functions.AdditionFunction;
-import jmona.example.gp.calc.functions.SingleInputFunction;
 import jmona.gp.impl.UniformBinaryOperation;
 
 /**

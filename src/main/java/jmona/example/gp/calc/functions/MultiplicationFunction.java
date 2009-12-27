@@ -19,6 +19,9 @@
  */
 package jmona.example.gp.calc.functions;
 
+import jmona.MappingException;
+import jmona.SingleInputFunction;
+
 /**
  * A function which returns the product of two specified functions.
  * 
@@ -47,10 +50,12 @@ public class MultiplicationFunction extends SecondOrderFunction {
    * @param input
    *          The input to both of the functions.
    * @return The product of the two functions with the specified input.
-   * @see jmona.example.gp.calc.functions.SingleInputFunction#execute(java.lang.Object)
+   * @throws MappingException
+   *           {@inheritDoc}
+   * @see jmona.SingleInputFunction#execute(java.lang.Object)
    */
   @Override
-  public Double execute(final Double input) {
+  public Double execute(final Double input) throws MappingException {
     return this.function1().execute(input) * this.function2().execute(input);
   }
 }

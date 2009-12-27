@@ -19,6 +19,8 @@
  */
 package jmona.example.gp.calc.functions;
 
+import jmona.SingleInputFunction;
+
 /**
  * An immutable polynomial in a single variable with an array of coefficient
  * values specified at instantiation.
@@ -82,7 +84,7 @@ public class PolynomialFunction implements SingleInputFunction<Double, Double> {
    * @param input
    *          The input value to this polynomial.
    * @return The value of this polynomial at the specified input value.
-   * @see jmona.example.gp.calc.functions.SingleInputFunction#execute(java.lang.Object
+   * @see jmona.SingleInputFunction#execute(java.lang.Object
    *      )
    */
   @Override

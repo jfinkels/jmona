@@ -19,8 +19,10 @@
  */
 package jmona.example.gp.calc.nodes;
 
+import jmona.CopyingException;
+import jmona.MappingException;
+import jmona.SingleInputFunction;
 import jmona.example.gp.calc.functions.DoubleConstantFunction;
-import jmona.example.gp.calc.functions.SingleInputFunction;
 
 /**
  * A Node containing a single value as a Double.
@@ -30,7 +32,7 @@ import jmona.example.gp.calc.functions.SingleInputFunction;
 public class NumberNode extends AbstractCalcTerminalNode {
 
   /** The value of this Node. */
-  private final SingleInputFunction<Double, Double> constantFunction;
+  private final DoubleConstantFunction constantFunction;
 
   /**
    * Instantiate this Node with the specified initial value.

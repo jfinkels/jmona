@@ -19,6 +19,8 @@
  */
 package jmona.example.gp.calc.functions;
 
+import jmona.SingleInputFunction;
+
 /**
  * A function which operates on functions.
  * 

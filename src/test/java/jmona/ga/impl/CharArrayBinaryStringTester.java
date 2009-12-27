@@ -35,7 +35,6 @@ import java.util.Vector;
 import jmona.ga.BinaryString;
 import jmona.test.Util;
 
-import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -33,7 +33,7 @@ import org.junit.runners.Suite.SuiteClasses;
     BinaryStringFactoryTester.class, BinaryStringIteratorTester.class,
     BitwiseMutationFunctionTester.class, CharArrayBinaryStringTester.class,
     GAEvolutionContextTester.class, GAFitnessFunctionTester.class,
-    OnePointCrossoverFunctionTester.class,
+    MappingFitnessFunctionTester.class, OnePointCrossoverFunctionTester.class,
     TwoPointCrossoverFunctionTester.class })
 public class AllTest {
 

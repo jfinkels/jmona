@@ -20,7 +20,8 @@
 package jmona.example.gp.calc.operations;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.gp.calc.functions.SingleInputFunction;
+import jmona.MappingException;
+import jmona.SingleInputFunction;
 import jmona.gp.impl.UniformBinaryOperation;
 
 import org.junit.Test;
@@ -37,7 +38,7 @@ public class FunctionMultiplicationTester {
 
   /**
    * Test method for
-   * {@link jmona.example.gp.calc.operations.FunctionMultiplication#operate(jmona.example.gp.calc.functions.SingleInputFunction, jmona.example.gp.calc.functions.SingleInputFunction)}
+   * {@link jmona.example.gp.calc.operations.FunctionMultiplication#operate(jmona.SingleInputFunction, jmona.SingleInputFunction)}
    * .
    */
   @Test
@@ -46,6 +47,8 @@ public class FunctionMultiplicationTester {
         .newInstance();
     SingleInputFunction<Double, Double> result = null;
 
+    try {
+    
     // 0 * 0 = 0
     result = operation.operate(Util.ZERO_FUNCTION, Util.ZERO_FUNCTION);
     assertEquals(Util.ZERO_FUNCTION.execute(0.0), result.execute(0.0),
@@ -95,7 +98,9 @@ public class FunctionMultiplicationTester {
     result = operation.operate(Util.TWO_FUNCTION, Util.HALF_FUNCTION);
     assertEquals(Util.ONE_FUNCTION.execute(0.0), result.execute(0.0),
         ZERO_DELTA);
-
+    } catch (final MappingException exception) {
+      jmona.test.Util.fail(exception);
+    }
   }
 
 }

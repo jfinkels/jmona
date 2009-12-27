@@ -21,8 +21,9 @@ package jmona.example.gp.calc;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import jmona.example.gp.calc.functions.SingleInputFunction;
+import jmona.SingleInputFunction;
 import jmona.example.gp.calc.operations.Util;
+import jmona.gp.EquivalenceException;
 import jmona.gp.EquivalenceTester;
 
 import org.junit.Before;
@@ -46,38 +47,42 @@ public class FunctionEquivalenceTesterTester {
 
   /**
    * Test method for
-   * {@link jmona.example.gp.calc.FunctionEquivalenceTester#areEquivalent(jmona.example.gp.calc.functions.SingleInputFunction, jmona.example.gp.calc.functions.SingleInputFunction, java.lang.Object)}
+   * {@link jmona.example.gp.calc.FunctionEquivalenceTester#areEquivalent(jmona.SingleInputFunction, jmona.SingleInputFunction, java.lang.Object)}
    * .
    */
   @Test
   public void testAreEquivalent() {
-    assertFalse(this.equivalenceTester.areEquivalent(Util.ZERO_FUNCTION,
-        Util.ONE_FUNCTION, 0.0));
-    assertFalse(this.equivalenceTester.areEquivalent(Util.ZERO_FUNCTION,
-        Util.ONE_FUNCTION, -1.0));
-    assertFalse(this.equivalenceTester.areEquivalent(Util.ZERO_FUNCTION,
-        Util.ONE_FUNCTION, 1.0));
+    try {
+      assertFalse(this.equivalenceTester.areEquivalent(Util.ZERO_FUNCTION,
+          Util.ONE_FUNCTION, 0.0));
+      assertFalse(this.equivalenceTester.areEquivalent(Util.ZERO_FUNCTION,
+          Util.ONE_FUNCTION, -1.0));
+      assertFalse(this.equivalenceTester.areEquivalent(Util.ZERO_FUNCTION,
+          Util.ONE_FUNCTION, 1.0));
 
-    assertTrue(this.equivalenceTester.areEquivalent(Util.ONE_FUNCTION,
-        Util.ONE_FUNCTION, 0.0));
-    assertTrue(this.equivalenceTester.areEquivalent(Util.ONE_FUNCTION,
-        Util.ONE_FUNCTION, -1.0));
-    assertTrue(this.equivalenceTester.areEquivalent(Util.ONE_FUNCTION,
-        Util.ONE_FUNCTION, 1.0));
+      assertTrue(this.equivalenceTester.areEquivalent(Util.ONE_FUNCTION,
+          Util.ONE_FUNCTION, 0.0));
+      assertTrue(this.equivalenceTester.areEquivalent(Util.ONE_FUNCTION,
+          Util.ONE_FUNCTION, -1.0));
+      assertTrue(this.equivalenceTester.areEquivalent(Util.ONE_FUNCTION,
+          Util.ONE_FUNCTION, 1.0));
 
-    assertTrue(this.equivalenceTester.areEquivalent(Util.TWO_FUNCTION,
-        Util.TWO_FUNCTION, 0.0));
-    assertTrue(this.equivalenceTester.areEquivalent(Util.TWO_FUNCTION,
-        Util.TWO_FUNCTION, -1.0));
-    assertTrue(this.equivalenceTester.areEquivalent(Util.TWO_FUNCTION,
-        Util.TWO_FUNCTION, 1.0));
+      assertTrue(this.equivalenceTester.areEquivalent(Util.TWO_FUNCTION,
+          Util.TWO_FUNCTION, 0.0));
+      assertTrue(this.equivalenceTester.areEquivalent(Util.TWO_FUNCTION,
+          Util.TWO_FUNCTION, -1.0));
+      assertTrue(this.equivalenceTester.areEquivalent(Util.TWO_FUNCTION,
+          Util.TWO_FUNCTION, 1.0));
 
-    assertTrue(this.equivalenceTester.areEquivalent(Util.HALF_FUNCTION,
-        Util.HALF_FUNCTION, 0.0));
-    assertTrue(this.equivalenceTester.areEquivalent(Util.HALF_FUNCTION,
-        Util.HALF_FUNCTION, -1.0));
-    assertTrue(this.equivalenceTester.areEquivalent(Util.HALF_FUNCTION,
-        Util.HALF_FUNCTION, 1.0));
+      assertTrue(this.equivalenceTester.areEquivalent(Util.HALF_FUNCTION,
+          Util.HALF_FUNCTION, 0.0));
+      assertTrue(this.equivalenceTester.areEquivalent(Util.HALF_FUNCTION,
+          Util.HALF_FUNCTION, -1.0));
+      assertTrue(this.equivalenceTester.areEquivalent(Util.HALF_FUNCTION,
+          Util.HALF_FUNCTION, 1.0));
+    } catch (final EquivalenceException exception) {
+      jmona.test.Util.fail(exception);
+    }
 
   }
 }

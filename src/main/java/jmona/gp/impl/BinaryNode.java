@@ -19,6 +19,7 @@
  */
 package jmona.gp.impl;
 
+import jmona.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 
@@ -67,9 +68,11 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
    * 
    * @return {@inheritDoc}
    * @see jmona.gp.Node#deepCopy()
+   * @throws CopyingException
+   *           {@inheritDoc}
    */
   @Override
-  public BinaryNode<V> deepCopy() {
+  public BinaryNode<V> deepCopy() throws CopyingException {
     // instantiate a new binary node with the same operation (the operation
     // doesn't need to be copied because it acts like a static class; it
     // maintains no state)
@@ -102,8 +105,8 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
    * @return The element at index 0 in the List of child Nodes.
    * @see #children()
    */
-  public Node<V> left() {
-    return this.children().get(0);
+  protected Node<V> left() {
+    return this.children().get(LEFT_CHILD_INDEX);
   }
 
   /**
@@ -112,8 +115,8 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
    * @return The element at index 1 in the List of child Nodes.
    * @see #children()
    */
-  public Node<V> right() {
-    return this.children().get(1);
+  protected Node<V> right() {
+    return this.children().get(RIGHT_CHILD_INDEX);
   }
 
   /**
@@ -136,4 +139,7 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
 
     return result;
   }
+
+  public static final int LEFT_CHILD_INDEX = 0;
+  public static final int RIGHT_CHILD_INDEX = 1;
 }

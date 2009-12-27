@@ -50,22 +50,27 @@ public class TSPFitnessFunction implements FitnessFunction<Tour> {
    * of its total distance, based on the Graph specified in the constructor to
    * this class.
    * 
-   * @param individual
+   * @param tour
    *          The Tour whose fitness will be determined.
    * @return The fitness of the specified Tour.
+   * @throws IllegalArgumentException
+   *           If the specified tour is empty.
    * @see jmona.FitnessFunction#fitness(jmona.Individual)
    */
   @Override
-  public double fitness(final Tour individual) {
+  public double fitness(final Tour tour) {
+    if (tour.size() == 0) {
+      throw new IllegalArgumentException("Tour must have size greater than 0.");
+    }
 
     // get the sum of the distances between each of the vertices
     double sum = 0;
-    for (int i = 1; i < individual.size(); ++i) {
-      sum += this.graph.edgeBetween(individual.get(i - 1), individual.get(i));
+    for (int i = 1; i < tour.size(); ++i) {
+      sum += this.graph.edgeBetween(tour.get(i - 1), tour.get(i));
     }
 
     // add the distance between the first and last vertices
-    sum += this.graph.edgeBetween(individual.get(0), individual.get(individual
+    sum += this.graph.edgeBetween(tour.get(0), tour.get(tour
         .size() - 1));
 
     // a larger total distance should result in a lower fitness

@@ -19,6 +19,8 @@
  */
 package jmona.example.gp.calc.functions;
 
+import jmona.impl.IdentityFunction;
+
 /**
  * The identity function on Doubles.
  * 

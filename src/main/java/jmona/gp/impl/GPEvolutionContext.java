@@ -19,6 +19,7 @@
  */
 package jmona.gp.impl;
 
+import jmona.CopyingException;
 import jmona.CrossoverException;
 import jmona.EvolutionException;
 import jmona.FitnessException;
@@ -134,6 +135,8 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
       throw new EvolutionException("Failed mutating an Individual.", exception);
     } catch (final SelectionException exception) {
       throw new EvolutionException("Failed to select an Individual.", exception);
+    } catch (final CopyingException exception) {
+      throw new EvolutionException("Failed to copy an Individual.", exception);
     }
   }
 }

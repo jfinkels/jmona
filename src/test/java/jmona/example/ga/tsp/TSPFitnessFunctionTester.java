@@ -70,5 +70,9 @@ public class TSPFitnessFunctionTester {
     assertEquals(1.0 / (weights[1][0] + weights[0][1]), function.fitness(tour),
         ZERO_DELTA);
 
+    tour = new Tour();
+    tour.add(0);
+    
+    assertEquals(Double.POSITIVE_INFINITY, function.fitness(tour), ZERO_DELTA);
   }
 }

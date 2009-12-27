@@ -20,7 +20,7 @@
 package jmona.example.gp.calc.factories;
 
 import jmona.InitializationException;
-import jmona.example.gp.calc.functions.SingleInputFunction;
+import jmona.SingleInputFunction;
 import jmona.example.gp.calc.nodes.NumberNode;
 import jmona.example.gp.calc.nodes.VariableNode;
 import jmona.gp.TerminalNode;

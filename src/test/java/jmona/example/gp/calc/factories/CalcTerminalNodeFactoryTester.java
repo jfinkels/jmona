@@ -26,7 +26,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.Random;
 
 import jmona.InitializationException;
-import jmona.example.gp.calc.functions.SingleInputFunction;
+import jmona.MappingException;
+import jmona.SingleInputFunction;
 import jmona.example.gp.calc.nodes.NumberNode;
 import jmona.example.gp.calc.nodes.VariableNode;
 import jmona.gp.TerminalNode;
@@ -124,6 +125,8 @@ public class CalcTerminalNodeFactoryTester {
         }
       }
     } catch (final InitializationException exception) {
+      Util.fail(exception);
+    } catch (final MappingException exception) {
       Util.fail(exception);
     }
   }

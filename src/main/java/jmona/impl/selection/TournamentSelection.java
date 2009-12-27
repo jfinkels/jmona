@@ -75,7 +75,7 @@ public class TournamentSelection<T extends Individual> implements
       while (competitors.size() < this.tournamentSize) {
 
         // choose a random competitor from the list of all individuals
-        randomCompetitor = Util.randomFromSet(allIndividuals);
+        randomCompetitor = Util.randomFromCollection(allIndividuals);
 
         // remove that individual from the list of all individuals, so it can't
         // be chosen again

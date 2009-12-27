@@ -40,6 +40,8 @@ public class TSPGraphReaderTester {
   public static final int NUM_VERTICES = 2;
   /** The location of the test file. */
   public static final String TESTFILE = "src/test/resources/jmona/example/ga/tsp/io/test-graph.txt";
+  /** The location of the test file with empty lines in it. */
+  public static final String TESTFILE_EMPTY_LINES = "src/test/resources/jmona/example/ga/tsp/io/test-graph.txt";
   /** Zero. */
   public static final double ZERO_DELTA = 0.0;
 
@@ -62,6 +64,17 @@ public class TSPGraphReaderTester {
       }
     }
 
+    try {
+      graph = TSPGraphReader.fromFile(new File(TESTFILE_EMPTY_LINES));
+    } catch (final IOException exception) {
+      Util.fail(exception);
+    }
+
+    for (int i = 0; i < NUM_VERTICES; ++i) {
+      for (int j = 0; j < NUM_VERTICES; ++j) {
+        assertEquals(i + j, graph.edgeBetween(i, j), ZERO_DELTA);
+      }
+    }
   }
 
 }

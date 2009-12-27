@@ -19,6 +19,7 @@
  */
 package jmona.ga.impl;
 
+import jmona.CopyingException;
 import jmona.CrossoverException;
 import jmona.EvolutionException;
 import jmona.FitnessException;
@@ -138,6 +139,8 @@ public class GAEvolutionContext<T extends Individual> extends
       throw new EvolutionException("Failed mutating an individual.", exception);
     } catch (final SelectionException exception) {
       throw new EvolutionException("Failed selecting an Individual.", exception);
+    } catch (final CopyingException exception) {
+      throw new EvolutionException("Failed to copy an Individual.", exception);
     }
   }
 }

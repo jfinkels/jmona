@@ -20,6 +20,7 @@
 package jmona.example.gp.calc.functions;
 
 import static org.junit.Assert.assertSame;
+import jmona.impl.IdentityFunction;
 
 import org.junit.Test;
 
@@ -32,7 +33,7 @@ public class IdentityFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.gp.calc.functions.IdentityFunction#execute(java.lang.Object)}
+   * {@link jmona.impl.IdentityFunction#execute(java.lang.Object)}
    * .
    */
   @Test

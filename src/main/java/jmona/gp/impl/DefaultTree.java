@@ -22,6 +22,7 @@ package jmona.gp.impl;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
@@ -91,9 +92,11 @@ public class DefaultTree<V> implements Tree<V> {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
+   * @throws CopyingException
+   *           {@inheritDoc}
    * @see jmona.gp.Tree#deepCopy()
    */
-  public Tree<V> deepCopy() {
+  public Tree<V> deepCopy() throws CopyingException {
     return new DefaultTree<V>(this.root.deepCopy());
   }
 

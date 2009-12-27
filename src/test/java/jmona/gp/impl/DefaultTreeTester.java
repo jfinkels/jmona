@@ -31,6 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jmona.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
@@ -110,7 +111,12 @@ public class DefaultTreeTester {
   @Test
   public void testDeepCopy() {
     // copy the original tree
-    final Tree<Integer> copy = this.bigTree.deepCopy();
+    Tree<Integer> copy = null;
+    try {
+      copy = this.bigTree.deepCopy();
+    } catch (final CopyingException exception) {
+      Util.fail(exception);
+    }
 
     // the copy should not refer to the same object as the original
     assertNotSame(copy, this.bigTree);

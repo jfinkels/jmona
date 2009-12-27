@@ -32,7 +32,7 @@ package jmona.gp.impl;
  *          The type of the codomain of this binary operation (the return type).
  * @author jfinkels
  */
-public interface BinaryOperation<T, V, R> {
+public interface BinaryOperation<T, V, R> extends Operation<R> {
   /**
    * Perform this operation on the specified inputs.
    * 

@@ -37,7 +37,7 @@ package jmona.gp.impl;
  *          type).
  * @author jfinkels
  */
-public interface TernaryOperation<T, U, V, R> {
+public interface TernaryOperation<T, U, V, R> extends Operation<R> {
   /**
    * Perform this operation on the specified inputs.
    * 

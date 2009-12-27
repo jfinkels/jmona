@@ -19,6 +19,8 @@
  */
 package jmona.gp;
 
+import jmona.InitializationException;
+
 /**
  * A factory for creating FunctionNode objects.
  * 
@@ -27,6 +29,13 @@ package jmona.gp;
  *          evaluates.
  * @author jfinkels
  */
-public interface FunctionNodeFactory<V> extends NodeFactory<V, FunctionNode<V>> {
-
+public interface FunctionNodeFactory<V> {
+  /**
+   * Create a FunctionNode.
+   * 
+   * @return A FunctionNode with evaluation type V.
+   * @throws InitializationException
+   *           If there is a problem creating a Node.
+   */
+  FunctionNode<V> createNode() throws InitializationException;
 }

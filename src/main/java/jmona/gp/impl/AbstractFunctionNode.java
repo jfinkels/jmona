@@ -22,8 +22,10 @@ package jmona.gp.impl;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.CopyingException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
+import jmona.impl.Util;
 
 /**
  * A base class for an inner Node representing an element from the function set.
@@ -64,16 +66,18 @@ public abstract class AbstractFunctionNode<V> extends AbstractNode<V> implements
    * @param childrenToCopy
    *          The List of children to copy and attach to the specified parent
    *          Node.
+   * @throws CopyingException
+   *           If there is a problem copying one of the children.
    */
   protected static <T> void deepCopyChildren(
-      final FunctionNode<T> clonedParent, final List<Node<T>> childrenToCopy) {
+      final FunctionNode<T> clonedParent, final List<Node<T>> childrenToCopy)
+      throws CopyingException {
 
-    // iterate over each child Node to be copied
-    Node<T> clonedChild = null;
-    for (final Node<T> child : childrenToCopy) {
-
-      // copy the child node
-      clonedChild = child.deepCopy();
+    // copy each child node
+    final List<Node<T>> copiedChildren = Util.deepCopy(childrenToCopy);
+    
+    // iterate over each cloned child Node
+    for (final Node<T> clonedChild : copiedChildren) {
 
       // attach the cloned child to the cloned parent
       attachChildToParent(clonedParent, clonedChild);

@@ -44,6 +44,10 @@ public interface EquivalenceTester<V, I> {
    *          equivalence.
    * @return Whether the two specified objects are equivalent with respect to
    *         the specified input.
+   * @throws EquivalenceException
+   *           If there is a problem determining whether the two specified
+   *           objects are equivalent with respect to the specified input.
    */
-  boolean areEquivalent(final V object1, final V object2, final I input);
+  boolean areEquivalent(final V object1, final V object2, final I input)
+      throws EquivalenceException;
 }

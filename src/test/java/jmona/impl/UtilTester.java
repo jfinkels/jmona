@@ -57,10 +57,10 @@ public class UtilTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.Util#randomFromSet(java.util.Set)}.
+   * Test method for {@link jmona.impl.Util#randomFromCollection(java.util.Collection)}.
    */
   @Test
-  public void testRandomFromSet() {
+  public void testRandomFromCollection() {
     final Set<Object> set = new HashSet<Object>();
     final Object object1 = new Object();
     final Object object2 = new Object();
@@ -74,7 +74,7 @@ public class UtilTester {
 
     Object choice = null;
     for (int i = 0; i < NUM_TESTS; ++i) {
-      choice = Util.randomFromSet(set);
+      choice = Util.randomFromCollection(set);
 
       if (selectionsMap.containsKey(choice)) {
         selectionsMap.put(choice, selectionsMap.get(choice) + 1);
@@ -109,7 +109,7 @@ public class UtilTester {
 
     Object choice = null;
     for (int i = 0; i < NUM_TESTS; ++i) {
-      choice = Util.randomFromSet(set);
+      choice = Util.randomFromCollection(set);
       assertSame(object, choice);
     }
   }

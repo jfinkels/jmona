@@ -58,6 +58,9 @@ public interface Metric<E> {
    * @param element2
    *          Another element.
    * @return The distance between the two specified elements.
+   * @throws MetricException
+   *           If there is a problem measuring the distance between the two
+   *           specified objects.
    */
-  double measure(final E element1, final E element2);
+  double measure(final E element1, final E element2) throws MetricException;
 }

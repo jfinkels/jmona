@@ -21,6 +21,7 @@ package jmona.gp.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
+import jmona.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 import jmona.gp.impl.example.ExampleTernaryNode;
@@ -85,9 +86,9 @@ public class TernaryNodeTester {
    */
   @Test
   public void testDeepCopy() {
-    final TernaryNode<Integer> clonedNode = this.node.deepCopy();
-
     try {
+      final TernaryNode<Integer> clonedNode = this.node.deepCopy();
+
       Node<Integer> child = null;
       Node<Integer> clonedChild = null;
       for (int i = 0; i < this.node.children().size(); ++i) {
@@ -97,6 +98,8 @@ public class TernaryNodeTester {
             .intValue());
       }
     } catch (final EvaluationException exception) {
+      Util.fail(exception);
+    } catch (final CopyingException exception) {
       Util.fail(exception);
     }
   }

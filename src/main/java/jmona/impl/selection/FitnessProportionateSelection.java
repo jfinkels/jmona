@@ -78,7 +78,7 @@ public class FitnessProportionateSelection<T extends Individual> implements
 
     // if no individual has any fitness, just return a random one
     if (fitnessesSum == 0.0) {
-      return Util.randomFromSet(fitnesses.keySet());
+      return Util.randomFromCollection(fitnesses.keySet());
     }
 
     // choose a number between 0 and the sum of all fitnesses

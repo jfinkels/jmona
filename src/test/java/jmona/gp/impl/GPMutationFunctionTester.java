@@ -102,16 +102,24 @@ public class GPMutationFunctionTester {
    */
   @Test
   public void testSetTreeFactory() {
-    final ExampleTreeFactory factory = new ExampleTreeFactory();
+    final ExampleTerminalNode root = new ExampleTerminalNode();
+    final Tree<Integer> tree = new DefaultTree<Integer>(root);
+
+    this.function.setTreeFactory(null);
 
     try {
-      factory.setMaxDepth(0);
+      this.function.mutate(tree);
+      Util.shouldHaveThrownException();
+    } catch (final MutationException exception) {
+      assertTrue(exception instanceof MutationException);
+    }
 
-      this.function.setTreeFactory(factory);
+    final ExampleTreeFactory factory = new ExampleTreeFactory();
+    factory.setMaxDepth(0);
 
-      final ExampleTerminalNode root = new ExampleTerminalNode();
-      final Tree<Integer> tree = new DefaultTree<Integer>(root);
+    this.function.setTreeFactory(factory);
 
+    try {
       this.function.mutate(tree);
 
       assertNotSame(root, tree.root());

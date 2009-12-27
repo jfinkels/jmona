@@ -23,6 +23,7 @@ import java.util.Set;
 
 import jmona.FitnessException;
 import jmona.FitnessFunction;
+import jmona.gp.EquivalenceException;
 import jmona.gp.EquivalenceTester;
 import jmona.gp.EvaluationException;
 import jmona.gp.Tree;
@@ -82,6 +83,10 @@ public class GPFitnessFunction<V, I> implements FitnessFunction<Tree<V>> {
       }
     } catch (final EvaluationException exception) {
       throw new FitnessException("Failed to evaluate a Tree.", exception);
+    } catch (final EquivalenceException exception) {
+      throw new FitnessException(
+          "Failed to determine whether two functions are equivalent.",
+          exception);
     }
 
     return successes;

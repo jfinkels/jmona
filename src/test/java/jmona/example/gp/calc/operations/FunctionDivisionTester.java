@@ -20,7 +20,8 @@
 package jmona.example.gp.calc.operations;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.gp.calc.functions.SingleInputFunction;
+import jmona.MappingException;
+import jmona.SingleInputFunction;
 import jmona.gp.impl.UniformBinaryOperation;
 
 import org.junit.Test;
@@ -37,7 +38,7 @@ public class FunctionDivisionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.gp.calc.operations.FunctionDivision#operate(jmona.example.gp.calc.functions.SingleInputFunction, jmona.example.gp.calc.functions.SingleInputFunction)}
+   * {@link jmona.example.gp.calc.operations.FunctionDivision#operate(jmona.SingleInputFunction, jmona.SingleInputFunction)}
    * .
    */
   @Test
@@ -46,52 +47,56 @@ public class FunctionDivisionTester {
         .newInstance();
     SingleInputFunction<Double, Double> result = null;
 
-    // 0 / 0 is undefined
-    result = operation.operate(Util.ZERO_FUNCTION, Util.ZERO_FUNCTION);
-    assertEquals(Double.NaN, result.execute(0.0), ZERO_DELTA);
+    try {
+      // 0 / 0 is undefined
+      result = operation.operate(Util.ZERO_FUNCTION, Util.ZERO_FUNCTION);
+      assertEquals(Double.NaN, result.execute(0.0), ZERO_DELTA);
 
-    // 0 / 1 = 0
-    result = operation.operate(Util.ZERO_FUNCTION, Util.ONE_FUNCTION);
-    assertEquals(Util.ZERO_FUNCTION.execute(0.0), result.execute(0.0),
-        ZERO_DELTA);
+      // 0 / 1 = 0
+      result = operation.operate(Util.ZERO_FUNCTION, Util.ONE_FUNCTION);
+      assertEquals(Util.ZERO_FUNCTION.execute(0.0), result.execute(0.0),
+          ZERO_DELTA);
 
-    // 1 / 0 is positive infinity
-    result = operation.operate(Util.ONE_FUNCTION, Util.ZERO_FUNCTION);
-    assertEquals(Double.POSITIVE_INFINITY, result.execute(0.0), ZERO_DELTA);
+      // 1 / 0 is positive infinity
+      result = operation.operate(Util.ONE_FUNCTION, Util.ZERO_FUNCTION);
+      assertEquals(Double.POSITIVE_INFINITY, result.execute(0.0), ZERO_DELTA);
 
-    // 0 / 2 = 0
-    result = operation.operate(Util.ZERO_FUNCTION, Util.TWO_FUNCTION);
-    assertEquals(Util.ZERO_FUNCTION.execute(0.0), result.execute(0.0),
-        ZERO_DELTA);
+      // 0 / 2 = 0
+      result = operation.operate(Util.ZERO_FUNCTION, Util.TWO_FUNCTION);
+      assertEquals(Util.ZERO_FUNCTION.execute(0.0), result.execute(0.0),
+          ZERO_DELTA);
 
-    // 2 / 0 is positive infinity
-    result = operation.operate(Util.TWO_FUNCTION, Util.ZERO_FUNCTION);
-    assertEquals(Double.POSITIVE_INFINITY, result.execute(0.0), ZERO_DELTA);
+      // 2 / 0 is positive infinity
+      result = operation.operate(Util.TWO_FUNCTION, Util.ZERO_FUNCTION);
+      assertEquals(Double.POSITIVE_INFINITY, result.execute(0.0), ZERO_DELTA);
 
-    // 1 / 1 = 1
-    result = operation.operate(Util.ONE_FUNCTION, Util.ONE_FUNCTION);
-    assertEquals(Util.ONE_FUNCTION.execute(0.0), result.execute(0.0),
-        ZERO_DELTA);
+      // 1 / 1 = 1
+      result = operation.operate(Util.ONE_FUNCTION, Util.ONE_FUNCTION);
+      assertEquals(Util.ONE_FUNCTION.execute(0.0), result.execute(0.0),
+          ZERO_DELTA);
 
-    // 1 / 2 = 0.5
-    result = operation.operate(Util.ONE_FUNCTION, Util.TWO_FUNCTION);
-    assertEquals(Util.HALF_FUNCTION.execute(0.0), result.execute(0.0),
-        ZERO_DELTA);
+      // 1 / 2 = 0.5
+      result = operation.operate(Util.ONE_FUNCTION, Util.TWO_FUNCTION);
+      assertEquals(Util.HALF_FUNCTION.execute(0.0), result.execute(0.0),
+          ZERO_DELTA);
 
-    // 2 / 1 = 2
-    result = operation.operate(Util.TWO_FUNCTION, Util.ONE_FUNCTION);
-    assertEquals(Util.TWO_FUNCTION.execute(0.0), result.execute(0.0),
-        ZERO_DELTA);
+      // 2 / 1 = 2
+      result = operation.operate(Util.TWO_FUNCTION, Util.ONE_FUNCTION);
+      assertEquals(Util.TWO_FUNCTION.execute(0.0), result.execute(0.0),
+          ZERO_DELTA);
 
-    // 2 / 2 = 1
-    result = operation.operate(Util.TWO_FUNCTION, Util.TWO_FUNCTION);
-    assertEquals(Util.ONE_FUNCTION.execute(0.0), result.execute(0.0),
-        ZERO_DELTA);
+      // 2 / 2 = 1
+      result = operation.operate(Util.TWO_FUNCTION, Util.TWO_FUNCTION);
+      assertEquals(Util.ONE_FUNCTION.execute(0.0), result.execute(0.0),
+          ZERO_DELTA);
 
-    // 1 / 0.5 = 2
-    result = operation.operate(Util.ONE_FUNCTION, Util.HALF_FUNCTION);
-    assertEquals(Util.TWO_FUNCTION.execute(0.0), result.execute(0.0),
-        ZERO_DELTA);
+      // 1 / 0.5 = 2
+      result = operation.operate(Util.ONE_FUNCTION, Util.HALF_FUNCTION);
+      assertEquals(Util.TWO_FUNCTION.execute(0.0), result.execute(0.0),
+          ZERO_DELTA);
+    } catch (final MappingException exception) {
+      jmona.test.Util.fail(exception);
+    }
   }
 
 }

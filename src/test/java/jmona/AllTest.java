@@ -29,11 +29,12 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jfinkels
  */
 @RunWith(Suite.class)
-@SuiteClasses({ CompletionExceptionTester.class,
+@SuiteClasses({ CompletionExceptionTester.class, CopyingExceptionTester.class,
     CrossoverExceptionTester.class, EvolutionExceptionTester.class,
     FitnessExceptionTester.class, InitializationExceptionTester.class,
-    MutationExceptionTester.class, ProcessingExceptionTester.class,
-    SelectionExceptionTester.class })
+    MappingExceptionTester.class, MetricExceptionTester.class,
+    MutationExceptionTester.class, PairTester.class,
+    ProcessingExceptionTester.class, SelectionExceptionTester.class })
 public class AllTest {
 
 }

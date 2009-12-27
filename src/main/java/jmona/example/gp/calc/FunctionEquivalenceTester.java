@@ -19,7 +19,9 @@
  */
 package jmona.example.gp.calc;
 
-import jmona.example.gp.calc.functions.SingleInputFunction;
+import jmona.MappingException;
+import jmona.SingleInputFunction;
+import jmona.gp.EquivalenceException;
 import jmona.gp.EquivalenceTester;
 
 /**
@@ -53,11 +55,20 @@ public class FunctionEquivalenceTester<S, T> implements
    *         specified input.
    * @see jmona.gp.EquivalenceTester#areEquivalent(java.lang.Object,
    *      java.lang.Object, java.lang.Object)
+   * @throws EquivalenceException
+   *           If an Exception is thrown when executing one of the two specified
+   *           functions.
    */
   @Override
   public boolean areEquivalent(final SingleInputFunction<S, T> object1,
-      final SingleInputFunction<S, T> object2, final S input) {
-    return object1.execute(input).equals(object2.execute(input));
+      final SingleInputFunction<S, T> object2, final S input)
+      throws EquivalenceException {
+    try {
+      return object1.execute(input).equals(object2.execute(input));
+    } catch (final MappingException exception) {
+      throw new EquivalenceException("Failed to execute one of the functions.",
+          exception);
+    }
   }
 
 }

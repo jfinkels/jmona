@@ -1,0 +1,57 @@
+<!--
+ functions.xml
+
+ Copyright 2009 Jeffrey Finkelstein
+ 
+ This file is part of jmona.
+ 
+ jmona is free software: you can redistribute it and/or modify it under the
+ terms of the GNU General Public License as published by the Free Software
+ Foundation, either version 3 of the License, or (at your option) any later
+ version.
+ 
+ jmona is distributed in the hope that it will be useful, but WITHOUT ANY
+ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License along with
+ jmona. If not, see <http://www.gnu.org/licenses/>.
+-->
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+  
+  <!-- mapping from Tree<List<ColoredPolygon>> to BufferedImage -->
+  <bean id="mapping" class="jmona.example.monalisa.gp.TreeMapping">
+    <constructor-arg ref="width" />
+    <constructor-arg ref="height" />
+  </bean>
+  
+  <!-- metric which determines the distance between images -->
+  
+  <bean id="metric" class="jmona.impl.metrics.ImageMetric">
+    <constructor-arg ref="width" />
+    <constructor-arg ref="height" />
+  </bean>
+  
+  <!-- evolution functions -->
+  
+  <bean id="selectionFunction" class="jmona.impl.selection.TournamentSelection">
+    <property name="tournamentSize" value="2" /> 
+  </bean>
+
+  <bean id="crossoverFunction" class="jmona.gp.impl.GPCrossoverFunction" />
+
+  <bean id="mutationFunction" class="jmona.gp.impl.GPMutationFunction">
+    <property name="treeFactory" ref="individualFactory" />
+  </bean>
+
+  <bean id="fitnessFunction" class="jmona.ga.impl.MappingFitnessFunction">
+    <property name="mapping" ref="mapping" />
+    <property name="target" ref="targetImage" />
+    <property name="metric" ref="metric" />
+  </bean>
+
+</beans>

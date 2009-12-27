@@ -23,7 +23,7 @@ import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
-import jmona.example.gp.calc.functions.SingleInputFunction;
+import jmona.SingleInputFunction;
 import jmona.gp.Tree;
 import jmona.test.Util;
 

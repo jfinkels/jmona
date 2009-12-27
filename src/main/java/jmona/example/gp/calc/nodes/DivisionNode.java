@@ -19,7 +19,7 @@
  */
 package jmona.example.gp.calc.nodes;
 
-import jmona.example.gp.calc.functions.SingleInputFunction;
+import jmona.SingleInputFunction;
 import jmona.example.gp.calc.operations.FunctionDivision;
 import jmona.gp.impl.BinaryNode;
 

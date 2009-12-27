@@ -20,6 +20,7 @@
 package jmona.example.gp.calc.functions;
 
 import static org.junit.Assert.assertEquals;
+import jmona.MappingException;
 import jmona.example.gp.calc.operations.Util;
 
 import org.junit.Test;
@@ -42,17 +43,20 @@ public class DivisionFunctionTester {
   @Test
   public void testExecute() {
     DivisionFunction function = null;
+    try {
+      function = new DivisionFunction(Util.ONE_FUNCTION, Util.ONE_FUNCTION);
+      assertEquals(Util.ONE_FUNCTION.execute(0.0), function.execute(0.0),
+          ZERO_DELTA);
 
-    function = new DivisionFunction(Util.ONE_FUNCTION, Util.ONE_FUNCTION);
-    assertEquals(Util.ONE_FUNCTION.execute(0.0), function.execute(0.0),
-        ZERO_DELTA);
+      function = new DivisionFunction(Util.ZERO_FUNCTION, Util.ONE_FUNCTION);
+      assertEquals(Util.ZERO_FUNCTION.execute(0.0), function.execute(0.0),
+          ZERO_DELTA);
 
-    function = new DivisionFunction(Util.ZERO_FUNCTION, Util.ONE_FUNCTION);
-    assertEquals(Util.ZERO_FUNCTION.execute(0.0), function.execute(0.0),
-        ZERO_DELTA);
-
-    function = new DivisionFunction(Util.ONE_FUNCTION, Util.TWO_FUNCTION);
-    assertEquals(Util.HALF_FUNCTION.execute(0.0), function.execute(0.0),
-        ZERO_DELTA);
+      function = new DivisionFunction(Util.ONE_FUNCTION, Util.TWO_FUNCTION);
+      assertEquals(Util.HALF_FUNCTION.execute(0.0), function.execute(0.0),
+          ZERO_DELTA);
+    } catch (final MappingException exception) {
+      jmona.test.Util.fail(exception);
+    }
   }
 }

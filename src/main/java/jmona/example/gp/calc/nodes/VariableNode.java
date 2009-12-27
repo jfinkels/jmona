@@ -19,8 +19,8 @@
  */
 package jmona.example.gp.calc.nodes;
 
+import jmona.SingleInputFunction;
 import jmona.example.gp.calc.functions.DoubleIdentityFunction;
-import jmona.example.gp.calc.functions.SingleInputFunction;
 import jmona.gp.EvaluationException;
 
 /**

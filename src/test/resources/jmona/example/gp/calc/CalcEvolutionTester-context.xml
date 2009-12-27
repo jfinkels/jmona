@@ -33,7 +33,7 @@
 
   <bean id="completionCondition" class="jmona.impl.DefaultCompletionCondition" >
     <property name="maxFitness" value="11" />
-    <property name="maxGenerations" value="100" />
+    <property name="maxGenerations" value="50" />
   </bean>
 
   <bean id="evolutionContext" class="jmona.gp.impl.GPEvolutionContext">

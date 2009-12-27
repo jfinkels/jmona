@@ -50,7 +50,7 @@ public class IPDStrategyFactory implements IndividualFactory<IPDStrategy> {
   public IPDStrategy createIndividual() throws InitializationException {
 
     final Class<? extends IPDStrategy> resultClass = Util
-        .randomFromSet(this.strategyClasses);
+        .randomFromCollection(this.strategyClasses);
 
     try {
       return resultClass.newInstance();

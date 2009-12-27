@@ -19,6 +19,7 @@
  */
 package jmona.game.impl;
 
+import jmona.CopyingException;
 import jmona.EvolutionException;
 import jmona.Population;
 import jmona.SelectionException;
@@ -153,7 +154,9 @@ public class GameEvolutionContext<S extends Strategy> extends
             this.currentFitnesses()).deepCopy());
       }
     } catch (final SelectionException exception) {
-      throw new EvolutionException("Failed to select an Individual.", exception);
+      throw new EvolutionException("Failed to select a Strategy.", exception);
+    } catch (final CopyingException exception) {
+      throw new EvolutionException("Failed to copy a Strategy.", exception);
     }
 
     // set the population for the next generation

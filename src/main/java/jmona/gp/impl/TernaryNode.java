@@ -19,6 +19,7 @@
  */
 package jmona.gp.impl;
 
+import jmona.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 
@@ -33,7 +34,9 @@ public class TernaryNode<V> extends AbstractFunctionNode<V> {
 
   /** The "arity" of this Node. */
   public static final int ARITY = 3;
-
+  public static final int LEFT_CHILD_INDEX = 0;
+  public static final int MIDDLE_CHILD_INDEX = 1;
+  public static final int RIGHT_CHILD_INDEX = 2;
   /** The ternary operation which this Node represents. */
   private TernaryOperation<V, V, V, V> operation = null;
 
@@ -62,10 +65,12 @@ public class TernaryNode<V> extends AbstractFunctionNode<V> {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
+   * @throws CopyingException
+   *           {@inheritDoc}
    * @see jmona.gp.Node#deepCopy()
    */
   @Override
-  public TernaryNode<V> deepCopy() {
+  public TernaryNode<V> deepCopy() throws CopyingException {
     // instantiate a new binary node with the same operation (the operation
     // doesn't need to be copied because it acts like a static class; it
     // maintains no state
@@ -97,8 +102,8 @@ public class TernaryNode<V> extends AbstractFunctionNode<V> {
    * @return The element at index 0 in the List of child Nodes.
    * @see #children()
    */
-  public Node<V> left() {
-    return this.children().get(0);
+  protected Node<V> left() {
+    return this.children().get(LEFT_CHILD_INDEX);
   }
 
   /**
@@ -107,8 +112,8 @@ public class TernaryNode<V> extends AbstractFunctionNode<V> {
    * @return The element at index 1 in the List of child Nodes.
    * @see #children()
    */
-  public Node<V> middle() {
-    return this.children().get(1);
+  protected Node<V> middle() {
+    return this.children().get(MIDDLE_CHILD_INDEX);
   }
 
   /**
@@ -117,7 +122,7 @@ public class TernaryNode<V> extends AbstractFunctionNode<V> {
    * @return The element at index 2 in the List of child Nodes.
    * @see #children()
    */
-  public Node<V> right() {
-    return this.children().get(2);
+  protected Node<V> right() {
+    return this.children().get(RIGHT_CHILD_INDEX);
   }
 }

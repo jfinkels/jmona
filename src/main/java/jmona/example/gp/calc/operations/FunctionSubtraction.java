@@ -19,7 +19,7 @@
  */
 package jmona.example.gp.calc.operations;
 
-import jmona.example.gp.calc.functions.SingleInputFunction;
+import jmona.SingleInputFunction;
 import jmona.example.gp.calc.functions.SubtractionFunction;
 import jmona.gp.impl.UniformBinaryOperation;
 
