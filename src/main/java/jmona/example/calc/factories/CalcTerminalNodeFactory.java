@@ -50,20 +50,16 @@ public class CalcTerminalNodeFactory implements
    * Create a TerminalNode of type {@link VariableNode} or {@link NumberNode}.
    * 
    * @return Either a {@code VariableNode} or a {@code NumberNode}.
-   * @throws InitializationException
-   *           Never throws this Exception.
    * @see jmona.gp.NodeFactory#createNode()
    */
   @Override
-  public TerminalNode<SingleInputFunction<Double, Double>> createNode()
-      throws InitializationException {
+  public TerminalNode<SingleInputFunction<Double, Double>> createNode() {
     TerminalNode<SingleInputFunction<Double, Double>> result = null;
-
-    final int difference = this.maxValue - this.minValue;
 
     if (Util.RANDOM.nextBoolean()) {
       result = new VariableNode();
     } else {
+      final int difference = this.maxValue - this.minValue;
       result = new NumberNode((double) (this.minValue + Util.RANDOM
           .nextInt(difference)));
     }

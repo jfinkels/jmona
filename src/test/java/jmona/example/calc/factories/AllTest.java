@@ -29,7 +29,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jfinkels
  */
 @RunWith(Suite.class)
-@SuiteClasses({ CalcTerminalNodeFactoryTester.class })
+@SuiteClasses({ CalcFunctionNodeFactoryTester.class,
+    CalcTerminalNodeFactoryTester.class })
 public class AllTest {
 
 }

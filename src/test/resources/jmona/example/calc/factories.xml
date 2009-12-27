@@ -27,37 +27,8 @@
   <bean id="terminalNodeFactory"
     class="jmona.example.calc.factories.CalcTerminalNodeFactory" />
   
-  <!-- use this bean to allow for only variables in the formula -->
-  <!--<bean id="terminalNodeFactory" class="jmona.gp.impl.DefaultTerminalNodeFactory">
-    <constructor-arg>
-      <set>
-        <bean class="java.lang.Class" factory-method="forName">
-          <constructor-arg value="jmona.example.calc.nodes.VariableNode" />
-        </bean>
-      </set>
-    </constructor-arg>
-  </bean>-->
-  
-  
   <bean id="functionNodeFactory"
-    class="jmona.gp.impl.DefaultFunctionNodeFactory">
-    <constructor-arg>
-      <set>
-        <bean class="java.lang.Class" factory-method="forName">
-          <constructor-arg value="jmona.example.calc.nodes.AdditionNode" />
-        </bean>
-        <bean class="java.lang.Class" factory-method="forName">
-          <constructor-arg value="jmona.example.calc.nodes.MultiplicationNode" />
-        </bean>
-        <bean class="java.lang.Class" factory-method="forName">
-          <constructor-arg value="jmona.example.calc.nodes.DivisionNode" />
-        </bean>
-        <bean class="java.lang.Class" factory-method="forName">
-          <constructor-arg value="jmona.example.calc.nodes.SubtractionNode" />
-        </bean>
-      </set>
-    </constructor-arg>
-  </bean>
+    class="jmona.example.calc.factories.CalcFunctionNodeFactory" />
     
   <bean id="individualFactory" class="jmona.gp.impl.GrowTreeFactory">
     <property name="probabilityTerminal" value="0.1" />

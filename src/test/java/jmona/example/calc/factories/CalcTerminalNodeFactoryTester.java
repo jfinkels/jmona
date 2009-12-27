@@ -64,12 +64,7 @@ public class CalcTerminalNodeFactoryTester {
     int numVariableNodes = 0;
 
     for (int i = 0; i < NUM_TESTS; ++i) {
-      TerminalNode<SingleInputFunction<Double, Double>> node = null;
-      try {
-        node = factory.createNode();
-      } catch (final InitializationException exception) {
-        Util.fail(exception);
-      }
+      final TerminalNode<SingleInputFunction<Double, Double>> node = factory.createNode();
 
       assertTrue(node instanceof VariableNode || node instanceof NumberNode);
       assertEquals(0, node.arity());
@@ -125,8 +120,6 @@ public class CalcTerminalNodeFactoryTester {
           assertTrue(value <= newMaxValue && value >= newMinValue);
         }
       }
-    } catch (final InitializationException exception) {
-      Util.fail(exception);
     } catch (final MappingException exception) {
       Util.fail(exception);
     }
