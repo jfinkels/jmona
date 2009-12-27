@@ -19,7 +19,6 @@
  */
 package jmona.example.calc.factories;
 
-import jmona.InitializationException;
 import jmona.SingleInputFunction;
 import jmona.example.calc.nodes.NumberNode;
 import jmona.example.calc.nodes.VariableNode;
@@ -50,7 +49,7 @@ public class CalcTerminalNodeFactory implements
    * Create a TerminalNode of type {@link VariableNode} or {@link NumberNode}.
    * 
    * @return Either a {@code VariableNode} or a {@code NumberNode}.
-   * @see jmona.gp.NodeFactory#createNode()
+   * @see jmona.gp.TerminalNodeFactory#createNode()
    */
   @Override
   public TerminalNode<SingleInputFunction<Double, Double>> createNode() {

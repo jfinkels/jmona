@@ -31,12 +31,15 @@ import jmona.test.Util;
 import org.junit.Test;
 
 /**
+ * Test class for the MonaMapping class.
+ * 
  * @author jfinkels
  */
 public class MonaMappingTester {
 
   /**
-   * Test method for {@link jmona.example.monalisa.ga.MonaMapping#execute(jmona.example.monalisa.ga.MonaIndividual)}.
+   * Test method for
+   * {@link jmona.example.monalisa.ga.MonaMapping#execute(java.util.List)}.
    */
   @Test
   public void testExecute() {

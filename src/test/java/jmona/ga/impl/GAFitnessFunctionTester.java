@@ -21,7 +21,6 @@ package jmona.ga.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import jmona.FitnessException;
 import jmona.impl.example.ExampleIndividual;
 import jmona.impl.example.ExampleMetric;
@@ -128,7 +127,7 @@ public class GAFitnessFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.ga.impl.GAFitnessFunction#setTarget(jmona.Individual)}.
+   * {@link jmona.ga.impl.GAFitnessFunction#setTarget(Object)}.
    */
   @Test
   public void testSetTarget() {
