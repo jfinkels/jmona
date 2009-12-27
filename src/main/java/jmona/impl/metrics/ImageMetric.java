@@ -21,11 +21,16 @@ package jmona.impl.metrics;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.PixelGrabber;
+import java.util.List;
+import java.util.Vector;
 
 import jmona.Metric;
 import jmona.MetricException;
 
 /**
+ * A metric which measures the distance between images in RGB color space, using
+ * the sum of Euclidean distance between each of the pixels in RGB color space.
+ * 
  * @author jfinkels
  */
 public class ImageMetric implements Metric<BufferedImage> {
@@ -34,6 +39,8 @@ public class ImageMetric implements Metric<BufferedImage> {
   public static final int BLUE = 8 * 0;
   /** A bit mask for a single byte. */
   public static final int BYTE_MASK = 0xFF;
+  /** The Euclidean metric. */
+  private static final EuclideanVectorMetric<Integer> EUCLIDEAN_METRIC = new EuclideanVectorMetric<Integer>();
   /** The location of the green value of a pixel packed in an int. */
   public static final int GREEN = 8 * 1;
   /** The location of the red value of a pixel packed in an int. */
@@ -51,14 +58,13 @@ public class ImageMetric implements Metric<BufferedImage> {
    * @return The geometric distance between the pixels in the three-dimensional
    *         space defined by the three colors (red, green, and blue) of the
    *         pixels.
+   * @throws MetricException
+   *           If there is a problem determining the Euclidean distance between
+   *           the two specified pixels.
    */
-  protected static double distance(final int pixel1, final int pixel2) {
-    final int red = getColor(pixel1, RED) - getColor(pixel2, RED);
-    final int green = getColor(pixel1, GREEN) - getColor(pixel2, GREEN);
-    final int blue = getColor(pixel1, BLUE) - getColor(pixel2, BLUE);
-    double result = Math.sqrt(Math.pow(red, 2) + Math.pow(green, 2)
-        + Math.pow(blue, 2));
-    return result;
+  protected static double distance(final int pixel1, final int pixel2)
+      throws MetricException {
+    return EUCLIDEAN_METRIC.measure(toList(pixel1), toList(pixel2));
   }
 
   /**
@@ -72,6 +78,23 @@ public class ImageMetric implements Metric<BufferedImage> {
    */
   protected static int getColor(final int pixel, final int color) {
     return (pixel >> color) & BYTE_MASK;
+  }
+
+  /**
+   * Convert the specified pixel to a List of its red, green, and blue component
+   * color values.
+   * 
+   * @param pixel
+   *          The pixel to convert.
+   * @return A List of the red, green, and blue component color values of the
+   *         specified pixel.
+   */
+  protected static List<Integer> toList(final int pixel) {
+    final List<Integer> result = new Vector<Integer>();
+    result.add(getColor(pixel, RED));
+    result.add(getColor(pixel, GREEN));
+    result.add(getColor(pixel, BLUE));
+    return result;
   }
 
   /** The height of the images to be measured. */
@@ -93,9 +116,19 @@ public class ImageMetric implements Metric<BufferedImage> {
     this.imageHeight = initialImageHeight;
   }
 
-  /*
-   * (non-Javadoc)
+  /**
+   * Get the distance between the two specified images determined by the
+   * Euclidean distance in RGB color space between each of their corresponding
+   * pixels.
    * 
+   * @param image1
+   *          An image.
+   * @param image2
+   *          Another image.
+   * @return The Euclidean distance between the two specified images in RGB
+   *         color space.
+   * @throws MetricException
+   *           If there is a problem reading the pixels from the images.
    * @see jmona.Metric#measure(java.lang.Object, java.lang.Object)
    */
   @Override
