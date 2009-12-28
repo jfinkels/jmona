@@ -19,12 +19,12 @@
  */
 package jmona.gp.impl;
 
-import jmona.InitializationException;
-import jmona.gp.FunctionNodeFactory;
+import jmona.Factory;
+import jmona.exceptions.InitializationException;
+import jmona.gp.FunctionNode;
 import jmona.gp.Node;
-import jmona.gp.TerminalNodeFactory;
+import jmona.gp.TerminalNode;
 import jmona.gp.Tree;
-import jmona.gp.TreeFactory;
 
 /**
  * A base class for a TreeFactory which has a maximum depth.
@@ -33,16 +33,16 @@ import jmona.gp.TreeFactory;
  *          The type of value to which created Trees evaluate.
  * @author jfinkels
  */
-public abstract class AbstractTreeFactory<V> implements TreeFactory<V> {
+public abstract class AbstractTreeFactory<V> implements Factory<Tree<V>> {
 
   /** The default maximum depth of a generated Tree. */
   public static final int DEFAULT_MAX_DEPTH = 3;
   /** The factory which creates FunctionNode objects. */
-  private FunctionNodeFactory<V> functionNodeFactory = null;
+  private Factory<FunctionNode<V>> functionNodeFactory = null;
   /** The maximum depth of a generated Tree. */
   private int maxDepth = DEFAULT_MAX_DEPTH;
   /** The factory which creates TerminalNode objects. */
-  private TerminalNodeFactory<V> terminalNodeFactory = null;
+  private Factory<TerminalNode<V>> terminalNodeFactory = null;
 
   /**
    * Create a Tree by instantiating a DefaultTree and assigning its root to be a
@@ -51,10 +51,10 @@ public abstract class AbstractTreeFactory<V> implements TreeFactory<V> {
    * @throws InitializationException
    *           If there is a problem invoking the constructor of the Tree class.
    * @return A Tree of depth at most {@link #maxDepth}.
-   * @see jmona.IndividualFactory#createIndividual()
+   * @see jmona.Factory#createObject()
    */
   @Override
-  public Tree<V> createIndividual() throws InitializationException {
+  public Tree<V> createObject() throws InitializationException {
     // TODO I don't want this to be tied to a specified implementation of Tree
     return new DefaultTree<V>(this.createTree(this.maxDepth));
   }
@@ -77,7 +77,7 @@ public abstract class AbstractTreeFactory<V> implements TreeFactory<V> {
    * 
    * @return The factory which creates FunctionNode objects.
    */
-  public FunctionNodeFactory<V> functionNodeFactory() {
+  public Factory<FunctionNode<V>> functionNodeFactory() {
     return this.functionNodeFactory;
   }
 
@@ -97,7 +97,7 @@ public abstract class AbstractTreeFactory<V> implements TreeFactory<V> {
    *          The factory which creates FunctionNode objects.
    */
   public void setFunctionNodeFactory(
-      final FunctionNodeFactory<V> newFunctionNodeFactory) {
+      final Factory<FunctionNode<V>> newFunctionNodeFactory) {
     this.functionNodeFactory = newFunctionNodeFactory;
   }
 
@@ -118,7 +118,7 @@ public abstract class AbstractTreeFactory<V> implements TreeFactory<V> {
    *          The factory which creates TerminalNode objects.
    */
   public void setTerminalNodeFactory(
-      final TerminalNodeFactory<V> newTerminalNodeFactory) {
+      final Factory<TerminalNode<V>> newTerminalNodeFactory) {
     this.terminalNodeFactory = newTerminalNodeFactory;
   }
 
@@ -127,7 +127,7 @@ public abstract class AbstractTreeFactory<V> implements TreeFactory<V> {
    * 
    * @return The factory which creates TerminalNode objects.
    */
-  public TerminalNodeFactory<V> terminalNodeFactory() {
+  public Factory<TerminalNode<V>> terminalNodeFactory() {
     return this.terminalNodeFactory;
   }
 }

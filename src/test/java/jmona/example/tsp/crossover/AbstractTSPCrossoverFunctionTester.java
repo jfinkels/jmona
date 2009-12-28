@@ -19,8 +19,10 @@
  */
 package jmona.example.tsp.crossover;
 
+import java.util.List;
+import java.util.Vector;
+
 import jmona.CrossoverFunction;
-import jmona.example.tsp.Tour;
 
 import org.junit.Before;
 
@@ -36,17 +38,17 @@ public abstract class AbstractTSPCrossoverFunctionTester {
   /** The number of independent crossovers to perform. */
   public static final int NUM_TESTS = 100;
   /** The function under test. */
-  private CrossoverFunction<Tour> function = null;
+  private CrossoverFunction<List<Integer>> function = null;
   /**
    * A tour on which to perform crossover which contains an increasing sequence
    * of integers.
    */
-  private Tour tour1 = null;
+  private List<Integer> tour1 = null;
   /**
    * A tour on which to perform crossover which contains a decreasing sequence
    * of integers.
    */
-  private Tour tour2 = null;
+  private List<Integer> tour2 = null;
 
   /**
    * Instantiate this test class with the specified CrossoverFunction.
@@ -55,7 +57,7 @@ public abstract class AbstractTSPCrossoverFunctionTester {
    *          The CrossoverFunction under test.
    */
   public AbstractTSPCrossoverFunctionTester(
-      final CrossoverFunction<Tour> initialFunction) {
+      final CrossoverFunction<List<Integer>> initialFunction) {
     this.function = initialFunction;
   }
 
@@ -64,15 +66,15 @@ public abstract class AbstractTSPCrossoverFunctionTester {
    * 
    * @return The CrossoverFunction under test in this class.
    */
-  public CrossoverFunction<Tour> function() {
+  public CrossoverFunction<List<Integer>> function() {
     return this.function;
   }
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.tour1 = new Tour();
-    this.tour2 = new Tour();
+    this.tour1 = new Vector<Integer>();
+    this.tour2 = new Vector<Integer>();
 
     for (int i = 0; i < LENGTH; ++i) {
       this.tour1.add(i);
@@ -92,7 +94,7 @@ public abstract class AbstractTSPCrossoverFunctionTester {
    * 
    * @return The tour containing the increasing sequence.
    */
-  protected Tour tour1() {
+  protected List<Integer> tour1() {
     return this.tour1;
   }
 
@@ -101,7 +103,7 @@ public abstract class AbstractTSPCrossoverFunctionTester {
    * 
    * @return The tour containing the decreasing sequence.
    */
-  protected Tour tour2() {
+  protected List<Integer> tour2() {
     return this.tour2;
   }
 }

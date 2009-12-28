@@ -102,7 +102,7 @@ public class ColoredPolygonMutationFunction implements
    * 
    * @param individual
    *          The ColoredPolygon to mutate.
-   * @see jmona.MutationFunction#mutate(jmona.Individual)
+   * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
    */
   @Override
   public void mutate(final ColoredPolygon individual) {

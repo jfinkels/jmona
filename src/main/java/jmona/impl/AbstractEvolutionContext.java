@@ -20,17 +20,17 @@
 package jmona.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import jmona.CrossoverFunction;
+import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.EvolutionException;
-import jmona.FitnessException;
 import jmona.FitnessFunction;
-import jmona.Individual;
 import jmona.MutationFunction;
-import jmona.Population;
 import jmona.SelectionFunction;
+import jmona.exceptions.EvolutionException;
+import jmona.exceptions.FitnessException;
 
 /**
  * An abstract base class for EvolutionContexts.
@@ -39,8 +39,8 @@ import jmona.SelectionFunction;
  *          The type of individual to evolve.
  * @author jfinkels
  */
-public abstract class AbstractEvolutionContext<T extends Individual> implements
-    EvolutionContext<T> {
+public abstract class AbstractEvolutionContext<T extends DeepCopyable<T>>
+    implements EvolutionContext<T> {
   /**
    * The default probability that crossover will be performed on Individuals
    * selected for breeding.
@@ -66,7 +66,7 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
   /** The probability of mutating an Individual. */
   private double mutationProbability = DEFAULT_MUTATION_PROBABILITY;
   /** The current population. */
-  private Population<T> population = null;
+  private List<T> population = null;
   /** The selection function for this context. */
   private SelectionFunction<T> selectionFunction = null;
 
@@ -80,7 +80,7 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * @throws IllegalArgumentException
    *           If the size of the initial population is less than 2.
    */
-  public AbstractEvolutionContext(final Population<T> initialPopulation) {
+  public AbstractEvolutionContext(final List<T> initialPopulation) {
     if (initialPopulation.size() < 2) {
       throw new IllegalArgumentException(
           "The initial population must be of size greater than or equal to 2.");
@@ -137,7 +137,7 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * @see jmona.EvolutionContext#currentPopulation()
    */
   @Override
-  public Population<T> currentPopulation() {
+  public List<T> currentPopulation() {
     return this.population;
   }
 
@@ -265,7 +265,7 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * @param newCurrentPopulation
    *          The new current population.
    */
-  protected void setCurrentPopulation(final Population<T> newCurrentPopulation) {
+  protected void setCurrentPopulation(final List<T> newCurrentPopulation) {
     this.population = newCurrentPopulation;
   }
 
@@ -291,7 +291,7 @@ public abstract class AbstractEvolutionContext<T extends Individual> implements
    * 
    * @param function
    *          {@inheritDoc}
-   * @see jmona.EvolutionContext#setMutationFunction(jmona.MutationFunction)
+   * @see jmona.EvolutionContext#setMutationFunction(jmona.IndividualMutationFunction)
    */
   @Override
   public void setMutationFunction(final MutationFunction<T> function) {

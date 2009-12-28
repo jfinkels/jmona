@@ -19,16 +19,16 @@
  */
 package jmona.gp.impl.example;
 
-import jmona.InitializationException;
+import jmona.Factory;
+import jmona.exceptions.InitializationException;
 import jmona.gp.FunctionNode;
-import jmona.gp.FunctionNodeFactory;
 
 /**
  * An example FunctionNodeFactory.
  * 
  * @author jfinkels
  */
-public class ExampleFunctionNodeFactory implements FunctionNodeFactory<Integer> {
+public class ExampleFunctionNodeFactory implements Factory<FunctionNode<Integer>> {
 
   /**
    * Create an ExampleBinaryNode.
@@ -39,7 +39,7 @@ public class ExampleFunctionNodeFactory implements FunctionNodeFactory<Integer> 
    * @see jmona.gp.NodeFactory#createNode()
    */
   @Override
-  public FunctionNode<Integer> createNode() throws InitializationException {
+  public FunctionNode<Integer> createObject() throws InitializationException {
     return new ExampleBinaryNode();
   }
 

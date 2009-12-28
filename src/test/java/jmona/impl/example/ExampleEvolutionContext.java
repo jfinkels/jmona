@@ -19,7 +19,8 @@
  */
 package jmona.impl.example;
 
-import jmona.Population;
+import java.util.List;
+
 import jmona.impl.AbstractEvolutionContext;
 
 /**
@@ -37,8 +38,7 @@ public class ExampleEvolutionContext extends
    * @param initialPopulation
    *          The initial population for this EvolutionContext.
    */
-  public ExampleEvolutionContext(
-      final Population<ExampleIndividual> initialPopulation) {
+  public ExampleEvolutionContext(final List<ExampleIndividual> initialPopulation) {
     super(initialPopulation);
   }
 

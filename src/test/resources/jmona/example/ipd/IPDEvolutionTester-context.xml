@@ -23,30 +23,10 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
   
-  <bean id="individualFactory" class="jmona.example.ipd.IPDStrategyFactory">
-    <property name="strategyClasses">
-      <set>
-        <bean class="java.lang.Class" factory-method="forName">
-          <constructor-arg value="jmona.example.ipd.strategy.PavlovStrategy" />
-        </bean>
-        <bean class="java.lang.Class" factory-method="forName">
-          <constructor-arg value="jmona.example.ipd.strategy.RuthlessStrategy" />
-        </bean>
-        <bean class="java.lang.Class" factory-method="forName">
-          <constructor-arg value="jmona.example.ipd.strategy.CooperativeStrategy" />
-        </bean>
-        <bean class="java.lang.Class" factory-method="forName">
-          <constructor-arg value="jmona.example.ipd.strategy.RandomStrategy" />
-        </bean>
-        <bean class="java.lang.Class" factory-method="forName">
-          <constructor-arg value="jmona.example.ipd.strategy.TitForTatStrategy" />
-        </bean>
-      </set>
-    </property>
-  </bean>
+  <bean id="individualFactory" class="jmona.example.ipd.IPDStrategyFactory" />
   
-  <bean id="populationFactory" class="jmona.impl.DefaultPopulationFactory">
-    <property name="individualFactory" ref="individualFactory" />
+  <bean id="populationFactory" class="jmona.impl.DefaultDeepCopyableListFactory">
+    <property name="elementFactory" ref="individualFactory" />
     <property name="size" value="70" />
   </bean>
 

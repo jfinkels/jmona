@@ -54,11 +54,11 @@ public class ColoredPolygonNodeFactoryTester {
   @Before
   public final void setUp() {
     this.factory = new ColoredPolygonNodeFactory();
-    this.factory.setMaxPoints(MAX_POINTS);
+    /*this.factory.setMaxPoints(MAX_POINTS);
     this.factory.setMinPoints(MIN_POINTS);
     this.factory.setMaxX(WIDTH);
     this.factory.setMaxY(HEIGHT);
-  }
+ */ }
 
   /**
    * Test method for
@@ -66,7 +66,7 @@ public class ColoredPolygonNodeFactoryTester {
    */
   @Test
   public void testCreateNode() {
-    final ColoredPolygonNode node = this.factory.createNode();
+    final ColoredPolygonNode node = this.factory.createObject();
     List<ColoredPolygon> polygons = null;
     try {
       polygons = node.evaluate();

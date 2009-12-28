@@ -20,10 +20,10 @@
 package jmona.example.tsp;
 
 import jmona.CompletionCondition;
-import jmona.CompletionException;
+import jmona.DeepCopyableList;
 import jmona.EvolutionContext;
-import jmona.EvolutionException;
-import jmona.example.tsp.Tour;
+import jmona.exceptions.CompletionException;
+import jmona.exceptions.EvolutionException;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
@@ -50,11 +50,11 @@ public class TSPEvolutionTester extends AbstractJUnit4SpringContextTests {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<Tour> completionCondition = null;
+  private CompletionCondition<DeepCopyableList<Integer>> completionCondition = null;
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
-  private EvolutionContext<Tour> context = null;
+  private EvolutionContext<DeepCopyableList<Integer>> context = null;
 
   /** Test method for the traveling salesman problem evolution. */
   @Test

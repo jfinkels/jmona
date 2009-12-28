@@ -20,7 +20,7 @@
 package jmona.impl.example;
 
 import jmona.EvolutionContext;
-import jmona.ProcessingException;
+import jmona.exceptions.ProcessingException;
 import jmona.impl.PeriodicPostProcessor;
 
 /**

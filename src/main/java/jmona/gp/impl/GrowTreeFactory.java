@@ -19,7 +19,7 @@
  */
 package jmona.gp.impl;
 
-import jmona.InitializationException;
+import jmona.exceptions.InitializationException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 
@@ -55,10 +55,10 @@ public class GrowTreeFactory<V> extends AbstractTreeFactory<V> {
     Node<V> result = null;
 
     if (currentDepth <= 1 || Math.random() < this.probabilityTerminal) {
-      result = this.terminalNodeFactory().createNode();
+      result = this.terminalNodeFactory().createObject();
     } else {
       // create a function node
-      result = this.functionNodeFactory().createNode();
+      result = this.functionNodeFactory().createObject();
 
       // determine its arity (that is, the number of children it needs)
       final int arity = result.arity();

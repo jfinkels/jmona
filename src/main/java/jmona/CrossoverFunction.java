@@ -19,6 +19,8 @@
  */
 package jmona;
 
+import jmona.exceptions.CrossoverException;
+
 /**
  * A class which provides a single method which performs a crossover (in place)
  * between genes of Individuals.
@@ -27,7 +29,7 @@ package jmona;
  *          The type of Individual whose genes will be crossed over.
  * @author jfinke
  */
-public interface CrossoverFunction<T extends Individual> {
+public interface CrossoverFunction<T> {
 
   /**
    * Crossover the genes of the specified individual (in-place).

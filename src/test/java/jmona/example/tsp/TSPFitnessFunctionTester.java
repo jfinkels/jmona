@@ -20,10 +20,9 @@
 package jmona.example.tsp;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.tsp.AdjacencyMatrixGraph;
-import jmona.example.tsp.DirectedGraph;
-import jmona.example.tsp.TSPFitnessFunction;
-import jmona.example.tsp.Tour;
+
+import java.util.List;
+import java.util.Vector;
 
 import org.junit.Test;
 
@@ -59,7 +58,7 @@ public class TSPFitnessFunctionTester {
     final TSPFitnessFunction function = new TSPFitnessFunction(graph);
 
     // this tour is 0 -> 1 -> 0
-    Tour tour = new Tour();
+    final List<Integer> tour = new Vector<Integer>();
     tour.add(0);
     tour.add(1);
 
@@ -67,14 +66,14 @@ public class TSPFitnessFunctionTester {
         ZERO_DELTA);
 
     // this tour is 1 -> 0 -> 1
-    tour = new Tour();
+    tour.clear();
     tour.add(1);
     tour.add(0);
 
     assertEquals(1.0 / (weights[1][0] + weights[0][1]), function.fitness(tour),
         ZERO_DELTA);
 
-    tour = new Tour();
+    tour.clear();
     tour.add(0);
     
     assertEquals(Double.POSITIVE_INFINITY, function.fitness(tour), ZERO_DELTA);

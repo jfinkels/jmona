@@ -24,7 +24,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.MetricException;
+import jmona.exceptions.MetricException;
 import jmona.test.Util;
 
 import org.junit.Before;

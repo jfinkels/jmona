@@ -19,14 +19,12 @@
  */
 package jmona.game;
 
-import jmona.Individual;
-
 /**
  * A strategy which plays a game.
  * 
  * @author jfinkels
  */
-public interface Strategy extends Individual {
+public interface Strategy /* extends DeepCopyable<Strategy> */{
   /** Reset the strategy to an initial state. */
   void reset();
 }

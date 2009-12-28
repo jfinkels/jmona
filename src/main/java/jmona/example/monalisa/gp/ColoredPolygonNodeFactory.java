@@ -19,12 +19,8 @@
  */
 package jmona.example.monalisa.gp;
 
-import java.util.List;
-
-import jmona.example.monalisa.ColoredPolygon;
+import jmona.Factory;
 import jmona.example.monalisa.ColoredPolygonFactory;
-import jmona.gp.FunctionNodeFactory;
-import jmona.gp.TerminalNodeFactory;
 
 /**
  * Factory which generates a ColoredPolygonNode containing a random
@@ -32,12 +28,10 @@ import jmona.gp.TerminalNodeFactory;
  * 
  * @author jfinkels
  */
-public class ColoredPolygonNodeFactory implements
-    TerminalNodeFactory<List<ColoredPolygon>>,
-    FunctionNodeFactory<List<ColoredPolygon>> {
+public class ColoredPolygonNodeFactory implements Factory<ColoredPolygonNode> {
 
   /** A factory which creates ColoredPolygon objects. */
-  private final ColoredPolygonFactory coloredPolygonFactory = new ColoredPolygonFactory();
+  private ColoredPolygonFactory coloredPolygonFactory = null;
 
   /**
    * Generate a ColoredPolygonNode containing a single randomly generated
@@ -49,51 +43,16 @@ public class ColoredPolygonNodeFactory implements
    * @see jmona.gp.TerminalNodeFactory#createNode()
    */
   @Override
-  public ColoredPolygonNode createNode() {
+  public ColoredPolygonNode createObject() {
     final ColoredPolygonNode result = new ColoredPolygonNode();
 
-    result.setColoredPolygon(coloredPolygonFactory.createIndividual());
+    result.setColoredPolygon(this.coloredPolygonFactory.createObject());
 
     return result;
   }
 
-  /**
-   * Set the maximum number of points in a polygon.
-   * 
-   * @param newMaxPoints
-   *          The maximum number of points in a polygon.
-   */
-  public void setMaxPoints(final int newMaxPoints) {
-    this.coloredPolygonFactory.setMaxPoints(newMaxPoints);
-  }
-
-  /**
-   * Set the maximum x value of a polygon.
-   * 
-   * @param newMaxX
-   *          The maximum x value of a polygon.
-   */
-  public void setMaxX(final int newMaxX) {
-    this.coloredPolygonFactory.setMaxX(newMaxX);
-  }
-
-  /**
-   * Set the maximum y value of a polygon.
-   * 
-   * @param newMaxY
-   *          The maximum y value of a polygon.
-   */
-  public void setMaxY(final int newMaxY) {
-    this.coloredPolygonFactory.setMaxY(newMaxY);
-  }
-
-  /**
-   * Set the minimum number of points in a polygon.
-   * 
-   * @param newMinPoints
-   *          The minimum number of points in a polygon.
-   */
-  public void setMinPoints(final int newMinPoints) {
-    this.coloredPolygonFactory.setMinPoints(newMinPoints);
+  public void setColoredPolygonFactory(
+      final ColoredPolygonFactory newColoredPolygonFactory) {
+    this.coloredPolygonFactory = newColoredPolygonFactory;
   }
 }

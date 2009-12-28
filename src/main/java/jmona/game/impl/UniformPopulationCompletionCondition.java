@@ -19,9 +19,10 @@
  */
 package jmona.game.impl;
 
+import java.util.List;
+
+import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.Individual;
-import jmona.Population;
 import jmona.impl.DefaultMaxGenerationCompletionCondition;
 
 /**
@@ -32,8 +33,8 @@ import jmona.impl.DefaultMaxGenerationCompletionCondition;
  *          The type of Individual in the Population.
  * @author jfinkels
  */
-public class UniformPopulationCompletionCondition<T extends Individual> extends
-    DefaultMaxGenerationCompletionCondition<T> {
+public class UniformPopulationCompletionCondition<T extends DeepCopyable<T>>
+    extends DefaultMaxGenerationCompletionCondition<T> {
 
   /**
    * Determines whether the current Population in the specified EvolutionContext
@@ -54,7 +55,7 @@ public class UniformPopulationCompletionCondition<T extends Individual> extends
     }
 
     // get the current population from the evolution context
-    final Population<T> population = context.currentPopulation();
+    final List<T> population = context.currentPopulation();
 
     // get a class for comparison with classes of the rest of the population
     final Class<T> someClass = (Class<T>) population.get(0).getClass();

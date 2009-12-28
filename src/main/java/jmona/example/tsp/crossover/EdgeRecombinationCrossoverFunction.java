@@ -19,22 +19,23 @@
  */
 package jmona.example.tsp.crossover;
 
-import jmona.CrossoverException;
+import java.util.List;
+
 import jmona.CrossoverFunction;
-import jmona.example.tsp.Tour;
+import jmona.exceptions.CrossoverException;
 
 /**
  * ERX, by Matthew Wall
  * 
  * @author jfinkels
  */
-public class EdgeRecombinationCrossoverFunction implements CrossoverFunction<Tour> {
+public class EdgeRecombinationCrossoverFunction implements CrossoverFunction<List<Integer>> {
 
   /* (non-Javadoc)
    * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
    */
   @Override
-  public void crossover(final Tour tour1, final Tour tour2)
+  public void crossover(final List<Integer> tour1, final List<Integer> tour2)
       throws CrossoverException {
     // TODO Auto-generated method stub
     

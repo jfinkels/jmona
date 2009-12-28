@@ -25,7 +25,7 @@
 
   <bean id="crossoverFunction" class="jmona.ga.impl.TwoPointCrossoverFunction" />
   <bean id="fitnessFunction" class="jmona.example.ones.OnesFitnessFunction" />
-  <bean id="mutationFunction" class="jmona.ga.impl.BitwiseMutationFunction" />
+  <bean id="mutationFunction" class="jmona.example.ones.OnesMutationFunction" />
   <bean id="selectionFunction" class="jmona.impl.selection.FitnessProportionateSelection" />
 
 </beans>

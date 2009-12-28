@@ -31,8 +31,8 @@ package jmona;
  *          for completion.
  * @author jfinkels
  */
-public interface MaxGenerationCompletionCondition<T extends Individual> extends
-    CompletionCondition<T> {
+public interface MaxGenerationCompletionCondition<T extends DeepCopyable<T>>
+    extends CompletionCondition<T> {
   /**
    * Set the maximum number of generations for this evolution.
    * 

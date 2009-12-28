@@ -19,7 +19,8 @@
  */
 package jmona.example.ipd.strategy;
 
-import jmona.Pair;
+import jmona.DeepCopyable;
+import jmona.impl.Pair;
 
 /**
  * A strategy which cooperates on the first iteration, cooperates whenever this
@@ -29,7 +30,7 @@ import jmona.Pair;
  * 
  * @author jfinkels
  */
-public class PavlovStrategy extends IPDStrategy {
+public class PavlovStrategy extends IPDStrategy implements DeepCopyable<PavlovStrategy>{
 
   /**
    * {@inheritDoc}

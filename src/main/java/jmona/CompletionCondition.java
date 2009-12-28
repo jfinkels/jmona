@@ -19,6 +19,8 @@
  */
 package jmona;
 
+import jmona.exceptions.CompletionException;
+
 /**
  * An object which contains a method which tells whether the criteria for the
  * completion of the evolution have been met.
@@ -31,7 +33,7 @@ package jmona;
  *          criteria this object encapsulates.
  * @author jfinkels
  */
-public interface CompletionCondition<T extends Individual> {
+public interface CompletionCondition<T extends DeepCopyable<T>> {
   /**
    * Whether the criteria for completion of the evolution have been met.
    * 

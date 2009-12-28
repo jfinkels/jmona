@@ -30,7 +30,7 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses({ AdjacencyMatrixGraphTester.class, TourFactoryTester.class,
-    TourTester.class, TSPEvolutionTester.class, TSPFitnessFunctionTester.class })
+    TSPEvolutionTester.class, TSPFitnessFunctionTester.class })
 public class AllTest {
 
 }

@@ -19,8 +19,8 @@
  */
 package jmona.impl;
 
+import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.Individual;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -35,7 +35,7 @@ import org.apache.log4j.Logger;
  *          be logged.
  * @author jfinkels
  */
-public class PopulationLoggingPostProcessor<T extends Individual> extends
+public class PopulationLoggingPostProcessor<T extends DeepCopyable<T>> extends
     PeriodicPostProcessor<T> {
 
   /**

@@ -19,7 +19,8 @@
  */
 package jmona.example.ipd.strategy;
 
-import jmona.Pair;
+import jmona.DeepCopyable;
+import jmona.impl.Pair;
 
 /**
  * A strategy which cooperates on the first iteration, then does whatever the
@@ -27,7 +28,7 @@ import jmona.Pair;
  * 
  * @author jfinkels
  */
-public class TitForTatStrategy extends IPDStrategy {
+public class TitForTatStrategy extends IPDStrategy implements DeepCopyable<TitForTatStrategy>{
 
   /**
    * {@inheritDoc}

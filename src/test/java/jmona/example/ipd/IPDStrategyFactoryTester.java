@@ -27,7 +27,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import jmona.InitializationException;
 import jmona.example.ipd.IPDStrategyFactory;
 import jmona.example.ipd.strategy.CooperativeStrategy;
 import jmona.example.ipd.strategy.IPDStrategy;
@@ -35,6 +34,7 @@ import jmona.example.ipd.strategy.PavlovStrategy;
 import jmona.example.ipd.strategy.RandomStrategy;
 import jmona.example.ipd.strategy.RuthlessStrategy;
 import jmona.example.ipd.strategy.TitForTatStrategy;
+import jmona.exceptions.InitializationException;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -63,7 +63,7 @@ public class IPDStrategyFactoryTester {
     IPDStrategy strategy = null;
     try {
       for (int i = 0; i < NUM_TESTS; ++i) {
-        strategy = factory.createIndividual();
+        strategy = factory.createObject();
         assertTrue(strategy instanceof TitForTatStrategy);
       }
     } catch (final InitializationException exception) {
@@ -79,7 +79,7 @@ public class IPDStrategyFactoryTester {
 
     try {
       for (int i = 0; i < NUM_TESTS; ++i) {
-        strategy = factory.createIndividual();
+        strategy = factory.createObject();
         if (numSelections.containsKey(strategy.getClass())) {
           numSelections.put(strategy.getClass(), numSelections.get(strategy
               .getClass()) + 1);

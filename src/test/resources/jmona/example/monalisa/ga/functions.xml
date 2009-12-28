@@ -25,7 +25,7 @@
 
   <!-- the mapping from MonaIndividual to BufferedImage -->
 
-  <bean id="mapping" class="jmona.example.monalisa.ga.MonaMapping">
+  <bean id="mapping" class="jmona.example.monalisa.MonaMapping">
     <constructor-arg ref="width" />
     <constructor-arg ref="height" />
   </bean>
@@ -37,19 +37,25 @@
     <constructor-arg ref="height" />
   </bean>
 
+  <!-- colored polygon mutation function -->
+  
+  <bean id="polygonMutationFunction" class="jmona.example.monalisa.ColoredPolygonMutationFunction">
+    <constructor-arg ref="width" />
+    <constructor-arg ref="height" />
+  </bean>
+
   <!-- functions for use in the evolution context -->
 
-  <bean id="crossoverFunction" class="jmona.example.monalisa.ga.MonaCrossoverFunction" />
-  
   <bean id="fitnessFunction" class="jmona.ga.impl.MappingFitnessFunction">
     <property name="mapping" ref="mapping" />
     <property name="metric" ref="metric" />
     <property name="target" ref="targetImage" />
   </bean>
+
+  <bean id="crossoverFunction" class="jmona.impl.TwoPointCrossoverFunction" />
   
-  <bean id="mutationFunction" class="jmona.example.monalisa.ga.MonaMutationFunction">
-    <constructor-arg ref="width" />
-    <constructor-arg ref="height" />
+  <bean id="mutationFunction" class="jmona.impl.ListMutationFunction">
+    <property name="elementMutationFunction" ref="polygonMutationFunction" />
   </bean>
   
   <bean id="selectionFunction" class="jmona.impl.selection.FitnessProportionateSelection" />

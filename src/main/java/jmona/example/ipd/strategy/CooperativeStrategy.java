@@ -19,12 +19,14 @@
  */
 package jmona.example.ipd.strategy;
 
+import jmona.DeepCopyable;
+
 /**
  * A strategy which always cooperates.
  * 
  * @author jfinkels
  */
-public class CooperativeStrategy extends IPDStrategy {
+public class CooperativeStrategy extends IPDStrategy implements DeepCopyable<CooperativeStrategy> {
 
   /**
    * {@inheritDoc}

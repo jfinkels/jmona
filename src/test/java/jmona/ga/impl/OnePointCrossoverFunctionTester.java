@@ -21,7 +21,7 @@ package jmona.ga.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import jmona.Pair;
+import jmona.impl.Pair;
 
 import org.junit.Test;
 

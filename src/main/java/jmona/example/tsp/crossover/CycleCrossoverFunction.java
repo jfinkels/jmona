@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.CrossoverFunction;
-import jmona.example.tsp.Tour;
 import jmona.impl.Util;
 
 /**
@@ -32,7 +31,7 @@ import jmona.impl.Util;
  * @author jfinkels
  */
 // TODO documentation
-public class CycleCrossoverFunction implements CrossoverFunction<Tour> {
+public class CycleCrossoverFunction implements CrossoverFunction<List<Integer>> {
 
   /*
    * (non-Javadoc)
@@ -40,7 +39,7 @@ public class CycleCrossoverFunction implements CrossoverFunction<Tour> {
    * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
    */
   @Override
-  public void crossover(final Tour tour1, final Tour tour2) {
+  public void crossover(final List<Integer> tour1, final List<Integer> tour2) {
     // choose a random initial index of a city in the tour
     int index = Util.RANDOM.nextInt(tour1.size());
     final int initialCity = tour1.get(index);
@@ -58,24 +57,7 @@ public class CycleCrossoverFunction implements CrossoverFunction<Tour> {
     }
 
     for (final int city : cycle) {
-      swap(tour1, tour2, tour1.indexOf(city));
+      Util.swap(tour1, tour2, tour1.indexOf(city));
     }
   }
-
-  /**
-   * Swap the cities at the specified index in each of the specified Tours.
-   * 
-   * @param tour1
-   *          A Tour.
-   * @param tour2
-   *          Another Tour.
-   * @param index
-   *          The index of the city to swap in each of the specified Tours.
-   */
-  protected static void swap(final Tour tour1, final Tour tour2, final int index) {
-    int temp = tour1.get(index);
-    tour1.set(index, tour2.get(index));
-    tour2.set(index, temp);
-  }
-
 }

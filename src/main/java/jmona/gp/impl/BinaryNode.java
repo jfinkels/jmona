@@ -19,7 +19,7 @@
  */
 package jmona.gp.impl;
 
-import jmona.CopyingException;
+import jmona.exceptions.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 
@@ -30,6 +30,7 @@ import jmona.gp.Node;
  *          The type of value to which this Node evaluates.
  * @author jfinkels
  */
+// TODO add UnaryNode
 public class BinaryNode<V> extends AbstractFunctionNode<V> {
 
   /** The "arity" of this Node. */

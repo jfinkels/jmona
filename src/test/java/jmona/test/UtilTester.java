@@ -26,10 +26,10 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.InitializationException;
+import jmona.Factory;
+import jmona.exceptions.InitializationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
-import jmona.gp.TreeFactory;
 import jmona.gp.impl.AbstractTreeFactory;
 import jmona.gp.impl.DefaultTree;
 import jmona.gp.impl.example.ExampleBinaryNode;
@@ -138,11 +138,11 @@ public class UtilTester {
    */
   @Test
   public void testCountNodes() {
-    final TreeFactory<Integer> factory = new ExampleTreeFactory();
+    final Factory<Tree<Integer>> factory = new ExampleTreeFactory();
 
     Tree<Integer> tree = null;
     try {
-      tree = factory.createIndividual();
+      tree = factory.createObject();
     } catch (final InitializationException exception) {
       Util.fail(exception);
     }

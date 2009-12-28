@@ -36,6 +36,9 @@ public final class ImageWriter {
 
   /** The identifier for the PNG image format. */
   public static final String IMAGE_FORMAT_PNG = "png";
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(ImageWriter.class);
 
   /**
    * Write the specified image to the specified file.
@@ -49,10 +52,10 @@ public final class ImageWriter {
    */
   public static void writeImage(final RenderedImage image, final String filename)
       throws IOException {
-    LOG.debug("Writing image " + image + " to filename " + filename);
+    LOG.debug("Writing image to file \"" + filename + "\".");
     ImageIO.write(image, IMAGE_FORMAT_PNG, new File(filename));
   }
-private static final transient Logger LOG = Logger.getLogger(ImageWriter.class);
+
   /** Instantiation disallowed. */
   protected ImageWriter() {
     // intentionally unimplemented

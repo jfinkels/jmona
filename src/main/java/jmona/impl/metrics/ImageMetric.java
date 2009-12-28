@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.Metric;
-import jmona.MetricException;
+import jmona.exceptions.MetricException;
 
 /**
  * A metric which measures the distance between images in RGB color space, using

@@ -47,13 +47,6 @@ public interface Node<V> extends DeepCopyable<Node<V>> {
   List<Node<V>> children();
 
   /**
-   * Recursively create deep copy of this Node and all its children.
-   * 
-   * @return A deep copy of this Node and all its children.
-   */
-/*  Node<V> deepCopy();
-*/
-  /**
    * Evaluate this Node with respect to its child Nodes.
    * 
    * @return The overall evaluation of this Node with respect to its child

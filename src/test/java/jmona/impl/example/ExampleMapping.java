@@ -19,8 +19,8 @@
  */
 package jmona.impl.example;
 
-import jmona.MappingException;
 import jmona.SingleInputFunction;
+import jmona.exceptions.MappingException;
 
 /**
  * @author jfinkels

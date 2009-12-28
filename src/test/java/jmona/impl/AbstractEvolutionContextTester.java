@@ -26,13 +26,16 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import java.util.List;
+import java.util.Vector;
+
 import jmona.CrossoverFunction;
-import jmona.EvolutionException;
-import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.MutationFunction;
-import jmona.Population;
 import jmona.SelectionFunction;
+import jmona.exceptions.EvolutionException;
+import jmona.exceptions.FitnessException;
 import jmona.impl.example.ExampleCrossoverFunction;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
@@ -60,7 +63,7 @@ public class AbstractEvolutionContextTester {
   /** A crossover function. */
   private CrossoverFunction<ExampleIndividual> crossoverFunction = null;
   /** An empty Population. */
-  private Population<ExampleIndividual> emptyPopulation = null;
+  private List<ExampleIndividual> emptyPopulation = null;
   /** A fitness function. */
   private FitnessFunction<ExampleIndividual> fitnessFunction = null;
   /** An Individual to be placed into a Population. */
@@ -70,7 +73,7 @@ public class AbstractEvolutionContextTester {
   /** A mutation function. */
   private MutationFunction<ExampleIndividual> mutationFunction = null;
   /** A Population. */
-  private Population<ExampleIndividual> population = null;
+  private List<ExampleIndividual> population = null;
   /** A selection function. */
   private SelectionFunction<ExampleIndividual> selectionFunction = null;
   /** An AbstractEvolutionContext which has no functions set. */
@@ -79,8 +82,8 @@ public class AbstractEvolutionContextTester {
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.emptyPopulation = new DefaultPopulation<ExampleIndividual>();
-    this.population = new DefaultPopulation<ExampleIndividual>();
+    this.emptyPopulation = new Vector<ExampleIndividual>();
+    this.population = new Vector<ExampleIndividual>();
 
     this.individual1 = new ExampleIndividual(0);
     this.individual2 = new ExampleIndividual(1);
@@ -195,7 +198,6 @@ public class AbstractEvolutionContextTester {
 
     assertEquals(2, this.context.currentGeneration());
 
-    
   }
 
   /**
@@ -378,7 +380,7 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testSetCurrentPopulation() {
-    final Population<ExampleIndividual> newPopulation = new DefaultPopulation<ExampleIndividual>();
+    final List<ExampleIndividual> newPopulation = new Vector<ExampleIndividual>();
     this.context.setCurrentPopulation(newPopulation);
     assertSame(newPopulation, this.context.currentPopulation());
     assertNotSame(this.population, this.context.currentPopulation());
@@ -405,7 +407,7 @@ public class AbstractEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.AbstractEvolutionContext#setMutationFunction(jmona.MutationFunction)}
+   * {@link jmona.impl.AbstractEvolutionContext#setMutationFunction(jmona.IndividualMutationFunction)}
    * .
    */
   @Test

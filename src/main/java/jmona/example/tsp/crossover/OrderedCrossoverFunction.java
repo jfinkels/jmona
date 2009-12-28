@@ -20,9 +20,10 @@
 package jmona.example.tsp.crossover;
 
 import java.util.Collections;
+import java.util.List;
+import java.util.Vector;
 
 import jmona.CrossoverFunction;
-import jmona.example.tsp.Tour;
 import jmona.impl.Util;
 
 import org.apache.log4j.Logger;
@@ -33,7 +34,7 @@ import org.apache.log4j.Logger;
  * 
  * @author jfinkels
  */
-public class OrderedCrossoverFunction implements CrossoverFunction<Tour> {
+public class OrderedCrossoverFunction implements CrossoverFunction<List<Integer>> {
 
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger
@@ -45,7 +46,7 @@ public class OrderedCrossoverFunction implements CrossoverFunction<Tour> {
    * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
    */
   @Override
-  public void crossover(final Tour tour1, final Tour tour2) {
+  public void crossover(final List<Integer> tour1, final List<Integer> tour2) {
 
     // choose a random start and end point for the slice
     final int start = Util.RANDOM.nextInt(tour1.size());
@@ -54,8 +55,8 @@ public class OrderedCrossoverFunction implements CrossoverFunction<Tour> {
     LOG.debug("(start, end) = (" + start + ", " + end + ")");
 
     // instantiate two child tours
-    final Tour child1 = new Tour();
-    final Tour child2 = new Tour();
+    final List<Integer> child1 = new Vector<Integer>();
+    final List<Integer> child2 = new Vector<Integer>();
 
     // add the sublist in between the start and end points to the children
     child1.addAll(tour1.subList(start, end));

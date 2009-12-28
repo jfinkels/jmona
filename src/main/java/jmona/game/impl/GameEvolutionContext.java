@@ -19,16 +19,18 @@
  */
 package jmona.game.impl;
 
-import jmona.CopyingException;
-import jmona.EvolutionException;
-import jmona.Population;
-import jmona.SelectionException;
+import java.util.List;
+import java.util.Vector;
+
+import jmona.DeepCopyable;
+import jmona.exceptions.CopyingException;
+import jmona.exceptions.EvolutionException;
+import jmona.exceptions.SelectionException;
 import jmona.game.GameplayException;
 import jmona.game.Strategy;
 import jmona.game.TwoPlayerGame;
 import jmona.game.TwoPlayerGameResult;
 import jmona.impl.AbstractEvolutionContext;
-import jmona.impl.DefaultPopulation;
 
 /**
  * A context for playing Strategy objects against one another and reproducing
@@ -38,7 +40,7 @@ import jmona.impl.DefaultPopulation;
  *          The type of Strategy to play a game against one another.
  * @author jfinkels
  */
-public class GameEvolutionContext<S extends Strategy> extends
+public class GameEvolutionContext<S extends Strategy & DeepCopyable<S>> extends
     AbstractEvolutionContext<S> {
 
   /** The game to play in this evolution. */
@@ -51,7 +53,7 @@ public class GameEvolutionContext<S extends Strategy> extends
    * @param initialPopulation
    *          The initial Population for the evolution.
    */
-  public GameEvolutionContext(final Population<S> initialPopulation) {
+  public GameEvolutionContext(final List<S> initialPopulation) {
     super(initialPopulation);
   }
 
@@ -144,7 +146,7 @@ public class GameEvolutionContext<S extends Strategy> extends
     }
 
     // initialize a population to hold the selections for the next generation
-    Population<S> nextPopulation = new DefaultPopulation<S>();
+    List<S> nextPopulation = new Vector<S>();
 
     try {
       // select strategies from the current population to go to the next one

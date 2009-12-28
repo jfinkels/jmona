@@ -19,7 +19,7 @@
  */
 package jmona.game.impl.example;
 
-import jmona.Individual;
+import jmona.DeepCopyable;
 import jmona.game.Strategy;
 
 /**
@@ -27,7 +27,7 @@ import jmona.game.Strategy;
  * 
  * @author jfinkels
  */
-public class ExampleStrategy implements Strategy {
+public class ExampleStrategy implements Strategy, DeepCopyable<ExampleStrategy> {
 
   /** The score of this strategy. */
   private final double score;
@@ -54,7 +54,7 @@ public class ExampleStrategy implements Strategy {
    * @see jmona.Individual#deepCopy()
    */
   @Override
-  public Individual deepCopy() {
+  public ExampleStrategy deepCopy() {
     return new ExampleStrategy(this.score);
   }
 

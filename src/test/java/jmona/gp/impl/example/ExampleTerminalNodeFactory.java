@@ -19,16 +19,16 @@
  */
 package jmona.gp.impl.example;
 
-import jmona.InitializationException;
+import jmona.Factory;
+import jmona.exceptions.InitializationException;
 import jmona.gp.TerminalNode;
-import jmona.gp.TerminalNodeFactory;
 
 /**
  * An example TerminalNodeFactory.
  * 
  * @author jfinkels
  */
-public class ExampleTerminalNodeFactory implements TerminalNodeFactory<Integer> {
+public class ExampleTerminalNodeFactory implements Factory<TerminalNode<Integer>> {
 
   /**
    * Creates an ExampleTerminalNode.
@@ -39,7 +39,7 @@ public class ExampleTerminalNodeFactory implements TerminalNodeFactory<Integer> 
    * @see jmona.gp.NodeFactory#createNode()
    */
   @Override
-  public TerminalNode<Integer> createNode() throws InitializationException {
+  public TerminalNode<Integer> createObject() throws InitializationException {
     return new ExampleTerminalNode();
   }
 

@@ -30,11 +30,17 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses({ AbstractEvolutionContextTester.class,
+    CompleteDeepCopyableListFactoryTester.class,
+    CompleteDeepCopyableVectorTester.class,
     DefaultCompletionConditionTester.class,
     DefaultMaxFitnessCompletionConditionTester.class,
     DefaultMaxGenerationCompletionConditionTester.class,
-    DefaultPopulationFactoryTester.class,
-    IdentityCrossoverFunctionTester.class, PeriodicPostProcessorTester.class,
+    IdentityCrossoverFunctionTester.class, IdentityFunctionTester.class,
+    IdentityMutationFunctionTester.class,
+    ImmutableElementsListMutationFunctionTester.class,
+    ListMutationFunctionTester.class, PairTester.class,
+    PartialDeepCopyableListFactoryTester.class,
+    PartialDeepCopyableVectorTester.class, PeriodicPostProcessorTester.class,
     PopulationLoggingPostProcessorTester.class, UtilTester.class })
 public class AllTest {
 

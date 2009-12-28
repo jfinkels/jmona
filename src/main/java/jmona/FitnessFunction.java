@@ -19,6 +19,8 @@
  */
 package jmona;
 
+import jmona.exceptions.FitnessException;
+
 /**
  * A class which provides a single method for determining the fitness of an
  * Individual.
@@ -27,7 +29,7 @@ package jmona;
  *          The type of Individual for which to determine fitness.
  * @author jfinke
  */
-public interface FitnessFunction<T extends Individual> {
+public interface FitnessFunction<T> {
   /**
    * Determine the fitness of the specified individual.
    * 

@@ -19,6 +19,11 @@
  */
 package jmona;
 
+import java.util.List;
+
+import jmona.exceptions.EvolutionException;
+import jmona.exceptions.FitnessException;
+
 /**
  * A context in which evolution occurs.
  * 
@@ -27,7 +32,7 @@ package jmona;
  * @author jfinke
  */
 // TODO allow multiple MutationFunctions or CrossoverFunctions?
-public interface EvolutionContext<T extends Individual> {
+public interface EvolutionContext<T extends DeepCopyable<T>> {
 
   /**
    * Get the crossover function used by this context.
@@ -56,7 +61,7 @@ public interface EvolutionContext<T extends Individual> {
    * 
    * @return The current Population.
    */
-  Population<T> currentPopulation();
+  List<T> currentPopulation();
 
   /**
    * Get the fitness function used by this context.

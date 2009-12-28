@@ -20,10 +20,10 @@
 package jmona.example.calc;
 
 import jmona.CompletionCondition;
-import jmona.CompletionException;
 import jmona.EvolutionContext;
-import jmona.EvolutionException;
 import jmona.SingleInputFunction;
+import jmona.exceptions.CompletionException;
+import jmona.exceptions.EvolutionException;
 import jmona.gp.Tree;
 import jmona.test.Util;
 

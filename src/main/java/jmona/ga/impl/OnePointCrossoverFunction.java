@@ -19,16 +19,22 @@
  */
 package jmona.ga.impl;
 
-import jmona.Pair;
+import jmona.impl.Pair;
 import jmona.impl.Util;
 
 /**
- * Performs a one-point crossover on binary strings.
+ * Performs a one-point crossover between two Lists.
  * 
+ * @param <E>
+ *          The type of element contained in the List on which to perform
+ *          crossover (that List must also extends Individual).
+ * @param <T>
+ *          The type of Individual on which to perform crossover (must also
+ *          extend List).
  * @author jfinkels
  */
-public class OnePointCrossoverFunction extends
-    AbstractBinaryStringCrossoverFunction {
+public class OnePointCrossoverFunction<E> extends
+    AbstractListCrossoverFunction<E> {
 
   /**
    * Return a pair in which the left number is a random integer less than the
@@ -38,7 +44,7 @@ public class OnePointCrossoverFunction extends
    *          The maximum length of the slice.
    * @return A pair with a random left number and the specified length as the
    *         right number.
-   * @see jmona.ga.impl.AbstractBinaryStringCrossoverFunction#sliceStartEnd(int)
+   * @see jmona.ga.impl.crossover.AbstractListCrossoverFunction#sliceStartEnd(int)
    */
   @Override
   protected Pair<Integer, Integer> sliceStartEnd(final int length) {

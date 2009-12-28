@@ -19,6 +19,8 @@
  */
 package jmona;
 
+import jmona.exceptions.MutationException;
+
 /**
  * A class which provides one method for mutating an individual in place.
  * 
@@ -26,14 +28,6 @@ package jmona;
  *          The type of Individual to mutate.
  * @author jfinke
  */
-public interface MutationFunction<T extends Individual> {
-  /**
-   * Mutate the specified individual in place.
-   * 
-   * @param individual
-   *          The individual to mutate.
-   * @throws MutationException
-   *           If there is a problem during mutation.
-   */
-  void mutate(final T individual) throws MutationException;
+public interface MutationFunction<T> {
+  void mutate(final T object) throws MutationException;
 }

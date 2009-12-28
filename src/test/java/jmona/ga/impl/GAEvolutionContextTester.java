@@ -22,13 +22,15 @@ package jmona.ga.impl;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import jmona.CrossoverException;
-import jmona.EvolutionException;
-import jmona.FitnessException;
-import jmona.MutationException;
-import jmona.Population;
-import jmona.SelectionException;
-import jmona.impl.DefaultPopulation;
+
+import java.util.List;
+import java.util.Vector;
+
+import jmona.exceptions.CrossoverException;
+import jmona.exceptions.EvolutionException;
+import jmona.exceptions.FitnessException;
+import jmona.exceptions.MutationException;
+import jmona.exceptions.SelectionException;
 import jmona.impl.example.ExampleBadCrossoverFunction;
 import jmona.impl.example.ExampleBadFitnessFunction;
 import jmona.impl.example.ExampleBadMutationFunction;
@@ -58,7 +60,7 @@ public class GAEvolutionContextTester {
     final ExampleIndividual individual3 = new ExampleIndividual();
 
     // put those three individuals in a population
-    final Population<ExampleIndividual> population = new DefaultPopulation<ExampleIndividual>();
+    final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
     population.add(individual1);
     population.add(individual2);
     population.add(individual3);
@@ -131,7 +133,7 @@ public class GAEvolutionContextTester {
     final ExampleIndividual individual3 = new ExampleIndividual();
 
     // put those three individuals in a population
-    final Population<ExampleIndividual> population = new DefaultPopulation<ExampleIndividual>();
+    final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
     population.add(individual1);
     population.add(individual2);
     population.add(individual3);

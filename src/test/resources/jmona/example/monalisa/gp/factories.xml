@@ -22,13 +22,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
-
-  <bean id="nodeFactory"
-    class="jmona.example.monalisa.gp.ColoredPolygonNodeFactory">
+  
+  <bean id="polygonFactory" class="jmona.example.monalisa.ColoredPolygonFactory">
+    <property name="maxPoints" value="7" />
+    <property name="minPoints" value="3" />
     <property name="maxX" ref="width" />
     <property name="maxY" ref="height" />
-    <property name="minPoints" value="3" />
-    <property name="maxPoints" value="6" />
+  </bean>
+  
+  <bean id="nodeFactory"
+    class="jmona.example.monalisa.gp.ColoredPolygonNodeFactory">
+    <property name="coloredPolygonFactory" ref="polygonFactory" />
   </bean>
   
   <bean id="individualFactory" class="jmona.gp.impl.GrowTreeFactory">
@@ -37,8 +41,8 @@
     <property name="terminalNodeFactory" ref="nodeFactory" />
   </bean>
   
-  <bean id="populationFactory" class="jmona.impl.DefaultPopulationFactory">
-    <property name="individualFactory" ref="individualFactory" />
+  <bean id="populationFactory" class="jmona.impl.DefaultDeepCopyableListFactory">
+    <property name="elementFactory" ref="individualFactory" />
     <property name="size" value="2" />
   </bean>
 

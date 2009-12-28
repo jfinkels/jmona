@@ -22,9 +22,9 @@ package jmona.example.ipd.strategy;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
-import jmona.Pair;
 import jmona.example.ipd.strategy.Action;
 import jmona.example.ipd.strategy.TitForTatStrategy;
+import jmona.impl.Pair;
 
 import org.junit.Test;
 

@@ -19,7 +19,7 @@
  */
 package jmona.gp;
 
-import jmona.Individual;
+import jmona.DeepCopyable;
 
 /**
  * A Tree of Nodes, which is also an Individual.
@@ -28,7 +28,7 @@ import jmona.Individual;
  *          The return type of the {@link #evaluate()} method on this Tree.
  * @author jfinkels
  */
-public interface Tree<V> extends Individual {
+public interface Tree<V> extends DeepCopyable<Tree<V>> {
 
   /**
    * Evaluate this tree by recursively evaluating each Node starting from the

@@ -23,10 +23,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import jmona.CompletionCondition;
-import jmona.CompletionException;
+import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.EvolutionException;
-import jmona.example.ipd.strategy.IPDStrategy;
+import jmona.exceptions.CompletionException;
+import jmona.exceptions.EvolutionException;
+import jmona.game.Strategy;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
@@ -42,7 +43,8 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * @author jfinkels
  */
 @ContextConfiguration
-public class IPDEvolutionTester extends AbstractJUnit4SpringContextTests {
+public class IPDEvolutionTester<S extends DeepCopyable<S> & Strategy> extends
+    AbstractJUnit4SpringContextTests {
 
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger
@@ -53,28 +55,28 @@ public class IPDEvolutionTester extends AbstractJUnit4SpringContextTests {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<IPDStrategy> completionCondition = null;
+  private CompletionCondition<S> completionCondition = null;
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
-  private EvolutionContext<IPDStrategy> context = null;
+  private EvolutionContext<S> context = null;
 
   /** Test method for an iterated prisoner's dilemma evolution. */
   @Test
   @DirtiesContext
   public final void testIPDEvolution() {
-    final Map<Class<? extends IPDStrategy>, Integer> results = new HashMap<Class<? extends IPDStrategy>, Integer>();
+    final Map<Class<S>, Integer> results = new HashMap<Class<S>, Integer>();
 
     try {
       while (!this.completionCondition.isSatisfied(this.context)) {
         this.context.stepGeneration();
 
-        for (final IPDStrategy strategy : this.context.currentPopulation()) {
+        for (final S strategy : this.context.currentPopulation()) {
           if (results.containsKey(strategy.getClass())) {
-            results.put(strategy.getClass(),
-                results.get(strategy.getClass()) + 1);
+            results.put((Class<S>) strategy.getClass(), results.get(strategy
+                .getClass()) + 1);
           } else {
-            results.put(strategy.getClass(), 1);
+            results.put((Class<S>) strategy.getClass(), 1);
           }
         }
 

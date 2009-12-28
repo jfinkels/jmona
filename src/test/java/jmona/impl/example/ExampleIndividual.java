@@ -19,7 +19,7 @@
  */
 package jmona.impl.example;
 
-import jmona.Individual;
+import jmona.DeepCopyable;
 
 /**
  * A basic implementation of an Individual which has a built-in fitness
@@ -27,7 +27,7 @@ import jmona.Individual;
  * 
  * @author jfinkels
  */
-public class ExampleIndividual implements Individual {
+public class ExampleIndividual implements DeepCopyable<ExampleIndividual> {
   /** The fitness of this Individual. */
   private double fitness = 0.0;
 
@@ -53,7 +53,7 @@ public class ExampleIndividual implements Individual {
    * @see jmona.Individual#deepCopy()
    */
   @Override
-  public Individual deepCopy() {
+  public ExampleIndividual deepCopy() {
     return new ExampleIndividual();
   }
 

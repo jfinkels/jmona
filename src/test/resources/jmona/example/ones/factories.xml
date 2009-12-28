@@ -27,12 +27,15 @@
     <constructor-arg value="20" />
   </bean>
 
-  <bean id="individualFactory" class="jmona.ga.impl.BinaryStringFactory">
-    <property name="length" ref="geneLength" />
+  <bean id="bitFactory" class="jmona.ga.impl.BitFactory" />
+
+  <bean id="individualFactory" class="jmona.impl.DefaultDeepCopyableImmutableElementsListFactory">
+    <property name="elementFactory" ref="bitFactory" />
+    <property name="size" ref="geneLength" />
   </bean>
   
-  <bean id="populationFactory" class="jmona.impl.DefaultPopulationFactory">
-    <property name="individualFactory" ref="individualFactory" />
+  <bean id="populationFactory" class="jmona.impl.DefaultDeepCopyableListFactory">
+    <property name="elementFactory" ref="individualFactory" />
     <property name="size" value="20" />
   </bean>
 

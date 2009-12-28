@@ -19,10 +19,10 @@
  */
 package jmona.impl;
 
+import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.Individual;
 import jmona.PostProcessor;
-import jmona.ProcessingException;
+import jmona.exceptions.ProcessingException;
 
 /**
  * A PostProcessor which repeatedly performs some processing after a specified
@@ -33,8 +33,8 @@ import jmona.ProcessingException;
  *          processes.
  * @author jfinkels
  */
-public abstract class PeriodicPostProcessor<T extends Individual> implements
-    PostProcessor<T> {
+public abstract class PeriodicPostProcessor<T extends DeepCopyable<T>>
+    implements PostProcessor<T> {
 
   /**
    * The number of times that the {@link #process(EvolutionContext)} method has

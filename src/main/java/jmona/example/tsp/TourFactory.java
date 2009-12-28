@@ -21,28 +21,16 @@ package jmona.example.tsp;
 
 import java.util.Collections;
 
-import jmona.IndividualFactory;
+import jmona.DeepCopyableList;
+import jmona.impl.PartialDeepCopyableListFactory;
+import jmona.impl.PartialDeepCopyableVector;
 
 /**
  * A factory which generates random Tours.
  * 
  * @author jfinkels
  */
-public class TourFactory implements IndividualFactory<Tour> {
-
-  /** The number of cities in generated Tours. */
-  private final int numberOfCities;
-
-  /**
-   * Instantiate this factory with the specified number of cities in each
-   * generated Tour.
-   * 
-   * @param initialNumberOfCities
-   *          The number of cities in each generated Tour.
-   */
-  public TourFactory(final int initialNumberOfCities) {
-    this.numberOfCities = initialNumberOfCities;
-  }
+public class TourFactory extends PartialDeepCopyableListFactory<Integer> {
 
   /**
    * Generate a random Tour of length specified in the constructor.
@@ -54,16 +42,15 @@ public class TourFactory implements IndividualFactory<Tour> {
    * @see jmona.IndividualFactory#createIndividual()
    */
   @Override
-  public Tour createIndividual() {
+  public DeepCopyableList<Integer> createObject() {
+    final DeepCopyableList<Integer> result = new PartialDeepCopyableVector<Integer>();
 
-    final Tour result = new Tour();
-    
-    for (int i = 0; i < this.numberOfCities; ++i) {
+    for (int i = 0; i < this.size(); ++i) {
       result.add(i);
     }
-    
+
     Collections.shuffle(result);
-    
+
     return result;
   }
 

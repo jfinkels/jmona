@@ -27,8 +27,8 @@ import static org.junit.Assert.assertTrue;
 import java.awt.Color;
 import java.util.List;
 
-import jmona.CopyingException;
 import jmona.example.monalisa.ColoredPolygon;
+import jmona.exceptions.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.test.Util;
 
@@ -165,7 +165,7 @@ public class ColoredPolygonNodeTester {
     assertTrue(samePolygon(polygons.get(0), this.polygon));
     
     final ColoredPolygonNodeFactory factory = new ColoredPolygonNodeFactory();
-    this.node.children().add(factory.createNode());
+    this.node.children().add(factory.createObject());
     
     try {
       polygons = this.node.evaluate();

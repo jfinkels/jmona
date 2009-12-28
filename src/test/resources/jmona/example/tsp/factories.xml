@@ -24,11 +24,11 @@
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
   <bean id="individualFactory" class="jmona.example.tsp.TourFactory">
-    <constructor-arg ref="numberOfCities" />
+    <property name="size" value="numberOfCities" />
   </bean>
   
-  <bean id="populationFactory" class="jmona.impl.DefaultPopulationFactory">
-    <property name="individualFactory" ref="individualFactory" />
+  <bean id="populationFactory" class="jmona.impl.DefaultDeepCopyableListFactory">
+    <property name="elementFactory" ref="individualFactory" />
     <property name="size" value="20" />
   </bean>
 

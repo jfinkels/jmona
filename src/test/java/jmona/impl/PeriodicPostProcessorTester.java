@@ -20,7 +20,7 @@
 package jmona.impl;
 
 import static org.junit.Assert.assertEquals;
-import jmona.ProcessingException;
+import jmona.exceptions.ProcessingException;
 import jmona.impl.example.ExamplePostProcessor;
 import jmona.test.Util;
 

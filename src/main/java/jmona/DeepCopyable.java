@@ -19,6 +19,8 @@
  */
 package jmona;
 
+import jmona.exceptions.CopyingException;
+
 /**
  * A class which can be deep copied.
  * 

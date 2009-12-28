@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jmona.CopyingException;
+import jmona.exceptions.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;

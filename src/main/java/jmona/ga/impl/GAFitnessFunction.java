@@ -19,7 +19,6 @@
  */
 package jmona.ga.impl;
 
-import jmona.Individual;
 import jmona.impl.IdentityFunction;
 
 /**
@@ -30,9 +29,12 @@ import jmona.impl.IdentityFunction;
  *          The type of Individual to measure.
  * @author jfinkels
  */
-public class GAFitnessFunction<T extends Individual> extends
-    MappingFitnessFunction<T, T> {
+public class GAFitnessFunction<T> extends MappingFitnessFunction<T, T> {
 
+  /**
+   * Instantiate this MappingFitnessFunction with the identity mapping, that is,
+   * simply measure the fitness of individuals as they are.
+   */
   public GAFitnessFunction() {
     this.setMapping(new IdentityFunction<T>());
   }

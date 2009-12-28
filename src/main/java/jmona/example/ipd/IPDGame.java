@@ -19,13 +19,13 @@
  */
 package jmona.example.ipd;
 
-import jmona.Pair;
 import jmona.example.ipd.strategy.Action;
 import jmona.example.ipd.strategy.IPDStrategy;
 import jmona.game.GameplayException;
 import jmona.game.TwoPlayerGame;
 import jmona.game.TwoPlayerGameResult;
 import jmona.game.impl.DefaultTwoPlayerGameResult;
+import jmona.impl.Pair;
 
 /**
  * Perform the iterated prisoner's dilemma game for a specified number of

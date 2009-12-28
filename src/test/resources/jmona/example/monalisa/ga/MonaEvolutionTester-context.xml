@@ -23,7 +23,7 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-  <import resource="./image.xml" />
+  <import resource="../image.xml" />
   <!-- Note: must import image first; functions and factories require it -->
   <import resource="./functions.xml" />
   <import resource="./factories.xml" />

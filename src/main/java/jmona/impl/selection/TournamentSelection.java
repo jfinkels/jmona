@@ -23,7 +23,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import jmona.Individual;
 import jmona.SelectionFunction;
 import jmona.impl.Util;
 
@@ -34,8 +33,7 @@ import jmona.impl.Util;
  *          The type of Individual to select.
  * @author jfinkels
  */
-public class TournamentSelection<T extends Individual> implements
-    SelectionFunction<T> {
+public class TournamentSelection<T> implements SelectionFunction<T> {
 
   /**
    * The default number of Individuals to be chosen at random to compete in the

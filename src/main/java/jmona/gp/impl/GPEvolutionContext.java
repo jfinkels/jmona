@@ -19,16 +19,17 @@
  */
 package jmona.gp.impl;
 
-import jmona.CopyingException;
-import jmona.CrossoverException;
-import jmona.EvolutionException;
-import jmona.FitnessException;
-import jmona.MutationException;
-import jmona.Population;
-import jmona.SelectionException;
+import java.util.List;
+import java.util.Vector;
+
+import jmona.exceptions.CopyingException;
+import jmona.exceptions.CrossoverException;
+import jmona.exceptions.EvolutionException;
+import jmona.exceptions.FitnessException;
+import jmona.exceptions.MutationException;
+import jmona.exceptions.SelectionException;
 import jmona.gp.Tree;
 import jmona.impl.AbstractEvolutionContext;
-import jmona.impl.DefaultPopulation;
 
 /**
  * A default EvolutionContext for a Genetic Programming evolution.
@@ -46,7 +47,7 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
    * @param initialPopulation
    *          The initial population in the evolution.
    */
-  public GPEvolutionContext(final Population<Tree<V>> initialPopulation) {
+  public GPEvolutionContext(final List<Tree<V>> initialPopulation) {
     super(initialPopulation);
   }
 
@@ -80,7 +81,7 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
     }
 
     // initialize a new population to hold the next generation
-    final Population<Tree<V>> nextGeneration = new DefaultPopulation<Tree<V>>();
+    final List<Tree<V>> nextGeneration = new Vector<Tree<V>>();
 
     Tree<V> individual1 = null;
     Tree<V> individual2 = null;

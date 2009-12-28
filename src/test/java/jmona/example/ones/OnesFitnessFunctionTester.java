@@ -20,9 +20,9 @@
 package jmona.example.ones;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.ones.OnesFitnessFunction;
-import jmona.ga.BinaryString;
-import jmona.ga.impl.CharArrayBinaryString;
+
+import java.util.List;
+import java.util.Vector;
 
 import org.junit.Test;
 
@@ -45,17 +45,21 @@ public class OnesFitnessFunctionTester {
   public void testFitness() {
     final int length = 10;
     final OnesFitnessFunction function = new OnesFitnessFunction();
-    final BinaryString individual = new CharArrayBinaryString(length, false);
+    final List<Byte> individual = new Vector<Byte>();
+
+    for (int i = 0; i < length; ++i) {
+      individual.add((byte) 0);
+    }
 
     assertEquals(0, function.fitness(individual), ZERO_DELTA);
 
     for (int i = 0; i < length; ++i) {
-      individual.flipBit(i);
+      individual.set(i, (byte) 1);
       assertEquals(i + 1, function.fitness(individual), ZERO_DELTA);
     }
 
     for (int i = length - 1; i >= 0; --i) {
-      individual.flipBit(i);
+      individual.set(i, (byte) 0);
       assertEquals(i, function.fitness(individual), ZERO_DELTA);
     }
 

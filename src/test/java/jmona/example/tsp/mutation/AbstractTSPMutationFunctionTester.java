@@ -19,8 +19,10 @@
  */
 package jmona.example.tsp.mutation;
 
+import java.util.List;
+import java.util.Vector;
+
 import jmona.MutationFunction;
-import jmona.example.tsp.Tour;
 
 import org.junit.Before;
 
@@ -36,9 +38,9 @@ public abstract class AbstractTSPMutationFunctionTester {
   /** The number of independent mutations to perform. */
   public static final int NUM_TESTS = 100;
   /** The function under test. */
-  private MutationFunction<Tour> function = null;
+  private MutationFunction<List<Integer>> function = null;
   /** The tour to mutate. */
-  private Tour tour = null;
+  private List<Integer> tour = null;
 
   /**
    * Instantiate this test class with the specified MutationFunction.
@@ -47,7 +49,7 @@ public abstract class AbstractTSPMutationFunctionTester {
    *          The MutationFunction under test.
    */
   public AbstractTSPMutationFunctionTester(
-      final MutationFunction<Tour> initialFunction) {
+      final MutationFunction<List<Integer>> initialFunction) {
     this.function = initialFunction;
   }
   
@@ -56,21 +58,21 @@ public abstract class AbstractTSPMutationFunctionTester {
    * 
    * @return The MutationFunction under test in this class.
    */
-  public MutationFunction<Tour> function() {
+  public MutationFunction<List<Integer>> function() {
     return this.function;
   }
   
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.tour = new Tour();
+    this.tour = new Vector<Integer>();
     for (int i = 0; i < LENGTH; ++i) {
       this.tour.add(i);
     }
   }
 
   /**
-   * The test for the {@link jmona.MutationFunction#mutate(jmona.Individual)}
+   * The test for the {@link jmona.IndividualMutationFunction#mutate(jmona.Individual)}
    * method in each traveling salesman problem MutationFunction test class.
    */
   public abstract void testMutate();
@@ -80,7 +82,7 @@ public abstract class AbstractTSPMutationFunctionTester {
    * 
    * @return The tour under test in this class.
    */
-  protected Tour tour() {
+  protected List<Integer> tour() {
     return this.tour;
   }
 }

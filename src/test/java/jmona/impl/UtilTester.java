@@ -19,9 +19,7 @@
  */
 package jmona.impl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -31,7 +29,7 @@ import java.util.Set;
 import org.junit.Test;
 
 /**
- * Test class for the jmona.impl.Util class.
+ * Test class for the Util class.
  * 
  * @author jfinkels
  */
@@ -41,23 +39,24 @@ public class UtilTester {
   public static final int NUM_TESTS = 10000;
 
   /**
-   * Test method for {@link jmona.impl.Util#firstValue(Map)}.
+   * Test method for {@link jmona.impl.Util#deepCopy(java.util.Collection)}.
    */
   @Test
-  public void testFirstValue() {
-    final Map<Object, Object> map = new HashMap<Object, Object>();
-    final Object object1 = new Object();
-    final Object object2 = new Object();
-    final Object object3 = new Object();
-    map.put(object1, object2);
-    map.put(object2, object3);
-
-    final Object result = Util.firstValue(map);
-    assertTrue(result.equals(object2) || result.equals(object3));
+  public void testDeepCopy() {
+    fail("Not yet implemented");
   }
 
   /**
-   * Test method for {@link jmona.impl.Util#randomFromCollection(java.util.Collection)}.
+   * Test method for {@link jmona.impl.Util#firstValue(java.util.Map)}.
+   */
+  @Test
+  public void testFirstValue() {
+    fail("Not yet implemented");
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.impl.Util#randomFromCollection(java.util.Collection)}.
    */
   @Test
   public void testRandomFromCollection() {
@@ -98,6 +97,32 @@ public class UtilTester {
   }
 
   /**
+   * Test method for
+   * {@link jmona.impl.Util#swap(java.util.List, java.util.List, int)}.
+   */
+  @Test
+  public void testSwapListOfEListOfEInt() {
+    fail("Not yet implemented");
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.impl.Util#swap(java.util.List, java.util.List, int, int)}.
+   */
+  @Test
+  public void testSwapListOfEListOfEIntInt() {
+    fail("Not yet implemented");
+  }
+
+  /**
+   * Test method for {@link jmona.impl.Util#Util()}.
+   */
+  @Test
+  public void testUtil() {
+    fail("Not yet implemented");
+  }
+
+  /**
    * Test for randomly selecting an Object uniformly from a set with only one
    * element.
    */
@@ -113,5 +138,4 @@ public class UtilTester {
       assertSame(object, choice);
     }
   }
-
 }

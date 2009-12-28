@@ -27,7 +27,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import jmona.Individual;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Before;
@@ -80,8 +79,8 @@ public class FitnessProportionateSelectionTester {
       fitnesses.put(individual, individual.fitness());
     }
 
-    final Map<Individual, Integer> numberOfSelections = new HashMap<Individual, Integer>();
-    Individual selectedIndividual = null;
+    final Map<ExampleIndividual, Integer> numberOfSelections = new HashMap<ExampleIndividual, Integer>();
+    ExampleIndividual selectedIndividual = null;
     for (int i = 0; i < NUM_SELECTIONS; ++i) {
       selectedIndividual = this.function.select(fitnesses);
       Integer selections = numberOfSelections.get(selectedIndividual);

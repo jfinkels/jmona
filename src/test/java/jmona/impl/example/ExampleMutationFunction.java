@@ -19,8 +19,8 @@
  */
 package jmona.impl.example;
 
-import jmona.MutationException;
 import jmona.MutationFunction;
+import jmona.exceptions.MutationException;
 
 /**
  * An example MutationFunction.
@@ -41,7 +41,7 @@ public class ExampleMutationFunction implements
    * 
    * @param individual
    *          {@inheritDoc}
-   * @see jmona.MutationFunction#mutate(jmona.Individual)
+   * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
    */
   @Override
   public void mutate(final ExampleIndividual individual)

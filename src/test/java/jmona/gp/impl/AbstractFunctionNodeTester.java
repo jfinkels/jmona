@@ -26,7 +26,7 @@ import static org.junit.Assert.assertSame;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.CopyingException;
+import jmona.exceptions.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;

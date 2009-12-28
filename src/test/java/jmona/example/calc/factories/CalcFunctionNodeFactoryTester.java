@@ -55,7 +55,7 @@ public class CalcFunctionNodeFactoryTester {
 
     FunctionNode<SingleInputFunction<Double, Double>> node = null;
     for (int i = 0; i < NUM_NODES; ++i) {
-      node = factory.createNode();
+      node = factory.createObject();
 
       if (node instanceof AdditionNode) {
         additionCount += 1;

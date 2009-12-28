@@ -21,8 +21,8 @@ package jmona.gp.impl;
 
 import java.util.Set;
 
-import jmona.FitnessException;
 import jmona.FitnessFunction;
+import jmona.exceptions.FitnessException;
 import jmona.gp.EquivalenceException;
 import jmona.gp.EquivalenceTester;
 import jmona.gp.EvaluationException;

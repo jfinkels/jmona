@@ -19,12 +19,12 @@
  */
 package jmona.impl;
 
-import jmona.CompletionException;
+import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.FitnessException;
 import jmona.FitnessFunction;
-import jmona.Individual;
 import jmona.MaxFitnessCompletionCondition;
+import jmona.exceptions.CompletionException;
+import jmona.exceptions.FitnessException;
 
 /**
  * CompletionCondition used to determine whether an EvolutionContext contains an
@@ -35,7 +35,7 @@ import jmona.MaxFitnessCompletionCondition;
  *          completion.
  * @author jfinkels
  */
-public class DefaultMaxFitnessCompletionCondition<T extends Individual>
+public class DefaultMaxFitnessCompletionCondition<T extends DeepCopyable<T>>
     implements MaxFitnessCompletionCondition<T> {
 
   /** The default maximum fitness of an Individual. */

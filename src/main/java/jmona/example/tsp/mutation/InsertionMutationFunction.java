@@ -19,8 +19,9 @@
  */
 package jmona.example.tsp.mutation;
 
+import java.util.List;
+
 import jmona.MutationFunction;
-import jmona.example.tsp.Tour;
 import jmona.impl.Util;
 
 /**
@@ -29,7 +30,7 @@ import jmona.impl.Util;
  * 
  * @author jfinkels
  */
-public class InsertionMutationFunction implements MutationFunction<Tour> {
+public class InsertionMutationFunction implements MutationFunction<List<Integer>> {
 
   /**
    * Choose a city in the specified Tour at random and move it to a new random
@@ -37,10 +38,10 @@ public class InsertionMutationFunction implements MutationFunction<Tour> {
    * 
    * @param tour
    *          The tour to mutate.
-   * @see jmona.MutationFunction#mutate(jmona.Individual)
+   * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
    */
   @Override
-  public void mutate(final Tour tour) {
+  public void mutate(final List<Integer> tour) {
     // choose a random index of a city to remove from the tour
     final int source = Util.RANDOM.nextInt(tour.size());
 

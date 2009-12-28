@@ -25,8 +25,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.HashSet;
 import java.util.Set;
 
-import jmona.FitnessException;
-import jmona.InitializationException;
+import jmona.exceptions.FitnessException;
+import jmona.exceptions.InitializationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleTreeFactory;
@@ -117,7 +117,7 @@ public class GPFitnessFunctionTester {
     this.function.setTarget(null);
     final ExampleTreeFactory factory = new ExampleTreeFactory();
     try {
-      this.function.fitness(factory.createIndividual());
+      this.function.fitness(factory.createObject());
       Util.shouldHaveThrownException();
     } catch (final FitnessException exception) {
       assertTrue(exception.getCause() instanceof NullPointerException);

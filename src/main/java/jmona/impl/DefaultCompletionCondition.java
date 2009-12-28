@@ -19,11 +19,11 @@
  */
 package jmona.impl;
 
-import jmona.CompletionException;
+import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.Individual;
 import jmona.MaxFitnessCompletionCondition;
 import jmona.MaxGenerationCompletionCondition;
+import jmona.exceptions.CompletionException;
 
 /**
  * ACompletionConditionon which tests for a maximum number of generations passed
@@ -35,7 +35,7 @@ import jmona.MaxGenerationCompletionCondition;
  *          for completion.
  * @author jfinkels
  */
-public class DefaultCompletionCondition<T extends Individual> implements
+public class DefaultCompletionCondition<T extends DeepCopyable<T>> implements
     MaxFitnessCompletionCondition<T>, MaxGenerationCompletionCondition<T> {
 
   /** ThCompletionConditionion for maximum fitness in the EvolutionContext. */

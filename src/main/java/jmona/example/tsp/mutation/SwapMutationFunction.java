@@ -20,9 +20,9 @@
 package jmona.example.tsp.mutation;
 
 import java.util.Collections;
+import java.util.List;
 
 import jmona.MutationFunction;
-import jmona.example.tsp.Tour;
 import jmona.impl.Util;
 
 /**
@@ -30,17 +30,17 @@ import jmona.impl.Util;
  * 
  * @author jfinkels
  */
-public class SwapMutationFunction implements MutationFunction<Tour> {
+public class SwapMutationFunction implements MutationFunction<List<Integer>> {
 
   /**
    * Swap two cities chosen at random from the specified Tour.
    * 
    * @param tour
    *          The Tour to mutate.
-   * @see jmona.MutationFunction#mutate(jmona.Individual)
+   * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
    */
   @Override
-  public void mutate(final Tour tour) {
+  public void mutate(final List<Integer> tour) {
 
     // get two random indices into the tour
     final int source = Util.RANDOM.nextInt(tour.size());

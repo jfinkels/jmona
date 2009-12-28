@@ -19,16 +19,17 @@
  */
 package jmona.ga.impl;
 
-import jmona.CopyingException;
-import jmona.CrossoverException;
-import jmona.EvolutionException;
-import jmona.FitnessException;
-import jmona.Individual;
-import jmona.MutationException;
-import jmona.Population;
-import jmona.SelectionException;
+import java.util.List;
+import java.util.Vector;
+
+import jmona.DeepCopyable;
+import jmona.exceptions.CopyingException;
+import jmona.exceptions.CrossoverException;
+import jmona.exceptions.EvolutionException;
+import jmona.exceptions.FitnessException;
+import jmona.exceptions.MutationException;
+import jmona.exceptions.SelectionException;
 import jmona.impl.AbstractEvolutionContext;
-import jmona.impl.DefaultPopulation;
 
 /**
  * A default implementation of the evolution context interface, which provides
@@ -38,7 +39,7 @@ import jmona.impl.DefaultPopulation;
  *          The type of individual on which the evolution occurs.
  * @author jfinke
  */
-public class GAEvolutionContext<T extends Individual> extends
+public class GAEvolutionContext<T extends DeepCopyable<T>> extends
     AbstractEvolutionContext<T> {
 
   /**
@@ -49,7 +50,7 @@ public class GAEvolutionContext<T extends Individual> extends
    *          The initial population.
    * @see AbstractEvolutionContext#AbstractEvolutionContext(Population)
    */
-  public GAEvolutionContext(final Population<T> initialPopulation) {
+  public GAEvolutionContext(final List<T> initialPopulation) {
     super(initialPopulation);
   }
 
@@ -69,7 +70,7 @@ public class GAEvolutionContext<T extends Individual> extends
     }
 
     // instantiate a population which will represent the next generation
-    final Population<T> nextPopulation = new DefaultPopulation<T>();
+    final List<T> nextPopulation = new Vector<T>();
 
     // get the size of the current population
     final int currentSize = this.currentPopulation().size();

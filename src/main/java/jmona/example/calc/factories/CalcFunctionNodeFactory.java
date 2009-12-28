@@ -22,13 +22,13 @@ package jmona.example.calc.factories;
 import java.util.HashSet;
 import java.util.Set;
 
+import jmona.Factory;
 import jmona.SingleInputFunction;
 import jmona.example.calc.nodes.AdditionNode;
 import jmona.example.calc.nodes.DivisionNode;
 import jmona.example.calc.nodes.MultiplicationNode;
 import jmona.example.calc.nodes.SubtractionNode;
 import jmona.gp.FunctionNode;
-import jmona.gp.FunctionNodeFactory;
 import jmona.impl.Util;
 
 /**
@@ -38,7 +38,7 @@ import jmona.impl.Util;
  * @author jfinkels
  */
 public class CalcFunctionNodeFactory implements
-    FunctionNodeFactory<SingleInputFunction<Double, Double>> {
+    Factory<FunctionNode<SingleInputFunction<Double, Double>>> {
 
   /**
    * The operations which the FunctionNodes represent.
@@ -78,7 +78,7 @@ public class CalcFunctionNodeFactory implements
    *         multiplication, and division.
    */
   @Override
-  public FunctionNode<SingleInputFunction<Double, Double>> createNode() {
+  public FunctionNode<SingleInputFunction<Double, Double>> createObject() {
     FunctionNode<SingleInputFunction<Double, Double>> result = null;
 
     switch (Util.randomFromCollection(this.operations)) {

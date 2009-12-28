@@ -24,8 +24,9 @@ import static org.junit.Assert.assertEquals;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.image.PixelGrabber;
+import java.util.List;
+import java.util.Vector;
 
-import jmona.example.monalisa.ga.MonaIndividual;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -63,7 +64,7 @@ public class ConverterTester {
     final int npoints = xpoints.length;
 
     // create an individual with the created polygon in its gene
-    final MonaIndividual individual = new MonaIndividual();
+    final List<ColoredPolygon> individual = new Vector<ColoredPolygon>();
     final ColoredPolygon polygon = new ColoredPolygon();
     polygon.xpoints = xpoints;
     polygon.ypoints = ypoints;

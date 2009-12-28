@@ -19,7 +19,7 @@
  */
 package jmona.gp.impl;
 
-import jmona.CopyingException;
+import jmona.exceptions.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 
@@ -34,8 +34,11 @@ public class TernaryNode<V> extends AbstractFunctionNode<V> {
 
   /** The "arity" of this Node. */
   public static final int ARITY = 3;
+  /** The index of the left child within the List of children. */
   public static final int LEFT_CHILD_INDEX = 0;
+  /** The index of the middle child within the List of children. */
   public static final int MIDDLE_CHILD_INDEX = 1;
+  /** The index of the right child within the List of children. */
   public static final int RIGHT_CHILD_INDEX = 2;
   /** The ternary operation which this Node represents. */
   private TernaryOperation<V, V, V, V> operation = null;

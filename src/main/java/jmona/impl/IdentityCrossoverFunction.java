@@ -20,7 +20,6 @@
 package jmona.impl;
 
 import jmona.CrossoverFunction;
-import jmona.Individual;
 
 /**
  * A crossover function which does nothing.
@@ -29,7 +28,7 @@ import jmona.Individual;
  *          The type of Individual on which to perform crossover.
  * @author jfinkels
  */
-public class IdentityCrossoverFunction<T extends Individual> implements
+public class IdentityCrossoverFunction<T> implements
     CrossoverFunction<T> {
 
   /**

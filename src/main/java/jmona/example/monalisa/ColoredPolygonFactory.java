@@ -21,7 +21,7 @@ package jmona.example.monalisa;
 
 import java.awt.Color;
 
-import jmona.IndividualFactory;
+import jmona.Factory;
 import jmona.impl.Util;
 
 /**
@@ -29,7 +29,7 @@ import jmona.impl.Util;
  * 
  * @author jfinkels
  */
-public class ColoredPolygonFactory implements IndividualFactory<ColoredPolygon> {
+public class ColoredPolygonFactory implements Factory<ColoredPolygon> {
   /** The default maximum number of points in a polygon. */
   public static final int DEFAULT_MAX_POINTS = 10;
   /** The default maximum x value of a polygon. */
@@ -73,7 +73,7 @@ public class ColoredPolygonFactory implements IndividualFactory<ColoredPolygon> 
    * @see jmona.IndividualFactory#createIndividual()
    */
   @Override
-  public ColoredPolygon createIndividual() {
+  public ColoredPolygon createObject() {
     // randomly select the number of points in the polygon between min and max
     int numPoints = this.minPoints
         + Util.RANDOM.nextInt(this.maxPoints - this.minPoints);

@@ -26,8 +26,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Vector;
 
-import jmona.CopyingException;
 import jmona.DeepCopyable;
+import jmona.exceptions.CopyingException;
 
 /**
  * Utility class containing objects and methods necessary for randomness.
@@ -35,8 +35,36 @@ import jmona.DeepCopyable;
  * @author jfinke
  */
 public class Util {
+  
   /** Random number generator. */
+  // TODO allow custom random number generators
   public static final Random RANDOM = new Random();
+
+  /**
+   * Perform a deep copy on the specified Collection of deep copyable elements.
+   * 
+   * This method runs in <em>O(n)</em> time.
+   * 
+   * @param <E>
+   *          The type of deep copyable element in the Collection to be deep
+   *          copied.
+   * @param collection
+   *          The Collection of elements on which to perform a deep copy.
+   * @return A List of the copied elements from the specified Collection.
+   * @throws CopyingException
+   *           If there is a problem copying the elements of the Collection.
+   */
+  public static <E extends DeepCopyable<E>> List<E> deepCopy(
+      final Collection<E> collection) throws CopyingException {
+
+    final List<E> result = new Vector<E>();
+
+    for (final E element : collection) {
+      result.add((E) element.deepCopy());
+    }
+
+    return result;
+  }
 
   /**
    * Get the first value from the specified Map as returned by the iterator over
@@ -81,16 +109,47 @@ public class Util {
     return element;
   }
 
-  public static <T extends DeepCopyable> List<T> deepCopy(final List<T> list)
-      throws CopyingException {
-    
-    final List<T> result = new Vector<T>();
-    
-    for (final T individual : list) {
-      result.add((T) individual.deepCopy());
-    }
+  /**
+   * Swap the element at the specified index between the two specified Lists.
+   * 
+   * @param list2
+   *          A List.
+   * @param list1
+   *          Another List.
+   * @param index
+   *          The index of the element to swap.
+   * @param <E>
+   *          The type of element in the List to swap.
+   */
+  public static <E> void swap(final List<E> list1, final List<E> list2,
+      final int index) {
 
-    return result;
+    final E temp = list1.get(index);
+    list1.set(index, list2.get(index));
+    list2.set(index, temp);
+
+  }
+
+  /**
+   * Swap each element in the specified Lists between the specified start and
+   * end indices.
+   * 
+   * @param list1
+   *          A List.
+   * @param list2
+   *          Another List.
+   * @param start
+   *          The index of the first element to swap.
+   * @param end
+   *          The index of the last element to swap.
+   * @param <E>
+   *          The type of elements in the List to swap.
+   */
+  public static <E> void swap(final List<E> list1, final List<E> list2,
+      final int start, final int end) {
+    for (int i = start; i < end; ++i) {
+      swap(list1, list2, i);
+    }
   }
 
   /** Instantiation disallowed. */

@@ -21,10 +21,13 @@ package jmona.impl;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import jmona.CompletionException;
+
+import java.util.List;
+import java.util.Vector;
+
 import jmona.EvolutionContext;
-import jmona.FitnessException;
-import jmona.Population;
+import jmona.exceptions.CompletionException;
+import jmona.exceptions.FitnessException;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
@@ -45,14 +48,14 @@ public class DefaultCompletionConditionTester {
   /** The evolution context on which to test the completion criteria. */
   private EvolutionContext<ExampleIndividual> evolutionContext = null;
   /** The population in the evolution context. */
-  private Population<ExampleIndividual> population = null;
+  private List<ExampleIndividual> population = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
     this.completionCriteria = new DefaultCompletionCondition<ExampleIndividual>();
 
-    this.population = new DefaultPopulation<ExampleIndividual>();
+    this.population = new Vector<ExampleIndividual>();
     this.population.add(new ExampleIndividual(1));
     this.population.add(new ExampleIndividual(2));
 

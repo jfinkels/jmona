@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import jmona.Individual;
 import jmona.SelectionFunction;
 import jmona.impl.Util;
 
@@ -36,8 +35,7 @@ import jmona.impl.Util;
  */
 // TODO allow for stochastic universal sampling
 // TODO what happens on Double.POSITIVE_INFINITY fitnesses?
-public class FitnessProportionateSelection<T extends Individual> implements
-    SelectionFunction<T> {
+public class FitnessProportionateSelection<T> implements SelectionFunction<T> {
 
   /**
    * Get the sum of the specified Collection of values.

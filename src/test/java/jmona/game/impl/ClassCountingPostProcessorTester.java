@@ -19,10 +19,11 @@
  */
 package jmona.game.impl;
 
+import java.util.List;
+import java.util.Vector;
+
 import jmona.EvolutionContext;
-import jmona.Population;
 import jmona.game.impl.example.ExampleStrategy;
-import jmona.impl.DefaultPopulation;
 
 import org.junit.Test;
 
@@ -42,7 +43,7 @@ public class ClassCountingPostProcessorTester {
   public void testProcessAtInterval() {
 
     // initialize a new population
-    final Population<ExampleStrategy> population = new DefaultPopulation<ExampleStrategy>();
+    final List<ExampleStrategy> population = new Vector<ExampleStrategy>();
 
     // add two ExampleStrategy objects to the population
     population.add(new ExampleStrategy());

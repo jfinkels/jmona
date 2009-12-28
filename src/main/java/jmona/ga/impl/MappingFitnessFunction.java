@@ -19,13 +19,12 @@
  */
 package jmona.ga.impl;
 
-import jmona.FitnessException;
 import jmona.FitnessFunction;
-import jmona.Individual;
-import jmona.MappingException;
 import jmona.Metric;
-import jmona.MetricException;
 import jmona.SingleInputFunction;
+import jmona.exceptions.FitnessException;
+import jmona.exceptions.MappingException;
+import jmona.exceptions.MetricException;
 
 /**
  * A FitnessFunction which measures the distance between a specified Individual
@@ -36,8 +35,7 @@ import jmona.SingleInputFunction;
  * @author jfinkels
  */
 // TODO change documentation
-public class MappingFitnessFunction<T extends Individual, V> implements
-    FitnessFunction<T> {
+public class MappingFitnessFunction<T, V> implements FitnessFunction<T> {
 
   private SingleInputFunction<T, V> mapping = null;
 

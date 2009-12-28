@@ -75,7 +75,7 @@ public class ColoredPolygonFactoryTester {
   public void testCreateIndividual() {
 
     for (int j = 0; j < NUM_POLYGONS; ++j) {
-      final ColoredPolygon polygon = this.factory.createIndividual();
+      final ColoredPolygon polygon = this.factory.createObject();
 
       assertTrue(polygon.npoints < MAX_POINTS);
       assertTrue(polygon.npoints >= MIN_POINTS);

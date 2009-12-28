@@ -22,8 +22,8 @@ package jmona.example.ipd.strategy;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.Pair;
 import jmona.game.Strategy;
+import jmona.impl.Pair;
 
 /**
  * A strategy for playing the iterated prisoner's dilemma game.

@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.MutationFunction;
-import jmona.example.tsp.Tour;
 import jmona.impl.Util;
 
 /**
@@ -32,7 +31,8 @@ import jmona.impl.Util;
  * 
  * @author jfinkels
  */
-public class DisplacementMutationFunction implements MutationFunction<Tour> {
+// TODO generalize all TSP MutationFunctions to all Lists
+public class DisplacementMutationFunction implements MutationFunction<List<Integer>> {
 
   /**
    * Select a random sublist from the specified Tour and displace it to a random
@@ -40,10 +40,10 @@ public class DisplacementMutationFunction implements MutationFunction<Tour> {
    * 
    * @param tour
    *          The tour to mutate.
-   * @see jmona.MutationFunction#mutate(jmona.Individual)
+   * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
    */
   @Override
-  public void mutate(final Tour tour) {
+  public void mutate(final List<Integer> tour) {
     // get a random start and end of the sublist
     final int start = Util.RANDOM.nextInt(tour.size());
     final int end = start + Util.RANDOM.nextInt(tour.size() - start);

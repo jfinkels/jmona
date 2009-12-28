@@ -21,6 +21,8 @@ package jmona;
 
 import java.util.Map;
 
+import jmona.exceptions.SelectionException;
+
 /**
  * A class which provides a single method which selects an Individual based on
  * fitness scores.
@@ -29,7 +31,7 @@ import java.util.Map;
  *          The type of Individual which will be selected.
  * @author jfinke
  */
-public interface SelectionFunction<T extends Individual> {
+public interface SelectionFunction<T> {
   /**
    * Select an Individual based on the specified mapping from individuals to
    * corresponding fitness scores.

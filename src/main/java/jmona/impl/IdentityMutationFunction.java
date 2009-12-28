@@ -19,7 +19,6 @@
  */
 package jmona.impl;
 
-import jmona.Individual;
 import jmona.MutationFunction;
 
 /**
@@ -29,15 +28,14 @@ import jmona.MutationFunction;
  *          The type of Individual to mutate.
  * @author jfinkels
  */
-public class IdentityMutationFunction<T extends Individual> implements
-    MutationFunction<T> {
+public class IdentityMutationFunction<T> implements MutationFunction<T> {
 
   /**
    * This method does nothing.
    * 
    * @param individual
    *          This parameter is ignored.
-   * @see jmona.MutationFunction#mutate(jmona.Individual)
+   * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
    */
   @Override
   public void mutate(final T individual) {

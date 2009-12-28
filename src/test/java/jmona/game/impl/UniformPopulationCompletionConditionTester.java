@@ -21,8 +21,10 @@ package jmona.game.impl;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import jmona.Population;
-import jmona.impl.DefaultPopulation;
+
+import java.util.List;
+import java.util.Vector;
+
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
 
@@ -44,7 +46,7 @@ public class UniformPopulationCompletionConditionTester {
   public void testIsSatisfied() {
     final UniformPopulationCompletionCondition<ExampleIndividual> criteria = new UniformPopulationCompletionCondition<ExampleIndividual>();
 
-    final Population<ExampleIndividual> population = new DefaultPopulation<ExampleIndividual>();
+    final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
     population.add(new ExampleIndividual());
     population.add(new ExampleIndividual());
 

@@ -21,9 +21,9 @@ package jmona.example.ipd;
 
 import java.util.Set;
 
-import jmona.IndividualFactory;
-import jmona.InitializationException;
+import jmona.Factory;
 import jmona.example.ipd.strategy.IPDStrategy;
+import jmona.exceptions.InitializationException;
 import jmona.impl.Util;
 
 /**
@@ -31,7 +31,7 @@ import jmona.impl.Util;
  * 
  * @author jfinkels
  */
-public class IPDStrategyFactory implements IndividualFactory<IPDStrategy> {
+public class IPDStrategyFactory implements Factory<IPDStrategy> {
 
   /** The number of strategies from which to choose. */
   public static final int NUMBER_OF_STRATEGIES = 5;
@@ -47,7 +47,7 @@ public class IPDStrategyFactory implements IndividualFactory<IPDStrategy> {
    * @see jmona.IndividualFactory#createIndividual()
    */
   @Override
-  public IPDStrategy createIndividual() throws InitializationException {
+  public IPDStrategy createObject() throws InitializationException {
 
     final Class<? extends IPDStrategy> resultClass = Util
         .randomFromCollection(this.strategyClasses);

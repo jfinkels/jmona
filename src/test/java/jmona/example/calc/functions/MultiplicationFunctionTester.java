@@ -20,9 +20,9 @@
 package jmona.example.calc.functions;
 
 import static org.junit.Assert.assertEquals;
-import jmona.MappingException;
 import jmona.example.calc.functions.MultiplicationFunction;
 import jmona.example.calc.operations.Util;
+import jmona.exceptions.MappingException;
 
 import org.junit.Test;
 

@@ -29,8 +29,8 @@ package jmona;
  *          for completion.
  * @author jfinkels
  */
-public interface MaxFitnessCompletionCondition<T extends Individual> extends
-    CompletionCondition<T> {
+public interface MaxFitnessCompletionCondition<T extends DeepCopyable<T>>
+    extends CompletionCondition<T> {
 
   /**
    * Set the maximum fitness of an Individual in the EvolutionContext to be

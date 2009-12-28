@@ -19,8 +19,9 @@
  */
 package jmona.example.ones;
 
+import java.util.List;
+
 import jmona.FitnessFunction;
-import jmona.ga.BinaryString;
 
 /**
  * A fitness function which gives higher fitness to individuals with a greater
@@ -28,7 +29,7 @@ import jmona.ga.BinaryString;
  * 
  * @author jfinke
  */
-public class OnesFitnessFunction implements FitnessFunction<BinaryString> {
+public class OnesFitnessFunction implements FitnessFunction<List<Byte>> {
 
   /**
    * Get the number of ones in the gene of the specified individual.
@@ -39,8 +40,14 @@ public class OnesFitnessFunction implements FitnessFunction<BinaryString> {
    * @see jmona.FitnessFunction#fitness(jmona.Individual)
    */
   @Override
-  public double fitness(final BinaryString individual) {
-    return individual.bitCount();
+  public double fitness(final List<Byte> individual) {
+    int sum = 0;
+
+    for (final Byte bit : individual) {
+      sum += bit;
+    }
+
+    return sum;
   }
 
 }

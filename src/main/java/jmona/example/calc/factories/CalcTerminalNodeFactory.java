@@ -19,11 +19,11 @@
  */
 package jmona.example.calc.factories;
 
+import jmona.Factory;
 import jmona.SingleInputFunction;
 import jmona.example.calc.nodes.NumberNode;
 import jmona.example.calc.nodes.VariableNode;
 import jmona.gp.TerminalNode;
-import jmona.gp.TerminalNodeFactory;
 import jmona.impl.Util;
 
 /**
@@ -33,7 +33,7 @@ import jmona.impl.Util;
  * @author jfinkels
  */
 public class CalcTerminalNodeFactory implements
-    TerminalNodeFactory<SingleInputFunction<Double, Double>> {
+    Factory<TerminalNode<SingleInputFunction<Double, Double>>> {
 
   /** The default maximum value for a NumberNode. */
   public static final int DEFAULT_MAX_VALUE = 2;
@@ -52,7 +52,7 @@ public class CalcTerminalNodeFactory implements
    * @see jmona.gp.TerminalNodeFactory#createNode()
    */
   @Override
-  public TerminalNode<SingleInputFunction<Double, Double>> createNode() {
+  public TerminalNode<SingleInputFunction<Double, Double>> createObject() {
     TerminalNode<SingleInputFunction<Double, Double>> result = null;
 
     if (Util.RANDOM.nextBoolean()) {

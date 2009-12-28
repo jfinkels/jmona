@@ -27,10 +27,10 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.Pair;
 import jmona.example.ipd.strategy.Action;
 import jmona.example.ipd.strategy.CooperativeStrategy;
 import jmona.example.ipd.strategy.IPDStrategy;
+import jmona.impl.Pair;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -53,7 +53,7 @@ public class IPDStrategyTester {
 
   /**
    * Test method for
-   * {@link jmona.example.ipd.strategy.IPDStrategy#addToMemory(jmona.Pair)}
+   * {@link jmona.example.ipd.strategy.IPDStrategy#addToMemory(jmona.impl.Pair)}
    * .
    */
   @Test

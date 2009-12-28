@@ -25,12 +25,12 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Random;
 
-import jmona.InitializationException;
-import jmona.MappingException;
 import jmona.SingleInputFunction;
 import jmona.example.calc.factories.CalcTerminalNodeFactory;
 import jmona.example.calc.nodes.NumberNode;
 import jmona.example.calc.nodes.VariableNode;
+import jmona.exceptions.InitializationException;
+import jmona.exceptions.MappingException;
 import jmona.gp.TerminalNode;
 import jmona.test.Util;
 
@@ -64,7 +64,7 @@ public class CalcTerminalNodeFactoryTester {
     int numVariableNodes = 0;
 
     for (int i = 0; i < NUM_TESTS; ++i) {
-      final TerminalNode<SingleInputFunction<Double, Double>> node = factory.createNode();
+      final TerminalNode<SingleInputFunction<Double, Double>> node = factory.createObject();
 
       assertTrue(node instanceof VariableNode || node instanceof NumberNode);
       assertEquals(0, node.arity());
@@ -113,7 +113,7 @@ public class CalcTerminalNodeFactoryTester {
       double value = 0.0;
       for (int i = 0; i < NUM_TESTS; ++i) {
 
-        node = factory.createNode();
+        node = factory.createObject();
 
         if (node instanceof NumberNode) {
           value = ((NumberNode) node).evaluate().execute(null);

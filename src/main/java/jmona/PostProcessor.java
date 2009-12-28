@@ -19,6 +19,8 @@
  */
 package jmona;
 
+import jmona.exceptions.ProcessingException;
+
 /**
  * An object which performs some processing on an EvolutionContext after each
  * generation.
@@ -27,7 +29,7 @@ package jmona;
  *          The type of Individual in the EvolutionContext to process.
  * @author jfinkels
  */
-public interface PostProcessor<T extends Individual> {
+public interface PostProcessor<T extends DeepCopyable<T>> {
 
   /**
    * Perform some action on the specified EvolutionContext.

@@ -23,15 +23,19 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
   
-  <bean id="individualFactory" class="jmona.example.monalisa.ga.MonaIndividualFactory">
-    <property name="numberOfPolygons" value="20" />
+  <bean id="polygonFactory" class="jmona.example.monalisa.ColoredPolygonFactory">
     <property name="maxPoints" value="7" />
     <property name="minPoints" value="3" />
     <property name="maxX" ref="width" />
     <property name="maxY" ref="height" />
   </bean>
   
-  <bean id="populationFactory" class="jmona.impl.DefaultPopulationFactory">
+  <bean id="individualFactory" class="jmona.impl.DefaultDeepCopyableListFactory">
+    <property name="elementFactory" ref="polygonFactory" />
+    <property name="size" value="20" />
+  </bean>
+  
+  <bean id="populationFactory" class="jmona.impl.DefaultDeepCopyableListFactory">
     <property name="individualFactory" ref="individualFactory" />
     <property name="size" value="2" />
   </bean>

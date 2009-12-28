@@ -19,12 +19,14 @@
  */
 package jmona.example.ipd.strategy;
 
+import jmona.DeepCopyable;
+
 /**
  * A strategy which always defects.
  * 
  * @author jfinkels
  */
-public class RuthlessStrategy extends IPDStrategy {
+public class RuthlessStrategy extends IPDStrategy implements DeepCopyable<RuthlessStrategy>{
 
   /**
    * {@inheritDoc}

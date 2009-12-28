@@ -19,6 +19,8 @@
  */
 package jmona;
 
+import jmona.exceptions.MetricException;
+
 /**
  * A metric on elements of type E.
  * 

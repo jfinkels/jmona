@@ -22,11 +22,13 @@ package jmona.impl;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import jmona.CompletionException;
+
+import java.util.List;
+import java.util.Vector;
+
 import jmona.EvolutionContext;
-import jmona.Individual;
 import jmona.MaxGenerationCompletionCondition;
-import jmona.Population;
+import jmona.exceptions.CompletionException;
 import jmona.ga.impl.GAEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
 
@@ -46,13 +48,13 @@ public class DefaultMaxGenerationCompletionConditionTester {
    */
   @Test
   public void testIsSatisfied() {
-    final Population<Individual> population = new DefaultPopulation<Individual>();
+    final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
     population.add(new ExampleIndividual());
     population.add(new ExampleIndividual());
-    final EvolutionContext<Individual> context = new GAEvolutionContext<Individual>(
+    final EvolutionContext<ExampleIndividual> context = new GAEvolutionContext<ExampleIndividual>(
         population);
 
-    final MaxGenerationCompletionCondition<Individual> criteria = new DefaultMaxGenerationCompletionCondition<Individual>();
+    final MaxGenerationCompletionCondition<ExampleIndividual> criteria = new DefaultMaxGenerationCompletionCondition<ExampleIndividual>();
 
     try {
       criteria.setMaxGenerations(0);

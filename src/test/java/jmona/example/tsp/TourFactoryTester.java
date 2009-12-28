@@ -19,9 +19,10 @@
  */
 package jmona.example.tsp;
 
-import static org.junit.Assert.*;
-import jmona.example.tsp.Tour;
-import jmona.example.tsp.TourFactory;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
 
 import org.junit.Test;
 
@@ -40,8 +41,9 @@ public class TourFactoryTester {
    */
   @Test
   public void testCreateIndividual() {
-    final TourFactory factory = new TourFactory(NUM_CITIES);
-    final Tour tour = factory.createIndividual();
+    final TourFactory factory = new TourFactory();
+    factory.setSize(NUM_CITIES);
+    final List<Integer> tour = factory.createObject();
 
     assertEquals(NUM_CITIES, tour.size());
     for (int i = 0; i < NUM_CITIES; ++i) {

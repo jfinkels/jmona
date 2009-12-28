@@ -19,8 +19,8 @@
  */
 package jmona.impl;
 
+import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.Individual;
 import jmona.MaxGenerationCompletionCondition;
 
 /**
@@ -31,7 +31,7 @@ import jmona.MaxGenerationCompletionCondition;
  *          The type of Individual being evolved.
  * @author jfinkels
  */
-public class DefaultMaxGenerationCompletionCondition<T extends Individual>
+public class DefaultMaxGenerationCompletionCondition<T extends DeepCopyable<T>>
     implements MaxGenerationCompletionCondition<T> {
 
   /** The default maximum number of generations in the evolution. */

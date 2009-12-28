@@ -27,7 +27,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import jmona.InitializationException;
+import jmona.exceptions.InitializationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleBinaryNode;
@@ -127,8 +127,8 @@ public class GPCrossoverFunctionTester {
     for (int i = 0; i < numRandomPairs; ++i) {
       try {
         // initialize two random trees
-        final Tree<Integer> leftTree = factory.createIndividual();
-        final Tree<Integer> rightTree = factory.createIndividual();
+        final Tree<Integer> leftTree = factory.createObject();
+        final Tree<Integer> rightTree = factory.createObject();
 
         // perform crossover on the two trees
         for (int j = 0; j < NUM_TESTS; ++j) {

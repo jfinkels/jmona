@@ -19,11 +19,11 @@
  */
 package jmona.gp.impl;
 
-import jmona.InitializationException;
-import jmona.MutationException;
+import jmona.Factory;
 import jmona.MutationFunction;
+import jmona.exceptions.InitializationException;
+import jmona.exceptions.MutationException;
 import jmona.gp.Tree;
-import jmona.gp.TreeFactory;
 
 /**
  * A MutationFunction which replaces a random Node in a Tree with a randomly
@@ -36,7 +36,7 @@ import jmona.gp.TreeFactory;
 public class GPMutationFunction<V> implements MutationFunction<Tree<V>> {
 
   /** The TreeFactory which will be used by the {@link #mutate(Tree)} method. */
-  private TreeFactory<V> treeFactory = null;
+  private Factory<Tree<V>> treeFactory = null;
 
   /**
    * Replace a random Node from the specified Tree with a randomly generated
@@ -47,7 +47,7 @@ public class GPMutationFunction<V> implements MutationFunction<Tree<V>> {
    *          generated subtree.
    * @throws MutationException
    *           If there is a problem generating a random subtree.
-   * @see jmona.MutationFunction#mutate(jmona.Individual)
+   * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
    */
   @Override
   public void mutate(final Tree<V> individual) throws MutationException {
@@ -56,7 +56,7 @@ public class GPMutationFunction<V> implements MutationFunction<Tree<V>> {
     }
 
     try {
-      final Tree<V> newTree = this.treeFactory.createIndividual();
+      final Tree<V> newTree = this.treeFactory.createObject();
       Util.replaceNode(individual, individual.randomNode(), newTree.root());
     } catch (final InitializationException exception) {
       throw new MutationException("Failed to generate a random subtree.",
@@ -71,7 +71,7 @@ public class GPMutationFunction<V> implements MutationFunction<Tree<V>> {
    *          The TreeFactory which will be used by the {@code #mutate(Tree)}
    *          method.
    */
-  public void setTreeFactory(final TreeFactory<V> newTreeFactory) {
+  public void setTreeFactory(final Factory<Tree<V>> newTreeFactory) {
     this.treeFactory = newTreeFactory;
   }
 

@@ -19,6 +19,8 @@
  */
 package jmona.example.tsp;
 
+import java.util.List;
+
 import jmona.FitnessFunction;
 
 /**
@@ -29,7 +31,7 @@ import jmona.FitnessFunction;
  * 
  * @author jfinkels
  */
-public class TSPFitnessFunction implements FitnessFunction<Tour> {
+public class TSPFitnessFunction implements FitnessFunction<List<Integer>> {
 
   /** The graph containing distances between cities. */
   private final DirectedGraph<Integer, Double> graph;
@@ -58,7 +60,7 @@ public class TSPFitnessFunction implements FitnessFunction<Tour> {
    * @see jmona.FitnessFunction#fitness(jmona.Individual)
    */
   @Override
-  public double fitness(final Tour tour) {
+  public double fitness(final List<Integer> tour) {
     if (tour.size() == 0) {
       throw new IllegalArgumentException("Tour must have size greater than 0.");
     }

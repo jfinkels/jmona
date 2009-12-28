@@ -21,14 +21,13 @@ package jmona.example.monalisa;
 
 import java.awt.image.RenderedImage;
 import java.io.IOException;
+import java.util.List;
 
+import jmona.DeepCopyableList;
 import jmona.EvolutionContext;
-import jmona.ProcessingException;
-import jmona.example.monalisa.ga.MonaIndividual;
 import jmona.example.monalisa.io.ImageWriter;
+import jmona.exceptions.ProcessingException;
 import jmona.impl.PeriodicPostProcessor;
-
-import org.apache.log4j.Logger;
 
 /**
  * A PostProcessor which writes an Individual out to an image on the filesystem.
@@ -36,10 +35,7 @@ import org.apache.log4j.Logger;
  * @author jfinkels
  */
 public class ImageOutputPostProcessor extends
-    PeriodicPostProcessor<MonaIndividual> {
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(ImageOutputPostProcessor.class);
+    PeriodicPostProcessor<DeepCopyableList<ColoredPolygon>> {
 
   /** The height of the image to output. */
   private int height = -1;
@@ -84,7 +80,7 @@ public class ImageOutputPostProcessor extends
    */
   @Override
   protected void processAtInterval(
-      final EvolutionContext<MonaIndividual> evolutionContext)
+      final EvolutionContext<DeepCopyableList<ColoredPolygon>> evolutionContext)
       throws ProcessingException {
     if (this.height < 0) {
       throw new ProcessingException("Height is " + this.height
@@ -100,8 +96,8 @@ public class ImageOutputPostProcessor extends
     final int currentGeneration = evolutionContext.currentGeneration();
 
     // get an individual from the current population
-    final MonaIndividual individual = evolutionContext.currentPopulation().get(
-        0);
+    final List<ColoredPolygon> individual = evolutionContext
+        .currentPopulation().get(0);
 
     // create an image from the specified individual
     final RenderedImage image = Converter.toImage(individual, this.width,
@@ -112,7 +108,6 @@ public class ImageOutputPostProcessor extends
 
     // write the image to the specified filename
     try {
-      LOG.debug("Writing image to file " + filename);
       ImageWriter.writeImage(image, filename);
     } catch (final IOException exception) {
       throw new ProcessingException("Failed writing image to disk.", exception);

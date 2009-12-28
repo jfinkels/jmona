@@ -21,13 +21,15 @@ package jmona.game.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import jmona.EvolutionException;
-import jmona.Population;
+
+import java.util.List;
+import java.util.Vector;
+
+import jmona.exceptions.EvolutionException;
 import jmona.game.GameplayException;
 import jmona.game.impl.example.ExampleBadGame;
 import jmona.game.impl.example.ExampleGame;
 import jmona.game.impl.example.ExampleStrategy;
-import jmona.impl.DefaultPopulation;
 import jmona.impl.selection.FitnessProportionateSelection;
 import jmona.test.Util;
 
@@ -44,12 +46,12 @@ public class GameEvolutionContextTester {
   /** The context under test. */
   private GameEvolutionContext<ExampleStrategy> context = null;
   /** The population in the EvolutionContext. */
-  private Population<ExampleStrategy> population = null;
+  private List<ExampleStrategy> population = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.population = new DefaultPopulation<ExampleStrategy>();
+    this.population = new Vector<ExampleStrategy>();
     this.population.add(new ExampleStrategy());
     this.population.add(new ExampleStrategy());
 

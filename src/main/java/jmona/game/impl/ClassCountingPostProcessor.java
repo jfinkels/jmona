@@ -22,8 +22,8 @@ package jmona.game.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.game.Strategy;
 import jmona.impl.PeriodicPostProcessor;
 
 import org.apache.log4j.Logger;
@@ -35,8 +35,8 @@ import org.apache.log4j.Logger;
  *          The type of Strategy to count.
  * @author jfinkels
  */
-public class ClassCountingPostProcessor<S extends Strategy> extends
-    PeriodicPostProcessor<S> {
+public class ClassCountingPostProcessor<T extends DeepCopyable<T>> extends
+    PeriodicPostProcessor<T> {
 
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger
@@ -51,12 +51,12 @@ public class ClassCountingPostProcessor<S extends Strategy> extends
    * @see jmona.impl.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
    */
   @Override
-  protected void processAtInterval(final EvolutionContext<S> context) {
-    final Map<Class<S>, Integer> results = new HashMap<Class<S>, Integer>();
+  protected void processAtInterval(final EvolutionContext<T> context) {
+    final Map<Class<T>, Integer> results = new HashMap<Class<T>, Integer>();
 
-    Class<S> clazz = null;
-    for (final S strategy : context.currentPopulation()) {
-      clazz = (Class<S>) strategy.getClass();
+    Class<T> clazz = null;
+    for (final T individual : context.currentPopulation()) {
+      clazz = (Class<T>) individual.getClass();
 
       if (results.containsKey(clazz)) {
         results.put(clazz, results.get(clazz) + 1);

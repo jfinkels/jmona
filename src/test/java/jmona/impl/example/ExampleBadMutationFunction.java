@@ -19,8 +19,8 @@
  */
 package jmona.impl.example;
 
-import jmona.MutationException;
 import jmona.MutationFunction;
+import jmona.exceptions.MutationException;
 
 /**
  * An example MutationFunction which always throws a MutationException.
@@ -37,7 +37,7 @@ public class ExampleBadMutationFunction implements
    *          This parameter is ignored.
    * @throws MutationException
    *           Always throws this Exception.
-   * @see jmona.MutationFunction#mutate(jmona.Individual)
+   * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
    */
   @Override
   public void mutate(final ExampleIndividual individual)

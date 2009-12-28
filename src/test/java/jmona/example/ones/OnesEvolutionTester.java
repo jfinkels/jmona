@@ -20,10 +20,10 @@
 package jmona.example.ones;
 
 import jmona.CompletionCondition;
-import jmona.CompletionException;
+import jmona.DeepCopyableList;
 import jmona.EvolutionContext;
-import jmona.EvolutionException;
-import jmona.ga.BinaryString;
+import jmona.exceptions.CompletionException;
+import jmona.exceptions.EvolutionException;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
@@ -50,11 +50,11 @@ public class OnesEvolutionTester extends AbstractJUnit4SpringContextTests {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<BinaryString> completionCondition = null;
+  private CompletionCondition<DeepCopyableList<Byte>> completionCondition = null;
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
-  private EvolutionContext<BinaryString> context = null;
+  private EvolutionContext<DeepCopyableList<Byte>> context = null;
 
   /** Test method for a Ones evolution. */
   @Test

@@ -28,7 +28,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.InitializationException;
+import jmona.exceptions.InitializationException;
 import jmona.gp.Node;
 import jmona.gp.TerminalNode;
 import jmona.gp.Tree;
@@ -70,7 +70,7 @@ public class GrowTreeFactoryTester {
 
     Tree<Integer> tree = null;
     try {
-      tree = this.factory.createIndividual();
+      tree = this.factory.createObject();
     } catch (final InitializationException exception) {
       Util.fail(exception);
     }
@@ -140,7 +140,7 @@ public class GrowTreeFactoryTester {
     try {
       Tree<Integer> tree = null;
       for (int i = 0; i < NUM_TESTS; ++i) {
-        tree = this.factory.createIndividual();
+        tree = this.factory.createObject();
         assertNull(tree.root().children());
         assertTrue(tree.root() instanceof TerminalNode<?>);
         assertEquals(1, Util.countNodes(tree));
@@ -151,7 +151,7 @@ public class GrowTreeFactoryTester {
       final double epsilon = 0;
 
       for (int i = 0; i < NUM_TESTS; ++i) {
-        tree = this.factory.createIndividual();
+        tree = this.factory.createObject();
 
         assertEquals(Math.pow(2, this.factory.maxDepth()) - 1, Util
             .countNodes(tree), epsilon);

@@ -19,8 +19,8 @@
  */
 package jmona.impl.example;
 
-import jmona.CrossoverException;
 import jmona.CrossoverFunction;
+import jmona.exceptions.CrossoverException;
 
 /**
  * A CrossoverFunction which always throws an Exception.

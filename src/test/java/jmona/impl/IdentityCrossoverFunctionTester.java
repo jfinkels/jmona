@@ -20,8 +20,8 @@
 package jmona.impl;
 
 import static org.junit.Assert.assertEquals;
-import jmona.CrossoverException;
 import jmona.CrossoverFunction;
+import jmona.exceptions.CrossoverException;
 import jmona.impl.example.ExampleIndividual;
 import jmona.test.Util;
 

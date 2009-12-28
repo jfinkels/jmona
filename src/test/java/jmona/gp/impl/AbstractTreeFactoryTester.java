@@ -25,13 +25,12 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import jmona.InitializationException;
+import jmona.Factory;
+import jmona.exceptions.InitializationException;
 import jmona.gp.EvaluationException;
 import jmona.gp.FunctionNode;
-import jmona.gp.FunctionNodeFactory;
 import jmona.gp.Node;
 import jmona.gp.TerminalNode;
-import jmona.gp.TerminalNodeFactory;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleFunctionNodeFactory;
 import jmona.gp.impl.example.ExampleTerminalNodeFactory;
@@ -70,7 +69,7 @@ public class AbstractTreeFactoryTester {
 
       Tree<Integer> individual = null;
       for (int i = 0; i < NUM_TESTS; ++i) {
-        individual = this.factory.createIndividual();
+        individual = this.factory.createObject();
       }
 
       assertTrue(individual instanceof DefaultTree<?>);
@@ -184,7 +183,7 @@ public class AbstractTreeFactoryTester {
   @Test
   public void testSetFunctionNodeFactory() {
     assertNull(this.factory.functionNodeFactory());
-    final FunctionNodeFactory<Integer> nodeFactory = new ExampleFunctionNodeFactory();
+    final Factory<FunctionNode<Integer>> nodeFactory = new ExampleFunctionNodeFactory();
     this.factory.setFunctionNodeFactory(nodeFactory);
     assertSame(nodeFactory, this.factory.functionNodeFactory());
   }
@@ -197,7 +196,7 @@ public class AbstractTreeFactoryTester {
   @Test
   public void testSetTerminalNodeFactory() {
     assertNull(this.factory.terminalNodeFactory());
-    final TerminalNodeFactory<Integer> nodeFactory = new ExampleTerminalNodeFactory();
+    final Factory<TerminalNode<Integer>> nodeFactory = new ExampleTerminalNodeFactory();
     this.factory.setTerminalNodeFactory(nodeFactory);
     assertSame(nodeFactory, this.factory.terminalNodeFactory());
   }
@@ -223,9 +222,8 @@ public class AbstractTreeFactoryTester {
     };
 
     try {
-      badFactory.createIndividual();
-      org.junit.Assert
-          .fail("Exception should have been thrown on the previous line.");
+      badFactory.createObject();
+      Util.shouldHaveThrownException();
     } catch (final InitializationException exception) {
       assertTrue(exception instanceof InitializationException);
     }

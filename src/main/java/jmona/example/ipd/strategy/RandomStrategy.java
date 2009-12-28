@@ -19,6 +19,7 @@
  */
 package jmona.example.ipd.strategy;
 
+import jmona.DeepCopyable;
 import jmona.impl.Util;
 
 /**
@@ -26,7 +27,7 @@ import jmona.impl.Util;
  * 
  * @author jfinkels
  */
-public class RandomStrategy extends IPDStrategy {
+public class RandomStrategy extends IPDStrategy implements DeepCopyable<RandomStrategy>{
 
   /**
    * {@inheritDoc}

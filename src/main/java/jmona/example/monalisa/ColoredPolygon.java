@@ -22,14 +22,14 @@ package jmona.example.monalisa;
 import java.awt.Color;
 import java.awt.Polygon;
 
-import jmona.Individual;
+import jmona.DeepCopyable;
 
 /**
  * A Polygon with a Color.
  * 
  * @author jfinkels
  */
-public class ColoredPolygon extends Polygon implements Individual {
+public class ColoredPolygon extends Polygon implements DeepCopyable<ColoredPolygon> {
 
   /** Default generated serial version UID. */
   private static final long serialVersionUID = 5912239970326362556L;
