@@ -28,6 +28,7 @@ import java.awt.Color;
 import java.util.List;
 
 import jmona.example.monalisa.ColoredPolygon;
+import jmona.example.monalisa.ColoredPolygonFactory;
 import jmona.exceptions.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.test.Util;
@@ -165,6 +166,7 @@ public class ColoredPolygonNodeTester {
     assertTrue(samePolygon(polygons.get(0), this.polygon));
     
     final ColoredPolygonNodeFactory factory = new ColoredPolygonNodeFactory();
+    factory.setColoredPolygonFactory(new ColoredPolygonFactory());
     this.node.children().add(factory.createObject());
     
     try {

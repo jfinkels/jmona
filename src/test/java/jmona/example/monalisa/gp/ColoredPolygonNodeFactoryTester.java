@@ -26,6 +26,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import jmona.example.monalisa.ColoredPolygon;
+import jmona.example.monalisa.ColoredPolygonFactory;
 import jmona.gp.EvaluationException;
 import jmona.test.Util;
 
@@ -54,11 +55,15 @@ public class ColoredPolygonNodeFactoryTester {
   @Before
   public final void setUp() {
     this.factory = new ColoredPolygonNodeFactory();
-    /*this.factory.setMaxPoints(MAX_POINTS);
-    this.factory.setMinPoints(MIN_POINTS);
-    this.factory.setMaxX(WIDTH);
-    this.factory.setMaxY(HEIGHT);
- */ }
+
+    final ColoredPolygonFactory polygonFactory = new ColoredPolygonFactory();
+    polygonFactory.setMaxPoints(MAX_POINTS);
+    polygonFactory.setMinPoints(MIN_POINTS);
+    polygonFactory.setMaxX(WIDTH);
+    polygonFactory.setMaxY(HEIGHT);
+
+    this.factory.setColoredPolygonFactory(polygonFactory);
+  }
 
   /**
    * Test method for
