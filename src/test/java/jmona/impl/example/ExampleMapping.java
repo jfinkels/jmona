@@ -20,20 +20,26 @@
 package jmona.impl.example;
 
 import jmona.SingleInputFunction;
-import jmona.exceptions.MappingException;
 
 /**
+ * An example mapping from an ExampleIndividual to its fitness.
+ * 
  * @author jfinkels
  */
 public class ExampleMapping implements
     SingleInputFunction<ExampleIndividual, Double> {
 
-  /* (non-Javadoc)
+  /**
+   * Get the fitness of the specified ExampleIndividual.
+   * 
+   * @param individual
+   *          The ExampleIndividual whose fitness will be returned.
+   * @return The fitness of the specified ExampleIndividual.
    * @see jmona.SingleInputFunction#execute(java.lang.Object)
    */
   @Override
-  public Double execute(final ExampleIndividual input) throws MappingException {
-    return input.fitness();
+  public Double execute(final ExampleIndividual individual) {
+    return individual.fitness();
   }
 
 }

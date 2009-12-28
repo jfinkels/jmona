@@ -22,19 +22,27 @@ package jmona.impl.example;
 import jmona.Metric;
 
 /**
+ * Measures the distance between the fitnesses of ExampleIndividual objects.
+ * 
  * @author jfinkels
  */
 public class ExampleMetric implements Metric<ExampleIndividual> {
 
-  /*
-   * (non-Javadoc)
+  /**
+   * Measure the Euclidean distance between the fitnesses of the specified
+   * ExampleIndividual objects.
    * 
+   * @param individual1
+   *          An ExampleIndividual.
+   * @param individual2
+   *          Another ExampleIndividual.
+   * @return The distance between the two specified ExampleIndividuals.
    * @see jmona.Metric#measure(java.lang.Object, java.lang.Object)
    */
   @Override
-  public double measure(final ExampleIndividual element1,
-      final ExampleIndividual element2) {
-    return Math.abs(element1.fitness() - element2.fitness());
+  public double measure(final ExampleIndividual individual1,
+      final ExampleIndividual individual2) {
+    return Math.abs(individual1.fitness() - individual2.fitness());
   }
 
 }

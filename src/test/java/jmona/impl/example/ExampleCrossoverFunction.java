@@ -32,18 +32,18 @@ public class ExampleCrossoverFunction implements
   /**
    * Swap the fitnesses of the specified individuals.
    * 
-   * @param parent1
+   * @param individual1
    *          {@inheritDoc}
-   * @param parent2
+   * @param individual2
    *          {@inheritDoc}
    * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
    */
   @Override
-  public void crossover(final ExampleIndividual parent1,
-      final ExampleIndividual parent2) {
-    final double temp = parent1.fitness();
-    parent1.setFitness(parent2.fitness());
-    parent2.setFitness(temp);
+  public void crossover(final ExampleIndividual individual1,
+      final ExampleIndividual individual2) {
+    final double temp = individual1.fitness();
+    individual1.setFitness(individual2.fitness());
+    individual2.setFitness(temp);
   }
 
 }

@@ -20,31 +20,44 @@
 package jmona.impl.example;
 
 import jmona.EvolutionContext;
-import jmona.exceptions.ProcessingException;
 import jmona.impl.PeriodicPostProcessor;
 
 /**
+ * A PostProcessor which simply increments a counter.
+ * 
  * @author jfinkels
  */
 public class ExamplePostProcessor extends
     PeriodicPostProcessor<ExampleIndividual> {
 
+  /**
+   * The number of times {@link #processAtInterval(EvolutionContext)} has been
+   * called.
+   */
   private int count = 0;
 
-  /*
-   * (non-Javadoc)
+  /**
+   * Get the number of times {@link #processAtInterval(EvolutionContext)} has
+   * been called.
    * 
-   * @see
-   * jmona.impl.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
+   * @return The number of times {@link #processAtInterval(EvolutionContext)}
+   *         has been called.
+   */
+  public int count() {
+    return this.count;
+  }
+
+  /**
+   * Increment the counter property of this object.
+   * 
+   * @param evolutionContext
+   *          This parameter is ignored.
+   * @see jmona.impl.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
    */
   @Override
   protected void processAtInterval(
       final EvolutionContext<ExampleIndividual> evolutionContext) {
     this.count += 1;
-  }
-
-  public int count() {
-    return this.count;
   }
 
 }
