@@ -20,7 +20,6 @@
 package jmona.impl.example;
 
 import jmona.MutationFunction;
-import jmona.exceptions.MutationException;
 
 /**
  * An example MutationFunction.
