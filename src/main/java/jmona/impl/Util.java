@@ -35,7 +35,7 @@ import jmona.exceptions.CopyingException;
  * @author jfinke
  */
 public class Util {
-  
+
   /** Random number generator. */
   // TODO allow custom random number generators
   public static final Random RANDOM = new Random();
