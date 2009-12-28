@@ -19,7 +19,6 @@
  */
 package jmona.impl;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
@@ -47,16 +46,15 @@ public class PartialDeepCopyableVector<E> extends Vector<E> implements
   }
 
   /**
-   * Instantiate this vector and call {@link Collections#copy(List, List)} on
-   * the specified List to copy references of the elements contained in that
-   * List to this Vector.
+   * Instantiate this vector and copy references of the elements contained in
+   * the specified List to this Vector.
    * 
    * @param list
    *          The List from which to copy references of elements contained
    *          within.
    */
   public PartialDeepCopyableVector(final List<E> list) {
-    Collections.copy(this, list);
+    this.addAll(list);
   }
 
   /**
