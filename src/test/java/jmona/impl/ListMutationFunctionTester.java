@@ -19,29 +19,54 @@
  */
 package jmona.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+
+import java.util.List;
+import java.util.Vector;
+
+import jmona.exceptions.MutationException;
+import jmona.impl.example.ExampleIndividual;
+import jmona.impl.example.ExampleMutationFunction;
+import jmona.test.Util;
 
 import org.junit.Test;
 
 /**
+ * Test class for the ListMutationFunction class.
+ * 
  * @author jfinkels
  */
 public class ListMutationFunctionTester {
 
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
+
   /**
-   * Test method for {@link jmona.impl.ListMutationFunction#mutate(java.util.List)}.
+   * Test method for
+   * {@link jmona.impl.ListMutationFunction#mutate(java.util.List)}.
    */
   @Test
   public void testMutate() {
-    fail("Not yet implemented");
-  }
+    final ListMutationFunction<ExampleIndividual> function = new ListMutationFunction<ExampleIndividual>();
 
-  /**
-   * Test method for {@link jmona.impl.ListMutationFunction#setElementMutationFunction(jmona.MutationFunction)}.
-   */
-  @Test
-  public void testSetElementMutationFunction() {
-    fail("Not yet implemented");
+    final double initialFitness = 1;
+    final ExampleIndividual individual = new ExampleIndividual(initialFitness);
+
+    final List<ExampleIndividual> list = new Vector<ExampleIndividual>();
+    list.add(individual);
+
+    function.setElementMutationFunction(new ExampleMutationFunction());
+
+    try {
+      function.mutate(list);
+    } catch (final MutationException exception) {
+      Util.fail(exception);
+    }
+
+    assertSame(individual, list.get(0));
+    assertEquals(ExampleMutationFunction.SCALE * initialFitness, list.get(0)
+        .fitness(), ZERO_DELTA);
   }
 
 }

@@ -19,29 +19,66 @@
  */
 package jmona.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+import java.util.Vector;
+
+import jmona.exceptions.MutationException;
+import jmona.impl.example.ExampleIndividual;
+import jmona.impl.example.ExampleListMutationFunction;
+import jmona.test.Util;
 
 import org.junit.Test;
 
 /**
+ * Test class for the ImmutableElementsListMutationFunction class.
+ * 
  * @author jfinkels
  */
 public class ImmutableElementsListMutationFunctionTester {
 
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
+
   /**
-   * Test method for {@link jmona.impl.ImmutableElementsListMutationFunction#mutate(java.util.List)}.
+   * Test method for
+   * {@link jmona.impl.ImmutableElementsListMutationFunction#mutate(java.util.List)}
+   * .
    */
   @Test
   public void testMutate() {
-    fail("Not yet implemented");
+    final ImmutableElementsListMutationFunction<ExampleIndividual> function = new ExampleListMutationFunction();
+    final List<ExampleIndividual> list = new Vector<ExampleIndividual>();
+    final ExampleIndividual individual = new ExampleIndividual();
+    list.add(individual);
+    try {
+      function.mutate(list);
+    } catch (final MutationException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(-1 * individual.fitness(), list.get(0).fitness(), ZERO_DELTA);
   }
 
   /**
-   * Test method for {@link jmona.impl.ImmutableElementsListMutationFunction#mutated(java.lang.Object)}.
+   * Test method for
+   * {@link jmona.impl.ImmutableElementsListMutationFunction#mutated(java.lang.Object)}
+   * .
    */
   @Test
   public void testMutated() {
-    fail("Not yet implemented");
+    final ImmutableElementsListMutationFunction<ExampleIndividual> function = new ExampleListMutationFunction();
+    final ExampleIndividual individual = new ExampleIndividual();
+    ExampleIndividual mutatedIndividual = null;
+    try {
+      mutatedIndividual = function.mutated(individual);
+    } catch (final MutationException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(-1 * individual.fitness(), mutatedIndividual.fitness(),
+        ZERO_DELTA);
   }
 
 }

@@ -19,45 +19,115 @@
  */
 package jmona.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
+import jmona.DeepCopyableList;
+import jmona.Factory;
+import jmona.exceptions.CopyingException;
+import jmona.exceptions.InitializationException;
+import jmona.ga.impl.BitFactory;
+import jmona.test.Util;
+
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the PartialDeepCopyableListFactory class.
+ * 
  * @author jfinkels
  */
 public class PartialDeepCopyableListFactoryTester {
 
+  /** The factory under test. */
+  private PartialDeepCopyableListFactory<Byte> factory = null;
+  /** The size of the list to create. */
+  public static final int SIZE = 100;
+  /** The element factory used by the list factory. */
+  private Factory<Byte> elementFactory = null;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.elementFactory = new BitFactory();
+    this.factory = new PartialDeepCopyableListFactory<Byte>();
+    this.factory.setElementFactory(this.elementFactory);
+    this.factory.setSize(SIZE);
+  }
+
   /**
-   * Test method for {@link jmona.impl.PartialDeepCopyableListFactory#createObject()}.
+   * Test method for
+   * {@link jmona.impl.PartialDeepCopyableListFactory#createObject()}.
    */
   @Test
   public void testCreateObject() {
-    fail("Not yet implemented");
+    DeepCopyableList<Byte> list = null;
+    try {
+      list = this.factory.createObject();
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+
+    DeepCopyableList<Byte> clonedList = null;
+    try {
+      clonedList = list.deepCopy();
+    } catch (final CopyingException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(clonedList.size(), list.size());
+    assertNotSame(clonedList, list);
+    assertTrue(Util.areEqual(clonedList, list));
+    for (int i = 0; i < list.size(); ++i) {
+      assertSame(list.get(i), clonedList.get(i));
+    }
   }
 
   /**
-   * Test method for {@link jmona.impl.PartialDeepCopyableListFactory#elementFactory()}.
+   * Test method for
+   * {@link jmona.impl.PartialDeepCopyableListFactory#elementFactory()}.
    */
   @Test
   public void testElementFactory() {
-    fail("Not yet implemented");
+    assertSame(this.elementFactory, this.factory.elementFactory());
   }
 
   /**
-   * Test method for {@link jmona.impl.PartialDeepCopyableListFactory#setElementFactory(jmona.Factory)}.
+   * Test method for
+   * {@link jmona.impl.PartialDeepCopyableListFactory#setElementFactory(jmona.Factory)}
+   * .
    */
   @Test
   public void testSetElementFactory() {
-    fail("Not yet implemented");
+    this.factory.setElementFactory(null);
+    try {
+      this.factory.createObject();
+      Util.shouldHaveThrownException();
+    } catch (final InitializationException exception) {
+      assertNull(this.factory.elementFactory());
+    }
   }
 
   /**
-   * Test method for {@link jmona.impl.PartialDeepCopyableListFactory#setSize(int)}.
+   * Test method for
+   * {@link jmona.impl.PartialDeepCopyableListFactory#setSize(int)}.
    */
   @Test
   public void testSetSize() {
-    fail("Not yet implemented");
+    this.factory.setSize(2 * SIZE);
+    List<Byte> list = null;
+    try {
+      list = this.factory.createObject();
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(2 * SIZE, list.size());
   }
 
   /**
@@ -65,7 +135,15 @@ public class PartialDeepCopyableListFactoryTester {
    */
   @Test
   public void testSize() {
-    fail("Not yet implemented");
+    List<Byte> list = null;
+
+    try {
+      list = this.factory.createObject();
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(SIZE, list.size());
   }
 
 }

@@ -19,29 +19,72 @@
  */
 package jmona.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+import java.util.Vector;
+
+import jmona.exceptions.CopyingException;
+import jmona.test.Util;
+
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the PartialDeepCopyableVector class.
+ * 
  * @author jfinkels
  */
 public class PartialDeepCopyableVectorTester {
 
-  /**
-   * Test method for {@link jmona.impl.PartialDeepCopyableVector#PartialDeepCopyableVector()}.
-   */
-  @Test
-  public void testPartialDeepCopyableVector() {
-    fail("Not yet implemented");
+  /** The number of individuals in the vector. */
+  public static final int NUM_ELEMENTS = 100;
+  /** The List of individuals to add to the vector. */
+  private List<Byte> beforeList = null;
+  /** The vector under test in this class. */
+  private PartialDeepCopyableVector<Byte> vector = null;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.beforeList = new Vector<Byte>();
+
+    for (int i = 0; i < NUM_ELEMENTS; ++i) {
+      this.beforeList.add(new Byte((byte) 0));
+      this.beforeList.add(new Byte((byte) 1));
+    }
+
+    this.vector = new PartialDeepCopyableVector<Byte>(this.beforeList);
   }
 
   /**
-   * Test method for {@link jmona.impl.PartialDeepCopyableVector#PartialDeepCopyableVector(java.util.List)}.
+   * Test method for
+   * {@link jmona.impl.PartialDeepCopyableVector#PartialDeepCopyableVector()}.
+   */
+  @Test
+  public void testPartialDeepCopyableVector() {
+    this.vector = new PartialDeepCopyableVector<Byte>();
+    assertEquals(0, vector.size());
+
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.impl.PartialDeepCopyableVector#PartialDeepCopyableVector(java.util.List)}
+   * .
    */
   @Test
   public void testPartialDeepCopyableVectorListOfE() {
-    fail("Not yet implemented");
+    assertEquals(this.beforeList.size(), this.vector.size());
+    assertNotSame(this.beforeList, this.vector);
+
+    for (int i = 0; i < this.beforeList.size(); ++i) {
+      assertSame(this.beforeList.get(i), this.vector.get(i));
+      assertEquals(this.beforeList.get(i), this.vector.get(i));
+    }
   }
 
   /**
@@ -49,7 +92,20 @@ public class PartialDeepCopyableVectorTester {
    */
   @Test
   public void testDeepCopy() {
-    fail("Not yet implemented");
+    List<Byte> afterList = null;
+    try {
+      afterList = this.vector.deepCopy();
+    } catch (final CopyingException exception) {
+      Util.fail(exception);
+    }
+
+    assertTrue(Util.areEqual(afterList, this.vector));
+    assertEquals(this.vector.size(), afterList.size());
+
+    for (int i = 0; i < this.vector.size(); ++i) {
+      assertSame(this.vector.get(i), afterList.get(i));
+      assertEquals(this.vector.get(i), afterList.get(i));
+    }
   }
 
 }

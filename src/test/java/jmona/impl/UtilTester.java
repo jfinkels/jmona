@@ -19,12 +19,19 @@
  */
 package jmona.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertSame;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Vector;
+
+import jmona.exceptions.CopyingException;
+import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Test;
 
@@ -35,15 +42,38 @@ import org.junit.Test;
  */
 public class UtilTester {
 
+  /** The number of individuals in a list. */
+  public static final int NUM_INDIVIDUALS = 100;
   /** The number of times to repeat the test. */
   public static final int NUM_TESTS = 10000;
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
 
   /**
    * Test method for {@link jmona.impl.Util#deepCopy(java.util.Collection)}.
    */
   @Test
   public void testDeepCopy() {
-    fail("Not yet implemented");
+    final List<ExampleIndividual> list = new Vector<ExampleIndividual>();
+
+    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
+      list.add(new ExampleIndividual(i));
+    }
+
+    List<ExampleIndividual> clonedList = null;
+    try {
+      clonedList = Util.deepCopy(list);
+    } catch (final CopyingException exception) {
+      jmona.test.Util.fail(exception);
+    }
+
+    assertEquals(list.size(), clonedList.size());
+
+    for (int i = 0; i < list.size(); ++i) {
+      assertNotSame(list.get(i), clonedList.get(i));
+      assertEquals(list.get(i).fitness(), clonedList.get(i).fitness(),
+          ZERO_DELTA);
+    }
   }
 
   /**
@@ -51,7 +81,14 @@ public class UtilTester {
    */
   @Test
   public void testFirstValue() {
-    fail("Not yet implemented");
+    final Map<Object, Object> map = new HashMap<Object, Object>();
+    
+    final Object key = new Object();
+    final Object value = new Object();
+    
+    map.put(key, value);
+    
+    assertEquals(value, Util.firstValue(map));
   }
 
   /**
@@ -97,32 +134,6 @@ public class UtilTester {
   }
 
   /**
-   * Test method for
-   * {@link jmona.impl.Util#swap(java.util.List, java.util.List, int)}.
-   */
-  @Test
-  public void testSwapListOfEListOfEInt() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.impl.Util#swap(java.util.List, java.util.List, int, int)}.
-   */
-  @Test
-  public void testSwapListOfEListOfEIntInt() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.impl.Util#Util()}.
-   */
-  @Test
-  public void testUtil() {
-    fail("Not yet implemented");
-  }
-
-  /**
    * Test for randomly selecting an Object uniformly from a set with only one
    * element.
    */
@@ -137,5 +148,82 @@ public class UtilTester {
       choice = Util.randomFromCollection(set);
       assertSame(object, choice);
     }
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.impl.Util#swap(java.util.List, java.util.List, int)}.
+   */
+  @Test
+  public void testSwapListOfEListOfEInt() {
+    final List<Object> list1 = new Vector<Object>();
+    final List<Object> list2 = new Vector<Object>();
+    final int index = 1;
+    
+    final Object list1Object0 = new Object();
+    final Object list1Object1 = new Object();
+    final Object list1Object2 = new Object();
+
+    final Object list2Object0 = new Object();
+    final Object list2Object1 = new Object();
+    final Object list2Object2 = new Object();
+
+    list1.add(list1Object0);
+    list1.add(list1Object1);
+    list1.add(list1Object2);
+
+    list2.add(list2Object0);
+    list2.add(list2Object1);
+    list2.add(list2Object2);
+
+    Util.swap(list1, list2, index);
+    
+    assertSame(list1Object0, list1.get(0));
+    assertSame(list2Object0, list2.get(0));
+    
+    assertSame(list2Object1, list1.get(1));
+    assertSame(list1Object1, list2.get(1));
+    
+    assertSame(list1Object2, list1.get(2));
+    assertSame(list2Object2, list2.get(2));
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.impl.Util#swap(java.util.List, java.util.List, int, int)}.
+   */
+  @Test
+  public void testSwapListOfEListOfEIntInt() {
+    final List<Object> list1 = new Vector<Object>();
+    final List<Object> list2 = new Vector<Object>();
+    
+    final Object list1Object0 = new Object();
+    final Object list1Object1 = new Object();
+    final Object list1Object2 = new Object();
+
+    final Object list2Object0 = new Object();
+    final Object list2Object1 = new Object();
+    final Object list2Object2 = new Object();
+
+    list1.add(list1Object0);
+    list1.add(list1Object1);
+    list1.add(list1Object2);
+
+    list2.add(list2Object0);
+    list2.add(list2Object1);
+    list2.add(list2Object2);
+
+    final int start = 1;
+    final int end = 3;
+    Util.swap(list1, list2, start, end);
+    
+    assertSame(list1Object0, list1.get(0));
+    assertSame(list2Object0, list2.get(0));
+    
+    assertSame(list2Object1, list1.get(1));
+    assertSame(list1Object1, list2.get(1));
+    
+    assertSame(list2Object2, list1.get(2));
+    assertSame(list1Object2, list2.get(2));
   }
 }
