@@ -31,22 +31,21 @@ public class ExampleMutationFunction implements
     MutationFunction<ExampleIndividual> {
 
   /**
-   * The value by which to increment the fitness of an ExampleIndividual on
+   * The value by which to multiply the fitness of an ExampleIndividual on
    * mutation.
    */
-  public static final double INCREMENT = 0.1;
+  public static final double SCALE = -1;
 
   /**
-   * Increment the fitness of the specified Individual by {@value INCREMENT}.
+   * Scale the fitness of the specified Individual by {@value #SCALE}.
    * 
    * @param individual
    *          {@inheritDoc}
    * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
    */
   @Override
-  public void mutate(final ExampleIndividual individual)
-      throws MutationException {
-    individual.setFitness(individual.fitness() + INCREMENT);
+  public void mutate(final ExampleIndividual individual) {
+    individual.setFitness(SCALE * individual.fitness());
   }
 
 }
