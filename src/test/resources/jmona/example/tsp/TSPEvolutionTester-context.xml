@@ -32,7 +32,7 @@
     factory-method="createObject" />
 
   <bean id="completionCondition" class="jmona.impl.DefaultMaxGenerationCompletionCondition" >
-    <property name="maxGenerations" value="20" />
+    <property name="maxGenerations" value="10" />
   </bean>
 
   <bean id="evolutionContext" class="jmona.ga.impl.GAEvolutionContext">

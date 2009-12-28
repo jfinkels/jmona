@@ -36,7 +36,7 @@
 
   <bean id="completionCondition"
     class="jmona.game.impl.UniformPopulationCompletionCondition">
-    <property name="maxGenerations" value="100" />
+    <property name="maxGenerations" value="10" />
   </bean>
   
   <bean id="selectionFunction"
