@@ -54,7 +54,7 @@ public class ExampleIndividual implements DeepCopyable<ExampleIndividual> {
    */
   @Override
   public ExampleIndividual deepCopy() {
-    return new ExampleIndividual();
+    return new ExampleIndividual(this.fitness);
   }
 
   /**
