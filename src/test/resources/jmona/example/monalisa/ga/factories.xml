@@ -30,12 +30,12 @@
     <property name="maxY" ref="height" />
   </bean>
   
-  <bean id="individualFactory" class="jmona.impl.DefaultDeepCopyableListFactory">
+  <bean id="individualFactory" class="jmona.impl.CompleteDeepCopyableListFactory">
     <property name="elementFactory" ref="polygonFactory" />
     <property name="size" value="20" />
   </bean>
   
-  <bean id="populationFactory" class="jmona.impl.DefaultDeepCopyableListFactory">
+  <bean id="populationFactory" class="jmona.impl.CompleteDeepCopyableListFactory">
     <property name="individualFactory" ref="individualFactory" />
     <property name="size" value="2" />
   </bean>

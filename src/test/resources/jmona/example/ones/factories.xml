@@ -29,12 +29,12 @@
 
   <bean id="bitFactory" class="jmona.ga.impl.BitFactory" />
 
-  <bean id="individualFactory" class="jmona.impl.DefaultDeepCopyableImmutableElementsListFactory">
+  <bean id="individualFactory" class="jmona.impl.PartialDeepCopyableListFactory">
     <property name="elementFactory" ref="bitFactory" />
     <property name="size" ref="geneLength" />
   </bean>
   
-  <bean id="populationFactory" class="jmona.impl.DefaultDeepCopyableListFactory">
+  <bean id="populationFactory" class="jmona.impl.CompleteDeepCopyableListFactory">
     <property name="elementFactory" ref="individualFactory" />
     <property name="size" value="20" />
   </bean>

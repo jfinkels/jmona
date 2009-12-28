@@ -34,7 +34,7 @@
 
   <bean id="population" 
     factory-bean="populationFactory" 
-    factory-method="createPopulation" />
+    factory-method="createObject" />
 
   <bean id="evolutionContext" class="jmona.ga.impl.GAEvolutionContext">
     <constructor-arg>

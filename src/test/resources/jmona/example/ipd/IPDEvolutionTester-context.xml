@@ -25,14 +25,14 @@
   
   <bean id="individualFactory" class="jmona.example.ipd.IPDStrategyFactory" />
   
-  <bean id="populationFactory" class="jmona.impl.DefaultDeepCopyableListFactory">
+  <bean id="populationFactory" class="jmona.impl.CompleteDeepCopyableListFactory">
     <property name="elementFactory" ref="individualFactory" />
     <property name="size" value="70" />
   </bean>
 
   <bean id="population" 
     factory-bean="populationFactory" 
-    factory-method="createPopulation" />
+    factory-method="createObject" />
 
   <bean id="completionCondition"
     class="jmona.game.impl.UniformPopulationCompletionCondition">

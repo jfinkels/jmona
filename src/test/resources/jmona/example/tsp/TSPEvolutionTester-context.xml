@@ -29,7 +29,7 @@
   
   <bean id="population" 
     factory-bean="populationFactory" 
-    factory-method="createPopulation" />
+    factory-method="createObject" />
 
   <bean id="completionCondition" class="jmona.impl.DefaultMaxGenerationCompletionCondition" >
     <property name="maxGenerations" value="20" />

@@ -27,7 +27,7 @@
     <property name="size" value="numberOfCities" />
   </bean>
   
-  <bean id="populationFactory" class="jmona.impl.DefaultDeepCopyableListFactory">
+  <bean id="populationFactory" class="jmona.impl.CompleteDeepCopyableListFactory">
     <property name="elementFactory" ref="individualFactory" />
     <property name="size" value="20" />
   </bean>
