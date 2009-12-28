@@ -20,20 +20,11 @@
 package jmona.example.ipd;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
-import jmona.example.ipd.IPDStrategyFactory;
-import jmona.example.ipd.strategy.CooperativeStrategy;
 import jmona.example.ipd.strategy.IPDStrategy;
-import jmona.example.ipd.strategy.PavlovStrategy;
-import jmona.example.ipd.strategy.RandomStrategy;
-import jmona.example.ipd.strategy.RuthlessStrategy;
-import jmona.example.ipd.strategy.TitForTatStrategy;
 import jmona.exceptions.InitializationException;
 import jmona.test.Util;
 
@@ -56,27 +47,10 @@ public class IPDStrategyFactoryTester {
   @Test
   public void testCreateIndividual() {
     final IPDStrategyFactory factory = new IPDStrategyFactory();
-    final Set<Class<? extends IPDStrategy>> newStrategyClasses = new HashSet<Class<? extends IPDStrategy>>();
-    newStrategyClasses.add(TitForTatStrategy.class);
-
-    factory.setStrategyClasses(newStrategyClasses);
-    IPDStrategy strategy = null;
-    try {
-      for (int i = 0; i < NUM_TESTS; ++i) {
-        strategy = factory.createObject();
-        assertTrue(strategy instanceof TitForTatStrategy);
-      }
-    } catch (final InitializationException exception) {
-      Util.fail(exception);
-    }
-
-    newStrategyClasses.add(PavlovStrategy.class);
-    newStrategyClasses.add(RuthlessStrategy.class);
-    newStrategyClasses.add(CooperativeStrategy.class);
-    newStrategyClasses.add(RandomStrategy.class);
 
     final Map<Class<? extends IPDStrategy>, Integer> numSelections = new HashMap<Class<? extends IPDStrategy>, Integer>();
 
+    IPDStrategy strategy = null;
     try {
       for (int i = 0; i < NUM_TESTS; ++i) {
         strategy = factory.createObject();
@@ -91,7 +65,8 @@ public class IPDStrategyFactoryTester {
       Util.fail(exception);
     }
 
-    final int expectedSelections = NUM_TESTS / newStrategyClasses.size();
+    final int numStrategies = 5;
+    final int expectedSelections = NUM_TESTS / numStrategies;
     final double delta = expectedSelections * 0.10;
 
     for (final Integer actualSelections : numSelections.values()) {

@@ -19,10 +19,16 @@
  */
 package jmona.example.ipd;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import jmona.Factory;
+import jmona.example.ipd.strategy.CooperativeStrategy;
 import jmona.example.ipd.strategy.IPDStrategy;
+import jmona.example.ipd.strategy.PavlovStrategy;
+import jmona.example.ipd.strategy.RandomStrategy;
+import jmona.example.ipd.strategy.RuthlessStrategy;
+import jmona.example.ipd.strategy.TitForTatStrategy;
 import jmona.exceptions.InitializationException;
 import jmona.impl.Util;
 
@@ -33,10 +39,40 @@ import jmona.impl.Util;
  */
 public class IPDStrategyFactory implements Factory<IPDStrategy> {
 
+  /**
+   * Each of the possible strategies from which to choose when creating a new
+   * strategy.
+   */
+  private static enum Strategy {
+    /** The cooperative strategy. */
+    COOPERATIVE,
+    /** The Pavlov strategy. */
+    PAVLOV,
+    /** The random strategy. */
+    RANDOM,
+    /** The ruthless strategy. */
+    RUTHLESS,
+    /** The tit-for-tat strategy. */
+    TIT_FOR_TAT
+  }
+
   /** The number of strategies from which to choose. */
   public static final int NUMBER_OF_STRATEGIES = 5;
+
   /** The Set of Classes from which an IPDStrategy will be instantiated. */
-  private Set<Class<? extends IPDStrategy>> strategyClasses = null;
+  private Set<Strategy> strategies = new HashSet<Strategy>();
+
+  /**
+   * Instantiate this factory by initializing the set of all possible strategies
+   * to contain all possible strategies.
+   */
+  public IPDStrategyFactory() {
+    this.strategies.add(Strategy.COOPERATIVE);
+    this.strategies.add(Strategy.PAVLOV);
+    this.strategies.add(Strategy.RANDOM);
+    this.strategies.add(Strategy.RUTHLESS);
+    this.strategies.add(Strategy.TIT_FOR_TAT);
+  }
 
   /**
    * Create a Strategy chosen randomly from all IPDStrategy subclasses.
@@ -48,30 +84,27 @@ public class IPDStrategyFactory implements Factory<IPDStrategy> {
    */
   @Override
   public IPDStrategy createObject() throws InitializationException {
+    IPDStrategy result = null;
 
-    final Class<? extends IPDStrategy> resultClass = Util
-        .randomFromCollection(this.strategyClasses);
-
-    try {
-      return resultClass.newInstance();
-    } catch (final InstantiationException exception) {
-      throw new InitializationException("Failed to create a Strategy.",
-          exception);
-    } catch (final IllegalAccessException exception) {
-      throw new InitializationException("Failed to create a Strategy.",
-          exception);
+    switch (Util.randomFromCollection(this.strategies)) {
+    case COOPERATIVE:
+      result = new CooperativeStrategy();
+      break;
+    case PAVLOV:
+      result = new PavlovStrategy();
+      break;
+    case RANDOM:
+    default:
+      result = new RandomStrategy();
+      break;
+    case RUTHLESS:
+      result = new RuthlessStrategy();
+      break;
+    case TIT_FOR_TAT:
+      result = new TitForTatStrategy();
+      break;
     }
-  }
 
-  /**
-   * Set the Set of Classes from which an IPDStrategy will be instantiated.
-   * 
-   * @param newStrategyClasses
-   *          The Set of Classes from which an IPDStrategy will be instantiated.
-   */
-  public void setStrategyClasses(
-      final Set<Class<? extends IPDStrategy>> newStrategyClasses) {
-    this.strategyClasses = newStrategyClasses;
+    return result;
   }
-
 }
