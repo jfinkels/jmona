@@ -96,10 +96,12 @@ public class DefaultTreeTester {
   public void testAllNodes() {
     final List<Node<Integer>> allBigTreeNodes = this.bigTree.allNodes();
 
+    final int numNodes = 3;
+
     assertTrue(allBigTreeNodes.contains(this.bigTreeNode1));
     assertTrue(allBigTreeNodes.contains(this.bigTreeNode2));
     assertTrue(allBigTreeNodes.contains(this.bigTreeNode3));
-    assertEquals(3, allBigTreeNodes.size());
+    assertEquals(numNodes, allBigTreeNodes.size());
 
     final List<Node<Integer>> allSmallTreeNodes = this.smallTree.allNodes();
 
