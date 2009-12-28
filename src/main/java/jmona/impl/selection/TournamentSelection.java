@@ -19,6 +19,7 @@
  */
 package jmona.impl.selection;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -40,6 +41,8 @@ public class TournamentSelection<T> implements SelectionFunction<T> {
    * tournament.
    */
   public static final int DEFAULT_TOURNAMENT_SIZE = 5;
+  /** A comparator for individuals based on their fitnesses. */
+  private final FitnessComparator<T> fitnessComparator = new FitnessComparator<T>();
   /**
    * The number of Individuals to be chosen at random to compete in the
    * tournament.
@@ -84,30 +87,9 @@ public class TournamentSelection<T> implements SelectionFunction<T> {
       }
     }
 
-    T champion = null;
-    double championFitness = Double.NEGATIVE_INFINITY;
-    double competitorFitness = Double.NEGATIVE_INFINITY;
+    this.fitnessComparator.setFitnesses(fitnesses);
 
-    // iterate over each competitor in the set of competitors
-    for (final T competitor : competitors) {
-
-      // get the fitness of the current competitor
-      competitorFitness = fitnesses.get(competitor);
-
-      // if the fitness of the current competitor is greater than the fitness of
-      // the current champion
-      if (competitorFitness > championFitness) {
-
-        // set the champion fitness to be the fitness of the current competitor
-        championFitness = competitorFitness;
-
-        // set the champion to be the current competitor
-        champion = competitor;
-
-      }
-    }
-
-    return champion;
+    return Collections.max(competitors, this.fitnessComparator);
   }
 
   /**
