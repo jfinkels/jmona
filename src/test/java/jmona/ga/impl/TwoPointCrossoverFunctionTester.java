@@ -37,7 +37,7 @@ public class TwoPointCrossoverFunctionTester {
    */
   @Test
   public void testSliceStartEnd() {
-    final TwoPointCrossoverFunction function = new TwoPointCrossoverFunction();
+    final TwoPointCrossoverFunction<Object> function = new TwoPointCrossoverFunction<Object>();
 
     final int length = 14;
     final Pair<Integer, Integer> pair = function.sliceStartEnd(length);

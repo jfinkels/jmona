@@ -38,7 +38,7 @@ public class OnePointCrossoverFunctionTester {
    */
   @Test
   public void testSliceStartEnd() {
-    final OnePointCrossoverFunction function = new OnePointCrossoverFunction();
+    final OnePointCrossoverFunction<Object> function = new OnePointCrossoverFunction<Object>();
 
     final int length = 14;
     final Pair<Integer, Integer> pair = function.sliceStartEnd(length);
