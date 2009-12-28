@@ -52,7 +52,7 @@
     <property name="target" ref="targetImage" />
   </bean>
 
-  <bean id="crossoverFunction" class="jmona.impl.TwoPointCrossoverFunction" />
+  <bean id="crossoverFunction" class="jmona.ga.impl.TwoPointCrossoverFunction" />
   
   <bean id="mutationFunction" class="jmona.impl.ListMutationFunction">
     <property name="elementMutationFunction" ref="polygonMutationFunction" />

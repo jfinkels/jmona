@@ -36,7 +36,7 @@
   </bean>
   
   <bean id="populationFactory" class="jmona.impl.CompleteDeepCopyableListFactory">
-    <property name="individualFactory" ref="individualFactory" />
+    <property name="elementFactory" ref="individualFactory" />
     <property name="size" value="2" />
   </bean>
 
