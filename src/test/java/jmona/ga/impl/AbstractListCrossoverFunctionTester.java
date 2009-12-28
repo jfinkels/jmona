@@ -1,5 +1,5 @@
 /**
- * AbstractBinaryStringCrossoverFunctionTester.java
+ * AbstractListCrossoverFunctionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -25,13 +25,12 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.impl.Pair;
-import jmona.impl.Util;
 
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test class for the AbstractBinaryStringCrossoverFunction class.
+ * Test class for the AbstractListCrossoverFunction class.
  * 
  * @author jfinkels
  */
@@ -64,66 +63,6 @@ public class AbstractListCrossoverFunctionTester {
     for (int i = 0; i < LENGTH; ++i) {
       this.individual1.add((byte) 0);
       this.individual2.add((byte) 1);
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.ga.impl.AbstractBinaryStringCrossoverFunction#swapBit(jmona.ga.BinaryString, jmona.ga.BinaryString, int)}
-   * .
-   */
-  @Test
-  public void testSwapBit() {
-
-    final int index = 5;
-
-    Util.swap(this.individual1, this.individual2, index);
-
-    for (int i = 0; i < LENGTH; ++i) {
-      if (i == index) {
-        assertEquals(1, this.individual1.get(i).intValue());
-        assertEquals(0, this.individual2.get(i).intValue());
-      } else {
-        assertEquals(0, this.individual1.get(i).intValue());
-        assertEquals(1, this.individual2.get(i).intValue());
-      }
-    }
-
-    Util.swap(this.individual1, this.individual2, index);
-
-    for (int i = 0; i < LENGTH; ++i) {
-      assertEquals(0, this.individual1.get(i).intValue());
-      assertEquals(1, this.individual2.get(i).intValue());
-    }
-
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.ga.impl.AbstractBinaryStringCrossoverFunction#swapBits(jmona.ga.BinaryString, jmona.ga.BinaryString, int, int)}
-   * .
-   */
-  @Test
-  public void testSwapBits() {
-    final int start = 3;
-    final int end = 9;
-    Util.swap(this.individual1, this.individual2, start, end);
-
-    for (int i = 0; i < LENGTH; ++i) {
-      if (i >= start && i < end) {
-        assertEquals(1, this.individual1.get(i).intValue());
-        assertEquals(0, this.individual2.get(i).intValue());
-      } else {
-        assertEquals(0, this.individual1.get(i).intValue());
-        assertEquals(1, this.individual2.get(i).intValue());
-      }
-    }
-
-    Util.swap(this.individual1, this.individual2, start, end);
-
-    for (int i = 0; i < LENGTH; ++i) {
-      assertEquals(0, this.individual1.get(i).intValue());
-      assertEquals(1, this.individual2.get(i).intValue());
     }
   }
 
