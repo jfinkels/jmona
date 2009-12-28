@@ -19,21 +19,50 @@
  */
 package jmona.ga.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 /**
+ * Test class for the BitFactory class.
+ * 
  * @author jfinkels
  */
 public class BitFactoryTester {
+
+  /** The number of bits to create. */
+  public static final int NUM_BITS = 100000;
 
   /**
    * Test method for {@link jmona.ga.impl.BitFactory#createObject()}.
    */
   @Test
   public void testCreateObject() {
-    fail("Not yet implemented");
+    final BitFactory factory = new BitFactory();
+
+    int numberOfOnes = 0;
+    int numberOfZeros = 0;
+    Byte bit = null;
+    for (int i = 0; i < NUM_BITS; ++i) {
+      bit = factory.createObject();
+      assertTrue(bit == 0 || bit == 1);
+
+      if (bit == 0) {
+        numberOfZeros += 1;
+      }
+
+      if (bit == 1) {
+        numberOfOnes += 1;
+      }
+    }
+
+    assertEquals(NUM_BITS, numberOfOnes + numberOfZeros);
+
+    final int expected = NUM_BITS / 2;
+    final double delta = expected * 0.1;
+    assertEquals(expected, numberOfOnes, delta);
+    assertEquals(expected, numberOfOnes, delta);
   }
 
 }
