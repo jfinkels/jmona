@@ -21,14 +21,11 @@ package jmona.example.monalisa;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.io.File;
 
 import jmona.DeepCopyableList;
 import jmona.EvolutionContext;
-import jmona.example.monalisa.ColoredPolygon;
-import jmona.example.monalisa.ImageOutputPostProcessor;
 import jmona.exceptions.EvolutionException;
 import jmona.exceptions.ProcessingException;
 import jmona.test.Util;
