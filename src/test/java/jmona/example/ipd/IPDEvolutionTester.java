@@ -40,6 +40,8 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 /**
  * Test class for the iterated prisoner's dilemma evolution.
  * 
+ * @param <S>
+ *          The type of Strategy in the evolution.
  * @author jfinkels
  */
 @ContextConfiguration
