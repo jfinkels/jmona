@@ -21,6 +21,7 @@ package jmona.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 import java.util.Vector;
@@ -50,6 +51,14 @@ public class ListMutationFunctionTester {
   public void testMutate() {
     final ListMutationFunction<ExampleIndividual> function = new ListMutationFunction<ExampleIndividual>();
 
+    try {
+      function.mutate(null);
+      Util.shouldHaveThrownException();
+    } catch (final MutationException exception) {
+      // elementMutationFunction has not been set
+      assertTrue(exception instanceof MutationException);
+    }
+    
     final double initialFitness = 1;
     final ExampleIndividual individual = new ExampleIndividual(initialFitness);
 

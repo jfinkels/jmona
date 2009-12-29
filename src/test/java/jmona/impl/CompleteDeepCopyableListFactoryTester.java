@@ -22,6 +22,7 @@ package jmona.impl;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
 import jmona.DeepCopyableList;
 import jmona.exceptions.CopyingException;
 import jmona.exceptions.InitializationException;
@@ -51,6 +52,15 @@ public class CompleteDeepCopyableListFactoryTester {
 
     final CompleteDeepCopyableListFactory<ExampleIndividual> factory = new CompleteDeepCopyableListFactory<ExampleIndividual>();
     factory.setSize(size);
+    
+    try {
+      factory.createObject();
+      Util.shouldHaveThrownException();
+    } catch (final InitializationException exception) {
+      // elementFactory has not been set
+      assertTrue(exception instanceof InitializationException);
+    }
+    
     factory.setElementFactory(new ExampleIndividualFactory());
 
     // create a list
