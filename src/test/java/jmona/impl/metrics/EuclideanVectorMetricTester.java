@@ -20,6 +20,8 @@
 package jmona.impl.metrics;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 import java.util.Vector;
@@ -70,6 +72,26 @@ public class EuclideanVectorMetricTester extends
     this.setX(this.v);
     this.setY(this.u);
     this.setZ(this.w);
+  }
+
+  /** Test for throwing Exceptions. */
+  @Test
+  public void testException() {
+    final EuclideanVectorMetric<Double> metric = new EuclideanVectorMetric<Double>();
+
+    final List<Double> vector1 = new Vector<Double>();
+    final List<Double> vector2 = new Vector<Double>();
+
+    vector1.add(0.0);
+
+    try {
+      metric.measure(vector1, vector2);
+      Util.shouldHaveThrownException();
+    } catch (final MetricException exception) {
+      // the two vectors have different sizes
+      assertFalse(vector1.size() == vector2.size());
+      assertTrue(exception instanceof MetricException);
+    }
   }
 
   /** Test the metric with known values. */
