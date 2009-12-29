@@ -22,20 +22,38 @@ package jmona.impl.selection;
 import java.util.Comparator;
 import java.util.Map;
 
-import jmona.exceptions.FitnessException;
-
 /**
+ * A Comparator for individuals in an evolution based on their fitnesses.
+ * 
+ * @param <T>
+ *          The type of individual to compare based on fitness.
  * @author jfinkels
  */
 public class FitnessComparator<T> implements Comparator<T> {
 
+  /** The mapping from individual to fitness. */
   private Map<T, Double> fitnesses = null;
-  
+
+  /**
+   * Set the mapping from individual to fitness.
+   * 
+   * @param newFitnesses
+   *          The mapping from individual to fitness.
+   */
   public void setFitnesses(final Map<T, Double> newFitnesses) {
     this.fitnesses = newFitnesses;
   }
-  
-  /* (non-Javadoc)
+
+  /**
+   * Compare the fitness of the specified objects with respect to the mapping
+   * specified in the {@link #setFitnesses(Map)} method.
+   * 
+   * @param object1
+   *          An individual.
+   * @param object2
+   *          Another individual.
+   * @return The result of the comparison of their fitnesses using the
+   *         {@link Double#compareTo(Double)} method.
    * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
    */
   @Override
