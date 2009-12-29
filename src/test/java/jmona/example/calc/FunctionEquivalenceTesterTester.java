@@ -22,10 +22,11 @@ package jmona.example.calc;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import jmona.SingleInputFunction;
-import jmona.example.calc.FunctionEquivalenceTester;
 import jmona.example.calc.operations.Util;
+import jmona.exceptions.MappingException;
 import jmona.gp.EquivalenceException;
 import jmona.gp.EquivalenceTester;
+import jmona.impl.example.ExampleBadMapping;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -85,5 +86,17 @@ public class FunctionEquivalenceTesterTester {
       jmona.test.Util.fail(exception);
     }
 
+  }
+
+  /** Test for Exceptions being thrown. */
+  @Test
+  public void testException() {
+    try {
+      this.equivalenceTester.areEquivalent(new ExampleBadMapping(),
+          new ExampleBadMapping(), 0.0);
+      jmona.test.Util.shouldHaveThrownException();
+    } catch (final EquivalenceException exception) {
+      assertTrue(exception.getCause() instanceof MappingException);
+    }
   }
 }
