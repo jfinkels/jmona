@@ -21,7 +21,6 @@ package jmona.exceptions;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import jmona.exceptions.SelectionException;
 
 import org.junit.Test;
 
@@ -33,7 +32,8 @@ import org.junit.Test;
 public class SelectionExceptionTester {
 
   /**
-   * Test method for {@link jmona.exceptions.SelectionException#SelectionException()}.
+   * Test method for
+   * {@link jmona.exceptions.SelectionException#SelectionException()}.
    */
   @Test
   public void testSelectionException() {
@@ -46,7 +46,8 @@ public class SelectionExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.SelectionException#SelectionException(java.lang.String)}.
+   * {@link jmona.exceptions.SelectionException#SelectionException(java.lang.String)}
+   * .
    */
   @Test
   public void testSelectionExceptionString() {
@@ -79,7 +80,8 @@ public class SelectionExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.SelectionException#SelectionException(java.lang.Throwable)}.
+   * {@link jmona.exceptions.SelectionException#SelectionException(java.lang.Throwable)}
+   * .
    */
   @Test
   public void testSelectionExceptionThrowable() {

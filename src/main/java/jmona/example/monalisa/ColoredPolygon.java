@@ -29,7 +29,8 @@ import jmona.DeepCopyable;
  * 
  * @author jfinkels
  */
-public class ColoredPolygon extends Polygon implements DeepCopyable<ColoredPolygon> {
+public class ColoredPolygon extends Polygon implements
+    DeepCopyable<ColoredPolygon> {
 
   /** Default generated serial version UID. */
   private static final long serialVersionUID = 5912239970326362556L;

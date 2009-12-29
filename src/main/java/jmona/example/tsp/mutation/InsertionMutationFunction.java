@@ -30,7 +30,8 @@ import jmona.impl.Util;
  * 
  * @author jfinkels
  */
-public class InsertionMutationFunction implements MutationFunction<List<Integer>> {
+public class InsertionMutationFunction implements
+    MutationFunction<List<Integer>> {
 
   /**
    * Choose a city in the specified Tour at random and move it to a new random

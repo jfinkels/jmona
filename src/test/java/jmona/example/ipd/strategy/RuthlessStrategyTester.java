@@ -21,8 +21,6 @@ package jmona.example.ipd.strategy;
 
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
-import jmona.example.ipd.strategy.Action;
-import jmona.example.ipd.strategy.RuthlessStrategy;
 
 import org.junit.Test;
 

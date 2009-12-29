@@ -72,8 +72,7 @@ public class TSPFitnessFunction implements FitnessFunction<List<Integer>> {
     }
 
     // add the distance between the first and last vertices
-    sum += this.graph.edgeBetween(tour.get(0), tour.get(tour
-        .size() - 1));
+    sum += this.graph.edgeBetween(tour.get(0), tour.get(tour.size() - 1));
 
     // a larger total distance should result in a lower fitness
     double result = 0;

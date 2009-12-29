@@ -28,7 +28,8 @@ import jmona.gp.FunctionNode;
  * 
  * @author jfinkels
  */
-public class ExampleFunctionNodeFactory implements Factory<FunctionNode<Integer>> {
+public class ExampleFunctionNodeFactory implements
+    Factory<FunctionNode<Integer>> {
 
   /**
    * Create an ExampleBinaryNode.

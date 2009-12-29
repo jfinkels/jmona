@@ -28,7 +28,8 @@ import java.util.List;
  *          The type of element in the List to create.
  * @author jfinkels
  */
-public interface DeepCopyableListFactory<E extends DeepCopyable<E>> extends Factory<List<E>> {
+public interface DeepCopyableListFactory<E extends DeepCopyable<E>> extends
+    Factory<List<E>> {
   /**
    * Set the factory which creates objects of type E.
    * 

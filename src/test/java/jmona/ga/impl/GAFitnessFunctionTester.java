@@ -126,8 +126,7 @@ public class GAFitnessFunctionTester {
   }
 
   /**
-   * Test method for
-   * {@link jmona.ga.impl.GAFitnessFunction#setTarget(Object)}.
+   * Test method for {@link jmona.ga.impl.GAFitnessFunction#setTarget(Object)}.
    */
   @Test
   public void testSetTarget() {

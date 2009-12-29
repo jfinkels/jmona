@@ -29,7 +29,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author jfinkels
  */
 @RunWith(Suite.class)
-@SuiteClasses({ CooperativeStrategyTester.class, IPDStrategyTester.class,
+@SuiteClasses({  CooperativeStrategyTester.class, IPDStrategyTester.class,
     PavlovStrategyTester.class, RandomStrategyTester.class,
     RuthlessStrategyTester.class, TitForTatStrategyTester.class })
 public class AllTest {

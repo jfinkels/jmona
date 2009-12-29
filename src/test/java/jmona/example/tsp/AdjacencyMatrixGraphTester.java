@@ -20,7 +20,6 @@
 package jmona.example.tsp;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.tsp.AdjacencyMatrixGraph;
 
 import org.junit.Test;
 

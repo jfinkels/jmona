@@ -24,9 +24,9 @@
  * The most important class is the {@link jmona.ga.impl.GAEvolutionContext},
  * which provides the context in which an evolution can run.
  * 
- * This package also provides a {@link jmona.ga.impl.CharArrayBinaryString} class, which
- * encapsulates a binary string of arbitrary length. This binary string can be
- * used in a genetic algorithm by implementing a custom
+ * This package also provides a {@link jmona.ga.impl.CharArrayBinaryString}
+ * class, which encapsulates a binary string of arbitrary length. This binary
+ * string can be used in a genetic algorithm by implementing a custom
  * {@link jmona.FitnessFunction}.
  * 
  * @author jfinkels

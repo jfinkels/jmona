@@ -25,7 +25,6 @@ import java.io.File;
 import java.io.IOException;
 
 import jmona.example.tsp.DirectedGraph;
-import jmona.example.tsp.io.TSPGraphReader;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -53,7 +52,7 @@ public class TSPGraphReaderTester {
   @Test
   public void testFromFile() {
     new TSPGraphReader();
-    
+
     DirectedGraph<Integer, Double> graph = null;
     try {
       graph = TSPGraphReader.fromFile(new File(TESTFILE));

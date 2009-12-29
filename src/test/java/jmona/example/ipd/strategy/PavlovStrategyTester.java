@@ -22,8 +22,6 @@ package jmona.example.ipd.strategy;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
-import jmona.example.ipd.strategy.Action;
-import jmona.example.ipd.strategy.PavlovStrategy;
 import jmona.impl.Pair;
 
 import org.junit.Before;
@@ -51,8 +49,8 @@ public class PavlovStrategyTester {
    */
   @Test
   public void testDeepCopy() {
-    final Pair<Action, Action> pair = new Pair<Action, Action>(
-        Action.DEFECT, Action.COOPERATE);
+    final Pair<Action, Action> pair = new Pair<Action, Action>(Action.DEFECT,
+        Action.COOPERATE);
     strategy.addToMemory(pair);
 
     final PavlovStrategy clone = strategy.deepCopy();
@@ -78,8 +76,8 @@ public class PavlovStrategyTester {
         Action.DEFECT));
     assertEquals(Action.COOPERATE, this.strategy.nextAction());
 
-    this.strategy.addToMemory(new Pair<Action, Action>(
-        Action.COOPERATE, Action.COOPERATE));
+    this.strategy.addToMemory(new Pair<Action, Action>(Action.COOPERATE,
+        Action.COOPERATE));
     assertEquals(Action.COOPERATE, this.strategy.nextAction());
 
     // next action should defect if the previous actions were different
@@ -88,8 +86,8 @@ public class PavlovStrategyTester {
         Action.COOPERATE));
     assertEquals(Action.DEFECT, this.strategy.nextAction());
 
-    this.strategy.addToMemory(new Pair<Action, Action>(
-        Action.COOPERATE, Action.DEFECT));
+    this.strategy.addToMemory(new Pair<Action, Action>(Action.COOPERATE,
+        Action.DEFECT));
     assertEquals(Action.DEFECT, this.strategy.nextAction());
   }
 

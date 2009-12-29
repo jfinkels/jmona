@@ -29,16 +29,19 @@ import jmona.exceptions.CrossoverException;
  * 
  * @author jfinkels
  */
-public class EdgeRecombinationCrossoverFunction implements CrossoverFunction<List<Integer>> {
+public class EdgeRecombinationCrossoverFunction implements
+    CrossoverFunction<List<Integer>> {
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
    */
   @Override
   public void crossover(final List<Integer> tour1, final List<Integer> tour2)
       throws CrossoverException {
     // TODO Auto-generated method stub
-    
+
   }
 
 }

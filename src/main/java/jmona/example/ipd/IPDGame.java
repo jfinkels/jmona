@@ -187,10 +187,10 @@ public class IPDGame implements TwoPlayerGame<IPDStrategy> {
       }
 
       // make pairs of actions performed to give to the memory of each strategy
-      actionsPerformedStrategy1 = new Pair<Action, Action>(
-          actionOfStrategy1, actionOfStrategy2);
-      actionsPerformedStrategy2 = new Pair<Action, Action>(
-          actionOfStrategy2, actionOfStrategy1);
+      actionsPerformedStrategy1 = new Pair<Action, Action>(actionOfStrategy1,
+          actionOfStrategy2);
+      actionsPerformedStrategy2 = new Pair<Action, Action>(actionOfStrategy2,
+          actionOfStrategy1);
 
       // add the actions to the memory of each strategy
       strategy1.addToMemory(actionsPerformedStrategy1);

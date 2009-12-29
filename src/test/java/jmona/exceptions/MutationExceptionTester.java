@@ -21,7 +21,6 @@ package jmona.exceptions;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import jmona.exceptions.MutationException;
 
 import org.junit.Test;
 
@@ -33,7 +32,8 @@ import org.junit.Test;
 public class MutationExceptionTester {
 
   /**
-   * Test method for {@link jmona.exceptions.MutationException#MutationException()}.
+   * Test method for
+   * {@link jmona.exceptions.MutationException#MutationException()}.
    */
   @Test
   public void testMutationException() {
@@ -46,7 +46,8 @@ public class MutationExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MutationException#MutationException(java.lang.String)}.
+   * {@link jmona.exceptions.MutationException#MutationException(java.lang.String)}
+   * .
    */
   @Test
   public void testMutationExceptionString() {
@@ -79,7 +80,8 @@ public class MutationExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MutationException#MutationException(java.lang.Throwable)}.
+   * {@link jmona.exceptions.MutationException#MutationException(java.lang.Throwable)}
+   * .
    */
   @Test
   public void testMutationExceptionThrowable() {

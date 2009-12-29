@@ -32,7 +32,8 @@ import org.junit.Test;
 public class EquivalenceExceptionTester {
 
   /**
-   * Test method for {@link jmona.gp.EquivalenceException#EquivalenceException()}.
+   * Test method for
+   * {@link jmona.gp.EquivalenceException#EquivalenceException()}.
    */
   @Test
   public void testEquivalenceException() {
@@ -45,7 +46,8 @@ public class EquivalenceExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.gp.EquivalenceException#EquivalenceException(java.lang.String)}.
+   * {@link jmona.gp.EquivalenceException#EquivalenceException(java.lang.String)}
+   * .
    */
   @Test
   public void testEquivalenceExceptionString() {

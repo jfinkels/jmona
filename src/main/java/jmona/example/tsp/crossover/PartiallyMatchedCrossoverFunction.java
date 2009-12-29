@@ -30,7 +30,8 @@ import org.apache.log4j.Logger;
 /**
  * @author jfinkels
  */
-public class PartiallyMatchedCrossoverFunction implements CrossoverFunction<List<Integer>> {
+public class PartiallyMatchedCrossoverFunction implements
+    CrossoverFunction<List<Integer>> {
 
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger
@@ -61,7 +62,6 @@ public class PartiallyMatchedCrossoverFunction implements CrossoverFunction<List
     LOG.debug("Child 1: " + child1);
     LOG.debug("Child 2: " + child2);
 
-    
   }
 
 }

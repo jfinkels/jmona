@@ -32,7 +32,8 @@ import jmona.impl.Util;
  * @author jfinkels
  */
 // TODO generalize all TSP MutationFunctions to all Lists
-public class DisplacementMutationFunction implements MutationFunction<List<Integer>> {
+public class DisplacementMutationFunction implements
+    MutationFunction<List<Integer>> {
 
   /**
    * Select a random sublist from the specified Tour and displace it to a random

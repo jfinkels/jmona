@@ -20,7 +20,6 @@
 package jmona.example.tsp.crossover;
 
 import static org.junit.Assert.fail;
-import jmona.example.tsp.crossover.PartiallyMatchedCrossoverFunction;
 
 import org.junit.Test;
 

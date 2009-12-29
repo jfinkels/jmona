@@ -82,7 +82,7 @@ public class ColoredPolygonNodeTester {
 
     return true;
   }
-  
+
   /** The Node under test. */
   private ColoredPolygonNode node = null;
   /** The ColoredPolygon in the Node under test. */
@@ -134,7 +134,7 @@ public class ColoredPolygonNodeTester {
     }
 
     assertNotNull(clonedNode);
-        
+
     ColoredPolygon clonedPolygon = null;
 
     try {
@@ -164,21 +164,21 @@ public class ColoredPolygonNodeTester {
     assertEquals(1, polygons.size());
     assertTrue(polygons.contains(this.polygon));
     assertTrue(samePolygon(polygons.get(0), this.polygon));
-    
+
     final ColoredPolygonNodeFactory factory = new ColoredPolygonNodeFactory();
     factory.setColoredPolygonFactory(new ColoredPolygonFactory());
     this.node.children().add(factory.createObject());
-    
+
     try {
       polygons = this.node.evaluate();
     } catch (final EvaluationException exception) {
       Util.fail(exception);
     }
-    
+
     assertEquals(2, polygons.size());
     assertTrue(polygons.contains(this.polygon));
   }
-  
+
   /**
    * Test method for
    * {@link jmona.example.monalisa.gp.ColoredPolygonNode#setColoredPolygon(jmona.example.monalisa.ColoredPolygon)}
@@ -187,7 +187,7 @@ public class ColoredPolygonNodeTester {
   @Test
   public void testSetColoredPolygon() {
     final ColoredPolygon newPolygon = this.polygon.deepCopy();
-    
+
     this.node.setColoredPolygon(newPolygon);
 
     ColoredPolygon newNodePolygon = null;
@@ -196,7 +196,6 @@ public class ColoredPolygonNodeTester {
     } catch (final EvaluationException exception) {
       Util.fail(exception);
     }
-    
 
     assertTrue(samePolygon(newPolygon, newNodePolygon));
     assertNotSame(newNodePolygon, this.polygon);

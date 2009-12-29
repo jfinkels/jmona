@@ -118,7 +118,7 @@ public class TreeMappingTester {
         assertEquals(currentColor, pixels[j * width + i]);
       }
     }
-    
+
     tree = new ExampleBadTree<List<ColoredPolygon>>(node);
     try {
       function.execute(tree);

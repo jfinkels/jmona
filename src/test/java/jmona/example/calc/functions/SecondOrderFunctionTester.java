@@ -20,7 +20,6 @@
 package jmona.example.calc.functions;
 
 import static org.junit.Assert.assertSame;
-import jmona.example.calc.functions.SecondOrderFunction;
 import jmona.example.calc.operations.Util;
 
 import org.junit.Before;

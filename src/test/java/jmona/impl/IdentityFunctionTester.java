@@ -32,8 +32,7 @@ public class IdentityFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.IdentityFunction#execute(java.lang.Object)}
-   * .
+   * {@link jmona.impl.IdentityFunction#execute(java.lang.Object)} .
    */
   @Test
   public void testExecute() {

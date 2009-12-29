@@ -30,7 +30,8 @@ import jmona.impl.Pair;
  * 
  * @author jfinkels
  */
-public class PavlovStrategy extends IPDStrategy implements DeepCopyable<PavlovStrategy>{
+public class PavlovStrategy extends IPDStrategy implements
+    DeepCopyable<PavlovStrategy> {
 
   /**
    * {@inheritDoc}

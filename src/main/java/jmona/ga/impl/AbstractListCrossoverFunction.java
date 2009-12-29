@@ -71,5 +71,4 @@ public abstract class AbstractListCrossoverFunction<E> implements
    */
   protected abstract Pair<Integer, Integer> sliceStartEnd(final int length);
 
-
 }

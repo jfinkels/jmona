@@ -34,7 +34,8 @@ import org.junit.Test;
  * 
  * @author jfinkels
  */
-public class ColoredPolygonMutationFunctionTester extends ColoredPolygonTestSupport {
+public class ColoredPolygonMutationFunctionTester extends
+    ColoredPolygonTestSupport {
 
   /** The location of the blue value of a pixel packed in an int. */
   public static final int BLUE = 8 * 0;

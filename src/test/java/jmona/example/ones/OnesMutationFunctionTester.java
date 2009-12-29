@@ -19,7 +19,7 @@
  */
 package jmona.example.ones;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -29,7 +29,8 @@ import org.junit.Test;
 public class OnesMutationFunctionTester {
 
   /**
-   * Test method for {@link jmona.example.ones.OnesMutationFunction#mutated(java.lang.Byte)}.
+   * Test method for
+   * {@link jmona.example.ones.OnesMutationFunction#mutated(java.lang.Byte)}.
    */
   @Test
   public void testMutatedByte() {

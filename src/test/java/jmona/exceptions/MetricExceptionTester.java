@@ -21,7 +21,6 @@ package jmona.exceptions;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import jmona.exceptions.MetricException;
 
 import org.junit.Test;
 
@@ -79,7 +78,8 @@ public class MetricExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MetricException#MetricException(java.lang.Throwable)}.
+   * {@link jmona.exceptions.MetricException#MetricException(java.lang.Throwable)}
+   * .
    */
   @Test
   public void testMetricExceptionThrowable() {

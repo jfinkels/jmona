@@ -20,7 +20,6 @@
 package jmona.example.tsp.crossover;
 
 import static org.junit.Assert.fail;
-import jmona.example.tsp.crossover.EdgeRecombinationCrossoverFunction;
 
 import org.junit.Test;
 
@@ -31,7 +30,7 @@ import org.junit.Test;
  */
 public class EdgeRecombinationCrossoverFunctionTester extends
     AbstractTSPCrossoverFunctionTester {
-  
+
   /** Instantiate this test class with a EdgeRecombinationCrossoverFunction. */
   public EdgeRecombinationCrossoverFunctionTester() {
     super(new EdgeRecombinationCrossoverFunction());

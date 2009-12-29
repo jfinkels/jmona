@@ -34,7 +34,8 @@ import org.apache.log4j.Logger;
  * 
  * @author jfinkels
  */
-public class OrderedCrossoverFunction implements CrossoverFunction<List<Integer>> {
+public class OrderedCrossoverFunction implements
+    CrossoverFunction<List<Integer>> {
 
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger

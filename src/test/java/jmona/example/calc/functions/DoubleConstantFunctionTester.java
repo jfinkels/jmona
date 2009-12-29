@@ -20,7 +20,6 @@
 package jmona.example.calc.functions;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.calc.functions.DoubleConstantFunction;
 
 import org.junit.Test;
 

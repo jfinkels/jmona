@@ -70,9 +70,9 @@ public class MappingFitnessFunctionTester {
         } else {
           expectedFitness = Math.abs(1.0 / i);
         }
-        
-        assertEquals(expectedFitness, this.function.fitness(new ExampleIndividual(i)),
-            ZERO_DELTA);
+
+        assertEquals(expectedFitness, this.function
+            .fitness(new ExampleIndividual(i)), ZERO_DELTA);
       }
     } catch (final FitnessException exception) {
       Util.fail(exception);

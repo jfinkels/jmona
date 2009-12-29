@@ -38,7 +38,7 @@ public class TSPGraphReader {
 
   /** A regular expression matching any whitespace character. */
   public static final String WHITESPACE = "\\s+";
-  
+
   /**
    * Generate a DirectedGraph from the adjacency matrix described in the
    * specified File.
@@ -53,10 +53,10 @@ public class TSPGraphReader {
    */
   public static DirectedGraph<Integer, Double> fromFile(final File file)
       throws IOException {
-    
+
     // instantiate a list for all lines
     final List<String[]> allLines = allLines(file);
-    
+
     // get the number of vertices in the graph
     final int numberOfVertices = allLines.size();
 
@@ -71,7 +71,7 @@ public class TSPGraphReader {
       // iterate over each edge weight in the line
       j = 0;
       for (final String weight : weights) {
-        
+
         // put that value in the adjacency matrix
         adjacencyMatrix[i][j] = Double.valueOf(weight);
 

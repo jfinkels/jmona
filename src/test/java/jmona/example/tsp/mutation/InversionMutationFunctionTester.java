@@ -21,7 +21,6 @@ package jmona.example.tsp.mutation;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import jmona.example.tsp.mutation.InversionMutationFunction;
 import jmona.exceptions.MutationException;
 import jmona.test.Util;
 

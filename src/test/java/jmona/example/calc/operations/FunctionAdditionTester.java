@@ -21,7 +21,6 @@ package jmona.example.calc.operations;
 
 import static org.junit.Assert.assertEquals;
 import jmona.SingleInputFunction;
-import jmona.example.calc.operations.FunctionAddition;
 import jmona.exceptions.MappingException;
 import jmona.gp.impl.UniformBinaryOperation;
 
@@ -49,37 +48,37 @@ public class FunctionAdditionTester {
     SingleInputFunction<Double, Double> result = null;
 
     try {
-    
-    // 0 + 0 = 0
-    result = operation.operate(Util.ZERO_FUNCTION, Util.ZERO_FUNCTION);
-    assertEquals(Util.ZERO_FUNCTION.execute(0.0), result.execute(0.0),
-        ZERO_DELTA);
 
-    // 0 + 1 = 1
-    result = operation.operate(Util.ZERO_FUNCTION, Util.ONE_FUNCTION);
-    assertEquals(Util.ONE_FUNCTION.execute(0.0), result.execute(0.0),
-        ZERO_DELTA);
+      // 0 + 0 = 0
+      result = operation.operate(Util.ZERO_FUNCTION, Util.ZERO_FUNCTION);
+      assertEquals(Util.ZERO_FUNCTION.execute(0.0), result.execute(0.0),
+          ZERO_DELTA);
 
-    // 1 + 0 = 1
-    result = operation.operate(Util.ONE_FUNCTION, Util.ZERO_FUNCTION);
-    assertEquals(Util.ONE_FUNCTION.execute(0.0), result.execute(0.0),
-        ZERO_DELTA);
+      // 0 + 1 = 1
+      result = operation.operate(Util.ZERO_FUNCTION, Util.ONE_FUNCTION);
+      assertEquals(Util.ONE_FUNCTION.execute(0.0), result.execute(0.0),
+          ZERO_DELTA);
 
-    // 0 + 2 = 2
-    result = operation.operate(Util.ZERO_FUNCTION, Util.TWO_FUNCTION);
-    assertEquals(Util.TWO_FUNCTION.execute(0.0), result.execute(0.0),
-        ZERO_DELTA);
+      // 1 + 0 = 1
+      result = operation.operate(Util.ONE_FUNCTION, Util.ZERO_FUNCTION);
+      assertEquals(Util.ONE_FUNCTION.execute(0.0), result.execute(0.0),
+          ZERO_DELTA);
 
-    // 2 + 0 = 2
-    result = operation.operate(Util.TWO_FUNCTION, Util.ZERO_FUNCTION);
-    assertEquals(Util.TWO_FUNCTION.execute(0.0), result.execute(0.0),
-        ZERO_DELTA);
+      // 0 + 2 = 2
+      result = operation.operate(Util.ZERO_FUNCTION, Util.TWO_FUNCTION);
+      assertEquals(Util.TWO_FUNCTION.execute(0.0), result.execute(0.0),
+          ZERO_DELTA);
 
-    // 1 + 1 = 2
-    result = operation.operate(Util.ONE_FUNCTION, Util.ONE_FUNCTION);
-    assertEquals(Util.TWO_FUNCTION.execute(0.0), result.execute(0.0),
-        ZERO_DELTA);
-    
+      // 2 + 0 = 2
+      result = operation.operate(Util.TWO_FUNCTION, Util.ZERO_FUNCTION);
+      assertEquals(Util.TWO_FUNCTION.execute(0.0), result.execute(0.0),
+          ZERO_DELTA);
+
+      // 1 + 1 = 2
+      result = operation.operate(Util.ONE_FUNCTION, Util.ONE_FUNCTION);
+      assertEquals(Util.TWO_FUNCTION.execute(0.0), result.execute(0.0),
+          ZERO_DELTA);
+
     } catch (final MappingException exception) {
       jmona.test.Util.fail(exception);
     }

@@ -28,8 +28,11 @@ import jmona.impl.ImmutableElementsListMutationFunction;
 public class OnesMutationFunction extends
     ImmutableElementsListMutationFunction<Byte> {
 
-  /* (non-Javadoc)
-   * @see jmona.impl.ImmutableElementsListMutationFunction#mutated(java.lang.Object)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * jmona.impl.ImmutableElementsListMutationFunction#mutated(java.lang.Object)
    */
   @Override
   protected Byte mutated(final Byte element) throws MutationException {

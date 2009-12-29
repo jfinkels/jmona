@@ -19,8 +19,7 @@
  */
 package jmona.example.tsp.crossover;
 
-import static org.junit.Assert.*;
-import jmona.example.tsp.crossover.OrderedCrossoverFunction;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 

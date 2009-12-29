@@ -58,7 +58,7 @@ public class ListMutationFunctionTester {
       // elementMutationFunction has not been set
       assertTrue(exception instanceof MutationException);
     }
-    
+
     final double initialFitness = 1;
     final ExampleIndividual individual = new ExampleIndividual(initialFitness);
 

@@ -22,8 +22,6 @@ package jmona.example.ipd.strategy;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
-import jmona.example.ipd.strategy.Action;
-import jmona.example.ipd.strategy.TitForTatStrategy;
 import jmona.impl.Pair;
 
 import org.junit.Test;
@@ -43,8 +41,8 @@ public class TitForTatStrategyTester {
   public void testDeepCopy() {
     final TitForTatStrategy strategy = new TitForTatStrategy();
 
-    final Pair<Action, Action> pair = new Pair<Action, Action>(
-        Action.DEFECT, Action.COOPERATE);
+    final Pair<Action, Action> pair = new Pair<Action, Action>(Action.DEFECT,
+        Action.COOPERATE);
     strategy.addToMemory(pair);
 
     final TitForTatStrategy clone = strategy.deepCopy();
@@ -68,8 +66,8 @@ public class TitForTatStrategyTester {
 
     // next action should do what the previous adversary did
 
-    strategy.addToMemory(new Pair<Action, Action>(Action.DEFECT,
-        Action.DEFECT));
+    strategy
+        .addToMemory(new Pair<Action, Action>(Action.DEFECT, Action.DEFECT));
     assertEquals(Action.DEFECT, strategy.nextAction());
 
     strategy.addToMemory(new Pair<Action, Action>(Action.COOPERATE,

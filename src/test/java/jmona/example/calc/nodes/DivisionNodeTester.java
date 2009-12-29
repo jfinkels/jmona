@@ -20,8 +20,6 @@
 package jmona.example.calc.nodes;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.calc.nodes.DivisionNode;
-import jmona.example.calc.nodes.NumberNode;
 import jmona.exceptions.MappingException;
 import jmona.gp.EvaluationException;
 import jmona.test.Util;

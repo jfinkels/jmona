@@ -75,7 +75,7 @@ public abstract class AbstractFunctionNode<V> extends AbstractNode<V> implements
 
     // copy each child node
     final List<Node<T>> copiedChildren = Util.deepCopy(childrenToCopy);
-    
+
     // iterate over each cloned child Node
     for (final Node<T> clonedChild : copiedChildren) {
 

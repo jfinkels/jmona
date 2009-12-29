@@ -36,8 +36,7 @@ public class TourFactoryTester {
   public static final int NUM_CITIES = 10;
 
   /**
-   * Test method for {@link jmona.example.tsp.TourFactory#createIndividual()}
-   * .
+   * Test method for {@link jmona.example.tsp.TourFactory#createIndividual()} .
    */
   @Test
   public void testCreateIndividual() {

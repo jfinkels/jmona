@@ -21,7 +21,6 @@ package jmona.impl;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import jmona.impl.Pair;
 
 import org.junit.Test;
 
@@ -33,8 +32,8 @@ import org.junit.Test;
 public class PairTester {
 
   /**
-   * Test method for {@link jmona.impl.Pair#Pair(java.lang.Object, java.lang.Object)}
-   * .
+   * Test method for
+   * {@link jmona.impl.Pair#Pair(java.lang.Object, java.lang.Object)} .
    */
   @Test
   public void testPair() {

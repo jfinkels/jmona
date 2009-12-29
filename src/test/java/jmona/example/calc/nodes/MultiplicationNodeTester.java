@@ -20,8 +20,6 @@
 package jmona.example.calc.nodes;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.calc.nodes.MultiplicationNode;
-import jmona.example.calc.nodes.NumberNode;
 import jmona.exceptions.MappingException;
 import jmona.gp.EvaluationException;
 import jmona.test.Util;
@@ -56,6 +54,7 @@ public class MultiplicationNodeTester {
   private MultiplicationNode node = null;
   /** The right child Node. */
   private NumberNode rightChild = null;
+
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
@@ -71,8 +70,7 @@ public class MultiplicationNodeTester {
 
   /**
    * Test method for
-   * {@link jmona.example.calc.nodes.MultiplicationNode#MultiplicationNode()}
-   * .
+   * {@link jmona.example.calc.nodes.MultiplicationNode#MultiplicationNode()} .
    */
   @Test
   public void testMultiplicationNode() {

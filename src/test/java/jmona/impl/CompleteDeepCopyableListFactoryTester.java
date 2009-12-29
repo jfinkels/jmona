@@ -52,7 +52,7 @@ public class CompleteDeepCopyableListFactoryTester {
 
     final CompleteDeepCopyableListFactory<ExampleIndividual> factory = new CompleteDeepCopyableListFactory<ExampleIndividual>();
     factory.setSize(size);
-    
+
     try {
       factory.createObject();
       Util.shouldHaveThrownException();
@@ -60,7 +60,7 @@ public class CompleteDeepCopyableListFactoryTester {
       // elementFactory has not been set
       assertTrue(exception instanceof InitializationException);
     }
-    
+
     factory.setElementFactory(new ExampleIndividualFactory());
 
     // create a list
@@ -82,7 +82,7 @@ public class CompleteDeepCopyableListFactoryTester {
     assertEquals(size, afterList.size());
 
     assertNotSame(beforeList, afterList);
-    
+
     assertFalse(Util.areEqual(beforeList, afterList));
 
     for (int i = 0; i < size; ++i) {

@@ -20,7 +20,6 @@
 package jmona.example.calc.nodes;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.calc.nodes.VariableNode;
 import jmona.exceptions.MappingException;
 import jmona.gp.EvaluationException;
 import jmona.test.Util;
@@ -43,8 +42,7 @@ public class VariableNodeTester {
   public static final double ZERO_DELTA = 0.0;
 
   /**
-   * Test method for {@link jmona.example.calc.nodes.VariableNode#evaluate()}
-   * .
+   * Test method for {@link jmona.example.calc.nodes.VariableNode#evaluate()} .
    */
   @Test
   public void testEvaluate() {

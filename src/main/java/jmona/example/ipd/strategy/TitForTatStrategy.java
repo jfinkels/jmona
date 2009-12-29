@@ -28,7 +28,8 @@ import jmona.impl.Pair;
  * 
  * @author jfinkels
  */
-public class TitForTatStrategy extends IPDStrategy implements DeepCopyable<TitForTatStrategy>{
+public class TitForTatStrategy extends IPDStrategy implements
+    DeepCopyable<TitForTatStrategy> {
 
   /**
    * {@inheritDoc}

@@ -21,7 +21,6 @@ package jmona;
 
 import java.util.List;
 
-
 /**
  * A List which can be deep copied, and whose elements can be deep copied as
  * well.

@@ -21,7 +21,6 @@ package jmona.exceptions;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import jmona.exceptions.CopyingException;
 
 import org.junit.Test;
 
@@ -33,7 +32,8 @@ import org.junit.Test;
 public class CopyingExceptionTester {
 
   /**
-   * Test method for {@link jmona.exceptions.CopyingException#CopyingException()}.
+   * Test method for
+   * {@link jmona.exceptions.CopyingException#CopyingException()}.
    */
   @Test
   public void testCopyingException() {
@@ -46,7 +46,8 @@ public class CopyingExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.CopyingException#CopyingException(java.lang.String)}.
+   * {@link jmona.exceptions.CopyingException#CopyingException(java.lang.String)}
+   * .
    */
   @Test
   public void testCopyingExceptionString() {
@@ -79,7 +80,8 @@ public class CopyingExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.CopyingException#CopyingException(java.lang.Throwable)}.
+   * {@link jmona.exceptions.CopyingException#CopyingException(java.lang.Throwable)}
+   * .
    */
   @Test
   public void testCopyingExceptionThrowable() {

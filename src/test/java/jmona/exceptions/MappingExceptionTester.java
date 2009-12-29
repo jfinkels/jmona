@@ -21,7 +21,6 @@ package jmona.exceptions;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import jmona.exceptions.MappingException;
 
 import org.junit.Test;
 
@@ -33,7 +32,8 @@ import org.junit.Test;
 public class MappingExceptionTester {
 
   /**
-   * Test method for {@link jmona.exceptions.MappingException#MappingException()}.
+   * Test method for
+   * {@link jmona.exceptions.MappingException#MappingException()}.
    */
   @Test
   public void testMappingException() {
@@ -46,7 +46,8 @@ public class MappingExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MappingException#MappingException(java.lang.String)}.
+   * {@link jmona.exceptions.MappingException#MappingException(java.lang.String)}
+   * .
    */
   @Test
   public void testMappingExceptionString() {
@@ -79,7 +80,8 @@ public class MappingExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MappingException#MappingException(java.lang.Throwable)}.
+   * {@link jmona.exceptions.MappingException#MappingException(java.lang.Throwable)}
+   * .
    */
   @Test
   public void testMappingExceptionThrowable() {

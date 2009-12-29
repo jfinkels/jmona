@@ -31,7 +31,8 @@ import jmona.impl.Util;
  * 
  * @author jfinkels
  */
-public class InversionMutationFunction implements MutationFunction<List<Integer>> {
+public class InversionMutationFunction implements
+    MutationFunction<List<Integer>> {
 
   /**
    * Invert a random sublist of cities in the Tour.

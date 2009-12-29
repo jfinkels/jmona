@@ -23,7 +23,6 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import jmona.example.calc.functions.PolynomialFunction;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;

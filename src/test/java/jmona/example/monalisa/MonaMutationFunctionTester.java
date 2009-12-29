@@ -55,7 +55,7 @@ public class MonaMutationFunctionTester extends ColoredPolygonTestSupport {
     this.function
         .setElementMutationFunction(new ColoredPolygonMutationFunction(WIDTH,
             HEIGHT));
-    
+
     this.polygons = new Vector<ColoredPolygon>();
 
     ColoredPolygon polygon = null;

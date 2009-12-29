@@ -21,7 +21,6 @@ package jmona.exceptions;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import jmona.exceptions.FitnessException;
 
 import org.junit.Test;
 
@@ -33,7 +32,8 @@ import org.junit.Test;
 public class FitnessExceptionTester {
 
   /**
-   * Test method for {@link jmona.exceptions.FitnessException#FitnessException()}.
+   * Test method for
+   * {@link jmona.exceptions.FitnessException#FitnessException()}.
    */
   @Test
   public void testFitnessException() {
@@ -46,7 +46,8 @@ public class FitnessExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.FitnessException#FitnessException(java.lang.String)}.
+   * {@link jmona.exceptions.FitnessException#FitnessException(java.lang.String)}
+   * .
    */
   @Test
   public void testFitnessExceptionString() {
@@ -79,7 +80,8 @@ public class FitnessExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.FitnessException#FitnessException(java.lang.Throwable)}.
+   * {@link jmona.exceptions.FitnessException#FitnessException(java.lang.Throwable)}
+   * .
    */
   @Test
   public void testFitnessExceptionThrowable() {

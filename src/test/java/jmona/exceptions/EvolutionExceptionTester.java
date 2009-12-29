@@ -21,7 +21,6 @@ package jmona.exceptions;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import jmona.exceptions.EvolutionException;
 
 import org.junit.Test;
 
@@ -33,7 +32,8 @@ import org.junit.Test;
 public class EvolutionExceptionTester {
 
   /**
-   * Test method for {@link jmona.exceptions.EvolutionException#EvolutionException()}.
+   * Test method for
+   * {@link jmona.exceptions.EvolutionException#EvolutionException()}.
    */
   @Test
   public void testEvolutionException() {
@@ -46,7 +46,8 @@ public class EvolutionExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.EvolutionException#EvolutionException(java.lang.String)}.
+   * {@link jmona.exceptions.EvolutionException#EvolutionException(java.lang.String)}
+   * .
    */
   @Test
   public void testEvolutionExceptionString() {
@@ -79,7 +80,8 @@ public class EvolutionExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.EvolutionException#EvolutionException(java.lang.Throwable)}.
+   * {@link jmona.exceptions.EvolutionException#EvolutionException(java.lang.Throwable)}
+   * .
    */
   @Test
   public void testEvolutionExceptionThrowable() {

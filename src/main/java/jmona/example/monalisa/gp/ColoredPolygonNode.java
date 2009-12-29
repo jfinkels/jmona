@@ -128,11 +128,11 @@ public class ColoredPolygonNode extends AbstractNode<List<ColoredPolygon>>
     final ColoredPolygonNode result = new ColoredPolygonNode();
 
     result.setColoredPolygon(this.coloredPolygon.deepCopy());
-    
+
     Node<List<ColoredPolygon>> clonedChild = null;
     if (this.children.size() > 0) {
       clonedChild = this.children().get(CHILD_INDEX).deepCopy();
-      
+
       AbstractFunctionNode.attachChildToParent(result, clonedChild);
     }
 

@@ -21,7 +21,6 @@ package jmona.example.ipd;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
-import jmona.example.ipd.IPDGame;
 import jmona.example.ipd.strategy.CooperativeStrategy;
 import jmona.example.ipd.strategy.IPDStrategy;
 import jmona.example.ipd.strategy.RuthlessStrategy;
@@ -49,7 +48,7 @@ public class IPDGameTester {
   private IPDStrategy ruthlessStrategy = null;
   /** A payoff value. */
   public static final int PAYOFF = 10;
-  
+
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
@@ -148,8 +147,7 @@ public class IPDGameTester {
 
   /**
    * Test method for
-   * {@link jmona.example.ipd.IPDGame#setPunishmentForMutualDefection(int)}
-   * .
+   * {@link jmona.example.ipd.IPDGame#setPunishmentForMutualDefection(int)} .
    */
   @Test
   public void testSetPunishmentForMutualDefection() {
@@ -213,8 +211,7 @@ public class IPDGameTester {
   }
 
   /**
-   * Test method for
-   * {@link jmona.example.ipd.IPDGame#setSuckersPayoff(int)}.
+   * Test method for {@link jmona.example.ipd.IPDGame#setSuckersPayoff(int)}.
    */
   @Test
   public void testSetSuckersPayoff() {

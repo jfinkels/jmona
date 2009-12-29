@@ -28,7 +28,8 @@ import jmona.gp.TerminalNode;
  * 
  * @author jfinkels
  */
-public class ExampleTerminalNodeFactory implements Factory<TerminalNode<Integer>> {
+public class ExampleTerminalNodeFactory implements
+    Factory<TerminalNode<Integer>> {
 
   /**
    * Creates an ExampleTerminalNode.

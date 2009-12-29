@@ -21,7 +21,6 @@ package jmona.example.tsp.mutation;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import jmona.example.tsp.mutation.SwapMutationFunction;
 import jmona.exceptions.MutationException;
 import jmona.test.Util;
 
@@ -51,7 +50,7 @@ public class SwapMutationFunctionTester extends
     for (int j = 0; j < NUM_TESTS; ++j) {
 
       this.setUp();
-      
+
       try {
         this.function().mutate(this.tour());
       } catch (final MutationException exception) {

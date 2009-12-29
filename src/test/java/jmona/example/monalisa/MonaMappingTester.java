@@ -27,8 +27,6 @@ import java.awt.image.PixelGrabber;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.example.monalisa.ColoredPolygon;
-import jmona.example.monalisa.MonaMapping;
 import jmona.test.Util;
 
 import org.junit.Test;

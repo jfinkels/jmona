@@ -21,7 +21,6 @@ package jmona.exceptions;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import jmona.exceptions.ProcessingException;
 
 import org.junit.Test;
 
@@ -33,7 +32,8 @@ import org.junit.Test;
 public class ProcessingExceptionTester {
 
   /**
-   * Test method for {@link jmona.exceptions.ProcessingException#ProcessingException()}.
+   * Test method for
+   * {@link jmona.exceptions.ProcessingException#ProcessingException()}.
    */
   @Test
   public void testProcessingException() {
@@ -46,7 +46,8 @@ public class ProcessingExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.ProcessingException#ProcessingException(java.lang.String)}.
+   * {@link jmona.exceptions.ProcessingException#ProcessingException(java.lang.String)}
+   * .
    */
   @Test
   public void testProcessingExceptionString() {
@@ -79,7 +80,8 @@ public class ProcessingExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.ProcessingException#ProcessingException(java.lang.Throwable)}.
+   * {@link jmona.exceptions.ProcessingException#ProcessingException(java.lang.Throwable)}
+   * .
    */
   @Test
   public void testProcessingExceptionThrowable() {

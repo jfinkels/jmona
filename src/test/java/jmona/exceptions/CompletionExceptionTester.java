@@ -21,7 +21,6 @@ package jmona.exceptions;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import jmona.exceptions.CompletionException;
 
 import org.junit.Test;
 
@@ -33,7 +32,8 @@ import org.junit.Test;
 public class CompletionExceptionTester {
 
   /**
-   * Test method for {@link jmona.exceptions.CompletionException#CompletionException()}.
+   * Test method for
+   * {@link jmona.exceptions.CompletionException#CompletionException()}.
    */
   @Test
   public void testCompletionException() {
@@ -46,7 +46,8 @@ public class CompletionExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.CompletionException#CompletionException(java.lang.String)}.
+   * {@link jmona.exceptions.CompletionException#CompletionException(java.lang.String)}
+   * .
    */
   @Test
   public void testCompletionExceptionString() {
@@ -79,7 +80,8 @@ public class CompletionExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.CompletionException#CompletionException(java.lang.Throwable)}.
+   * {@link jmona.exceptions.CompletionException#CompletionException(java.lang.Throwable)}
+   * .
    */
   @Test
   public void testCompletionExceptionThrowable() {

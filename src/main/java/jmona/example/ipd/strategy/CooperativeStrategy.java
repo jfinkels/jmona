@@ -26,7 +26,8 @@ import jmona.DeepCopyable;
  * 
  * @author jfinkels
  */
-public class CooperativeStrategy extends IPDStrategy implements DeepCopyable<CooperativeStrategy> {
+public class CooperativeStrategy extends IPDStrategy implements
+    DeepCopyable<CooperativeStrategy> {
 
   /**
    * {@inheritDoc}

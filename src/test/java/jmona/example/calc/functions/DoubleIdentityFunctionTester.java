@@ -20,7 +20,6 @@
 package jmona.example.calc.functions;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.calc.functions.DoubleIdentityFunction;
 import jmona.impl.IdentityFunction;
 
 import org.junit.Test;
@@ -43,8 +42,7 @@ public class DoubleIdentityFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.calc.functions.DoubleIdentityFunction#newInstance()}
-   * .
+   * {@link jmona.example.calc.functions.DoubleIdentityFunction#newInstance()} .
    */
   @Test
   public void testNewInstance() {

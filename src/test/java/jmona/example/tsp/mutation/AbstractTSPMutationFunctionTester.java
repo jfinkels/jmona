@@ -52,7 +52,7 @@ public abstract class AbstractTSPMutationFunctionTester {
       final MutationFunction<List<Integer>> initialFunction) {
     this.function = initialFunction;
   }
-  
+
   /**
    * Get the MutationFunction under test in this class.
    * 
@@ -61,7 +61,7 @@ public abstract class AbstractTSPMutationFunctionTester {
   public MutationFunction<List<Integer>> function() {
     return this.function;
   }
-  
+
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
@@ -72,8 +72,9 @@ public abstract class AbstractTSPMutationFunctionTester {
   }
 
   /**
-   * The test for the {@link jmona.IndividualMutationFunction#mutate(jmona.Individual)}
-   * method in each traveling salesman problem MutationFunction test class.
+   * The test for the
+   * {@link jmona.IndividualMutationFunction#mutate(jmona.Individual)} method in
+   * each traveling salesman problem MutationFunction test class.
    */
   public abstract void testMutate();
 

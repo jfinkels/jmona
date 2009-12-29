@@ -20,7 +20,6 @@
 package jmona.example.calc.functions;
 
 import static org.junit.Assert.assertEquals;
-import jmona.example.calc.functions.AdditionFunction;
 import jmona.example.calc.operations.Util;
 import jmona.exceptions.MappingException;
 

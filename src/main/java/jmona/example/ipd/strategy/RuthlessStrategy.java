@@ -26,7 +26,8 @@ import jmona.DeepCopyable;
  * 
  * @author jfinkels
  */
-public class RuthlessStrategy extends IPDStrategy implements DeepCopyable<RuthlessStrategy>{
+public class RuthlessStrategy extends IPDStrategy implements
+    DeepCopyable<RuthlessStrategy> {
 
   /**
    * {@inheritDoc}

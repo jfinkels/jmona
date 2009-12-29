@@ -21,7 +21,6 @@ package jmona.example.calc.operations;
 
 import static org.junit.Assert.assertEquals;
 import jmona.SingleInputFunction;
-import jmona.example.calc.operations.FunctionDivision;
 import jmona.exceptions.MappingException;
 import jmona.gp.impl.UniformBinaryOperation;
 
