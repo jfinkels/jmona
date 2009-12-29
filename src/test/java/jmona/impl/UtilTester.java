@@ -82,12 +82,12 @@ public class UtilTester {
   @Test
   public void testFirstValue() {
     final Map<Object, Object> map = new HashMap<Object, Object>();
-    
+
     final Object key = new Object();
     final Object value = new Object();
-    
+
     map.put(key, value);
-    
+
     assertEquals(value, Util.firstValue(map));
   }
 
@@ -159,7 +159,7 @@ public class UtilTester {
     final List<Object> list1 = new Vector<Object>();
     final List<Object> list2 = new Vector<Object>();
     final int index = 1;
-    
+
     final Object list1Object0 = new Object();
     final Object list1Object1 = new Object();
     final Object list1Object2 = new Object();
@@ -177,13 +177,13 @@ public class UtilTester {
     list2.add(list2Object2);
 
     Util.swap(list1, list2, index);
-    
+
     assertSame(list1Object0, list1.get(0));
     assertSame(list2Object0, list2.get(0));
-    
+
     assertSame(list2Object1, list1.get(1));
     assertSame(list1Object1, list2.get(1));
-    
+
     assertSame(list1Object2, list1.get(2));
     assertSame(list2Object2, list2.get(2));
   }
@@ -196,7 +196,7 @@ public class UtilTester {
   public void testSwapListOfEListOfEIntInt() {
     final List<Object> list1 = new Vector<Object>();
     final List<Object> list2 = new Vector<Object>();
-    
+
     final Object list1Object0 = new Object();
     final Object list1Object1 = new Object();
     final Object list1Object2 = new Object();
@@ -216,14 +216,22 @@ public class UtilTester {
     final int start = 1;
     final int end = 3;
     Util.swap(list1, list2, start, end);
-    
+
     assertSame(list1Object0, list1.get(0));
     assertSame(list2Object0, list2.get(0));
-    
+
     assertSame(list2Object1, list1.get(1));
     assertSame(list1Object1, list2.get(1));
-    
+
     assertSame(list2Object2, list1.get(2));
     assertSame(list1Object2, list2.get(2));
+  }
+
+  /**
+   * Test method for {@link jmona.impl.Util#Util()}.
+   */
+  @Test
+  public void testUtil() {
+    new Util();
   }
 }

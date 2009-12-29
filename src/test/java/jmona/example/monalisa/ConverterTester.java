@@ -44,6 +44,8 @@ public class ConverterTester {
    */
   @Test
   public void testToImage() {
+    new Converter();
+    
     // the width and height of the image to generate
     final int width = 5;
     final int height = 5;

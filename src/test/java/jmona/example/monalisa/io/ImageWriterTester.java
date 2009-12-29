@@ -59,6 +59,8 @@ public class ImageWriterTester {
    */
   @Test
   public void testWriteImage() {
+    new ImageWriter();
+    
     final BufferedImage image = new BufferedImage(100, 100,
         BufferedImage.TYPE_INT_ARGB_PRE);
     try {

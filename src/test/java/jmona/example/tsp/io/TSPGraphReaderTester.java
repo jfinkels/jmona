@@ -52,6 +52,8 @@ public class TSPGraphReaderTester {
    */
   @Test
   public void testFromFile() {
+    new TSPGraphReader();
+    
     DirectedGraph<Integer, Double> graph = null;
     try {
       graph = TSPGraphReader.fromFile(new File(TESTFILE));
