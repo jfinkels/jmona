@@ -21,8 +21,6 @@ package jmona.example.calc.nodes;
 
 import jmona.SingleInputFunction;
 import jmona.example.calc.functions.DoubleConstantFunction;
-import jmona.exceptions.CopyingException;
-import jmona.exceptions.MappingException;
 
 /**
  * A Node containing a single value as a Double.

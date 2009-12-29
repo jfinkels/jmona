@@ -19,14 +19,10 @@
  */
 package jmona.exceptions;
 
-import jmona.EvolutionContext;
-import jmona.PostProcessor;
-
 /**
- * This Exception is thrown when there is a problem during the
- * {@link PostProcessor#process(EvolutionContext)} method.
+ * This Exception is thrown when there is a problem during PostProcessor
+ * processing of an EvolutionContext.
  * 
- * @see PostProcessor#process(EvolutionContext)
  * @author jfinkels
  */
 public class ProcessingException extends Exception {

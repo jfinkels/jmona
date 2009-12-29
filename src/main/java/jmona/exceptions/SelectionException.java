@@ -19,13 +19,10 @@
  */
 package jmona.exceptions;
 
-import jmona.SelectionFunction;
-
 /**
  * This Exception is thrown when there is a problem during selection of an
  * Individual based on its fitness.
  * 
- * @see jmona.SelectionFunction#select(java.util.Map)
  * @author jfinkels
  */
 public class SelectionException extends Exception {
