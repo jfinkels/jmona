@@ -39,7 +39,13 @@ public abstract class ColoredPolygonTestSupport {
   public static final int NPOINTS = 3;
   /** The color of the polygon. */
   public static final Color COLOR = Color.GRAY;
-  
+  /** The number of polygons to create. */
+  public static final int NUM_POLYGONS = 100;
+  /** The maximum number of vertices in a polygon. */
+  public static final int MAX_POINTS = 100;
+  /** The minimum number of vertices in a polygon. */
+  public static final int MIN_POINTS = 50;
+
   /**
    * Determines whether the specified polygons have the same color and the same
    * coordinates.

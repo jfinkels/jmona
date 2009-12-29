@@ -19,10 +19,12 @@
  */
 package jmona.example.monalisa;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import java.awt.Color;
-
+import org.apache.log4j.Logger;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -30,37 +32,22 @@ import org.junit.Test;
  * 
  * @author jfinkels
  */
-public class ColoredPolygonTester {
+public class ColoredPolygonTester extends ColoredPolygonTestSupport {
 
-  /**
-   * Determines whether the specified polygons have the same color and the same
-   * coordinates.
-   * 
-   * @param polygon1
-   *          A polygon.
-   * @param polygon2
-   *          Another polygon.
-   * @return Whether the two polygons have the same color and the same
-   *         coordinates.
-   */
-  protected static boolean samePolygon(final ColoredPolygon polygon1,
-      final ColoredPolygon polygon2) {
-    if (polygon1.npoints != polygon2.npoints) {
-      return false;
-    }
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(ColoredPolygonTester.class);
+  /** The polygon under test. */
+  private ColoredPolygon polygon = null;
 
-    if (!polygon1.color().equals(polygon2.color())) {
-      return false;
-    }
-
-    for (int i = 0; i < polygon1.npoints; ++i) {
-      if (polygon1.xpoints[i] != polygon2.xpoints[i]
-          || polygon1.ypoints[i] != polygon2.ypoints[i]) {
-        return false;
-      }
-    }
-
-    return true;
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.polygon = new ColoredPolygon();
+    this.polygon.npoints = NPOINTS;
+    this.polygon.xpoints = XPOINTS;
+    this.polygon.ypoints = YPOINTS;
+    this.polygon.setColor(COLOR);
   }
 
   /**
@@ -68,9 +55,7 @@ public class ColoredPolygonTester {
    */
   @Test
   public void testColor() {
-    final ColoredPolygon polygon = new ColoredPolygon();
-    polygon.setColor(Color.GRAY);
-    assertEquals(Color.GRAY, polygon.color());
+    assertEquals(COLOR, this.polygon.color());
   }
 
   /**
@@ -78,29 +63,28 @@ public class ColoredPolygonTester {
    */
   @Test
   public void testDeepCopy() {
-    final int npoints = 3;
-    final int[] xpoints = new int[] { 0, 1, 2 };
-    final int[] ypoints = new int[] { 3, 4, 5 };
-    final Color color = Color.GRAY;
+    final ColoredPolygon clonedPolygon = this.polygon.deepCopy();
 
-    final ColoredPolygon polygon = new ColoredPolygon();
-    polygon.npoints = npoints;
-    polygon.xpoints = xpoints;
-    polygon.ypoints = ypoints;
-    polygon.setColor(color);
+    assertEquals(NPOINTS, this.polygon.npoints);
+    assertEquals(NPOINTS, clonedPolygon.npoints);
 
-    final ColoredPolygon clonedPolygon = polygon.deepCopy();
-    assertEquals(npoints, polygon.npoints);
-    assertEquals(npoints, clonedPolygon.npoints);
-    assertArrayEquals(xpoints, polygon.xpoints);
-    assertArrayEquals(xpoints, clonedPolygon.xpoints);
-    assertArrayEquals(ypoints, polygon.ypoints);
-    assertArrayEquals(ypoints, clonedPolygon.ypoints);
+    assertArrayEquals(XPOINTS, this.polygon.xpoints);
+    assertArrayEquals(XPOINTS, clonedPolygon.xpoints);
 
-    assertTrue(samePolygon(clonedPolygon, polygon));
+    assertArrayEquals(YPOINTS, this.polygon.ypoints);
+    assertArrayEquals(YPOINTS, clonedPolygon.ypoints);
 
-    assertEquals(color, clonedPolygon.color());
-    assertEquals(color, polygon.color());
+    assertTrue(samePolygon(clonedPolygon, this.polygon));
+
+    assertEquals(COLOR, clonedPolygon.color());
+    assertEquals(COLOR, this.polygon.color());
   }
 
+  /**
+   * Test method for {@link jmona.example.monalisa.ColoredPolygon#toString()}.
+   */
+  @Test
+  public void testToString() {
+    LOG.debug(this.polygon.toString());
+  }
 }

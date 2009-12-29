@@ -24,11 +24,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.awt.Color;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.example.monalisa.ColoredPolygon;
 import jmona.exceptions.MutationException;
 import jmona.impl.ListMutationFunction;
 import jmona.impl.Util;
@@ -41,52 +39,10 @@ import org.junit.Test;
  * 
  * @author jfinkels
  */
-public class MonaMutationFunctionTester {
-
-  /** The initial color of polygons to mutate. */
-  public static final Color COLOR = Color.GRAY;
-  /** The maximum y component of the vertices of the polygon. */
-  public static final int HEIGHT = 20;
-  /** The number of points in each polygon. */
-  public static final int NPOINTS = 3;
-  /** The number of polygons in the individual to mutate. */
-  public static final int NUM_POLYGONS = 3;
-  /** The maximum x component of the vertices of the polygon. */
-  public static final int WIDTH = 10;
-
-  /**
-   * Determines whether the specified polygons have the same color and the same
-   * coordinates.
-   * 
-   * @param polygon1
-   *          A polygon.
-   * @param polygon2
-   *          Another polygon.
-   * @return Whether the two polygons have the same color and the same
-   *         coordinates.
-   */
-  protected static boolean samePolygon(final ColoredPolygon polygon1,
-      final ColoredPolygon polygon2) {
-    if (polygon1.npoints != polygon2.npoints) {
-      return false;
-    }
-
-    if (!polygon1.color().equals(polygon2.color())) {
-      return false;
-    }
-
-    for (int i = 0; i < polygon1.npoints; ++i) {
-      if (polygon1.xpoints[i] != polygon2.xpoints[i]
-          || polygon1.ypoints[i] != polygon2.ypoints[i]) {
-        return false;
-      }
-    }
-
-    return true;
-  }
+public class MonaMutationFunctionTester extends ColoredPolygonTestSupport {
 
   /** The function under test. */
-  private ListMutationFunction function = null;
+  private ListMutationFunction<ColoredPolygon> function = null;
   /** The individual to mutate. */
   private List<ColoredPolygon> individual = null;
   /** The polygons in the individual. */
@@ -95,8 +51,11 @@ public class MonaMutationFunctionTester {
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-//    this.function = new MonaMutationFunction(WIDTH, HEIGHT);
-    this.function = new ListMutationFunction();
+    this.function = new ListMutationFunction<ColoredPolygon>();
+    this.function
+        .setElementMutationFunction(new ColoredPolygonMutationFunction(WIDTH,
+            HEIGHT));
+    
     this.polygons = new Vector<ColoredPolygon>();
 
     ColoredPolygon polygon = null;
@@ -105,8 +64,8 @@ public class MonaMutationFunctionTester {
       polygon.setColor(COLOR);
       polygon.npoints = NPOINTS;
       for (int j = 0; j < NPOINTS; ++j) {
-        polygon.xpoints[i] = Util.RANDOM.nextInt();
-        polygon.ypoints[i] = Util.RANDOM.nextInt();
+        polygon.xpoints[j] = Util.RANDOM.nextInt();
+        polygon.ypoints[j] = Util.RANDOM.nextInt();
       }
       this.polygons.add(polygon);
     }
@@ -129,7 +88,7 @@ public class MonaMutationFunctionTester {
     try {
       this.function.mutate(this.individual);
     } catch (final MutationException exception) {
-      
+      jmona.test.Util.fail(exception);
     }
 
     assertEquals(this.polygons.size(), this.individual.size());

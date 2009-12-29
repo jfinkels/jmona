@@ -21,7 +21,6 @@ package jmona.example.monalisa;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.awt.Color;
 
@@ -33,10 +32,11 @@ import org.junit.Test;
  * 
  * @author jfinkels
  */
-public class ColoredPolygonFactoryTester {
-
+public class ColoredPolygonFactoryTester extends ColoredPolygonTestSupport {
+  /** The factory under test. */
   private ColoredPolygonFactory factory = null;
 
+  /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
     this.factory = new ColoredPolygonFactory();
@@ -44,27 +44,6 @@ public class ColoredPolygonFactoryTester {
     this.factory.setMinPoints(MIN_POINTS);
     this.factory.setMaxX(WIDTH);
     this.factory.setMaxY(HEIGHT);
-  }
-
-  /** The maximum number of vertices in a polygon. */
-  public static final int MAX_POINTS = 100;
-  /** The minimum number of vertices in a polygon. */
-  public static final int MIN_POINTS = 50;
-  /** The maximum value of the x component of a vertex of a polygon. */
-  public static final int WIDTH = 10;
-  /** The maximum value of the y component of a vertex of a polygon. */
-  public static final int HEIGHT = 20;
-
-  /**
-   * Test method for
-   * {@link jmona.example.monalisa.ColoredPolygonFactory#randomColor()}.
-   */
-  @Test
-  public void testRandomColor() {
-    final Color color1 = ColoredPolygonFactory.randomColor();
-    final Color color2 = ColoredPolygonFactory.randomColor();
-
-    assertFalse(color1.equals(color2));
   }
 
   /**
@@ -89,7 +68,16 @@ public class ColoredPolygonFactoryTester {
     }
   }
 
-  /** The number of polygons to create. */
-  public static final int NUM_POLYGONS = 100;
+  /**
+   * Test method for
+   * {@link jmona.example.monalisa.ColoredPolygonFactory#randomColor()}.
+   */
+  @Test
+  public void testRandomColor() {
+    final Color color1 = ColoredPolygonFactory.randomColor();
+    final Color color2 = ColoredPolygonFactory.randomColor();
+
+    assertFalse(color1.equals(color2));
+  }
 
 }

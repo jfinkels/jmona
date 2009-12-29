@@ -34,7 +34,7 @@ import org.junit.Test;
  * 
  * @author jfinkels
  */
-public class ColoredPolygonMutationFunctionTester {
+public class ColoredPolygonMutationFunctionTester extends ColoredPolygonTestSupport {
 
   /** The location of the blue value of a pixel packed in an int. */
   public static final int BLUE = 8 * 0;
@@ -44,57 +44,15 @@ public class ColoredPolygonMutationFunctionTester {
   public static final int GRAY_VALUE = 0x88;
   /** The location of the green value of a pixel packed in an int. */
   public static final int GREEN = 8 * 1;
-  /** The maximum y component for a point of a polygon. */
-  public static final int HEIGHT = 20;
-  /** The number of points in a polygon. */
-  public static final int NPOINTS = 3;
-  /** The number of individuals to mutate. */
-  public static final int NUM_INDIVIDUALS = 100;
   /** The location of the red value of a pixel packed in an int. */
   public static final int RED = 8 * 2;
   /** The maximum shift when mutating a color. */
   public static final int SHIFT = 10;
-  /** The maximum x component for a point of a polygon. */
-  public static final int WIDTH = 10;
-  /** The initial x components of the vertices of a polygon. */
-  public static final int[] XPOINTS = new int[] { 0, 1, 2 };
-  /** The initial y components of the vertices of a polygon. */
-  public static final int[] YPOINTS = new int[] { 3, 4, 5 };
-
-  /**
-   * Determines whether the specified polygons have the same color and the same
-   * coordinates.
-   * 
-   * @param polygon1
-   *          A polygon.
-   * @param polygon2
-   *          Another polygon.
-   * @return Whether the two polygons have the same color and the same
-   *         coordinates.
-   */
-  protected static boolean samePolygon(final ColoredPolygon polygon1,
-      final ColoredPolygon polygon2) {
-    if (polygon1.npoints != polygon2.npoints) {
-      return false;
-    }
-
-    if (!polygon1.color().equals(polygon2.color())) {
-      return false;
-    }
-
-    for (int i = 0; i < polygon1.npoints; ++i) {
-      if (polygon1.xpoints[i] != polygon2.xpoints[i]
-          || polygon1.ypoints[i] != polygon2.ypoints[i]) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
+  /** The color of the polygon. */
   private Color color = null;
+  /** The function under test. */
   private ColoredPolygonMutationFunction function = null;
-
+  /** The polygon to mutate. */
   private ColoredPolygon polygon = null;
 
   /** Establish a fixture for tests in this class. */
