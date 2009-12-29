@@ -20,9 +20,12 @@
 package jmona.example.tsp;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 import java.util.Vector;
+
+import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -75,7 +78,18 @@ public class TSPFitnessFunctionTester {
 
     tour.clear();
     tour.add(0);
-    
+
     assertEquals(Double.POSITIVE_INFINITY, function.fitness(tour), ZERO_DELTA);
+
+    tour.clear();
+
+    try {
+      function.fitness(tour);
+      Util.shouldHaveThrownException();
+    } catch (final IllegalArgumentException exception) {
+      // tour has size 0
+      assertEquals(0, tour.size());
+      assertTrue(exception instanceof IllegalArgumentException);
+    }
   }
 }
