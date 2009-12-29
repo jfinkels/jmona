@@ -20,6 +20,7 @@
 package jmona.example.monalisa.gp;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -28,8 +29,10 @@ import java.util.List;
 
 import jmona.example.monalisa.ColoredPolygon;
 import jmona.exceptions.MappingException;
+import jmona.gp.EvaluationException;
 import jmona.gp.Tree;
 import jmona.gp.impl.DefaultTree;
+import jmona.gp.impl.example.ExampleBadTree;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -78,8 +81,7 @@ public class TreeMappingTester {
     final ColoredPolygonNode node = new ColoredPolygonNode();
     node.setColoredPolygon(polygon);
 
-    // create a tree with the node as the root
-    final Tree<List<ColoredPolygon>> tree = new DefaultTree<List<ColoredPolygon>>(
+    Tree<List<ColoredPolygon>> tree = new DefaultTree<List<ColoredPolygon>>(
         node);
 
     // create a mapping function from trees to images
@@ -115,6 +117,14 @@ public class TreeMappingTester {
         }
         assertEquals(currentColor, pixels[j * width + i]);
       }
+    }
+    
+    tree = new ExampleBadTree<List<ColoredPolygon>>(node);
+    try {
+      function.execute(tree);
+      Util.shouldHaveThrownException();
+    } catch (final MappingException exception) {
+      assertTrue(exception.getCause() instanceof EvaluationException);
     }
   }
 
