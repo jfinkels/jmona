@@ -34,6 +34,7 @@ import jmona.gp.EvaluationException;
 import jmona.gp.Tree;
 import jmona.test.Util;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
@@ -53,13 +54,15 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
    * The file to which to write the best individual at the end of the evolution.
    */
   public static final String FILENAME = "target/mona.png";
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(MonaEvolutionTester.class);
   /**
    * Get the completion criteria for this evolution from the Spring XML
    * configuration file.
    */
   @Autowired
   private CompletionCondition<Tree<List<ColoredPolygon>>> completionCondition = null;
-
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
   private EvolutionContext<Tree<List<ColoredPolygon>>> context = null;
@@ -71,6 +74,8 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
     try {
       while (!this.completionCondition.isSatisfied(this.context)) {
         this.context.stepGeneration();
+        LOG.debug(this.context.currentGeneration() + ": "
+            + this.context.currentPopulation());
       }
     } catch (final CompletionException exception) {
       Util.fail(exception);
