@@ -37,29 +37,59 @@ import jmona.impl.PeriodicPostProcessor;
 public class ImageOutputPostProcessor extends
     PeriodicPostProcessor<DeepCopyableList<ColoredPolygon>> {
 
+  /** The default directory in which to write images. */
+  public static final String DEFAULT_OUTPUT_DIR = "target";
+  /** The format for the filename of the image to write. */
+  public static final String FILENAME_FORMAT = "generation%d.png";
   /** The height of the image to output. */
-  private int height = -1;
+  private final int height;
   /** The directory in which to write images. */
-  private String outputDir = ".";
+  private String outputDir = DEFAULT_OUTPUT_DIR;
+  /** The key for the System property containing the file separator character. */
+  public static final String FILE_SEPARATOR_KEY = "file.separator";
+  /** The System dependent file separator character. */
+  public static final String FILE_SEPARATOR = System
+      .getProperty(FILE_SEPARATOR_KEY);
   /** The width of the image to output. */
-  private int width = -1;
+  private final int width;
+
+  /**
+   * Instantiate this PostProcessor with the specified width and height of the
+   * image to write.
+   * 
+   * @param initialWidth
+   *          The width of the image to write.
+   * @param initialHeight
+   *          The height of the image to write.
+   */
+  public ImageOutputPostProcessor(final int initialWidth,
+      final int initialHeight) {
+    this.width = initialWidth;
+    this.height = initialHeight;
+  }
 
   /**
    * Generate the filename at which the image which an Individual represents
    * will be output.
    * 
+   * @param outputDirectory
+   *          The directory in which to write the file.
    * @param currentGeneration
    *          The current generation of the EvolutionContext.
    * @return The filename at which the image represented by an Individual will
    *         be output.
    */
-  private String generateFilename(final int currentGeneration) {
-    if (!this.outputDir.endsWith("/")) {
-      this.outputDir += "/";
+  protected static String generateFilename(final String outputDirectory,
+      final int currentGeneration) {
+
+    // add a file separator character if the specified output directory does not
+    // already end with one
+    String directory = outputDirectory;
+    if (!directory.endsWith(FILE_SEPARATOR)) {
+      directory += FILE_SEPARATOR;
     }
 
-    return String.format(this.outputDir + "generation%1$d.png",
-        currentGeneration);
+    return directory + String.format(FILENAME_FORMAT, currentGeneration);
   }
 
   /**
@@ -82,16 +112,6 @@ public class ImageOutputPostProcessor extends
   protected void processAtInterval(
       final EvolutionContext<DeepCopyableList<ColoredPolygon>> evolutionContext)
       throws ProcessingException {
-    if (this.height < 0) {
-      throw new ProcessingException("Height is " + this.height
-          + ". It has not been set, or is less than 0.");
-    }
-
-    if (this.width < 0) {
-      throw new ProcessingException("Width is " + this.width
-          + ". It has not been set, or is less than 0.");
-    }
-
     // get the current generation number
     final int currentGeneration = evolutionContext.currentGeneration();
 
@@ -104,7 +124,7 @@ public class ImageOutputPostProcessor extends
         this.height);
 
     // generate a filename at which to write this image
-    final String filename = this.generateFilename(currentGeneration);
+    final String filename = generateFilename(this.outputDir, currentGeneration);
 
     // write the image to the specified filename
     try {
@@ -112,16 +132,6 @@ public class ImageOutputPostProcessor extends
     } catch (final IOException exception) {
       throw new ProcessingException("Failed writing image to disk.", exception);
     }
-  }
-
-  /**
-   * Set the height of the output image.
-   * 
-   * @param newHeight
-   *          The height of the output image.
-   */
-  public void setHeight(final int newHeight) {
-    this.height = newHeight;
   }
 
   /**
@@ -133,15 +143,4 @@ public class ImageOutputPostProcessor extends
   public void setOutputDir(final String newOutputDir) {
     this.outputDir = newOutputDir;
   }
-
-  /**
-   * Set the width of the output image.
-   * 
-   * @param newWidth
-   *          The width of the output image.
-   */
-  public void setWidth(final int newWidth) {
-    this.width = newWidth;
-  }
-
 }

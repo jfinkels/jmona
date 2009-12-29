@@ -19,71 +19,69 @@
  */
 package jmona.example.monalisa;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
+import java.util.List;
+import java.util.Vector;
 
 import jmona.DeepCopyableList;
 import jmona.EvolutionContext;
-import jmona.exceptions.EvolutionException;
+import jmona.exceptions.InitializationException;
 import jmona.exceptions.ProcessingException;
+import jmona.ga.impl.GAEvolutionContext;
+import jmona.impl.CompleteDeepCopyableListFactory;
 import jmona.test.Util;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 /**
  * Test class for the ImageOutputPostProcessor class.
  * 
  * @author jfinkels
  */
-@ContextConfiguration
-public class ImageOutputPostProcessorTester extends
-    AbstractJUnit4SpringContextTests {
-
-  /** An EvolutionContext to process. */
-  @Autowired
-  private EvolutionContext<DeepCopyableList<ColoredPolygon>> evolutionContext = null;
+public class ImageOutputPostProcessorTester {
 
   /** The PostProcessor under test. */
   private ImageOutputPostProcessor processor = null;
+  /** The width of the output image. */
+  public static final int WIDTH = 5;
+  /** The height of the output image. */
+  public static final int HEIGHT = 5;
+  /** The output directory for the image. */
+  public static final String OUTPUT_DIRECTORY = "target/";
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.processor = new ImageOutputPostProcessor();
-    this.processor.setOutputDir("target");
-    this.processor.setWidth(1);
-    this.processor.setHeight(1);
+    this.processor = new ImageOutputPostProcessor(WIDTH, HEIGHT);
+    this.processor.setOutputDir(OUTPUT_DIRECTORY);
   }
 
-  /** Test method for default period length of 1. */
-  @DirtiesContext
+  /**
+   * Test method for
+   * {@link jmona.example.monalisa.ImageOutputPostProcessor#generateFilename(java.lang.String, int)}
+   * .
+   */
   @Test
-  public void testDefaultPeriod() {
-    try {
-      this.processor.process(this.evolutionContext);
-      this.evolutionContext.stepGeneration();
-      this.processor.process(this.evolutionContext);
-    } catch (final ProcessingException exception) {
-      Util.fail(exception);
-    } catch (final EvolutionException exception) {
-      Util.fail(exception);
-    }
+  public void testGenerateFilename() {
+    final String directory = "target";
+    final int generation = 1;
+    final String filename = ImageOutputPostProcessor.generateFilename(
+        directory, generation);
 
-    final File outputFile1 = new File("target/generation0.png");
-    final File outputFile2 = new File("target/generation1.png");
+    assertEquals(directory + ImageOutputPostProcessor.FILE_SEPARATOR
+        + String.format(ImageOutputPostProcessor.FILENAME_FORMAT, generation),
+        filename);
 
-    assertTrue("file1 does not exist.", outputFile1.exists());
-    assertTrue("file2 does not exist.", outputFile2.exists());
+    final String filename2 = ImageOutputPostProcessor.generateFilename(
+        directory + "/", generation);
 
-    assertTrue(outputFile1.delete());
-    assertTrue(outputFile2.delete());
+    assertEquals(filename, filename2);
   }
 
   /**
@@ -91,96 +89,53 @@ public class ImageOutputPostProcessorTester extends
    * {@link jmona.example.monalisa.ImageOutputPostProcessor#processAtInterval(jmona.EvolutionContext)}
    * .
    */
-  @DirtiesContext
   @Test
   public void testProcessAtInterval() {
-/*
+    final ColoredPolygonFactory polygonFactory = new ColoredPolygonFactory();
+    polygonFactory.setMaxX(WIDTH);
+    polygonFactory.setMaxY(HEIGHT);
+
+    final CompleteDeepCopyableListFactory<ColoredPolygon> factory = new CompleteDeepCopyableListFactory<ColoredPolygon>();
+    factory.setElementFactory(new ColoredPolygonFactory());
+
+    DeepCopyableList<ColoredPolygon> individual1 = null;
+    DeepCopyableList<ColoredPolygon> individual2 = null;
     try {
-      this.processor.processAtInterval(null);
-    } catch (final ProcessingException exception) {
+      individual1 = factory.createObject();
+      individual2 = factory.createObject();
+    } catch (final InitializationException exception) {
       Util.fail(exception);
-    } catch (final NullPointerException exception) {
-      assertTrue(exception instanceof NullPointerException);
     }
 
+    final List<DeepCopyableList<ColoredPolygon>> population = new Vector<DeepCopyableList<ColoredPolygon>>();
+    population.add(individual1);
+    population.add(individual2);
+
+    final EvolutionContext<DeepCopyableList<ColoredPolygon>> context = new GAEvolutionContext<DeepCopyableList<ColoredPolygon>>(
+        population);
+
     try {
-      this.processor.processAtInterval(this.evolutionContext);
+      this.processor.processAtInterval(context);
     } catch (final ProcessingException exception) {
       Util.fail(exception);
     }
-*/
+
+    final File file = new File(OUTPUT_DIRECTORY
+        + ImageOutputPostProcessor.FILE_SEPARATOR
+        + String.format(ImageOutputPostProcessor.FILENAME_FORMAT, context
+            .currentGeneration()));
+
+    assertTrue(file.exists());
   }
 
-  /**
-   * Test method for
-   * {@link jmona.example.monalisa.ImageOutputPostProcessor#setPeriod(int)}
-   * .
-   */
-  @DirtiesContext
-  @Test
-  public void testSetPeriod() {
-    final int newPeriod = 5;
-    this.processor.setPeriod(newPeriod);
-
-    final File outputFile = new File("target/generation4.png");
-    assertTrue(!outputFile.exists() || outputFile.delete());
-
-    for (int i = 0; i < newPeriod - 1; ++i) {
-      try {
-        this.processor.process(this.evolutionContext);
-        this.evolutionContext.stepGeneration();
-        assertFalse("File should not exist, but does.", outputFile.exists());
-      } catch (final ProcessingException exception) {
-        Util.fail(exception);
-      } catch (final EvolutionException exception) {
-        Util.fail(exception);
-      }
+  /** Free external resources allocated during tests. */
+  @After
+  public final void tearDown() {
+    final File file = new File(OUTPUT_DIRECTORY
+        + ImageOutputPostProcessor.FILE_SEPARATOR
+        + String.format(ImageOutputPostProcessor.FILENAME_FORMAT, 0));
+    if (file.exists()) {
+      assertTrue(file.delete());
     }
-
-    try {
-      this.processor.process(this.evolutionContext);
-    } catch (final ProcessingException exception) {
-      Util.fail(exception);
-    }
-
-    assertTrue(outputFile.exists());
   }
-
-  /**
-   * Test method for
-   * {@link jmona.example.monalisa.ImageOutputPostProcessor#setHeight(int)}
-   * and
-   * {@link jmona.example.monalisa.ImageOutputPostProcessor#setWidth(int)}
-   * .
-   */
-  @Test
-  public void testSetWidthAndHeight() {
-    this.processor.setHeight(-1);
-
-/*    try {
-      this.processor.processAtInterval(this.evolutionContext);
-      fail("An Exception should have been thrown on the previous line.");
-    } catch (final ProcessingException exception) {
-      // height has not been set
-      this.processor.setHeight(1);
-    }
-
-    this.processor.setHeight(1);
-    this.processor.setWidth(-1);
-
-    try {
-      this.processor.processAtInterval(this.evolutionContext);
-      fail("An Exception should have been thrown on the previous line.");
-    } catch (final ProcessingException exception) {
-      // width has not been set
-      this.processor.setWidth(1);
-    }
-
-    try {
-      this.processor.processAtInterval(this.evolutionContext);
-    } catch (final ProcessingException exception) {
-      Util.fail(exception);
-    }
-*/  }
-
 }
