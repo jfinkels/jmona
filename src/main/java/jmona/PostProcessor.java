@@ -29,6 +29,7 @@ import jmona.exceptions.ProcessingException;
  *          The type of Individual in the EvolutionContext to process.
  * @author jfinkels
  */
+// TODO PreProcessor?
 public interface PostProcessor<T extends DeepCopyable<T>> {
 
   /**
