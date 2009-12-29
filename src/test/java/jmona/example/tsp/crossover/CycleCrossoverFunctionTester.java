@@ -19,10 +19,6 @@
  */
 package jmona.example.tsp.crossover;
 
-import static org.junit.Assert.fail;
-
-import org.junit.Test;
-
 /**
  * Test class for the CycleCrossoverFunction class.
  * 
@@ -34,27 +30,6 @@ public class CycleCrossoverFunctionTester extends
   /** Instantiate this test class with a CycleCrossoverFunction. */
   public CycleCrossoverFunctionTester() {
     super(new CycleCrossoverFunction());
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.example.tsp.crossover.CycleCrossoverFunction#crossover(jmona.example.tsp.Tour, jmona.example.tsp.Tour)}
-   * .
-   */
-  @Test
-  public void testCrossover() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.example.tsp.crossover.CycleCrossoverFunction#swap(jmona.example.tsp.Tour, jmona.example.tsp.Tour, int)}
-   * .
-   */
-  @Test
-  public void testSwap() {
-
-    fail("Not yet implemented");
   }
 
 }

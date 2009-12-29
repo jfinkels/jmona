@@ -33,31 +33,61 @@ import jmona.impl.Util;
 // TODO documentation
 public class CycleCrossoverFunction implements CrossoverFunction<List<Integer>> {
 
-  /*
-   * (non-Javadoc)
+  /**
+   * Swap a cycle chosen at random from the cycle decomposition of the
+   * permutation defined by the mapping between the two specified tours.
    * 
+   * Formally, let {@code tour1} and {@code tour2} be sequences of size
+   * <em>n</em> consisting of the integers <em>{0,1,2,&hellip;,n-1}</em>. Define
+   * the permutation <em>&sigma;</em> by
+   * <em>&sigma;(n)={@code tour2.get(tour1.indexOf(n))}</em>. Since
+   * <em>&sigma;</em> is injective by definition, and since the sizes of {@code
+   * tour1} and {@code tour2} are equal, <em>&sigma;</em> is a bijection.
+   * Therefore it is a permutation with a unique decomposition into a product of
+   * disjoint cycles. Choose a cycle at random, and swap each of the numbers
+   * contained in that cycle between {@code tour1} and {@code tour2}.
+   * 
+   * Swapping the integers in this way ensures that any integers in a tour
+   * before the crossover must be in the tour after the crossover.
+   * 
+   * @param tour1
+   *          A tour to crossover.
+   * @param tour2
+   *          Another tour to crossover.
    * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
    */
   @Override
   public void crossover(final List<Integer> tour1, final List<Integer> tour2) {
+    final List<Integer> cycleIndices = new Vector<Integer>();
+
     // choose a random initial index of a city in the tour
-    int index = Util.RANDOM.nextInt(tour1.size());
-    final int initialCity = tour1.get(index);
+    int tour1index = Util.RANDOM.nextInt(tour1.size());
 
-    final List<Integer> cycle = new Vector<Integer>();
+    // add that index to the cycle indices
+    cycleIndices.add(tour1index);
 
-    index = tour1.indexOf(tour2.get(index));
-    int currentCity = tour1.get(index);
-    cycle.add(currentCity);
+    // get the city in tour2 at that index
+    int tour2city = tour2.get(tour1index);
 
-    while (currentCity != initialCity) {
-      index = tour1.indexOf(tour2.get(index));
-      currentCity = tour1.get(index);
-      cycle.add(currentCity);
+    // get the index of that city in tour1
+    tour1index = tour1.indexOf(tour2city);
+
+    // if tour1index = initial index, stop
+    while (tour1index != cycleIndices.get(0)) {
+
+      // add that index to the cycle indices
+      cycleIndices.add(tour1index);
+
+      // get the city in tour2 at that index
+      tour2city = tour2.get(tour1index);
+
+      // get the index of that city in tour1
+      tour1index = tour1.indexOf(tour2city);
     }
 
-    for (final int city : cycle) {
-      Util.swap(tour1, tour2, tour1.indexOf(city));
+    // swap the cities at each of the indices of the determined cycle
+    for (final int index : cycleIndices) {
+      Util.swap(tour1, tour2, index);
     }
   }
 }
