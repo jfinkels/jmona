@@ -22,9 +22,12 @@ package jmona.game;
 /**
  * A strategy which plays a game.
  * 
+ * An implementing class which is to be used as an individual in an
+ * EvolutionContext must also implement the DeepCopyable interface.
+ * 
  * @author jfinkels
  */
-public interface Strategy /* extends DeepCopyable<Strategy> */{
+public interface Strategy {
   /** Reset the strategy to an initial state. */
   void reset();
 }

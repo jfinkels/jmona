@@ -35,7 +35,10 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
 
   /** The "arity" of this Node. */
   public static final int ARITY = 2;
-
+  /** The index of the left child in the List of child Nodes. */
+  public static final int LEFT_CHILD_INDEX = 0;
+  /** The index of the right child in the List of child Nodes. */
+  public static final int RIGHT_CHILD_INDEX = 1;
   /** The binary operation which this Node represents. */
   private BinaryOperation<V, V, V> operation = null;
 
@@ -119,7 +122,6 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
   protected Node<V> right() {
     return this.children().get(RIGHT_CHILD_INDEX);
   }
-
   /**
    * Return the String representation of this Node, which is the left child,
    * followed by the operation, followed by the right child.
@@ -140,7 +142,4 @@ public class BinaryNode<V> extends AbstractFunctionNode<V> {
 
     return result;
   }
-
-  public static final int LEFT_CHILD_INDEX = 0;
-  public static final int RIGHT_CHILD_INDEX = 1;
 }

@@ -27,25 +27,29 @@ import jmona.MetricException;
 import jmona.SingleInputFunction;
 
 /**
- * A FitnessFunction which measures the distance between a specified Individual
- * and a target Individual with a metric function.
+ * A FitnessFunction which first maps an individual to another object, then
+ * measures the distance between the image of the individual under that mapping
+ * and a target object.
  * 
  * @param <T>
- *          The type of Individual to measure.
+ *          The type of individual whose fitness is to be measured indirectly
+ *          via mapping to another object.
+ * @param <V>
+ *          The type of object to which the individual is mapped, and also the
+ *          type of the target object to which to compare the image of the
+ *          individual under the mapping.
  * @author jfinkels
  */
-// TODO change documentation
 public class MappingFitnessFunction<T, V> implements FitnessFunction<T> {
 
+  /** The mapping for an individual. */
   private SingleInputFunction<T, V> mapping = null;
-
-  public void setMapping(final SingleInputFunction<T, V> newMapping) {
-    this.mapping = newMapping;
-  }
-
-  /** The metric with which to measure the distance between two Individuals. */
+  /**
+   * The metric with which to measure the distance between the image of the
+   * individual under the mapping and the target object.
+   */
   private Metric<V> metric = null;
-  /** The target Individual. */
+  /** The target object. */
   private V target = null;
 
   /**
@@ -63,8 +67,6 @@ public class MappingFitnessFunction<T, V> implements FitnessFunction<T> {
    *         Individual as measured by a Metric.
    * @throws FitnessException
    *           {@inheritDoc}
-   * @see jmona.Metric
-   * @see jmona.Metric#measure(Object, Object)
    * @see jmona.FitnessFunction#fitness(jmona.Individual)
    */
   @Override
@@ -126,6 +128,16 @@ public class MappingFitnessFunction<T, V> implements FitnessFunction<T> {
     if (this.mapping == null) {
       throw new NullPointerException("No mapping has been set.");
     }
+  }
+
+  /**
+   * Set the mapping for an individual to a target type.
+   * 
+   * @param newMapping
+   *          The mapping for an individual to a target type.
+   */
+  public void setMapping(final SingleInputFunction<T, V> newMapping) {
+    this.mapping = newMapping;
   }
 
   /**

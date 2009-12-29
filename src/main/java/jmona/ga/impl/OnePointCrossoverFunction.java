@@ -27,10 +27,7 @@ import jmona.impl.Util;
  * 
  * @param <E>
  *          The type of element contained in the List on which to perform
- *          crossover (that List must also extends Individual).
- * @param <T>
- *          The type of Individual on which to perform crossover (must also
- *          extend List).
+ *          crossover.
  * @author jfinkels
  */
 public class OnePointCrossoverFunction<E> extends

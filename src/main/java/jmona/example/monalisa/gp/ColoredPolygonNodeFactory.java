@@ -51,6 +51,12 @@ public class ColoredPolygonNodeFactory implements Factory<ColoredPolygonNode> {
     return result;
   }
 
+  /**
+   * Set the factory which creates ColoredPolygon objects.
+   * 
+   * @param newColoredPolygonFactory
+   *          The factory which creates ColoredPolygon objects.
+   */
   public void setColoredPolygonFactory(
       final ColoredPolygonFactory newColoredPolygonFactory) {
     this.coloredPolygonFactory = newColoredPolygonFactory;

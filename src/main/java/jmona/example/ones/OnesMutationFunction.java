@@ -19,24 +19,27 @@
  */
 package jmona.example.ones;
 
-import jmona.MutationException;
 import jmona.impl.ImmutableElementsListMutationFunction;
 
 /**
+ * Mutation function which flips a bit randomly in a List of bits.
+ * 
  * @author jfinkels
  */
 public class OnesMutationFunction extends
     ImmutableElementsListMutationFunction<Byte> {
 
-  /*
-   * (non-Javadoc)
+  /**
+   * Return 1 if the specified bit is 0, and return 0 if the specified bit is 1.
    * 
-   * @see
-   * jmona.impl.ImmutableElementsListMutationFunction#mutated(java.lang.Object)
+   * @param bit
+   *          The bit to mutate.
+   * @return The bitwise inverse of the specified bit.
+   * @see jmona.impl.ImmutableElementsListMutationFunction#mutated(java.lang.Object)
    */
   @Override
-  protected Byte mutated(final Byte element) throws MutationException {
-    return (byte) (1 - element);
+  protected Byte mutated(final Byte bit) {
+    return (byte) (1 - bit);
   }
 
 }
