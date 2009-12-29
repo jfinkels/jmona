@@ -27,9 +27,9 @@ import static org.junit.Assert.assertTrue;
 import java.awt.Color;
 import java.util.List;
 
+import jmona.CopyingException;
 import jmona.example.monalisa.ColoredPolygon;
 import jmona.example.monalisa.ColoredPolygonFactory;
-import jmona.exceptions.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.test.Util;
 

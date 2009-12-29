@@ -1,5 +1,5 @@
 /**
- * FitnessException.java
+ * MutationException.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,24 +17,24 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
 
 /**
- * This Exception is thrown when there is a problem determining the fitness of
- * an Individual.
+ * This Exception is thrown if there is a problem during the mutation of an
+ * Individual in the evolution.
  * 
  * @author jfinkels
  */
-public class FitnessException extends Exception {
+public class MutationException extends Exception {
 
   /** Default generated serial version UID. */
-  private static final long serialVersionUID = -926352878278367019L;
+  private static final long serialVersionUID = -5889972880558622242L;
 
   /**
    * Instantiate this class by calling the default constructor of the
    * superclass.
    */
-  public FitnessException() {
+  public MutationException() {
     super();
   }
 
@@ -44,7 +44,7 @@ public class FitnessException extends Exception {
    * @param message
    *          A human-readable message explaining the problem.
    */
-  public FitnessException(final String message) {
+  public MutationException(final String message) {
     super(message);
   }
 
@@ -57,7 +57,7 @@ public class FitnessException extends Exception {
    * @param cause
    *          The cause of this Exception.
    */
-  public FitnessException(final String message, final Throwable cause) {
+  public MutationException(final String message, final Throwable cause) {
     super(message, cause);
   }
 
@@ -67,7 +67,7 @@ public class FitnessException extends Exception {
    * @param cause
    *          The cause of this Exception.
    */
-  public FitnessException(final Throwable cause) {
+  public MutationException(final Throwable cause) {
     super(cause);
   }
 

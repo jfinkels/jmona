@@ -28,10 +28,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import jmona.EvolutionException;
 import jmona.Factory;
-import jmona.exceptions.EvolutionException;
-import jmona.exceptions.FitnessException;
-import jmona.exceptions.InitializationException;
+import jmona.FitnessException;
+import jmona.InitializationException;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleTreeFactory;
 import jmona.impl.selection.FitnessProportionateSelection;

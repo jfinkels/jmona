@@ -21,8 +21,8 @@ package jmona.example.tsp.crossover;
 
 import java.util.List;
 
+import jmona.CrossoverException;
 import jmona.CrossoverFunction;
-import jmona.exceptions.CrossoverException;
 
 /**
  * ERX, by Matthew Wall

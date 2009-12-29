@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
@@ -33,7 +33,7 @@ public class EvolutionExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.EvolutionException#EvolutionException()}.
+   * {@link jmona.EvolutionException#EvolutionException()}.
    */
   @Test
   public void testEvolutionException() {
@@ -46,7 +46,7 @@ public class EvolutionExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.EvolutionException#EvolutionException(java.lang.String)}
+   * {@link jmona.EvolutionException#EvolutionException(java.lang.String)}
    * .
    */
   @Test
@@ -62,7 +62,7 @@ public class EvolutionExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.EvolutionException#EvolutionException(java.lang.String, java.lang.Throwable)}
+   * {@link jmona.EvolutionException#EvolutionException(java.lang.String, java.lang.Throwable)}
    * .
    */
   @Test
@@ -80,7 +80,7 @@ public class EvolutionExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.EvolutionException#EvolutionException(java.lang.Throwable)}
+   * {@link jmona.EvolutionException#EvolutionException(java.lang.Throwable)}
    * .
    */
   @Test

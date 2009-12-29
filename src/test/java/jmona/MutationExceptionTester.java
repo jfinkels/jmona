@@ -1,5 +1,5 @@
 /**
- * InitializationExceptionTester.java
+ * MutationExceptionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
@@ -25,54 +25,54 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Test class for the InitializationException class.
+ * Test class for the MutationException class.
  * 
  * @author jfinkels
  */
-public class InitializationExceptionTester {
+public class MutationExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.InitializationException#InitializationException()}.
+   * {@link jmona.MutationException#MutationException()}.
    */
   @Test
-  public void testInitializationException() {
+  public void testMutationException() {
     try {
-      throw new InitializationException();
-    } catch (final InitializationException exception) {
-      assertTrue(exception instanceof InitializationException);
+      throw new MutationException();
+    } catch (final MutationException exception) {
+      assertTrue(exception instanceof MutationException);
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.InitializationException#InitializationException(java.lang.String)}
+   * {@link jmona.MutationException#MutationException(java.lang.String)}
    * .
    */
   @Test
-  public void testInitializationExceptionString() {
+  public void testMutationExceptionString() {
     final String message = "Hello, world!";
     try {
-      throw new InitializationException(message);
-    } catch (final InitializationException exception) {
-      assertTrue(exception instanceof InitializationException);
+      throw new MutationException(message);
+    } catch (final MutationException exception) {
+      assertTrue(exception instanceof MutationException);
       assertSame(message, exception.getMessage());
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.InitializationException#InitializationException(java.lang.String, java.lang.Throwable)}
+   * {@link jmona.MutationException#MutationException(java.lang.String, java.lang.Throwable)}
    * .
    */
   @Test
-  public void testInitializationExceptionStringThrowable() {
+  public void testMutationExceptionStringThrowable() {
     final Throwable cause = new Exception();
     final String message = "Hello, world!";
     try {
-      throw new InitializationException(message, cause);
-    } catch (final InitializationException exception) {
-      assertTrue(exception instanceof InitializationException);
+      throw new MutationException(message, cause);
+    } catch (final MutationException exception) {
+      assertTrue(exception instanceof MutationException);
       assertSame(cause, exception.getCause());
       assertSame(message, exception.getMessage());
     }
@@ -80,16 +80,16 @@ public class InitializationExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.InitializationException#InitializationException(java.lang.Throwable)}
+   * {@link jmona.MutationException#MutationException(java.lang.Throwable)}
    * .
    */
   @Test
-  public void testInitializationExceptionThrowable() {
+  public void testMutationExceptionThrowable() {
     final Throwable cause = new Exception();
     try {
-      throw new InitializationException(cause);
-    } catch (final InitializationException exception) {
-      assertTrue(exception instanceof InitializationException);
+      throw new MutationException(cause);
+    } catch (final MutationException exception) {
+      assertTrue(exception instanceof MutationException);
       assertSame(cause, exception.getCause());
     }
   }

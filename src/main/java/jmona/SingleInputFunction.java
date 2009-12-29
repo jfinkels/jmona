@@ -19,7 +19,6 @@
  */
 package jmona;
 
-import jmona.exceptions.MappingException;
 
 /**
  * A function with domain of type T and codomain of type R.

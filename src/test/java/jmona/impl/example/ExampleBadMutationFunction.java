@@ -19,8 +19,8 @@
  */
 package jmona.impl.example;
 
+import jmona.MutationException;
 import jmona.MutationFunction;
-import jmona.exceptions.MutationException;
 
 /**
  * An example MutationFunction which always throws a MutationException.

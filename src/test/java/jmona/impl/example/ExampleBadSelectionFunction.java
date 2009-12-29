@@ -21,8 +21,8 @@ package jmona.impl.example;
 
 import java.util.Map;
 
+import jmona.SelectionException;
 import jmona.SelectionFunction;
-import jmona.exceptions.SelectionException;
 
 /**
  * A SelectionFunction which always throws a SelectionException.

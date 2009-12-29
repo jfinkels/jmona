@@ -23,13 +23,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 import jmona.Factory;
+import jmona.InitializationException;
 import jmona.example.ipd.strategy.CooperativeStrategy;
 import jmona.example.ipd.strategy.IPDStrategy;
 import jmona.example.ipd.strategy.PavlovStrategy;
 import jmona.example.ipd.strategy.RandomStrategy;
 import jmona.example.ipd.strategy.RuthlessStrategy;
 import jmona.example.ipd.strategy.TitForTatStrategy;
-import jmona.exceptions.InitializationException;
 import jmona.impl.Util;
 
 /**

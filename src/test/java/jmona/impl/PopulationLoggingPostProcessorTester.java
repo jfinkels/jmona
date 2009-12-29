@@ -20,8 +20,8 @@
 package jmona.impl;
 
 import jmona.EvolutionContext;
-import jmona.exceptions.EvolutionException;
-import jmona.exceptions.ProcessingException;
+import jmona.EvolutionException;
+import jmona.ProcessingException;
 import jmona.test.Util;
 
 import org.apache.log4j.Level;

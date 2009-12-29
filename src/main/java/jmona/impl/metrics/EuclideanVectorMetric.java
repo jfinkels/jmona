@@ -22,7 +22,7 @@ package jmona.impl.metrics;
 import java.util.List;
 
 import jmona.Metric;
-import jmona.exceptions.MetricException;
+import jmona.MetricException;
 
 /**
  * Get the Euclidean distance between two specified vectors in Euclidean

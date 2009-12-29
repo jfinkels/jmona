@@ -1,5 +1,5 @@
 /**
- * MutationException.java
+ * MappingException.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,24 +17,24 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
 
 /**
- * This Exception is thrown if there is a problem during the mutation of an
- * Individual in the evolution.
+ * This Exception is thrown when there is a problem executing a mapping
+ * function.
  * 
  * @author jfinkels
  */
-public class MutationException extends Exception {
+public class MappingException extends Exception {
 
   /** Default generated serial version UID. */
-  private static final long serialVersionUID = -5889972880558622242L;
+  private static final long serialVersionUID = -1932344069161736982L;
 
   /**
    * Instantiate this class by calling the default constructor of the
    * superclass.
    */
-  public MutationException() {
+  public MappingException() {
     super();
   }
 
@@ -44,7 +44,7 @@ public class MutationException extends Exception {
    * @param message
    *          A human-readable message explaining the problem.
    */
-  public MutationException(final String message) {
+  public MappingException(final String message) {
     super(message);
   }
 
@@ -57,7 +57,7 @@ public class MutationException extends Exception {
    * @param cause
    *          The cause of this Exception.
    */
-  public MutationException(final String message, final Throwable cause) {
+  public MappingException(final String message, final Throwable cause) {
     super(message, cause);
   }
 
@@ -67,7 +67,7 @@ public class MutationException extends Exception {
    * @param cause
    *          The cause of this Exception.
    */
-  public MutationException(final Throwable cause) {
+  public MappingException(final Throwable cause) {
     super(cause);
   }
 

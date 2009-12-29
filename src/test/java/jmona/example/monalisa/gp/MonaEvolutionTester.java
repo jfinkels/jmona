@@ -24,12 +24,12 @@ import java.io.IOException;
 import java.util.List;
 
 import jmona.CompletionCondition;
+import jmona.CompletionException;
 import jmona.EvolutionContext;
+import jmona.EvolutionException;
 import jmona.example.monalisa.ColoredPolygon;
 import jmona.example.monalisa.Converter;
 import jmona.example.monalisa.io.ImageWriter;
-import jmona.exceptions.CompletionException;
-import jmona.exceptions.EvolutionException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Tree;
 import jmona.test.Util;

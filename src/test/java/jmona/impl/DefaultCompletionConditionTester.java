@@ -25,9 +25,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.CompletionException;
 import jmona.EvolutionContext;
-import jmona.exceptions.CompletionException;
-import jmona.exceptions.FitnessException;
+import jmona.FitnessException;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;

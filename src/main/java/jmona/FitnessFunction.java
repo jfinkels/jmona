@@ -19,7 +19,6 @@
  */
 package jmona;
 
-import jmona.exceptions.FitnessException;
 
 /**
  * A class which provides a single method for determining the fitness of an

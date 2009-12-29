@@ -19,11 +19,11 @@
  */
 package jmona.impl;
 
+import jmona.CompletionException;
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 import jmona.MaxFitnessCompletionCondition;
 import jmona.MaxGenerationCompletionCondition;
-import jmona.exceptions.CompletionException;
 
 /**
  * ACompletionConditionon which tests for a maximum number of generations passed

@@ -21,7 +21,7 @@ package jmona.gp.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
-import jmona.exceptions.CopyingException;
+import jmona.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 import jmona.gp.impl.example.ExampleTernaryNode;

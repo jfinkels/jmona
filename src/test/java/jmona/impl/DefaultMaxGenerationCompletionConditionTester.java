@@ -26,9 +26,9 @@ import static org.junit.Assert.fail;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.MaxGenerationCompletionCondition;
-import jmona.exceptions.CompletionException;
 import jmona.ga.impl.GAEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
 

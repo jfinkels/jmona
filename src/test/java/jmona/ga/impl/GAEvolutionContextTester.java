@@ -26,11 +26,11 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.exceptions.CrossoverException;
-import jmona.exceptions.EvolutionException;
-import jmona.exceptions.FitnessException;
-import jmona.exceptions.MutationException;
-import jmona.exceptions.SelectionException;
+import jmona.CrossoverException;
+import jmona.EvolutionException;
+import jmona.FitnessException;
+import jmona.MutationException;
+import jmona.SelectionException;
 import jmona.impl.example.ExampleBadCrossoverFunction;
 import jmona.impl.example.ExampleBadFitnessFunction;
 import jmona.impl.example.ExampleBadMutationFunction;

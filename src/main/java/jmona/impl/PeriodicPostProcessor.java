@@ -22,7 +22,7 @@ package jmona.impl;
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 import jmona.PostProcessor;
-import jmona.exceptions.ProcessingException;
+import jmona.ProcessingException;
 
 /**
  * A PostProcessor which repeatedly performs some processing after a specified

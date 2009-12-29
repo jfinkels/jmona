@@ -1,5 +1,5 @@
 /**
- * MappingException.java
+ * CompletionException.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,24 +17,24 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
 
 /**
- * This Exception is thrown when there is a problem executing a mapping
- * function.
+ * This Exception is thrown when there is a problem determining if a
+ * CompletionCondition has satisfied.
  * 
  * @author jfinkels
  */
-public class MappingException extends Exception {
+public class CompletionException extends Exception {
 
   /** Default generated serial version UID. */
-  private static final long serialVersionUID = -1932344069161736982L;
+  private static final long serialVersionUID = -7625342192624956820L;
 
   /**
    * Instantiate this class by calling the default constructor of the
    * superclass.
    */
-  public MappingException() {
+  public CompletionException() {
     super();
   }
 
@@ -44,7 +44,7 @@ public class MappingException extends Exception {
    * @param message
    *          A human-readable message explaining the problem.
    */
-  public MappingException(final String message) {
+  public CompletionException(final String message) {
     super(message);
   }
 
@@ -57,7 +57,7 @@ public class MappingException extends Exception {
    * @param cause
    *          The cause of this Exception.
    */
-  public MappingException(final String message, final Throwable cause) {
+  public CompletionException(final String message, final Throwable cause) {
     super(message, cause);
   }
 
@@ -67,7 +67,7 @@ public class MappingException extends Exception {
    * @param cause
    *          The cause of this Exception.
    */
-  public MappingException(final Throwable cause) {
+  public CompletionException(final Throwable cause) {
     super(cause);
   }
 

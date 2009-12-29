@@ -20,8 +20,8 @@
 package jmona.example.calc.operations;
 
 import static org.junit.Assert.assertEquals;
+import jmona.MappingException;
 import jmona.SingleInputFunction;
-import jmona.exceptions.MappingException;
 import jmona.gp.impl.UniformBinaryOperation;
 
 import org.junit.Test;

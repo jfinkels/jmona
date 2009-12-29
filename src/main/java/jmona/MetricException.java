@@ -1,5 +1,5 @@
 /**
- * CompletionException.java
+ * MetricException.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,24 +17,25 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
+
 
 /**
- * This Exception is thrown when there is a problem determining if a
- * CompletionCondition has satisfied.
+ * This Exception is thrown when there is a problem measuring two objects, as in
+ * a {@link Metric#measure(Object, Object)} method.
  * 
  * @author jfinkels
  */
-public class CompletionException extends Exception {
+public class MetricException extends Exception {
 
   /** Default generated serial version UID. */
-  private static final long serialVersionUID = -7625342192624956820L;
+  private static final long serialVersionUID = 8656689002408316812L;
 
   /**
    * Instantiate this class by calling the default constructor of the
    * superclass.
    */
-  public CompletionException() {
+  public MetricException() {
     super();
   }
 
@@ -44,7 +45,7 @@ public class CompletionException extends Exception {
    * @param message
    *          A human-readable message explaining the problem.
    */
-  public CompletionException(final String message) {
+  public MetricException(final String message) {
     super(message);
   }
 
@@ -57,7 +58,7 @@ public class CompletionException extends Exception {
    * @param cause
    *          The cause of this Exception.
    */
-  public CompletionException(final String message, final Throwable cause) {
+  public MetricException(final String message, final Throwable cause) {
     super(message, cause);
   }
 
@@ -67,7 +68,7 @@ public class CompletionException extends Exception {
    * @param cause
    *          The cause of this Exception.
    */
-  public CompletionException(final Throwable cause) {
+  public MetricException(final Throwable cause) {
     super(cause);
   }
 

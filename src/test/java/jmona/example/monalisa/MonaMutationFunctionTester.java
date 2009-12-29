@@ -27,7 +27,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.exceptions.MutationException;
+import jmona.MutationException;
 import jmona.impl.ListMutationFunction;
 import jmona.impl.Util;
 

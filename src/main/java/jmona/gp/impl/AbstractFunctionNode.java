@@ -22,7 +22,7 @@ package jmona.gp.impl;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.exceptions.CopyingException;
+import jmona.CopyingException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.impl.Util;

@@ -22,7 +22,7 @@ package jmona.gp.impl;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
-import jmona.exceptions.MutationException;
+import jmona.MutationException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;

@@ -26,8 +26,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Vector;
 
+import jmona.CopyingException;
 import jmona.DeepCopyable;
-import jmona.exceptions.CopyingException;
 
 /**
  * Utility class containing objects and methods necessary for randomness.

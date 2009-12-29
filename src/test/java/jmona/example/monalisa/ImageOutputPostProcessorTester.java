@@ -28,8 +28,8 @@ import java.util.Vector;
 
 import jmona.DeepCopyableList;
 import jmona.EvolutionContext;
-import jmona.exceptions.InitializationException;
-import jmona.exceptions.ProcessingException;
+import jmona.InitializationException;
+import jmona.ProcessingException;
 import jmona.ga.impl.GAEvolutionContext;
 import jmona.impl.CompleteDeepCopyableListFactory;
 import jmona.test.Util;

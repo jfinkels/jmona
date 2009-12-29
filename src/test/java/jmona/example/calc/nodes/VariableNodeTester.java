@@ -20,7 +20,7 @@
 package jmona.example.calc.nodes;
 
 import static org.junit.Assert.assertEquals;
-import jmona.exceptions.MappingException;
+import jmona.MappingException;
 import jmona.gp.EvaluationException;
 import jmona.test.Util;
 

@@ -19,12 +19,12 @@
  */
 package jmona.ga.impl;
 
+import jmona.FitnessException;
 import jmona.FitnessFunction;
+import jmona.MappingException;
 import jmona.Metric;
+import jmona.MetricException;
 import jmona.SingleInputFunction;
-import jmona.exceptions.FitnessException;
-import jmona.exceptions.MappingException;
-import jmona.exceptions.MetricException;
 
 /**
  * A FitnessFunction which measures the distance between a specified Individual

@@ -21,7 +21,7 @@ package jmona.ga.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import jmona.exceptions.FitnessException;
+import jmona.FitnessException;
 import jmona.impl.example.ExampleIndividual;
 import jmona.impl.example.ExampleMapping;
 import jmona.impl.metrics.EuclideanMetric;

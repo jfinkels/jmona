@@ -22,10 +22,10 @@ package jmona.game.impl;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.CopyingException;
 import jmona.DeepCopyable;
-import jmona.exceptions.CopyingException;
-import jmona.exceptions.EvolutionException;
-import jmona.exceptions.SelectionException;
+import jmona.EvolutionException;
+import jmona.SelectionException;
 import jmona.game.GameplayException;
 import jmona.game.Strategy;
 import jmona.game.TwoPlayerGame;

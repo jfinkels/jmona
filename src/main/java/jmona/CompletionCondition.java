@@ -19,7 +19,6 @@
  */
 package jmona;
 
-import jmona.exceptions.CompletionException;
 
 /**
  * An object which contains a method which tells whether the criteria for the

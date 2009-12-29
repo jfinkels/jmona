@@ -1,5 +1,5 @@
 /**
- * ProcessingExceptionTester.java
+ * MetricExceptionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
@@ -25,54 +25,52 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Test class for the ProcessingException class.
+ * Test class for the MetricException class.
  * 
  * @author jfinkels
  */
-public class ProcessingExceptionTester {
+public class MetricExceptionTester {
 
   /**
-   * Test method for
-   * {@link jmona.exceptions.ProcessingException#ProcessingException()}.
+   * Test method for {@link jmona.MetricException#MetricException()}.
    */
   @Test
-  public void testProcessingException() {
+  public void testMetricException() {
     try {
-      throw new ProcessingException();
-    } catch (final ProcessingException exception) {
-      assertTrue(exception instanceof ProcessingException);
+      throw new MetricException();
+    } catch (final MetricException exception) {
+      assertTrue(exception instanceof MetricException);
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.ProcessingException#ProcessingException(java.lang.String)}
-   * .
+   * {@link jmona.MetricException#MetricException(java.lang.String)}.
    */
   @Test
-  public void testProcessingExceptionString() {
+  public void testMetricExceptionString() {
     final String message = "Hello, world!";
     try {
-      throw new ProcessingException(message);
-    } catch (final ProcessingException exception) {
-      assertTrue(exception instanceof ProcessingException);
+      throw new MetricException(message);
+    } catch (final MetricException exception) {
+      assertTrue(exception instanceof MetricException);
       assertSame(message, exception.getMessage());
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.ProcessingException#ProcessingException(java.lang.String, java.lang.Throwable)}
+   * {@link jmona.MetricException#MetricException(java.lang.String, java.lang.Throwable)}
    * .
    */
   @Test
-  public void testProcessingExceptionStringThrowable() {
+  public void testMetricExceptionStringThrowable() {
     final Throwable cause = new Exception();
     final String message = "Hello, world!";
     try {
-      throw new ProcessingException(message, cause);
-    } catch (final ProcessingException exception) {
-      assertTrue(exception instanceof ProcessingException);
+      throw new MetricException(message, cause);
+    } catch (final MetricException exception) {
+      assertTrue(exception instanceof MetricException);
       assertSame(cause, exception.getCause());
       assertSame(message, exception.getMessage());
     }
@@ -80,16 +78,16 @@ public class ProcessingExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.ProcessingException#ProcessingException(java.lang.Throwable)}
+   * {@link jmona.MetricException#MetricException(java.lang.Throwable)}
    * .
    */
   @Test
-  public void testProcessingExceptionThrowable() {
+  public void testMetricExceptionThrowable() {
     final Throwable cause = new Exception();
     try {
-      throw new ProcessingException(cause);
-    } catch (final ProcessingException exception) {
-      assertTrue(exception instanceof ProcessingException);
+      throw new MetricException(cause);
+    } catch (final MetricException exception) {
+      assertTrue(exception instanceof MetricException);
       assertSame(cause, exception.getCause());
     }
   }

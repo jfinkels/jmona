@@ -23,10 +23,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import jmona.CompletionCondition;
+import jmona.CompletionException;
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.exceptions.CompletionException;
-import jmona.exceptions.EvolutionException;
+import jmona.EvolutionException;
 import jmona.game.Strategy;
 import jmona.test.Util;
 

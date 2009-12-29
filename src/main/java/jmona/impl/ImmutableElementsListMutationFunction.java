@@ -21,8 +21,8 @@ package jmona.impl;
 
 import java.util.List;
 
+import jmona.MutationException;
 import jmona.MutationFunction;
-import jmona.exceptions.MutationException;
 
 /**
  * A ListMutationFunction which operates on Lists of immutable elements, by

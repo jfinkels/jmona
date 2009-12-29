@@ -22,12 +22,12 @@ package jmona.gp.impl;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.exceptions.CopyingException;
-import jmona.exceptions.CrossoverException;
-import jmona.exceptions.EvolutionException;
-import jmona.exceptions.FitnessException;
-import jmona.exceptions.MutationException;
-import jmona.exceptions.SelectionException;
+import jmona.CopyingException;
+import jmona.CrossoverException;
+import jmona.EvolutionException;
+import jmona.FitnessException;
+import jmona.MutationException;
+import jmona.SelectionException;
 import jmona.gp.Tree;
 import jmona.impl.AbstractEvolutionContext;
 

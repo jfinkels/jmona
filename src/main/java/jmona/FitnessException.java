@@ -1,5 +1,5 @@
 /**
- * ProcessingException.java
+ * FitnessException.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,24 +17,24 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
 
 /**
- * This Exception is thrown when there is a problem during PostProcessor
- * processing of an EvolutionContext.
+ * This Exception is thrown when there is a problem determining the fitness of
+ * an Individual.
  * 
  * @author jfinkels
  */
-public class ProcessingException extends Exception {
+public class FitnessException extends Exception {
 
   /** Default generated serial version UID. */
-  private static final long serialVersionUID = 3891709264750219253L;
+  private static final long serialVersionUID = -926352878278367019L;
 
   /**
    * Instantiate this class by calling the default constructor of the
    * superclass.
    */
-  public ProcessingException() {
+  public FitnessException() {
     super();
   }
 
@@ -44,7 +44,7 @@ public class ProcessingException extends Exception {
    * @param message
    *          A human-readable message explaining the problem.
    */
-  public ProcessingException(final String message) {
+  public FitnessException(final String message) {
     super(message);
   }
 
@@ -57,7 +57,7 @@ public class ProcessingException extends Exception {
    * @param cause
    *          The cause of this Exception.
    */
-  public ProcessingException(final String message, final Throwable cause) {
+  public FitnessException(final String message, final Throwable cause) {
     super(message, cause);
   }
 
@@ -67,7 +67,7 @@ public class ProcessingException extends Exception {
    * @param cause
    *          The cause of this Exception.
    */
-  public ProcessingException(final Throwable cause) {
+  public FitnessException(final Throwable cause) {
     super(cause);
   }
 

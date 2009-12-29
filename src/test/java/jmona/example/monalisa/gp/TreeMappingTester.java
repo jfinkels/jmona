@@ -27,8 +27,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.PixelGrabber;
 import java.util.List;
 
+import jmona.MappingException;
 import jmona.example.monalisa.ColoredPolygon;
-import jmona.exceptions.MappingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Tree;
 import jmona.gp.impl.DefaultTree;

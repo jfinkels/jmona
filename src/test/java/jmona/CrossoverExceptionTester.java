@@ -1,5 +1,5 @@
 /**
- * FitnessExceptionTester.java
+ * CrossoverExceptionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
@@ -25,54 +25,54 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Test class for the FitnessException class.
+ * Test class for the CrossoverException class.
  * 
  * @author jfinkels
  */
-public class FitnessExceptionTester {
+public class CrossoverExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.FitnessException#FitnessException()}.
+   * {@link jmona.CrossoverException#CrossoverException()}.
    */
   @Test
-  public void testFitnessException() {
+  public void testCrossoverException() {
     try {
-      throw new FitnessException();
-    } catch (final FitnessException exception) {
-      assertTrue(exception instanceof FitnessException);
+      throw new CrossoverException();
+    } catch (final CrossoverException exception) {
+      assertTrue(exception instanceof CrossoverException);
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.FitnessException#FitnessException(java.lang.String)}
+   * {@link jmona.CrossoverException#CrossoverException(java.lang.String)}
    * .
    */
   @Test
-  public void testFitnessExceptionString() {
+  public void testCrossoverExceptionString() {
     final String message = "Hello, world!";
     try {
-      throw new FitnessException(message);
-    } catch (final FitnessException exception) {
-      assertTrue(exception instanceof FitnessException);
+      throw new CrossoverException(message);
+    } catch (final CrossoverException exception) {
+      assertTrue(exception instanceof CrossoverException);
       assertSame(message, exception.getMessage());
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.FitnessException#FitnessException(java.lang.String, java.lang.Throwable)}
+   * {@link jmona.CrossoverException#CrossoverException(java.lang.String, java.lang.Throwable)}
    * .
    */
   @Test
-  public void testFitnessExceptionStringThrowable() {
+  public void testCrossoverExceptionStringThrowable() {
     final Throwable cause = new Exception();
     final String message = "Hello, world!";
     try {
-      throw new FitnessException(message, cause);
-    } catch (final FitnessException exception) {
-      assertTrue(exception instanceof FitnessException);
+      throw new CrossoverException(message, cause);
+    } catch (final CrossoverException exception) {
+      assertTrue(exception instanceof CrossoverException);
       assertSame(cause, exception.getCause());
       assertSame(message, exception.getMessage());
     }
@@ -80,16 +80,16 @@ public class FitnessExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.FitnessException#FitnessException(java.lang.Throwable)}
+   * {@link jmona.CrossoverException#CrossoverException(java.lang.Throwable)}
    * .
    */
   @Test
-  public void testFitnessExceptionThrowable() {
+  public void testCrossoverExceptionThrowable() {
     final Throwable cause = new Exception();
     try {
-      throw new FitnessException(cause);
-    } catch (final FitnessException exception) {
-      assertTrue(exception instanceof FitnessException);
+      throw new CrossoverException(cause);
+    } catch (final CrossoverException exception) {
+      assertTrue(exception instanceof CrossoverException);
       assertSame(cause, exception.getCause());
     }
   }

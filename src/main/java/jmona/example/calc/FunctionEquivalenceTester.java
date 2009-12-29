@@ -19,8 +19,8 @@
  */
 package jmona.example.calc;
 
+import jmona.MappingException;
 import jmona.SingleInputFunction;
-import jmona.exceptions.MappingException;
 import jmona.gp.EquivalenceException;
 import jmona.gp.EquivalenceTester;
 

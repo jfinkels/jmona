@@ -1,5 +1,5 @@
 /**
- * MetricExceptionTester.java
+ * MappingExceptionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
@@ -25,52 +25,54 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Test class for the MetricException class.
+ * Test class for the MappingException class.
  * 
  * @author jfinkels
  */
-public class MetricExceptionTester {
+public class MappingExceptionTester {
 
   /**
-   * Test method for {@link jmona.exceptions.MetricException#MetricException()}.
+   * Test method for
+   * {@link jmona.MappingException#MappingException()}.
    */
   @Test
-  public void testMetricException() {
+  public void testMappingException() {
     try {
-      throw new MetricException();
-    } catch (final MetricException exception) {
-      assertTrue(exception instanceof MetricException);
+      throw new MappingException();
+    } catch (final MappingException exception) {
+      assertTrue(exception instanceof MappingException);
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MetricException#MetricException(java.lang.String)}.
+   * {@link jmona.MappingException#MappingException(java.lang.String)}
+   * .
    */
   @Test
-  public void testMetricExceptionString() {
+  public void testMappingExceptionString() {
     final String message = "Hello, world!";
     try {
-      throw new MetricException(message);
-    } catch (final MetricException exception) {
-      assertTrue(exception instanceof MetricException);
+      throw new MappingException(message);
+    } catch (final MappingException exception) {
+      assertTrue(exception instanceof MappingException);
       assertSame(message, exception.getMessage());
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MetricException#MetricException(java.lang.String, java.lang.Throwable)}
+   * {@link jmona.MappingException#MappingException(java.lang.String, java.lang.Throwable)}
    * .
    */
   @Test
-  public void testMetricExceptionStringThrowable() {
+  public void testMappingExceptionStringThrowable() {
     final Throwable cause = new Exception();
     final String message = "Hello, world!";
     try {
-      throw new MetricException(message, cause);
-    } catch (final MetricException exception) {
-      assertTrue(exception instanceof MetricException);
+      throw new MappingException(message, cause);
+    } catch (final MappingException exception) {
+      assertTrue(exception instanceof MappingException);
       assertSame(cause, exception.getCause());
       assertSame(message, exception.getMessage());
     }
@@ -78,16 +80,16 @@ public class MetricExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MetricException#MetricException(java.lang.Throwable)}
+   * {@link jmona.MappingException#MappingException(java.lang.Throwable)}
    * .
    */
   @Test
-  public void testMetricExceptionThrowable() {
+  public void testMappingExceptionThrowable() {
     final Throwable cause = new Exception();
     try {
-      throw new MetricException(cause);
-    } catch (final MetricException exception) {
-      assertTrue(exception instanceof MetricException);
+      throw new MappingException(cause);
+    } catch (final MappingException exception) {
+      assertTrue(exception instanceof MappingException);
       assertSame(cause, exception.getCause());
     }
   }

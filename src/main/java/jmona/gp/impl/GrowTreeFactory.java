@@ -19,7 +19,7 @@
  */
 package jmona.gp.impl;
 
-import jmona.exceptions.InitializationException;
+import jmona.InitializationException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 

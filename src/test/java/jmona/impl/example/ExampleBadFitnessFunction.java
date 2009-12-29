@@ -19,8 +19,8 @@
  */
 package jmona.impl.example;
 
+import jmona.FitnessException;
 import jmona.FitnessFunction;
-import jmona.exceptions.FitnessException;
 
 /**
  * An example FitnessFunction which always throws a FitnessException.

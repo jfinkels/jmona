@@ -1,5 +1,5 @@
 /**
- * MappingExceptionTester.java
+ * FitnessExceptionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
@@ -25,54 +25,54 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Test class for the MappingException class.
+ * Test class for the FitnessException class.
  * 
  * @author jfinkels
  */
-public class MappingExceptionTester {
+public class FitnessExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MappingException#MappingException()}.
+   * {@link jmona.FitnessException#FitnessException()}.
    */
   @Test
-  public void testMappingException() {
+  public void testFitnessException() {
     try {
-      throw new MappingException();
-    } catch (final MappingException exception) {
-      assertTrue(exception instanceof MappingException);
+      throw new FitnessException();
+    } catch (final FitnessException exception) {
+      assertTrue(exception instanceof FitnessException);
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MappingException#MappingException(java.lang.String)}
+   * {@link jmona.FitnessException#FitnessException(java.lang.String)}
    * .
    */
   @Test
-  public void testMappingExceptionString() {
+  public void testFitnessExceptionString() {
     final String message = "Hello, world!";
     try {
-      throw new MappingException(message);
-    } catch (final MappingException exception) {
-      assertTrue(exception instanceof MappingException);
+      throw new FitnessException(message);
+    } catch (final FitnessException exception) {
+      assertTrue(exception instanceof FitnessException);
       assertSame(message, exception.getMessage());
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MappingException#MappingException(java.lang.String, java.lang.Throwable)}
+   * {@link jmona.FitnessException#FitnessException(java.lang.String, java.lang.Throwable)}
    * .
    */
   @Test
-  public void testMappingExceptionStringThrowable() {
+  public void testFitnessExceptionStringThrowable() {
     final Throwable cause = new Exception();
     final String message = "Hello, world!";
     try {
-      throw new MappingException(message, cause);
-    } catch (final MappingException exception) {
-      assertTrue(exception instanceof MappingException);
+      throw new FitnessException(message, cause);
+    } catch (final FitnessException exception) {
+      assertTrue(exception instanceof FitnessException);
       assertSame(cause, exception.getCause());
       assertSame(message, exception.getMessage());
     }
@@ -80,16 +80,16 @@ public class MappingExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MappingException#MappingException(java.lang.Throwable)}
+   * {@link jmona.FitnessException#FitnessException(java.lang.Throwable)}
    * .
    */
   @Test
-  public void testMappingExceptionThrowable() {
+  public void testFitnessExceptionThrowable() {
     final Throwable cause = new Exception();
     try {
-      throw new MappingException(cause);
-    } catch (final MappingException exception) {
-      assertTrue(exception instanceof MappingException);
+      throw new FitnessException(cause);
+    } catch (final FitnessException exception) {
+      assertTrue(exception instanceof FitnessException);
       assertSame(cause, exception.getCause());
     }
   }

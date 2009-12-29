@@ -1,5 +1,5 @@
 /**
- * MutationExceptionTester.java
+ * SelectionExceptionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
@@ -25,54 +25,54 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Test class for the MutationException class.
+ * Test class for the SelectionException class.
  * 
  * @author jfinkels
  */
-public class MutationExceptionTester {
+public class SelectionExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MutationException#MutationException()}.
+   * {@link jmona.SelectionException#SelectionException()}.
    */
   @Test
-  public void testMutationException() {
+  public void testSelectionException() {
     try {
-      throw new MutationException();
-    } catch (final MutationException exception) {
-      assertTrue(exception instanceof MutationException);
+      throw new SelectionException();
+    } catch (final SelectionException exception) {
+      assertTrue(exception instanceof SelectionException);
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MutationException#MutationException(java.lang.String)}
+   * {@link jmona.SelectionException#SelectionException(java.lang.String)}
    * .
    */
   @Test
-  public void testMutationExceptionString() {
+  public void testSelectionExceptionString() {
     final String message = "Hello, world!";
     try {
-      throw new MutationException(message);
-    } catch (final MutationException exception) {
-      assertTrue(exception instanceof MutationException);
+      throw new SelectionException(message);
+    } catch (final SelectionException exception) {
+      assertTrue(exception instanceof SelectionException);
       assertSame(message, exception.getMessage());
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MutationException#MutationException(java.lang.String, java.lang.Throwable)}
+   * {@link jmona.SelectionException#SelectionException(java.lang.String, java.lang.Throwable)}
    * .
    */
   @Test
-  public void testMutationExceptionStringThrowable() {
+  public void testSelectionExceptionStringThrowable() {
     final Throwable cause = new Exception();
     final String message = "Hello, world!";
     try {
-      throw new MutationException(message, cause);
-    } catch (final MutationException exception) {
-      assertTrue(exception instanceof MutationException);
+      throw new SelectionException(message, cause);
+    } catch (final SelectionException exception) {
+      assertTrue(exception instanceof SelectionException);
       assertSame(cause, exception.getCause());
       assertSame(message, exception.getMessage());
     }
@@ -80,16 +80,16 @@ public class MutationExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.MutationException#MutationException(java.lang.Throwable)}
+   * {@link jmona.SelectionException#SelectionException(java.lang.Throwable)}
    * .
    */
   @Test
-  public void testMutationExceptionThrowable() {
+  public void testSelectionExceptionThrowable() {
     final Throwable cause = new Exception();
     try {
-      throw new MutationException(cause);
-    } catch (final MutationException exception) {
-      assertTrue(exception instanceof MutationException);
+      throw new SelectionException(cause);
+    } catch (final SelectionException exception) {
+      assertTrue(exception instanceof SelectionException);
       assertSame(cause, exception.getCause());
     }
   }

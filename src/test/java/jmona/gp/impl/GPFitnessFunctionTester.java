@@ -25,8 +25,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.HashSet;
 import java.util.Set;
 
-import jmona.exceptions.FitnessException;
-import jmona.exceptions.InitializationException;
+import jmona.FitnessException;
+import jmona.InitializationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleTreeFactory;

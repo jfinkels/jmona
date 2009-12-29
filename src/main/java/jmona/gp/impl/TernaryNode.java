@@ -19,7 +19,7 @@
  */
 package jmona.gp.impl;
 
-import jmona.exceptions.CopyingException;
+import jmona.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 

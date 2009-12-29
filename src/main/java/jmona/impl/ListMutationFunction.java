@@ -21,8 +21,8 @@ package jmona.impl;
 
 import java.util.List;
 
+import jmona.MutationException;
 import jmona.MutationFunction;
-import jmona.exceptions.MutationException;
 
 /**
  * A class which mutates elements in a List by mutating one element at random.

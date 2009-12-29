@@ -1,5 +1,5 @@
 /**
- * CrossoverExceptionTester.java
+ * InitializationExceptionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
@@ -25,54 +25,54 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Test class for the CrossoverException class.
+ * Test class for the InitializationException class.
  * 
  * @author jfinkels
  */
-public class CrossoverExceptionTester {
+public class InitializationExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.CrossoverException#CrossoverException()}.
+   * {@link jmona.InitializationException#InitializationException()}.
    */
   @Test
-  public void testCrossoverException() {
+  public void testInitializationException() {
     try {
-      throw new CrossoverException();
-    } catch (final CrossoverException exception) {
-      assertTrue(exception instanceof CrossoverException);
+      throw new InitializationException();
+    } catch (final InitializationException exception) {
+      assertTrue(exception instanceof InitializationException);
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.CrossoverException#CrossoverException(java.lang.String)}
+   * {@link jmona.InitializationException#InitializationException(java.lang.String)}
    * .
    */
   @Test
-  public void testCrossoverExceptionString() {
+  public void testInitializationExceptionString() {
     final String message = "Hello, world!";
     try {
-      throw new CrossoverException(message);
-    } catch (final CrossoverException exception) {
-      assertTrue(exception instanceof CrossoverException);
+      throw new InitializationException(message);
+    } catch (final InitializationException exception) {
+      assertTrue(exception instanceof InitializationException);
       assertSame(message, exception.getMessage());
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.CrossoverException#CrossoverException(java.lang.String, java.lang.Throwable)}
+   * {@link jmona.InitializationException#InitializationException(java.lang.String, java.lang.Throwable)}
    * .
    */
   @Test
-  public void testCrossoverExceptionStringThrowable() {
+  public void testInitializationExceptionStringThrowable() {
     final Throwable cause = new Exception();
     final String message = "Hello, world!";
     try {
-      throw new CrossoverException(message, cause);
-    } catch (final CrossoverException exception) {
-      assertTrue(exception instanceof CrossoverException);
+      throw new InitializationException(message, cause);
+    } catch (final InitializationException exception) {
+      assertTrue(exception instanceof InitializationException);
       assertSame(cause, exception.getCause());
       assertSame(message, exception.getMessage());
     }
@@ -80,16 +80,16 @@ public class CrossoverExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.CrossoverException#CrossoverException(java.lang.Throwable)}
+   * {@link jmona.InitializationException#InitializationException(java.lang.Throwable)}
    * .
    */
   @Test
-  public void testCrossoverExceptionThrowable() {
+  public void testInitializationExceptionThrowable() {
     final Throwable cause = new Exception();
     try {
-      throw new CrossoverException(cause);
-    } catch (final CrossoverException exception) {
-      assertTrue(exception instanceof CrossoverException);
+      throw new InitializationException(cause);
+    } catch (final InitializationException exception) {
+      assertTrue(exception instanceof InitializationException);
       assertSame(cause, exception.getCause());
     }
   }

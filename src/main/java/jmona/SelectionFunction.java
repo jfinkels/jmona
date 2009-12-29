@@ -21,7 +21,6 @@ package jmona;
 
 import java.util.Map;
 
-import jmona.exceptions.SelectionException;
 
 /**
  * A class which provides a single method which selects an Individual based on

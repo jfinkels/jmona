@@ -19,7 +19,6 @@
  */
 package jmona;
 
-import jmona.exceptions.CrossoverException;
 
 /**
  * A class which provides a single method which performs a crossover (in place)

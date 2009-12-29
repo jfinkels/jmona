@@ -20,7 +20,7 @@
 package jmona.gp.impl.example;
 
 import jmona.Factory;
-import jmona.exceptions.InitializationException;
+import jmona.InitializationException;
 import jmona.gp.TerminalNode;
 
 /**

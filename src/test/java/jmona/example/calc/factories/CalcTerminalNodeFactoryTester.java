@@ -25,10 +25,10 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Random;
 
+import jmona.MappingException;
 import jmona.SingleInputFunction;
 import jmona.example.calc.nodes.NumberNode;
 import jmona.example.calc.nodes.VariableNode;
-import jmona.exceptions.MappingException;
 import jmona.gp.TerminalNode;
 import jmona.test.Util;
 

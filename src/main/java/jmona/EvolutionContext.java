@@ -21,8 +21,6 @@ package jmona;
 
 import java.util.List;
 
-import jmona.exceptions.EvolutionException;
-import jmona.exceptions.FitnessException;
 
 /**
  * A context in which evolution occurs.

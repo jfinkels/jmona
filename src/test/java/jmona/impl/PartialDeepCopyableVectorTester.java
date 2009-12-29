@@ -27,7 +27,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.exceptions.CopyingException;
+import jmona.CopyingException;
 import jmona.test.Util;
 
 import org.junit.Before;

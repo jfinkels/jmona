@@ -27,7 +27,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import jmona.exceptions.InitializationException;
+import jmona.InitializationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleBinaryNode;

@@ -20,9 +20,9 @@
 package jmona.gp.impl;
 
 import jmona.Factory;
+import jmona.InitializationException;
+import jmona.MutationException;
 import jmona.MutationFunction;
-import jmona.exceptions.InitializationException;
-import jmona.exceptions.MutationException;
 import jmona.gp.Tree;
 
 /**

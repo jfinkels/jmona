@@ -19,7 +19,6 @@
  */
 package jmona;
 
-import jmona.exceptions.InitializationException;
 
 /**
  * A factory which creates objects of type E.

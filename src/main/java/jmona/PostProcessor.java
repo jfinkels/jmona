@@ -19,7 +19,6 @@
  */
 package jmona;
 
-import jmona.exceptions.ProcessingException;
 
 /**
  * An object which performs some processing on an EvolutionContext after each

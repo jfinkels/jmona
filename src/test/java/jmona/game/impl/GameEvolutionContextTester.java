@@ -25,7 +25,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.exceptions.EvolutionException;
+import jmona.EvolutionException;
 import jmona.game.GameplayException;
 import jmona.game.impl.example.ExampleBadGame;
 import jmona.game.impl.example.ExampleGame;

@@ -26,11 +26,11 @@ import java.util.Map;
 import jmona.CrossoverFunction;
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
+import jmona.EvolutionException;
+import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.MutationFunction;
 import jmona.SelectionFunction;
-import jmona.exceptions.EvolutionException;
-import jmona.exceptions.FitnessException;
 
 /**
  * An abstract base class for EvolutionContexts.

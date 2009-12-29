@@ -19,12 +19,12 @@
  */
 package jmona.impl;
 
+import jmona.CompletionException;
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
+import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.MaxFitnessCompletionCondition;
-import jmona.exceptions.CompletionException;
-import jmona.exceptions.FitnessException;
 
 /**
  * CompletionCondition used to determine whether an EvolutionContext contains an

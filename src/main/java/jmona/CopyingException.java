@@ -1,5 +1,5 @@
 /**
- * EvolutionException.java
+ * CopyingException.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,25 +17,23 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
 
 /**
- * This Exception is thrown when there is a problem during evolution.
+ * This Exception is thrown when there is a problem while copying an object.
  * 
  * @author jfinkels
  */
-public class EvolutionException extends Exception {
+public class CopyingException extends Exception {
 
-  /**
-   * Default generated serial version UID.
-   */
-  private static final long serialVersionUID = -3155931134086340567L;
+  /** Default generated serial version UID. */
+  private static final long serialVersionUID = 7958636490314028925L;
 
   /**
    * Instantiate this class by calling the default constructor of the
    * superclass.
    */
-  public EvolutionException() {
+  public CopyingException() {
     super();
   }
 
@@ -45,7 +43,7 @@ public class EvolutionException extends Exception {
    * @param message
    *          A human-readable message explaining the problem.
    */
-  public EvolutionException(final String message) {
+  public CopyingException(final String message) {
     super(message);
   }
 
@@ -58,7 +56,7 @@ public class EvolutionException extends Exception {
    * @param cause
    *          The cause of this Exception.
    */
-  public EvolutionException(final String message, final Throwable cause) {
+  public CopyingException(final String message, final Throwable cause) {
     super(message, cause);
   }
 
@@ -68,7 +66,7 @@ public class EvolutionException extends Exception {
    * @param cause
    *          The cause of this Exception.
    */
-  public EvolutionException(final Throwable cause) {
+  public CopyingException(final Throwable cause) {
     super(cause);
   }
 

@@ -27,10 +27,10 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import jmona.CopyingException;
 import jmona.DeepCopyableList;
 import jmona.Factory;
-import jmona.exceptions.CopyingException;
-import jmona.exceptions.InitializationException;
+import jmona.InitializationException;
 import jmona.ga.impl.BitFactory;
 import jmona.test.Util;
 

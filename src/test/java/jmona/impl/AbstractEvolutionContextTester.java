@@ -31,11 +31,11 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.CrossoverFunction;
+import jmona.EvolutionException;
+import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.MutationFunction;
 import jmona.SelectionFunction;
-import jmona.exceptions.EvolutionException;
-import jmona.exceptions.FitnessException;
 import jmona.impl.example.ExampleCrossoverFunction;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;

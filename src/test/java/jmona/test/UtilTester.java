@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.Factory;
-import jmona.exceptions.InitializationException;
+import jmona.InitializationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 import jmona.gp.impl.AbstractTreeFactory;

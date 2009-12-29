@@ -22,7 +22,7 @@ package jmona.impl.metrics;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import jmona.Metric;
-import jmona.exceptions.MetricException;
+import jmona.MetricException;
 import jmona.test.Util;
 
 import org.junit.Test;

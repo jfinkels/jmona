@@ -22,8 +22,8 @@ package jmona.example.monalisa.gp;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.CopyingException;
 import jmona.example.monalisa.ColoredPolygon;
-import jmona.exceptions.CopyingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;

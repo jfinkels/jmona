@@ -1,5 +1,5 @@
 /**
- * MetricException.java
+ * ProcessingException.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,26 +17,24 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
-
-import jmona.Metric;
+package jmona;
 
 /**
- * This Exception is thrown when there is a problem measuring two objects, as in
- * a {@link Metric#measure(Object, Object)} method.
+ * This Exception is thrown when there is a problem during PostProcessor
+ * processing of an EvolutionContext.
  * 
  * @author jfinkels
  */
-public class MetricException extends Exception {
+public class ProcessingException extends Exception {
 
   /** Default generated serial version UID. */
-  private static final long serialVersionUID = 8656689002408316812L;
+  private static final long serialVersionUID = 3891709264750219253L;
 
   /**
    * Instantiate this class by calling the default constructor of the
    * superclass.
    */
-  public MetricException() {
+  public ProcessingException() {
     super();
   }
 
@@ -46,7 +44,7 @@ public class MetricException extends Exception {
    * @param message
    *          A human-readable message explaining the problem.
    */
-  public MetricException(final String message) {
+  public ProcessingException(final String message) {
     super(message);
   }
 
@@ -59,7 +57,7 @@ public class MetricException extends Exception {
    * @param cause
    *          The cause of this Exception.
    */
-  public MetricException(final String message, final Throwable cause) {
+  public ProcessingException(final String message, final Throwable cause) {
     super(message, cause);
   }
 
@@ -69,7 +67,7 @@ public class MetricException extends Exception {
    * @param cause
    *          The cause of this Exception.
    */
-  public MetricException(final Throwable cause) {
+  public ProcessingException(final Throwable cause) {
     super(cause);
   }
 

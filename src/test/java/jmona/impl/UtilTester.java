@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import jmona.exceptions.CopyingException;
+import jmona.CopyingException;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Test;

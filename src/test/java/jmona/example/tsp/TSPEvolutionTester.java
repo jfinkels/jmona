@@ -20,10 +20,10 @@
 package jmona.example.tsp;
 
 import jmona.CompletionCondition;
+import jmona.CompletionException;
 import jmona.DeepCopyableList;
 import jmona.EvolutionContext;
-import jmona.exceptions.CompletionException;
-import jmona.exceptions.EvolutionException;
+import jmona.EvolutionException;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;

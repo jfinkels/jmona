@@ -21,9 +21,9 @@ package jmona.example.calc;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import jmona.MappingException;
 import jmona.SingleInputFunction;
 import jmona.example.calc.operations.Util;
-import jmona.exceptions.MappingException;
 import jmona.gp.EquivalenceException;
 import jmona.gp.EquivalenceTester;
 import jmona.impl.example.ExampleBadMapping;

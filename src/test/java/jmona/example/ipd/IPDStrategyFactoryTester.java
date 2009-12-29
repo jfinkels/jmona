@@ -24,8 +24,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
 import java.util.Map;
 
+import jmona.InitializationException;
 import jmona.example.ipd.strategy.IPDStrategy;
-import jmona.exceptions.InitializationException;
 import jmona.test.Util;
 
 import org.junit.Test;

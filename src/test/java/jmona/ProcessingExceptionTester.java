@@ -1,5 +1,5 @@
 /**
- * SelectionExceptionTester.java
+ * ProcessingExceptionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.exceptions;
+package jmona;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
@@ -25,54 +25,54 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Test class for the SelectionException class.
+ * Test class for the ProcessingException class.
  * 
  * @author jfinkels
  */
-public class SelectionExceptionTester {
+public class ProcessingExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.SelectionException#SelectionException()}.
+   * {@link jmona.ProcessingException#ProcessingException()}.
    */
   @Test
-  public void testSelectionException() {
+  public void testProcessingException() {
     try {
-      throw new SelectionException();
-    } catch (final SelectionException exception) {
-      assertTrue(exception instanceof SelectionException);
+      throw new ProcessingException();
+    } catch (final ProcessingException exception) {
+      assertTrue(exception instanceof ProcessingException);
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.SelectionException#SelectionException(java.lang.String)}
+   * {@link jmona.ProcessingException#ProcessingException(java.lang.String)}
    * .
    */
   @Test
-  public void testSelectionExceptionString() {
+  public void testProcessingExceptionString() {
     final String message = "Hello, world!";
     try {
-      throw new SelectionException(message);
-    } catch (final SelectionException exception) {
-      assertTrue(exception instanceof SelectionException);
+      throw new ProcessingException(message);
+    } catch (final ProcessingException exception) {
+      assertTrue(exception instanceof ProcessingException);
       assertSame(message, exception.getMessage());
     }
   }
 
   /**
    * Test method for
-   * {@link jmona.exceptions.SelectionException#SelectionException(java.lang.String, java.lang.Throwable)}
+   * {@link jmona.ProcessingException#ProcessingException(java.lang.String, java.lang.Throwable)}
    * .
    */
   @Test
-  public void testSelectionExceptionStringThrowable() {
+  public void testProcessingExceptionStringThrowable() {
     final Throwable cause = new Exception();
     final String message = "Hello, world!";
     try {
-      throw new SelectionException(message, cause);
-    } catch (final SelectionException exception) {
-      assertTrue(exception instanceof SelectionException);
+      throw new ProcessingException(message, cause);
+    } catch (final ProcessingException exception) {
+      assertTrue(exception instanceof ProcessingException);
       assertSame(cause, exception.getCause());
       assertSame(message, exception.getMessage());
     }
@@ -80,16 +80,16 @@ public class SelectionExceptionTester {
 
   /**
    * Test method for
-   * {@link jmona.exceptions.SelectionException#SelectionException(java.lang.Throwable)}
+   * {@link jmona.ProcessingException#ProcessingException(java.lang.Throwable)}
    * .
    */
   @Test
-  public void testSelectionExceptionThrowable() {
+  public void testProcessingExceptionThrowable() {
     final Throwable cause = new Exception();
     try {
-      throw new SelectionException(cause);
-    } catch (final SelectionException exception) {
-      assertTrue(exception instanceof SelectionException);
+      throw new ProcessingException(cause);
+    } catch (final ProcessingException exception) {
+      assertTrue(exception instanceof ProcessingException);
       assertSame(cause, exception.getCause());
     }
   }

@@ -19,7 +19,7 @@
  */
 package jmona.example.ones;
 
-import jmona.exceptions.MutationException;
+import jmona.MutationException;
 import jmona.impl.ImmutableElementsListMutationFunction;
 
 /**

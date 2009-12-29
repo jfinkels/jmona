@@ -26,7 +26,7 @@ import static org.junit.Assert.assertNotSame;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.exceptions.CopyingException;
+import jmona.CopyingException;
 import jmona.impl.example.ExampleIndividual;
 import jmona.test.Util;
 

@@ -21,8 +21,8 @@ package jmona.impl;
 
 import jmona.DeepCopyableList;
 import jmona.Factory;
+import jmona.InitializationException;
 import jmona.ListFactory;
-import jmona.exceptions.InitializationException;
 
 /**
  * A ListFactory which aggregates objects created from a Factory which creates

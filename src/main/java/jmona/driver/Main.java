@@ -22,11 +22,11 @@ package jmona.driver;
 import java.util.Map;
 
 import jmona.CompletionCondition;
+import jmona.CompletionException;
 import jmona.EvolutionContext;
+import jmona.EvolutionException;
 import jmona.PostProcessor;
-import jmona.exceptions.CompletionException;
-import jmona.exceptions.EvolutionException;
-import jmona.exceptions.ProcessingException;
+import jmona.ProcessingException;
 import jmona.impl.Util;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;

@@ -25,8 +25,8 @@ import java.util.List;
 
 import jmona.DeepCopyableList;
 import jmona.EvolutionContext;
+import jmona.ProcessingException;
 import jmona.example.monalisa.io.ImageWriter;
-import jmona.exceptions.ProcessingException;
 import jmona.impl.PeriodicPostProcessor;
 
 /**

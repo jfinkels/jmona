@@ -22,10 +22,10 @@ package jmona.example.monalisa.gp;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
+import jmona.MappingException;
 import jmona.SingleInputFunction;
 import jmona.example.monalisa.ColoredPolygon;
 import jmona.example.monalisa.MonaMapping;
-import jmona.exceptions.MappingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Tree;
 

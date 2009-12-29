@@ -22,8 +22,8 @@ package jmona.impl;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.CopyingException;
 import jmona.DeepCopyableList;
-import jmona.exceptions.CopyingException;
 
 /**
  * A Vector which can be deep copied, but whose elements are assumed to be
