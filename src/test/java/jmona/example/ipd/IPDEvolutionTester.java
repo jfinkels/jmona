@@ -64,6 +64,7 @@ public class IPDEvolutionTester<S extends DeepCopyable<S> & Strategy> extends
   private EvolutionContext<S> context = null;
 
   /** Test method for an iterated prisoner's dilemma evolution. */
+  @SuppressWarnings("unchecked")
   @Test
   @DirtiesContext
   public final void testIPDEvolution() {

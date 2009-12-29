@@ -29,10 +29,10 @@ import jmona.impl.PeriodicPostProcessor;
 import org.apache.log4j.Logger;
 
 /**
- * Count the number of each subclass of Strategy and output the result.
+ * Count the number of objects of each class in an EvolutionContext.
  * 
- * @param <S>
- *          The type of Strategy to count.
+ * @param <T>
+ *          Classes of this type of object will be counted.
  * @author jfinkels
  */
 public class ClassCountingPostProcessor<T extends DeepCopyable<T>> extends
@@ -43,13 +43,15 @@ public class ClassCountingPostProcessor<T extends DeepCopyable<T>> extends
       .getLogger(ClassCountingPostProcessor.class);
 
   /**
-   * Count the number of each subclass of Strategy and output the result.
+   * Count the number of objects of each class in the specified
+   * EvolutionContext.
    * 
    * @param context
-   *          The context from which to get the population of Strategy objects
-   *          to count.
+   *          The context from which to get the population of objects whose
+   *          classes will be counted.
    * @see jmona.impl.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
    */
+  @SuppressWarnings("unchecked")
   @Override
   protected void processAtInterval(final EvolutionContext<T> context) {
     final Map<Class<T>, Integer> results = new HashMap<Class<T>, Integer>();

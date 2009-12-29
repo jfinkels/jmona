@@ -46,6 +46,7 @@ public class UniformPopulationCompletionCondition<T extends DeepCopyable<T>>
    *         contains only Individuals of one class.
    * @see jmona.CompletionCondition#isSatisfied(jmona.EvolutionContext)
    */
+  @SuppressWarnings("unchecked")
   @Override
   public boolean isSatisfied(final EvolutionContext<T> context) {
 
@@ -53,7 +54,7 @@ public class UniformPopulationCompletionCondition<T extends DeepCopyable<T>>
     if (super.isSatisfied(context)) {
       return true;
     }
-
+    
     // get the current population from the evolution context
     final List<T> population = context.currentPopulation();
 
