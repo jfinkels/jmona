@@ -56,11 +56,8 @@ public class IPDStrategyFactory implements Factory<IPDStrategy> {
     TIT_FOR_TAT
   }
 
-  /** The number of strategies from which to choose. */
-  public static final int NUMBER_OF_STRATEGIES = 5;
-
   /** The Set of Classes from which an IPDStrategy will be instantiated. */
-  private Set<Strategy> strategies = new HashSet<Strategy>();
+  private final Set<Strategy> strategies = new HashSet<Strategy>();
 
   /**
    * Instantiate this factory by initializing the set of all possible strategies
