@@ -19,11 +19,9 @@
  */
 package jmona.example.tsp.crossover;
 
-import static org.junit.Assert.fail;
-
-import org.junit.Test;
-
 /**
+ * Test class for the OrderedCrossoverFunction class.
+ * 
  * @author jfinkels
  */
 public class OrderedCrossoverFunctionTester extends
@@ -33,15 +31,4 @@ public class OrderedCrossoverFunctionTester extends
   public OrderedCrossoverFunctionTester() {
     super(new OrderedCrossoverFunction());
   }
-
-  /**
-   * Test method for
-   * {@link jmona.example.tsp.crossover.OrderedCrossoverFunction#crossover(jmona.example.tsp.Tour, jmona.example.tsp.Tour)}
-   * .
-   */
-  @Test
-  public void testCrossover() {
-    fail("Not yet implemented");
-  }
-
 }
