@@ -34,7 +34,7 @@ import org.junit.runners.Suite.SuiteClasses;
     FitnessExceptionTester.class, InitializationExceptionTester.class,
     MappingExceptionTester.class, MetricExceptionTester.class,
     MutationExceptionTester.class, ProcessingExceptionTester.class,
-    SelectionExceptionTester.class })
+    PropertyNotWritableExceptionTester.class, SelectionExceptionTester.class })
 public class AllTest {
 
 }
