@@ -20,6 +20,7 @@
 package jmona.gp.impl;
 
 import static org.junit.Assert.assertTrue;
+import jmona.PropertyNotWritableException;
 
 import org.junit.Test;
 
@@ -38,8 +39,8 @@ public class FullTreeFactoryTester {
   public void testSetProbabilityTerminal() {
     try {
       new FullTreeFactory<Object>().setProbabilityTerminal(1);
-    } catch (final RuntimeException exception) {
-      assertTrue(exception instanceof RuntimeException);
+    } catch (final PropertyNotWritableException exception) {
+      assertTrue(exception instanceof PropertyNotWritableException);
     }
   }
 
