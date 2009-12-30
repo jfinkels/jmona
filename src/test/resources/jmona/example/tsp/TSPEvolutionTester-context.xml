@@ -23,7 +23,12 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
+  <!-- import a different dataset to get a different graph -->
   <import resource="./dataset1.xml" />
+  <!-- <import resource="./dataset2.xml" /> -->
+  <!-- <import resource="./dataset3.xml" /> -->
+  
+  <!-- must import the dataset#.xml file first -->
   <import resource="./factories.xml" />
   <import resource="./functions.xml" />
   
@@ -32,7 +37,7 @@
     factory-method="createObject" />
 
   <bean id="completionCondition" class="jmona.impl.DefaultMaxGenerationCompletionCondition" >
-    <property name="maxGenerations" value="10" />
+    <property name="maxGenerations" value="100" />
   </bean>
 
   <bean id="evolutionContext" class="jmona.ga.impl.GAEvolutionContext">
