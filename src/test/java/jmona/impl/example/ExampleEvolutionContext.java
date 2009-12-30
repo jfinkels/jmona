@@ -21,6 +21,7 @@ package jmona.impl.example;
 
 import java.util.List;
 
+import jmona.FitnessException;
 import jmona.impl.AbstractEvolutionContext;
 
 /**
@@ -37,9 +38,17 @@ public class ExampleEvolutionContext extends
    * 
    * @param initialPopulation
    *          The initial population for this EvolutionContext.
+   * @throws RuntimeException
+   *           If there is a problem determining the initial fitnesses of the
+   *           individuals in the specified population.
    */
   public ExampleEvolutionContext(final List<ExampleIndividual> initialPopulation) {
     super(initialPopulation);
+    try {
+      this.setFitnessFunction(new ExampleFitnessFunction());
+    } catch (final FitnessException exception) {
+      throw new RuntimeException("Failed to determine fitnesses.", exception);
+    }
   }
 
   /**
