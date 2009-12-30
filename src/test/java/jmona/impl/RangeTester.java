@@ -43,7 +43,46 @@ public class RangeTester {
   public static final int MIN = 4;
   /** The increment by which the iterator steps over the range. */
   public static final int STEP = 3;
+  /**
+   * Test method for {@link jmona.impl.Range#range(int)}.
+   */
+  @Test
+  public void testRangeInt() {
+    int j = 0;
+    for (final int i : Range.range(MAX)) {
+      assertEquals(j, i);
+      j += 1;
+    }
 
+    assertEquals(j, MAX);
+  }
+
+  /**
+   * Test method for {@link jmona.impl.Range#range(int, int)}.
+   */
+  @Test
+  public void testRangeIntInt() {
+    int j = MIN;
+    for (final int i : Range.range(MIN, MAX)) {
+      assertEquals(j, i);
+      j += 1;
+    }
+
+    assertEquals(j, MAX);
+  }
+
+  /**
+   * Test method for {@link jmona.impl.Range#range(int, int, int)}.
+   */
+  @Test
+  public void testRangeIntIntInt() {
+    int j = MIN;
+    for (final int i : Range.range(MIN, MAX, STEP)) {
+      assertEquals(j, i);
+      j += STEP;
+    }
+  }
+  
   /**
    * Test method for {@link jmona.impl.Range#hasNext()}.
    */
@@ -122,7 +161,7 @@ public class RangeTester {
    * Test method for {@link jmona.impl.Range#Range(int)}.
    */
   @Test
-  public void testRangeInt() {
+  public void testRangeInt1() {
     int j = 0;
     for (final int i : new Range(MAX)) {
       assertEquals(j, i);
@@ -136,7 +175,7 @@ public class RangeTester {
    * Test method for {@link jmona.impl.Range#Range(int, int)}.
    */
   @Test
-  public void testRangeIntInt() {
+  public void testRangeIntInt1() {
     int j = MIN;
     for (final int i : new Range(MIN, MAX)) {
       assertEquals(j, i);
@@ -150,7 +189,7 @@ public class RangeTester {
    * Test method for {@link jmona.impl.Range#Range(int, int, int)}.
    */
   @Test
-  public void testRangeIntIntInt() {
+  public void testRangeIntIntInt1() {
     int j = MIN;
     for (final int i : new Range(MIN, MAX, STEP)) {
       assertEquals(j, i);
