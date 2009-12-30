@@ -22,6 +22,7 @@ package jmona.example.tsp.mutation;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import jmona.MutationException;
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -46,7 +47,7 @@ public class InsertionMutationFunctionTester extends
    */
   @Test
   public void testMutate() {
-    for (int j = 0; j < NUM_TESTS; ++j) {
+    for (final int j : new Range(NUM_TESTS)) {
       this.setUp();
 
       try {
@@ -56,12 +57,12 @@ public class InsertionMutationFunctionTester extends
       }
 
       assertEquals(LENGTH, this.tour().size());
-      for (int i = 0; i < LENGTH; ++i) {
+      for (final int i : new Range(LENGTH)) {
         assertTrue(this.tour().contains(i));
       }
 
       int firstChange = 0;
-      for (int i = 0; i < this.tour().size(); ++i) {
+      for (final int i : new Range(this.tour().size())) {
         if (!this.tour().get(i).equals(i)) {
           firstChange = i;
           break;
@@ -86,7 +87,7 @@ public class InsertionMutationFunctionTester extends
       if (this.tour().get(lastChange) == lastChange - 1) {
         assertEquals(lastChange, this.tour().get(firstChange).intValue());
 
-        for (int i = firstChange + 1; i <= lastChange; ++i) {
+        for (final int i : new Range(firstChange + 1, lastChange)) {
           assertEquals(i - 1, this.tour().get(i).intValue());
         }
 
@@ -104,7 +105,7 @@ public class InsertionMutationFunctionTester extends
       if (this.tour().get(firstChange) == firstChange + 1) {
         assertEquals(firstChange, this.tour().get(lastChange).intValue());
 
-        for (int i = firstChange; i < lastChange; ++i) {
+        for (final int i : new Range(firstChange, lastChange)) {
           assertEquals(i + 1, this.tour().get(i).intValue());
         }
 

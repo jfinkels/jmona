@@ -85,7 +85,7 @@ public class CompleteDeepCopyableListFactoryTester {
 
     assertFalse(Util.areEqual(beforeList, afterList));
 
-    for (int i = 0; i < size; ++i) {
+    for (final int i : new Range(size)) {
       assertNotSame(beforeList.get(i), afterList.get(i));
       assertEquals(beforeList.get(i).fitness(), afterList.get(i).fitness(),
           ZERO_DELTA);

@@ -21,6 +21,7 @@ package jmona.example.ipd.strategy;
 
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
+import jmona.impl.Range;
 
 import org.junit.Test;
 
@@ -43,7 +44,7 @@ public class CooperativeStrategyTester {
     final CooperativeStrategy strategy = new CooperativeStrategy();
     final CooperativeStrategy clone = strategy.deepCopy();
     assertNotSame(strategy, clone);
-    for (int i = 0; i < NUM_ACTIONS; ++i) {
+    for (final int i : new Range(NUM_ACTIONS)) {
       assertSame(strategy.nextAction(), clone.nextAction());
     }
 
@@ -56,7 +57,7 @@ public class CooperativeStrategyTester {
   @Test
   public void testNextAction() {
     final CooperativeStrategy strategy = new CooperativeStrategy();
-    for (int i = 0; i < NUM_ACTIONS; ++i) {
+    for (final int i : new Range(NUM_ACTIONS)) {
       assertSame(Action.COOPERATE, strategy.nextAction());
     }
   }

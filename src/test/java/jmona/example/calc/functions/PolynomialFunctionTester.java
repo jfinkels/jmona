@@ -23,6 +23,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
@@ -75,7 +76,7 @@ public class PolynomialFunctionTester {
     final double[] inputs = new double[] { 0, -1, 1, -2, 2 };
     final double[] expectedOutputs = new double[] { 1, 0, 4, 1, 9 };
 
-    for (int i = 0; i < inputs.length; ++i) {
+    for (final int i : new Range(inputs.length)) {
       assertEquals(expectedOutputs[i], this.function.execute(inputs[i])
           .doubleValue(), ZERO_DELTA);
     }

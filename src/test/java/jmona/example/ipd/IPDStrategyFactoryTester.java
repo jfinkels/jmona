@@ -26,6 +26,7 @@ import java.util.Map;
 
 import jmona.InitializationException;
 import jmona.example.ipd.strategy.IPDStrategy;
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -52,7 +53,7 @@ public class IPDStrategyFactoryTester {
 
     IPDStrategy strategy = null;
     try {
-      for (int i = 0; i < NUM_TESTS; ++i) {
+      for (final int i : new Range(NUM_TESTS)) {
         strategy = factory.createObject();
         if (numSelections.containsKey(strategy.getClass())) {
           numSelections.put(strategy.getClass(), numSelections.get(strategy

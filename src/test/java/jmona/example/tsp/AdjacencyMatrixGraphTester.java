@@ -20,6 +20,7 @@
 package jmona.example.tsp;
 
 import static org.junit.Assert.assertEquals;
+import jmona.impl.Range;
 
 import org.junit.Test;
 
@@ -43,15 +44,15 @@ public class AdjacencyMatrixGraphTester {
   @Test
   public void testEdgeBetween() {
     final double[][] weights = new double[NUM_VERTICES][NUM_VERTICES];
-    for (int i = 0; i < weights.length; ++i) {
-      for (int j = 0; j < weights.length; ++j) {
+    for (final int i : new Range(weights.length)) {
+      for (final int j : new Range(weights.length)) {
         weights[i][j] = i + j;
       }
     }
     final AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(weights);
 
-    for (int i = 0; i < weights.length; ++i) {
-      for (int j = 0; j < weights.length; ++j) {
+    for (final int i : new Range(weights.length)) {
+      for (final int j : new Range(weights.length)) {
         assertEquals(weights[i][j], graph.edgeBetween(i, j), ZERO_DELTA);
       }
     }

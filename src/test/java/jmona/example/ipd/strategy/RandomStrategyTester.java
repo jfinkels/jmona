@@ -22,6 +22,7 @@ package jmona.example.ipd.strategy;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
+import jmona.impl.Range;
 
 import org.junit.Test;
 
@@ -59,7 +60,7 @@ public class RandomStrategyTester {
     int cooperateCount = 0;
 
     Action action = null;
-    for (int i = 0; i < NUM_ACTIONS; ++i) {
+    for (final int i : new Range(NUM_ACTIONS)) {
       action = strategy.nextAction();
       if (action.equals(Action.COOPERATE)) {
         cooperateCount += 1;

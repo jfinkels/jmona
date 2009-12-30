@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import jmona.impl.Range;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Before;
@@ -67,21 +68,21 @@ public class FitnessProportionateSelectionTester {
 
     ExampleIndividual individual = new ExampleIndividual();
     fitnesses.put(individual, 1.0);
-    for (int i = 0; i < NUM_SELECTIONS; ++i) {
+    for (final int i : new Range(NUM_SELECTIONS)) {
       assertSame(individual, this.function.select(fitnesses));
     }
     fitnesses.remove(individual);
 
     // initialize some individuals all with equal fitness
     individual = null;
-    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
+    for (final int i : new Range(NUM_INDIVIDUALS)) {
       individual = new ExampleIndividual(NUM_INDIVIDUALS);
       fitnesses.put(individual, individual.fitness());
     }
 
     final Map<ExampleIndividual, Integer> numberOfSelections = new HashMap<ExampleIndividual, Integer>();
     ExampleIndividual selectedIndividual = null;
-    for (int i = 0; i < NUM_SELECTIONS; ++i) {
+    for (final int i : new Range(NUM_SELECTIONS)) {
       selectedIndividual = this.function.select(fitnesses);
       Integer selections = numberOfSelections.get(selectedIndividual);
       if (selections == null) {
@@ -130,25 +131,25 @@ public class FitnessProportionateSelectionTester {
     ExampleIndividual individual = new ExampleIndividual();
 
     fitnesses.put(individual, 1.0);
-    for (int i = 0; i < NUM_SELECTIONS; ++i) {
+    for (final int i : new Range(NUM_SELECTIONS)) {
       assertSame(individual, this.function.select(fitnesses));
     }
     fitnesses.remove(individual);
 
     // initialize some individuals all with equal fitness
     individual = null;
-    for (int i = 0; i < NUM_INDIVIDUALS / 2; ++i) {
+    for (final int i : new Range(NUM_INDIVIDUALS / 2)) {
       individual = new ExampleIndividual(1.0);
       fitnesses.put(individual, individual.fitness());
     }
-    for (int i = NUM_INDIVIDUALS / 2; i < NUM_INDIVIDUALS; ++i) {
+    for (final int i : new Range(NUM_INDIVIDUALS / 2, NUM_INDIVIDUALS)) {
       individual = new ExampleIndividual(2.0);
       fitnesses.put(individual, individual.fitness());
     }
 
     final Map<ExampleIndividual, Integer> numberOfSelections = new HashMap<ExampleIndividual, Integer>();
     ExampleIndividual selectedIndividual = null;
-    for (int i = 0; i < NUM_SELECTIONS; ++i) {
+    for (final int i : new Range(NUM_SELECTIONS)) {
       selectedIndividual = this.function.select(fitnesses);
       Integer selections = numberOfSelections.get(selectedIndividual);
       if (selections == null) {

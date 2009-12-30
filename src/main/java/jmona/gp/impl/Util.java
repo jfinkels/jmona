@@ -23,6 +23,7 @@ import java.util.List;
 
 import jmona.gp.Node;
 import jmona.gp.Tree;
+import jmona.impl.Range;
 
 /**
  * A utility class for this package containing a method which swaps Nodes within
@@ -65,7 +66,7 @@ public class Util {
       final List<Node<V>> siblings = existingParent.children();
 
       // iterate over each sibling
-      for (int i = 0; i < siblings.size(); ++i) {
+      for (final int i : new Range(siblings.size())) {
 
         // if the current Node is the existing Node
         if (siblings.get(i).equals(existingNode)) {
@@ -117,7 +118,7 @@ public class Util {
       siblings = leftParent.children();
 
       // iterate over each sibling
-      for (int i = 0; i < siblings.size(); ++i) {
+      for (final int i : new Range(siblings.size())) {
 
         // if the current Node is leftNode
         if (siblings.get(i).equals(leftNode)) {
@@ -140,7 +141,7 @@ public class Util {
       siblings = rightParent.children();
 
       // iterate over each sibling
-      for (int i = 0; i < siblings.size(); ++i) {
+      for (final int i : new Range(siblings.size())) {
 
         // if the current Node is the rightNode
         if (siblings.get(i).equals(rightNode)) {

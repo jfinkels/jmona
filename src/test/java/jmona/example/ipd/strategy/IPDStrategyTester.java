@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.impl.Pair;
+import jmona.impl.Range;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -66,7 +67,7 @@ public class IPDStrategyTester {
 
     Action left = null;
     Action right = null;
-    for (int i = 0; i < numberOfPairs; ++i) {
+    for (final int i : new Range(numberOfPairs)) {
 
       left = Action.COOPERATE;
       right = Action.COOPERATE;
@@ -83,7 +84,7 @@ public class IPDStrategyTester {
       allPairs.add(new Pair<Action, Action>(left, right));
     }
 
-    for (int i = 0; i < allPairs.size(); ++i) {
+    for (final int i : new Range(allPairs.size())) {
 
       this.strategy.addToMemory(allPairs.get(i));
 
@@ -95,7 +96,8 @@ public class IPDStrategyTester {
       }
     }
 
-    for (int i = 0; i < allPairs.size() - memoryLength; ++i) {
+
+    for (final int i : new Range(allPairs.size() - memoryLength)) {
       assertFalse(this.strategy.memory().contains(allPairs.get(i)));
     }
   }

@@ -34,6 +34,7 @@ import jmona.FitnessException;
 import jmona.InitializationException;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleTreeFactory;
+import jmona.impl.Range;
 import jmona.impl.selection.FitnessProportionateSelection;
 import jmona.test.Util;
 
@@ -104,12 +105,12 @@ public class GPEvolutionContextTester {
     try {
 
       // add some extra Trees into the population
-      for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
+      for (final int i : new Range(NUM_INDIVIDUALS)) {
         this.context.currentPopulation().add(this.factory.createObject());
       }
 
       // run the evolution for multiple generations
-      for (int i = 0; i < NUM_GENERATIONS; ++i) {
+      for (final int i : new Range(NUM_GENERATIONS)) {
         this.context.stepGeneration();
       }
 

@@ -35,6 +35,7 @@ import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleFunctionNodeFactory;
 import jmona.gp.impl.example.ExampleTerminalNodeFactory;
 import jmona.gp.impl.example.ExampleTreeFactory;
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Before;
@@ -68,7 +69,7 @@ public class AbstractTreeFactoryTester {
     try {
 
       Tree<Integer> individual = null;
-      for (int i = 0; i < NUM_TESTS; ++i) {
+      for (final int i : new Range(NUM_TESTS)) {
         individual = this.factory.createObject();
       }
 

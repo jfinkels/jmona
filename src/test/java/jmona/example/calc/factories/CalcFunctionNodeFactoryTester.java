@@ -27,6 +27,7 @@ import jmona.example.calc.nodes.DivisionNode;
 import jmona.example.calc.nodes.MultiplicationNode;
 import jmona.example.calc.nodes.SubtractionNode;
 import jmona.gp.FunctionNode;
+import jmona.impl.Range;
 
 import org.junit.Test;
 
@@ -54,7 +55,7 @@ public class CalcFunctionNodeFactoryTester {
     int divisionCount = 0;
 
     FunctionNode<SingleInputFunction<Double, Double>> node = null;
-    for (int i = 0; i < NUM_NODES; ++i) {
+    for (final int i : new Range(NUM_NODES)) {
       node = factory.createObject();
 
       if (node instanceof AdditionNode) {

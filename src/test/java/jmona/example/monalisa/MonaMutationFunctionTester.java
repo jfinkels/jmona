@@ -29,6 +29,7 @@ import java.util.Vector;
 
 import jmona.MutationException;
 import jmona.impl.ListMutationFunction;
+import jmona.impl.Range;
 import jmona.impl.Util;
 
 import org.junit.Before;
@@ -59,7 +60,7 @@ public class MonaMutationFunctionTester extends ColoredPolygonTestSupport {
     this.polygons = new Vector<ColoredPolygon>();
 
     ColoredPolygon polygon = null;
-    for (int i = 0; i < NUM_POLYGONS; ++i) {
+    for (final int i : new Range(NUM_POLYGONS)) {
       polygon = new ColoredPolygon();
       polygon.setColor(COLOR);
       polygon.npoints = NPOINTS;
@@ -94,7 +95,7 @@ public class MonaMutationFunctionTester extends ColoredPolygonTestSupport {
     assertEquals(this.polygons.size(), this.individual.size());
 
     ColoredPolygon changedPolygon = null;
-    for (int i = 0; i < NUM_POLYGONS; ++i) {
+    for (final int i : new Range(NUM_POLYGONS)) {
       if (!samePolygon(this.polygons.get(i), this.individual.get(i))) {
         changedPolygon = this.individual.get(i);
         break;

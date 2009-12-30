@@ -20,6 +20,7 @@
 package jmona.example.calc.functions;
 
 import jmona.SingleInputFunction;
+import jmona.impl.Range;
 
 /**
  * An immutable polynomial in a single variable with an array of coefficient
@@ -90,7 +91,7 @@ public class PolynomialFunction implements SingleInputFunction<Double, Double> {
   public Double execute(final Double input) {
     double result = 0.0;
 
-    for (int i = 0; i < this.coefficients.length; ++i) {
+    for (final int i : new Range(this.coefficients.length)) {
       result += this.coefficients[i] * (Math.pow(input, i));
     }
 
@@ -109,7 +110,7 @@ public class PolynomialFunction implements SingleInputFunction<Double, Double> {
 
     result.append(this.coefficients[0]);
 
-    for (int i = 1; i < this.coefficients.length; ++i) {
+    for (final int i : new Range(this.coefficients.length)) {
       result.append(String.format(FORMAT_STRING, this.coefficients[i], i));
     }
 

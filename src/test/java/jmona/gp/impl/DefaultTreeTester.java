@@ -39,6 +39,7 @@ import jmona.gp.TerminalNode;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleBinaryNode;
 import jmona.gp.impl.example.IntegerNode;
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
@@ -135,7 +136,7 @@ public class DefaultTreeTester {
       // iterate over all nodes in the trees
       Node<Integer> originalNode = null;
       Node<Integer> copyNode = null;
-      for (int i = 0; i < allOriginalNodes.size(); ++i) {
+      for (final int i : new Range(allOriginalNodes.size())) {
 
         // get the original node and the copy
         originalNode = allOriginalNodes.get(i);
@@ -194,7 +195,7 @@ public class DefaultTreeTester {
 
     Node<Integer> choice = null;
     Integer numSelections = null;
-    for (int i = 0; i < NUM_TESTS; ++i) {
+    for (final int i : new Range(NUM_TESTS)) {
       // every randomNode() call on a single-Node tree returns the root
       assertSame(this.smallTreeNode, this.smallTree.randomNode());
       assertSame(this.smallTree.root(), this.smallTree.randomNode());

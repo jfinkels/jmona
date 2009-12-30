@@ -26,6 +26,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
 
+import jmona.impl.Range;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -106,7 +108,7 @@ public class ColoredPolygonMutationFunctionTester extends
 
     assertFalse(samePolygon(original, this.polygon));
 
-    for (int i = 0; i < this.polygon.npoints; ++i) {
+    for (final int i : new Range(this.polygon.npoints)) {
       assertTrue(this.polygon.ypoints[i] < HEIGHT);
       assertTrue(this.polygon.ypoints[i] >= 0);
 

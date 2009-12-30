@@ -21,6 +21,7 @@ package jmona.ga.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import jmona.impl.Range;
 
 import org.junit.Test;
 
@@ -44,7 +45,7 @@ public class BitFactoryTester {
     int numberOfOnes = 0;
     int numberOfZeros = 0;
     Byte bit = null;
-    for (int i = 0; i < NUM_BITS; ++i) {
+    for (final int i : new Range(NUM_BITS)) {
       bit = factory.createObject();
       assertTrue(bit == 0 || bit == 1);
 

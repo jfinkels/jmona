@@ -19,9 +19,6 @@
  */
 package jmona.example.tsp.crossover;
 
-import static org.junit.Assert.fail;
-
-import org.junit.Test;
 
 /**
  * Test class for the PartiallyMatchedCrossoverFunction class.
@@ -35,15 +32,4 @@ public class PartiallyMatchedCrossoverFunctionTester extends
   public PartiallyMatchedCrossoverFunctionTester() {
     super(new PartiallyMatchedCrossoverFunction());
   }
-
-  /**
-   * Test method for
-   * {@link jmona.example.tsp.crossover.PartiallyMatchedCrossoverFunction#crossover(jmona.example.tsp.Tour, jmona.example.tsp.Tour)}
-   * .
-   */
-  @Test
-  public void testCrossover() {
-    fail("Not yet implemented");
-  }
-
 }

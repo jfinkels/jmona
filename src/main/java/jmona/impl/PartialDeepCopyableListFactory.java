@@ -62,7 +62,7 @@ public class PartialDeepCopyableListFactory<E> implements ListFactory<E> {
 
     final DeepCopyableList<E> result = new PartialDeepCopyableVector<E>();
 
-    for (int i = 0; i < this.size(); ++i) {
+    for (final int i : new Range(this.size)) {
       result.add(this.elementFactory().createObject());
     }
 

@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import jmona.gp.Node;
 import jmona.gp.Tree;
+import jmona.impl.Range;
 
 /**
  * Utilities for testing, including a method which fails a test after outputting
@@ -96,7 +97,7 @@ public class Util {
     }
 
     // iterate over each element in the lists
-    for (int i = 0; i < leftListSize; ++i) {
+    for (final int i : new Range(leftListSize)) {
 
       // if the current element in the left list is not equal to the
       // corresponding element in the right list, the lists are not equal

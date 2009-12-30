@@ -23,6 +23,7 @@ import java.awt.Color;
 import java.awt.Polygon;
 
 import jmona.DeepCopyable;
+import jmona.impl.Range;
 
 /**
  * A Polygon with a Color.
@@ -89,7 +90,7 @@ public class ColoredPolygon extends Polygon implements
     result.append("ColoredPolygon[");
     result.append(this.color);
     result.append("; ");
-    for (int i = 0; i < this.npoints; ++i) {
+    for (final int i : new Range(this.npoints)) {
       result.append("(");
       result.append(this.xpoints[i]);
       result.append(",");

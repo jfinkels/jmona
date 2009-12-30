@@ -33,6 +33,7 @@ import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleBinaryNode;
 import jmona.gp.impl.example.ExampleTreeFactory;
 import jmona.gp.impl.example.IntegerNode;
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Before;
@@ -124,7 +125,7 @@ public class GPCrossoverFunctionTester {
 
     final int numRandomPairs = 3;
 
-    for (int i = 0; i < numRandomPairs; ++i) {
+    for (final int i : new Range(numRandomPairs)) {
       try {
         // initialize two random trees
         final Tree<Integer> leftTree = factory.createObject();
@@ -157,7 +158,7 @@ public class GPCrossoverFunctionTester {
     List<Node<Integer>> postRightNodes = null;
 
     Node<Integer> currentNode = null;
-    for (int i = 0; i < NUM_TESTS; ++i) {
+    for (final int i : new Range(NUM_TESTS)) {
 
       // perform the crossover
       this.function.crossover(this.tree1, this.tree2);
@@ -245,7 +246,7 @@ public class GPCrossoverFunctionTester {
     List<Node<Integer>> postRightNodes = null;
 
     Node<Integer> currentNode = null;
-    for (int i = 0; i < NUM_TESTS; ++i) {
+    for (final int i : new Range(NUM_TESTS)) {
       this.setUp();
 
       preLeftNodes = Util.allNodes(this.tree1);

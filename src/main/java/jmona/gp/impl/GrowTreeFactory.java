@@ -22,6 +22,7 @@ package jmona.gp.impl;
 import jmona.InitializationException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
+import jmona.impl.Range;
 
 /**
  * A TreeFactory which uses the "grow" method to generate a Tree, that is,
@@ -52,30 +53,25 @@ public class GrowTreeFactory<V> extends AbstractTreeFactory<V> {
   @Override
   protected Node<V> createTree(final int currentDepth)
       throws InitializationException {
-    Node<V> result = null;
 
     if (currentDepth <= 1 || Math.random() < this.probabilityTerminal) {
-      result = this.terminalNodeFactory().createObject();
+      return this.terminalNodeFactory().createObject();
     } else {
       // create a function node
-      result = this.functionNodeFactory().createObject();
-
-      // determine its arity (that is, the number of children it needs)
-      final int arity = result.arity();
+      final FunctionNode<V> result = this.functionNodeFactory().createObject();
 
       // add child trees
       Node<V> child = null;
-      for (int i = 0; i < arity; ++i) {
+      for (final int i : new Range(result.arity())) {
         child = this.createTree(currentDepth - 1);
 
-        AbstractFunctionNode.attachChildToParent((FunctionNode<V>) result,
-            child);
-        // child.setParent(result);
-        // result.children().add(child);
+        AbstractFunctionNode.attachChildToParent(result, child);
       }
+
+      // return the function node
+      return result;
     }
 
-    return result;
   }
 
   /**

@@ -33,6 +33,7 @@ import jmona.gp.EvaluationException;
 import jmona.gp.Tree;
 import jmona.gp.impl.DefaultTree;
 import jmona.gp.impl.example.ExampleBadTree;
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -109,8 +110,8 @@ public class TreeMappingTester {
     }
 
     int currentColor = 0;
-    for (int i = 0; i < width; ++i) {
-      for (int j = 0; j < height; ++j) {
+    for (final int i : new Range(width)) {
+      for (final int j : new Range(height)) {
         currentColor = Color.BLACK.getRGB();
         if (i >= left && i < right && j >= top && j < bottom) {
           currentColor = color.getRGB();

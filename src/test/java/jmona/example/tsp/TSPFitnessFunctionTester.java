@@ -25,6 +25,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -50,8 +51,8 @@ public class TSPFitnessFunctionTester {
 
     final double[][] weights = new double[NUM_VERTICES][NUM_VERTICES];
 
-    for (int i = 0; i < weights.length; ++i) {
-      for (int j = 0; j < weights.length; ++j) {
+    for (final int i : new Range(weights.length)) {
+      for (final int j : new Range(weights.length)) {
         weights[i][j] = i + j;
       }
     }

@@ -26,6 +26,7 @@ import jmona.game.TwoPlayerGame;
 import jmona.game.TwoPlayerGameResult;
 import jmona.game.impl.DefaultTwoPlayerGameResult;
 import jmona.impl.Pair;
+import jmona.impl.Range;
 
 /**
  * Perform the iterated prisoner's dilemma game for a specified number of
@@ -150,7 +151,7 @@ public class IPDGame implements TwoPlayerGame<IPDStrategy> {
     Action actionOfStrategy2 = null;
     Pair<Action, Action> actionsPerformedStrategy1 = null;
     Pair<Action, Action> actionsPerformedStrategy2 = null;
-    for (int i = 0; i < this.iterations; ++i) {
+    for (final int i : new Range(this.iterations)) {
       actionOfStrategy1 = strategy1.nextAction();
       actionOfStrategy2 = strategy2.nextAction();
 

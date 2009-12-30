@@ -24,6 +24,7 @@ import java.util.Collections;
 import jmona.DeepCopyableList;
 import jmona.impl.PartialDeepCopyableListFactory;
 import jmona.impl.PartialDeepCopyableVector;
+import jmona.impl.Range;
 
 /**
  * A factory which generates random Tours.
@@ -38,6 +39,10 @@ public class TourFactory extends PartialDeepCopyableListFactory<Integer> {
    * A Tour of length <em>l</em> will have cities numbered sequentially from
    * <em>0</em> to <em>l-1</em>, inclusive.
    * 
+   * Unlike the corresponding method in the superclass, this method does not
+   * require that the {@link PartialDeepCopyableListFactory#elementFactory()} be
+   * non-null (because it doesn't use that property at all).
+   * 
    * @return A randomly generated Tour.
    * @see jmona.IndividualFactory#createIndividual()
    */
@@ -45,7 +50,7 @@ public class TourFactory extends PartialDeepCopyableListFactory<Integer> {
   public DeepCopyableList<Integer> createObject() {
     final DeepCopyableList<Integer> result = new PartialDeepCopyableVector<Integer>();
 
-    for (int i = 0; i < this.size(); ++i) {
+    for (final int i : new Range(this.size())) {
       result.add(i);
     }
 

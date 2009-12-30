@@ -22,6 +22,7 @@ package jmona.example.tsp.mutation;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import jmona.MutationException;
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -48,7 +49,7 @@ public class DisplacementMutationFunctionTester extends
    */
   @Test
   public void testMutate() {
-    for (int j = 0; j < NUM_TESTS; ++j) {
+    for (final int j : new Range(NUM_TESTS)) {
       this.setUp();
 
       try {
@@ -63,13 +64,13 @@ public class DisplacementMutationFunctionTester extends
 
       assertEquals(LENGTH, this.tour().size());
 
-      for (int i = 0; i < LENGTH; ++i) {
+      for (final int i : new Range(LENGTH)) {
         assertTrue(this.tour().contains(i));
       }
 
       // get the index of the start of the first slice
       int start = 0;
-      for (int i = 0; i < this.tour().size(); ++i) {
+      for (final int i : new Range(this.tour().size())) {
         if (this.tour().get(i) != i) {
           start = i;
           break;
@@ -78,7 +79,7 @@ public class DisplacementMutationFunctionTester extends
 
       // get the index between the first and second slices
       int middle = 0;
-      for (int i = start + 1; i < this.tour().size(); ++i) {
+      for (final int i : new Range(start + 1, this.tour().size())) {
         if (this.tour().get(i) != this.tour().get(i - 1) + 1) {
           middle = i;
           break;
@@ -87,7 +88,7 @@ public class DisplacementMutationFunctionTester extends
 
       // get the index of the end of the second slice
       int end = 0;
-      for (int i = middle + 1; i < this.tour().size(); ++i) {
+      for (final int i : new Range(middle + 1, this.tour().size())) {
         if (this.tour().get(i) != this.tour().get(i - 1) + 1) {
           end = i;
           break;
@@ -99,24 +100,24 @@ public class DisplacementMutationFunctionTester extends
       final int secondLength = end - middle;
 
       // from the start to the first change
-      for (int i = 0; i < start; ++i) {
+      for (final int i : new Range(start)) {
         assertEquals(i, this.tour().get(i).intValue());
       }
 
       // from the first change to the second change
-      for (int i = 0; i < firstLength; ++i) {
+      for (final int i : new Range(firstLength)) {
         assertEquals(this.tour().get(start) + i, this.tour().get(start + i)
             .intValue());
       }
 
       // from the second change to the end of the slices
-      for (int i = 0; i < secondLength; ++i) {
+      for (final int i : new Range(secondLength)) {
         assertEquals(this.tour().get(middle) + i, this.tour().get(middle + i)
             .intValue());
       }
 
       // from the end of the slices to the end of the tour
-      for (int i = end; i < this.tour().size(); ++i) {
+      for (final int i : new Range(end, this.tour().size())) {
         assertEquals(i, this.tour().get(i).intValue());
       }
 

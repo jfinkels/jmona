@@ -52,7 +52,7 @@ public class PartialDeepCopyableVectorTester {
   public final void setUp() {
     this.beforeList = new Vector<Byte>();
 
-    for (int i = 0; i < NUM_ELEMENTS; ++i) {
+    for (final int i : new Range(NUM_ELEMENTS)) {
       this.beforeList.add(new Byte((byte) 0));
       this.beforeList.add(new Byte((byte) 1));
     }
@@ -81,7 +81,7 @@ public class PartialDeepCopyableVectorTester {
     assertEquals(this.beforeList.size(), this.vector.size());
     assertNotSame(this.beforeList, this.vector);
 
-    for (int i = 0; i < this.beforeList.size(); ++i) {
+    for (final int i : new Range(this.beforeList.size())) {
       assertSame(this.beforeList.get(i), this.vector.get(i));
       assertEquals(this.beforeList.get(i), this.vector.get(i));
     }
@@ -102,7 +102,7 @@ public class PartialDeepCopyableVectorTester {
     assertTrue(Util.areEqual(afterList, this.vector));
     assertEquals(this.vector.size(), afterList.size());
 
-    for (int i = 0; i < this.vector.size(); ++i) {
+    for (final int i : new Range(this.vector.size())) {
       assertSame(this.vector.get(i), afterList.get(i));
       assertEquals(this.vector.get(i), afterList.get(i));
     }

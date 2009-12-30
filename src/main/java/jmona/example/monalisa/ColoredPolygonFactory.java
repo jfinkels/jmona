@@ -22,6 +22,7 @@ package jmona.example.monalisa;
 import java.awt.Color;
 
 import jmona.Factory;
+import jmona.impl.Range;
 import jmona.impl.Util;
 
 /**
@@ -83,7 +84,7 @@ public class ColoredPolygonFactory implements Factory<ColoredPolygon> {
     int[] ypoints = new int[numPoints];
 
     // iterate over the number of points in the array
-    for (int i = 0; i < numPoints; ++i) {
+    for (final int i : new Range(numPoints)) {
       // randomly select a new x and y less than the max width and height
       xpoints[i] = Util.RANDOM.nextInt(this.maxX);
       ypoints[i] = Util.RANDOM.nextInt(this.maxY);

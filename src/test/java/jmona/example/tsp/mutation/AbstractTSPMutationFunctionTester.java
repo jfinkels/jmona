@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.MutationFunction;
+import jmona.impl.Range;
 
 import org.junit.Before;
 
@@ -66,7 +67,7 @@ public abstract class AbstractTSPMutationFunctionTester {
   @Before
   public final void setUp() {
     this.tour = new Vector<Integer>();
-    for (int i = 0; i < LENGTH; ++i) {
+    for (final int i : new Range(LENGTH)) {
       this.tour.add(i);
     }
   }

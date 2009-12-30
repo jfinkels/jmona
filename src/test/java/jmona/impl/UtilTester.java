@@ -56,7 +56,7 @@ public class UtilTester {
   public void testDeepCopy() {
     final List<ExampleIndividual> list = new Vector<ExampleIndividual>();
 
-    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
+    for (final int i : new Range(NUM_INDIVIDUALS)) {
       list.add(new ExampleIndividual(i));
     }
 
@@ -69,7 +69,7 @@ public class UtilTester {
 
     assertEquals(list.size(), clonedList.size());
 
-    for (int i = 0; i < list.size(); ++i) {
+    for (final int i : new Range(list.size())) {
       assertNotSame(list.get(i), clonedList.get(i));
       assertEquals(list.get(i).fitness(), clonedList.get(i).fitness(),
           ZERO_DELTA);
@@ -109,7 +109,7 @@ public class UtilTester {
     Map<Object, Integer> selectionsMap = new HashMap<Object, Integer>();
 
     Object choice = null;
-    for (int i = 0; i < NUM_TESTS; ++i) {
+    for (final int i : new Range(NUM_TESTS)) {
       choice = Util.randomFromCollection(set);
 
       if (selectionsMap.containsKey(choice)) {
@@ -144,7 +144,7 @@ public class UtilTester {
     set.add(object);
 
     Object choice = null;
-    for (int i = 0; i < NUM_TESTS; ++i) {
+    for (final int i : new Range(NUM_TESTS)) {
       choice = Util.randomFromCollection(set);
       assertSame(object, choice);
     }

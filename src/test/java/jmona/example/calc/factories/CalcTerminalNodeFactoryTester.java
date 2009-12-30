@@ -30,6 +30,7 @@ import jmona.SingleInputFunction;
 import jmona.example.calc.nodes.NumberNode;
 import jmona.example.calc.nodes.VariableNode;
 import jmona.gp.TerminalNode;
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -60,7 +61,7 @@ public class CalcTerminalNodeFactoryTester {
     int numNumberNodes = 0;
     int numVariableNodes = 0;
 
-    for (int i = 0; i < NUM_TESTS; ++i) {
+    for (final int i : new Range(NUM_TESTS)) {
       final TerminalNode<SingleInputFunction<Double, Double>> node = factory
           .createObject();
 
@@ -109,7 +110,7 @@ public class CalcTerminalNodeFactoryTester {
 
       TerminalNode<SingleInputFunction<Double, Double>> node = null;
       double value = 0.0;
-      for (int i = 0; i < NUM_TESTS; ++i) {
+      for (final int i : new Range(NUM_TESTS)) {
 
         node = factory.createObject();
 

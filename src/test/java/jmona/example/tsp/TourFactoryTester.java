@@ -24,6 +24,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import jmona.impl.Range;
+
 import org.junit.Test;
 
 /**
@@ -45,7 +47,7 @@ public class TourFactoryTester {
     final List<Integer> tour = factory.createObject();
 
     assertEquals(NUM_CITIES, tour.size());
-    for (int i = 0; i < NUM_CITIES; ++i) {
+    for (final int i : new Range(NUM_CITIES)) {
       assertTrue(tour.contains(i));
     }
   }

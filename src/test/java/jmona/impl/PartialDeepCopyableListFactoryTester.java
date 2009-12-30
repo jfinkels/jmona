@@ -83,7 +83,7 @@ public class PartialDeepCopyableListFactoryTester {
     assertEquals(clonedList.size(), list.size());
     assertNotSame(clonedList, list);
     assertTrue(Util.areEqual(clonedList, list));
-    for (int i = 0; i < list.size(); ++i) {
+    for (final int i : new Range(list.size())) {
       assertSame(list.get(i), clonedList.get(i));
     }
   }

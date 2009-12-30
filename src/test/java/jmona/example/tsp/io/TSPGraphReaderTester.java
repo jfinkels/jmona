@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 
 import jmona.example.tsp.DirectedGraph;
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -60,8 +61,8 @@ public class TSPGraphReaderTester {
       Util.fail(exception);
     }
 
-    for (int i = 0; i < NUM_VERTICES; ++i) {
-      for (int j = 0; j < NUM_VERTICES; ++j) {
+    for (final int i : new Range(NUM_VERTICES)) {
+      for (final int j : new Range(NUM_VERTICES)) {
         assertEquals(i + j, graph.edgeBetween(i, j), ZERO_DELTA);
       }
     }
@@ -72,8 +73,8 @@ public class TSPGraphReaderTester {
       Util.fail(exception);
     }
 
-    for (int i = 0; i < NUM_VERTICES; ++i) {
-      for (int j = 0; j < NUM_VERTICES; ++j) {
+    for (final int i : new Range(NUM_VERTICES)) {
+      for (final int j : new Range(NUM_VERTICES)) {
         assertEquals(i + j, graph.edgeBetween(i, j), ZERO_DELTA);
       }
     }

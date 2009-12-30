@@ -31,6 +31,7 @@ import jmona.CopyingException;
 import jmona.example.monalisa.ColoredPolygon;
 import jmona.example.monalisa.ColoredPolygonFactory;
 import jmona.gp.EvaluationException;
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Before;
@@ -73,7 +74,7 @@ public class ColoredPolygonNodeTester {
       return false;
     }
 
-    for (int i = 0; i < polygon1.npoints; ++i) {
+    for (final int i : new Range(polygon1.npoints)) {
       if (polygon1.xpoints[i] != polygon2.xpoints[i]
           || polygon1.ypoints[i] != polygon2.ypoints[i]) {
         return false;

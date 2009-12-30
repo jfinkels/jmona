@@ -54,7 +54,7 @@ public class CompleteDeepCopyableVectorTester {
   public final void setUp() {
     this.beforeList = new Vector<ExampleIndividual>();
 
-    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
+    for (final int i : new Range(NUM_INDIVIDUALS)) {
       this.beforeList.add(new ExampleIndividual());
     }
 
@@ -86,7 +86,7 @@ public class CompleteDeepCopyableVectorTester {
     assertEquals(this.beforeList.size(), this.vector.size());
     assertNotSame(this.beforeList, this.vector);
 
-    for (int i = 0; i < this.beforeList.size(); ++i) {
+    for (final int i : new Range(this.beforeList.size())) {
       assertNotSame(this.beforeList.get(i), this.vector.get(i));
       assertEquals(this.beforeList.get(i).fitness(), this.vector.get(i)
           .fitness(), ZERO_DELTA);
@@ -108,7 +108,7 @@ public class CompleteDeepCopyableVectorTester {
     assertFalse(Util.areEqual(afterList, this.vector));
     assertEquals(this.vector.size(), afterList.size());
 
-    for (int i = 0; i < this.vector.size(); ++i) {
+    for (final int i : new Range(this.vector.size())) {
       assertNotSame(this.vector.get(i), afterList.get(i));
       assertEquals(this.vector.get(i).fitness(), afterList.get(i).fitness(),
           ZERO_DELTA);

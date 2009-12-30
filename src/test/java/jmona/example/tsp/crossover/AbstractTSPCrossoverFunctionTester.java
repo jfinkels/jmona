@@ -19,12 +19,21 @@
  */
 package jmona.example.tsp.crossover;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.util.List;
 import java.util.Vector;
 
+import jmona.CrossoverException;
 import jmona.CrossoverFunction;
+import jmona.example.tsp.TourFactory;
+import jmona.impl.Range;
+import jmona.test.Util;
 
+import org.apache.log4j.Logger;
 import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test class for the traveling salesman problem CrossoverFunction classes.
@@ -34,7 +43,10 @@ import org.junit.Before;
 public abstract class AbstractTSPCrossoverFunctionTester {
 
   /** The length of the Tours under test. */
-  public static final int LENGTH = 100;
+  public static final int LENGTH = 30;
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(AbstractTSPCrossoverFunctionTester.class);
   /** The number of independent crossovers to perform. */
   public static final int NUM_TESTS = 100;
   /** The function under test. */
@@ -44,11 +56,22 @@ public abstract class AbstractTSPCrossoverFunctionTester {
    * of integers.
    */
   private List<Integer> tour1 = null;
+
   /**
    * A tour on which to perform crossover which contains a decreasing sequence
    * of integers.
    */
   private List<Integer> tour2 = null;
+  /**
+   * A tour on which to perform crossover which contains a random sequence of
+   * integers.
+   */
+  private List<Integer> tour3 = null;
+  /**
+   * A tour on which to perform crossover which contains a random sequence of
+   * integers.
+   */
+  private List<Integer> tour4 = null;
 
   /**
    * Instantiate this test class with the specified CrossoverFunction.
@@ -76,9 +99,27 @@ public abstract class AbstractTSPCrossoverFunctionTester {
     this.tour1 = new Vector<Integer>();
     this.tour2 = new Vector<Integer>();
 
-    for (int i = 0; i < LENGTH; ++i) {
+    final TourFactory factory = new TourFactory();
+    factory.setSize(LENGTH);
+
+    for (final int i : new Range(LENGTH)) {
       this.tour1.add(i);
       this.tour2.add(LENGTH - 1 - i);
+    }
+
+    this.tour3 = factory.createObject();
+    this.tour4 = factory.createObject();
+
+    assertEquals(LENGTH, this.tour1.size());
+    assertEquals(LENGTH, this.tour2.size());
+    assertEquals(LENGTH, this.tour3.size());
+    assertEquals(LENGTH, this.tour4.size());
+
+    for (final int i : new Range(LENGTH)) {
+      assertTrue(this.tour1.contains(i));
+      assertTrue(this.tour2.contains(i));
+      assertTrue(this.tour3.contains(i));
+      assertTrue(this.tour4.contains(i));
     }
   }
 
@@ -87,7 +128,49 @@ public abstract class AbstractTSPCrossoverFunctionTester {
    * {@link jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)}
    * method in each traveling salesman problem CrossoverFunction test class.
    */
-  public abstract void testCrossover();
+  @Test
+  public void testCrossover() {
+    LOG.debug("Tour 1 before: " + this.tour1);
+    LOG.debug("Tour 2 before: " + this.tour2);
+
+    try {
+      this.function.crossover(this.tour1, this.tour2);
+    } catch (final CrossoverException exception) {
+      Util.fail(exception);
+    }
+
+    LOG.debug("Tour 1 after: " + this.tour1);
+    LOG.debug("Tour 2 after: " + this.tour2);
+
+    assertEquals(LENGTH, this.tour1.size());
+    assertEquals(LENGTH, this.tour2.size());
+
+    for (final int i : new Range(LENGTH)) {
+      assertTrue(this.tour1.contains(i));
+      assertTrue(this.tour2.contains(i));
+    }
+
+    LOG.debug("Tour 3 before: " + this.tour3);
+    LOG.debug("Tour 4 before: " + this.tour4);
+
+    try {
+      this.function.crossover(this.tour3, this.tour4);
+    } catch (final CrossoverException exception) {
+      Util.fail(exception);
+    }
+
+    LOG.debug("Tour 3 after: " + this.tour3);
+    LOG.debug("Tour 4 after: " + this.tour4);
+
+    assertEquals(LENGTH, this.tour3.size());
+    assertEquals(LENGTH, this.tour4.size());
+
+    for (final int i : new Range(LENGTH)) {
+      assertTrue(this.tour3.contains(i));
+      assertTrue(this.tour4.contains(i));
+    }
+
+  }
 
   /**
    * Get the tour containing the increasing sequence.

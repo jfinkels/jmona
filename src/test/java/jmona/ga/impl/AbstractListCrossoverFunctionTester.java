@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.impl.Pair;
+import jmona.impl.Range;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -60,7 +61,7 @@ public class AbstractListCrossoverFunctionTester {
     this.individual1 = new Vector<Byte>();
     this.individual2 = new Vector<Byte>();
 
-    for (int i = 0; i < LENGTH; ++i) {
+    for (final int i : new Range(LENGTH)) {
       this.individual1.add((byte) 0);
       this.individual2.add((byte) 1);
     }
@@ -86,7 +87,7 @@ public class AbstractListCrossoverFunctionTester {
   public void testCrossover() {
     this.function.crossover(this.individual1, this.individual2);
 
-    for (int i = 0; i < LENGTH; ++i) {
+    for (final int i : new Range(LENGTH)) {
       assertEquals(1, this.individual1.get(i).intValue());
       assertEquals(0, this.individual2.get(i).intValue());
     }

@@ -31,6 +31,7 @@ import jmona.game.Strategy;
 import jmona.game.TwoPlayerGame;
 import jmona.game.TwoPlayerGameResult;
 import jmona.impl.AbstractEvolutionContext;
+import jmona.impl.Range;
 
 /**
  * A context for playing Strategy objects against one another and reproducing
@@ -104,8 +105,8 @@ public class GameEvolutionContext<S extends Strategy & DeepCopyable<S>> extends
     TwoPlayerGameResult<S> gameResult = null;
     S strategy1 = null;
     S strategy2 = null;
-    for (int i = 0; i < this.currentPopulation().size(); ++i) {
-      for (int j = i + 1; j < this.currentPopulation().size(); ++j) {
+    for (final int i : new Range(this.currentPopulation().size())) {
+      for (final int j : new Range(i + 1, this.currentPopulation().size())) {
 
         strategy1 = this.currentPopulation().get(i);
         strategy2 = this.currentPopulation().get(j);

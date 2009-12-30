@@ -24,6 +24,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.impl.Range;
+
 import org.junit.Test;
 
 /**
@@ -47,13 +49,13 @@ public class OnesFitnessFunctionTester {
     final OnesFitnessFunction function = new OnesFitnessFunction();
     final List<Byte> individual = new Vector<Byte>();
 
-    for (int i = 0; i < length; ++i) {
+    for (final int i : new Range(length)) {
       individual.add((byte) 0);
     }
 
     assertEquals(0, function.fitness(individual), ZERO_DELTA);
 
-    for (int i = 0; i < length; ++i) {
+    for (final int i : new Range(length)) {
       individual.set(i, (byte) 1);
       assertEquals(i + 1, function.fitness(individual), ZERO_DELTA);
     }

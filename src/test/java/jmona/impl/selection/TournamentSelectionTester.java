@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import jmona.impl.Range;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Before;
@@ -60,7 +61,7 @@ public class TournamentSelectionTester {
     this.fitnesses = new HashMap<ExampleIndividual, Double>();
 
     this.allIndividuals = new Vector<ExampleIndividual>();
-    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
+    for (final int i : new Range(NUM_INDIVIDUALS)) {
       this.allIndividuals.add(new ExampleIndividual(i));
     }
 
@@ -75,7 +76,7 @@ public class TournamentSelectionTester {
    */
   @Test
   public void testSelect() {
-    for (int i = 0; i < NUM_SELECTIONS; ++i) {
+    for (final int i : new Range(NUM_SELECTIONS)) {
       final ExampleIndividual selectedIndividual = this.function
           .select(this.fitnesses);
       assertSame(this.allIndividuals.get((int) selectedIndividual.fitness()),
@@ -92,13 +93,13 @@ public class TournamentSelectionTester {
 
     // add some more individuals to the fitnesses map
     ExampleIndividual individual = null;
-    for (int i = NUM_INDIVIDUALS; i < 2 * NUM_INDIVIDUALS; ++i) {
+    for (final int i : new Range(NUM_INDIVIDUALS, 2 * NUM_INDIVIDUALS)) {
       individual = new ExampleIndividual(i);
       this.allIndividuals.add(individual);
       this.fitnesses.put(individual, individual.fitness());
     }
 
-    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
+    for (final int i : new Range(NUM_INDIVIDUALS)) {
       individual = this.function.select(this.fitnesses);
       // TODO assertions to make here?
     }

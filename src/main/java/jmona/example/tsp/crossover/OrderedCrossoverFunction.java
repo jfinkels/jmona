@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.CrossoverFunction;
+import jmona.impl.Range;
 import jmona.impl.Util;
 
 import org.apache.log4j.Logger;
@@ -70,7 +71,7 @@ public class OrderedCrossoverFunction implements
     int currentCityIndex = 0;
     int currentCityInTour1 = 0;
     int currentCityInTour2 = 0;
-    for (int i = 0; i < tour1.size(); ++i) {
+    for (final int i : new Range(tour1.size())) {
 
       // get the index of the current city
       currentCityIndex = end + i % tour1.size();

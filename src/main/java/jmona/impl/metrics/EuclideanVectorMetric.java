@@ -23,6 +23,7 @@ import java.util.List;
 
 import jmona.Metric;
 import jmona.MetricException;
+import jmona.impl.Range;
 
 /**
  * Get the Euclidean distance between two specified vectors in Euclidean
@@ -68,7 +69,7 @@ public class EuclideanVectorMetric<T extends Number> implements Metric<List<T>> 
     double difference = 0;
     double squaredDifference = 0;
     double sum = 0;
-    for (int i = 0; i < vector1.size(); ++i) {
+    for (final int i : new Range(vector1.size())) {
       difference = vector1.get(i).doubleValue() - vector2.get(i).doubleValue();
       squaredDifference = Math.pow(difference, 2);
       sum += squaredDifference;

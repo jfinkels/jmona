@@ -20,7 +20,6 @@
 package jmona.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -96,17 +95,14 @@ public class Util {
     // generate the random index which defines which element to choose
     int selection = RANDOM.nextInt(collection.size());
 
-    // get an iterator over the set
-    final Iterator<T> iterator = collection.iterator();
-
     // iterate over all elements of the set until the selection has been reached
-    T element = null;
-    while (iterator.hasNext() && selection >= 0) {
-      element = iterator.next();
-      selection -= 1;
+    for (final T element : collection) {
+      if (0 == selection--) {
+        return element;
+      }
     }
 
-    return element;
+    return null;
   }
 
   /**
@@ -147,7 +143,7 @@ public class Util {
    */
   public static <E> void swap(final List<E> list1, final List<E> list2,
       final int start, final int end) {
-    for (int i = start; i < end; ++i) {
+    for (final int i : new Range(start, end)) {
       swap(list1, list2, i);
     }
   }

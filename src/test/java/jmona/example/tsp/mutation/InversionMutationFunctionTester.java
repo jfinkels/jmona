@@ -22,6 +22,7 @@ package jmona.example.tsp.mutation;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import jmona.MutationException;
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -48,7 +49,7 @@ public class InversionMutationFunctionTester extends
    */
   @Test
   public void testMutate() {
-    for (int j = 0; j < NUM_TESTS; ++j) {
+    for (final int j : new Range(NUM_TESTS)) {
       this.setUp();
 
       assertEquals(LENGTH, this.tour().size());
@@ -60,7 +61,7 @@ public class InversionMutationFunctionTester extends
       }
 
       assertEquals(LENGTH, this.tour().size());
-      for (int i = 0; i < LENGTH; ++i) {
+      for (final int i : new Range(LENGTH)) {
         assertTrue(this.tour().contains(i));
       }
 
@@ -72,7 +73,7 @@ public class InversionMutationFunctionTester extends
 
       if (start >= LENGTH) {
 
-        for (int i = 0; i < LENGTH; ++i) {
+        for (final int i : new Range(LENGTH)) {
           assertEquals(i, this.tour().get(i).intValue());
         }
 
@@ -81,7 +82,7 @@ public class InversionMutationFunctionTester extends
         // determine the ending index of the inverted sublist
         final int end = this.tour().get(start) + 1;
 
-        for (int i = 0; i < start - end; ++i) {
+        for (final int i : new Range(start - end)) {
           assertEquals(end - i, this.tour().get(start + i).intValue());
         }
       }

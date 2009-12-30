@@ -22,6 +22,7 @@ package jmona.example.tsp;
 import java.util.List;
 
 import jmona.FitnessFunction;
+import jmona.impl.Range;
 
 /**
  * 
@@ -67,7 +68,7 @@ public class TSPFitnessFunction implements FitnessFunction<List<Integer>> {
 
     // get the sum of the distances between each of the vertices
     double sum = 0;
-    for (int i = 1; i < tour.size(); ++i) {
+    for (final int i : new Range(1, tour.size())) {
       sum += this.graph.edgeBetween(tour.get(i - 1), tour.get(i));
     }
 

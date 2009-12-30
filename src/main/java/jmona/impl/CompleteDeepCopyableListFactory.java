@@ -53,7 +53,7 @@ public class CompleteDeepCopyableListFactory<E extends DeepCopyable<E>> extends
 
     final DeepCopyableList<E> result = new CompleteDeepCopyableVector<E>();
 
-    for (int i = 0; i < this.size(); ++i) {
+    for (final int i : new Range(this.size())) {
       result.add(this.elementFactory().createObject());
     }
 

@@ -27,6 +27,7 @@ import java.awt.image.PixelGrabber;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -93,8 +94,8 @@ public class ConverterTester {
     }
 
     int currentColor = 0;
-    for (int i = 0; i < width; ++i) {
-      for (int j = 0; j < height; ++j) {
+    for (final int i : new Range(width)) {
+      for (final int j : new Range(height)) {
         currentColor = Color.BLACK.getRGB();
         if (i >= left && i < right && j >= top && j < bottom) {
           currentColor = color.getRGB();

@@ -26,6 +26,7 @@ import java.util.Vector;
 
 import jmona.Metric;
 import jmona.MetricException;
+import jmona.impl.Range;
 
 /**
  * A metric which measures the distance between images in RGB color space, using
@@ -159,7 +160,7 @@ public class ImageMetric implements Metric<BufferedImage> {
     }
 
     double totalDistance = 0;
-    for (int i = 0; i < pixelsOfImage1.length; ++i) {
+    for (final int i : new Range(pixelsOfImage1.length)) {
       totalDistance += distance(pixelsOfImage1[i], pixelsOfImage2[i]);
     }
 

@@ -23,6 +23,7 @@ import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.gp.impl.AbstractFunctionNode;
 import jmona.gp.impl.AbstractTreeFactory;
+import jmona.impl.Range;
 
 /**
  * An example TreeFactory.
@@ -49,7 +50,7 @@ public class ExampleTreeFactory extends AbstractTreeFactory<Integer> {
     } else {
       result = new ExampleBinaryNode();
 
-      for (int i = 0; i < result.arity(); ++i) {
+      for (final int i : new Range(result.arity())) {
         child = this.createTree(currentDepth - 1);
 
         AbstractFunctionNode.attachChildToParent(

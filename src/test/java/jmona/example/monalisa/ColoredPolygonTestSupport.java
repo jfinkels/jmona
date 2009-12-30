@@ -21,6 +21,8 @@ package jmona.example.monalisa;
 
 import java.awt.Color;
 
+import jmona.impl.Range;
+
 /**
  * Base class for tests involving ColoredPolygon objects.
  * 
@@ -67,7 +69,7 @@ public abstract class ColoredPolygonTestSupport {
       return false;
     }
 
-    for (int i = 0; i < polygon1.npoints; ++i) {
+    for (final int i : new Range(polygon1.npoints)) {
       if (polygon1.xpoints[i] != polygon2.xpoints[i]
           || polygon1.ypoints[i] != polygon2.ypoints[i]) {
         return false;

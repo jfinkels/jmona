@@ -28,6 +28,7 @@ import java.util.List;
 import jmona.example.monalisa.ColoredPolygon;
 import jmona.example.monalisa.ColoredPolygonFactory;
 import jmona.gp.EvaluationException;
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Before;
@@ -87,7 +88,7 @@ public class ColoredPolygonNodeFactoryTester {
     assertTrue(polygon.npoints < MAX_POINTS);
     assertTrue(polygon.npoints >= MIN_POINTS);
 
-    for (int i = 0; i < polygon.npoints; ++i) {
+    for (final int i : new Range(polygon.npoints)) {
       assertTrue(polygon.xpoints[i] < WIDTH);
       assertTrue(polygon.xpoints[i] >= 0);
 

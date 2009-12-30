@@ -29,6 +29,7 @@ import java.util.NoSuchElementException;
  * 
  * @author jfinkels
  */
+// TODO negative increments
 public class Range implements Iterable<Integer>, Iterator<Integer> {
 
   /** The current pointer. */

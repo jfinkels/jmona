@@ -21,6 +21,7 @@ package jmona.example.ipd.strategy;
 
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
+import jmona.impl.Range;
 
 import org.junit.Test;
 
@@ -41,7 +42,7 @@ public class RuthlessStrategyTester {
     final RuthlessStrategy strategy = new RuthlessStrategy();
     final RuthlessStrategy clone = strategy.deepCopy();
     assertNotSame(strategy, clone);
-    for (int i = 0; i < NUM_ACTIONS; ++i) {
+    for (final int i : new Range(NUM_ACTIONS)) {
       assertSame(strategy.nextAction(), clone.nextAction());
     }
   }
@@ -53,7 +54,7 @@ public class RuthlessStrategyTester {
   @Test
   public void testNextAction() {
     final RuthlessStrategy strategy = new RuthlessStrategy();
-    for (int i = 0; i < NUM_ACTIONS; ++i) {
+    for (final int i : new Range(NUM_ACTIONS)) {
       assertSame(Action.DEFECT, strategy.nextAction());
     }
   }

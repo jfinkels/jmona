@@ -24,6 +24,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
 
+import jmona.impl.Range;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -59,7 +61,7 @@ public class ColoredPolygonFactoryTester extends ColoredPolygonTestSupport {
       assertTrue(polygon.npoints < MAX_POINTS);
       assertTrue(polygon.npoints >= MIN_POINTS);
 
-      for (int i = 0; i < polygon.npoints; ++i) {
+      for (final int i : new Range(polygon.npoints)) {
         assertTrue(polygon.xpoints[i] < WIDTH);
         assertTrue(polygon.xpoints[i] >= 0);
         assertTrue(polygon.ypoints[i] < HEIGHT);

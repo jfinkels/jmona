@@ -26,6 +26,7 @@ import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 import jmona.gp.impl.example.ExampleTernaryNode;
 import jmona.gp.impl.example.IntegerNode;
+import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Before;
@@ -91,7 +92,7 @@ public class TernaryNodeTester {
 
       Node<Integer> child = null;
       Node<Integer> clonedChild = null;
-      for (int i = 0; i < this.node.children().size(); ++i) {
+      for (final int i : new Range(this.node.children().size())) {
         child = this.node.children().get(i);
         clonedChild = clonedNode.children().get(i);
         assertEquals(child.evaluate().intValue(), clonedChild.evaluate()

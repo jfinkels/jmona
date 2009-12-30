@@ -22,6 +22,7 @@ package jmona.ga.impl;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import jmona.FitnessException;
+import jmona.impl.Range;
 import jmona.impl.example.ExampleIndividual;
 import jmona.impl.example.ExampleMapping;
 import jmona.impl.metrics.EuclideanMetric;
@@ -63,7 +64,7 @@ public class MappingFitnessFunctionTester {
   public void testFitness() {
     try {
       double expectedFitness = 0.0;
-      for (int i = MIN_VALUE; i < MAX_VALUE; ++i) {
+      for (final int i : new Range(MIN_VALUE, MAX_VALUE)) {
 
         if (i == 0) {
           expectedFitness = Double.POSITIVE_INFINITY;
