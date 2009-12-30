@@ -19,10 +19,6 @@
  */
 package jmona.example.tsp.crossover;
 
-import static org.junit.Assert.fail;
-
-import org.junit.Test;
-
 /**
  * Test class for the EdgeRecombinationCrossoverFunction class.
  * 
@@ -34,16 +30,6 @@ public class EdgeRecombinationCrossoverFunctionTester extends
   /** Instantiate this test class with a EdgeRecombinationCrossoverFunction. */
   public EdgeRecombinationCrossoverFunctionTester() {
     super(new EdgeRecombinationCrossoverFunction());
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.example.tsp.crossover.EdgeRecombinationCrossoverFunction#crossover(jmona.example.tsp.Tour, jmona.example.tsp.Tour)}
-   * .
-   */
-  @Test
-  public void testCrossover() {
-    fail("Not yet implemented");
   }
 
 }
