@@ -82,6 +82,18 @@ public class IPDGameTester {
     assertSame(this.ruthlessStrategy, result.winner());
 
     try {
+      result = this.game.play(this.ruthlessStrategy, this.cooperativeStrategy);
+    } catch (final GameplayException exception) {
+      Util.fail(exception);
+    }
+
+    assertEquals(IPDGame.DEFAULT_TEMPTATION, result.scoreOfStrategy1(),
+        ZERO_DELTA);
+    assertEquals(IPDGame.DEFAULT_SUCKERS_PAYOFF, result.scoreOfStrategy2(),
+        ZERO_DELTA);
+    assertSame(this.ruthlessStrategy, result.winner());
+
+    try {
       result = this.game.play(this.cooperativeStrategy,
           this.cooperativeStrategy);
     } catch (final GameplayException exception) {
