@@ -19,6 +19,8 @@
  */
 package jmona.gp.impl;
 
+import jmona.PropertyNotWritableException;
+
 /**
  * A factory which creates a Tree of Nodes using the "full" method, that is,
  * each branch of the tree has the maximum depth, and the nodes at each depth
@@ -39,17 +41,18 @@ public class FullTreeFactory<V> extends GrowTreeFactory<V> {
   }
 
   /**
-   * Throws an exception; cannot set the probability of generating a terminal
-   * node within a Tree at a depth less than the maximum depth in this class.
+   * Always throws an Exception; cannot set the probability of generating a
+   * terminal node within a Tree at a depth less than the maximum depth in this
+   * class.
    * 
    * @param newProbabilityTerminal
    *          {@inheritDoc}
-   * @throws RuntimeException
-   *           Invocations of this method always throw this Exception.
+   * @throws PropertyNotWritableException
+   *           Always throws this Exception.
    */
   @Override
   public void setProbabilityTerminal(final double newProbabilityTerminal) {
-    throw new RuntimeException(
-        "Cannot set probability of generating a terminal node on this class.");
+    throw new PropertyNotWritableException(
+        "The probability of generating a TerminalNode must be 0.");
   }
 }
