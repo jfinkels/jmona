@@ -18,16 +18,15 @@
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * Provides a default implementation of the genetic algorithms interface with
- * some common necessary functionality.
+ * Provides a default implementation of genetic algorithms interface with some
+ * common necessary functionality.
  * 
  * The most important class is the {@link jmona.ga.impl.GAEvolutionContext},
- * which provides the context in which an evolution can run.
+ * which provides the context in which a genetic algorithm can run.
  * 
- * This package also provides a {@link jmona.ga.impl.CharArrayBinaryString}
- * class, which encapsulates a binary string of arbitrary length. This binary
- * string can be used in a genetic algorithm by implementing a custom
- * {@link jmona.FitnessFunction}.
+ * This package also provides a {@link jmona.ga.impl.BitFactory}, for use in
+ * creating a sequence of bits (represented as Byte objects), which can be used
+ * in a genetic algorithm in the more traditional way.
  * 
  * @author jfinkels
  */

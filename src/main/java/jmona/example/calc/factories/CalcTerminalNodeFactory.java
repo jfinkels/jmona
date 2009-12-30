@@ -49,7 +49,7 @@ public class CalcTerminalNodeFactory implements
    * Create a TerminalNode of type {@link VariableNode} or {@link NumberNode}.
    * 
    * @return Either a {@code VariableNode} or a {@code NumberNode}.
-   * @see jmona.gp.TerminalNodeFactory#createNode()
+   * @see jmona.Factory#createObject()
    */
   @Override
   public TerminalNode<SingleInputFunction<Double, Double>> createObject() {

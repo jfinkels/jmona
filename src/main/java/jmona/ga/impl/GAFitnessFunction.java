@@ -22,8 +22,8 @@ package jmona.ga.impl;
 import jmona.impl.IdentityFunction;
 
 /**
- * A FitnessFunction which measures the distance between a specified Individual
- * and a target Individual with a metric function.
+ * A FitnessFunction which measures the distance between a specified individual
+ * and a target individual with a metric function.
  * 
  * @param <T>
  *          The type of Individual to measure.

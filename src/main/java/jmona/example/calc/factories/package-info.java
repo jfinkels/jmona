@@ -18,9 +18,14 @@
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * Provides a {@link jmona.gp.TerminalNodeFactory} which generates terminal
- * nodes for use in the Calc evolution.
+ * Provides {@link jmona.Factory} objects for {@link jmona.gp.TerminalNode}
+ * objects and {@link jmona.gp.FunctionNode} objects specific to the "calc"
+ * evolution.
  * 
+ * The FunctionNodes and TerminalNodes which these factories create can be found
+ * in the {@link jmona.example.calc.nodes} package.
+ * 
+ * @see jmona.example.calc.nodes
  * @author jfinkels
  */
 package jmona.example.calc.factories;
