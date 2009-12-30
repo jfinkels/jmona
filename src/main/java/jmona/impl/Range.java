@@ -32,14 +32,88 @@ import java.util.NoSuchElementException;
 // TODO negative increments
 public class Range implements Iterable<Integer>, Iterator<Integer> {
 
+  /** The default increment for this Iterator. */
+  public static final int DEFAULT_INCREMENT = 1;
+
+  /**
+   * Get a new iterable Range object over the interval from 0 to {@code
+   * terminalInteger-1}, inclusive.
+   * 
+   * @param terminalInteger
+   *          The maximum + 1 of the range to get.
+   * @return An iterable Range object over the interval from 0 to {@code
+   *         terminalInteger-1}, inclusive.
+   */
+  public static Range range(final int terminalInteger) {
+    return range(0, terminalInteger);
+  }
+
+  /**
+   * Get a new iterable Range object over the interval from {@code
+   * initialInteger} to {@code terminalInteger-1}, inclusive.
+   * 
+   * @param initialInteger
+   *          The minimum of the range to get.
+   * @param terminalInteger
+   *          The maximum + 1 of the range to get.
+   * @return An iterable Range object over the interval from 0 to {@code
+   *         terminalInteger-1}, inclusive.
+   */
+  public static Range range(final int initialInteger, final int terminalInteger) {
+    return range(initialInteger, terminalInteger, 1);
+  }
+
+  /**
+   * Get a new iterable Range object over the interval from {@code
+   * initialInteger} to {@code terminalInteger-1}, inclusive, with incrementing
+   * steps of the specified value.
+   * 
+   * @param initialInteger
+   *          The minimum of the range to get.
+   * @param terminalInteger
+   *          The maximum + 1 of the range to get.
+   * @param incrementInteger
+   *          The value by which to increment over the Range.
+   * @return An iterable Range object over the interval from 0 to {@code
+   *         terminalInteger-1}, inclusive.
+   */
+  public static Range range(final int initialInteger,
+      final int terminalInteger, final int incrementInteger) {
+    return new Range(initialInteger, terminalInteger, incrementInteger);
+  }
+
   /** The current pointer. */
   private int current;
-  /** The lower integer of this range. */
-  private final int start;
   /** The maximum + 1 integer of this range. */
   private final int end;
   /** The increment for this iterator. */
   private final int increment;
+  /** The lower integer of this range. */
+  private final int start;
+
+  /**
+   * Instantiate this range of integers from {@code 0} to {@code
+   * terminalInteger-1} inclusive.
+   * 
+   * @param terminalInteger
+   *          The maximum + 1 integer of this range.
+   */
+  public Range(final int terminalInteger) {
+    this(0, terminalInteger);
+  }
+
+  /**
+   * Instantiate this range of integers from {@code initialInteger} to {@code
+   * terminalInteger-1} inclusive.
+   * 
+   * @param initialInteger
+   *          The lower integer of this range.
+   * @param terminalInteger
+   *          The maximum + 1 integer of this range.
+   */
+  public Range(final int initialInteger, final int terminalInteger) {
+    this(initialInteger, terminalInteger, DEFAULT_INCREMENT);
+  }
 
   /**
    * Instantiate this range of integers from {@code initialInteger} to {@code
@@ -58,46 +132,8 @@ public class Range implements Iterable<Integer>, Iterator<Integer> {
     this.start = initialInteger;
     this.end = terminalInteger;
     this.increment = incrementInteger;
-    
+
     this.current = this.start - this.increment;
-  }
-
-  /**
-   * Instantiate this range of integers from {@code initialInteger} to {@code
-   * terminalInteger-1} inclusive.
-   * 
-   * @param initialInteger
-   *          The lower integer of this range.
-   * @param terminalInteger
-   *          The maximum + 1 integer of this range.
-   */
-  public Range(final int initialInteger, final int terminalInteger) {
-    this(initialInteger, terminalInteger, DEFAULT_INCREMENT);
-  }
-
-  /** The default increment for this Iterator. */
-  public static final int DEFAULT_INCREMENT = 1;
-
-  /**
-   * Instantiate this range of integers from {@code 0} to {@code
-   * terminalInteger-1} inclusive.
-   * 
-   * @param terminalInteger
-   *          The maximum + 1 integer of this range.
-   */
-  public Range(final int terminalInteger) {
-    this(0, terminalInteger);
-  }
-
-  /**
-   * Get an Iterator over this range of integers.
-   * 
-   * @return An Iterator over this range of integers.
-   * @see java.lang.Iterable#iterator()
-   */
-  @Override
-  public Iterator<Integer> iterator() {
-    return this;
   }
 
   /**
@@ -109,6 +145,17 @@ public class Range implements Iterable<Integer>, Iterator<Integer> {
   @Override
   public boolean hasNext() {
     return this.current + this.increment < this.end;
+  }
+
+  /**
+   * Get an Iterator over this range of integers.
+   * 
+   * @return An Iterator over this range of integers.
+   * @see java.lang.Iterable#iterator()
+   */
+  @Override
+  public Iterator<Integer> iterator() {
+    return this;
   }
 
   /**
