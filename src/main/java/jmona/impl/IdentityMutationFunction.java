@@ -35,7 +35,7 @@ public class IdentityMutationFunction<T> implements MutationFunction<T> {
    * 
    * @param individual
    *          This parameter is ignored.
-   * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
+   * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
   public void mutate(final T individual) {

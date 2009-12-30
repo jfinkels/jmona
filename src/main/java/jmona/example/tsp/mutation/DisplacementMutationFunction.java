@@ -41,7 +41,7 @@ public class DisplacementMutationFunction implements
    * 
    * @param tour
    *          The tour to mutate.
-   * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
+   * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
   public void mutate(final List<Integer> tour) {

@@ -43,7 +43,7 @@ public class PartiallyMatchedCrossoverFunction implements
    * swapped between the two tours, as in a two-point crossover. Second, any
    * repeated cities in the non-swapped parts of the tours are replaced so the
    * tours become valid again. This is done by using the mapping defined by
-   * <em>f({@code tour1.get(i)) = {@code tour2.get(i)}</em> for all <em>i</em>
+   * <em>f({@code tour1.get(i)}) = {@code tour2.get(i)}</em> for all <em>i</em>
    * in the interval defined by the start and end indices of the swapped slice,
    * and the inverse of this mapping. (If <em>f(x)</em> is still in the swapped
    * section of the tour, then apply the mapping repeatedly to find the

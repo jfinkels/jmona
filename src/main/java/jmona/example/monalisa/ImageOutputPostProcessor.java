@@ -30,7 +30,7 @@ import jmona.example.monalisa.io.ImageWriter;
 import jmona.impl.PeriodicPostProcessor;
 
 /**
- * A PostProcessor which writes an Individual out to an image on the filesystem.
+ * A PostProcessor which writes an individual out to an image on the filesystem.
  * 
  * @author jfinkels
  */
@@ -97,8 +97,8 @@ public class ImageOutputPostProcessor extends
    * EvolutionContext out to an image.
    * 
    * The image will be written at the filename specified by the return value of
-   * the {@link #generateFilename(int)} method with current generation number as
-   * input.
+   * the {@link #generateFilename(String, int)} method with the output directory
+   * name property and the current generation number as input.
    * 
    * @param evolutionContext
    *          The EvolutionContext containing the population from which to get

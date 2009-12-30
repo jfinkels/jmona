@@ -37,7 +37,7 @@ public class SwapMutationFunction implements MutationFunction<List<Integer>> {
    * 
    * @param tour
    *          The Tour to mutate.
-   * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
+   * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
   public void mutate(final List<Integer> tour) {
