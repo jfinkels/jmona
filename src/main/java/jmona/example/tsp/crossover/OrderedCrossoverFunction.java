@@ -27,24 +27,29 @@ import jmona.CrossoverFunction;
 import jmona.impl.Range;
 import jmona.impl.Util;
 
-import org.apache.log4j.Logger;
-
 /**
- * The ordered crossover (OX) function for a tour in the traveling salesman
- * problem, by Prins.
+ * Ordered crossover (also known as OX) for a tour in the traveling salesman
+ * problem.
  * 
  * @author jfinkels
  */
+// TODO references for the original authors of TSP crossover functions
 public class OrderedCrossoverFunction implements
     CrossoverFunction<List<Integer>> {
 
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(OrderedCrossoverFunction.class);
-
-  /*
-   * (non-Javadoc)
+  /**
+   * Perform ordered crossover (also known as OX) on the specified tours.
    * 
+   * Ordered crossover works in two stages. First, a random slice is swapped
+   * between the two tours, as in a two-point crossover. Second, repeated cities
+   * not in the swapped area are removed, and the remaining integers are added
+   * from the other tour, in the order that they appear starting from the end
+   * index of the swapped section.
+   * 
+   * @param tour1
+   *          A tour.
+   * @param tour2
+   *          Another tour.
    * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
    */
   @Override
@@ -52,9 +57,7 @@ public class OrderedCrossoverFunction implements
 
     // choose a random start and end point for the slice
     final int start = Util.RANDOM.nextInt(tour1.size());
-    final int end = start + Util.RANDOM.nextInt(tour1.size() - start);
-
-    LOG.debug("(start, end) = (" + start + ", " + end + ")");
+    final int end = start + Util.RANDOM.nextInt(tour1.size() - start - 1) + 1;
 
     // instantiate two child tours
     final List<Integer> child1 = new Vector<Integer>();
@@ -64,9 +67,6 @@ public class OrderedCrossoverFunction implements
     child1.addAll(tour1.subList(start, end));
     child2.addAll(tour2.subList(start, end));
 
-    LOG.debug("Child 1: " + child1);
-    LOG.debug("Child 2: " + child2);
-
     // iterate over each city in the parent tours
     int currentCityIndex = 0;
     int currentCityInTour1 = 0;
@@ -74,7 +74,7 @@ public class OrderedCrossoverFunction implements
     for (final int i : new Range(tour1.size())) {
 
       // get the index of the current city
-      currentCityIndex = end + i % tour1.size();
+      currentCityIndex = (end + i) % tour1.size();
 
       // get the city at the current index in each of the two parent tours
       currentCityInTour1 = tour1.get(currentCityIndex);
@@ -91,24 +91,15 @@ public class OrderedCrossoverFunction implements
       }
     }
 
-    LOG.debug("Child 1: " + child1);
-    LOG.debug("Child 2: " + child2);
-
     // rotate the lists so the original slice is in the same place as in the
     // parent tours
     Collections.rotate(child1, start);
     Collections.rotate(child2, start);
 
-    LOG.debug("Child 1: " + child1);
-    LOG.debug("Child 2: " + child2);
-
     // copy the tours from the children back into the parents, because crossover
     // functions are in-place!
-    Collections.copy(tour1, child1);
-    Collections.copy(tour2, child2);
-
-    LOG.debug("Tour 1: " + tour1);
-    LOG.debug("Tour 2: " + tour2);
+    Collections.copy(tour1, child2);
+    Collections.copy(tour2, child1);
   }
 
 }
