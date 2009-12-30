@@ -111,11 +111,13 @@ public abstract class AbstractEvolutionContext<T extends DeepCopyable<T>>
   }
 
   /**
-   * Get the current map from individuals to their corresponding fitnesses.
+   * {@inheritDoc}
    * 
-   * @return The current map from individuals to their corresponding fitnesses.
+   * @return {@inheritDoc}
+   * @see jmona.EvolutionContext#currentFitnesses()
    */
-  protected synchronized Map<T, Double> currentFitnesses() {
+  @Override
+  public synchronized Map<T, Double> currentFitnesses() {
     return this.currentFitnesses;
   }
 

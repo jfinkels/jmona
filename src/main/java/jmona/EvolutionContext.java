@@ -20,7 +20,7 @@
 package jmona;
 
 import java.util.List;
-
+import java.util.Map;
 
 /**
  * A context in which evolution occurs.
@@ -47,6 +47,15 @@ public interface EvolutionContext<T extends DeepCopyable<T>> {
   double crossoverProbability();
 
   /**
+   * Get the current fitnesses of the individuals in the population, as returned
+   * by the {@link #currentPopulation()} method.
+   * 
+   * @return The map from individual to fitness, for all individuals in the
+   *         current population.
+   */
+  Map<T, Double> currentFitnesses();
+
+  /**
    * Get the current generation number; the initial generation should be 0, and
    * each subsequent generation should be incremented by 1.
    * 
@@ -55,9 +64,9 @@ public interface EvolutionContext<T extends DeepCopyable<T>> {
   int currentGeneration();
 
   /**
-   * Get the current Population.
+   * Get the current population.
    * 
-   * @return The current Population.
+   * @return The current population.
    */
   List<T> currentPopulation();
 
