@@ -1,5 +1,5 @@
 /**
- * OnesPostProcessor.java
+ * FitnessLoggingPostProcessor.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -23,28 +23,29 @@ import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 
 /**
- * A PostProcessor which logs the current population.
+ * Log the fitnesses of the current population.
  * 
  * @param <T>
- *          The type of individual in the EvolutionContext whose population will
+ *          The type of individual in the EvolutionContext whose fitnesses will
  *          be logged.
  * @author jfinkels
  */
-public class PopulationLoggingPostProcessor<T extends DeepCopyable<T>> extends
+public class FitnessLoggingPostProcessor<T extends DeepCopyable<T>> extends
     LoggingPostProcessor<T> {
 
   /**
-   * Get the current population of the specified EvolutionContext, as a String.
+   * Get the fitnesses of the individuals in the current population of the
+   * specified EvolutionContext.
    * 
    * @param context
-   *          The EvolutionContext containing the population.
-   * @return The current population of the specified EvolutionContext, as a
+   *          The EvolutionContext from which to get the fitnesses of the
+   *          current population.
+   * @return The fitnesses of the individuals in the current population, as a
    *         String.
-   * @see jmona.impl.LoggingPostProcessor#message()
+   * @see jmona.impl.LoggingPostProcessor#message(jmona.EvolutionContext)
    */
   @Override
   protected String message(final EvolutionContext<T> context) {
-    return context.currentPopulation().toString();
+    return context.currentFitnesses().toString();
   }
-
 }

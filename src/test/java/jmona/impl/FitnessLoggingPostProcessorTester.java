@@ -1,5 +1,5 @@
 /**
- * PopulationLoggingPostProcessorTester.java
+ * FitnessLoggingPostProcessorTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -33,21 +33,26 @@ import jmona.test.Util;
 import org.junit.Test;
 
 /**
- * Test class for the PopulationLoggingPostProcessor class.
+ * Test class for the FitnessLoggingPostProcessor class.
  * 
  * @author jfinkels
  */
-public class PopulationLoggingPostProcessorTester {
+public class FitnessLoggingPostProcessorTester {
+
+  /** The fitness of one individual. */
+  public static final int FITNESS_ONE = 1;
+  /** The fitness of another individual. */
+  public static final int FITNESS_TWO = 2;
 
   /**
    * Test method for
-   * {@link jmona.impl.PopulationLoggingPostProcessor#message(jmona.EvolutionContext)}
+   * {@link jmona.impl.FitnessLoggingPostProcessor#message(jmona.EvolutionContext)}
    * .
    */
   @Test
   public void testMessage() {
-    final ExampleIndividual individual1 = new ExampleIndividual();
-    final ExampleIndividual individual2 = new ExampleIndividual();
+    final ExampleIndividual individual1 = new ExampleIndividual(FITNESS_ONE);
+    final ExampleIndividual individual2 = new ExampleIndividual(FITNESS_TWO);
 
     final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
     population.add(individual1);
@@ -55,13 +60,13 @@ public class PopulationLoggingPostProcessorTester {
 
     ExampleEvolutionContext context = new ExampleEvolutionContext(population);
 
-    final PopulationLoggingPostProcessor<ExampleIndividual> processor = new PopulationLoggingPostProcessor<ExampleIndividual>();
+    final FitnessLoggingPostProcessor<ExampleIndividual> processor = new FitnessLoggingPostProcessor<ExampleIndividual>();
 
     final String result = processor.message(context);
 
     assertNotNull(result);
-    assertTrue(result.contains(individual1.toString()));
-    assertTrue(result.contains(individual2.toString()));
+    assertTrue(result.contains(String.valueOf(individual1.fitness())));
+    assertTrue(result.contains(String.valueOf(individual2.fitness())));
   }
 
 }
