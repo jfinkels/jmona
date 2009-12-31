@@ -32,14 +32,14 @@
  * The {@link jmona.ga.impl.BitFactory} class can be used to create a sequence
  * of bits (represented as Byte objects) which can be used in a genetic
  * algorithm in the more traditional way. The plain old
- * {@link OnePointCrossoverFunction} and {@link TwoPointCrossoverFunction} are
- * provided as well.
+ * {@link jmona.ga.impl.OnePointCrossoverFunction} and
+ * {@link jmona.ga.impl.TwoPointCrossoverFunction} are provided as well.
  * </p>
  * 
  * <p>
- * The {@link GAFitnessFunction} measures the distance of individuals to a
- * specified target individual, and assigns a greater fitness to a smaller
- * distance from the target.
+ * The {@link jmona.ga.impl.GAFitnessFunction} measures the distance of
+ * individuals to a specified target individual, and assigns a greater fitness
+ * to a smaller distance from the target.
  * </p>
  * 
  * <p>

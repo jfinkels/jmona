@@ -29,7 +29,6 @@
  * 
  * @author jfinkels
  * @see jmona.impl
- * @see jmona.ga
  * @see jmona.ga.impl
  * @see jmona.game
  * @see jmona.game.impl

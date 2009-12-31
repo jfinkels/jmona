@@ -24,30 +24,31 @@
  * </p>
  * 
  * <p>
- * The {@link CycleCrossoverFunction} (also known as CX) uses the notion of an
- * algebraic permutation and its distinct decomposition into disjoint cycles to
- * swap a set of cities in two tours so that there will be no repeat cities in
- * either tour after the swap.
+ * The {@link jmona.example.tsp.crossover.CycleCrossoverFunction} (also known as
+ * CX) uses the notion of an algebraic permutation and its distinct
+ * decomposition into disjoint cycles to swap a set of cities in two tours so
+ * that there will be no repeat cities in either tour after the swap.
  * </p>
  * 
  * <p>
- * The {@link EdgeRecombinationCrossoverFunction} (also known as ERX) uses the
- * popularity of edges to generate a tour consisting of the most popular edges
- * in both tours.
+ * The {@link jmona.example.tsp.crossover.EdgeRecombinationCrossoverFunction}
+ * (also known as ERX) uses the popularity of edges to generate a tour
+ * consisting of the most popular edges in both tours.
  * </p>
  * 
  * <p>
- * The {@link OrderedCrossoverFunction} (also known as OX) performs a two-point
- * crossover (as in {@link jmona.ga.impl.TwoPointCrossoverFunction}), then
- * removes invalid repeated cities and adds missing ones, in the order they are
- * found in the original tours.
+ * The {@link jmona.example.tsp.crossover.OrderedCrossoverFunction} (also known
+ * as OX) performs a two-point crossover (as in
+ * {@link jmona.ga.impl.TwoPointCrossoverFunction}), then removes invalid
+ * repeated cities and adds missing ones, in the order they are found in the
+ * original tours.
  * </p>
  * 
  * <p>
- * The {@link PartiallyMatchedCrossoverFunction} (also known as PMX) performs a
- * two-point crossover, then uses the permutation defined by the mapping between
- * the cities in the swapped sublists to replace repeated cities in the original
- * tours.
+ * The {@link jmona.example.tsp.crossover.PartiallyMatchedCrossoverFunction}
+ * (also known as PMX) performs a two-point crossover, then uses the permutation
+ * defined by the mapping between the cities in the swapped sublists to replace
+ * repeated cities in the original tours.
  * </p>
  * 
  * @author jfinkels

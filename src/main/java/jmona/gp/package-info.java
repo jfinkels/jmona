@@ -23,9 +23,9 @@
  * </p>
  * 
  * <p>
- * The {@link Tree} class and the {@link FunctionNode} and {@link TerminalNode}
- * objects which it contain define the individual which evolves during a genetic
- * programming evolution.
+ * The {@link jmona.gp.Tree} class and the {@link jmona.gp.FunctionNode} and
+ * {@link jmona.gp.TerminalNode} objects which it contain define the individual
+ * which evolves during a genetic programming evolution.
  * </p>
  * 
  * @author jfinkels

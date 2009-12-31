@@ -24,10 +24,11 @@
  * </p>
  * 
  * <p>
- * The {@link EuclideanMetric} measures distance between two points on the real
- * line. The {@link EuclideanVectorMetric} measures the distance between two
- * points in Euclidean n-space. The {@link ImageMetric} measures the
- * three-dimensional Euclidean distance between two pixels in RGB colorspace.
+ * The {@link jmona.impl.metrics.EuclideanMetric} measures distance between two
+ * points on the real line. The {@link jmona.impl.metrics.EuclideanVectorMetric}
+ * measures the distance between two points in Euclidean n-space. The
+ * {@link jmona.impl.metrics.ImageMetric} measures the three-dimensional
+ * Euclidean distance between two pixels in RGB colorspace.
  * </p>
  * 
  * <p>

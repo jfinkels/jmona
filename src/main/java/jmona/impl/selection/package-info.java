@@ -20,8 +20,9 @@
 /**
  * <p>
  * Provides some commonly used selection algorithms, including
- * {@link FitnessProportionateSelection} (also known as
- * "roulette wheel selection") and {@link TournamentSelection}.
+ * {@link jmona.impl.selection.FitnessProportionateSelection} (also known as
+ * "roulette wheel selection") and
+ * {@link jmona.impl.selection.TournamentSelection}.
  * </p>
  * 
  * For more information, see:

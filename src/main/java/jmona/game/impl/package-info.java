@@ -23,11 +23,11 @@
  * </p>
  * 
  * <p>
- * The {@link GameEvolutionContext} matches {@link Strategy} objects (as
- * individuals in a population) against each other, and assigns fitness based on
- * their overall score. The {@link UniformPopulationCompletionCondition} is
- * provided for stopping the evolution when all individuals are of the same
- * class.
+ * The {@link jmona.game.impl.GameEvolutionContext} matches
+ * {@link jmona.game.Strategy} objects (as individuals in a population) against
+ * each other, and assigns fitness based on their overall score. The
+ * {@link jmona.game.impl.UniformPopulationCompletionCondition} is provided for
+ * stopping the evolution when all individuals are of the same class.
  * </p>
  * 
  * @author jfinkels

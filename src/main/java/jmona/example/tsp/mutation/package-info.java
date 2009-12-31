@@ -24,23 +24,25 @@
  * </p>
  * 
  * <p>
- * The {@link DisplacementMutationFunction} chooses a slice of a tour, then
- * removes and reinserts that slice to a different index in the tour.
+ * The {@link jmona.example.tsp.mutation.DisplacementMutationFunction} chooses a
+ * slice of a tour, then removes and reinserts that slice to a different index
+ * in the tour.
  * </p>
  * 
  * <p>
- * The {@link InsertionMutationFunction} chooses a random city in the tour, the
- * removes it and reinserts it at a new random location in the tour.
+ * The {@link jmona.example.tsp.mutation.InsertionMutationFunction} chooses a
+ * random city in the tour, the removes it and reinserts it at a new random
+ * location in the tour.
  * </p>
  * 
  * <p>
- * The {@link InversionMutationFunction} chooses a random slice in the tour,
- * then inverts the order of the cities in that slice.
+ * The {@link jmona.example.tsp.mutation.InversionMutationFunction} chooses a
+ * random slice in the tour, then inverts the order of the cities in that slice.
  * </p>
  * 
  * <p>
- * The {@link SwapMutationFunction} chooses two cities at random in the tour,
- * then swaps them.
+ * The {@link jmona.example.tsp.mutation.SwapMutationFunction} chooses two
+ * cities at random in the tour, then swaps them.
  * </p>
  * 
  * @author jfinkels

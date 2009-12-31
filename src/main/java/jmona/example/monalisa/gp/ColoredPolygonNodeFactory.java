@@ -39,7 +39,7 @@ public class ColoredPolygonNodeFactory implements Factory<ColoredPolygonNode> {
    * 
    * @return A ColoredPolygonNode containing a single randomly generated
    *         ColoredPolygon object.
-   * @see jmona.gp.Factory#createObject()
+   * @see jmona.Factory#createObject()
    */
   @Override
   public ColoredPolygonNode createObject() {

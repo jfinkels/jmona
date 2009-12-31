@@ -26,8 +26,9 @@
  * <p>
  * This class is the executable main class when jmona is packaged as an
  * executable JAR, so running <code>java -jar jmona.jar</code> will execute the
- * {@link Main#main(String[])} method. Provide the Spring XML configuration of
- * the evolution you want to run as a command line argument, like this:
+ * {@link jmona.driver.Main#main(String[])} method. Provide the Spring XML
+ * configuration of the evolution you want to run as a command line argument,
+ * like this:
  * </p>
  * 
  * <blockquote><code>java -jar --config=/path/to/application-context.xml</code>

@@ -24,26 +24,30 @@
  * </p>
  * 
  * <p>
- * The {@link GPEvolutionContext}, {@link GPFitnessFunction},
- * {@link GPMutationFunction}, and {@link GPCrossoverFunction} classes provide
- * most of the functionality of the genetic programming evolution (with various
- * parameters adjustable through setter methods).
+ * The {@link jmona.gp.impl.GPEvolutionContext},
+ * {@link jmona.gp.impl.GPFitnessFunction},
+ * {@link jmona.gp.impl.GPMutationFunction}, and
+ * {@link jmona.gp.impl.GPCrossoverFunction} classes provide most of the
+ * functionality of the genetic programming evolution (with various parameters
+ * adjustable through setter methods).
  * </p>
  * 
  * <p>
  * Users wishing to implement an instance of a genetic programming evolution
  * will likely need to implement a set of {@link jmona.gp.FunctionNode} classes
- * (perhaps simply providing a custom {@link BinaryOperation} to a
- * {@link BinaryNode}, for example), and a set of {@link jmona.gp.TerminalNode}
- * classes, as well as the {@link jmona.Factory} classes for creating them.
- * Provide these factories to one of the tree factories.
+ * (perhaps simply providing a custom {@link jmona.gp.impl.BinaryOperation} to a
+ * {@link jmona.gp.impl.BinaryNode}, for example), and a set of
+ * {@link jmona.gp.TerminalNode} classes, as well as the {@link jmona.Factory}
+ * classes for creating them. Provide these factories to one of the tree
+ * factories.
  * </p>
  * 
  * <p>
- * The {@link GPFitnessFunction} evaluates {@link jmona.gp.Tree} objects, then
- * measures the equivalence of that evaluation value to a specified target
- * value. Users should implement their own {@link jmona.gp.EquivalenceTester}
- * for whatever type of object to which their Trees evaluate.
+ * The {@link jmona.gp.impl.GPFitnessFunction} evaluates {@link jmona.gp.Tree}
+ * objects, then measures the equivalence of that evaluation value to a
+ * specified target value. Users should implement their own
+ * {@link jmona.gp.EquivalenceTester} for whatever type of object to which their
+ * Trees evaluate.
  * </p>
  * 
  * <p>
