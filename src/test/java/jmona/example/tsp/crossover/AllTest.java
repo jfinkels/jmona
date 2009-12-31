@@ -31,8 +31,10 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ CycleCrossoverFunctionTester.class,
     EdgeRecombinationCrossoverFunctionTester.class,
+    NeighborCountingComparatorTester.class,
     OrderedCrossoverFunctionTester.class,
-    PartiallyMatchedCrossoverFunctionTester.class })
+    PartiallyMatchedCrossoverFunctionTester.class,
+    SameNumberOfNeighborsConditionTester.class })
 public class AllTest {
 
 }
