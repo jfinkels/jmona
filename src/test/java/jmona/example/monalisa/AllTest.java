@@ -31,7 +31,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ ColoredPolygonFactoryTester.class,
     ColoredPolygonMutationFunctionTester.class, ColoredPolygonTester.class,
-    ConverterTester.class, ImageOutputPostProcessorTester.class })
+    ConverterTester.class, ImageOutputPostProcessorTester.class,
+    MonaEvolutionTester.class, MonaMappingTester.class })
 public class AllTest {
 
 }
