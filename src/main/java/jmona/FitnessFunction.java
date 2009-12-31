@@ -26,7 +26,7 @@ package jmona;
  * 
  * @param <T>
  *          The type of Individual for which to determine fitness.
- * @author jfinke
+ * @author jfinkels
  */
 public interface FitnessFunction<T> {
   /**

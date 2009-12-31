@@ -28,7 +28,7 @@ import java.util.Map;
  * 
  * @param <T>
  *          The type of Individual which will be selected.
- * @author jfinke
+ * @author jfinkels
  */
 public interface SelectionFunction<T> {
   /**

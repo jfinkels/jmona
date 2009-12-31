@@ -27,7 +27,7 @@ import jmona.FitnessFunction;
  * A fitness function which gives higher fitness to individuals with a greater
  * number of ones in their genes.
  * 
- * @author jfinke
+ * @author jfinkels
  */
 public class OnesFitnessFunction implements FitnessFunction<List<Byte>> {
 

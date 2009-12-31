@@ -29,7 +29,7 @@ import jmona.MutationFunction;
  * 
  * @param <E>
  *          The type of element contained in the List to mutate.
- * @author jfinke
+ * @author jfinkels
  */
 public class ListMutationFunction<E> implements MutationFunction<List<E>> {
 

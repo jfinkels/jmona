@@ -26,7 +26,7 @@ package jmona;
  * 
  * @param <T>
  *          The type of Individual whose genes will be crossed over.
- * @author jfinke
+ * @author jfinkels
  */
 public interface CrossoverFunction<T> {
 
