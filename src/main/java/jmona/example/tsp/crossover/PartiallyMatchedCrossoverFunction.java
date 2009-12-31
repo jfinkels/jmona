@@ -61,13 +61,13 @@ public class PartiallyMatchedCrossoverFunction implements
     // get the size of the tours
     final int size = tour1.size();
 
-    // choose a random start point for the slice to swap
-    final int start = Util.RANDOM.nextInt(size);
+    // choose two random numbers for the start and end indices of the slice
+    final int number1 = Util.RANDOM.nextInt(size);
+    final int number2 = Util.RANDOM.nextInt(size);
 
-    // choose a random end point for the slice to swap (subtract one from the
-    // domain of random integers, then add one to the chosen random integer to
-    // ensure that the slice size is greater than 0)
-    final int end = start + Util.RANDOM.nextInt(size - start - 1) + 1;
+    // make the smaller the start and the larger the end
+    final int start = Math.min(number1, number2);
+    final int end = Math.max(number1, number2);
 
     // crossover the section in between the start and end indices
     Util.swap(tour1, tour2, start, end);

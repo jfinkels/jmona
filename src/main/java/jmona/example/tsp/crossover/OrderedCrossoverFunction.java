@@ -55,10 +55,17 @@ public class OrderedCrossoverFunction implements
   @Override
   public void crossover(final List<Integer> tour1, final List<Integer> tour2) {
 
-    // choose a random start and end point for the slice
-    final int start = Util.RANDOM.nextInt(tour1.size());
-    final int end = start + Util.RANDOM.nextInt(tour1.size() - start - 1) + 1;
+    // get the size of the tours
+    final int size = tour1.size();
+    
+    // choose two random numbers for the start and end indices of the slice
+    final int number1 = Util.RANDOM.nextInt(size);
+    final int number2 = Util.RANDOM.nextInt(size);
 
+    // make the smaller the start and the larger the end
+    final int start = Math.min(number1, number2);
+    final int end = Math.max(number1, number2);
+    
     // instantiate two child tours
     final List<Integer> child1 = new Vector<Integer>();
     final List<Integer> child2 = new Vector<Integer>();
@@ -71,10 +78,10 @@ public class OrderedCrossoverFunction implements
     int currentCityIndex = 0;
     int currentCityInTour1 = 0;
     int currentCityInTour2 = 0;
-    for (final int i : new Range(tour1.size())) {
+    for (final int i : new Range(size)) {
 
       // get the index of the current city
-      currentCityIndex = (end + i) % tour1.size();
+      currentCityIndex = (end + i) % size;
 
       // get the city at the current index in each of the two parent tours
       currentCityInTour1 = tour1.get(currentCityIndex);
