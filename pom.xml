@@ -82,8 +82,11 @@
     <version.plugin.taglist>2.4</version.plugin.taglist>
     <version.plugin.versions>1.1</version.plugin.versions>
     
-    <!-- SCM versions -->
+    <!-- SCM provider versions -->
     <version.scm.git>1.2</version.scm.git>
+    
+    <!-- wagon provider versions -->
+    <version.wagon.ssh>1.0-beta-6</version.wagon.ssh>
     
     <!-- Java runtime/JDK versions -->
     <version.java.source>1.6</version.java.source>
@@ -107,6 +110,11 @@
         <artifactId>maven-release-plugin</artifactId>
         <version>${version.plugin.release}</version>
         <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.wagon</groupId>
+            <artifactId>wagon-ssh</artifactId>
+            <version>${version.wagon.ssh}</version>
+          </dependency>
           <dependency>
             <groupId>org.apache.maven.scm</groupId>
             <artifactId>maven-scm-provider-gitexe</artifactId>
@@ -380,5 +388,21 @@
     <connection>scm:git:git://github.com/jfinkels/jmona.git</connection>
     <url>http://github.com/jfinkels/jmona</url>
   </scm>
+  
+  <distributionManagement>
+    <downloadUrl>http://www.cs.tufts.edu/~jfinke02/jmona/</downloadUrl>
+    <repository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>jmona.repo</id>
+      <name>jmona repository</name>
+      <url>scp://moon.cs.tufts.edu/h/jfinke02/public_html/repo</url>
+      <layout>default</layout>
+    </repository>
+    <site>
+      <id>jmona.website</id>
+      <name>jmona website</name>
+      <url>scp:moon.cs.tufts.edu/h/jfinke02/public_html/jmona</url>
+    </site>
+  </distributionManagement>
   
 </project>
