@@ -90,11 +90,11 @@ public class EdgeRecombinationCrossoverFunction implements
     final Map<Integer, Set<Integer>> neighborsBothTours = new HashMap<Integer, Set<Integer>>();
 
     // get the size of the tours
-    final int size = tour1.size();
+    final int tourSize = tour1.size();
 
     // iterate over each city in tour 1
     Set<Integer> neighbors = null;
-    for (final int i : new Range(size)) {
+    for (final int i : new Range(tourSize)) {
 
       // instantiate a new set of neighbor cities
       neighbors = new HashSet<Integer>();
@@ -102,10 +102,10 @@ public class EdgeRecombinationCrossoverFunction implements
       // add the neighbors of the current city in both tours
       // note: have to do (i + size - 1), because % operator does not work for
       // negative integers for some reason
-      neighbors.add(tour1.get((i + size - 1) % size));
-      neighbors.add(tour1.get((i + 1) % size));
-      neighbors.add(tour2.get((i + size - 1) % size));
-      neighbors.add(tour2.get((i + 1) % size));
+      neighbors.add(tour1.get((i + tourSize - 1) % tourSize));
+      neighbors.add(tour1.get((i + 1) % tourSize));
+      neighbors.add(tour2.get((i + tourSize - 1) % tourSize));
+      neighbors.add(tour2.get((i + 1) % tourSize));
 
       // add this set to the adjacency list for both tours
       neighborsBothTours.put(i, neighbors);
@@ -121,7 +121,7 @@ public class EdgeRecombinationCrossoverFunction implements
 
     // create a list of all possible cities to add to the new tour
     final Set<Integer> allPossibleCities = new HashSet<Integer>();
-    for (final int i : new Range(tour1.size())) {
+    for (final int i : new Range(tourSize)) {
       allPossibleCities.add(i);
     }
 
@@ -141,7 +141,7 @@ public class EdgeRecombinationCrossoverFunction implements
     int cityWithMinNeighbors = 0;
     int numberOfNeighbors = 0;
     List<Integer> citiesWithSameNumberOfNeighbors = null;
-    while (newTour.size() < tour1.size()) {
+    while (newTour.size() < tourSize) {
 
       // get the neighbors of the city just added to the tour
       neighbors = neighborsBothTours.get(cityToAdd);
