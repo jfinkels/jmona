@@ -19,6 +19,17 @@
  */
 package jmona.example.tsp.crossover;
 
+import static org.junit.Assert.assertFalse;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import jmona.impl.Range;
+
+import org.junit.Test;
+
 /**
  * Test class for the EdgeRecombinationCrossoverFunction class.
  * 
@@ -27,9 +38,41 @@ package jmona.example.tsp.crossover;
 public class EdgeRecombinationCrossoverFunctionTester extends
     AbstractTSPCrossoverFunctionTester {
 
+  /** The size of a tour to create. */
+  public static final int SIZE = 10;
+
   /** Instantiate this test class with a EdgeRecombinationCrossoverFunction. */
   public EdgeRecombinationCrossoverFunctionTester() {
     super(new EdgeRecombinationCrossoverFunction());
   }
 
+  /**
+   * Test method for
+   * {@link jmona.example.tsp.crossover.EdgeRecombinationCrossoverFunction#removeFromAllNeighborSets(int, java.util.Map)}
+   * .
+   */
+  @Test
+  public void testRemoveAllFromNeighborSets() {
+    final Map<Integer, Set<Integer>> neighborSets = new HashMap<Integer, Set<Integer>>();
+
+    Set<Integer> neighbors = null;
+    for (final int i : new Range(SIZE)) {
+
+      neighbors = new HashSet<Integer>();
+
+      for (final int j : new Range(SIZE)) {
+        neighbors.add((i + j) % SIZE);
+      }
+
+      neighborSets.put(i, neighbors);
+    }
+    
+    final int cityToRemove = 1;
+    EdgeRecombinationCrossoverFunction.removeFromAllNeighborSets(cityToRemove,
+        neighborSets);
+    
+    for (final Set<Integer> neighborCities : neighborSets.values()) {
+      assertFalse(neighborCities.contains(cityToRemove));
+    }
+  }
 }
