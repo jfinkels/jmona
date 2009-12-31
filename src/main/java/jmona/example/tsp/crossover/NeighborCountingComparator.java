@@ -19,6 +19,7 @@
  */
 package jmona.example.tsp.crossover;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
@@ -29,8 +30,10 @@ import java.util.Set;
  * 
  * @author jfinkels
  */
-class NeighborCountingComparator implements Comparator<Integer> {
+class NeighborCountingComparator implements Comparator<Integer>, Serializable {
 
+  /** Default generated serial version UID. */
+  private static final long serialVersionUID = -6434172164972282414L;
   /** The adjacency list as a mapping from city to neighbors of that city. */
   private final Map<Integer, Set<Integer>> neighborSets;
 
