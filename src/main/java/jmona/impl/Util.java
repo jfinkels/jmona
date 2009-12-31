@@ -25,13 +25,15 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Vector;
 
+import jmona.Condition;
 import jmona.CopyingException;
 import jmona.DeepCopyable;
+import jmona.MappingException;
 
 /**
  * Utility class containing objects and methods necessary for randomness.
  * 
- * @author jfinke
+ * @author jfinkels
  */
 public class Util {
 
@@ -60,6 +62,37 @@ public class Util {
 
     for (final E element : collection) {
       result.add((E) element.deepCopy());
+    }
+
+    return result;
+  }
+
+  /**
+   * Gets a list containing references to all elements of the specified input
+   * List which satisfy the specified condition (like Python's built-in *
+   * 
+   * <code><a href="http://docs.python.org/library/functions.html#filter">filter</a></code>
+   * function).
+   * 
+   * @param <E>
+   *          The type of element contained in the specified input List.
+   * @param list
+   *          The List to filter by the given condition.
+   * @param condition
+   *          The condition by which to filter the specified input List.
+   * @return A List containing references to only those elements of the
+   *         specified input List which satisfy the given condition.
+   * @throws MappingException
+   *           If there is a problem executing the condition function.
+   */
+  public static <E> List<E> filter(final Condition<E> condition,
+      final Collection<E> list) throws MappingException {
+    final List<E> result = new Vector<E>();
+
+    for (final E element : list) {
+      if (condition.execute(element)) {
+        result.add(element);
+      }
     }
 
     return result;

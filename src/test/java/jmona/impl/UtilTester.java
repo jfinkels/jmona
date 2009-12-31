@@ -22,6 +22,7 @@ package jmona.impl;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -30,7 +31,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import jmona.Condition;
 import jmona.CopyingException;
+import jmona.MappingException;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Test;
@@ -74,6 +77,56 @@ public class UtilTester {
       assertEquals(list.get(i).fitness(), clonedList.get(i).fitness(),
           ZERO_DELTA);
     }
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.impl.Util#filter(jmona.Condition, List)}.
+   */
+  @Test
+  public void testFilter() {
+    
+    // create a condition to test for negative numbers
+    final Condition<Integer> condition = new Condition<Integer>() {
+
+      /**
+       * Returns true if and only if the specified input is less than 0.
+       * 
+       * @param input
+       *          The integer to test for negativity.
+       * @return Whether the specified integer is less than 0.
+       */
+      @Override
+      public Boolean execute(final Integer input) {
+        return input < 0;
+      }
+    };
+    
+    // add all numbers from -size to size-1 to the list
+    final int size = 10;
+    final List<Integer> list = new Vector<Integer>();
+    for (final int i : new Range(-1 * size, size)) {
+      list.add(i);
+    }
+    
+    assertEquals(size * 2, list.size());
+    
+    // filter the list by keeping only negative numbers
+    List<Integer> after = null;
+    try {
+      after = Util.filter(condition, list);
+    } catch (final MappingException exception) {
+      jmona.test.Util.fail(exception);
+    }
+    
+    // assert half of the elements were removed
+    assertEquals(size, after.size());
+    
+    // assert all elements are less than 0
+    for (final int i : after) {
+      assertTrue(i < 0);
+    }
+
   }
 
   /**
