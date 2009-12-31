@@ -26,17 +26,21 @@ import jmona.CrossoverFunction;
 import jmona.impl.Util;
 
 /**
- * CX, by Oliver, et al.
+ * Cycle crossover (also known as CX) on tours in the traveling salesman
+ * problem.
  * 
  * @author jfinkels
  */
-// TODO documentation
 public class CycleCrossoverFunction implements CrossoverFunction<List<Integer>> {
 
   /**
-   * Swap a cycle chosen at random from the cycle decomposition of the
-   * permutation defined by the mapping between the two specified tours.
+   * <p>
+   * Perform the cycle crossover function (also known as CX) on the specified
+   * tours by swapping a cycle chosen at random from the cycle decomposition of
+   * the permutation defined by the mapping between the two specified tours.
+   * </p>
    * 
+   * <p>
    * Formally, let {@code tour1} and {@code tour2} be sequences of size
    * <em>n</em> consisting of the integers <em>{0,1,2,&hellip;,n-1}</em>. Define
    * the permutation <em>&sigma;</em> by
@@ -46,9 +50,12 @@ public class CycleCrossoverFunction implements CrossoverFunction<List<Integer>> 
    * Therefore it is a permutation with a unique decomposition into a product of
    * disjoint cycles. Choose a cycle at random, and swap each of the numbers
    * contained in that cycle between {@code tour1} and {@code tour2}.
+   * </p>
    * 
+   * <p>
    * Swapping the integers in this way ensures that any integers in a tour
    * before the crossover must be in the tour after the crossover.
+   * </p>
    * 
    * @param tour1
    *          A tour to crossover.
