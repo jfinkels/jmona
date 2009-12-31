@@ -33,7 +33,7 @@
  * article on tournament selection</a></li>
  * </ul>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 package jmona.impl.selection;
 

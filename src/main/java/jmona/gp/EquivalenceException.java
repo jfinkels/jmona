@@ -23,7 +23,7 @@ package jmona.gp;
  * This Exception is thrown if there is a problem determining the equivalence of
  * two objects.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class EquivalenceException extends Exception {
 

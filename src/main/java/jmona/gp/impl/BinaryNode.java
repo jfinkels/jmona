@@ -28,7 +28,7 @@ import jmona.gp.Node;
  * 
  * @param <V>
  *          The type of value to which this Node evaluates.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 // TODO add UnaryNode
 public class BinaryNode<V> extends AbstractFunctionNode<V> {

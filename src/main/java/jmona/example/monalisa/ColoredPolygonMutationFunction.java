@@ -28,7 +28,7 @@ import jmona.impl.Util;
  * A MutationFunction which mutates ColoredPolygons by randomly changing the
  * color and coordinates of vertices of the polygon.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ColoredPolygonMutationFunction implements
     MutationFunction<ColoredPolygon> {

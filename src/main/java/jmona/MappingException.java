@@ -23,7 +23,7 @@ package jmona;
  * This Exception is thrown when there is a problem executing a mapping
  * function.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class MappingException extends Exception {
 

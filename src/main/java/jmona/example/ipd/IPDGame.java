@@ -99,7 +99,7 @@ import jmona.impl.Range;
  * >Wikipedia's article on the prisoner's dilemma</a>.
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class IPDGame implements TwoPlayerGame<IPDStrategy> {
 

@@ -26,7 +26,7 @@ import jmona.SingleInputFunction;
  * 
  * @param <T>
  *          The type of the domain of this function.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class IdentityFunction<T> implements SingleInputFunction<T, T> {
 

@@ -37,7 +37,7 @@
  * Euclidean distance</a>
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 package jmona.impl.metrics;
 

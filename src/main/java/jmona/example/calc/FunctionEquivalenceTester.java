@@ -32,7 +32,7 @@ import jmona.gp.EquivalenceTester;
  *          The type of the domain of the functions to test for equivalence.
  * @param <T>
  *          The type of the codomain of the functions to test for equivalence.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class FunctionEquivalenceTester<S, T> implements
     EquivalenceTester<SingleInputFunction<S, T>, S> {

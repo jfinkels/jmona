@@ -29,7 +29,7 @@ import jmona.impl.Util;
  * Displaces a random sublist within a Tour to a new random location in the
  * Tour.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 // TODO generalize all TSP MutationFunctions to all Lists
 public class DisplacementMutationFunction implements

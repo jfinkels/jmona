@@ -27,7 +27,7 @@ import org.junit.Test;
 /**
  * Test class for the CrossoverException class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class CrossoverExceptionTester {
 

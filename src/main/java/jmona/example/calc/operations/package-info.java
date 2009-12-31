@@ -22,7 +22,7 @@
  * subtraction, multiplication, and division) which are used when evaluating a
  * {@link jmona.gp.Tree} in the "calc" evolution.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 package jmona.example.calc.operations;
 

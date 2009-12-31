@@ -51,7 +51,7 @@
  * repeated cities in the original tours.
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  * @see jmona.example.tsp
  * @see jmona.example.tsp.io
  * @see jmona.example.tsp.mutation

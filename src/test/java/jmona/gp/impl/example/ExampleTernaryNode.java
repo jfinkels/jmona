@@ -25,7 +25,7 @@ import jmona.gp.impl.TernaryNode;
  * An example TernaryNode for use in testing which utilizes the
  * ExampleTernaryOperation.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleTernaryNode extends TernaryNode<Integer> {
   /**

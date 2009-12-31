@@ -32,7 +32,7 @@ import jmona.impl.Util;
  * 
  * @param <T>
  *          The type of Individual to select.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class TournamentSelection<T> implements SelectionFunction<T> {
 

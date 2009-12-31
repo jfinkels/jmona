@@ -26,7 +26,7 @@ import jmona.gp.EquivalenceTester;
  * 
  * @param <V>
  *          The type of object to compare for equality.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class EqualityTester<V> implements EquivalenceTester<V, Object> {
 

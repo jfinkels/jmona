@@ -37,7 +37,7 @@ import org.junit.Test;
 /**
  * Test class for the TournamentSelection class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class TournamentSelectionTester {
 

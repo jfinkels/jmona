@@ -24,7 +24,7 @@ import jmona.Metric;
 /**
  * Measures the distance between the fitnesses of ExampleIndividual objects.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleMetric implements Metric<ExampleIndividual> {
 

@@ -34,7 +34,7 @@ import jmona.ListFactory;
  * 
  * @param <E>
  *          The type of element in the List to create.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class PartialDeepCopyableListFactory<E> implements ListFactory<E> {
   /** The default size of the List to create. */

@@ -28,7 +28,7 @@
  * which evolves during a genetic programming evolution.
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  * @see jmona.gp.impl
  */
 package jmona.gp;

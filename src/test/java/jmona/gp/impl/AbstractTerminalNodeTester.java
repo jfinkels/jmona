@@ -24,7 +24,7 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 /**
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class AbstractTerminalNodeTester {
 

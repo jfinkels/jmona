@@ -27,7 +27,7 @@ import org.junit.Test;
 /**
  * Test class for the TwoPointCrossoverFunction class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class TwoPointCrossoverFunctionTester {
 

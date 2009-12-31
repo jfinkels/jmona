@@ -22,7 +22,7 @@
  * functions) for use when evaluating a {@link jmona.gp.Tree} in the "calc"
  * evolution.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 package jmona.example.calc.functions;
 

@@ -30,7 +30,7 @@
  * stopping the evolution when all individuals are of the same class.
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  * @see jmona.game
  */
 package jmona.game.impl;

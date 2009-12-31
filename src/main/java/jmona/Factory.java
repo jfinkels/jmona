@@ -25,7 +25,7 @@ package jmona;
  * 
  * @param <E>
  *          The type of object to create.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface Factory<E> {
   /**

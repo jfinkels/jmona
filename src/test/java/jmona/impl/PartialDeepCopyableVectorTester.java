@@ -36,7 +36,7 @@ import org.junit.Test;
 /**
  * Test class for the PartialDeepCopyableVector class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class PartialDeepCopyableVectorTester {
 

@@ -34,7 +34,7 @@ import org.junit.Test;
 /**
  * Test class for the FunctionEquivalenceTester class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class FunctionEquivalenceTesterTester {
 

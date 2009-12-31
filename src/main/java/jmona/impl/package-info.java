@@ -51,7 +51,7 @@
  * methods which don't quite fit elsewhere.
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 package jmona.impl;
 

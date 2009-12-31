@@ -24,7 +24,7 @@ import jmona.MutationFunction;
 /**
  * An example MutationFunction.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleMutationFunction implements
     MutationFunction<ExampleIndividual> {

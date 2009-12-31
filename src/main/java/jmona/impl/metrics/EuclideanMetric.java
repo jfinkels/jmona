@@ -31,7 +31,7 @@ import jmona.Metric;
  * @param <T>
  *          The type of Number on which to measure (any subclass of {@code
  *          java.lang.Number}).
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class EuclideanMetric<T extends Number> implements Metric<T> {
 

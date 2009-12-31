@@ -32,7 +32,7 @@ import jmona.impl.Range;
  * A metric which measures the distance between images in RGB color space, using
  * the sum of Euclidean distance between each of the pixels in RGB color space.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ImageMetric implements Metric<BufferedImage> {
 

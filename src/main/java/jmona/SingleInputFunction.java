@@ -27,7 +27,7 @@ package jmona;
  *          The type of the domain of this function.
  * @param <R>
  *          The type of the codomain of this function.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface SingleInputFunction<T, R> {
 

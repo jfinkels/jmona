@@ -36,7 +36,7 @@ import org.junit.Test;
  * I don't know how to capture output from the Logger, so we must examine the
  * output manually.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class LoggingPostProcessorTester {
 

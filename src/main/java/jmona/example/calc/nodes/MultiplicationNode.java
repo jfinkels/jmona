@@ -26,7 +26,7 @@ import jmona.gp.impl.BinaryNode;
 /**
  * A node representing multiplication of real numbers.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class MultiplicationNode extends
     BinaryNode<SingleInputFunction<Double, Double>> {

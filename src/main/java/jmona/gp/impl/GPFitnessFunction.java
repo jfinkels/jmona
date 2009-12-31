@@ -37,7 +37,7 @@ import jmona.gp.Tree;
  * @param <I>
  *          The type of input with which to measure the equivalence of two Trees
  *          after evaluation.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class GPFitnessFunction<V, I> implements FitnessFunction<Tree<V>> {
 

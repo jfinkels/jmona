@@ -41,7 +41,7 @@ import org.junit.Test;
 /**
  * Test class for the TreeMapping class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class TreeMappingTester {
 

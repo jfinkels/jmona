@@ -24,7 +24,7 @@ import org.junit.Before;
 /**
  * Test class for the EuclideanMetric class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class EuclideanMetricTester extends
     AbstractMetricTester<Double, EuclideanMetric<Double>> {

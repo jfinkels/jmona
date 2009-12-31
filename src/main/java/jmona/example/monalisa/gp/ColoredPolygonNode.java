@@ -36,7 +36,7 @@ import jmona.gp.impl.AbstractNode;
  * ColoredPolygon to the list of ColoredPolygon objects to which its child Node
  * evaluates.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ColoredPolygonNode extends AbstractNode<List<ColoredPolygon>>
     implements FunctionNode<List<ColoredPolygon>>,

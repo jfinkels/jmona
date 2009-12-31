@@ -31,7 +31,7 @@
  * src/test/resources/jmona/example/ones/OnesEvolutionTester-context.xml}.
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 package jmona.example.ones;
 

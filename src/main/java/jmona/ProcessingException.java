@@ -23,7 +23,7 @@ package jmona;
  * This Exception is thrown when there is a problem during PostProcessor
  * processing of an EvolutionContext.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ProcessingException extends Exception {
 

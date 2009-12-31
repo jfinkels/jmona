@@ -24,7 +24,7 @@ import jmona.gp.impl.BinaryOperation;
 /**
  * An example BinaryOperation which returns the difference between two integers.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleBinaryOperation implements
     BinaryOperation<Integer, Integer, Integer> {

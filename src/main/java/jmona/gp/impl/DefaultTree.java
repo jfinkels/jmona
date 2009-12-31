@@ -32,7 +32,7 @@ import jmona.gp.Tree;
  * 
  * @param <V>
  *          The type of value to which this Tree evaluates.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class DefaultTree<V> implements Tree<V> {
 

@@ -46,7 +46,7 @@
  * >described by Roger Alsing</a>.
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  * @see jmona.example.monalisa.gp
  * @see jmona.example.monalisa.io
  */

@@ -28,7 +28,7 @@ import org.junit.Test;
 /**
  * Test class for the OnePointCrossoverFunction class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class OnePointCrossoverFunctionTester {
 

@@ -48,7 +48,7 @@
  * genetic algorithms</a>.
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 package jmona.ga.impl;
 

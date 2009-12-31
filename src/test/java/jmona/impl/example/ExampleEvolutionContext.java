@@ -27,7 +27,7 @@ import jmona.impl.AbstractEvolutionContext;
 /**
  * An example EvolutionContext.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleEvolutionContext extends
     AbstractEvolutionContext<ExampleIndividual> {

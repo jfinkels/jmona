@@ -30,7 +30,7 @@ import jmona.MutationFunction;
  * 
  * @param <E>
  *          The type of element in the List.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public abstract class ImmutableElementsListMutationFunction<E> implements
     MutationFunction<List<E>> {

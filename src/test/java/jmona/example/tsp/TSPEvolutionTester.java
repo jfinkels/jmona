@@ -36,7 +36,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 /**
  * Test of the travelling salesman problem evolution.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 @ContextConfiguration
 public class TSPEvolutionTester extends AbstractJUnit4SpringContextTests {

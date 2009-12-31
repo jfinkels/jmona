@@ -44,7 +44,7 @@ import org.junit.Test;
 /**
  * Test class for the AbstractTreeFactory class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class AbstractTreeFactoryTester {
   /** The depth of a created tree. */

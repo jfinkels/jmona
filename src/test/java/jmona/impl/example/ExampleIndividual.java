@@ -25,7 +25,7 @@ import jmona.DeepCopyable;
  * A basic implementation of an Individual which has a built-in fitness
  * property.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleIndividual implements DeepCopyable<ExampleIndividual> {
   /** The fitness of this Individual. */

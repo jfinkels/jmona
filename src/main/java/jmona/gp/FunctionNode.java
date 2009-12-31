@@ -24,7 +24,7 @@ package jmona.gp;
  * 
  * @param <V>
  *          The type of value to which this Node evaluates.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface FunctionNode<V> extends Node<V> {
 

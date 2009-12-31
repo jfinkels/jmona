@@ -21,7 +21,7 @@
  * Provides an {@link jmona.example.monalisa.io.ImageWriter} class which writes
  * an image out to a file.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  * @see jmona.example.monalisa
  * @see jmona.example.monalisa.gp
  */

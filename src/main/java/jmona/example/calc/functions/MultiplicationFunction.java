@@ -25,7 +25,7 @@ import jmona.SingleInputFunction;
 /**
  * A function which returns the product of two specified functions.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class MultiplicationFunction extends SecondOrderFunction {
 

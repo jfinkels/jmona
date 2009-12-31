@@ -31,7 +31,7 @@ import jmona.impl.Util;
  * 
  * @param <T>
  *          The type of Individual to select.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 // TODO allow for stochastic universal sampling
 // TODO what happens on Double.POSITIVE_INFINITY fitnesses?

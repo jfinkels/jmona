@@ -32,7 +32,7 @@ import jmona.impl.PeriodicPostProcessor;
 /**
  * A PostProcessor which writes an individual out to an image on the filesystem.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ImageOutputPostProcessor extends
     PeriodicPostProcessor<DeepCopyableList<ColoredPolygon>> {

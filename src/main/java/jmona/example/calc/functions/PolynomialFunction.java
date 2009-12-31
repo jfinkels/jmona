@@ -31,7 +31,7 @@ import jmona.impl.Range;
  * array are in reverse order from the canonical form of the polynomial (that
  * is, with variables in order of decreasing degree).
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class PolynomialFunction implements SingleInputFunction<Double, Double> {
 

@@ -21,7 +21,7 @@
  * Provides Node classess and Factory classes for performing the image matching
  * evolution as a genetic programming evolution.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  * @see jmona.example.monalisa
  * @see jmona.example.monalisa.io
  */

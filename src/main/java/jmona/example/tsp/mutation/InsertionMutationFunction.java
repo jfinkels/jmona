@@ -28,7 +28,7 @@ import jmona.impl.Util;
  * Chooses a city in the Tour at random and inserts it at a new random location
  * in the Tour.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class InsertionMutationFunction implements
     MutationFunction<List<Integer>> {

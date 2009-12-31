@@ -23,7 +23,7 @@ package jmona.example.tsp.crossover;
 /**
  * Test class for the PartiallyMatchedCrossoverFunction class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class PartiallyMatchedCrossoverFunctionTester extends
     AbstractTSPCrossoverFunctionTester {

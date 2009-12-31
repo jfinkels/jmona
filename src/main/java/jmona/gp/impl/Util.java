@@ -29,7 +29,7 @@ import jmona.impl.Range;
  * A utility class for this package containing a method which swaps Nodes within
  * two Trees.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class Util {
 

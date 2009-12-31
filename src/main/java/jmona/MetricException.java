@@ -24,7 +24,7 @@ package jmona;
  * This Exception is thrown when there is a problem measuring two objects, as in
  * a {@link Metric#measure(Object, Object)} method.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class MetricException extends Exception {
 

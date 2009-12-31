@@ -25,7 +25,7 @@ import jmona.CrossoverFunction;
 /**
  * A CrossoverFunction which always throws an Exception.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleBadCrossoverFunction implements
     CrossoverFunction<ExampleIndividual> {

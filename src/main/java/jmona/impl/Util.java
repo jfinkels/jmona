@@ -33,7 +33,7 @@ import jmona.MappingException;
 /**
  * Utility class containing useful static utility methods.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class Util {
 

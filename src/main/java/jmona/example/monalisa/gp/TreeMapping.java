@@ -33,7 +33,7 @@ import jmona.gp.Tree;
  * A function which maps a Tree which evaluates to a List of ColoredPolygon
  * objects to the BufferedImage which the polygons represent.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class TreeMapping implements
     SingleInputFunction<Tree<List<ColoredPolygon>>, BufferedImage> {

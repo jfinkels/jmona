@@ -25,7 +25,7 @@ package jmona;
  * 
  * @param <T>
  *          The type of object which can be deep copied.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface DeepCopyable<T> {
   /**

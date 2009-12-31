@@ -39,7 +39,7 @@ import org.junit.Test;
 /**
  * Test class for the GameEvolutionContext class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class GameEvolutionContextTester {
 

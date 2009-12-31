@@ -25,7 +25,7 @@ package jmona.game;
  * An implementing class which is to be used as an individual in an
  * EvolutionContext must also implement the DeepCopyable interface.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface Strategy {
   /** Reset the strategy to an initial state. */

@@ -28,7 +28,7 @@ import java.util.Map;
  * 
  * @param <T>
  *          The type of individual to compare based on fitness.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class FitnessComparator<T> implements Comparator<T>, Serializable {
 

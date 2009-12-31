@@ -30,7 +30,7 @@ import org.junit.Test;
 /**
  * Test class for the ColoredPolygon class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ColoredPolygonTester extends ColoredPolygonTestSupport {
 

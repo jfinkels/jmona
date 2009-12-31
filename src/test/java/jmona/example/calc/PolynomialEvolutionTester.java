@@ -38,7 +38,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * Test class for the Calc genetic programming evolution for matching a
  * polynomial function.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 @ContextConfiguration
 public class PolynomialEvolutionTester extends AbstractJUnit4SpringContextTests {

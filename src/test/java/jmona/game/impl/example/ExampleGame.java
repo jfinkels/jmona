@@ -26,7 +26,7 @@ import jmona.game.impl.DefaultTwoPlayerGameResult;
 /**
  * An example game.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleGame implements TwoPlayerGame<ExampleStrategy> {
 

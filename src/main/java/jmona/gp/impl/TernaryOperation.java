@@ -35,7 +35,7 @@ package jmona.gp.impl;
  * @param <R>
  *          The type of the codomain of this ternary operation (the return
  *          type).
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface TernaryOperation<T, U, V, R> extends Operation<R> {
   /**

@@ -28,7 +28,7 @@ import jmona.impl.Pair;
 /**
  * A strategy for playing the iterated prisoner's dilemma game.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public abstract class IPDStrategy implements Strategy {
   /** The default length of this strategy's memory for past actions. */

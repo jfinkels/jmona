@@ -27,7 +27,7 @@
  * {@link jmona.ga.impl} package, the {@link jmona.gp.impl} package, and the
  * {@link jmona.game.impl} package.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  * @see jmona.impl
  * @see jmona.ga.impl
  * @see jmona.game

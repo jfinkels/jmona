@@ -29,7 +29,7 @@
  * in the {@link jmona.example.calc.nodes} package.
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  * @see jmona.example.calc.nodes
  */
 package jmona.example.calc.factories;

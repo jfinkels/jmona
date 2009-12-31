@@ -29,7 +29,7 @@ import java.util.List;
  * A utility class for converting a List of ColoredPolygon objects to a
  * BufferedImage.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public final class Converter {
 

@@ -31,7 +31,7 @@ import jmona.impl.Range;
  * 
  * @param <T>
  *          The type of Number on which to measure.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class EuclideanVectorMetric<T extends Number> implements Metric<List<T>> {
 

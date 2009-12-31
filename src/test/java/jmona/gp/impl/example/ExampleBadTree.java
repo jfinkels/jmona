@@ -29,7 +29,7 @@ import jmona.gp.impl.DefaultTree;
  * 
  * @param <V>
  *          The type of value to which this Tree evaluates.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleBadTree<V> extends DefaultTree<V> {
 

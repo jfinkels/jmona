@@ -40,7 +40,7 @@ import org.junit.Test;
 /**
  * Test class for the ColoredPolygonNode class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ColoredPolygonNodeTester {
 

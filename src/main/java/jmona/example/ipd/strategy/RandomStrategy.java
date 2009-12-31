@@ -25,7 +25,7 @@ import jmona.impl.Util;
 /**
  * A strategy which chooses to cooperate or defect randomly.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class RandomStrategy extends IPDStrategy implements
     DeepCopyable<RandomStrategy> {

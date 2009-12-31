@@ -24,7 +24,7 @@ import jmona.impl.ImmutableElementsListMutationFunction;
 /**
  * A MutationFunction for a List of ExampleIndividual objects.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleListMutationFunction extends
     ImmutableElementsListMutationFunction<ExampleIndividual> {

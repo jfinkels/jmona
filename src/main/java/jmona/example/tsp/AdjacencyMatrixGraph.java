@@ -23,7 +23,7 @@ package jmona.example.tsp;
  * An DirectedGraph backed by an adjacency matrix containing edge weights for
  * use in the traveling salesman problem evolution.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class AdjacencyMatrixGraph implements DirectedGraph<Integer, Double> {
 

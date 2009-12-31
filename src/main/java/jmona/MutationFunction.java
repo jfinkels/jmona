@@ -25,7 +25,7 @@ package jmona;
  * 
  * @param <T>
  *          The type of individual to mutate.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface MutationFunction<T> {
   /**

@@ -28,7 +28,7 @@ import org.junit.Test;
 /**
  * Test class for the BitFactory class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class BitFactoryTester {
 

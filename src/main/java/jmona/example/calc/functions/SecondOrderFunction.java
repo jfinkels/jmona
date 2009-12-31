@@ -24,7 +24,7 @@ import jmona.SingleInputFunction;
 /**
  * A function which operates on functions.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public abstract class SecondOrderFunction implements
     SingleInputFunction<Double, Double> {

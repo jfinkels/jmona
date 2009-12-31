@@ -26,7 +26,7 @@ import jmona.impl.Range;
 import org.junit.Test;
 
 /**
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class RuthlessStrategyTester {
 

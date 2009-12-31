@@ -30,7 +30,7 @@ package jmona.gp.impl;
  *          operation (the input type of the second parameter).
  * @param <R>
  *          The type of the codomain of this binary operation (the return type).
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface BinaryOperation<T, V, R> extends Operation<R> {
   /**

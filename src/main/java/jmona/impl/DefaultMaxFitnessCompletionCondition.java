@@ -33,7 +33,7 @@ import jmona.MaxFitnessCompletionCondition;
  * @param <T>
  *          The type of Individual in the EvolutionContext to test for
  *          completion.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class DefaultMaxFitnessCompletionCondition<T extends DeepCopyable<T>>
     implements MaxFitnessCompletionCondition<T> {

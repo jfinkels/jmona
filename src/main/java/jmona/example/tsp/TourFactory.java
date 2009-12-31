@@ -29,7 +29,7 @@ import jmona.impl.Range;
 /**
  * A factory which generates random Tours.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class TourFactory extends PartialDeepCopyableListFactory<Integer> {
 

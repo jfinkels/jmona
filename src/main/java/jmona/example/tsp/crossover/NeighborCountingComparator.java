@@ -28,7 +28,7 @@ import java.util.Set;
  * A comparator which counts the number of neighbors of a city in a traveling
  * salesman problem tour.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 class NeighborCountingComparator implements Comparator<Integer>, Serializable {
 

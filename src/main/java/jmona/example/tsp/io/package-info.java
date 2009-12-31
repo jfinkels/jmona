@@ -20,7 +20,7 @@
 /**
  * Provides a class for reading graphs from files.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  * @see jmona.example.tsp
  */
 package jmona.example.tsp.io;

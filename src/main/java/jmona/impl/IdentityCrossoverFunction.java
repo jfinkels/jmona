@@ -26,7 +26,7 @@ import jmona.CrossoverFunction;
  * 
  * @param <T>
  *          The type of Individual on which to perform crossover.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class IdentityCrossoverFunction<T> implements CrossoverFunction<T> {
 

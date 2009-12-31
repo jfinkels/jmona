@@ -27,7 +27,7 @@ import jmona.impl.IdentityFunction;
  * 
  * @param <T>
  *          The type of Individual to measure.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class GAFitnessFunction<T> extends MappingFitnessFunction<T, T> {
 

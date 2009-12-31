@@ -31,7 +31,7 @@ import jmona.ProcessingException;
  * @param <T>
  *          The type of Individual in the EvolutionContext which this class
  *          processes.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public abstract class PeriodicPostProcessor<T extends DeepCopyable<T>>
     implements PostProcessor<T> {

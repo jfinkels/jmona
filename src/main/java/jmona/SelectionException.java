@@ -23,7 +23,7 @@ package jmona;
  * This Exception is thrown when there is a problem during selection of an
  * Individual based on its fitness.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class SelectionException extends Exception {
 

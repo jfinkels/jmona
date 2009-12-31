@@ -35,7 +35,7 @@ import org.junit.Test;
 /**
  * Test class for the MonaMapping class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class MonaMappingTester {
 

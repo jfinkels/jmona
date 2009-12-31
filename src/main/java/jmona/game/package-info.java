@@ -20,7 +20,7 @@
 /**
  * Provides an interface for evolving the best strategy for playing a game.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  * @see jmona.game.impl
  */
 package jmona.game;

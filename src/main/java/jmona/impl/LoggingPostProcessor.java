@@ -34,7 +34,7 @@ import org.apache.log4j.Logger;
  * @param <T>
  *          The type of individual in the EvolutionContext about which to log
  *          information.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public abstract class LoggingPostProcessor<T extends DeepCopyable<T>> extends
     PeriodicPostProcessor<T> {

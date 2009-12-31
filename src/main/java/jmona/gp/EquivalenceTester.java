@@ -28,7 +28,7 @@ package jmona.gp;
  * @param <I>
  *          The type of the input which will be applied to the objects of type V
  *          to compare for equivalence.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface EquivalenceTester<V, I> {
   /**

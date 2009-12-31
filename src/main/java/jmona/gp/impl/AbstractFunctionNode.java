@@ -32,7 +32,7 @@ import jmona.impl.Util;
  * 
  * @param <V>
  *          The type of value to which this Node evaluates.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public abstract class AbstractFunctionNode<V> extends AbstractNode<V> implements
     FunctionNode<V> {

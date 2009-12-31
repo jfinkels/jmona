@@ -30,7 +30,7 @@ import org.apache.log4j.Logger;
 /**
  * An utility class for outputting images.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public final class ImageWriter {
 

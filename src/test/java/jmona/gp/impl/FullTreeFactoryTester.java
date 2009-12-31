@@ -27,7 +27,7 @@ import org.junit.Test;
 /**
  * Test class for the FullTreeFactory class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class FullTreeFactoryTester {
 

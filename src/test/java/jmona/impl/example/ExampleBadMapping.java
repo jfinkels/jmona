@@ -25,7 +25,7 @@ import jmona.SingleInputFunction;
 /**
  * A mapping which always throws an Exception.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleBadMapping implements SingleInputFunction<Double, Double> {
 

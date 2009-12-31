@@ -31,7 +31,7 @@ import jmona.gp.Tree;
  * 
  * @param <V>
  *          The type of value to which a Tree Individual evaluates.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class GPMutationFunction<V> implements MutationFunction<Tree<V>> {
 

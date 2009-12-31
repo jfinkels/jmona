@@ -28,7 +28,7 @@ import jmona.impl.Pair;
  * defects whenever this player and the adversary did opposite things on the
  * previous iteration.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class PavlovStrategy extends IPDStrategy implements
     DeepCopyable<PavlovStrategy> {

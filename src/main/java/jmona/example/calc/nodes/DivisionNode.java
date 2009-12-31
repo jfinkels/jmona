@@ -26,7 +26,7 @@ import jmona.gp.impl.BinaryNode;
 /**
  * A node representing division of real numbers.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class DivisionNode extends
     BinaryNode<SingleInputFunction<Double, Double>> {

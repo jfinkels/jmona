@@ -27,7 +27,7 @@ import java.util.List;
  * 
  * @param <E>
  *          The type of element in the created List.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface ListFactory<E> extends Factory<List<E>> {
   /**

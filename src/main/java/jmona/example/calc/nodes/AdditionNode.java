@@ -26,7 +26,7 @@ import jmona.gp.impl.BinaryNode;
 /**
  * A node representing addition of real numbers.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class AdditionNode extends
     BinaryNode<SingleInputFunction<Double, Double>> {

@@ -32,7 +32,7 @@ import jmona.example.tsp.DirectedGraph;
 /**
  * A class which reads graphs from files.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class TSPGraphReader {
 

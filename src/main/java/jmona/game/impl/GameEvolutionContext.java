@@ -39,7 +39,7 @@ import jmona.impl.Range;
  * 
  * @param <S>
  *          The type of Strategy to play a game against one another.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class GameEvolutionContext<S extends Strategy & DeepCopyable<S>> extends
     AbstractEvolutionContext<S> {

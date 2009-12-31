@@ -27,7 +27,7 @@ import jmona.gp.impl.UniformBinaryOperation;
  * An operation which provides simple addition of two real-valued
  * SingleInputFunctions.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class FunctionSubtraction implements
     UniformBinaryOperation<SingleInputFunction<Double, Double>> {

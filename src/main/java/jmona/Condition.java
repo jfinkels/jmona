@@ -24,7 +24,7 @@ package jmona;
  * 
  * @param <T>
  *          The type of the domain of this function.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface Condition<T> extends SingleInputFunction<T, Boolean> {
 

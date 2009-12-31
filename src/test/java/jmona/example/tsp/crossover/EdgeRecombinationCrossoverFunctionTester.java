@@ -33,7 +33,7 @@ import org.junit.Test;
 /**
  * Test class for the EdgeRecombinationCrossoverFunction class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class EdgeRecombinationCrossoverFunctionTester extends
     AbstractTSPCrossoverFunctionTester {

@@ -30,7 +30,7 @@ import jmona.impl.Range;
  * 
  * @param <V>
  *          The type of value to which the created Tree evaluates.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class GrowTreeFactory<V> extends AbstractTreeFactory<V> {
 

@@ -34,7 +34,7 @@
  * <blockquote><code>java -jar --config=/path/to/application-context.xml</code>
  * </blockquote>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 package jmona.driver;
 

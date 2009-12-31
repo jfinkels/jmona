@@ -27,7 +27,7 @@ import jmona.gp.impl.UniformBinaryOperation;
  * An operation which provides simple multiplication of two real-valued
  * SingleInputFunctions.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class FunctionMultiplication implements
     UniformBinaryOperation<SingleInputFunction<Double, Double>> {

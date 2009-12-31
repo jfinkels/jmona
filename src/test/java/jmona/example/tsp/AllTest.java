@@ -26,7 +26,7 @@ import org.junit.runners.Suite.SuiteClasses;
 /**
  * Runs all tests in this package.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 @RunWith(Suite.class)
 @SuiteClasses({ AdjacencyMatrixGraphTester.class, TourFactoryTester.class,

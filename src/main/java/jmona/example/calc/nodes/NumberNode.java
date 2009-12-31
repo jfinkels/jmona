@@ -25,7 +25,7 @@ import jmona.example.calc.functions.DoubleConstantFunction;
 /**
  * A Node containing a single value as a Double.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class NumberNode extends AbstractCalcTerminalNode {
 

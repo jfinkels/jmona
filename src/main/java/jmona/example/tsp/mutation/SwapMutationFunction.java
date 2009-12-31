@@ -28,7 +28,7 @@ import jmona.impl.Util;
 /**
  * Swap two cities chosen at random from a Tour.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class SwapMutationFunction implements MutationFunction<List<Integer>> {
 

@@ -27,7 +27,7 @@ import jmona.gp.impl.UniformBinaryOperation;
  * An operation which provides simple division of two real-valued
  * SingleInputFunctions.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class FunctionDivision implements
     UniformBinaryOperation<SingleInputFunction<Double, Double>> {

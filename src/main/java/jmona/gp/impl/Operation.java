@@ -24,7 +24,7 @@ package jmona.gp.impl;
  * 
  * @param <V>
  *          The type of the codomain of this operation.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface Operation<V> {
 

@@ -40,7 +40,7 @@
  * XML configuration file.
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  * @see jmona.example.calc.factories
  * @see jmona.example.calc.functions
  * @see jmona.example.calc.nodes

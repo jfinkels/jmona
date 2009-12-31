@@ -24,7 +24,7 @@ import jmona.impl.Util;
 /**
  * An example TerminalNode with a random integer value.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleTerminalNode extends IntegerNode {
   /** Instantiate this Node with a random integer value. */

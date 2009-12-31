@@ -45,7 +45,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * Test class for the Mona genetic programming example for matching an image
  * with random colored polygons.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 @ContextConfiguration
 public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {

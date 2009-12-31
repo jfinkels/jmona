@@ -45,7 +45,7 @@
  * cities at random in the tour, then swaps them.
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  * @see jmona.example.tsp
  * @see jmona.example.tsp.crossover
  */

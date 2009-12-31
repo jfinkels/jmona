@@ -28,7 +28,7 @@ import jmona.impl.Util;
  * @param <E>
  *          The type of element contained in the List on which to perform
  *          crossover.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class TwoPointCrossoverFunction<E> extends
     AbstractListCrossoverFunction<E> {

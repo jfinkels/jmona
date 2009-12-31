@@ -30,7 +30,7 @@ import org.junit.Test;
 /**
  * Test class for the DisplacementMutationFunction class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class DisplacementMutationFunctionTester extends
     AbstractTSPMutationFunctionTester {

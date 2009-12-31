@@ -30,7 +30,7 @@ import jmona.impl.Range;
  * because we don't know the target minimum length of the tour, so we have no
  * basis of comparison.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class TSPFitnessFunction implements FitnessFunction<List<Integer>> {
 

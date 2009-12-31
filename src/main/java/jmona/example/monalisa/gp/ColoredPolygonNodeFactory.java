@@ -26,7 +26,7 @@ import jmona.example.monalisa.ColoredPolygonFactory;
  * Factory which generates a ColoredPolygonNode containing a random
  * ColoredPolygon.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ColoredPolygonNodeFactory implements Factory<ColoredPolygonNode> {
 

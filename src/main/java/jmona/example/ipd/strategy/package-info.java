@@ -27,7 +27,7 @@
  * {@link jmona.example.ipd.IPDGame} class.
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  * @see jmona.example.ipd
  */
 package jmona.example.ipd.strategy;

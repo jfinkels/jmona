@@ -26,7 +26,7 @@ import jmona.game.TwoPlayerGameResult;
 /**
  * An example game which always throws an Exception.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleBadGame implements TwoPlayerGame<ExampleStrategy> {
 

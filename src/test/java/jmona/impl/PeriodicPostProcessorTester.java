@@ -30,7 +30,7 @@ import org.junit.Test;
 /**
  * Test class for the PeriodicPostProcessor class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class PeriodicPostProcessorTester {
 

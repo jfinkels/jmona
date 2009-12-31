@@ -28,7 +28,7 @@ import org.junit.Test;
 /**
  * Test class for the DivisionFunction class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class DivisionFunctionTester {
 

@@ -49,7 +49,7 @@ import org.junit.Test;
 /**
  * Test class for the DefaultTree class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class DefaultTreeTester {
 

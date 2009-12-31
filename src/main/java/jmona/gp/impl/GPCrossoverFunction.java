@@ -28,7 +28,7 @@ import jmona.gp.Tree;
  * 
  * @param <V>
  *          The type of value to which the Trees evaluate.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class GPCrossoverFunction<V> implements CrossoverFunction<Tree<V>> {
 

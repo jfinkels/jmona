@@ -30,7 +30,7 @@ import org.junit.Before;
 /**
  * Test class for the traveling salesman problem MutationFunction classes.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public abstract class AbstractTSPMutationFunctionTester {
 

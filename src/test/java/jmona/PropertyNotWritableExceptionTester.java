@@ -27,7 +27,7 @@ import org.junit.Test;
 /**
  * Test class for the PropertyNotWritableException class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class PropertyNotWritableExceptionTester {
 

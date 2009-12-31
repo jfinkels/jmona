@@ -35,7 +35,7 @@ import jmona.impl.Util;
  * A FunctionNodeFactory for the Calc evolution, which randomly generates an
  * AdditionNode, a SubtractionNode, a MultiplicationNode, or a DivisionNode.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class CalcFunctionNodeFactory implements
     Factory<FunctionNode<SingleInputFunction<Double, Double>>> {
@@ -43,7 +43,7 @@ public class CalcFunctionNodeFactory implements
   /**
    * The operations which the FunctionNodes represent.
    * 
-   * @author jfinkels
+   * @author Jeffrey Finkelstein
    */
   private static enum Operation {
     /** The addition operation. */

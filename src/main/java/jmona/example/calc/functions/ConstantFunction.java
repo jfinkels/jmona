@@ -28,7 +28,7 @@ import jmona.SingleInputFunction;
  *          The type of the domain of this function.
  * @param <R>
  *          The type of the codomain of this function.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ConstantFunction<T, R> implements SingleInputFunction<T, R> {
 

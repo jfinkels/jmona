@@ -24,7 +24,7 @@ import jmona.Factory;
 /**
  * A factory which creates random ExampleIndividual objects.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleIndividualFactory implements Factory<ExampleIndividual> {
 

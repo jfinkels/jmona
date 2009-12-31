@@ -29,7 +29,7 @@ import jmona.MaxGenerationCompletionCondition;
  * 
  * @param <T>
  *          The type of Individual being evolved.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class DefaultMaxGenerationCompletionCondition<T extends DeepCopyable<T>>
     implements MaxGenerationCompletionCondition<T> {

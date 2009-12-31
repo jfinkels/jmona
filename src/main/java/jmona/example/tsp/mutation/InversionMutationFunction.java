@@ -29,7 +29,7 @@ import jmona.impl.Util;
  * A MutationFunction which mutates a Tour by inverting the order of a sublist
  * of cities in the tour.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class InversionMutationFunction implements
     MutationFunction<List<Integer>> {

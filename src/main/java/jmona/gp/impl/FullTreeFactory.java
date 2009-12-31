@@ -29,7 +29,7 @@ import jmona.PropertyNotWritableException;
  * 
  * @param <V>
  *          The type of value to which this Tree evaluates.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class FullTreeFactory<V> extends GrowTreeFactory<V> {
   /**

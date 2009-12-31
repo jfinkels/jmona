@@ -28,7 +28,7 @@ import jmona.Condition;
  * A condition which determines whether a city has a specified number of
  * neighbors.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 class SameNumberOfNeighborsCondition implements Condition<Integer> {
 

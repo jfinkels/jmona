@@ -30,7 +30,7 @@ import java.util.NoSuchElementException;
  * For large numbers, this class uses less memory than a Vector containing each
  * integer in the interval.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 // TODO negative increments
 public class Range implements Iterable<Integer>, Iterator<Integer> {

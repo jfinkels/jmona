@@ -27,7 +27,7 @@ package jmona;
  * @param <T>
  *          The type of Individual in the EvolutionContext which will be tested
  *          for completion.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface MaxFitnessCompletionCondition<T extends DeepCopyable<T>>
     extends CompletionCondition<T> {

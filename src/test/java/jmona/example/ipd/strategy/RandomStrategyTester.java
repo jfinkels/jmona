@@ -29,7 +29,7 @@ import org.junit.Test;
 /**
  * Test class for the RandomStrategy class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class RandomStrategyTester {
 

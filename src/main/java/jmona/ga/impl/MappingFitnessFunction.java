@@ -38,7 +38,7 @@ import jmona.SingleInputFunction;
  *          The type of object to which the individual is mapped, and also the
  *          type of the target object to which to compare the image of the
  *          individual under the mapping.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class MappingFitnessFunction<T, V> implements FitnessFunction<T> {
 

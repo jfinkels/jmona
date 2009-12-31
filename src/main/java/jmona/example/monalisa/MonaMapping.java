@@ -28,7 +28,7 @@ import jmona.SingleInputFunction;
  * A function which maps a List of ColoredPolygon objects to the BufferedImage
  * which it represents.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class MonaMapping implements
     SingleInputFunction<List<ColoredPolygon>, BufferedImage> {

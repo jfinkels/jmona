@@ -31,7 +31,7 @@ import jmona.gp.Tree;
  * 
  * @param <V>
  *          The type of value to which created Trees evaluate.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public abstract class AbstractTreeFactory<V> implements Factory<Tree<V>> {
 

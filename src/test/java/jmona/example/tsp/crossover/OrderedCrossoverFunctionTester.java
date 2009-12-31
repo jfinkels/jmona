@@ -22,7 +22,7 @@ package jmona.example.tsp.crossover;
 /**
  * Test class for the OrderedCrossoverFunction class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class OrderedCrossoverFunctionTester extends
     AbstractTSPCrossoverFunctionTester {

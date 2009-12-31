@@ -26,7 +26,7 @@ import jmona.FitnessFunction;
  * An example FitnessFunction which simply gets the fitness of an Individual
  * from its fitness property.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleFitnessFunction implements
     FitnessFunction<ExampleIndividual> {

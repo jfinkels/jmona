@@ -23,7 +23,7 @@ package jmona;
  * This Exception is thrown when a property on an object is not writable, or if
  * the setting the property is disallowed.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class PropertyNotWritableException extends RuntimeException {
 

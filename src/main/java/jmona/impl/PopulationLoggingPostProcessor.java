@@ -28,7 +28,7 @@ import jmona.EvolutionContext;
  * @param <T>
  *          The type of individual in the EvolutionContext whose population will
  *          be logged.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class PopulationLoggingPostProcessor<T extends DeepCopyable<T>> extends
     LoggingPostProcessor<T> {

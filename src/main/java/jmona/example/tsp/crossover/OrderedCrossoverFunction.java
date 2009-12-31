@@ -31,7 +31,7 @@ import jmona.impl.Util;
  * Ordered crossover (also known as OX) for a tour in the traveling salesman
  * problem.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 // TODO references for the original authors of TSP crossover functions
 public class OrderedCrossoverFunction implements

@@ -33,7 +33,7 @@ import org.junit.Test;
 /**
  * Test class for the TSPFitnessFunction class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class TSPFitnessFunctionTester {
   /** The number of vertices in the graph. */

@@ -22,7 +22,7 @@ package jmona.example.tsp.crossover;
 /**
  * Test class for the CycleCrossoverFunction class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class CycleCrossoverFunctionTester extends
     AbstractTSPCrossoverFunctionTester {

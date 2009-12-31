@@ -25,7 +25,7 @@ import jmona.MutationFunction;
 /**
  * An example MutationFunction which always throws a MutationException.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleBadMutationFunction implements
     MutationFunction<ExampleIndividual> {

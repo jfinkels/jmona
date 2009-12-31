@@ -29,7 +29,7 @@
  * variables.
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 package jmona.example.calc.nodes;
 

@@ -39,7 +39,7 @@ import org.junit.Test;
 /**
  * Test class for the GPFitnessFunction class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class GPFitnessFunctionTester {
 

@@ -22,7 +22,7 @@ package jmona.example.calc.functions;
 /**
  * A constant real-valued function.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class DoubleConstantFunction extends ConstantFunction<Double, Double> {
 

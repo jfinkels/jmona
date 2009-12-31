@@ -25,7 +25,7 @@ import jmona.impl.PeriodicPostProcessor;
 /**
  * A PostProcessor which simply increments a counter.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExamplePostProcessor extends
     PeriodicPostProcessor<ExampleIndividual> {

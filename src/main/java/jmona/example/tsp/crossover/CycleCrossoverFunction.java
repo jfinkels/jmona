@@ -29,7 +29,7 @@ import jmona.impl.Util;
  * Cycle crossover (also known as CX) on tours in the traveling salesman
  * problem.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class CycleCrossoverFunction implements CrossoverFunction<List<Integer>> {
 

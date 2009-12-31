@@ -26,7 +26,7 @@ import jmona.impl.Pair;
  * A strategy which cooperates on the first iteration, then does whatever the
  * adversary did on the previous iteration.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class TitForTatStrategy extends IPDStrategy implements
     DeepCopyable<TitForTatStrategy> {

@@ -27,7 +27,7 @@ import java.util.Map;
  * 
  * @param <T>
  *          The type of Individual on which this evolution occurs.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 // TODO allow multiple MutationFunctions or CrossoverFunctions?
 public interface EvolutionContext<T extends DeepCopyable<T>> {

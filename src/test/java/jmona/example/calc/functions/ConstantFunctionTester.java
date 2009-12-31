@@ -28,7 +28,7 @@ import org.junit.Test;
 /**
  * Test class for the ConstantFunction class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ConstantFunctionTester {
   /** The constant value of the function under test. */

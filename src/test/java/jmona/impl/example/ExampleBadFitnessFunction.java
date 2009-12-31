@@ -25,7 +25,7 @@ import jmona.FitnessFunction;
 /**
  * An example FitnessFunction which always throws a FitnessException.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleBadFitnessFunction implements
     FitnessFunction<ExampleIndividual> {

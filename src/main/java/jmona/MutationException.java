@@ -23,7 +23,7 @@ package jmona;
  * This Exception is thrown if there is a problem during the mutation of an
  * Individual in the evolution.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class MutationException extends Exception {
 

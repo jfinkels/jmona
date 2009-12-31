@@ -33,7 +33,7 @@ import org.junit.Test;
 /**
  * Test class for the Range class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class RangeTester {
 

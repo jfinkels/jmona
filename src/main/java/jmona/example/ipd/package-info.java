@@ -37,7 +37,7 @@
  * XML configuration file.
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 package jmona.example.ipd;
 

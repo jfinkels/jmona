@@ -33,7 +33,7 @@ import org.junit.Test;
 /**
  * Test class for the ImageMetric class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ImageMetricTester extends
     AbstractMetricTester<BufferedImage, Metric<BufferedImage>> {

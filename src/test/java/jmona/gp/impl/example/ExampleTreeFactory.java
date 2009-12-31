@@ -28,7 +28,7 @@ import jmona.impl.Range;
 /**
  * An example TreeFactory.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleTreeFactory extends AbstractTreeFactory<Integer> {
 

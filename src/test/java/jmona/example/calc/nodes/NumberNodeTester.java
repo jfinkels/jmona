@@ -28,7 +28,7 @@ import org.junit.Test;
 /**
  * Test class for the NumberNode class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class NumberNodeTester {
   /** The value by which to increment the input to the function. */

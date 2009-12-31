@@ -24,7 +24,7 @@ import jmona.CrossoverFunction;
 /**
  * An example CrossoverFunction.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleCrossoverFunction implements
     CrossoverFunction<ExampleIndividual> {

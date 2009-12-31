@@ -24,7 +24,7 @@ package jmona.gp.impl;
  * 
  * @param <T>
  *          The type of the domain and codomain of this operation.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface UniformTernaryOperation<T> extends
     TernaryOperation<T, T, T, T> {

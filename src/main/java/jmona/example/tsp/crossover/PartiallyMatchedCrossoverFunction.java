@@ -29,7 +29,7 @@ import jmona.impl.Util;
  * tours, then uses the permutation defined by the integers in the swapped
  * slices to replace repeated cities in the non-swapped sections of the tours.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 // TODO inherit from two-point crossover?
 public class PartiallyMatchedCrossoverFunction implements

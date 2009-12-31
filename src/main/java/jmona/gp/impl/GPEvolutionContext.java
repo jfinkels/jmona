@@ -36,7 +36,7 @@ import jmona.impl.AbstractEvolutionContext;
  * 
  * @param <V>
  *          The type of value to which a Tree evaluates.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
 

@@ -26,7 +26,7 @@ import jmona.gp.Node;
  * 
  * @param <V>
  *          The type of value to which this Node evaluates.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public abstract class AbstractNode<V> implements Node<V> {
 

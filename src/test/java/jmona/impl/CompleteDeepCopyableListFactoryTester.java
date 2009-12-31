@@ -35,7 +35,7 @@ import org.junit.Test;
 /**
  * Test class for the CompleteDeepCopyableListFactory class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class CompleteDeepCopyableListFactoryTester {
 

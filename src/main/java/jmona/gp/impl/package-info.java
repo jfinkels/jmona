@@ -56,7 +56,7 @@
  * genetic programming</a>
  * </p>
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  * @see jmona.gp
  */
 package jmona.gp.impl;

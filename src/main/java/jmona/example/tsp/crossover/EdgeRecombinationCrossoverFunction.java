@@ -38,7 +38,7 @@ import jmona.impl.Util;
  * Edge recombination crossover (also known as ERX) for tours in the traveling
  * salesman problem.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class EdgeRecombinationCrossoverFunction implements
     CrossoverFunction<List<Integer>> {

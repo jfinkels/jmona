@@ -26,7 +26,7 @@ import jmona.gp.impl.BinaryNode;
 /**
  * A node representing subtraction of real numbers.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class SubtractionNode extends
     BinaryNode<SingleInputFunction<Double, Double>> {

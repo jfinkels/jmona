@@ -30,7 +30,7 @@ import jmona.impl.Range;
  * Utilities for testing, including a method which fails a test after outputting
  * an Exception's message.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class Util {
   /**

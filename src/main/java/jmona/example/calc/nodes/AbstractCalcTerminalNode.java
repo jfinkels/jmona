@@ -25,7 +25,7 @@ import jmona.gp.impl.AbstractTerminalNode;
 /**
  * A base class for TerminalNode objects in the Calc evolution.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public abstract class AbstractCalcTerminalNode extends
     AbstractTerminalNode<SingleInputFunction<Double, Double>> {

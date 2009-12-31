@@ -42,7 +42,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 /**
  * Test class for an evolution of the Mona example.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 @ContextConfiguration
 public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {

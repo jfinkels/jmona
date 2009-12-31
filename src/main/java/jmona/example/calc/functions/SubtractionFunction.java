@@ -25,7 +25,7 @@ import jmona.SingleInputFunction;
 /**
  * A function which returns the difference between two specified functions.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class SubtractionFunction extends SecondOrderFunction {
 

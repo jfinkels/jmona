@@ -27,7 +27,7 @@ import jmona.SelectionFunction;
 /**
  * A SelectionFunction which always throws a SelectionException.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleBadSelectionFunction implements
     SelectionFunction<ExampleIndividual> {

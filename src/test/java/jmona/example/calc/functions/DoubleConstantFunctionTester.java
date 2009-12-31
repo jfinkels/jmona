@@ -26,7 +26,7 @@ import org.junit.Test;
 /**
  * Test class for the DoubleConstantFunction class.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class DoubleConstantFunctionTester {
 

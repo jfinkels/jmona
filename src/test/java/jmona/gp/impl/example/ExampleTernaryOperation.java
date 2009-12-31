@@ -24,7 +24,7 @@ import jmona.gp.impl.TernaryOperation;
 /**
  * An example TernaryOperation which returns the sum of three integers.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleTernaryOperation implements
     TernaryOperation<Integer, Integer, Integer, Integer> {

@@ -23,7 +23,7 @@ package jmona;
  * This Exception is thrown when there is a problem determining if a
  * CompletionCondition has satisfied.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class CompletionException extends Exception {
 

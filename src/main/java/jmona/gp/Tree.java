@@ -26,7 +26,7 @@ import jmona.DeepCopyable;
  * 
  * @param <V>
  *          The return type of the {@link #evaluate()} method on this Tree.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public interface Tree<V> extends DeepCopyable<Tree<V>> {
 

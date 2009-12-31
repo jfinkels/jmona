@@ -24,7 +24,7 @@ import jmona.SingleInputFunction;
 /**
  * An example mapping from an ExampleIndividual to its fitness.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleMapping implements
     SingleInputFunction<ExampleIndividual, Double> {

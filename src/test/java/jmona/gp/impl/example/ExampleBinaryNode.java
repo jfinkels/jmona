@@ -25,7 +25,7 @@ import jmona.gp.impl.BinaryNode;
  * An example BinaryNode for use in testing which utilizes the
  * ExampleBinaryOperation.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class ExampleBinaryNode extends BinaryNode<Integer> {
   /**

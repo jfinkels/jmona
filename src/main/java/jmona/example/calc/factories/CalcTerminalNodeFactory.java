@@ -30,7 +30,7 @@ import jmona.impl.Util;
  * A TerminalNodeFactory for the Calc example, which creates either
  * {@link VariableNode} or {@link NumberNode} objects.
  * 
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class CalcTerminalNodeFactory implements
     Factory<TerminalNode<SingleInputFunction<Double, Double>>> {

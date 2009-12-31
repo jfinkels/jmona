@@ -32,7 +32,7 @@ import jmona.InitializationException;
  * 
  * @param <E>
  *          The type of element in the List to create.
- * @author jfinkels
+ * @author Jeffrey Finkelstein
  */
 public class CompleteDeepCopyableListFactory<E extends DeepCopyable<E>> extends
     PartialDeepCopyableListFactory<E> {
