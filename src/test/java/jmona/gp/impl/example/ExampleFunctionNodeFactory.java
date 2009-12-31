@@ -37,7 +37,7 @@ public class ExampleFunctionNodeFactory implements
    * @return An ExampleBinaryNode
    * @throws InitializationException
    *           Never throws this Exception.
-   * @see jmona.gp.NodeFactory#createNode()
+   * @see jmona.Factory#createObject()
    */
   @Override
   public FunctionNode<Integer> createObject() throws InitializationException {

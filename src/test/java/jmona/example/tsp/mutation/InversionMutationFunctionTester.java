@@ -44,8 +44,7 @@ public class InversionMutationFunctionTester extends
 
   /**
    * Test method for
-   * {@link jmona.example.tsp.mutation.InversionMutationFunction#mutate(jmona.example.tsp.Tour)}
-   * .
+   * {@link jmona.example.tsp.mutation.InversionMutationFunction#mutate(List)}.
    */
   @Test
   public void testMutate() {

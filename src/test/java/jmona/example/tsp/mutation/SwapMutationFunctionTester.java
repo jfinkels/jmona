@@ -42,8 +42,7 @@ public class SwapMutationFunctionTester extends
 
   /**
    * Test method for
-   * {@link jmona.example.tsp.mutation.SwapMutationFunction#mutate(jmona.example.tsp.Tour)}
-   * .
+   * {@link jmona.example.tsp.mutation.SwapMutationFunction#mutate(List)}.
    */
   @Override
   @Test

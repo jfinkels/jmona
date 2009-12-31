@@ -43,7 +43,7 @@ public class CalcFunctionNodeFactoryTester {
 
   /**
    * Test method for
-   * {@link jmona.example.calc.factories.CalcFunctionNodeFactory#createNode()}.
+   * {@link jmona.example.calc.factories.CalcFunctionNodeFactory#createObject()}.
    */
   @Test
   public void testCreateNode() {

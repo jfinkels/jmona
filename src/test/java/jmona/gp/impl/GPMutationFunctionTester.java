@@ -97,7 +97,7 @@ public class GPMutationFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.gp.impl.GPMutationFunction#setTreeFactory(jmona.gp.TreeFactory)}
+   * {@link jmona.gp.impl.GPMutationFunction#setTreeFactory(jmona.Factory)}
    * .
    */
   @Test

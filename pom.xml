@@ -163,6 +163,25 @@
           </execution>
         </executions>
       </plugin>
+      
+      <plugin> <!-- Javadoc generation -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${version.plugin.javadoc}</version>
+        <configuration>
+          <attach>false</attach>
+        </configuration>
+        <executions> <!-- execute javadoc:jar and :test-jar on "mvn package" -->
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+              <goal>test-jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
     </plugins>
   </build>
 

@@ -54,7 +54,7 @@ public class ImageWriterTester {
 
   /**
    * Test method for
-   * {@link jmona.example.monalisa.ImageWriter#writeImage(java.awt.image.BufferedImage, java.lang.String)}
+   * {@link jmona.example.monalisa.io.ImageWriter#writeImage(java.awt.image.RenderedImage, String)}
    * .
    */
   @Test

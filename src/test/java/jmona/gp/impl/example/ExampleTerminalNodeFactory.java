@@ -37,7 +37,7 @@ public class ExampleTerminalNodeFactory implements
    * @return An ExampleTerminalNode.
    * @throws InitializationException
    *           Never throws this Exception.
-   * @see jmona.gp.NodeFactory#createNode()
+   * @see jmona.Factory#createObject()
    */
   @Override
   public TerminalNode<Integer> createObject() throws InitializationException {

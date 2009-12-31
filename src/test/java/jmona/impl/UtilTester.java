@@ -81,11 +81,11 @@ public class UtilTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.Util#filter(jmona.Condition, List)}.
+   * {@link jmona.impl.Util#filter(Condition, java.util.Collection)}.
    */
   @Test
   public void testFilter() {
-    
+
     // create a condition to test for negative numbers
     final Condition<Integer> condition = new Condition<Integer>() {
 
@@ -101,16 +101,16 @@ public class UtilTester {
         return input < 0;
       }
     };
-    
+
     // add all numbers from -size to size-1 to the list
     final int size = 10;
     final List<Integer> list = new Vector<Integer>();
     for (final int i : new Range(-1 * size, size)) {
       list.add(i);
     }
-    
+
     assertEquals(size * 2, list.size());
-    
+
     // filter the list by keeping only negative numbers
     List<Integer> after = null;
     try {
@@ -118,10 +118,10 @@ public class UtilTester {
     } catch (final MappingException exception) {
       jmona.test.Util.fail(exception);
     }
-    
+
     // assert half of the elements were removed
     assertEquals(size, after.size());
-    
+
     // assert all elements are less than 0
     for (final int i : after) {
       assertTrue(i < 0);

@@ -40,8 +40,7 @@ public class OnesFitnessFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.ones.OnesFitnessFunction#fitness(jmona.ga.BinaryString)}
-   * .
+   * {@link jmona.example.ones.OnesFitnessFunction#fitness(List)}.
    */
   @Test
   public void testFitness() {

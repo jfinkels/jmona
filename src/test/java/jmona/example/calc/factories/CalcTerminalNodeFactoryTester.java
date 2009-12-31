@@ -52,7 +52,7 @@ public class CalcTerminalNodeFactoryTester {
 
   /**
    * Test method for
-   * {@link jmona.example.calc.factories.CalcTerminalNodeFactory#createNode()} .
+   * {@link jmona.example.calc.factories.CalcTerminalNodeFactory#createObject()} .
    */
   @Test
   public void testCreateNode() {

@@ -42,8 +42,7 @@ public class InsertionMutationFunctionTester extends
 
   /**
    * Test method for
-   * {@link jmona.example.tsp.mutation.InsertionMutationFunction#mutate(jmona.example.tsp.Tour)}
-   * .
+   * {@link jmona.example.tsp.mutation.InsertionMutationFunction#mutate(List)}.
    */
   @Test
   public void testMutate() {

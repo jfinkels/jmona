@@ -69,8 +69,7 @@ public class AbstractListCrossoverFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.ga.impl.AbstractBinaryStringCrossoverFunction#sliceStartEnd(int)}
-   * .
+   * {@link jmona.ga.impl.AbstractListCrossoverFunction#sliceStartEnd(int)} .
    */
   @Test
   public void testSliceStartEnd() {
@@ -80,7 +79,7 @@ public class AbstractListCrossoverFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.ga.impl.AbstractBinaryStringCrossoverFunction#crossover(jmona.ga.BinaryString, jmona.ga.BinaryString)}
+   * {@link jmona.ga.impl.AbstractListCrossoverFunction#crossover(Object, Object)}
    * .
    */
   @Test

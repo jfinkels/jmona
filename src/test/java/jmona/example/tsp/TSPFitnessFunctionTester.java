@@ -42,9 +42,7 @@ public class TSPFitnessFunctionTester {
   public static final double ZERO_DELTA = 0.0;
 
   /**
-   * Test method for
-   * {@link jmona.example.tsp.TSPFitnessFunction#fitness(jmona.example.tsp.Tour)}
-   * .
+   * Test method for {@link jmona.example.tsp.TSPFitnessFunction#fitness(List)}.
    */
   @Test
   public void testFitness() {

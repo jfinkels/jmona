@@ -178,7 +178,7 @@ public class AbstractTreeFactoryTester {
 
   /**
    * Test method for
-   * {@link jmona.gp.impl.AbstractTreeFactory#setFunctionNodeFactory(jmona.gp.FunctionNodeFactory)}
+   * {@link jmona.gp.impl.AbstractTreeFactory#setFunctionNodeFactory(jmona.Factory)}
    * .
    */
   @Test
@@ -191,7 +191,7 @@ public class AbstractTreeFactoryTester {
 
   /**
    * Test method for
-   * {@link jmona.gp.impl.AbstractTreeFactory#setTerminalNodeFactory(jmona.gp.TerminalNodeFactory)}
+   * {@link jmona.gp.impl.AbstractTreeFactory#setTerminalNodeFactory(jmona.Factory)}
    * .
    */
   @Test

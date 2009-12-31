@@ -68,7 +68,7 @@ public class ColoredPolygonNodeFactoryTester {
 
   /**
    * Test method for
-   * {@link jmona.example.monalisa.gp.ColoredPolygonNodeFactory#createNode()}.
+   * {@link jmona.example.monalisa.gp.ColoredPolygonNodeFactory#createObject()}.
    */
   @Test
   public void testCreateNode() {
