@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.monalisa;
+package jmona.example.monalisa.ga;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -28,6 +28,8 @@ import jmona.CompletionException;
 import jmona.DeepCopyableList;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
+import jmona.example.monalisa.ColoredPolygon;
+import jmona.example.monalisa.Converter;
 import jmona.example.monalisa.io.ImageWriter;
 import jmona.test.Util;
 

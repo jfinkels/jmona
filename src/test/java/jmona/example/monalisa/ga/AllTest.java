@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.monalisa;
+package jmona.example.monalisa.ga;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -29,10 +29,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author Jeffrey Finkelstein
  */
 @RunWith(Suite.class)
-@SuiteClasses({ ColoredPolygonFactoryTester.class,
-    ColoredPolygonMutationFunctionTester.class, ColoredPolygonTester.class,
-    ConverterTester.class, ImageOutputPostProcessorTester.class,
-    MonaMappingTester.class })
+@SuiteClasses({ MonaEvolutionTester.class })
 public class AllTest {
 
 }
