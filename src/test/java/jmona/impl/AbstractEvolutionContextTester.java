@@ -215,7 +215,6 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testFitnessFunction() {
-    assertNull(this.unsetContext.fitnessFunction());
     assertSame(this.fitnessFunction, this.context.fitnessFunction());
   }
 
@@ -272,23 +271,7 @@ public class AbstractEvolutionContextTester {
   public void testSanityCheck() {
     try {
       this.unsetContext.sanityCheck();
-      fail("Exception should have been thrown on the previous line.");
-    } catch (final NullPointerException exception) {
-      // fitness function has not been set
-      assertNull(this.unsetContext.fitnessFunction());
-      assertNull(this.unsetContext.mutationFunction());
-      assertNull(this.unsetContext.selectionFunction());
-      assertNull(this.unsetContext.crossoverFunction());
-      try {
-        this.unsetContext.setFitnessFunction(new ExampleFitnessFunction());
-      } catch (final FitnessException fitnessException) {
-        Util.fail(fitnessException);
-      }
-    }
-
-    try {
-      this.unsetContext.sanityCheck();
-      fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final NullPointerException exception) {
       // mutation function has not been set
       assertNotNull(this.unsetContext.fitnessFunction());
@@ -300,7 +283,7 @@ public class AbstractEvolutionContextTester {
 
     try {
       this.unsetContext.sanityCheck();
-      fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final NullPointerException exception) {
       // selection function has not been set
       assertNotNull(this.unsetContext.fitnessFunction());
@@ -313,7 +296,7 @@ public class AbstractEvolutionContextTester {
 
     try {
       this.unsetContext.sanityCheck();
-      fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final NullPointerException exception) {
       // crossover function has not been set
       assertNotNull(this.unsetContext.fitnessFunction());
