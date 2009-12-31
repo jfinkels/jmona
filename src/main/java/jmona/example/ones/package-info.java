@@ -18,9 +18,18 @@
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * An example evolution implementation in which the selection pressure is toward
- * individuals with genes containing more &quot;1&quot; bits than &quot;0&quot;
- * bits.
+ * <p>
+ * Provides a fitness function and mutation function for a list of Byte objects
+ * (which are supposed to represent single bits).
+ * </p>
+ * 
+ * <p>
+ * An example of a genetic algorithm which evolves a bitstring (represented as a
+ * list of Byte objects) containing the maximal number of ones can be found in
+ * {@code src/test/java/jmona/example/ones/OnesEvolutionTester.java} and the
+ * corresponding Spring XML configuration file can be found at {@code
+ * src/test/resources/jmona/example/ones/OnesEvolutionTester-context.xml}.
+ * </p>
  * 
  * @author jfinkels
  */

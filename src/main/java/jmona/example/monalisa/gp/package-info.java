@@ -18,11 +18,12 @@
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * Provides classes which encapsulate operations on functions (addition,
- * subtraction, multiplication, and division) which are used when evaluating a
- * {@link jmona.gp.Tree} in the "calc" evolution.
+ * Provides Node classess and Factory classes for performing the image matching
+ * evolution as a genetic programming evolution.
  * 
  * @author jfinkels
+ * @see jmona.example.monalisa
+ * @see jmona.example.monalisa.io
  */
-package jmona.example.calc.operations;
+package jmona.example.monalisa.gp;
 

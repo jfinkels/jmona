@@ -18,10 +18,16 @@
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
+ * <p>
  * Provides classes which represent Node objects to be used in Tree objects for
- * the Calc evolution. The function nodes represent operations on functions
- * (addition, subtraction, multiplication, and division) and the terminal nodes
- * represent numbers and variables.
+ * the "calc" evolution.
+ * </p>
+ * 
+ * <p>
+ * The function nodes represent operations on functions (addition, subtraction,
+ * multiplication, and division) and the terminal nodes represent numbers and
+ * variables.
+ * </p>
  * 
  * @author jfinkels
  */

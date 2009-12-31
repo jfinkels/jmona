@@ -19,18 +19,33 @@
  */
 /**
  * <p>
- * Provides {@link jmona.Factory} objects for {@link jmona.gp.TerminalNode}
- * objects and {@link jmona.gp.FunctionNode} objects specific to the "calc"
+ * Provides mutation functions for tours in the traveling salesman problem
  * evolution.
  * </p>
  * 
  * <p>
- * The FunctionNodes and TerminalNodes which these factories create can be found
- * in the {@link jmona.example.calc.nodes} package.
+ * The {@link DisplacementMutationFunction} chooses a slice of a tour, then
+ * removes and reinserts that slice to a different index in the tour.
+ * </p>
+ * 
+ * <p>
+ * The {@link InsertionMutationFunction} chooses a random city in the tour, the
+ * removes it and reinserts it at a new random location in the tour.
+ * </p>
+ * 
+ * <p>
+ * The {@link InversionMutationFunction} chooses a random slice in the tour,
+ * then inverts the order of the cities in that slice.
+ * </p>
+ * 
+ * <p>
+ * The {@link SwapMutationFunction} chooses two cities at random in the tour,
+ * then swaps them.
  * </p>
  * 
  * @author jfinkels
- * @see jmona.example.calc.nodes
+ * @see jmona.example.tsp
+ * @see jmona.example.tsp.crossover
  */
-package jmona.example.calc.factories;
+package jmona.example.tsp.mutation;
 

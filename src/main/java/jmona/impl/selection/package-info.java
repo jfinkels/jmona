@@ -18,12 +18,11 @@
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * Provides some basic selection algorithms, including:
- * <ul>
- * <li>fitness proportionate selection (also known as
- * "roulette wheel selection")</li>
- * <li>tournament selection</li>
- * </ul>
+ * <p>
+ * Provides some commonly used selection algorithms, including
+ * {@link FitnessProportionateSelection} (also known as
+ * "roulette wheel selection") and {@link TournamentSelection}.
+ * </p>
  * 
  * For more information, see:
  * <ul>

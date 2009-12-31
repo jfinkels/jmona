@@ -19,18 +19,25 @@
  */
 /**
  * <p>
- * Provides {@link jmona.Factory} objects for {@link jmona.gp.TerminalNode}
- * objects and {@link jmona.gp.FunctionNode} objects specific to the "calc"
- * evolution.
+ * Provides classes for evolving solutions to the traveling salesman problem
+ * (TSP).
  * </p>
  * 
  * <p>
- * The FunctionNodes and TerminalNodes which these factories create can be found
- * in the {@link jmona.example.calc.nodes} package.
+ * Individuals in the genetic algorithm solution to the traveling salesman
+ * problem can be modeled as a sequence of integers, representing the sequence
+ * of cities traveled in a graph of known size. The evolution evolves toward a
+ * minimum distance tour of all vertices in the graph (the shortest Hamiltonian
+ * cycle). Mutation functions are provided in {@link jmona.example.tsp.mutation}
+ * package and crossover functions are provided in
+ * {@link jmona.example.tsp.crossover} package (these are the most involved part
+ * of the TSP evolution).
  * </p>
  * 
  * @author jfinkels
- * @see jmona.example.calc.nodes
+ * @see jmona.example.tsp.crossover
+ * @see jmona.example.tsp.io
+ * @see jmona.example.tsp.mutation
  */
-package jmona.example.calc.factories;
+package jmona.example.tsp;
 

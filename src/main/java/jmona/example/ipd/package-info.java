@@ -18,11 +18,26 @@
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * Provides classes which encapsulate operations on functions (addition,
- * subtraction, multiplication, and division) which are used when evaluating a
- * {@link jmona.gp.Tree} in the "calc" evolution.
+ * <p>
+ * Provides an implementation of the iterated prisoner's dilemma (IPD), as a
+ * {@link jmona.game.Game}, and a {@link jmona.example.ipd.IPDStrategyFactory}
+ * which generates strategies.
+ * </p>
+ * 
+ * <p>
+ * A brief description of the game can be found in the
+ * {@link jmona.example.ipd.IPDGame} class.
+ * </p>
+ * 
+ * <p>
+ * The IPD game evolution has {@link jmona.example.ipd.strategy.IPDStrategy}
+ * objects as individuals competing against one another. An example of the
+ * configuration of the evolution can be found in the {@code
+ * src/test/resources/jmona/example/ipd/IPDEvolutionTester-context.xml} Spring
+ * XML configuration file.
+ * </p>
  * 
  * @author jfinkels
  */
-package jmona.example.calc.operations;
+package jmona.example.ipd;
 

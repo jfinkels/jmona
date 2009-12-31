@@ -18,11 +18,18 @@
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * Provides an interface for genetic programming based on the {@link jmona}
- * evolutionary algorithms interface package and the {@link jmona.impl}
- * evolutionary algorithms implementation package.
+ * <p>
+ * Provides an interface for genetic programming.
+ * </p>
+ * 
+ * <p>
+ * The {@link Tree} class and the {@link FunctionNode} and {@link TerminalNode}
+ * objects which it contain define the individual which evolves during a genetic
+ * programming evolution.
+ * </p>
  * 
  * @author jfinkels
+ * @see jmona.gp.impl
  */
 package jmona.gp;
 

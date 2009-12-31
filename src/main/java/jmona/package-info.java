@@ -18,11 +18,23 @@
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * Provides an interface for a genetic algorithm. The most important interface
- * is the {@link jmona.EvolutionContext} interface, which defines the context in
- * which the evolution will run.
+ * Provides an interface for evolutionary algorithms, including, but not limited
+ * to, genetic algorithms and genetic programming.
+ * 
+ * The most important interface is the {@link jmona.EvolutionContext} interface,
+ * which defines the context in which the evolution will run. Implementations of
+ * some of these interfaces are provided in the {@link jmona.impl} package, the
+ * {@link jmona.ga.impl} package, the {@link jmona.gp.impl} package, and the
+ * {@link jmona.game.impl} package.
  * 
  * @author jfinkels
+ * @see jmona.impl
+ * @see jmona.ga
+ * @see jmona.ga.impl
+ * @see jmona.game
+ * @see jmona.game.impl
+ * @see jmona.gp
+ * @see jmona.gp.impl
  */
 package jmona;
 

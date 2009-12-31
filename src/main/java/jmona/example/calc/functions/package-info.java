@@ -19,7 +19,7 @@
  */
 /**
  * Provides classes which represent higher order functions (functions of
- * functions) for use when evaluating a {@link jmona.gp.Tree} in the Calc
+ * functions) for use when evaluating a {@link jmona.gp.Tree} in the "calc"
  * evolution.
  * 
  * @author jfinkels

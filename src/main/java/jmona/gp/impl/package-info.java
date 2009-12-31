@@ -18,16 +18,42 @@
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * Provides a default implementation of the framework for an instance of genetic
- * programming.
+ * <p>
+ * Provides a default implementation of the framework required to run an
+ * instance of genetic programming.
+ * </p>
  * 
- * For more information, see:
- * <ul>
- * <li><a href="http://en.wikipedia.org/wiki/Genetic_programming">Wikipedia
- * article on genetic programming</a></li>
- * </ul>
+ * <p>
+ * The {@link GPEvolutionContext}, {@link GPFitnessFunction},
+ * {@link GPMutationFunction}, and {@link GPCrossoverFunction} classes provide
+ * most of the functionality of the genetic programming evolution (with various
+ * parameters adjustable through setter methods).
+ * </p>
+ * 
+ * <p>
+ * Users wishing to implement an instance of a genetic programming evolution
+ * will likely need to implement a set of {@link jmona.gp.FunctionNode} classes
+ * (perhaps simply providing a custom {@link BinaryOperation} to a
+ * {@link BinaryNode}, for example), and a set of {@link jmona.gp.TerminalNode}
+ * classes, as well as the {@link jmona.Factory} classes for creating them.
+ * Provide these factories to one of the tree factories.
+ * </p>
+ * 
+ * <p>
+ * The {@link GPFitnessFunction} evaluates {@link jmona.gp.Tree} objects, then
+ * measures the equivalence of that evaluation value to a specified target
+ * value. Users should implement their own {@link jmona.gp.EquivalenceTester}
+ * for whatever type of object to which their Trees evaluate.
+ * </p>
+ * 
+ * <p>
+ * For more information on genetic programming, see the <a
+ * href="http://en.wikipedia.org/wiki/Genetic_programming">Wikipedia article on
+ * genetic programming</a>
+ * </p>
  * 
  * @author jfinkels
+ * @see jmona.gp
  */
 package jmona.gp.impl;
 

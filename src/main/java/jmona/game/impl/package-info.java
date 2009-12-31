@@ -18,11 +18,20 @@
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * Provides classes which encapsulate operations on functions (addition,
- * subtraction, multiplication, and division) which are used when evaluating a
- * {@link jmona.gp.Tree} in the "calc" evolution.
+ * <p>
+ * Provides a default implementation of a game evolution.
+ * </p>
+ * 
+ * <p>
+ * The {@link GameEvolutionContext} matches {@link Strategy} objects (as
+ * individuals in a population) against each other, and assigns fitness based on
+ * their overall score. The {@link UniformPopulationCompletionCondition} is
+ * provided for stopping the evolution when all individuals are of the same
+ * class.
+ * </p>
  * 
  * @author jfinkels
+ * @see jmona.game
  */
-package jmona.example.calc.operations;
+package jmona.game.impl;
 

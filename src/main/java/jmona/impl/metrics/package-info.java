@@ -18,14 +18,23 @@
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * Provides the one-dimensional Euclidean metric function, which determines the
- * distance between two points on the real line.
+ * <p>
+ * Provides metric functions for use in measuring distance between individuals
+ * in an evolution.
+ * </p>
  * 
- * For more information, see:
- * <ul>
- * <li><a href="http://en.wikipedia.org/wiki/Euclidean_distance">Wikipedia
- * article on Euclidean distance</a></li>
- * </ul>
+ * <p>
+ * The {@link EuclideanMetric} measures distance between two points on the real
+ * line. The {@link EuclideanVectorMetric} measures the distance between two
+ * points in Euclidean n-space. The {@link ImageMetric} measures the
+ * three-dimensional Euclidean distance between two pixels in RGB colorspace.
+ * </p>
+ * 
+ * <p>
+ * For more information on the Euclidean metric, see <a
+ * href="http://en.wikipedia.org/wiki/Euclidean_distance">Wikipedia article on
+ * Euclidean distance</a>
+ * </p>
  * 
  * @author jfinkels
  */
