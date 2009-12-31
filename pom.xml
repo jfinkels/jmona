@@ -62,9 +62,6 @@
     <version.dependency.log4j>1.2.14</version.dependency.log4j>
     <version.dependency.spring>3.0.0.RELEASE</version.dependency.spring>
     
-    <!-- extension versions -->
-    <version.extension.scm.git>1.2</version.extension.scm.git>
-    
     <!-- plugin versions -->
     <version.plugin.changelog>2.1</version.plugin.changelog>
     <version.plugin.checkstyle>2.4</version.plugin.checkstyle>
@@ -78,12 +75,17 @@
     <version.plugin.jxr>2.1</version.plugin.jxr>
     <version.plugin.pmd>2.4</version.plugin.pmd>
     <version.plugin.reports>2.1.2</version.plugin.reports>
+    <version.plugin.release>2.0-beta-9</version.plugin.release>
     <version.plugin.resources>2.4.1</version.plugin.resources>
+    <version.plugin.scm>1.2</version.plugin.scm>
     <version.plugin.site>2.0.1</version.plugin.site>
     <version.plugin.source>2.1.1</version.plugin.source>
     <version.plugin.surefire>2.4.3</version.plugin.surefire>
     <version.plugin.taglist>2.4</version.plugin.taglist>
     <version.plugin.versions>1.1</version.plugin.versions>
+    
+    <!-- SCM versions -->
+    <version.scm.git>1.2</version.scm.git>
     
     <!-- Java runtime/JDK versions -->
     <version.java.source>1.6</version.java.source>
@@ -101,15 +103,33 @@
   </properties>
 
   <build>
-    <!--<extensions>
-      <extension>
-        <groupId>org.apache.maven.scm</groupId>
-        <artifactId>maven-scm-provider-gitexe</artifactId>
-        <version>${version.extension.scm.git}</version> 
-      </extension>
-    </extensions>-->
-  
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>${version.plugin.release}</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.scm</groupId>
+            <artifactId>maven-scm-provider-gitexe</artifactId>
+            <version>${version.scm.git}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-plugin</artifactId>
+        <version>${version.plugin.scm}</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.scm</groupId>
+            <artifactId>maven-scm-provider-gitexe</artifactId>
+            <version>${version.scm.git}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    
       <plugin> <!-- force JDK and JRE versions -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -132,6 +152,15 @@
             </manifest>
           </archive>
         </configuration>
+        <executions> <!-- execute jar:jar and :test-jar on "mvn package" -->
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+              <goal>test-jar</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
       <plugin> <!-- enforce resources encoding -->
