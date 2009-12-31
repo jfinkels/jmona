@@ -148,7 +148,7 @@ public class GPEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.gp.impl.GPEvolutionContext#GPEvolutionContext(jmona.Population)}
+   * {@link jmona.gp.impl.GPEvolutionContext#GPEvolutionContext(List)}
    * .
    */
   @Test

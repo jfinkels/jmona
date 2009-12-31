@@ -71,7 +71,7 @@ public class ColoredPolygonFactory implements Factory<ColoredPolygon> {
    * Generate a random ColoredPolygon.
    * 
    * @return A random ColoredPolygon.
-   * @see jmona.IndividualFactory#createIndividual()
+   * @see jmona.Factory#createObject()
    */
   @Override
   public ColoredPolygon createObject() {

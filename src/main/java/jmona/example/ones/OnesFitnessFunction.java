@@ -37,7 +37,7 @@ public class OnesFitnessFunction implements FitnessFunction<List<Byte>> {
    * @param individual
    *          The individual whose fitness is to be determined.
    * @return The number of ones in the gene of the specified individual.
-   * @see jmona.FitnessFunction#fitness(jmona.Individual)
+   * @see jmona.FitnessFunction#fitness(Object)
    */
   @Override
   public double fitness(final List<Byte> individual) {

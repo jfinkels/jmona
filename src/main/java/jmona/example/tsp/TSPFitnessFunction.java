@@ -58,7 +58,7 @@ public class TSPFitnessFunction implements FitnessFunction<List<Integer>> {
    * @return The fitness of the specified Tour.
    * @throws IllegalArgumentException
    *           If the specified tour is empty.
-   * @see jmona.FitnessFunction#fitness(jmona.Individual)
+   * @see jmona.FitnessFunction#fitness(Object)
    */
   @Override
   public double fitness(final List<Integer> tour) {

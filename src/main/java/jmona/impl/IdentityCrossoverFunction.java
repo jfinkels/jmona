@@ -37,7 +37,7 @@ public class IdentityCrossoverFunction<T> implements CrossoverFunction<T> {
    *          This parameter is ignored.
    * @param parent2
    *          This parameter is ignored.
-   * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
+   * @see jmona.CrossoverFunction#crossover(Object, Object)
    */
   @Override
   public void crossover(final T parent1, final T parent2) {

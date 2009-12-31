@@ -51,7 +51,7 @@ public class ExampleStrategy implements Strategy, DeepCopyable<ExampleStrategy> 
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.Individual#deepCopy()
+   * @see jmona.DeepCopyable#deepCopy()
    */
   @Override
   public ExampleStrategy deepCopy() {

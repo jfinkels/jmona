@@ -41,7 +41,7 @@ public class OnePointCrossoverFunction<E> extends
    *          The maximum length of the slice.
    * @return A pair with a random left number and the specified length as the
    *         right number.
-   * @see jmona.ga.impl.crossover.AbstractListCrossoverFunction#sliceStartEnd(int)
+   * @see jmona.ga.impl.AbstractListCrossoverFunction#sliceStartEnd(int)
    */
   @Override
   protected Pair<Integer, Integer> sliceStartEnd(final int length) {

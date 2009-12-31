@@ -25,7 +25,6 @@ import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.List;
 import java.util.Vector;
@@ -111,7 +110,7 @@ public class AbstractEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.AbstractEvolutionContext#AbstractEvolutionContext(jmona.Population)}
+   * {@link jmona.impl.AbstractEvolutionContext#AbstractEvolutionContext(List)}
    * .
    */
   @Test
@@ -358,7 +357,7 @@ public class AbstractEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.AbstractEvolutionContext#setCurrentPopulation(jmona.Population)}
+   * {@link jmona.impl.AbstractEvolutionContext#setCurrentPopulation(List)}
    * .
    */
   @Test
@@ -390,7 +389,7 @@ public class AbstractEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.AbstractEvolutionContext#setMutationFunction(jmona.IndividualMutationFunction)}
+   * {@link jmona.impl.AbstractEvolutionContext#setMutationFunction(MutationFunction)}
    * .
    */
   @Test

@@ -39,7 +39,7 @@ public class IdentityCrossoverFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.IdentityCrossoverFunction#crossover(jmona.Individual, jmona.Individual)}
+   * {@link jmona.impl.IdentityCrossoverFunction#crossover(Object, Object)}
    * .
    */
   @Test

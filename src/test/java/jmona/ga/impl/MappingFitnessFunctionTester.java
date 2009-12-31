@@ -58,7 +58,7 @@ public class MappingFitnessFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.ga.impl.MappingFitnessFunction#fitness(jmona.Individual)}.
+   * {@link jmona.ga.impl.MappingFitnessFunction#fitness(Object)}.
    */
   @Test
   public void testFitness() {

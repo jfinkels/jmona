@@ -62,7 +62,7 @@ public class ColoredPolygon extends Polygon implements
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.Individual#deepCopy()
+   * @see jmona.DeepCopyable#deepCopy()
    */
   @Override
   public ColoredPolygon deepCopy() {

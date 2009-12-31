@@ -31,7 +31,7 @@ import jmona.DeepCopyable;
 import jmona.MappingException;
 
 /**
- * Utility class containing objects and methods necessary for randomness.
+ * Utility class containing useful static utility methods.
  * 
  * @author jfinkels
  */

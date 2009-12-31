@@ -50,7 +50,7 @@ public class ExampleIndividual implements DeepCopyable<ExampleIndividual> {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.Individual#deepCopy()
+   * @see jmona.DeepCopyable#deepCopy()
    */
   @Override
   public ExampleIndividual deepCopy() {

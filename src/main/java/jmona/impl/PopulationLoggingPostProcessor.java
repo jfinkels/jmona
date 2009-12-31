@@ -40,7 +40,7 @@ public class PopulationLoggingPostProcessor<T extends DeepCopyable<T>> extends
    *          The EvolutionContext containing the population.
    * @return The current population of the specified EvolutionContext, as a
    *         String.
-   * @see jmona.impl.LoggingPostProcessor#message()
+   * @see jmona.impl.LoggingPostProcessor#message(EvolutionContext)
    */
   @Override
   protected String message(final EvolutionContext<T> context) {

@@ -50,7 +50,7 @@ public class OrderedCrossoverFunction implements
    *          A tour.
    * @param tour2
    *          Another tour.
-   * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
+   * @see jmona.CrossoverFunction#crossover(Object, Object)
    */
   @Override
   public void crossover(final List<Integer> tour1, final List<Integer> tour2) {

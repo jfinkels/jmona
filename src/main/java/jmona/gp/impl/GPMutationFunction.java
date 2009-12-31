@@ -47,7 +47,7 @@ public class GPMutationFunction<V> implements MutationFunction<Tree<V>> {
    *          generated subtree.
    * @throws MutationException
    *           If there is a problem generating a random subtree.
-   * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
+   * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
   public void mutate(final Tree<V> individual) throws MutationException {

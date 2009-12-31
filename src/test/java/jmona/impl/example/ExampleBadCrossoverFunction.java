@@ -39,7 +39,7 @@ public class ExampleBadCrossoverFunction implements
    *          This parameter is ignored.
    * @throws CrossoverException
    *           Always throws this Exception.
-   * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
+   * @see jmona.CrossoverFunction#crossover(Object, Object)
    */
   @Override
   public void crossover(final ExampleIndividual individual1,

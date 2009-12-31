@@ -50,10 +50,10 @@ public class ColoredPolygonFactoryTester extends ColoredPolygonTestSupport {
 
   /**
    * Test method for
-   * {@link jmona.example.monalisa.ColoredPolygonFactory#createIndividual()}.
+   * {@link jmona.example.monalisa.ColoredPolygonFactory#createObject()}.
    */
   @Test
-  public void testCreateIndividual() {
+  public void testCreateObject() {
 
     for (int j = 0; j < NUM_POLYGONS; ++j) {
       final ColoredPolygon polygon = this.factory.createObject();

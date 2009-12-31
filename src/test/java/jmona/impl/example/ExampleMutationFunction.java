@@ -40,7 +40,7 @@ public class ExampleMutationFunction implements
    * 
    * @param individual
    *          {@inheritDoc}
-   * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
+   * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
   public void mutate(final ExampleIndividual individual) {

@@ -60,7 +60,7 @@ public abstract class AbstractListCrossoverFunction<E> implements
 
   /**
    * Get the start index and end index of the range of elements to swap between
-   * two Lists in the {@link #crossover(Individual, Individual)} method.
+   * two Lists in the {@link #crossover(Object, Object)} method.
    * 
    * @param length
    *          The length of the Lists.

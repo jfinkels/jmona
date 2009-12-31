@@ -44,7 +44,7 @@ public class TourFactory extends PartialDeepCopyableListFactory<Integer> {
    * non-null (because it doesn't use that property at all).
    * 
    * @return A randomly generated Tour.
-   * @see jmona.IndividualFactory#createIndividual()
+   * @see jmona.Factory#createObject()
    */
   @Override
   public DeepCopyableList<Integer> createObject() {

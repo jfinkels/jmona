@@ -24,7 +24,7 @@ package jmona;
  * This Exception is thrown when there is a problem performing crossover on two
  * Individuals.
  * 
- * @see CrossoverFunction#crossover(Individual, Individual)
+ * @see CrossoverFunction#crossover(Object, Object)
  * @author jfinkels
  */
 public class CrossoverException extends Exception {

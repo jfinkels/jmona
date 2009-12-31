@@ -67,7 +67,7 @@ public class MappingFitnessFunction<T, V> implements FitnessFunction<T> {
    *         Individual as measured by a Metric.
    * @throws FitnessException
    *           {@inheritDoc}
-   * @see jmona.FitnessFunction#fitness(jmona.Individual)
+   * @see jmona.FitnessFunction#fitness(Object)
    */
   @Override
   public double fitness(final T individual) throws FitnessException {

@@ -62,10 +62,10 @@ public class AbstractTreeFactoryTester {
 
   /**
    * Test method for
-   * {@link jmona.gp.impl.AbstractTreeFactory#createIndividual()}.
+   * {@link jmona.gp.impl.AbstractTreeFactory#createObject()}.
    */
   @Test
-  public void testCreateIndividual() {
+  public void testCreateObject() {
     try {
 
       Tree<Integer> individual = null;

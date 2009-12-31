@@ -77,7 +77,7 @@ public class IPDStrategyFactory implements Factory<IPDStrategy> {
    * @return A Strategy chosen randomly from all IPDStrategy subclasses.
    * @throws InitializationException
    *           If a Strategy cannot be created given only its class.
-   * @see jmona.IndividualFactory#createIndividual()
+   * @see jmona.Factory#createObject()
    */
   @Override
   public IPDStrategy createObject() throws InitializationException {

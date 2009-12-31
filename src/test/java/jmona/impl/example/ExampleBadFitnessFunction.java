@@ -38,7 +38,7 @@ public class ExampleBadFitnessFunction implements
    * @return No value is returned, because a FitnessException is always thrown.
    * @throws FitnessException
    *           Always throws this Exception.
-   * @see jmona.FitnessFunction#fitness(jmona.Individual)
+   * @see jmona.FitnessFunction#fitness(Object)
    */
   @Override
   public double fitness(final ExampleIndividual individual)

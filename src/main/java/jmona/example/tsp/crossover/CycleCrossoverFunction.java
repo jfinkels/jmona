@@ -61,7 +61,7 @@ public class CycleCrossoverFunction implements CrossoverFunction<List<Integer>> 
    *          A tour to crossover.
    * @param tour2
    *          Another tour to crossover.
-   * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
+   * @see jmona.CrossoverFunction#crossover(Object, Object)
    */
   @Override
   public void crossover(final List<Integer> tour1, final List<Integer> tour2) {

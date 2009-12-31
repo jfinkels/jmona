@@ -43,10 +43,10 @@ public class IPDStrategyFactoryTester {
 
   /**
    * Test method for
-   * {@link jmona.example.ipd.IPDStrategyFactory#createIndividual()}.
+   * {@link jmona.example.ipd.IPDStrategyFactory#createObject()}.
    */
   @Test
-  public void testCreateIndividual() {
+  public void testCreateObject() {
     final IPDStrategyFactory factory = new IPDStrategyFactory();
 
     final Map<Class<? extends IPDStrategy>, Integer> numSelections = new HashMap<Class<? extends IPDStrategy>, Integer>();

@@ -57,7 +57,7 @@ public class GPFitnessFunction<V, I> implements FitnessFunction<Tree<V>> {
    * @return The total number of inputs on which its evaluation is equivalent to
    *         a target value.
    * 
-   * @see jmona.FitnessFunction#fitness(jmona.Individual)
+   * @see jmona.FitnessFunction#fitness(Object)
    */
   @Override
   public double fitness(final Tree<V> individual) throws FitnessException {

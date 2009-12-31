@@ -51,7 +51,7 @@ public class GAFitnessFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.ga.impl.GAFitnessFunction#fitness(jmona.Individual)}.
+   * {@link jmona.ga.impl.GAFitnessFunction#fitness(Object)}.
    */
   @Test
   public void testFitness() {

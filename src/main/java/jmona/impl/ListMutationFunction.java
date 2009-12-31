@@ -44,7 +44,7 @@ public class ListMutationFunction<E> implements MutationFunction<List<E>> {
    * @throws MutationException
    *           If the mutation of the random element throws an Exception, or if
    *           the ListElementMutationException has not been set.
-   * @see jmona.IndividualMutationFunction#mutate(jmona.Individual)
+   * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
   public void mutate(final List<E> list) throws MutationException {

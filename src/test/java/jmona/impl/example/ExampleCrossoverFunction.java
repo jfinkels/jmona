@@ -36,7 +36,7 @@ public class ExampleCrossoverFunction implements
    *          {@inheritDoc}
    * @param individual2
    *          {@inheritDoc}
-   * @see jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)
+   * @see jmona.CrossoverFunction#crossover(Object, Object)
    */
   @Override
   public void crossover(final ExampleIndividual individual1,

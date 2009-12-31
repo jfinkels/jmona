@@ -73,8 +73,7 @@ public abstract class AbstractTSPMutationFunctionTester {
   }
 
   /**
-   * The test for the
-   * {@link jmona.IndividualMutationFunction#mutate(jmona.Individual)} method in
+   * The test for the {@link jmona.MutationFunction#mutate(Object)} method in
    * each traveling salesman problem MutationFunction test class.
    */
   public abstract void testMutate();

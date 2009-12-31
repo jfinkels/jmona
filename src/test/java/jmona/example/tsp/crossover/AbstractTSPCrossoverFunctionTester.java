@@ -124,8 +124,7 @@ public abstract class AbstractTSPCrossoverFunctionTester {
   }
 
   /**
-   * The test for the
-   * {@link jmona.CrossoverFunction#crossover(jmona.Individual, jmona.Individual)}
+   * The test for the {@link jmona.CrossoverFunction#crossover(Object, Object)}
    * method in each traveling salesman problem CrossoverFunction test class.
    */
   @Test

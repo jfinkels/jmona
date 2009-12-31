@@ -293,7 +293,7 @@ public abstract class AbstractEvolutionContext<T extends DeepCopyable<T>>
    * 
    * @param function
    *          {@inheritDoc}
-   * @see jmona.EvolutionContext#setMutationFunction(jmona.IndividualMutationFunction)
+   * @see jmona.EvolutionContext#setMutationFunction(MutationFunction)
    */
   @Override
   public void setMutationFunction(final MutationFunction<T> function) {
