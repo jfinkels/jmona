@@ -27,6 +27,9 @@ import java.util.NoSuchElementException;
  * href="http://docs.python.org/library/functions.html#range">{@code range()}
  * </a> function.
  * 
+ * For large numbers, this class uses less memory than a Vector containing each
+ * integer in the interval.
+ * 
  * @author jfinkels
  */
 // TODO negative increments
