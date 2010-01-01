@@ -347,7 +347,7 @@
   <name>jmona</name>
   <description>A Java framework for evolutionary algorithms, including genetic 
   algorithms, genetic programming, and game-playing algorithms.</description>
-  <url>http://jfinkels.github.com/jmona/</url>
+  <url>http://www.cs.tufts.edu/~jfinke02/jmona</url>
   <inceptionYear>2009</inceptionYear>
   <licenses>
     <license>
@@ -395,13 +395,13 @@
       <uniqueVersion>false</uniqueVersion>
       <id>jmona.repo</id>
       <name>jmona repository</name>
-      <url>scp://moon.cs.tufts.edu/h/jfinke02/public_html/repo</url>
+      <url>scp://linux.cs.tufts.edu/h/jfinke02/public_html/repo</url>
       <layout>default</layout>
     </repository>
     <site>
       <id>jmona.website</id>
       <name>jmona website</name>
-      <url>scp:moon.cs.tufts.edu/h/jfinke02/public_html/jmona</url>
+      <url>scp://linux.cs.tufts.edu/h/jfinke02/public_html/jmona</url>
     </site>
   </distributionManagement>
   
