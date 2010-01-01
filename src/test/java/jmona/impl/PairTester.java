@@ -45,6 +45,16 @@ public class PairTester {
     assertSame(right, pair.right());
     assertTrue(pair.toString().contains(left.toString()));
     assertTrue(pair.toString().contains(right.toString()));
+    
+    pair.setLeft(right);
+    assertSame(right, pair.left());
+    assertSame(right, pair.right());
+    
+    pair.setRight(left);
+    assertSame(right, pair.left());
+    assertSame(left, pair.right());
   }
+  
+  
 
 }

@@ -30,9 +30,9 @@ package jmona.impl;
  */
 public class Pair<S, T> {
   /** The left object. */
-  private final S left;
+  private S left;
   /** The right object. */
-  private final T right;
+  private T right;
 
   /**
    * Instantiate a 2-tuple with the specified initial objects.
@@ -63,6 +63,26 @@ public class Pair<S, T> {
    */
   public T right() {
     return this.right;
+  }
+
+  /**
+   * Sets the left object.
+   * 
+   * @param newLeft
+   *          The left object.
+   */
+  public void setLeft(final S newLeft) {
+    this.left = newLeft;
+  }
+
+  /**
+   * Sets the right object.
+   * 
+   * @param newRight
+   *          The right object.
+   */
+  public void setRight(final T newRight) {
+    this.right = newRight;
   }
 
   /**
