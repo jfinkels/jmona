@@ -147,7 +147,7 @@ public class GameEvolutionContext<S extends Strategy & DeepCopyable<S>> extends
     }
 
     // initialize a population to hold the selections for the next generation
-    List<S> nextPopulation = new Vector<S>();
+    final List<S> nextPopulation = new Vector<S>();
 
     try {
       // select strategies from the current population to go to the next one
