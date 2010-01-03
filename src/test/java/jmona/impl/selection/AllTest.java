@@ -29,8 +29,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author Jeffrey Finkelstein
  */
 @RunWith(Suite.class)
-@SuiteClasses({ FitnessProportionateSelectionTester.class,
-    TournamentSelectionTester.class })
+@SuiteClasses({ FitnessComparatorTester.class,
+    FitnessProportionateSelectionTester.class, TournamentSelectionTester.class })
 public class AllTest {
 
 }
