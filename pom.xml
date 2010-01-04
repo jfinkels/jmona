@@ -226,6 +226,9 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changelog-plugin</artifactId>
         <version>${version.plugin.changelog}</version>
+        <configuration>
+          <displayFileDetailUrl>http://github.com/jfinkels/jmona/blob/master/</displayFileDetailUrl>
+        </configuration>
       </plugin> 
 
       <plugin> <!-- Checkstyle coding style violations report -->
