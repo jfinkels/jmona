@@ -25,8 +25,10 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.LoggingException;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
+import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -60,7 +62,12 @@ public class FitnessLoggingPostProcessorTester {
 
     final FitnessLoggingPostProcessor<ExampleIndividual> processor = new FitnessLoggingPostProcessor<ExampleIndividual>();
 
-    final String result = processor.message(context);
+    String result = null;
+    try {
+      result = processor.message(context);
+    } catch (final LoggingException exception) {
+      Util.fail(exception);
+    }
 
     assertNotNull(result);
     assertTrue(result.contains(String.valueOf(individual1.fitness())));

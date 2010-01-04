@@ -1,7 +1,7 @@
 /**
  * ExampleFitnessFunction.java
  * 
- * Copyright 2009 Jeffrey Finkelstein
+ * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -20,16 +20,18 @@
 package jmona.impl.example;
 
 import jmona.FitnessException;
-import jmona.FitnessFunction;
+import jmona.impl.MinimizingFitnessFunction;
 
 /**
  * An example FitnessFunction which simply gets the fitness of an Individual
  * from its fitness property.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
-public class ExampleFitnessFunction implements
-    FitnessFunction<ExampleIndividual> {
+public class ExampleFitnessFunction extends
+    MinimizingFitnessFunction<ExampleIndividual> {
+
   /**
    * Get the fitness from the fitness property of the specified Individual.
    * 
@@ -41,7 +43,7 @@ public class ExampleFitnessFunction implements
    *           Never throws this exception.
    */
   @Override
-  public double fitness(final ExampleIndividual individual)
+  public double rawFitness(final ExampleIndividual individual)
       throws FitnessException {
     final double fitness = individual.fitness();
 

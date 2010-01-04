@@ -33,18 +33,16 @@ import jmona.CrossoverException;
 import jmona.CrossoverFunction;
 import jmona.EvolutionException;
 import jmona.Factory;
-import jmona.FitnessException;
+import jmona.FitnessFunction;
+import jmona.IndependentSelectionFunction;
 import jmona.InitializationException;
 import jmona.MutationException;
 import jmona.MutationFunction;
 import jmona.SelectionException;
-import jmona.SelectionFunction;
 import jmona.functional.Range;
 import jmona.gp.Tree;
-import jmona.gp.impl.example.ExampleTreeEvaluator;
+import jmona.gp.impl.example.ExampleGPFitnessFunction;
 import jmona.gp.impl.example.ExampleTreeFactory;
-import jmona.impl.TargetedFitnessFunction;
-import jmona.impl.metrics.EuclideanMetric;
 import jmona.impl.selection.FitnessProportionateSelection;
 import jmona.test.Util;
 
@@ -96,16 +94,9 @@ public class GPEvolutionContextTester {
     final Set<Object> evaluationInputs = new HashSet<Object>();
     evaluationInputs.add(new Object());
 
-    final TargetedFitnessFunction<Tree, Integer> fitnessFunction = new TargetedFitnessFunction<Tree, Integer>();
-    fitnessFunction.setMapping(new ExampleTreeEvaluator());
-    fitnessFunction.setMetric(new EuclideanMetric<Integer>());
-    fitnessFunction.setTarget(0);
+    final FitnessFunction<Tree> fitnessFunction = new ExampleGPFitnessFunction();
+    this.context.setFitnessFunction(fitnessFunction);
 
-    try {
-      this.context.setFitnessFunction(fitnessFunction);
-    } catch (final FitnessException exception) {
-      Util.fail(exception);
-    }
   }
 
   /** Test method for running a full evolution. */
@@ -231,11 +222,10 @@ public class GPEvolutionContextTester {
       this.context.setMutationFunction(new GPMutationFunction());
     }
 
-    this.context.setSelectionFunction(new SelectionFunction<Tree>() {
-
+    this.context.setSelectionFunction(new IndependentSelectionFunction<Tree>() {
       @Override
-      public Tree select(final Map<Tree, Double> fitnesses)
-          throws SelectionException {
+      public Tree select(final List<Tree> aPopulation,
+          final FitnessFunction<Tree> fitnessFunction) throws SelectionException {
         throw new SelectionException();
       }
     });
@@ -248,7 +238,7 @@ public class GPEvolutionContextTester {
       this.context
           .setSelectionFunction(new FitnessProportionateSelection<Tree>());
     }
-    
+
   }
 
 }

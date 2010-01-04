@@ -22,10 +22,10 @@ package jmona.example.calc;
 import java.util.Set;
 
 import jmona.FitnessException;
-import jmona.FitnessFunction;
-import jmona.MappingException;
 import jmona.Function;
+import jmona.MappingException;
 import jmona.gp.Tree;
+import jmona.impl.MaximizingFitnessFunction;
 
 /**
  * Determines how close a Tree is to representing a target function.
@@ -33,10 +33,25 @@ import jmona.gp.Tree;
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
-public class CalcFitnessFunction implements FitnessFunction<Tree> {
+public class CalcFitnessFunction extends MaximizingFitnessFunction<Tree> {
 
   /** The Tree evaluator. */
   public static final CalcTreeEvaluator EVALUATOR = new CalcTreeEvaluator();
+  /** The inputs used by the EquivalenceTester. */
+  private Set<Double> evaluationInputs = null;
+  /** The target function. */
+  private Function<Double, Double> target = null;
+
+  /**
+   * Instantiates this FitnessFunction with the specified maximum possible raw
+   * fitness value.
+   * 
+   * @param maximumRawFitness
+   *          The maximum possible raw fitness value.
+   */
+  public CalcFitnessFunction(final double maximumRawFitness) {
+    super(maximumRawFitness);
+  }
 
   /**
    * Determines how close the function to which the specified Tree evaluates is
@@ -57,7 +72,7 @@ public class CalcFitnessFunction implements FitnessFunction<Tree> {
    * @see jmona.FitnessFunction#fitness(java.lang.Object)
    */
   @Override
-  public double fitness(final Tree tree) throws FitnessException {
+  public double rawFitness(final Tree tree) throws FitnessException {
     Function<Double, Double> function = null;
     try {
       function = EVALUATOR.execute(tree);
@@ -81,9 +96,6 @@ public class CalcFitnessFunction implements FitnessFunction<Tree> {
     return successes;
   }
 
-  /** The inputs used by the EquivalenceTester. */
-  private Set<Double> evaluationInputs = null;
-
   /**
    * Set the inputs used by the EquivalenceTester.
    * 
@@ -93,9 +105,6 @@ public class CalcFitnessFunction implements FitnessFunction<Tree> {
   public void setEvaluationInputs(final Set<Double> newEvaluationInputs) {
     this.evaluationInputs = newEvaluationInputs;
   }
-
-  /** The target function. */
-  private Function<Double, Double> target = null;
 
   /**
    * Set the target function.

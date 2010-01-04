@@ -26,10 +26,10 @@ import jmona.CopyingException;
 import jmona.CrossoverException;
 import jmona.DeepCopyable;
 import jmona.EvolutionException;
-import jmona.FitnessException;
 import jmona.MutationException;
 import jmona.SelectionException;
 import jmona.impl.AbstractEvolutionContext;
+import jmona.impl.AbstractGeneticEvolutionContext;
 
 /**
  * A default implementation of the evolution context interface, which provides
@@ -40,7 +40,7 @@ import jmona.impl.AbstractEvolutionContext;
  * @author Jeffrey Finkelstein
  */
 public class GAEvolutionContext<T extends DeepCopyable<T>> extends
-    AbstractEvolutionContext<T> {
+    AbstractGeneticEvolutionContext<T> {
 
   /**
    * Instantiate this evolution context with the specified initial population by
@@ -89,10 +89,10 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
         /**
          * Step 1: select two individuals
          */
-        individual1 = (T) this.selectionFunction().select(
-            this.currentFitnesses()).deepCopy();
-        individual2 = (T) this.selectionFunction().select(
-            this.currentFitnesses()).deepCopy();
+        individual1 = this.selectionFunction().select(this.currentPopulation(),
+            this.fitnessFunction()).deepCopy();
+        individual2 = this.selectionFunction().select(this.currentPopulation(),
+            this.fitnessFunction()).deepCopy();
 
         /**
          * Step 2: Perform crossover with probability p_crossover
@@ -120,22 +120,22 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
 
       // if the population size was an odd number, just add one more individual
       if ((currentSize & 1) == 1) {
-        nextPopulation.add((T) this.selectionFunction().select(
-            this.currentFitnesses()).deepCopy());
+        nextPopulation.add(this.selectionFunction().select(
+            this.currentPopulation(), this.fitnessFunction()).deepCopy());
       }
 
       // set the current population to the next generation
       this.setCurrentPopulation(nextPopulation);
 
       // recalculate the fitnesses of the current generation
-      this.recalculateFitnesses();
+      //this.recalculateFitnesses();
 
     } catch (final CrossoverException exception) {
       throw new EvolutionException(
           "Failed to perform crossover on two Individuals.", exception);
-    } catch (final FitnessException exception) {
-      throw new EvolutionException(
-          "Failed determining fitness of an individual.", exception);
+//    } catch (final FitnessException exception) {
+//      throw new EvolutionException(
+//          "Failed determining fitness of an individual.", exception);
     } catch (final MutationException exception) {
       throw new EvolutionException("Failed mutating an individual.", exception);
     } catch (final SelectionException exception) {

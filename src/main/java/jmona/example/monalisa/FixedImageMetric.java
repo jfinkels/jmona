@@ -1,7 +1,7 @@
 /**
- * ImageMetric.java
+ * FixedImageMetric.java
  * 
- * Copyright 2009 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -17,25 +17,25 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.impl.metrics;
+package jmona.example.monalisa;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.PixelGrabber;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.Metric;
 import jmona.MetricException;
 import jmona.functional.Range;
+import jmona.impl.metrics.EuclideanVectorMetric;
 
 /**
- * A metric which measures the distance between images in RGB color space, using
- * the sum of Euclidean distance between each of the pixels in RGB color space.
+ * A class which measures the distance between a target image and any other
+ * image, based on the color value of each corresponding pixel.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.3
  */
-public class ImageMetric implements Metric<BufferedImage> {
-
+public class FixedImageMetric {
   /** The location of the blue value of a pixel packed in an int. */
   public static final int BLUE = 8 * 0;
   /** A bit mask for a single byte. */
@@ -98,70 +98,76 @@ public class ImageMetric implements Metric<BufferedImage> {
     return result;
   }
 
-  /** The height of the images to be measured. */
-  private int imageHeight = 0;
-  /** The width of the images to be measured. */
-  private int imageWidth = 0;
+  /** The pixels of the target image. */
+  private final int[] targetPixels;
 
   /**
-   * Instantiate this metric with the specified height and width of images to be
-   * measured.
+   * Instantiates this object with the specified target image for comparison.
    * 
-   * @param initialImageWidth
-   *          The width of images to be measured.
-   * @param initialImageHeight
-   *          The height of images to be measured.
+   * @param targetImage
+   *          The image with which to compare other images when determining
+   *          distance.
+   * @throws InterruptedException
+   *           If the pixels fail to be read from the image.
    */
-  public ImageMetric(final int initialImageWidth, final int initialImageHeight) {
-    this.imageWidth = initialImageWidth;
-    this.imageHeight = initialImageHeight;
+  public FixedImageMetric(final BufferedImage targetImage)
+      throws InterruptedException {
+    // parameters for the pixelgrabber
+    final int startX = 0;
+    final int startY = 0;
+    final int arrayOffset = 0;
+    final int width = targetImage.getWidth();
+    final int height = targetImage.getHeight();
+    this.targetPixels = new int[width * height];
+
+    // instantiate a pixelgrabber
+    final PixelGrabber pixelGrabber = new PixelGrabber(targetImage, startX,
+        startY, width, height, this.targetPixels, arrayOffset, width);
+
+    // read the pixels from the image into the int array
+    pixelGrabber.grabPixels();
+
   }
 
   /**
-   * Get the distance between the two specified images determined by the
-   * Euclidean distance in RGB color space between each of their corresponding
-   * pixels.
+   * Gets the distance between the specified image and the target image defined
+   * in the constructor of this class, defined by the sum of the Euclidean
+   * distances between each of the pixels of the specified image and the target
+   * image in RGB color space.
    * 
-   * @param image1
-   *          An image.
-   * @param image2
-   *          Another image.
-   * @return The Euclidean distance between the two specified images in RGB
-   *         color space.
+   * @param image
+   *          The image whose distance from the target image is to be measured.
+   * @return The sum of the Euclidean distances between each pixel of this image
+   *         and the target image in RGB color space.
    * @throws MetricException
-   *           If there is a problem reading the pixels from the images.
-   * @see jmona.Metric#measure(java.lang.Object, java.lang.Object)
+   *           If there is a problem reading the pixels of this image, or if
+   *           there is problem measuring the distance between some two pixels.
    */
-  @Override
-  public double measure(final BufferedImage image1, final BufferedImage image2)
+  public double distanceFromTarget(final BufferedImage image)
       throws MetricException {
     // parameters for the pixelgrabber
     final int startX = 0;
     final int startY = 0;
     final int arrayOffset = 0;
-    final int scanlineWidth = this.imageWidth;
-    final int[] pixelsOfImage1 = new int[this.imageWidth * this.imageHeight];
-    final int[] pixelsOfImage2 = new int[this.imageWidth * this.imageHeight];
+    final int width = image.getWidth();
+    final int height = image.getHeight();
+    final int[] pixels = new int[width * height];
 
     // instantiate a pixelgrabber
-    final PixelGrabber pixelGrabber1 = new PixelGrabber(image1, startX, startY,
-        this.imageWidth, this.imageHeight, pixelsOfImage1, arrayOffset,
-        scanlineWidth);
-    final PixelGrabber pixelGrabber2 = new PixelGrabber(image2, startX, startY,
-        this.imageWidth, this.imageHeight, pixelsOfImage2, arrayOffset,
-        scanlineWidth);
+    final PixelGrabber pixelGrabber = new PixelGrabber(image, startX, startY,
+        width, height, pixels, arrayOffset, width);
 
     // read the pixels from the image into the int array
     try {
-      pixelGrabber1.grabPixels();
-      pixelGrabber2.grabPixels();
+      pixelGrabber.grabPixels();
     } catch (final InterruptedException exception) {
-      throw new MetricException("Failed to grab pixels from an image.");
+      throw new MetricException("Failed to read pixels from the image.",
+          exception);
     }
 
     double totalDistance = 0;
-    for (final int i : new Range(pixelsOfImage1.length)) {
-      totalDistance += distance(pixelsOfImage1[i], pixelsOfImage2[i]);
+    for (final int i : new Range(pixels.length)) {
+      totalDistance += distance(pixels[i], this.targetPixels[i]);
     }
 
     return totalDistance;

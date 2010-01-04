@@ -45,23 +45,23 @@ public class OnesFitnessFunctionTester {
   @Test
   public void testFitness() {
     final int length = 10;
-    final OnesFitnessFunction function = new OnesFitnessFunction();
+    final OnesFitnessFunction function = new OnesFitnessFunction(length);
     final List<Byte> individual = new Vector<Byte>();
 
     for (final int i : new Range(length)) {
       individual.add((byte) 0);
     }
 
-    assertEquals(0, function.fitness(individual), ZERO_DELTA);
+    assertEquals(0, function.rawFitness(individual), ZERO_DELTA);
 
     for (final int i : new Range(length)) {
       individual.set(i, (byte) 1);
-      assertEquals(i + 1, function.fitness(individual), ZERO_DELTA);
+      assertEquals(i + 1, function.rawFitness(individual), ZERO_DELTA);
     }
 
     for (int i = length - 1; i >= 0; --i) {
       individual.set(i, (byte) 0);
-      assertEquals(i, function.fitness(individual), ZERO_DELTA);
+      assertEquals(i, function.rawFitness(individual), ZERO_DELTA);
     }
 
   }

@@ -24,11 +24,17 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 import java.util.Map.Entry;
 
+import jmona.FitnessFunction;
+import jmona.SelectionException;
 import jmona.functional.Range;
+import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
+import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -62,34 +68,46 @@ public class FitnessProportionateSelectionTester {
    */
   @Test
   public void testEqualWeightSelect() {
-    final Map<ExampleIndividual, Double> fitnesses = new HashMap<ExampleIndividual, Double>();
+    final FitnessFunction<ExampleIndividual> fitnessFunction = new ExampleFitnessFunction();
+    final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
 
-    assertNull(this.function.select(fitnesses));
+    try {
+      assertNull(this.function.select(population, fitnessFunction));
+    } catch (final SelectionException exception) {
+      Util.fail(exception);
+    }
 
     ExampleIndividual individual = new ExampleIndividual();
-    fitnesses.put(individual, 1.0);
-    for (final int i : new Range(NUM_SELECTIONS)) {
-      assertSame(individual, this.function.select(fitnesses));
+    population.add(individual);
+
+    try {
+      for (final int i : new Range(NUM_SELECTIONS)) {
+        assertSame(individual, this.function
+            .select(population, fitnessFunction));
+      }
+    } catch (final SelectionException exception) {
+      Util.fail(exception);
     }
-    fitnesses.remove(individual);
 
     // initialize some individuals all with equal fitness
-    individual = null;
     for (final int i : new Range(NUM_INDIVIDUALS)) {
-      individual = new ExampleIndividual(NUM_INDIVIDUALS);
-      fitnesses.put(individual, individual.fitness());
+      population.add(new ExampleIndividual());
     }
 
+    // initialize the number of selections of each individual
     final Map<ExampleIndividual, Integer> numberOfSelections = new HashMap<ExampleIndividual, Integer>();
-    ExampleIndividual selectedIndividual = null;
-    for (final int i : new Range(NUM_SELECTIONS)) {
-      selectedIndividual = this.function.select(fitnesses);
-      Integer selections = numberOfSelections.get(selectedIndividual);
-      if (selections == null) {
-        numberOfSelections.put(selectedIndividual, 1);
-      } else {
-        numberOfSelections.put(selectedIndividual, (Integer) (selections + 1));
+    for (final ExampleIndividual i : population) {
+      numberOfSelections.put(i, 0);
+    }
+
+    try {
+      for (final int i : new Range(NUM_SELECTIONS)) {
+        individual = this.function.select(population, fitnessFunction);
+        numberOfSelections.put(individual,
+            numberOfSelections.get(individual) + 1);
       }
+    } catch (final SelectionException exception) {
+      Util.fail(exception);
     }
 
     int sum = 0;
@@ -114,9 +132,12 @@ public class FitnessProportionateSelectionTester {
    */
   @Test
   public void testSelectionEmptyMap() {
-    final Map<ExampleIndividual, Double> fitnesses = new HashMap<ExampleIndividual, Double>();
-    final ExampleIndividual individual = this.function.select(fitnesses);
-    assertNull(individual);
+    final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
+    try {
+      assertNull(this.function.select(population, new ExampleFitnessFunction()));
+    } catch (final SelectionException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
@@ -126,37 +147,44 @@ public class FitnessProportionateSelectionTester {
    */
   @Test
   public void testUnequalWeightSelect() {
-    final Map<ExampleIndividual, Double> fitnesses = new HashMap<ExampleIndividual, Double>();
 
-    ExampleIndividual individual = new ExampleIndividual();
+    final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
+    ExampleIndividual individual = new ExampleIndividual(1);
+    population.add(individual);
 
-    fitnesses.put(individual, 1.0);
-    for (final int i : new Range(NUM_SELECTIONS)) {
-      assertSame(individual, this.function.select(fitnesses));
+    try {
+      for (final int i : new Range(NUM_SELECTIONS)) {
+        assertSame(individual, this.function.select(population,
+            new ExampleFitnessFunction()));
+      }
+    } catch (final SelectionException exception) {
+      Util.fail(exception);
     }
-    fitnesses.remove(individual);
+    population.clear();
 
     // initialize some individuals all with equal fitness
     individual = null;
     for (final int i : new Range(NUM_INDIVIDUALS / 2)) {
-      individual = new ExampleIndividual(1.0);
-      fitnesses.put(individual, individual.fitness());
+      population.add(new ExampleIndividual(1.0));
     }
     for (final int i : new Range(NUM_INDIVIDUALS / 2, NUM_INDIVIDUALS)) {
-      individual = new ExampleIndividual(2.0);
-      fitnesses.put(individual, individual.fitness());
+      population.add(new ExampleIndividual(2.0));
     }
 
     final Map<ExampleIndividual, Integer> numberOfSelections = new HashMap<ExampleIndividual, Integer>();
-    ExampleIndividual selectedIndividual = null;
-    for (final int i : new Range(NUM_SELECTIONS)) {
-      selectedIndividual = this.function.select(fitnesses);
-      Integer selections = numberOfSelections.get(selectedIndividual);
-      if (selections == null) {
-        numberOfSelections.put(selectedIndividual, 1);
-      } else {
-        numberOfSelections.put(selectedIndividual, (Integer) (selections + 1));
+    for (final ExampleIndividual i : population) {
+      numberOfSelections.put(i, 0);
+    }
+
+    try {
+      for (final int i : new Range(NUM_SELECTIONS)) {
+        individual = this.function.select(population,
+            new ExampleFitnessFunction());
+        numberOfSelections.put(individual,
+            numberOfSelections.get(individual) + 1);
       }
+    } catch (final SelectionException exception) {
+      Util.fail(exception);
     }
 
     // get the total number of selections made over all individuals

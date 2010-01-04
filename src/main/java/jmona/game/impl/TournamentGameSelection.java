@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * TournamentGameSelection.java
  * 
- * Copyright 2009 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -17,21 +17,23 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.monalisa;
+package jmona.game.impl;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import java.util.List;
+
+import jmona.SelectionException;
+import jmona.SelectionFunction;
+import jmona.game.Strategy;
+import jmona.game.TwoPlayerGame;
 
 /**
- * Runs all tests in this package.
- * 
  * @author Jeffrey Finkelstein
+ * @since 0.3
  */
-@RunWith(Suite.class)
-@SuiteClasses({ ColoredPolygonFactoryTester.class,
-    ColoredPolygonMutationFunctionTester.class, ColoredPolygonTester.class,
-    ConverterTester.class, ImageOutputPostProcessorTester.class })
-public class AllTest {
+public interface TournamentGameSelection<S extends Strategy> extends
+    SelectionFunction<S> {
+
+  public S select(final List<S> population, final TwoPlayerGame<S> game)
+      throws SelectionException;
 
 }

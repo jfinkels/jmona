@@ -19,11 +19,13 @@
  */
 package jmona.impl.selection;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.List;
 
-import jmona.SelectionFunction;
+import jmona.FitnessFunction;
+import jmona.IndependentSelectionFunction;
+import jmona.MappingException;
+import jmona.SelectionException;
+import jmona.functional.Functional;
 import jmona.impl.Util;
 
 /**
@@ -35,67 +37,78 @@ import jmona.impl.Util;
  */
 // TODO allow for stochastic universal sampling
 // TODO what happens on Double.POSITIVE_INFINITY fitnesses?
-public class FitnessProportionateSelection<T> implements SelectionFunction<T> {
+public class FitnessProportionateSelection<T> implements
+    IndependentSelectionFunction<T> {
 
   /**
-   * Get the sum of the specified Collection of values.
-   * 
-   * @param values
-   *          The Collection of values to sum.
-   * @return The sum of the specified Collection of values.
+   * The function which gets adjusted fitnesses from individuals in the
+   * population using a FitnessFunction.
    */
-  private static double sum(final Collection<Double> values) {
-    double result = 0.0;
-    for (final Double value : values) {
-      result += value;
-    }
-    return result;
-  }
+  private final AdjustedFitnessGetter<T> adjustedFitnessGetter = new AdjustedFitnessGetter<T>();
 
   /**
    * Fitness-proportionate selection, also known as "roulette wheel selection",
    * which chooses an individual from the specified mapping with a probability
    * weighted by the corresponding fitnesses.
    * 
-   * @param fitnesses
-   *          The mapping from Individual to fitnesses.
+   * @param population
+   *          The list of individuals from which to select.
+   * @param fitnessFunction
+   *          The FitnessFunction which determines the adjusted fitness of
+   *          individuals in the specified population.
    * @return An Individual chosen with probability weighted by corresponding
    *         fitnesses.
+   * @throws SelectionException
+   *           If there is a problem determining the adjusted fitnesses of the
+   *           population.
    * @see jmona.SelectionFunction#select(java.util.Map)
    */
   // TODO more documentation on fitness-proportionate selection, i.e. formulae
   @Override
-  public T select(final Map<T, Double> fitnesses) {
-    // get the sum of all fitnesses
-    final double fitnessesSum = sum(fitnesses.values());
-
+  public T select(final List<T> population,
+      final FitnessFunction<T> fitnessFunction) throws SelectionException {
     // if the map is empty, return null
-    if (fitnesses.size() == 0) {
+    if (population.size() == 0) {
       return null;
     }
 
+    // set the fitness function with which to get the adjusted fitnesses
+    this.adjustedFitnessGetter.setFitnessFunction(fitnessFunction);
+
+    // get the list of fitnesses in the same order of the population
+    List<Double> fitnesses = null;
+    try {
+      fitnesses = Functional.map(this.adjustedFitnessGetter, population);
+    } catch (final MappingException exception) {
+      throw new SelectionException(
+          "Failed to get adjusted fitnesses of the population.", exception);
+    }
+
+    // get the sum of all fitnesses
+    final double fitnessesSum = Functional.sum(fitnesses);
+
     // if no individual has any fitness, just return a random one
     if (fitnessesSum == 0.0) {
-      return Util.randomFromCollection(fitnesses.keySet());
+      return Util.randomFromCollection(population);
     }
 
     // choose a number between 0 and the sum of all fitnesses
     final double selectionPointer = Math.random() * fitnessesSum;
 
-    // initialize some local variables
+    // iterate over all entries in the list of fitnesses
+    T result = null;
     double currentPointer = 0.0;
-    double currentFitness = 0.0;
-
-    // iterate over all entries in the fitnesses map
-    for (final Entry<T, Double> entry : fitnesses.entrySet()) {
-      currentFitness = entry.getValue();
+    int i = 0;
+    for (final double currentFitness : fitnesses) {
       if (currentPointer < selectionPointer
           && currentPointer + currentFitness >= selectionPointer) {
-        return entry.getKey();
+        result = population.get(i);
+        break;
       }
       currentPointer += currentFitness;
+      i += 1;
     }
 
-    return null;
+    return result;
   }
 }

@@ -19,12 +19,17 @@
  */
 package jmona.impl;
 
+import java.util.List;
+
 import jmona.CompletionException;
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.FitnessException;
 import jmona.FitnessFunction;
+import jmona.GeneticEvolutionContext;
+import jmona.MappingException;
 import jmona.MaxFitnessCompletionCondition;
+import jmona.functional.Functional;
+import jmona.functional.GreaterThanOrEqualTo;
 
 /**
  * CompletionCondition used to determine whether an EvolutionContext contains an
@@ -61,7 +66,16 @@ public class DefaultMaxFitnessCompletionCondition<T extends DeepCopyable<T>>
   @Override
   public boolean isSatisfied(final EvolutionContext<T> context)
       throws CompletionException {
-    final FitnessFunction<T> fitnessFunction = context.fitnessFunction();
+
+    if (!(context instanceof GeneticEvolutionContext<?>)) {
+      throw new CompletionException(
+          "Cannot get a fitness function from the EvolutionContext unless it is a GeneticEvolutionContext. Class of EvolutionContext is "
+              + context.getClass());
+    }
+
+    // get the fitness function from the EvolutionContext
+    final FitnessFunction<T> fitnessFunction = ((GeneticEvolutionContext<T>) context)
+        .fitnessFunction();
 
     if (fitnessFunction == null) {
       throw new CompletionException(
@@ -69,16 +83,21 @@ public class DefaultMaxFitnessCompletionCondition<T extends DeepCopyable<T>>
     }
 
     try {
-      for (final T individual : context.currentPopulation()) {
-        if (fitnessFunction.fitness(individual) >= this.maxFitness) {
-          return true;
-        }
-      }
-    } catch (final FitnessException exception) {
-      throw new CompletionException(
-          "Could not determine fitness of an individual.", exception);
+      // get the list of fitnesses
+      final List<Double> fitnesses = Functional.map(new RawFitnessGetter<T>(),
+          context.currentPopulation());
+      
+      // map the list to booleans representing whether any is greater than or equal to the max fitness
+      final List<Boolean> greaterThan = Functional.map(
+          new GreaterThanOrEqualTo(this.maxFitness), fitnesses);
+      
+      // return whether any fitness is greater than the max fitness
+      return Functional.any(greaterThan);
+      
+    } catch (final MappingException exception) {
+      throw new CompletionException("Failed to get fitnesses.", exception);
     }
-    return false;
+
   }
 
   /**

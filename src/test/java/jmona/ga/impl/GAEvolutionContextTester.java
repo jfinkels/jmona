@@ -73,18 +73,7 @@ public class GAEvolutionContextTester {
     context.setCrossoverFunction(new ExampleBadCrossoverFunction());
     context.setMutationFunction(new ExampleBadMutationFunction());
     context.setSelectionFunction(new ExampleBadSelectionFunction());
-
-    try {
-      context.setFitnessFunction(new ExampleBadFitnessFunction());
-      Util.shouldHaveThrownException();
-    } catch (final FitnessException exception) {
-      assertTrue(exception instanceof FitnessException);
-      try {
-        context.setFitnessFunction(new ExampleFitnessFunction());
-      } catch (final FitnessException exception2) {
-        Util.fail(exception2);
-      }
-    }
+    context.setFitnessFunction(new ExampleBadFitnessFunction());
 
     context.setMutationProbability(1);
     context.setCrossoverProbability(1);
@@ -147,11 +136,7 @@ public class GAEvolutionContextTester {
     context.setMutationFunction(new ExampleMutationFunction());
     context
         .setSelectionFunction(new FitnessProportionateSelection<ExampleIndividual>());
-    try {
-      context.setFitnessFunction(new ExampleFitnessFunction());
-    } catch (final FitnessException exception) {
-      Util.fail(exception);
-    }
+    context.setFitnessFunction(new ExampleFitnessFunction());
 
     assertEquals(0, context.currentGeneration());
 

@@ -29,8 +29,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author Jeffrey Finkelstein
  */
 @RunWith(Suite.class)
-@SuiteClasses({ EuclideanMetricTester.class,
-    EuclideanVectorMetricTester.class, ImageMetricTester.class })
+@SuiteClasses({ EuclideanMetricTester.class, EuclideanVectorMetricTester.class })
 public class AllTest {
 
 }

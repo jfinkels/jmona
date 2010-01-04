@@ -64,26 +64,27 @@ public class TSPFitnessFunctionTester {
     tour.add(0);
     tour.add(1);
 
-    assertEquals(1.0 / (weights[0][1] + weights[1][0]), function.fitness(tour),
-        ZERO_DELTA);
+    assertEquals(1.0 / (weights[0][1] + weights[1][0]), function
+        .rawFitness(tour), ZERO_DELTA);
 
     // this tour is 1 -> 0 -> 1
     tour.clear();
     tour.add(1);
     tour.add(0);
 
-    assertEquals(1.0 / (weights[1][0] + weights[0][1]), function.fitness(tour),
-        ZERO_DELTA);
+    assertEquals(1.0 / (weights[1][0] + weights[0][1]), function
+        .rawFitness(tour), ZERO_DELTA);
 
     tour.clear();
     tour.add(0);
 
-    assertEquals(Double.POSITIVE_INFINITY, function.fitness(tour), ZERO_DELTA);
+    assertEquals(Double.POSITIVE_INFINITY, function.rawFitness(tour),
+        ZERO_DELTA);
 
     tour.clear();
 
     try {
-      function.fitness(tour);
+      function.rawFitness(tour);
       Util.shouldHaveThrownException();
     } catch (final IllegalArgumentException exception) {
       // tour has size 0

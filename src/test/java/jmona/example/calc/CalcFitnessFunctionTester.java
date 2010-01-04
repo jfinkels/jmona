@@ -54,7 +54,7 @@ public class CalcFitnessFunctionTester {
    */
   @Test
   public void testFitness() {
-    final CalcFitnessFunction function = new CalcFitnessFunction();
+    final CalcFitnessFunction function = new CalcFitnessFunction(2);
     final Node root = new AbstractCalcTerminalNode("x") {
       @Override
       public Function<Double, Double> evaluate() throws EvaluationException {
@@ -69,7 +69,7 @@ public class CalcFitnessFunctionTester {
     final Tree tree = new DefaultTree(root);
 
     try {
-      function.fitness(tree);
+      function.rawFitness(tree);
       Util.shouldHaveThrownException();
     } catch (final FitnessException exception) {
       assertTrue(exception.getCause() instanceof MappingException);
@@ -85,7 +85,7 @@ public class CalcFitnessFunctionTester {
     function.setTarget(new ConstantFunction<Double, Double>(1.0));
 
     try {
-      assertEquals(2, function.fitness(tree), ZERO_DELTA);
+      assertEquals(2, function.rawFitness(tree), ZERO_DELTA);
     } catch (final FitnessException exception) {
       Util.fail(exception);
     }

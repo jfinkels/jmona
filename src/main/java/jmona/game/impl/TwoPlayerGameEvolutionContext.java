@@ -26,11 +26,8 @@ import jmona.CopyingException;
 import jmona.DeepCopyable;
 import jmona.EvolutionException;
 import jmona.SelectionException;
-import jmona.functional.Range;
-import jmona.game.GameplayException;
 import jmona.game.Strategy;
 import jmona.game.TwoPlayerGame;
-import jmona.game.TwoPlayerGameResult;
 import jmona.impl.AbstractEvolutionContext;
 
 /**
@@ -46,6 +43,8 @@ public class TwoPlayerGameEvolutionContext<S extends Strategy & DeepCopyable<S>>
 
   /** The game to play in this evolution. */
   private TwoPlayerGame<S> game = null;
+  /** The tournament selection function. */
+  private TournamentGameSelection<S> tournament = null;
 
   /**
    * Instantiate this EvolutionContext with the specified initial Population by
@@ -62,15 +61,19 @@ public class TwoPlayerGameEvolutionContext<S extends Strategy & DeepCopyable<S>>
    * Perform some sanity checks, that is, check that all necessary properties
    * have been set.
    * 
-   * The necessary properties are the game, and the SelectionFunction.
+   * The necessary properties are the game, and the TournamentGameSelection.
+   * 
+   * @throws NullPointerException
+   *           If one of the necessary properties have not been set on this
+   *           object.
    */
-  @Override
   protected void sanityCheck() {
     if (this.game == null) {
       throw new NullPointerException("Game has not been set.");
     }
-    if (this.selectionFunction() == null) {
-      throw new NullPointerException("Selection function has not been set.");
+
+    if (this.tournament == null) {
+      throw new NullPointerException("Tournament has not been set.");
     }
   }
 
@@ -82,6 +85,10 @@ public class TwoPlayerGameEvolutionContext<S extends Strategy & DeepCopyable<S>>
    */
   public void setGame(final TwoPlayerGame<S> newGame) {
     this.game = newGame;
+  }
+
+  public void setTournament(final TournamentGameSelection<S> newTournament) {
+    this.tournament = newTournament;
   }
 
   /**
@@ -101,60 +108,14 @@ public class TwoPlayerGameEvolutionContext<S extends Strategy & DeepCopyable<S>>
       throw new EvolutionException("Sanity check failed.", exception);
     }
 
-    // each strategy plays each other strategy in the population once
-    TwoPlayerGameResult<S> gameResult = null;
-    S strategy1 = null;
-    S strategy2 = null;
-    for (final int i : new Range(this.currentPopulation().size())) {
-      for (final int j : new Range(i + 1, this.currentPopulation().size())) {
-
-        strategy1 = this.currentPopulation().get(i);
-        strategy2 = this.currentPopulation().get(j);
-
-        try {
-          gameResult = this.game.play(strategy1, strategy2);
-        } catch (final GameplayException exception) {
-          throw new EvolutionException("Failed to complete a game.", exception);
-        }
-
-        // at the end of the game, reset the strategies
-        strategy1.reset();
-        strategy2.reset();
-
-        Double currentScore = null;
-        if (this.currentFitnesses().containsKey(strategy1)) {
-          // get the current score of the strategy
-          currentScore = this.currentFitnesses().get(strategy1);
-
-          // add the current score to the score just earned
-          this.currentFitnesses().put(strategy1,
-              currentScore + gameResult.scoreOfStrategy1());
-        } else {
-          this.currentFitnesses().put(strategy1, gameResult.scoreOfStrategy1());
-        }
-
-        if (this.currentFitnesses().containsKey(strategy2)) {
-          // get the current score of the strategy
-          currentScore = this.currentFitnesses().get(strategy2);
-
-          // add the current score to the score just earned
-          this.currentFitnesses().put(strategy2,
-              currentScore + gameResult.scoreOfStrategy2());
-        } else {
-          this.currentFitnesses().put(strategy2, gameResult.scoreOfStrategy2());
-        }
-      }
-    }
-
     // initialize a population to hold the selections for the next generation
     final List<S> nextPopulation = new Vector<S>();
 
     try {
       // select strategies from the current population to go to the next one
-      // TODO is it right to clone every strategy?
       while (nextPopulation.size() < this.currentPopulation().size()) {
-        nextPopulation.add((S) this.selectionFunction().select(
-            this.currentFitnesses()).deepCopy());
+        nextPopulation.add(this.tournament.select(this.currentPopulation(),
+            this.game).deepCopy());
       }
     } catch (final SelectionException exception) {
       throw new EvolutionException("Failed to select a Strategy.", exception);
@@ -164,9 +125,6 @@ public class TwoPlayerGameEvolutionContext<S extends Strategy & DeepCopyable<S>>
 
     // set the population for the next generation
     this.setCurrentPopulation(nextPopulation);
-
-    // reset the current known fitnesses for the next generation
-    this.currentFitnesses().clear();
   }
 
 }

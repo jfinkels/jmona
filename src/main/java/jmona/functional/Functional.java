@@ -23,8 +23,8 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.Condition;
-import jmona.MappingException;
 import jmona.Function;
+import jmona.MappingException;
 
 /**
  * Utility class exposing methods borrowed from functional programming.
@@ -35,8 +35,51 @@ import jmona.Function;
 public final class Functional {
 
   /**
+   * Determines whether every element in the specified Iterable is true (similar
+   * to Python's <a
+   * href="http://docs.python.org/library/functions.html#all">all()</a> built-in
+   * function).
+   * 
+   * @param iterable
+   *          The iterable to check for any false values.
+   * @return Whether every value in the specified iterable is true.
+   */
+  public static boolean all(final Iterable<Boolean> iterable) {
+
+    for (final boolean element : iterable) {
+      if (!element) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  /**
+   * Determines whether any element in the specified Iterable is true (similar
+   * to Python's <a
+   * href="http://docs.python.org/library/functions.html#any">any()</a> built-in
+   * function).
+   * 
+   * @param iterable
+   *          The iterable to check for any true values.
+   * @return Whether any value in the specified iterable is true.
+   */
+  public static boolean any(final Iterable<Boolean> iterable) {
+
+    for (final boolean element : iterable) {
+      if (element) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  /**
    * Gets a list containing references to all elements of the specified input
-   * List which satisfy the specified condition (similar to Python's built-in
+   * Iterable which satisfy the specified condition (similar to Python's
+   * built-in
    * 
    * <code><a href="http://docs.python.org/library/functions.html#filter">filter</a></code>
    * function).
@@ -129,6 +172,24 @@ public final class Functional {
     }
 
     return result;
+  }
+
+  /**
+   * Returns the sum of each of the bytes over which the specified iterable
+   * iterates.
+   * 
+   * @param iterable
+   *          The iterable over which to sum the bytes.
+   * @return The sum of the bytes over which the specified iterable iterates.
+   */
+  public static int sumBytes(final Iterable<Byte> iterable) {
+    int sum = 0;
+
+    for (final Byte b : iterable) {
+      sum += b;
+    }
+
+    return sum;
   }
 
   /** Instantiation disallowed except by subclasses. */

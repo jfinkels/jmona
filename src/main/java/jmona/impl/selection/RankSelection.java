@@ -1,7 +1,7 @@
 /**
- * ExampleEvolutionContext.java
+ * RankSelection.java
  * 
- * Copyright 2009 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -17,37 +17,29 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.impl.example;
+package jmona.impl.selection;
 
 import java.util.List;
 
-import jmona.impl.AbstractGeneticEvolutionContext;
+import jmona.FitnessFunction;
+import jmona.IndependentSelectionFunction;
 
 /**
- * An example EvolutionContext.
- * 
  * @author Jeffrey Finkelstein
+ * @since 0.3
  */
-public class ExampleEvolutionContext extends
-    AbstractGeneticEvolutionContext<ExampleIndividual> {
+public class RankSelection<T> implements IndependentSelectionFunction<T> {
 
-  /**
-   * Instantiate this EvolutionContext by calling the corresponding constructor
-   * in the superclass.
+  /*
+   * (non-Javadoc)
    * 
-   * @param initialPopulation
-   *          The initial population for this EvolutionContext.
-   */
-  public ExampleEvolutionContext(final List<ExampleIndividual> initialPopulation) {
-    super(initialPopulation);
-  }
-
-  /**
-   * Does nothing.
+   * @see jmona.SelectionFunction#select(java.util.List, jmona.FitnessFunction)
    */
   @Override
-  public void executeGenerationStep() {
-    // intentionally unimplemented
+  public T select(final List<T> population,
+      final FitnessFunction<T> fitnessFunction) {
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }

@@ -21,6 +21,8 @@ package jmona.impl;
 
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
+import jmona.LoggingException;
+import jmona.ProcessingException;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -38,11 +40,17 @@ import org.apache.log4j.Logger;
  */
 public abstract class LoggingPostProcessor<T extends DeepCopyable<T>> extends
     PeriodicPostProcessor<T> {
-
   /** The default level at which to log information. */
   public static final Level DEFAULT_LOGGING_LEVEL = Level.INFO;
   /** The default format of the message to log. */
   public static final String DEFAULT_MESSAGE_FORMAT = "Generation %d: %s";
+  /**
+   * The Java system property whose value is the line separator character on
+   * this system.
+   */
+  public static final String NEWLINE_PROPERTY = "line.separator";
+  /** The line separator character on this system. */
+  public static final String NEWLINE = System.getProperty(NEWLINE_PROPERTY);
   /** The Logger for this class. */
   private final Logger logger = Logger.getLogger(this.getClass());
   /** The level at which to log information. */
@@ -76,20 +84,30 @@ public abstract class LoggingPostProcessor<T extends DeepCopyable<T>> extends
    * @param context
    *          The EvolutionContext from which to get information.
    * @return The message to log.
+   * @throws LoggingException
+   *           If there is a problem logging a message.
    */
-  protected abstract String message(final EvolutionContext<T> context);
+  protected abstract String message(final EvolutionContext<T> context)
+      throws LoggingException;
 
   /**
    * Log a message.
    * 
    * @param context
    *          The EvolutionContext containing the current population.
+   * @throws ProcessingException
+   *           If there was a problem logging a message.
    * @see jmona.PostProcessor#process(jmona.EvolutionContext)
    */
   @Override
-  protected void processAtInterval(final EvolutionContext<T> context) {
-    this.log(String.format(DEFAULT_MESSAGE_FORMAT, context.currentGeneration(),
-        this.message(context)));
+  protected void processAtInterval(final EvolutionContext<T> context)
+      throws ProcessingException {
+    try {
+      this.log(String.format(DEFAULT_MESSAGE_FORMAT, context.currentGeneration(),
+          this.message(context)));
+    } catch (final LoggingException exception) {
+      throw new ProcessingException("Failed to log a message.", exception);
+    }
   }
 
   /**

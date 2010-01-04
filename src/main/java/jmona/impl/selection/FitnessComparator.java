@@ -1,7 +1,7 @@
 /**
  * FitnessComparator.java
  * 
- * Copyright 2009 Jeffrey Finkelstein
+ * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -21,47 +21,50 @@ package jmona.impl.selection;
 
 import java.io.Serializable;
 import java.util.Comparator;
-import java.util.Map;
+
+import jmona.ComparisonException;
+import jmona.FitnessException;
 
 /**
- * A Comparator for individuals in an evolution based on their fitnesses.
+ * A Comparator for individuals in an evolution based on their standardized
+ * fitnesses.
  * 
  * @param <T>
  *          The type of individual to compare based on fitness.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
-public class FitnessComparator<T> implements Comparator<T>, Serializable {
+public class FitnessComparator<T> extends FitnessFunctionCollaborator<T>
+    implements Comparator<T>, Serializable {
 
-  /** Default generated serial version UID.  */
+  /** Default generated serial version UID. */
   private static final long serialVersionUID = 8269989948538378807L;
-  /** The mapping from individual to fitness. */
-  private Map<T, Double> fitnesses = null;
 
   /**
-   * Set the mapping from individual to fitness.
+   * Compare the standardized fitness of the specified individuals as determined
+   * by the FitnessFunction set in the {@link #fitnessFunction} property.
    * 
-   * @param newFitnesses
-   *          The mapping from individual to fitness.
-   */
-  public void setFitnesses(final Map<T, Double> newFitnesses) {
-    this.fitnesses = newFitnesses;
-  }
-
-  /**
-   * Compare the fitness of the specified objects with respect to the mapping
-   * specified in the {@link #setFitnesses(Map)} method.
-   * 
-   * @param object1
+   * @param individual1
    *          An individual.
-   * @param object2
+   * @param individual2
    *          Another individual.
    * @return The result of the comparison of their fitnesses using the
-   *         {@link Double#compareTo(Double)} method.
+   *         {@link Double#compare(double, double)} method.
+   * @throws ComparisonException
+   *           If the FitnessFunction throws an Exception when determining the
+   *           fitness of an individual.
    * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
    */
   @Override
-  public int compare(final T object1, final T object2) {
-    return this.fitnesses.get(object1).compareTo(this.fitnesses.get(object2));
+  public int compare(final T individual1, final T individual2) {
+    try {
+      return Double
+          .compare(this.fitnessFunction().standardizedFitness(individual1),
+              this.fitnessFunction().standardizedFitness(individual2));
+    } catch (final FitnessException exception) {
+      throw new ComparisonException(
+          "Failed to get the standardized fitness of an individual.", exception);
+    }
   }
 
 }

@@ -25,6 +25,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.HashMap;
 import java.util.Map;
 
+import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Test;
@@ -39,22 +40,22 @@ public class FitnessComparatorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.FitnessComparator#setFitnesses(java.util.Map)}.
+   * {@link jmona.impl.selection.FitnessComparator#setFitnessFunction(java.util.Map)}.
    */
   @Test
   public void testSetFitnesses() {
     final FitnessComparator<ExampleIndividual> comparator = new FitnessComparator<ExampleIndividual>();
     final Map<ExampleIndividual, Double> fitnesses = new HashMap<ExampleIndividual, Double>();
 
-    final ExampleIndividual individual1 = new ExampleIndividual(0);
-    final ExampleIndividual individual2 = new ExampleIndividual(-1);
-    final ExampleIndividual individual3 = new ExampleIndividual(1);
+    final ExampleIndividual individual1 = new ExampleIndividual(1);
+    final ExampleIndividual individual2 = new ExampleIndividual(0);
+    final ExampleIndividual individual3 = new ExampleIndividual(2);
 
     fitnesses.put(individual1, individual1.fitness());
     fitnesses.put(individual2, individual2.fitness());
     fitnesses.put(individual3, individual3.fitness());
 
-    comparator.setFitnesses(fitnesses);
+    comparator.setFitnessFunction(new ExampleFitnessFunction());
 
     assertEquals(0, comparator.compare(individual1, individual1));
     assertTrue(comparator.compare(individual1, individual2) > 0);

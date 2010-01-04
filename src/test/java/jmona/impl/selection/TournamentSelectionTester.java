@@ -19,16 +19,15 @@
  */
 package jmona.impl.selection;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Vector;
 
+import jmona.FitnessFunction;
 import jmona.functional.Range;
+import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Before;
@@ -48,9 +47,7 @@ public class TournamentSelectionTester {
   /** Zero. */
   public static final double ZERO_DELTA = 0.0;
   /** All individuals in the tournament. */
-  private List<ExampleIndividual> allIndividuals = null;
-  /** The fitnesses from which to select. */
-  private Map<ExampleIndividual, Double> fitnesses = null;
+  private List<ExampleIndividual> population = null;
   /** The SelectionFunction under test. */
   private TournamentSelection<ExampleIndividual> function = null;
 
@@ -58,16 +55,12 @@ public class TournamentSelectionTester {
   @Before
   public final void setUp() {
     this.function = new TournamentSelection<ExampleIndividual>();
-    this.fitnesses = new HashMap<ExampleIndividual, Double>();
 
-    this.allIndividuals = new Vector<ExampleIndividual>();
+    this.population = new Vector<ExampleIndividual>();
     for (final int i : new Range(NUM_INDIVIDUALS)) {
-      this.allIndividuals.add(new ExampleIndividual(i));
+      this.population.add(new ExampleIndividual(i));
     }
 
-    for (final ExampleIndividual individual : this.allIndividuals) {
-      this.fitnesses.put(individual, individual.fitness());
-    }
   }
 
   /**
@@ -76,32 +69,23 @@ public class TournamentSelectionTester {
    */
   @Test
   public void testSelect() {
-    for (final int i : new Range(NUM_SELECTIONS)) {
-      final ExampleIndividual selectedIndividual = this.function
-          .select(this.fitnesses);
-      assertSame(this.allIndividuals.get((int) selectedIndividual.fitness()),
-          selectedIndividual);
-    }
 
-    assertEquals(NUM_INDIVIDUALS, this.fitnesses.size());
+    final FitnessFunction<ExampleIndividual> fitnessFunction = new ExampleFitnessFunction();
 
-    for (final ExampleIndividual individual : this.allIndividuals) {
-      assertTrue(this.fitnesses.containsKey(individual));
-      assertEquals(individual.fitness(), this.fitnesses.get(individual),
-          ZERO_DELTA);
-    }
-
-    // add some more individuals to the fitnesses map
     ExampleIndividual individual = null;
+    for (final int i : new Range(NUM_SELECTIONS)) {
+      individual = this.function.select(this.population, fitnessFunction);
+      assertTrue(this.population.contains(individual));
+    }
+
+    // add some more individuals
     for (final int i : new Range(NUM_INDIVIDUALS, 2 * NUM_INDIVIDUALS)) {
-      individual = new ExampleIndividual(i);
-      this.allIndividuals.add(individual);
-      this.fitnesses.put(individual, individual.fitness());
+      this.population.add(new ExampleIndividual(i));
     }
 
     for (final int i : new Range(NUM_INDIVIDUALS)) {
-      individual = this.function.select(this.fitnesses);
-      // TODO assertions to make here?
+      individual = this.function.select(this.population, fitnessFunction);
+      assertTrue(this.population.contains(individual));
     }
   }
 

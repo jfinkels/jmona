@@ -21,18 +21,16 @@ package jmona.example.tsp;
 
 import java.util.List;
 
-import jmona.FitnessFunction;
-import jmona.functional.Range;
+import jmona.impl.MinimizingFitnessFunction;
 
 /**
- * 
- * We can't use the ready-made {@link jmona.ga.impl.GAFitnessFunction} here
- * because we don't know the target minimum length of the tour, so we have no
- * basis of comparison.
+ * A FitnessFunction which determines the raw fitness of a tour based on its
+ * total distance in a graph.
  * 
  * @author Jeffrey Finkelstein
  */
-public class TSPFitnessFunction implements FitnessFunction<List<Integer>> {
+public class TSPFitnessFunction extends
+    MinimizingFitnessFunction<List<Integer>> {
 
   /** The graph containing distances between cities. */
   private final DirectedGraph<Integer, Double> graph;
@@ -49,41 +47,23 @@ public class TSPFitnessFunction implements FitnessFunction<List<Integer>> {
   }
 
   /**
-   * Get the fitness of the specified Tour, which is the multiplicative inverse
-   * of its total distance, based on the Graph specified in the constructor to
-   * this class.
+   * Gets the total distance of the specified tour, based on the edge weights in
+   * the Graph specified in the constructor to this class.
    * 
    * @param tour
-   *          The Tour whose fitness will be determined.
-   * @return The fitness of the specified Tour.
+   *          The tour whose raw fitness will be determined.
+   * @return The total distance of this tour.
    * @throws IllegalArgumentException
-   *           If the specified tour is empty.
+   *           If the specified tour is empty (that is, it has size 0).
    * @see jmona.FitnessFunction#fitness(Object)
    */
   @Override
-  public double fitness(final List<Integer> tour) {
+  public double rawFitness(final List<Integer> tour) {
     if (tour.size() == 0) {
       throw new IllegalArgumentException("Tour must have size greater than 0.");
     }
 
-    // get the sum of the distances between each of the vertices
-    double sum = 0;
-    for (final int i : new Range(1, tour.size())) {
-      sum += this.graph.edgeBetween(tour.get(i - 1), tour.get(i));
-    }
-
-    // add the distance between the first and last vertices
-    sum += this.graph.edgeBetween(tour.get(0), tour.get(tour.size() - 1));
-
-    // a larger total distance should result in a lower fitness
-    double result = 0;
-    if (sum == 0) {
-      result = Double.POSITIVE_INFINITY;
-    } else {
-      result = 1.0 / sum;
-    }
-
-    return result;
+    return GraphUtil.totalDistance(tour, this.graph);
   }
 
 }

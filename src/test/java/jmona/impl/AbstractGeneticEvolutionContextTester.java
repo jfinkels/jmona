@@ -33,6 +33,7 @@ import jmona.CrossoverFunction;
 import jmona.EvolutionException;
 import jmona.FitnessException;
 import jmona.FitnessFunction;
+import jmona.IndependentSelectionFunction;
 import jmona.MutationFunction;
 import jmona.SelectionFunction;
 import jmona.impl.example.ExampleCrossoverFunction;
@@ -51,14 +52,14 @@ import org.junit.Test;
  * 
  * @author Jeffrey Finkelstein
  */
-public class AbstractEvolutionContextTester {
+public class AbstractGeneticEvolutionContextTester {
 
   /** The amount by which to change the fitnesses of individuals. */
   public static final double INCREMENT = 0.1;
   /** Zero. */
   public static final double ZERO_DELTA = 0.0;
   /** The context under test in this class. */
-  private AbstractEvolutionContext<ExampleIndividual> context = null;
+  private AbstractGeneticEvolutionContext<ExampleIndividual> context = null;
   /** A crossover function. */
   private CrossoverFunction<ExampleIndividual> crossoverFunction = null;
   /** An empty Population. */
@@ -74,9 +75,9 @@ public class AbstractEvolutionContextTester {
   /** A Population. */
   private List<ExampleIndividual> population = null;
   /** A selection function. */
-  private SelectionFunction<ExampleIndividual> selectionFunction = null;
+  private IndependentSelectionFunction<ExampleIndividual> selectionFunction = null;
   /** An AbstractEvolutionContext which has no functions set. */
-  private AbstractEvolutionContext<ExampleIndividual> unsetContext = null;
+  private AbstractGeneticEvolutionContext<ExampleIndividual> unsetContext = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
@@ -101,11 +102,8 @@ public class AbstractEvolutionContextTester {
     this.context.setCrossoverFunction(this.crossoverFunction);
     this.context.setMutationFunction(this.mutationFunction);
     this.context.setSelectionFunction(this.selectionFunction);
-    try {
-      this.context.setFitnessFunction(this.fitnessFunction);
-    } catch (final FitnessException exception) {
-      Util.fail(exception);
-    }
+    this.context.setFitnessFunction(this.fitnessFunction);
+
   }
 
   /**
@@ -152,24 +150,8 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testCrossoverProbability() {
-    assertEquals(AbstractEvolutionContext.DEFAULT_CROSSOVER_PROBABILITY,
+    assertEquals(AbstractGeneticEvolutionContext.DEFAULT_CROSSOVER_PROBABILITY,
         this.context.crossoverProbability(), ZERO_DELTA);
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.impl.AbstractEvolutionContext#currentFitnesses()}.
-   */
-  @Test
-  public void testCurrentFitnesses() {
-    assertNotNull(this.context.currentFitnesses());
-
-    assertEquals(2, this.context.currentFitnesses().size());
-
-    assertEquals(this.individual1.fitness(), this.context.currentFitnesses()
-        .get(this.individual1), ZERO_DELTA);
-    assertEquals(this.individual2.fitness(), this.context.currentFitnesses()
-        .get(this.individual2), ZERO_DELTA);
   }
 
   /**
@@ -233,34 +215,8 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testMutationProbability() {
-    assertEquals(AbstractEvolutionContext.DEFAULT_MUTATION_PROBABILITY,
+    assertEquals(AbstractGeneticEvolutionContext.DEFAULT_MUTATION_PROBABILITY,
         this.context.mutationProbability(), ZERO_DELTA);
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.impl.AbstractEvolutionContext#recalculateFitnesses()}.
-   */
-  @Test
-  public void testRecalculateFitnesses() {
-    assertEquals(this.individual1.fitness(), this.context.currentFitnesses()
-        .get(this.individual1), ZERO_DELTA);
-    assertEquals(this.individual2.fitness(), this.context.currentFitnesses()
-        .get(this.individual2), ZERO_DELTA);
-
-    this.individual1.setFitness(this.individual1.fitness() + INCREMENT);
-    this.individual2.setFitness(this.individual2.fitness() - INCREMENT);
-
-    try {
-      this.context.recalculateFitnesses();
-    } catch (final FitnessException exception) {
-      Util.fail(exception);
-    }
-
-    assertEquals(this.individual1.fitness(), this.context.currentFitnesses()
-        .get(this.individual1), ZERO_DELTA);
-    assertEquals(this.individual2.fitness(), this.context.currentFitnesses()
-        .get(this.individual2), ZERO_DELTA);
   }
 
   /**
@@ -357,8 +313,7 @@ public class AbstractEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.AbstractEvolutionContext#setCurrentPopulation(List)}
-   * .
+   * {@link jmona.impl.AbstractEvolutionContext#setCurrentPopulation(List)} .
    */
   @Test
   public void testSetCurrentPopulation() {
@@ -377,11 +332,7 @@ public class AbstractEvolutionContextTester {
   public void testSetFitnessFunction() {
     final FitnessFunction<ExampleIndividual> newFunction = new ExampleFitnessFunction();
 
-    try {
-      this.context.setFitnessFunction(newFunction);
-    } catch (final FitnessException exception) {
-      Util.fail(exception);
-    }
+    this.context.setFitnessFunction(newFunction);
 
     assertSame(newFunction, this.context.fitnessFunction());
     assertNotSame(this.fitnessFunction, this.context.fitnessFunction());
@@ -420,7 +371,7 @@ public class AbstractEvolutionContextTester {
    */
   @Test
   public void testSetSelectionFunction() {
-    final SelectionFunction<ExampleIndividual> newFunction = new FitnessProportionateSelection<ExampleIndividual>();
+    final IndependentSelectionFunction<ExampleIndividual> newFunction = new FitnessProportionateSelection<ExampleIndividual>();
 
     this.context.setSelectionFunction(newFunction);
 

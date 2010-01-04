@@ -23,8 +23,10 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.EvolutionContext;
+import jmona.ProcessingException;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
+import jmona.test.Util;
 
 import org.apache.log4j.Level;
 import org.junit.Before;
@@ -89,7 +91,11 @@ public class LoggingPostProcessorTester {
    */
   @Test
   public void testProcessAtInterval() {
-    this.processor.processAtInterval(this.context);
+    try {
+      this.processor.processAtInterval(this.context);
+    } catch (final ProcessingException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
@@ -100,7 +106,11 @@ public class LoggingPostProcessorTester {
   @Test
   public void testSetLoggingLevel() {
     this.processor.setLoggingLevel(Level.FATAL);
-    this.processor.processAtInterval(this.context);
+    try {
+      this.processor.processAtInterval(this.context);
+    } catch (final ProcessingException exception) {
+      Util.fail(exception);
+    }
   }
 
 }

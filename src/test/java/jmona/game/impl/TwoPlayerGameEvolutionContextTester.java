@@ -23,13 +23,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Vector;
 
 import jmona.EvolutionException;
 import jmona.SelectionException;
-import jmona.SelectionFunction;
 import jmona.game.GameplayException;
+import jmona.game.TwoPlayerGame;
 import jmona.game.impl.example.ExampleBadGame;
 import jmona.game.impl.example.ExampleGame;
 import jmona.game.impl.example.ExampleStrategy;
@@ -61,8 +60,7 @@ public class TwoPlayerGameEvolutionContextTester {
     this.context = new TwoPlayerGameEvolutionContext<ExampleStrategy>(
         this.population);
     this.context.setGame(new ExampleGame());
-    this.context
-        .setSelectionFunction(new FitnessProportionateSelection<ExampleStrategy>());
+    this.context.setTournament(new RoundRobinTournament<ExampleStrategy>());
   }
 
   /**
@@ -84,9 +82,8 @@ public class TwoPlayerGameEvolutionContextTester {
       this.context.sanityCheck();
       Util.shouldHaveThrownException();
     } catch (final NullPointerException exception) {
-      // selection function has not been set
-      this.context
-          .setSelectionFunction(new FitnessProportionateSelection<ExampleStrategy>());
+      // tournament has not been set
+      this.context.setTournament(new RoundRobinTournament<ExampleStrategy>());
     }
 
     try {
@@ -137,10 +134,10 @@ public class TwoPlayerGameEvolutionContextTester {
 
     assertEquals(beforeSize, this.context.currentPopulation().size());
 
-    this.context.setSelectionFunction(new SelectionFunction<ExampleStrategy>() {
+    this.context.setTournament(new TournamentGameSelection<ExampleStrategy>() {
       @Override
-      public ExampleStrategy select(final Map<ExampleStrategy, Double> fitnesses)
-          throws SelectionException {
+      public ExampleStrategy select(final List<ExampleStrategy> aPopulation,
+          final TwoPlayerGame<ExampleStrategy> game) throws SelectionException {
         throw new SelectionException();
       }
     });
@@ -150,9 +147,13 @@ public class TwoPlayerGameEvolutionContextTester {
       Util.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
       assertTrue(exception.getCause() instanceof SelectionException);
-      this.context
-          .setSelectionFunction(new FitnessProportionateSelection<ExampleStrategy>());
+      this.context.setTournament(new RoundRobinTournament<ExampleStrategy>());
     }
-        
+
+    try {
+      this.context.executeGenerationStep();
+    } catch (final EvolutionException exception) {
+      Util.fail(exception);
+    }
   }
 }

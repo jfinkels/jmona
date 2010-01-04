@@ -19,27 +19,15 @@
  */
 package jmona;
 
-import java.util.Map;
-
+import java.util.List;
 
 /**
- * A class which provides a single method which selects an Individual based on
- * fitness scores.
+ * A class which provides methods for selecting an individual from a population.
  * 
  * @param <T>
- *          The type of Individual which will be selected.
+ *          The type of individual which will be selected.
  * @author Jeffrey Finkelstein
  */
 public interface SelectionFunction<T> {
-  /**
-   * Select an Individual based on the specified mapping from individuals to
-   * corresponding fitness scores.
-   * 
-   * @param fitnesses
-   *          A mapping from Individuals to corresponding fitness scores.
-   * @return An Individual chosen from the specified map.
-   * @throws SelectionException
-   *           If there is a problem during selection of an Individual.
-   */
-  T select(final Map<T, Double> fitnesses) throws SelectionException;
+
 }

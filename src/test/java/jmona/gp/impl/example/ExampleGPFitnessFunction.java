@@ -1,7 +1,7 @@
 /**
- * ExampleBadFitnessFunction.java
+ * ExampleGPFitnessFunction.java
  * 
- * Copyright 2009 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -17,33 +17,38 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.impl.example;
+package jmona.gp.impl.example;
 
 import jmona.FitnessException;
+import jmona.gp.EvaluationException;
+import jmona.gp.Tree;
 import jmona.impl.MinimizingFitnessFunction;
 
 /**
- * An example FitnessFunction which always throws a FitnessException.
+ * An example FitnessFunction for Trees of ExampleNodes.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.3
  */
-public class ExampleBadFitnessFunction extends
-    MinimizingFitnessFunction<ExampleIndividual> {
+public class ExampleGPFitnessFunction extends MinimizingFitnessFunction<Tree> {
 
   /**
-   * Always throws a FitnessException.
+   * Evaluate the Tree to an integer.
    * 
    * @param individual
-   *          This parameter is ignored.
-   * @return No value is returned, because a FitnessException is always thrown.
+   *          The tree to evaluate.
+   * @return The value to which the Tree evaluates.
    * @throws FitnessException
-   *           Always throws this Exception.
-   * @see jmona.FitnessFunction#fitness(Object)
+   *           If there is a problem evaluating the Tree.
+   * @see jmona.FitnessFunction#rawFitness(java.lang.Object)
    */
   @Override
-  public double rawFitness(final ExampleIndividual individual)
-      throws FitnessException {
-    throw new FitnessException("This is a bad fitness function.");
+  public double rawFitness(final Tree individual) throws FitnessException {
+    try {
+      return ((ExampleNode) individual.root()).evaluate();
+    } catch (final EvaluationException exception) {
+      throw new FitnessException(exception);
+    }
   }
 
 }

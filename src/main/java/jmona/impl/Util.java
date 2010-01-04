@@ -119,6 +119,40 @@ public final class Util {
     return null;
   }
 
+  public static <T> List<T> randomWithoutReplacement(
+      final Collection<T> collection, final int numberToChoose) {
+
+    // if the requested number to choose is smaller than the size of the
+    // collection, simply return a list containing references to all elements in
+    // the collection
+    if (numberToChoose < collection.size()) {
+      return new Vector<T>(collection);
+    }
+
+    // create a list to contain the randomly chosen elements
+    final List<T> result = new Vector<T>();
+
+    // get a list of references to all possible choices
+    final List<T> allPossibleChoices = new Vector<T>(collection);
+
+    // while the result list size is not yet the requested size
+    T randomElement = null;
+    while (result.size() < numberToChoose) {
+
+      // choose a random element from the list of all possible choices
+      randomElement = Util.randomFromCollection(allPossibleChoices);
+
+      // remove that element from the list of all possible choices so it won't
+      // be chosen again
+      allPossibleChoices.remove(randomElement);
+
+      // add that randomly chosen element to the result list
+      result.add(randomElement);
+    }
+
+    return result;
+  }
+
   /**
    * Swap the element at the specified index between the two specified Lists.
    * 

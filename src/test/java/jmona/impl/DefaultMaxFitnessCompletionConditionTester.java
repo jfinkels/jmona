@@ -27,8 +27,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.CompletionException;
-import jmona.EvolutionContext;
-import jmona.FitnessException;
+import jmona.GeneticEvolutionContext;
 import jmona.ga.impl.GAEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
@@ -47,9 +46,9 @@ public class DefaultMaxFitnessCompletionConditionTester {
   /** The completion criteria under test. */
   private DefaultMaxFitnessCompletionCondition<ExampleIndividual> completionCriteria = null;
   /** An EvolutionContext with no functions set. */
-  private EvolutionContext<ExampleIndividual> emptyContext = null;
+  private GeneticEvolutionContext<ExampleIndividual> emptyContext = null;
   /** The evolution context on which to test the completion criteria. */
-  private EvolutionContext<ExampleIndividual> evolutionContext = null;
+  private GeneticEvolutionContext<ExampleIndividual> evolutionContext = null;
   /** The population in the evolution context. */
   private List<ExampleIndividual> population = null;
 
@@ -68,11 +67,7 @@ public class DefaultMaxFitnessCompletionConditionTester {
     this.evolutionContext = new GAEvolutionContext<ExampleIndividual>(
         this.population);
 
-    try {
-      this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
-    } catch (final FitnessException exception) {
-      Util.fail(exception);
-    }
+    this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
   }
 
   /**

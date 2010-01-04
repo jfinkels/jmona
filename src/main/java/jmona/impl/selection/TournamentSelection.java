@@ -20,21 +20,21 @@
 package jmona.impl.selection;
 
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 
-import jmona.SelectionFunction;
+import jmona.FitnessFunction;
+import jmona.IndependentSelectionFunction;
 import jmona.impl.Util;
 
 /**
- * A tournament selection.
+ * A tournament selection which selects the best individual from a tournament of
+ * specified size, with competitors chosen randomly from the entire population.
  * 
  * @param <T>
  *          The type of Individual to select.
  * @author Jeffrey Finkelstein
  */
-public class TournamentSelection<T> implements SelectionFunction<T> {
+public class TournamentSelection<T> implements IndependentSelectionFunction<T> {
 
   /**
    * The default number of Individuals to be chosen at random to compete in the
@@ -42,7 +42,7 @@ public class TournamentSelection<T> implements SelectionFunction<T> {
    */
   public static final int DEFAULT_TOURNAMENT_SIZE = 5;
   /** A comparator for individuals based on their fitnesses. */
-  private final FitnessComparator<T> fitnessComparator = new FitnessComparator<T>();
+  private final FitnessComparator<T> standardizedFitnessComparator = new FitnessComparator<T>();
   /**
    * The number of Individuals to be chosen at random to compete in the
    * tournament.
@@ -50,46 +50,33 @@ public class TournamentSelection<T> implements SelectionFunction<T> {
   private int tournamentSize = DEFAULT_TOURNAMENT_SIZE;
 
   /**
+   * Chooses the best individual from a tournament of uniformly randomly chosen
+   * competitors from the specified population.
    * 
-   * @param fitnesses
+   * The tournament has size specified in the property {@link #tournamentSize}.
+   * 
+   * @param population
    *          {@inheritDoc}
+   * @param fitnessFunction
+   *          The FitnessFunction to use to determine the standardized fitness
+   *          of individuals in the specified population.
    * @see jmona.SelectionFunction#select(java.util.Map)
    */
-  // TODO documentation for this method
+  // TODO documentation for this method, i.e. formulae
   @Override
-  public T select(final Map<T, Double> fitnesses) {
+  public T select(final List<T> population,
+      final FitnessFunction<T> fitnessFunction) {
 
-    final Set<T> allIndividuals = new HashSet<T>();
-    for (final T individual : fitnesses.keySet()) {
-      allIndividuals.add(individual);
-    }
+    // get a random subset of the population to compete in the "tournament"
+    final List<T> competitors = Util.randomWithoutReplacement(population,
+        this.tournamentSize);
 
-    Set<T> competitors = null;
-    if (fitnesses.size() <= this.tournamentSize) {
-      competitors = allIndividuals;
-    } else {
-      // initialize a new empty set for the competitors in the tournament
-      competitors = new HashSet<T>();
+    // set the fitness function on the comparator so it known how to compare
+    // competitors
+    this.standardizedFitnessComparator.setFitnessFunction(fitnessFunction);
 
-      // while the set of competitors is less than the tournament size
-      T randomCompetitor = null;
-      while (competitors.size() < this.tournamentSize) {
-
-        // choose a random competitor from the list of all individuals
-        randomCompetitor = Util.randomFromCollection(allIndividuals);
-
-        // remove that individual from the list of all individuals, so it can't
-        // be chosen again
-        allIndividuals.remove(randomCompetitor);
-
-        // add the chosen individual to the set of competitors
-        competitors.add(randomCompetitor);
-      }
-    }
-
-    this.fitnessComparator.setFitnesses(fitnesses);
-
-    return Collections.max(competitors, this.fitnessComparator);
+    // return the competitor with the minimum standardized fitness
+    return Collections.min(competitors, this.standardizedFitnessComparator);
   }
 
   /**

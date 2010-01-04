@@ -29,7 +29,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author Jeffrey Finkelstein
  */
 @RunWith(Suite.class)
-@SuiteClasses({ AbstractEvolutionContextTester.class,
+@SuiteClasses({ AbstractGeneticEvolutionContextTester.class,
     CompleteDeepCopyableListFactoryTester.class,
     CompleteDeepCopyableVectorTester.class,
     DefaultCompletionConditionTester.class,
@@ -42,8 +42,7 @@ import org.junit.runners.Suite.SuiteClasses;
     ListMutationFunctionTester.class, LoggingPostProcessorTester.class,
     PairTester.class, PartialDeepCopyableListFactoryTester.class,
     PartialDeepCopyableVectorTester.class, PeriodicPostProcessorTester.class,
-    PopulationLoggingPostProcessorTester.class,
-    TargetedFitnessFunctionTester.class, UtilTester.class })
+    PopulationLoggingPostProcessorTester.class, UtilTester.class })
 public class AllTest {
 
 }

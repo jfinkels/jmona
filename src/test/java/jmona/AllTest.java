@@ -1,7 +1,7 @@
 /**
  * AllTest.java
  * 
- * Copyright 2009 Jeffrey Finkelstein
+ * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -27,9 +27,11 @@ import org.junit.runners.Suite.SuiteClasses;
  * Runs all tests in this package.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.3
  */
 @RunWith(Suite.class)
-@SuiteClasses({ CompletionExceptionTester.class, CopyingExceptionTester.class,
+@SuiteClasses({ ComparisonExceptionTester.class,
+    CompletionExceptionTester.class, CopyingExceptionTester.class,
     CrossoverExceptionTester.class, EvolutionExceptionTester.class,
     FitnessExceptionTester.class, InitializationExceptionTester.class,
     MappingExceptionTester.class, MetricExceptionTester.class,

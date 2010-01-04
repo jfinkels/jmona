@@ -25,18 +25,17 @@ import java.util.Vector;
 import jmona.CopyingException;
 import jmona.CrossoverException;
 import jmona.EvolutionException;
-import jmona.FitnessException;
 import jmona.MutationException;
 import jmona.SelectionException;
 import jmona.gp.Tree;
-import jmona.impl.AbstractEvolutionContext;
+import jmona.impl.AbstractGeneticEvolutionContext;
 
 /**
  * A default EvolutionContext for a Genetic Programming evolution.
  * 
  * @author Jeffrey Finkelstein
  */
-public class GPEvolutionContext extends AbstractEvolutionContext<Tree> {
+public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
 
   /**
    * Instantiate this EvolutionContext by calling the corresponding constructor
@@ -90,8 +89,8 @@ public class GPEvolutionContext extends AbstractEvolutionContext<Tree> {
       while (nextGeneration.size() < currentSize) {
 
         // select one individual, because each op. requires at least one
-        individual1 = (Tree) this.selectionFunction().select(
-            this.currentFitnesses()).deepCopy();
+        individual1 = this.selectionFunction().select(this.currentPopulation(),
+            this.fitnessFunction()).deepCopy();
 
         // choose variation operation probabilistically
         // TODO I am ignoring the crossoverProbability property
@@ -104,8 +103,8 @@ public class GPEvolutionContext extends AbstractEvolutionContext<Tree> {
         } else { // variation operation is crossover
 
           // select another individual (different from the first!)
-          individual2 = (Tree) this.selectionFunction().select(
-              this.currentFitnesses()).deepCopy();
+          individual2 = this.selectionFunction().select(this.currentPopulation(),
+              this.fitnessFunction()).deepCopy();
 
           // perform crossover
           this.crossoverFunction().crossover(individual1, individual2);
@@ -122,14 +121,14 @@ public class GPEvolutionContext extends AbstractEvolutionContext<Tree> {
       this.setCurrentPopulation(nextGeneration);
 
       // recalculate the fitnesses of the current generation
-      this.recalculateFitnesses();
+//      this.recalculateFitnesses();
 
     } catch (final CrossoverException exception) {
       throw new EvolutionException(
           "Failed to perform crossover on two Individuals.", exception);
-    } catch (final FitnessException exception) {
-      throw new EvolutionException(
-          "Failed determining fitness of an Individual.", exception);
+//    } catch (final FitnessException exception) {
+//      throw new EvolutionException(
+//          "Failed determining fitness of an Individual.", exception);
     } catch (final MutationException exception) {
       throw new EvolutionException("Failed mutating an Individual.", exception);
     } catch (final SelectionException exception) {

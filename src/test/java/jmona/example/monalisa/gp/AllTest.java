@@ -30,8 +30,7 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses({ ColoredPolygonNodeFactoryTester.class,
-    ColoredPolygonNodeTester.class, MonaEvolutionTester.class,
-    TreeMappingTester.class })
+    ColoredPolygonNodeTester.class, MonaEvolutionTester.class })
 public class AllTest {
 
 }

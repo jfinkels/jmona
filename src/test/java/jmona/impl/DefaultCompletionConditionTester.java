@@ -26,8 +26,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.CompletionException;
-import jmona.EvolutionContext;
-import jmona.FitnessException;
+import jmona.GeneticEvolutionContext;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
@@ -46,7 +45,7 @@ public class DefaultCompletionConditionTester {
   /** The completion criteria under test. */
   private DefaultCompletionCondition<ExampleIndividual> completionCriteria = null;
   /** The evolution context on which to test the completion criteria. */
-  private EvolutionContext<ExampleIndividual> evolutionContext = null;
+  private GeneticEvolutionContext<ExampleIndividual> evolutionContext = null;
   /** The population in the evolution context. */
   private List<ExampleIndividual> population = null;
 
@@ -61,11 +60,7 @@ public class DefaultCompletionConditionTester {
 
     this.evolutionContext = new ExampleEvolutionContext(this.population);
 
-    try {
-      this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
-    } catch (final FitnessException exception) {
-      Util.fail(exception);
-    }
+    this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
   }
 
   /**

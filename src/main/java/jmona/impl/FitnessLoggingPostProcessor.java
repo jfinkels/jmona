@@ -19,33 +19,73 @@
  */
 package jmona.impl;
 
+import java.util.List;
+
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
+import jmona.FitnessException;
+import jmona.FitnessFunction;
+import jmona.GeneticEvolutionContext;
+import jmona.LoggingException;
 
 /**
- * Log the fitnesses of the current population.
+ * Logs the raw fitnesses of the current population.
  * 
  * @param <T>
- *          The type of individual in the EvolutionContext whose fitnesses will
- *          be logged.
+ *          The type of individual in the EvolutionContext whose raw fitness
+ *          will be logged.
  * @author Jeffrey Finkelstein
  */
 public class FitnessLoggingPostProcessor<T extends DeepCopyable<T>> extends
     LoggingPostProcessor<T> {
 
   /**
-   * Get the fitnesses of the individuals in the current population of the
+   * Get the raw fitnesses of the individuals in the current population of the
    * specified EvolutionContext.
    * 
    * @param context
-   *          The EvolutionContext from which to get the fitnesses of the
+   *          The EvolutionContext from which to get the raw fitnesses of the
    *          current population.
-   * @return The fitnesses of the individuals in the current population, as a
-   *         String.
+   * @return The raw fitnesses of the individuals in the current population, as
+   *         a String.
+   * @throws LoggingException
+   *           If the speicifed EvolutionContext is not a
+   *           GeneticEvolutionContext, or if there is a problem determining the
+   *           raw fitness of an individual.
    * @see jmona.impl.LoggingPostProcessor#message(jmona.EvolutionContext)
    */
   @Override
-  protected String message(final EvolutionContext<T> context) {
-    return context.currentFitnesses().toString();
+  protected String message(final EvolutionContext<T> context)
+      throws LoggingException {
+    if (!(context instanceof GeneticEvolutionContext<?>)) {
+      throw new LoggingException(
+          "Cannot get a fitness function from the EvolutionContext unless it is a GeneticEvolutionContext. Class of EvolutionContext is "
+              + context.getClass());
+    }
+
+    final StringBuilder result = new StringBuilder();
+
+    result.append("Generation ");
+    result.append(context.currentGeneration());
+    result.append(":");
+    result.append(NEWLINE);
+
+    final FitnessFunction<T> fitnessFunction = ((GeneticEvolutionContext<T>) context)
+        .fitnessFunction();
+    final List<T> currentPopulation = context.currentPopulation();
+
+    try {
+      for (final T individual : currentPopulation) {
+        result.append(individual);
+        result.append(": ");
+        result.append(fitnessFunction.rawFitness(individual));
+        result.append(NEWLINE);
+      }
+    } catch (final FitnessException exception) {
+      throw new LoggingException("Failed to get fitness of an individual.",
+          exception);
+    }
+
+    return result.toString();
   }
 }
