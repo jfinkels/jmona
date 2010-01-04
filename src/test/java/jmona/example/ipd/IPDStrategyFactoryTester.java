@@ -26,7 +26,7 @@ import java.util.Map;
 
 import jmona.InitializationException;
 import jmona.example.ipd.strategy.IPDStrategy;
-import jmona.impl.Range;
+import jmona.functional.Range;
 import jmona.test.Util;
 
 import org.junit.Test;

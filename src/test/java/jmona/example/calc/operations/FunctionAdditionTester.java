@@ -21,8 +21,7 @@ package jmona.example.calc.operations;
 
 import static org.junit.Assert.assertEquals;
 import jmona.MappingException;
-import jmona.SingleInputFunction;
-import jmona.gp.impl.UniformBinaryOperation;
+import jmona.Function;
 
 import org.junit.Test;
 
@@ -38,14 +37,14 @@ public class FunctionAdditionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.calc.operations.FunctionAddition#operate(jmona.SingleInputFunction, jmona.SingleInputFunction)}
+   * {@link jmona.example.calc.operations.FunctionAddition#operate(jmona.Function, jmona.Function)}
    * .
    */
   @Test
   public void testOperate() {
-    final UniformBinaryOperation<SingleInputFunction<Double, Double>> operation = FunctionAddition
+    final UniformBinaryOperation<Function<Double, Double>> operation = FunctionAddition
         .newInstance();
-    SingleInputFunction<Double, Double> result = null;
+    Function<Double, Double> result = null;
 
     try {
 

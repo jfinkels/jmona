@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import jmona.impl.Range;
+import jmona.functional.Range;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Before;

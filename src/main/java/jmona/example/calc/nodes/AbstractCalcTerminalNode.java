@@ -1,5 +1,5 @@
 /**
- * AbstractCalcFunctionNode.java
+ * CalcFunctionNode.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -19,7 +19,6 @@
  */
 package jmona.example.calc.nodes;
 
-import jmona.SingleInputFunction;
 import jmona.gp.impl.AbstractTerminalNode;
 
 /**
@@ -27,8 +26,8 @@ import jmona.gp.impl.AbstractTerminalNode;
  * 
  * @author Jeffrey Finkelstein
  */
-public abstract class AbstractCalcTerminalNode extends
-    AbstractTerminalNode<SingleInputFunction<Double, Double>> {
+public abstract class AbstractCalcTerminalNode extends AbstractTerminalNode
+    implements CalcNode {
   /** The symbol which represents this Node. */
   private final String symbol;
 
@@ -50,4 +49,5 @@ public abstract class AbstractCalcTerminalNode extends
   public String toString() {
     return this.symbol;
   }
+
 }

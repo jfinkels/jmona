@@ -19,9 +19,10 @@
  */
 /**
  * <p>
- * Provides an {@link jmona.gp.EquivalenceTester} which measures equivalence of
- * functions for use in evaluating {@link jmona.gp.Tree} objects in the "calc"
- * evolution, which evolves a formula matching a specified target polynomial.
+ * Provides an {@link jmona.example.calc.EquivalenceTester} which measures
+ * equivalence of functions for use in evaluating {@link jmona.gp.Tree} objects
+ * in the "calc" evolution, which evolves a formula matching a specified target
+ * polynomial.
  * </p>
  * 
  * <p>
@@ -32,10 +33,9 @@
  * 
  * <p>
  * The "calc" example essentially just implements a {@link jmona.Factory} for
- * function nodes and terminal nodes (and implements the Nodes themselves), and
- * provides a {@link jmona.example.calc.FunctionEquivalenceTester} for
- * determining if the evolved expression matches the target function. The rest
- * of the evolution is simply configured in the {@code
+ * function nodes and terminal nodes (and implements the Nodes themselves), a
+ * fitness function, and a Tree evaluator. The rest of the evolution is simply
+ * configured in the {@code
  * src/test/resources/jmona/example/calc/CalcEvolutionTester-context.xml} Spring
  * XML configuration file.
  * </p>

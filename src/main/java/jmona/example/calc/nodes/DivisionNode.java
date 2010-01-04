@@ -19,7 +19,7 @@
  */
 package jmona.example.calc.nodes;
 
-import jmona.SingleInputFunction;
+import jmona.Function;
 import jmona.example.calc.operations.FunctionDivision;
 import jmona.gp.impl.BinaryNode;
 
@@ -29,7 +29,7 @@ import jmona.gp.impl.BinaryNode;
  * @author Jeffrey Finkelstein
  */
 public class DivisionNode extends
-    BinaryNode<SingleInputFunction<Double, Double>> {
+    CalcFunctionNode {
 
   /** Instantiate this Node using the FunctionDivision operation. */
   public DivisionNode() {

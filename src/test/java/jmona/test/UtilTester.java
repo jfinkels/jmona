@@ -48,24 +48,24 @@ public class UtilTester {
   @Test
   public void testAllNodes() {
     // initialize a list of known nodes
-    final List<Node<Integer>> allNodes = new Vector<Node<Integer>>();
+    final List<Node> allNodes = new Vector<Node>();
 
     // initialize a root for the tree
-    final Node<Integer> root = new ExampleBinaryNode();
-    final Tree<Integer> tree = new DefaultTree<Integer>(root);
+    final Node root = new ExampleBinaryNode();
+    final Tree tree = new DefaultTree(root);
 
     // add the root to the list of known nodes
     allNodes.add(root);
 
-    List<Node<Integer>> utilAllNodes = Util.allNodes(tree);
+    List<Node> utilAllNodes = Util.allNodes(tree);
 
     assertEquals(allNodes.size(), utilAllNodes.size());
-    for (final Node<Integer> node : allNodes) {
+    for (final Node node : allNodes) {
       assertTrue(utilAllNodes.contains(node));
     }
 
     // initialize a left child for the tree
-    final Node<Integer> leftChild = new ExampleBinaryNode();
+    final Node leftChild = new ExampleBinaryNode();
     leftChild.setParent(root);
     root.children().add(leftChild);
 
@@ -75,12 +75,12 @@ public class UtilTester {
     utilAllNodes = Util.allNodes(tree);
 
     assertEquals(allNodes.size(), utilAllNodes.size());
-    for (final Node<Integer> node : allNodes) {
+    for (final Node node : allNodes) {
       assertTrue(utilAllNodes.contains(node));
     }
 
     // initialize a right child for the tree
-    final Node<Integer> rightChild = new ExampleBinaryNode();
+    final Node rightChild = new ExampleBinaryNode();
     rightChild.setParent(root);
     root.children().add(rightChild);
 
@@ -90,7 +90,7 @@ public class UtilTester {
     utilAllNodes = Util.allNodes(tree);
 
     assertEquals(allNodes.size(), utilAllNodes.size());
-    for (final Node<Integer> node : allNodes) {
+    for (final Node node : allNodes) {
       assertTrue(utilAllNodes.contains(node));
     }
 
@@ -138,9 +138,9 @@ public class UtilTester {
    */
   @Test
   public void testCountNodes() {
-    final Factory<Tree<Integer>> factory = new ExampleTreeFactory();
+    final Factory<Tree> factory = new ExampleTreeFactory();
 
-    Tree<Integer> tree = null;
+    Tree tree = null;
     try {
       tree = factory.createObject();
     } catch (final InitializationException exception) {

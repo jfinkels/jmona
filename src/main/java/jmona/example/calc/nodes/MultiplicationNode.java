@@ -19,7 +19,7 @@
  */
 package jmona.example.calc.nodes;
 
-import jmona.SingleInputFunction;
+import jmona.Function;
 import jmona.example.calc.operations.FunctionMultiplication;
 import jmona.gp.impl.BinaryNode;
 
@@ -29,7 +29,7 @@ import jmona.gp.impl.BinaryNode;
  * @author Jeffrey Finkelstein
  */
 public class MultiplicationNode extends
-    BinaryNode<SingleInputFunction<Double, Double>> {
+    CalcFunctionNode {
 
   /** Instantiate this Node using the FunctionMultiplication operation. */
   public MultiplicationNode() {

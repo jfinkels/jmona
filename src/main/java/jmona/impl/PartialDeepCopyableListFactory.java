@@ -23,6 +23,7 @@ import jmona.DeepCopyableList;
 import jmona.Factory;
 import jmona.InitializationException;
 import jmona.ListFactory;
+import jmona.functional.Range;
 
 /**
  * A ListFactory which aggregates objects created from a Factory which creates

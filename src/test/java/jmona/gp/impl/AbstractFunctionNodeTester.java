@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.CopyingException;
-import jmona.gp.EvaluationException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.gp.impl.example.ExampleBinaryNode;
@@ -45,21 +44,21 @@ public class AbstractFunctionNodeTester {
 
   /**
    * Test method for
-   * {@link jmona.gp.impl.AbstractFunctionNode#attachChildToParent(jmona.gp.FunctionNode, jmona.gp.Node)}
+   * {@link jmona.gp.impl.TreeUtils#attachChildToParent(jmona.gp.FunctionNode, jmona.gp.Node)}
    * .
    */
   @Test
   public void testAttachChildToParent() {
-    final FunctionNode<Integer> parent = new ExampleBinaryNode();
-    final Node<Integer> child1 = new ExampleTerminalNode();
-    final Node<Integer> child2 = new ExampleTerminalNode();
+    final FunctionNode parent = new ExampleBinaryNode();
+    final Node child1 = new ExampleTerminalNode();
+    final Node child2 = new ExampleTerminalNode();
 
-    AbstractFunctionNode.attachChildToParent(parent, child1);
+    TreeUtils.attachChildToParent(parent, child1);
 
     assertSame(child1, parent.children().get(0));
     assertSame(parent, child1.parent());
 
-    AbstractFunctionNode.attachChildToParent(parent, child2);
+    TreeUtils.attachChildToParent(parent, child2);
 
     assertSame(child2, parent.children().get(1));
     assertSame(parent, child2.parent());
@@ -68,37 +67,28 @@ public class AbstractFunctionNodeTester {
 
   /**
    * Test method for
-   * {@link jmona.gp.impl.AbstractFunctionNode#deepCopyChildren(jmona.gp.FunctionNode, java.util.List)}
+   * {@link jmona.gp.impl.TreeUtils#deepCopyChildren(jmona.gp.FunctionNode, java.util.List)}
    * .
    */
   @Test
   public void testDeepCopyChildren() {
-    final FunctionNode<Integer> parent = new ExampleBinaryNode();
-    final Node<Integer> child1 = new ExampleTerminalNode();
-    final Node<Integer> child2 = new ExampleTerminalNode();
+    final FunctionNode parent = new ExampleBinaryNode();
+    final Node child1 = new ExampleTerminalNode();
+    final Node child2 = new ExampleTerminalNode();
 
-    final List<Node<Integer>> children = new Vector<Node<Integer>>();
+    final List<Node> children = new Vector<Node>();
 
     children.add(child1);
     children.add(child2);
 
     try {
-      AbstractFunctionNode.deepCopyChildren(parent, children);
+      TreeUtils.deepCopyChildren(parent, children);
     } catch (final CopyingException exception) {
       Util.fail(exception);
     }
 
     assertNotSame(parent.children().get(0), children.get(0));
     assertNotSame(parent.children().get(1), children.get(1));
-
-    try {
-      assertEquals(children.get(0).evaluate(), parent.children().get(0)
-          .evaluate());
-      assertEquals(children.get(1).evaluate().intValue(), parent.children()
-          .get(1).evaluate().intValue());
-    } catch (final EvaluationException exception) {
-      Util.fail(exception);
-    }
 
     assertSame(parent, parent.children().get(0).parent());
     assertSame(parent, parent.children().get(1).parent());
@@ -109,7 +99,7 @@ public class AbstractFunctionNodeTester {
    */
   @Test
   public void testChildren() {
-    final AbstractFunctionNode<Integer> node = new ExampleBinaryNode();
+    final AbstractFunctionNode node = new ExampleBinaryNode();
     assertEquals(0, node.children().size());
     node.children().add(new ExampleTerminalNode());
     node.children().add(new ExampleTerminalNode());

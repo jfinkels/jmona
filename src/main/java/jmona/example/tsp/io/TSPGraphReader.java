@@ -19,25 +19,24 @@
  */
 package jmona.example.tsp.io;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
-import java.util.Vector;
 
+import jmona.MappingException;
 import jmona.example.tsp.AdjacencyMatrixGraph;
 import jmona.example.tsp.DirectedGraph;
+import jmona.functional.Functional;
+import jmona.io.LineReader;
+import jmona.io.SplitOnWhitespace;
 
 /**
- * A class which reads graphs from files.
+ * A class which reads traveling salesman problem graphs from files.
  * 
  * @author Jeffrey Finkelstein
  */
+// TODO use the canonical TSP graph form
 public class TSPGraphReader {
-
-  /** A regular expression matching any whitespace character. */
-  public static final String WHITESPACE = "\\s+";
 
   /**
    * Generate a DirectedGraph from the adjacency matrix described in the
@@ -50,12 +49,15 @@ public class TSPGraphReader {
    * @throws IOException
    *           If the specified File does not exist, or if there is a problem
    *           while reading the specified File.
+   * @throws MappingException
+   *           If there is a problem splitting the lines on whitespace.
    */
   public static DirectedGraph<Integer, Double> fromFile(final File file)
-      throws IOException {
+      throws IOException, MappingException {
 
-    // instantiate a list for all lines
-    final List<String[]> allLines = allLines(file);
+    // get all lines, split on whitespace
+    final List<String[]> allLines = Functional.map(new SplitOnWhitespace(), LineReader
+        .readLines(file));
 
     // get the number of vertices in the graph
     final int numberOfVertices = allLines.size();
@@ -86,39 +88,6 @@ public class TSPGraphReader {
     // create the graph object from the adjacency matrix
     final DirectedGraph<Integer, Double> result = new AdjacencyMatrixGraph(
         adjacencyMatrix);
-
-    return result;
-  }
-
-  /**
-   * Read each line in the specified file and split on whitespace.
-   * 
-   * @param file
-   *          The file from which to read.
-   * @return A list of each line of the file, split on whitespace.
-   * @throws IOException
-   *           If there is a problem reading from the specified File.
-   */
-  protected static List<String[]> allLines(final File file) throws IOException {
-    BufferedReader reader = null;
-    final List<String[]> result = new Vector<String[]>();
-
-    try {
-      // create a file reader
-      reader = new BufferedReader(new FileReader(file));
-
-      // add each line, split on whitespace, to the result list
-      String currentLine = reader.readLine();
-      while (currentLine != null) {
-        if (!currentLine.isEmpty()) {
-          result.add(currentLine.trim().split(WHITESPACE));
-        }
-        currentLine = reader.readLine();
-      }
-    } finally {
-      // close the file
-      reader.close();
-    }
 
     return result;
   }

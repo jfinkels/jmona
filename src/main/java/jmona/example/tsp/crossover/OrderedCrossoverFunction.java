@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.CrossoverFunction;
-import jmona.impl.Range;
+import jmona.functional.Range;
 import jmona.impl.Util;
 
 /**

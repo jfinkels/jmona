@@ -19,17 +19,14 @@
  */
 package jmona.example.calc.nodes;
 
-import jmona.SingleInputFunction;
 import jmona.example.calc.operations.FunctionAddition;
-import jmona.gp.impl.BinaryNode;
 
 /**
  * A node representing addition of real numbers.
  * 
  * @author Jeffrey Finkelstein
  */
-public class AdditionNode extends
-    BinaryNode<SingleInputFunction<Double, Double>> {
+public class AdditionNode extends CalcFunctionNode {
 
   /** Instantiate this Node using the FunctionAddition operation. */
   public AdditionNode() {

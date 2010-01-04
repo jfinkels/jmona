@@ -30,8 +30,8 @@ import java.util.List;
 import jmona.CopyingException;
 import jmona.example.monalisa.ColoredPolygon;
 import jmona.example.monalisa.ColoredPolygonFactory;
+import jmona.functional.Range;
 import jmona.gp.EvaluationException;
-import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Before;

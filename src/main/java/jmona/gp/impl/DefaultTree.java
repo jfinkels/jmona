@@ -23,21 +23,18 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.CopyingException;
-import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 
 /**
  * A default implementation of a Tree.
  * 
- * @param <V>
- *          The type of value to which this Tree evaluates.
  * @author Jeffrey Finkelstein
  */
-public class DefaultTree<V> implements Tree<V> {
+public class DefaultTree implements Tree {
 
   /** The root Node of this Tree. */
-  private Node<V> root = null;
+  private Node root = null;
 
   /**
    * Instantiate this Tree with the specified root Node.
@@ -45,7 +42,7 @@ public class DefaultTree<V> implements Tree<V> {
    * @param initialRoot
    *          The root Node of this Tree.
    */
-  public DefaultTree(final Node<V> initialRoot) {
+  public DefaultTree(final Node initialRoot) {
     this.root = initialRoot;
   }
 
@@ -56,9 +53,9 @@ public class DefaultTree<V> implements Tree<V> {
    * 
    * @return A List of all Nodes in this tree.
    */
-  protected List<Node<V>> allNodes() {
+  protected List<Node> allNodes() {
     // instantiate a list to hold all the nodes in this tree
-    final List<Node<V>> result = new Vector<Node<V>>();
+    final List<Node> result = new Vector<Node>();
 
     // if the root is null, return an empty list
     if (this.root != null) {
@@ -69,7 +66,7 @@ public class DefaultTree<V> implements Tree<V> {
       int i = 0;
 
       // iterate over all nodes until each node has been examined
-      List<Node<V>> children = null;
+      List<Node> children = null;
       while (i < result.size()) {
         // get the children of the current node
         children = result.get(i).children();
@@ -96,19 +93,8 @@ public class DefaultTree<V> implements Tree<V> {
    *           {@inheritDoc}
    * @see jmona.gp.Tree#deepCopy()
    */
-  public Tree<V> deepCopy() throws CopyingException {
-    return new DefaultTree<V>(this.root.deepCopy());
-  }
-
-  /**
-   * {@inheritDoc}
-   * 
-   * @return {@inheritDoc}
-   * @see jmona.gp.Tree#evaluate()
-   */
-  @Override
-  public V evaluate() throws EvaluationException {
-    return this.root.evaluate();
+  public Tree deepCopy() throws CopyingException {
+    return new DefaultTree(this.root.deepCopy());
   }
 
   /**
@@ -120,10 +106,11 @@ public class DefaultTree<V> implements Tree<V> {
    * @see jmona.gp.Tree#randomNode()
    */
   @Override
-  public Node<V> randomNode() {
+  public Node randomNode() {
     // get all the nodes in this tree
-    final List<Node<V>> allNodes = this.allNodes();
+    final List<Node> allNodes = this.allNodes();
 
+    // TODO use randomFromCollection()
     // get a random node from the list of all nodes in the tree
     return allNodes.get(jmona.impl.Util.RANDOM.nextInt(allNodes.size()));
   }
@@ -135,7 +122,7 @@ public class DefaultTree<V> implements Tree<V> {
    * @see jmona.gp.Tree#root()
    */
   @Override
-  public Node<V> root() {
+  public Node root() {
     return this.root;
   }
 
@@ -147,7 +134,7 @@ public class DefaultTree<V> implements Tree<V> {
    * @see jmona.gp.Tree#setRoot(Node)
    */
   @Override
-  public void setRoot(final Node<V> newRoot) {
+  public void setRoot(final Node newRoot) {
     this.root = newRoot;
   }
 

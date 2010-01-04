@@ -27,11 +27,9 @@ import jmona.PropertyNotWritableException;
  * less than the maximum are chosen from the function set, while the Nodes at
  * maximum depth are chosen from the terminal set.
  * 
- * @param <V>
- *          The type of value to which this Tree evaluates.
  * @author Jeffrey Finkelstein
  */
-public class FullTreeFactory<V> extends GrowTreeFactory<V> {
+public class FullTreeFactory extends GrowTreeFactory {
   /**
    * Instantiate this TreeFactory by setting the probability of generating a
    * terminal node within a Tree at a depth less than the maximum depth to 0.

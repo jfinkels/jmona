@@ -1,5 +1,5 @@
 /**
- * CalcEvolutionTester.java
+ * PolynomialEvolutionTester.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -23,7 +23,6 @@ import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
-import jmona.SingleInputFunction;
 import jmona.gp.Tree;
 import jmona.test.Util;
 
@@ -51,10 +50,10 @@ public class PolynomialEvolutionTester extends AbstractJUnit4SpringContextTests 
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<Tree<SingleInputFunction<Double, Double>>> completionCondition = null;
+  private CompletionCondition<Tree> completionCondition = null;
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
-  private EvolutionContext<Tree<SingleInputFunction<Double, Double>>> context = null;
+  private EvolutionContext<Tree> context = null;
 
   /** Test the evolution. */
   @Test

@@ -19,9 +19,7 @@
  */
 package jmona.example.calc.nodes;
 
-import jmona.SingleInputFunction;
 import jmona.example.calc.operations.FunctionSubtraction;
-import jmona.gp.impl.BinaryNode;
 
 /**
  * A node representing subtraction of real numbers.
@@ -29,7 +27,7 @@ import jmona.gp.impl.BinaryNode;
  * @author Jeffrey Finkelstein
  */
 public class SubtractionNode extends
-    BinaryNode<SingleInputFunction<Double, Double>> {
+    CalcFunctionNode{
 
   /** Instantiate this Node using the FunctionSubtraction operation. */
   public SubtractionNode() {

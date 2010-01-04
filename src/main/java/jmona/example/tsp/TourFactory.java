@@ -22,9 +22,9 @@ package jmona.example.tsp;
 import java.util.Collections;
 
 import jmona.DeepCopyableList;
+import jmona.functional.Range;
 import jmona.impl.PartialDeepCopyableListFactory;
 import jmona.impl.PartialDeepCopyableVector;
-import jmona.impl.Range;
 
 /**
  * A factory which generates random Tours.

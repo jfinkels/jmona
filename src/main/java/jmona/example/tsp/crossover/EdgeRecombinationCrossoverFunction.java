@@ -31,7 +31,8 @@ import java.util.Vector;
 import jmona.CrossoverException;
 import jmona.CrossoverFunction;
 import jmona.MappingException;
-import jmona.impl.Range;
+import jmona.functional.Functional;
+import jmona.functional.Range;
 import jmona.impl.Util;
 
 /**
@@ -166,7 +167,7 @@ public class EdgeRecombinationCrossoverFunction implements
 
         // get all cities with the same number of neighbors
         try {
-          citiesWithSameNumberOfNeighbors = Util.filter(sameNumberOfNeighbors,
+          citiesWithSameNumberOfNeighbors = Functional.filter(sameNumberOfNeighbors,
               allPossibleCities);
         } catch (final MappingException exception) {
           throw new CrossoverException(

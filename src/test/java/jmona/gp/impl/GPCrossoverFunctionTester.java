@@ -28,12 +28,12 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import jmona.InitializationException;
+import jmona.functional.Range;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleBinaryNode;
 import jmona.gp.impl.example.ExampleTreeFactory;
 import jmona.gp.impl.example.IntegerNode;
-import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Before;
@@ -49,24 +49,24 @@ public class GPCrossoverFunctionTester {
   /** The number of tests to run. */
   public static final int NUM_TESTS = 1000;
   /** The function under test. */
-  private GPCrossoverFunction<Integer> function = null;
+  private GPCrossoverFunction function = null;
   /** The left child in the right Tree. */
-  private Node<Integer> leftChild = null;
+  private Node leftChild = null;
   /** The right child in the right Tree. */
-  private Node<Integer> rightChild = null;
+  private Node rightChild = null;
   /** The root of the left Tree. */
-  private Node<Integer> root1 = null;
+  private Node root1 = null;
   /** The root of the right Tree. */
-  private Node<Integer> root2 = null;
+  private Node root2 = null;
   /** The left Tree. */
-  private Tree<Integer> tree1 = null;
+  private Tree tree1 = null;
   /** The right Tree. */
-  private Tree<Integer> tree2 = null;
+  private Tree tree2 = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.function = new GPCrossoverFunction<Integer>();
+    this.function = new GPCrossoverFunction();
 
     this.leftChild = new IntegerNode(2);
     this.rightChild = new IntegerNode(1);
@@ -81,8 +81,8 @@ public class GPCrossoverFunctionTester {
 
     this.root2 = new IntegerNode(0);
 
-    this.tree1 = new DefaultTree<Integer>(this.root1);
-    this.tree2 = new DefaultTree<Integer>(this.root2);
+    this.tree1 = new DefaultTree(this.root1);
+    this.tree2 = new DefaultTree(this.root2);
   }
 
   /**
@@ -128,8 +128,8 @@ public class GPCrossoverFunctionTester {
     for (final int i : new Range(numRandomPairs)) {
       try {
         // initialize two random trees
-        final Tree<Integer> leftTree = factory.createObject();
-        final Tree<Integer> rightTree = factory.createObject();
+        final Tree leftTree = factory.createObject();
+        final Tree rightTree = factory.createObject();
 
         // perform crossover on the two trees
         for (int j = 0; j < NUM_TESTS; ++j) {
@@ -151,13 +151,13 @@ public class GPCrossoverFunctionTester {
    */
   @Test
   public void testMultipleCrossoversSinglePair() {
-    List<Node<Integer>> preLeftNodes = Util.allNodes(this.tree1);
-    List<Node<Integer>> preRightNodes = Util.allNodes(this.tree2);
+    List<Node> preLeftNodes = Util.allNodes(this.tree1);
+    List<Node> preRightNodes = Util.allNodes(this.tree2);
 
-    List<Node<Integer>> postLeftNodes = null;
-    List<Node<Integer>> postRightNodes = null;
+    List<Node> postLeftNodes = null;
+    List<Node> postRightNodes = null;
 
-    Node<Integer> currentNode = null;
+    Node currentNode = null;
     for (final int i : new Range(NUM_TESTS)) {
 
       // perform the crossover
@@ -188,7 +188,7 @@ public class GPCrossoverFunctionTester {
             || currentNode.equals(this.tree2.root())) {
           assertNull(currentNode.parent());
           if (currentNode.children() != null) {
-            for (final Node<Integer> child : currentNode.children()) {
+            for (final Node child : currentNode.children()) {
               assertSame(currentNode, child.parent());
             }
           }
@@ -215,7 +215,7 @@ public class GPCrossoverFunctionTester {
             || currentNode.equals(this.tree2.root())) {
           assertNull(currentNode.parent());
           if (currentNode.children() != null) {
-            for (final Node<Integer> child : currentNode.children()) {
+            for (final Node child : currentNode.children()) {
               assertSame(currentNode, child.parent());
             }
           }
@@ -239,13 +239,13 @@ public class GPCrossoverFunctionTester {
    */
   @Test
   public void testSingleCrossoverMultiplePairs() {
-    List<Node<Integer>> preLeftNodes = Util.allNodes(this.tree1);
-    List<Node<Integer>> preRightNodes = Util.allNodes(this.tree2);
+    List<Node> preLeftNodes = Util.allNodes(this.tree1);
+    List<Node> preRightNodes = Util.allNodes(this.tree2);
 
-    List<Node<Integer>> postLeftNodes = null;
-    List<Node<Integer>> postRightNodes = null;
+    List<Node> postLeftNodes = null;
+    List<Node> postRightNodes = null;
 
-    Node<Integer> currentNode = null;
+    Node currentNode = null;
     for (final int i : new Range(NUM_TESTS)) {
       this.setUp();
 
@@ -279,7 +279,7 @@ public class GPCrossoverFunctionTester {
             || currentNode.equals(this.tree2.root())) {
           assertNull(currentNode.parent());
           if (currentNode.children() != null) {
-            for (final Node<Integer> child : currentNode.children()) {
+            for (final Node child : currentNode.children()) {
               assertSame(currentNode, child.parent());
             }
           }
@@ -306,7 +306,7 @@ public class GPCrossoverFunctionTester {
             || currentNode.equals(this.tree2.root())) {
           assertNull(currentNode.parent());
           if (currentNode.children() != null) {
-            for (final Node<Integer> child : currentNode.children()) {
+            for (final Node child : currentNode.children()) {
               assertSame(currentNode, child.parent());
             }
           }

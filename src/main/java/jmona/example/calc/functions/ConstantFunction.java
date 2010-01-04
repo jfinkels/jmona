@@ -19,7 +19,7 @@
  */
 package jmona.example.calc.functions;
 
-import jmona.SingleInputFunction;
+import jmona.Function;
 
 /**
  * A function which always returns a constant value.
@@ -30,7 +30,7 @@ import jmona.SingleInputFunction;
  *          The type of the codomain of this function.
  * @author Jeffrey Finkelstein
  */
-public class ConstantFunction<T, R> implements SingleInputFunction<T, R> {
+public class ConstantFunction<T, R> implements Function<T, R> {
 
   /** The constant value of this function. */
   private final R value;
@@ -51,7 +51,7 @@ public class ConstantFunction<T, R> implements SingleInputFunction<T, R> {
    * @param input
    *          This parameter is ignored.
    * @return The constant value specified in the constructor.
-   * @see jmona.SingleInputFunction#execute(java.lang.Object)
+   * @see jmona.Function#execute(java.lang.Object)
    */
   @Override
   public R execute(final T input) {

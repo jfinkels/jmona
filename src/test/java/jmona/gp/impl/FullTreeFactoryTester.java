@@ -38,7 +38,7 @@ public class FullTreeFactoryTester {
   @Test
   public void testSetProbabilityTerminal() {
     try {
-      new FullTreeFactory<Object>().setProbabilityTerminal(1);
+      new FullTreeFactory().setProbabilityTerminal(1);
     } catch (final PropertyNotWritableException exception) {
       assertTrue(exception instanceof PropertyNotWritableException);
     }

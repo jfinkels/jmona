@@ -62,10 +62,10 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<Tree<List<ColoredPolygon>>> completionCondition = null;
+  private CompletionCondition<Tree> completionCondition = null;
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
-  private EvolutionContext<Tree<List<ColoredPolygon>>> context = null;
+  private EvolutionContext<Tree> context = null;
 
   /** Test the evolution. */
   @Test
@@ -91,17 +91,17 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
     final int width = (Integer) this.applicationContext.getBean("width");
     final int height = (Integer) this.applicationContext.getBean("height");
 
-    try {
-      final Tree<List<ColoredPolygon>> individual = this.context
+//    try {
+      final Tree individual = this.context
           .currentPopulation().get(0);
-      final RenderedImage image = Converter.toImage(individual.evaluate(),
-          width, height);
-      ImageWriter.writeImage(image, FILENAME);
-    } catch (final EvaluationException exception) {
-      Util.fail(exception);
-    } catch (final IOException exception) {
-      Util.fail(exception);
-    }
+//      final RenderedImage image = Converter.toImage(individual.evaluate(),
+//          width, height);
+//      ImageWriter.writeImage(image, FILENAME);
+//    } catch (final EvaluationException exception) {
+//      TreeUtils.fail(exception);
+//    } catch (final IOException exception) {
+//      TreeUtils.fail(exception);
+//    }
 
   }
 }

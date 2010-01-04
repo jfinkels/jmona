@@ -29,8 +29,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author Jeffrey Finkelstein
  */
 @RunWith(Suite.class)
-@SuiteClasses({ CalcEvolutionTester.class,
-    FunctionEquivalenceTesterTester.class, PolynomialEvolutionTester.class })
+@SuiteClasses({ CalcEvolutionTester.class, CalcFitnessFunctionTester.class,
+    CalcTreeEvaluatorTester.class, PolynomialEvolutionTester.class })
 public class AllTest {
 
 }

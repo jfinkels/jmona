@@ -24,7 +24,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import jmona.impl.Range;
+import jmona.functional.Range;
 
 import org.junit.Test;
 

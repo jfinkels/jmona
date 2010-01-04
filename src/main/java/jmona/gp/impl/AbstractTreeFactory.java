@@ -29,20 +29,18 @@ import jmona.gp.Tree;
 /**
  * A base class for a TreeFactory which has a maximum depth.
  * 
- * @param <V>
- *          The type of value to which created Trees evaluate.
  * @author Jeffrey Finkelstein
  */
-public abstract class AbstractTreeFactory<V> implements Factory<Tree<V>> {
+public abstract class AbstractTreeFactory implements Factory<Tree> {
 
   /** The default maximum depth of a generated Tree. */
   public static final int DEFAULT_MAX_DEPTH = 3;
   /** The factory which creates FunctionNode objects. */
-  private Factory<FunctionNode<V>> functionNodeFactory = null;
+  private Factory<FunctionNode> functionNodeFactory = null;
   /** The maximum depth of a generated Tree. */
   private int maxDepth = DEFAULT_MAX_DEPTH;
   /** The factory which creates TerminalNode objects. */
-  private Factory<TerminalNode<V>> terminalNodeFactory = null;
+  private Factory<TerminalNode> terminalNodeFactory = null;
 
   /**
    * Create a Tree by instantiating a DefaultTree and assigning its root to be a
@@ -54,9 +52,9 @@ public abstract class AbstractTreeFactory<V> implements Factory<Tree<V>> {
    * @see jmona.Factory#createObject()
    */
   @Override
-  public Tree<V> createObject() throws InitializationException {
+  public Tree createObject() throws InitializationException {
     // TODO I don't want this to be tied to a specified implementation of Tree
-    return new DefaultTree<V>(this.createTree(this.maxDepth));
+    return new DefaultTree(this.createTree(this.maxDepth));
   }
 
   /**
@@ -69,7 +67,7 @@ public abstract class AbstractTreeFactory<V> implements Factory<Tree<V>> {
    * @throws InitializationException
    *           If there is a problem creating this subtree.
    */
-  protected abstract Node<V> createTree(final int currentDepth)
+  protected abstract Node createTree(final int currentDepth)
       throws InitializationException;
 
   /**
@@ -77,7 +75,7 @@ public abstract class AbstractTreeFactory<V> implements Factory<Tree<V>> {
    * 
    * @return The factory which creates FunctionNode objects.
    */
-  public Factory<FunctionNode<V>> functionNodeFactory() {
+  public Factory<FunctionNode> functionNodeFactory() {
     return this.functionNodeFactory;
   }
 
@@ -97,7 +95,7 @@ public abstract class AbstractTreeFactory<V> implements Factory<Tree<V>> {
    *          The factory which creates FunctionNode objects.
    */
   public void setFunctionNodeFactory(
-      final Factory<FunctionNode<V>> newFunctionNodeFactory) {
+      final Factory<FunctionNode> newFunctionNodeFactory) {
     this.functionNodeFactory = newFunctionNodeFactory;
   }
 
@@ -118,7 +116,7 @@ public abstract class AbstractTreeFactory<V> implements Factory<Tree<V>> {
    *          The factory which creates TerminalNode objects.
    */
   public void setTerminalNodeFactory(
-      final Factory<TerminalNode<V>> newTerminalNodeFactory) {
+      final Factory<TerminalNode> newTerminalNodeFactory) {
     this.terminalNodeFactory = newTerminalNodeFactory;
   }
 
@@ -127,7 +125,7 @@ public abstract class AbstractTreeFactory<V> implements Factory<Tree<V>> {
    * 
    * @return The factory which creates TerminalNode objects.
    */
-  public Factory<TerminalNode<V>> terminalNodeFactory() {
+  public Factory<TerminalNode> terminalNodeFactory() {
     return this.terminalNodeFactory;
   }
 }

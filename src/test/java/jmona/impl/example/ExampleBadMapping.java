@@ -20,14 +20,14 @@
 package jmona.impl.example;
 
 import jmona.MappingException;
-import jmona.SingleInputFunction;
+import jmona.Function;
 
 /**
  * A mapping which always throws an Exception.
  * 
  * @author Jeffrey Finkelstein
  */
-public class ExampleBadMapping implements SingleInputFunction<Double, Double> {
+public class ExampleBadMapping implements Function<Double, Double> {
 
   /**
    * Always throws a MappingException.
@@ -37,7 +37,7 @@ public class ExampleBadMapping implements SingleInputFunction<Double, Double> {
    * @return Never returns.
    * @throws MappingException
    *           Always throws this Exception.
-   * @see jmona.SingleInputFunction#execute(java.lang.Object)
+   * @see jmona.Function#execute(java.lang.Object)
    */
   @Override
   public Double execute(final Double input) throws MappingException {

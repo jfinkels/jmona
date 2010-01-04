@@ -29,7 +29,7 @@ import jmona.gp.TerminalNode;
  * @author Jeffrey Finkelstein
  */
 public class ExampleTerminalNodeFactory implements
-    Factory<TerminalNode<Integer>> {
+    Factory<TerminalNode> {
 
   /**
    * Creates an ExampleTerminalNode.
@@ -40,7 +40,7 @@ public class ExampleTerminalNodeFactory implements
    * @see jmona.Factory#createObject()
    */
   @Override
-  public TerminalNode<Integer> createObject() throws InitializationException {
+  public TerminalNode createObject() throws InitializationException {
     return new ExampleTerminalNode();
   }
 

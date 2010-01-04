@@ -35,7 +35,7 @@
  * <p>
  * Users wishing to implement an instance of a genetic programming evolution
  * will likely need to implement a set of {@link jmona.gp.FunctionNode} classes
- * (perhaps simply providing a custom {@link jmona.gp.impl.BinaryOperation} to a
+ * (perhaps simply providing a custom {@link jmona.example.calc.operations.BinaryOperation} to a
  * {@link jmona.gp.impl.BinaryNode}, for example), and a set of
  * {@link jmona.gp.TerminalNode} classes, as well as the {@link jmona.Factory}
  * classes for creating them. Provide these factories to one of the tree
@@ -46,7 +46,7 @@
  * The {@link jmona.gp.impl.GPFitnessFunction} evaluates {@link jmona.gp.Tree}
  * objects, then measures the equivalence of that evaluation value to a
  * specified target value. Users should implement their own
- * {@link jmona.gp.EquivalenceTester} for whatever type of object to which their
+ * {@link jmona.example.calc.EquivalenceTester} for whatever type of object to which their
  * Trees evaluate.
  * </p>
  * 

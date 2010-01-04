@@ -19,20 +19,49 @@
  */
 package jmona.gp.impl.example;
 
+import jmona.CopyingException;
+import jmona.gp.EvaluationException;
 import jmona.gp.impl.BinaryNode;
+import jmona.gp.impl.TreeUtils;
 
 /**
- * An example BinaryNode for use in testing which utilizes the
- * ExampleBinaryOperation.
+ * An example BinaryNode.
  * 
  * @author Jeffrey Finkelstein
  */
-public class ExampleBinaryNode extends BinaryNode<Integer> {
+public class ExampleBinaryNode extends BinaryNode implements ExampleNode {
+
   /**
-   * Instantiate this Node by providing an ExampleBinaryOperation object to the
-   * constructor of the superclass.
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @throws CopyingException
+   *           {@inheritDoc}
+   * @see jmona.DeepCopyable#deepCopy()
    */
-  public ExampleBinaryNode() {
-    super(new ExampleBinaryOperation());
+  @Override
+  public ExampleBinaryNode deepCopy() throws CopyingException {
+    final ExampleBinaryNode result = new ExampleBinaryNode();
+
+    TreeUtils.deepCopyChildren(result, this.children());
+
+    return result;
+  }
+
+  /**
+   * Get the difference between the evaluation of the two child Nodes.
+   * 
+   * @return The difference between the evaluation of the two child Nodes.
+   * @throws EvaluationException
+   *           If there is a problem evaluating the child Nodes.
+   * @see jmona.gp.impl.example.ExampleNode#evaluate()
+   */
+  @Override
+  public int evaluate() throws EvaluationException {
+    final ExampleNode leftChild = (ExampleNode) this.children().get(
+        LEFT_CHILD_INDEX);
+    final ExampleNode rightChild = (ExampleNode) this.children().get(
+        RIGHT_CHILD_INDEX);
+    return leftChild.evaluate() - rightChild.evaluate();
   }
 }

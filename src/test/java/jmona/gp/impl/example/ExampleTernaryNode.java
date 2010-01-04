@@ -19,20 +19,46 @@
  */
 package jmona.gp.impl.example;
 
+import jmona.CopyingException;
+import jmona.MappingException;
+import jmona.functional.Functional;
+import jmona.gp.EvaluationException;
 import jmona.gp.impl.TernaryNode;
 
 /**
- * An example TernaryNode for use in testing which utilizes the
- * ExampleTernaryOperation.
+ * An example TernaryNode.
  * 
  * @author Jeffrey Finkelstein
  */
-public class ExampleTernaryNode extends TernaryNode<Integer> {
+public class ExampleTernaryNode extends TernaryNode implements ExampleNode {
+
   /**
-   * Instantiate this Node by providing an ExampleTernaryOperation object to the
-   * constructor of the superclass.
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.DeepCopyable#deepCopy()
    */
-  public ExampleTernaryNode() {
-    super(new ExampleTernaryOperation());
+  @Override
+  public ExampleTernaryNode deepCopy() throws CopyingException {
+    return new ExampleTernaryNode();
   }
+
+  /**
+   * Gets the sum of the evaluation of the child Nodes.
+   * 
+   * @return The sum of the evaluation of the child Nodes.
+   * @throws EvaluationException
+   *           If there is a problem evaluating the child Nodes.
+   * @see jmona.gp.impl.example.ExampleNode#evaluate()
+   */
+  @Override
+  public int evaluate() throws EvaluationException {
+    try {
+      return Functional.sum(Functional.map(new ExampleNodeEvaluator(), this
+          .children()));
+    } catch (final MappingException exception) {
+      throw new EvaluationException();
+    }
+  }
+
 }

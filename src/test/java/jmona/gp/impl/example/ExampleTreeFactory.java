@@ -19,18 +19,18 @@
  */
 package jmona.gp.impl.example;
 
+import jmona.functional.Range;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
-import jmona.gp.impl.AbstractFunctionNode;
 import jmona.gp.impl.AbstractTreeFactory;
-import jmona.impl.Range;
+import jmona.gp.impl.TreeUtils;
 
 /**
  * An example TreeFactory.
  * 
  * @author Jeffrey Finkelstein
  */
-public class ExampleTreeFactory extends AbstractTreeFactory<Integer> {
+public class ExampleTreeFactory extends AbstractTreeFactory {
 
   /**
    * Create a complete binary Tree of the specified depth.
@@ -41,10 +41,10 @@ public class ExampleTreeFactory extends AbstractTreeFactory<Integer> {
    * @see jmona.gp.impl.AbstractTreeFactory#createTree(int)
    */
   @Override
-  protected Node<Integer> createTree(final int currentDepth) {
+  protected Node createTree(final int currentDepth) {
 
-    Node<Integer> result = null;
-    Node<Integer> child = null;
+    Node result = null;
+    Node child = null;
     if (currentDepth <= 1) {
       result = new ExampleTerminalNode();
     } else {
@@ -53,10 +53,7 @@ public class ExampleTreeFactory extends AbstractTreeFactory<Integer> {
       for (final int i : new Range(result.arity())) {
         child = this.createTree(currentDepth - 1);
 
-        AbstractFunctionNode.attachChildToParent(
-            (FunctionNode<Integer>) result, child);
-        // result.children().add(child);
-        // child.setParent(result);
+        TreeUtils.attachChildToParent((FunctionNode) result, child);
       }
     }
 

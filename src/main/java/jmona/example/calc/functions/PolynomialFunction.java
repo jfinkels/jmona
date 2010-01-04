@@ -19,8 +19,8 @@
  */
 package jmona.example.calc.functions;
 
-import jmona.SingleInputFunction;
-import jmona.impl.Range;
+import jmona.Function;
+import jmona.functional.Range;
 
 /**
  * An immutable polynomial in a single variable with an array of coefficient
@@ -33,7 +33,7 @@ import jmona.impl.Range;
  * 
  * @author Jeffrey Finkelstein
  */
-public class PolynomialFunction implements SingleInputFunction<Double, Double> {
+public class PolynomialFunction implements Function<Double, Double> {
 
   /**
    * The String representing the format in which to output one variable, with
@@ -85,7 +85,7 @@ public class PolynomialFunction implements SingleInputFunction<Double, Double> {
    * @param input
    *          The input value to this polynomial.
    * @return The value of this polynomial at the specified input value.
-   * @see jmona.SingleInputFunction#execute(java.lang.Object )
+   * @see jmona.Function#execute(java.lang.Object )
    */
   @Override
   public Double execute(final Double input) {

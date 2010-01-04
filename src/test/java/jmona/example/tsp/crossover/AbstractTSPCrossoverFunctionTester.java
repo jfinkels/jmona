@@ -28,7 +28,7 @@ import java.util.Vector;
 import jmona.CrossoverException;
 import jmona.CrossoverFunction;
 import jmona.example.tsp.TourFactory;
-import jmona.impl.Range;
+import jmona.functional.Range;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;

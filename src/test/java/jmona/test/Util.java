@@ -1,5 +1,5 @@
 /**
- * Util.java
+ * TreeUtils.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 
@@ -22,9 +22,9 @@ package jmona.test;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.functional.Range;
 import jmona.gp.Node;
 import jmona.gp.Tree;
-import jmona.impl.Range;
 
 /**
  * Utilities for testing, including a method which fails a test after outputting
@@ -36,16 +36,14 @@ public class Util {
   /**
    * Get a List of all Nodes in the specified Tree.
    * 
-   * @param <V>
-   *          The type of value to which the specified Tree evaluates.
    * @param tree
    *          The tree whose Nodes will be returned.
    * @return A List of all Nodes in the specified Tree.
    */
-  public static <V> List<Node<V>> allNodes(final Tree<V> tree) {
+  public static List<Node> allNodes(final Tree tree) {
 
     // instantiate a list to hold all the nodes in this tree
-    final List<Node<V>> result = new Vector<Node<V>>();
+    final List<Node> result = new Vector<Node>();
 
     if (tree.root() != null) {
       // add the root to the list
@@ -55,7 +53,7 @@ public class Util {
       int i = 0;
 
       // iterate over all nodes until each node has been examined
-      List<Node<V>> children = null;
+      List<Node> children = null;
       while (i < result.size()) {
         // get the children of the current node
         children = result.get(i).children();
@@ -112,16 +110,14 @@ public class Util {
   /**
    * Count the number of Nodes in the specified Tree.
    * 
-   * @param <V>
-   *          The type of value to which the specified Tree evaluates.
    * @param tree
    *          A Tree.
    * @return The number of Nodes in the specified Tree.
    */
-  public static <V> int countNodes(final Tree<V> tree) {
+  public static int countNodes(final Tree tree) {
 
     // instantiate a list to hold all the nodes in this tree
-    final List<Node<V>> result = new Vector<Node<V>>();
+    final List<Node> result = new Vector<Node>();
 
     // add the root to the list
     result.add(tree.root());
@@ -130,7 +126,7 @@ public class Util {
     int i = 0;
 
     // iterate over all nodes until each node has been examined
-    List<Node<V>> children = null;
+    List<Node> children = null;
     while (i < result.size()) {
       // get the children of the current node
       children = result.get(i).children();

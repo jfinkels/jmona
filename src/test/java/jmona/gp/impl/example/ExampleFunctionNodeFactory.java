@@ -29,7 +29,7 @@ import jmona.gp.FunctionNode;
  * @author Jeffrey Finkelstein
  */
 public class ExampleFunctionNodeFactory implements
-    Factory<FunctionNode<Integer>> {
+    Factory<FunctionNode> {
 
   /**
    * Create an ExampleBinaryNode.
@@ -40,7 +40,7 @@ public class ExampleFunctionNodeFactory implements
    * @see jmona.Factory#createObject()
    */
   @Override
-  public FunctionNode<Integer> createObject() throws InitializationException {
+  public FunctionNode createObject() throws InitializationException {
     return new ExampleBinaryNode();
   }
 

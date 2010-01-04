@@ -20,7 +20,7 @@
 package jmona.example.calc.functions;
 
 import jmona.MappingException;
-import jmona.SingleInputFunction;
+import jmona.Function;
 
 /**
  * A function which returns the quotient of two specified functions.
@@ -39,8 +39,8 @@ public class DivisionFunction extends SecondOrderFunction {
    *          The function whose image will be the divisor.
    */
   public DivisionFunction(
-      final SingleInputFunction<Double, Double> initialFunction1,
-      final SingleInputFunction<Double, Double> initialFunction2) {
+      final Function<Double, Double> initialFunction1,
+      final Function<Double, Double> initialFunction2) {
     super(initialFunction1, initialFunction2);
   }
 
@@ -53,7 +53,7 @@ public class DivisionFunction extends SecondOrderFunction {
    * @return The quotient of the two functions with the specified input.
    * @throws MappingException
    *           {@inheritDoc}
-   * @see jmona.SingleInputFunction#execute(java.lang.Object)
+   * @see jmona.Function#execute(java.lang.Object)
    */
   @Override
   public Double execute(final Double input) throws MappingException {

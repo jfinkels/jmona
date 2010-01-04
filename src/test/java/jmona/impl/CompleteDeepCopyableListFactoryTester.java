@@ -26,6 +26,7 @@ import static org.junit.Assert.assertTrue;
 import jmona.CopyingException;
 import jmona.DeepCopyableList;
 import jmona.InitializationException;
+import jmona.functional.Range;
 import jmona.impl.example.ExampleIndividual;
 import jmona.impl.example.ExampleIndividualFactory;
 import jmona.test.Util;

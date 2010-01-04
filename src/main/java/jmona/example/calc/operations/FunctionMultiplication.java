@@ -19,9 +19,8 @@
  */
 package jmona.example.calc.operations;
 
-import jmona.SingleInputFunction;
+import jmona.Function;
 import jmona.example.calc.functions.MultiplicationFunction;
-import jmona.gp.impl.UniformBinaryOperation;
 
 /**
  * An operation which provides simple multiplication of two real-valued
@@ -30,7 +29,7 @@ import jmona.gp.impl.UniformBinaryOperation;
  * @author Jeffrey Finkelstein
  */
 public class FunctionMultiplication implements
-    UniformBinaryOperation<SingleInputFunction<Double, Double>> {
+    UniformBinaryOperation<Function<Double, Double>> {
 
   /** A singleton instance of this class. */
   private static final FunctionMultiplication INSTANCE = new FunctionMultiplication();
@@ -57,13 +56,13 @@ public class FunctionMultiplication implements
    *          Another function
    * @return A function which is the product of the two specified input
    *         functions.
-   * @see jmona.gp.impl.BinaryOperation#operate(java.lang.Object,
+   * @see jmona.example.calc.operations.BinaryOperation#operate(java.lang.Object,
    *      java.lang.Object)
    */
   @Override
-  public SingleInputFunction<Double, Double> operate(
-      final SingleInputFunction<Double, Double> object1,
-      final SingleInputFunction<Double, Double> object2) {
+  public Function<Double, Double> operate(
+      final Function<Double, Double> object1,
+      final Function<Double, Double> object2) {
     return new MultiplicationFunction(object1, object2);
   }
 

@@ -29,14 +29,12 @@ import jmona.gp.Tree;
  * A MutationFunction which replaces a random Node in a Tree with a randomly
  * generated subtree.
  * 
- * @param <V>
- *          The type of value to which a Tree Individual evaluates.
  * @author Jeffrey Finkelstein
  */
-public class GPMutationFunction<V> implements MutationFunction<Tree<V>> {
+public class GPMutationFunction implements MutationFunction<Tree> {
 
   /** The TreeFactory which will be used by the {@link #mutate(Tree)} method. */
-  private Factory<Tree<V>> treeFactory = null;
+  private Factory<Tree> treeFactory = null;
 
   /**
    * Replace a random Node from the specified Tree with a randomly generated
@@ -50,14 +48,14 @@ public class GPMutationFunction<V> implements MutationFunction<Tree<V>> {
    * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
-  public void mutate(final Tree<V> individual) throws MutationException {
+  public void mutate(final Tree individual) throws MutationException {
     if (this.treeFactory == null) {
       throw new MutationException("TreeFactory has not been set.");
     }
 
     try {
-      final Tree<V> newTree = this.treeFactory.createObject();
-      Util.replaceNode(individual, individual.randomNode(), newTree.root());
+      final Tree newTree = this.treeFactory.createObject();
+      TreeUtils.replaceNode(individual, individual.randomNode(), newTree.root());
     } catch (final InitializationException exception) {
       throw new MutationException("Failed to generate a random subtree.",
           exception);
@@ -71,7 +69,7 @@ public class GPMutationFunction<V> implements MutationFunction<Tree<V>> {
    *          The TreeFactory which will be used by the {@code #mutate(Tree)}
    *          method.
    */
-  public void setTreeFactory(final Factory<Tree<V>> newTreeFactory) {
+  public void setTreeFactory(final Factory<Tree> newTreeFactory) {
     this.treeFactory = newTreeFactory;
   }
 

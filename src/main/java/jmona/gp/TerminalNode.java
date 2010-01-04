@@ -22,10 +22,8 @@ package jmona.gp;
 /**
  * A leaf Node of a Tree.
  * 
- * @param <V>
- *          The type of value to which this Node evaluates.
  * @author Jeffrey Finkelstein
  */
-public interface TerminalNode<V> extends Node<V> {
+public interface TerminalNode extends Node {
 
 }

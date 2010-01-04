@@ -34,9 +34,9 @@ import org.junit.Test;
 public class AbstractNodeTester {
 
   /** The Node under test. */
-  private AbstractNode<Integer> node = null;
+  private AbstractNode node = null;
   /** A parent Node for the Node under test. */
-  private AbstractNode<Integer> parent = null;
+  private AbstractNode parent = null;
 
   /** Establish a fixture for tests in this class. */
   @Before

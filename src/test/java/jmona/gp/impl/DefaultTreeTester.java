@@ -32,14 +32,16 @@ import java.util.List;
 import java.util.Map;
 
 import jmona.CopyingException;
+import jmona.MappingException;
+import jmona.functional.Range;
 import jmona.gp.EvaluationException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.gp.TerminalNode;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleBinaryNode;
+import jmona.gp.impl.example.ExampleNodeEvaluator;
 import jmona.gp.impl.example.IntegerNode;
-import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
@@ -60,17 +62,17 @@ public class DefaultTreeTester {
   /** The number of times to choose a random node. */
   public static final int NUM_TESTS = 10000;
   /** A big tree. */
-  private DefaultTree<Integer> bigTree = null;
+  private DefaultTree bigTree = null;
   /** A function node in the big tree. */
-  private FunctionNode<Integer> bigTreeNode1 = null;
+  private FunctionNode bigTreeNode1 = null;
   /** A terminal node in the big tree. */
-  private TerminalNode<Integer> bigTreeNode2 = null;
+  private TerminalNode bigTreeNode2 = null;
   /** A terminal node in the big tree. */
-  private TerminalNode<Integer> bigTreeNode3 = null;
+  private TerminalNode bigTreeNode3 = null;
   /** A small tree. */
-  private DefaultTree<Integer> smallTree = null;
+  private DefaultTree smallTree = null;
   /** A node in the small tree. */
-  private TerminalNode<Integer> smallTreeNode = null;
+  private TerminalNode smallTreeNode = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
@@ -80,14 +82,14 @@ public class DefaultTreeTester {
     this.bigTreeNode2 = new IntegerNode(2);
     this.bigTreeNode3 = new IntegerNode(0);
 
-    this.smallTree = new DefaultTree<Integer>(this.smallTreeNode);
+    this.smallTree = new DefaultTree(this.smallTreeNode);
 
     this.bigTreeNode1.children().add(this.bigTreeNode2);
     this.bigTreeNode2.setParent(this.bigTreeNode1);
 
     this.bigTreeNode1.children().add(this.bigTreeNode3);
     this.bigTreeNode3.setParent(this.bigTreeNode1);
-    this.bigTree = new DefaultTree<Integer>(this.bigTreeNode1);
+    this.bigTree = new DefaultTree(this.bigTreeNode1);
   }
 
   /**
@@ -95,7 +97,7 @@ public class DefaultTreeTester {
    */
   @Test
   public void testAllNodes() {
-    final List<Node<Integer>> allBigTreeNodes = this.bigTree.allNodes();
+    final List<Node> allBigTreeNodes = this.bigTree.allNodes();
 
     final int numNodes = 3;
 
@@ -104,7 +106,7 @@ public class DefaultTreeTester {
     assertTrue(allBigTreeNodes.contains(this.bigTreeNode3));
     assertEquals(numNodes, allBigTreeNodes.size());
 
-    final List<Node<Integer>> allSmallTreeNodes = this.smallTree.allNodes();
+    final List<Node> allSmallTreeNodes = this.smallTree.allNodes();
 
     assertTrue(allSmallTreeNodes.contains(this.smallTreeNode));
     assertEquals(1, allSmallTreeNodes.size());
@@ -114,7 +116,7 @@ public class DefaultTreeTester {
   @Test
   public void testDeepCopy() {
     // copy the original tree
-    Tree<Integer> copy = null;
+    Tree copy = null;
     try {
       copy = this.bigTree.deepCopy();
     } catch (final CopyingException exception) {
@@ -125,8 +127,8 @@ public class DefaultTreeTester {
     assertNotSame(copy, this.bigTree);
 
     // get all the nodes
-    final List<Node<Integer>> allCopyNodes = Util.allNodes(copy);
-    final List<Node<Integer>> allOriginalNodes = Util.allNodes(bigTree);
+    final List<Node> allCopyNodes = Util.allNodes(copy);
+    final List<Node> allOriginalNodes = Util.allNodes(bigTree);
 
     // the copied tree and original tree should have the same number of nodes
     assertEquals(allOriginalNodes.size(), allCopyNodes.size());
@@ -134,8 +136,8 @@ public class DefaultTreeTester {
     try {
 
       // iterate over all nodes in the trees
-      Node<Integer> originalNode = null;
-      Node<Integer> copyNode = null;
+      Node originalNode = null;
+      Node copyNode = null;
       for (final int i : new Range(allOriginalNodes.size())) {
 
         // get the original node and the copy
@@ -149,25 +151,12 @@ public class DefaultTreeTester {
 
         // assert that the original and the copy do not refer to the same object
         assertNotSame(originalNode, copyNode);
-
-        // assert that their contents are equal
-        assertEquals(originalNode.evaluate().intValue(), copyNode.evaluate()
-            .intValue());
       }
-    } catch (final EvaluationException exception) {
-      Util.fail(exception);
-    }
-  }
 
-  /**
-   * Test method for {@link jmona.gp.impl.DefaultTree#evaluate()}.
-   */
-  @Test
-  public void testEvaluate() {
-    try {
-      assertEquals(1, this.smallTree.evaluate().intValue());
-      assertEquals(2, this.bigTree.evaluate().intValue());
-    } catch (final EvaluationException exception) {
+      // assert that their contents are equal
+      assertEquals(ExampleNodeEvaluator.evaluate(originalNode),
+          ExampleNodeEvaluator.evaluate(copyNode));
+    } catch (final MappingException exception) {
       Util.fail(exception);
     }
   }
@@ -177,9 +166,9 @@ public class DefaultTreeTester {
    */
   @Test
   public void testRandomNode() {
-    final Tree<Integer> emptyTree = new DefaultTree<Integer>(null);
+    final Tree emptyTree = new DefaultTree(null);
 
-    Node<Integer> node = null;
+    Node node = null;
     try {
       node = emptyTree.randomNode();
       fail("Exception should have been thrown on the previous line.");
@@ -187,13 +176,13 @@ public class DefaultTreeTester {
       assertNull(node);
     }
 
-    final Map<Node<Integer>, Integer> selectionsMap = new HashMap<Node<Integer>, Integer>();
+    final Map<Node, Integer> selectionsMap = new HashMap<Node, Integer>();
 
     selectionsMap.put(this.bigTreeNode1, 0);
     selectionsMap.put(this.bigTreeNode2, 0);
     selectionsMap.put(this.bigTreeNode3, 0);
 
-    Node<Integer> choice = null;
+    Node choice = null;
     Integer numSelections = null;
     for (final int i : new Range(NUM_TESTS)) {
       // every randomNode() call on a single-Node tree returns the root

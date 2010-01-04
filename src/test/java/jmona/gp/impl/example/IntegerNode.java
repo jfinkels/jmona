@@ -27,7 +27,7 @@ import jmona.gp.impl.AbstractTerminalNode;
  * 
  * @author Jeffrey Finkelstein
  */
-public class IntegerNode extends AbstractTerminalNode<Integer> {
+public class IntegerNode extends AbstractTerminalNode implements ExampleNode {
 
   /** The value of this Node. */
   private final int value;
@@ -62,8 +62,7 @@ public class IntegerNode extends AbstractTerminalNode<Integer> {
    *           Never throws this Exception.
    * @see jmona.gp.Node#evaluate()
    */
-  @Override
-  public Integer evaluate() throws EvaluationException {
+  public int evaluate() throws EvaluationException {
     return this.value;
   }
 

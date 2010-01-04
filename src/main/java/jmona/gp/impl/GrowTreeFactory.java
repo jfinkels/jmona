@@ -20,19 +20,17 @@
 package jmona.gp.impl;
 
 import jmona.InitializationException;
+import jmona.functional.Range;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
-import jmona.impl.Range;
 
 /**
  * A TreeFactory which uses the "grow" method to generate a Tree, that is,
  * selecting whether to create a terminal node or a function node at each depth.
  * 
- * @param <V>
- *          The type of value to which the created Tree evaluates.
  * @author Jeffrey Finkelstein
  */
-public class GrowTreeFactory<V> extends AbstractTreeFactory<V> {
+public class GrowTreeFactory extends AbstractTreeFactory {
 
   /** The default probability of creating a terminal node within the Tree. */
   public static final double DEFAULT_PROBABILITY_TERMINAL = 0.1;
@@ -51,21 +49,21 @@ public class GrowTreeFactory<V> extends AbstractTreeFactory<V> {
    */
   // TODO more thorough documentation for this method
   @Override
-  protected Node<V> createTree(final int currentDepth)
+  protected Node createTree(final int currentDepth)
       throws InitializationException {
 
     if (currentDepth <= 1 || Math.random() < this.probabilityTerminal) {
       return this.terminalNodeFactory().createObject();
     } else {
       // create a function node
-      final FunctionNode<V> result = this.functionNodeFactory().createObject();
+      final FunctionNode result = this.functionNodeFactory().createObject();
 
       // add child trees
-      Node<V> child = null;
+      Node child = null;
       for (final int i : new Range(result.arity())) {
         child = this.createTree(currentDepth - 1);
 
-        AbstractFunctionNode.attachChildToParent(result, child);
+        TreeUtils.attachChildToParent(result, child);
       }
 
       // return the function node

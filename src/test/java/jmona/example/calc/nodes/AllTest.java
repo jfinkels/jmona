@@ -29,9 +29,11 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author Jeffrey Finkelstein
  */
 @RunWith(Suite.class)
-@SuiteClasses({ AdditionNodeTester.class, DivisionNodeTester.class,
-    MultiplicationNodeTester.class, NumberNodeTester.class,
-    SubtractionNodeTester.class, VariableNodeTester.class })
+@SuiteClasses({ AbstractCalcTerminalNodeTester.class,
+    AdditionNodeTester.class, CalcFunctionNodeTester.class,
+    DivisionNodeTester.class, MultiplicationNodeTester.class,
+    NumberNodeTester.class, SubtractionNodeTester.class,
+    VariableNodeTester.class })
 public class AllTest {
 
 }

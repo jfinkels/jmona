@@ -27,15 +27,15 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import jmona.Factory;
 import jmona.InitializationException;
-import jmona.gp.EvaluationException;
+import jmona.functional.Range;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.gp.TerminalNode;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleFunctionNodeFactory;
 import jmona.gp.impl.example.ExampleTerminalNodeFactory;
+import jmona.gp.impl.example.ExampleTreeEvaluator;
 import jmona.gp.impl.example.ExampleTreeFactory;
-import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Before;
@@ -52,7 +52,7 @@ public class AbstractTreeFactoryTester {
   /** The number of times to create an Individual. */
   public static final int NUM_TESTS = 100;
   /** The AbstractTreeFactory under test. */
-  private AbstractTreeFactory<Integer> factory = null;
+  private AbstractTreeFactory factory = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
@@ -68,16 +68,13 @@ public class AbstractTreeFactoryTester {
   public void testCreateObject() {
     try {
 
-      Tree<Integer> individual = null;
+      Tree individual = null;
       for (final int i : new Range(NUM_TESTS)) {
         individual = this.factory.createObject();
+
+        assertTrue(individual instanceof DefaultTree);
       }
 
-      assertTrue(individual instanceof DefaultTree<?>);
-      assertTrue(individual.evaluate() instanceof Integer);
-
-    } catch (final EvaluationException exception) {
-      Util.fail(exception);
     } catch (final InitializationException exception) {
       Util.fail(exception);
     }
@@ -95,11 +92,11 @@ public class AbstractTreeFactoryTester {
       Util.fail(exception);
     }
 
-    Node<Integer> node = null;
+    Node node = null;
     try {
       node = this.factory.createTree(1);
       assertNull(node.children());
-      assertTrue(node instanceof TerminalNode<?>);
+      assertTrue(node instanceof TerminalNode);
     } catch (final InitializationException exception) {
       Util.fail(exception);
     }
@@ -110,10 +107,10 @@ public class AbstractTreeFactoryTester {
       assertEquals(node.arity(), node.children().size());
 
       assertNull(node.children().get(0).children());
-      assertTrue(node.children().get(0) instanceof TerminalNode<?>);
+      assertTrue(node.children().get(0) instanceof TerminalNode);
 
       assertNull(node.children().get(1).children());
-      assertTrue(node.children().get(1) instanceof TerminalNode<?>);
+      assertTrue(node.children().get(1) instanceof TerminalNode);
 
     } catch (final InitializationException exception) {
       Util.fail(exception);
@@ -127,20 +124,20 @@ public class AbstractTreeFactoryTester {
       assertNotNull(node.children().get(0).children());
       assertEquals(node.children().get(0).arity(), node.children().get(0)
           .children().size());
-      assertFalse(node.children().get(0) instanceof TerminalNode<?>);
-      assertTrue(node.children().get(0) instanceof FunctionNode<?>);
+      assertFalse(node.children().get(0) instanceof TerminalNode);
+      assertTrue(node.children().get(0) instanceof FunctionNode);
 
       assertNotNull(node.children().get(1).children());
       assertEquals(node.children().get(1).arity(), node.children().get(1)
           .children().size());
-      assertFalse(node.children().get(1) instanceof TerminalNode<?>);
-      assertTrue(node.children().get(1) instanceof FunctionNode<?>);
+      assertFalse(node.children().get(1) instanceof TerminalNode);
+      assertTrue(node.children().get(1) instanceof FunctionNode);
 
-      final Tree<Integer> tree = new DefaultTree<Integer>(node);
-      for (final Node<Integer> treeNode : Util.allNodes(tree)) {
+      final Tree tree = new DefaultTree(node);
+      for (final Node treeNode : Util.allNodes(tree)) {
         if (treeNode.equals(tree.root())) {
           assertNull(treeNode.parent());
-        } else if (treeNode instanceof TerminalNode<?>) {
+        } else if (treeNode instanceof TerminalNode) {
           assertTrue(treeNode.children() == null
               || treeNode.children().size() == 0);
         }
@@ -184,7 +181,7 @@ public class AbstractTreeFactoryTester {
   @Test
   public void testSetFunctionNodeFactory() {
     assertNull(this.factory.functionNodeFactory());
-    final Factory<FunctionNode<Integer>> nodeFactory = new ExampleFunctionNodeFactory();
+    final Factory<FunctionNode> nodeFactory = new ExampleFunctionNodeFactory();
     this.factory.setFunctionNodeFactory(nodeFactory);
     assertSame(nodeFactory, this.factory.functionNodeFactory());
   }
@@ -197,7 +194,7 @@ public class AbstractTreeFactoryTester {
   @Test
   public void testSetTerminalNodeFactory() {
     assertNull(this.factory.terminalNodeFactory());
-    final Factory<TerminalNode<Integer>> nodeFactory = new ExampleTerminalNodeFactory();
+    final Factory<TerminalNode> nodeFactory = new ExampleTerminalNodeFactory();
     this.factory.setTerminalNodeFactory(nodeFactory);
     assertSame(nodeFactory, this.factory.terminalNodeFactory());
   }
@@ -205,7 +202,7 @@ public class AbstractTreeFactoryTester {
   /** Test for a factory method which throws an Exception. */
   @Test
   public void testThrownException() {
-    final AbstractTreeFactory<Integer> badFactory = new AbstractTreeFactory<Integer>() {
+    final AbstractTreeFactory badFactory = new AbstractTreeFactory() {
       /**
        * Always throws an InitializationException.
        * 
@@ -216,7 +213,7 @@ public class AbstractTreeFactoryTester {
        *           Always throws this Exception.
        */
       @Override
-      protected Node<Integer> createTree(final int currentDepth)
+      protected Node createTree(final int currentDepth)
           throws InitializationException {
         throw new InitializationException();
       }

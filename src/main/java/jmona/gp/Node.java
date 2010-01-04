@@ -24,13 +24,11 @@ import java.util.List;
 import jmona.DeepCopyable;
 
 /**
- * A Node which can be recursively evaluated.
+ * A Node in a Tree.
  * 
- * @param <V>
- *          The return type of the {@link #evaluate()} method on this Node.
  * @author Jeffrey Finkelstein
  */
-public interface Node<V> extends DeepCopyable<Node<V>> {
+public interface Node extends DeepCopyable<Node> {
   /**
    * Get the "arity" of this Node, that is, how many children it has.
    * 
@@ -44,25 +42,14 @@ public interface Node<V> extends DeepCopyable<Node<V>> {
    * 
    * @return The children of this Node.
    */
-  List<Node<V>> children();
-
-  /**
-   * Evaluate this Node with respect to its child Nodes.
-   * 
-   * @return The overall evaluation of this Node with respect to its child
-   *         Nodes.
-   * @throws EvaluationException
-   *           If there is a problem evaluating this Node (or one of its
-   *           children).
-   */
-  V evaluate() throws EvaluationException;
+  List<Node> children();
 
   /**
    * Get the parent Node of this Node.
    * 
    * @return The parent Node of this Node.
    */
-  Node<V> parent();
+  Node parent();
 
   /**
    * Set the parent of this Node.
@@ -70,5 +57,5 @@ public interface Node<V> extends DeepCopyable<Node<V>> {
    * @param newParent
    *          The parent of this Node.
    */
-  void setParent(final Node<V> newParent);
+  void setParent(final Node newParent);
 }

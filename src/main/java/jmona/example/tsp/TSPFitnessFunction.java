@@ -22,7 +22,7 @@ package jmona.example.tsp;
 import java.util.List;
 
 import jmona.FitnessFunction;
-import jmona.impl.Range;
+import jmona.functional.Range;
 
 /**
  * 

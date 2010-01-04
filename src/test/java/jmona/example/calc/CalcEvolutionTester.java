@@ -23,8 +23,10 @@ import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
-import jmona.SingleInputFunction;
+import jmona.PostProcessor;
+import jmona.ProcessingException;
 import jmona.gp.Tree;
+import jmona.impl.FitnessLoggingPostProcessor;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
@@ -51,26 +53,27 @@ public class CalcEvolutionTester extends AbstractJUnit4SpringContextTests {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<Tree<SingleInputFunction<Double, Double>>> completionCondition = null;
+  private CompletionCondition<Tree> completionCondition = null;
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
-  private EvolutionContext<Tree<SingleInputFunction<Double, Double>>> context = null;
+  private EvolutionContext<Tree> context = null;
 
   /** Test the evolution. */
   @Test
   @DirtiesContext
   public final void testEvolution() {
+    final PostProcessor<Tree> processor = new FitnessLoggingPostProcessor<Tree>();
+    
     try {
-      LOG.debug("About to start evolution loop.");
       while (!this.completionCondition.isSatisfied(this.context)) {
-        LOG.debug("About to step generation...");
         this.context.stepGeneration();
-        LOG.debug("...generation step complete.");
-        LOG.debug(this.context.currentPopulation());
+        processor.process(this.context);
       }
     } catch (final CompletionException exception) {
       Util.fail(exception);
     } catch (final EvolutionException exception) {
+      Util.fail(exception);
+    } catch (final ProcessingException exception) {
       Util.fail(exception);
     }
   }

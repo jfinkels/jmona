@@ -21,13 +21,13 @@ package jmona.example.calc.factories;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-import jmona.SingleInputFunction;
+import jmona.Function;
 import jmona.example.calc.nodes.AdditionNode;
 import jmona.example.calc.nodes.DivisionNode;
 import jmona.example.calc.nodes.MultiplicationNode;
 import jmona.example.calc.nodes.SubtractionNode;
+import jmona.functional.Range;
 import jmona.gp.FunctionNode;
-import jmona.impl.Range;
 
 import org.junit.Test;
 
@@ -43,7 +43,8 @@ public class CalcFunctionNodeFactoryTester {
 
   /**
    * Test method for
-   * {@link jmona.example.calc.factories.CalcFunctionNodeFactory#createObject()}.
+   * {@link jmona.example.calc.factories.CalcFunctionNodeFactory#createObject()}
+   * .
    */
   @Test
   public void testCreateNode() {
@@ -54,7 +55,7 @@ public class CalcFunctionNodeFactoryTester {
     int multiplicationCount = 0;
     int divisionCount = 0;
 
-    FunctionNode<SingleInputFunction<Double, Double>> node = null;
+    FunctionNode node = null;
     for (final int i : new Range(NUM_NODES)) {
       node = factory.createObject();
 

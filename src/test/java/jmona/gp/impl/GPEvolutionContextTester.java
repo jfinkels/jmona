@@ -25,16 +25,26 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import jmona.CrossoverException;
+import jmona.CrossoverFunction;
 import jmona.EvolutionException;
 import jmona.Factory;
 import jmona.FitnessException;
 import jmona.InitializationException;
+import jmona.MutationException;
+import jmona.MutationFunction;
+import jmona.SelectionException;
+import jmona.SelectionFunction;
+import jmona.functional.Range;
 import jmona.gp.Tree;
+import jmona.gp.impl.example.ExampleTreeEvaluator;
 import jmona.gp.impl.example.ExampleTreeFactory;
-import jmona.impl.Range;
+import jmona.impl.TargetedFitnessFunction;
+import jmona.impl.metrics.EuclideanMetric;
 import jmona.impl.selection.FitnessProportionateSelection;
 import jmona.test.Util;
 
@@ -57,38 +67,38 @@ public class GPEvolutionContextTester {
   /** The number of individuals to add to the evolution context. */
   public static final int NUM_INDIVIDUALS = 100;
   /** The EvolutionContext under test. */
-  private GPEvolutionContext<Integer> context = null;
+  private GPEvolutionContext context = null;
   /** The tree factory for creating initial random Trees. */
-  private Factory<Tree<Integer>> factory = null;
+  private Factory<Tree> factory = null;
   /** The initial population for the EvolutionContext under test. */
-  private List<Tree<Integer>> population = null;
+  private List<Tree> population = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
     this.factory = new ExampleTreeFactory();
-    this.population = new Vector<Tree<Integer>>();
+    this.population = new Vector<Tree>();
     try {
       this.population.add(this.factory.createObject());
       this.population.add(this.factory.createObject());
     } catch (final InitializationException exception) {
       Util.fail(exception);
     }
-    this.context = new GPEvolutionContext<Integer>(this.population);
-    this.context.setCrossoverFunction(new GPCrossoverFunction<Integer>());
-    final GPMutationFunction<Integer> mutationFunction = new GPMutationFunction<Integer>();
+    this.context = new GPEvolutionContext(this.population);
+    this.context.setCrossoverFunction(new GPCrossoverFunction());
+    final GPMutationFunction mutationFunction = new GPMutationFunction();
     mutationFunction.setTreeFactory(this.factory);
     this.context.setMutationFunction(mutationFunction);
 
     this.context
-        .setSelectionFunction(new FitnessProportionateSelection<Tree<Integer>>());
+        .setSelectionFunction(new FitnessProportionateSelection<Tree>());
 
     final Set<Object> evaluationInputs = new HashSet<Object>();
     evaluationInputs.add(new Object());
 
-    final GPFitnessFunction<Integer, Object> fitnessFunction = new GPFitnessFunction<Integer, Object>();
-    fitnessFunction.setEquivalenceTester(new EqualityTester<Integer>());
-    fitnessFunction.setEvaluationInputs(evaluationInputs);
+    final TargetedFitnessFunction<Tree, Integer> fitnessFunction = new TargetedFitnessFunction<Tree, Integer>();
+    fitnessFunction.setMapping(new ExampleTreeEvaluator());
+    fitnessFunction.setMetric(new EuclideanMetric<Integer>());
     fitnessFunction.setTarget(0);
 
     try {
@@ -148,13 +158,12 @@ public class GPEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.gp.impl.GPEvolutionContext#GPEvolutionContext(List)}
-   * .
+   * {@link jmona.gp.impl.GPEvolutionContext#GPEvolutionContext(List)} .
    */
   @Test
   public void testGPEvolutionContext() {
     try {
-      new GPEvolutionContext<Integer>(new Vector<Tree<Integer>>());
+      new GPEvolutionContext(new Vector<Tree>());
       Util.shouldHaveThrownException();
     } catch (final IllegalArgumentException exception) {
       assertTrue(exception instanceof IllegalArgumentException);
@@ -168,26 +177,78 @@ public class GPEvolutionContextTester {
   @Test
   public void testStepGeneration() {
 
-    final List<Tree<Integer>> before = this.context.currentPopulation();
+    final List<Tree> before = this.context.currentPopulation();
     LOG.debug(before);
 
     try {
-      this.context.stepGeneration();
+      this.context.executeGenerationStep();
     } catch (final EvolutionException exception) {
       Util.fail(exception);
     }
 
-    final List<Tree<Integer>> after = this.context.currentPopulation();
+    final List<Tree> after = this.context.currentPopulation();
     LOG.debug(after);
 
     try {
-      this.context.stepGeneration();
+      this.context.executeGenerationStep();
     } catch (final EvolutionException exception) {
       Util.fail(exception);
     }
 
-    final List<Tree<Integer>> after2 = this.context.currentPopulation();
+    final List<Tree> after2 = this.context.currentPopulation();
     LOG.debug(after2);
+
+    this.context.setCrossoverFunction(new CrossoverFunction<Tree>() {
+
+      @Override
+      public void crossover(Tree individual1, Tree individual2)
+          throws CrossoverException {
+        throw new CrossoverException();
+      }
+    });
+
+    try {
+      this.context.executeGenerationStep();
+      Util.shouldHaveThrownException();
+    } catch (final EvolutionException exception) {
+      assertTrue(exception.getCause() instanceof CrossoverException);
+      this.context.setCrossoverFunction(new GPCrossoverFunction());
+    }
+
+    this.context.setMutationFunction(new MutationFunction<Tree>() {
+      @Override
+      public void mutate(final Tree object) throws MutationException {
+        throw new MutationException();
+      }
+    });
+
+    this.context.setMutationProbability(1);
+    try {
+      this.context.executeGenerationStep();
+      Util.shouldHaveThrownException();
+    } catch (final EvolutionException exception) {
+      assertTrue(exception.getCause() instanceof MutationException);
+      this.context.setMutationFunction(new GPMutationFunction());
+    }
+
+    this.context.setSelectionFunction(new SelectionFunction<Tree>() {
+
+      @Override
+      public Tree select(final Map<Tree, Double> fitnesses)
+          throws SelectionException {
+        throw new SelectionException();
+      }
+    });
+
+    try {
+      this.context.executeGenerationStep();
+      Util.shouldHaveThrownException();
+    } catch (final EvolutionException exception) {
+      assertTrue(exception.getCause() instanceof SelectionException);
+      this.context
+          .setSelectionFunction(new FitnessProportionateSelection<Tree>());
+    }
+    
   }
 
 }

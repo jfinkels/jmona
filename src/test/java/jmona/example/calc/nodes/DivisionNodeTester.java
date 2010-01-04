@@ -24,6 +24,7 @@ import jmona.MappingException;
 import jmona.gp.EvaluationException;
 import jmona.test.Util;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -65,6 +66,6 @@ public class DivisionNodeTester {
     } catch (final MappingException exception) {
       Util.fail(exception);
     }
-  }
 
+  }
 }

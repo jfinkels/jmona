@@ -23,7 +23,7 @@ import java.awt.Color;
 import java.awt.Polygon;
 
 import jmona.DeepCopyable;
-import jmona.impl.Range;
+import jmona.functional.Range;
 
 /**
  * A Polygon with a Color.

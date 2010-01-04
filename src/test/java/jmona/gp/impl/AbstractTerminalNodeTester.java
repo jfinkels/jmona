@@ -19,29 +19,35 @@
  */
 package jmona.gp.impl;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import jmona.CopyingException;
+import jmona.gp.Node;
 
 import org.junit.Test;
 
 /**
+ * Test class for the AbstractTerminalNode class.
+ * 
  * @author Jeffrey Finkelstein
  */
 public class AbstractTerminalNodeTester {
 
   /**
-   * Test method for {@link jmona.gp.impl.AbstractTerminalNode#arity()}.
+   * Test method for {@link jmona.gp.impl.AbstractTerminalNode#arity()} and
+   * {@link jmona.gp.impl.AbstractTerminalNode#children()}.
    */
   @Test
   public void testArity() {
-    fail("Not yet implemented");
-  }
+    final AbstractTerminalNode node = new AbstractTerminalNode() {
+      @Override
+      public Node deepCopy() throws CopyingException {
+        return null;
+      }
+    };
+    assertEquals(AbstractTerminalNode.ARITY, node.arity());
 
-  /**
-   * Test method for {@link jmona.gp.impl.AbstractTerminalNode#children()}.
-   */
-  @Test
-  public void testChildren() {
-    fail("Not yet implemented");
+    assertNull(node.children());
   }
 
 }

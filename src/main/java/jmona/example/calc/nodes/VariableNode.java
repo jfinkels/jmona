@@ -19,7 +19,7 @@
  */
 package jmona.example.calc.nodes;
 
-import jmona.SingleInputFunction;
+import jmona.Function;
 import jmona.example.calc.functions.DoubleIdentityFunction;
 import jmona.gp.EvaluationException;
 
@@ -28,7 +28,7 @@ import jmona.gp.EvaluationException;
  * 
  * @author Jeffrey Finkelstein
  */
-public class VariableNode extends AbstractCalcTerminalNode {
+public class VariableNode extends AbstractCalcTerminalNode implements CalcNode {
 
   /** The symbol which represents this Node. */
   public static final String VARIABLE_SYMBOL = "x";
@@ -57,7 +57,7 @@ public class VariableNode extends AbstractCalcTerminalNode {
    * @see jmona.gp.Node#evaluate()
    */
   @Override
-  public SingleInputFunction<Double, Double> evaluate()
+  public Function<Double, Double> evaluate()
       throws EvaluationException {
     return DoubleIdentityFunction.newInstance();
   }

@@ -44,7 +44,8 @@
 
   <bean id="game" class="jmona.example.ipd.IPDGame" />
 
-  <bean id="evolutionContext" class="jmona.game.impl.GameEvolutionContext">
+  <bean id="evolutionContext"
+    class="jmona.game.impl.TwoPlayerGameEvolutionContext">
     <constructor-arg>
       <ref bean="population" />
     </constructor-arg>

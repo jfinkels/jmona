@@ -34,11 +34,9 @@ import jmona.impl.AbstractEvolutionContext;
 /**
  * A default EvolutionContext for a Genetic Programming evolution.
  * 
- * @param <V>
- *          The type of value to which a Tree evaluates.
  * @author Jeffrey Finkelstein
  */
-public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
+public class GPEvolutionContext extends AbstractEvolutionContext<Tree> {
 
   /**
    * Instantiate this EvolutionContext by calling the corresponding constructor
@@ -47,7 +45,7 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
    * @param initialPopulation
    *          The initial population in the evolution.
    */
-  public GPEvolutionContext(final List<Tree<V>> initialPopulation) {
+  public GPEvolutionContext(final List<Tree> initialPopulation) {
     super(initialPopulation);
   }
 
@@ -81,10 +79,10 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
     }
 
     // initialize a new population to hold the next generation
-    final List<Tree<V>> nextGeneration = new Vector<Tree<V>>();
+    final List<Tree> nextGeneration = new Vector<Tree>();
 
-    Tree<V> individual1 = null;
-    Tree<V> individual2 = null;
+    Tree individual1 = null;
+    Tree individual2 = null;
 
     try {
       // while the size of the next generation is less than the size of the
@@ -92,7 +90,7 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
       while (nextGeneration.size() < currentSize) {
 
         // select one individual, because each op. requires at least one
-        individual1 = (Tree<V>) this.selectionFunction().select(
+        individual1 = (Tree) this.selectionFunction().select(
             this.currentFitnesses()).deepCopy();
 
         // choose variation operation probabilistically
@@ -106,7 +104,7 @@ public class GPEvolutionContext<V> extends AbstractEvolutionContext<Tree<V>> {
         } else { // variation operation is crossover
 
           // select another individual (different from the first!)
-          individual2 = (Tree<V>) this.selectionFunction().select(
+          individual2 = (Tree) this.selectionFunction().select(
               this.currentFitnesses()).deepCopy();
 
           // perform crossover

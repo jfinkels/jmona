@@ -26,7 +26,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
 
-import jmona.impl.Range;
+import jmona.functional.Range;
 
 import org.junit.Before;
 import org.junit.Test;

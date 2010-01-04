@@ -22,11 +22,14 @@ package jmona.gp.impl;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
+import jmona.Factory;
+import jmona.InitializationException;
 import jmona.MutationException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleBinaryNode;
+import jmona.gp.impl.example.ExampleNode;
 import jmona.gp.impl.example.ExampleTerminalNode;
 import jmona.gp.impl.example.ExampleTreeFactory;
 import jmona.test.Util;
@@ -42,12 +45,12 @@ import org.junit.Test;
 public class GPMutationFunctionTester {
 
   /** The GPMutationFunction under test. */
-  private GPMutationFunction<Integer> function = null;
+  private GPMutationFunction function = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.function = new GPMutationFunction<Integer>();
+    this.function = new GPMutationFunction();
   }
 
   /**
@@ -59,9 +62,9 @@ public class GPMutationFunctionTester {
     this.function.setTreeFactory(new ExampleTreeFactory());
 
     // create three nodes to put into a tree
-    final Node<Integer> root = new ExampleBinaryNode();
-    final Node<Integer> leftChild = new ExampleTerminalNode();
-    final Node<Integer> rightChild = new ExampleTerminalNode();
+    final Node root = new ExampleBinaryNode();
+    final Node leftChild = new ExampleTerminalNode();
+    final Node rightChild = new ExampleTerminalNode();
 
     // add the child Nodes to the list of children of the root node
     root.children().add(leftChild);
@@ -72,7 +75,7 @@ public class GPMutationFunctionTester {
     rightChild.setParent(root);
 
     // instantiate a new tree with the given root Node
-    final Tree<Integer> tree = new DefaultTree<Integer>(root);
+    final Tree tree = new DefaultTree(root);
 
     // mutate the Tree
     try {
@@ -97,13 +100,12 @@ public class GPMutationFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.gp.impl.GPMutationFunction#setTreeFactory(jmona.Factory)}
-   * .
+   * {@link jmona.gp.impl.GPMutationFunction#setTreeFactory(jmona.Factory)} .
    */
   @Test
   public void testSetTreeFactory() {
     final ExampleTerminalNode root = new ExampleTerminalNode();
-    final Tree<Integer> tree = new DefaultTree<Integer>(root);
+    final Tree tree = new DefaultTree(root);
 
     this.function.setTreeFactory(null);
 
@@ -124,12 +126,27 @@ public class GPMutationFunctionTester {
 
       assertNotSame(root, tree.root());
       assertTrue(tree.root() instanceof ExampleTerminalNode);
-      assertNotSame(root.evaluate(), tree.root().evaluate());
+      assertNotSame(root.evaluate(), ((ExampleNode) tree.root()).evaluate());
 
     } catch (final EvaluationException exception) {
       Util.fail(exception);
     } catch (final MutationException exception) {
       Util.fail(exception);
+    }
+
+    this.function.setTreeFactory(new Factory<Tree>() {
+
+      @Override
+      public Tree createObject() throws InitializationException {
+        throw new InitializationException();
+      }
+    });
+
+    try {
+      this.function.mutate(tree);
+      Util.shouldHaveThrownException();
+    } catch (final MutationException exception) {
+      assertTrue(exception.getCause() instanceof InitializationException);
     }
   }
 

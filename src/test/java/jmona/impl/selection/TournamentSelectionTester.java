@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import jmona.impl.Range;
+import jmona.functional.Range;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Before;

@@ -23,7 +23,7 @@
  * </p>
  * 
  * <p>
- * The {@link jmona.game.impl.GameEvolutionContext} matches
+ * The {@link jmona.game.impl.TwoPlayerGameEvolutionContext} matches
  * {@link jmona.game.Strategy} objects (as individuals in a population) against
  * each other, and assigns fitness based on their overall score. The
  * {@link jmona.game.impl.UniformPopulationCompletionCondition} is provided for

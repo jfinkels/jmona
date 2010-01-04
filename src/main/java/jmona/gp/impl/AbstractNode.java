@@ -24,14 +24,12 @@ import jmona.gp.Node;
 /**
  * A base class for a Node with a parent Node and a value.
  * 
- * @param <V>
- *          The type of value to which this Node evaluates.
  * @author Jeffrey Finkelstein
  */
-public abstract class AbstractNode<V> implements Node<V> {
+public abstract class AbstractNode implements Node {
 
   /** The parent of this Node. */
-  private Node<V> parent = null;
+  private Node parent = null;
 
   /**
    * {@inheritDoc}
@@ -40,7 +38,7 @@ public abstract class AbstractNode<V> implements Node<V> {
    * @see jmona.gp.Node#parent()
    */
   @Override
-  public Node<V> parent() {
+  public Node parent() {
     return this.parent;
   }
 
@@ -52,7 +50,7 @@ public abstract class AbstractNode<V> implements Node<V> {
    * @see jmona.gp.Node#setParent(Node)
    */
   @Override
-  public void setParent(final Node<V> newParent) {
+  public void setParent(final Node newParent) {
     this.parent = newParent;
   }
 }

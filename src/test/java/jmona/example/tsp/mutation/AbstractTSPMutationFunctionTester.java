@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.MutationFunction;
-import jmona.impl.Range;
+import jmona.functional.Range;
 
 import org.junit.Before;
 

@@ -46,7 +46,7 @@
 
   <!-- functions for use in the evolution context -->
 
-  <bean id="fitnessFunction" class="jmona.ga.impl.MappingFitnessFunction">
+  <bean id="fitnessFunction" class="jmona.impl.TargetedFitnessFunction">
     <property name="mapping" ref="mapping" />
     <property name="metric" ref="metric" />
     <property name="target" ref="targetImage" />

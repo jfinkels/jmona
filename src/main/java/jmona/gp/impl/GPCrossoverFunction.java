@@ -26,11 +26,9 @@ import jmona.gp.Tree;
  * Perform crossover of random subtrees, chosen with uniform distribution over
  * each Node in a Tree.
  * 
- * @param <V>
- *          The type of value to which the Trees evaluate.
  * @author Jeffrey Finkelstein
  */
-public class GPCrossoverFunction<V> implements CrossoverFunction<Tree<V>> {
+public class GPCrossoverFunction implements CrossoverFunction<Tree> {
 
   /**
    * Perform a swap of random subtrees from the specified pair of parent Trees
@@ -43,8 +41,8 @@ public class GPCrossoverFunction<V> implements CrossoverFunction<Tree<V>> {
    * @see jmona.CrossoverFunction#crossover(Object, Object)
    */
   @Override
-  public void crossover(final Tree<V> parent1, final Tree<V> parent2) {
-    Util
+  public void crossover(final Tree parent1, final Tree parent2) {
+    TreeUtils
         .swapNodes(parent1, parent1.randomNode(), parent2, parent2.randomNode());
   }
 

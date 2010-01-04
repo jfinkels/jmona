@@ -20,7 +20,7 @@
 package jmona.example.tsp;
 
 import static org.junit.Assert.assertEquals;
-import jmona.impl.Range;
+import jmona.functional.Range;
 
 import org.junit.Test;
 

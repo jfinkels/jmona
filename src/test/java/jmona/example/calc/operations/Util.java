@@ -1,5 +1,5 @@
 /**
- * Util.java
+ * TreeUtils.java
  * 
  * Copyright 2009 Jeffrey Finkelstein
  * 

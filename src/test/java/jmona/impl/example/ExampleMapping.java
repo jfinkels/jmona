@@ -19,7 +19,7 @@
  */
 package jmona.impl.example;
 
-import jmona.SingleInputFunction;
+import jmona.Function;
 
 /**
  * An example mapping from an ExampleIndividual to its fitness.
@@ -27,7 +27,7 @@ import jmona.SingleInputFunction;
  * @author Jeffrey Finkelstein
  */
 public class ExampleMapping implements
-    SingleInputFunction<ExampleIndividual, Double> {
+    Function<ExampleIndividual, Double> {
 
   /**
    * Get the fitness of the specified ExampleIndividual.
@@ -35,7 +35,7 @@ public class ExampleMapping implements
    * @param individual
    *          The ExampleIndividual whose fitness will be returned.
    * @return The fitness of the specified ExampleIndividual.
-   * @see jmona.SingleInputFunction#execute(java.lang.Object)
+   * @see jmona.Function#execute(java.lang.Object)
    */
   @Override
   public Double execute(final ExampleIndividual individual) {

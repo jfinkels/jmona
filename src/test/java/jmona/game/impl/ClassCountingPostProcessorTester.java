@@ -50,7 +50,7 @@ public class ClassCountingPostProcessorTester {
     population.add(new ExampleStrategy());
 
     // instantiate a context with the population initialized above
-    final EvolutionContext<ExampleStrategy> context = new GameEvolutionContext<ExampleStrategy>(
+    final EvolutionContext<ExampleStrategy> context = new TwoPlayerGameEvolutionContext<ExampleStrategy>(
         population);
 
     // instantiate the processor with the context initialized above

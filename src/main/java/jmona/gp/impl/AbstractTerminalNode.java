@@ -30,12 +30,10 @@ import jmona.gp.TerminalNode;
  * A terminal Node has no children, and the {@link #children()} method always
  * returns {@code null}.
  * 
- * @param <V>
- *          The type of value to which this Node evaluates.
  * @author Jeffrey Finkelstein
  */
-public abstract class AbstractTerminalNode<V> extends AbstractNode<V> implements
-    TerminalNode<V> {
+public abstract class AbstractTerminalNode extends AbstractNode implements
+    TerminalNode {
 
   /** The "arity" of this Node. */
   public static final int ARITY = 0;
@@ -58,7 +56,7 @@ public abstract class AbstractTerminalNode<V> extends AbstractNode<V> implements
    * @see jmona.gp.Node#children()
    */
   @Override
-  public List<Node<V>> children() {
+  public List<Node> children() {
     return null;
   }
 

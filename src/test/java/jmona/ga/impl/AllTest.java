@@ -31,7 +31,6 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ AbstractListCrossoverFunctionTester.class,
     BitFactoryTester.class, GAEvolutionContextTester.class,
-    GAFitnessFunctionTester.class, MappingFitnessFunctionTester.class,
     OnePointCrossoverFunctionTester.class,
     TwoPointCrossoverFunctionTester.class })
 public class AllTest {

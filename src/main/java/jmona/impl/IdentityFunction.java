@@ -19,7 +19,7 @@
  */
 package jmona.impl;
 
-import jmona.SingleInputFunction;
+import jmona.Function;
 
 /**
  * The identity function on the domain of type T.
@@ -28,7 +28,7 @@ import jmona.SingleInputFunction;
  *          The type of the domain of this function.
  * @author Jeffrey Finkelstein
  */
-public class IdentityFunction<T> implements SingleInputFunction<T, T> {
+public class IdentityFunction<T> implements Function<T, T> {
 
   /**
    * Return exactly the specified input.
@@ -36,7 +36,7 @@ public class IdentityFunction<T> implements SingleInputFunction<T, T> {
    * @param input
    *          The input.
    * @return Exactly the specified input.
-   * @see jmona.SingleInputFunction#execute(java.lang.Object)
+   * @see jmona.Function#execute(java.lang.Object)
    */
   @Override
   public T execute(final T input) {

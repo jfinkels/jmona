@@ -22,73 +22,23 @@ package jmona.gp.impl;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.CopyingException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
-import jmona.impl.Util;
 
 /**
- * A base class for an inner Node representing an element from the function set.
+ * A base class for an inner Node in a Tree, representing an element from the
+ * function set.
  * 
- * @param <V>
- *          The type of value to which this Node evaluates.
  * @author Jeffrey Finkelstein
  */
-public abstract class AbstractFunctionNode<V> extends AbstractNode<V> implements
-    FunctionNode<V> {
-
-  /**
-   * Attach the specified child Node to the specified parent Node by setting the
-   * child's parent to the specified parent Node and by adding the child Node to
-   * the specified parent's List of child Nodes.
-   * 
-   * @param <T>
-   *          The type of value to which the specified Nodes evaluate.
-   * @param parent
-   *          The parent Node.
-   * @param child
-   *          The child Node.
-   */
-  public static <T> void attachChildToParent(final FunctionNode<T> parent,
-      final Node<T> child) {
-    parent.children().add(child);
-    child.setParent(parent);
-  }
-
-  /**
-   * Helper method for performing a deep copy on the specified List of children
-   * Nodes, and attaching them to the specified parent.
-   * 
-   * @param <T>
-   *          The type of value to which the specified Nodes evaluate.
-   * @param clonedParent
-   *          The parent of the specified children.
-   * @param childrenToCopy
-   *          The List of children to copy and attach to the specified parent
-   *          Node.
-   * @throws CopyingException
-   *           If there is a problem copying one of the children.
-   */
-  protected static <T> void deepCopyChildren(
-      final FunctionNode<T> clonedParent, final List<Node<T>> childrenToCopy)
-      throws CopyingException {
-
-    // copy each child node
-    final List<Node<T>> copiedChildren = Util.deepCopy(childrenToCopy);
-
-    // iterate over each cloned child Node
-    for (final Node<T> clonedChild : copiedChildren) {
-
-      // attach the cloned child to the cloned parent
-      attachChildToParent(clonedParent, clonedChild);
-    }
-  }
+public abstract class AbstractFunctionNode extends AbstractNode implements
+    FunctionNode {
 
   /**
    * Children of this Node. The size of this List must equal the "arity" of this
    * Node.
    */
-  private List<Node<V>> children = new Vector<Node<V>>();
+  private List<Node> children = new Vector<Node>();
 
   /**
    * {@inheritDoc}
@@ -97,7 +47,7 @@ public abstract class AbstractFunctionNode<V> extends AbstractNode<V> implements
    * @see jmona.gp.Node#children()
    */
   @Override
-  public List<Node<V>> children() {
+  public List<Node> children() {
     return this.children;
   }
 

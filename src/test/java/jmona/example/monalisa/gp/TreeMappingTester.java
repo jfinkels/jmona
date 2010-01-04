@@ -29,17 +29,16 @@ import java.util.List;
 
 import jmona.MappingException;
 import jmona.example.monalisa.ColoredPolygon;
+import jmona.functional.Range;
 import jmona.gp.EvaluationException;
 import jmona.gp.Tree;
 import jmona.gp.impl.DefaultTree;
-import jmona.gp.impl.example.ExampleBadTree;
-import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Test;
 
 /**
- * Test class for the TreeMapping class.
+ * Test class for the MonaTreeMapping class.
  * 
  * @author Jeffrey Finkelstein
  */
@@ -47,7 +46,7 @@ public class TreeMappingTester {
 
   /**
    * Test method for
-   * {@link jmona.example.monalisa.gp.TreeMapping#execute(jmona.gp.Tree)}.
+   * {@link jmona.example.monalisa.gp.MonaTreeMapping#execute(jmona.gp.Tree)}.
    */
   @Test
   public void testExecute() {
@@ -82,11 +81,10 @@ public class TreeMappingTester {
     final ColoredPolygonNode node = new ColoredPolygonNode();
     node.setColoredPolygon(polygon);
 
-    Tree<List<ColoredPolygon>> tree = new DefaultTree<List<ColoredPolygon>>(
-        node);
+    Tree tree = new DefaultTree(node);
 
     // create a mapping function from trees to images
-    final TreeMapping function = new TreeMapping(width, height);
+    final MonaTreeMapping function = new MonaTreeMapping(width, height);
 
     BufferedImage image = null;
     try {
@@ -120,7 +118,13 @@ public class TreeMappingTester {
       }
     }
 
-    tree = new ExampleBadTree<List<ColoredPolygon>>(node);
+    final ColoredPolygonNode root = new ColoredPolygonNode() {
+      @Override
+      public List<ColoredPolygon> evaluate() throws EvaluationException {
+        throw new EvaluationException();
+      }
+    };
+    tree.setRoot(root);
     try {
       function.execute(tree);
       Util.shouldHaveThrownException();

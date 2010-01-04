@@ -22,7 +22,7 @@ package jmona.example.monalisa;
 import java.awt.Color;
 
 import jmona.Factory;
-import jmona.impl.Range;
+import jmona.functional.Range;
 import jmona.impl.Util;
 
 /**

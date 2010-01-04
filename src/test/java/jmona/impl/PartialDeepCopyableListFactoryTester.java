@@ -31,6 +31,7 @@ import jmona.CopyingException;
 import jmona.DeepCopyableList;
 import jmona.Factory;
 import jmona.InitializationException;
+import jmona.functional.Range;
 import jmona.ga.impl.BitFactory;
 import jmona.test.Util;
 

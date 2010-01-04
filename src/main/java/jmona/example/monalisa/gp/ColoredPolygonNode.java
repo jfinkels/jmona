@@ -28,8 +28,8 @@ import jmona.gp.EvaluationException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.gp.TerminalNode;
-import jmona.gp.impl.AbstractFunctionNode;
 import jmona.gp.impl.AbstractNode;
+import jmona.gp.impl.TreeUtils;
 
 /**
  * A Node which contains a single ColoredPolygon object, and which adds its
@@ -38,25 +38,78 @@ import jmona.gp.impl.AbstractNode;
  * 
  * @author Jeffrey Finkelstein
  */
-public class ColoredPolygonNode extends AbstractNode<List<ColoredPolygon>>
-    implements FunctionNode<List<ColoredPolygon>>,
-    TerminalNode<List<ColoredPolygon>> {
+public class ColoredPolygonNode extends AbstractNode implements FunctionNode,
+    TerminalNode {
 
   /** The ColoredPolygon contained in this Node. */
   private ColoredPolygon coloredPolygon = null;
+  /** The children of this Node. */
+  private List<Node> children = new Vector<Node>();
 
   /**
-   * Set the ColoredPolygon contained in this Node.
-   * 
-   * @param newColoredPolygon
-   *          The ColoredPolygon contained in this Node.
+   * The index in the List of children of the single child of this Node, if it
+   * exists.
    */
-  public void setColoredPolygon(final ColoredPolygon newColoredPolygon) {
-    this.coloredPolygon = newColoredPolygon;
+  public static final int CHILD_INDEX = 0;
+  /** The "arity" of this Node. */
+  public static final int ARITY = 1;
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.gp.Node#arity()
+   */
+  @Override
+  public int arity() {
+    return ARITY;
   }
 
-  /** The children of this Node. */
-  private List<Node<List<ColoredPolygon>>> children = new Vector<Node<List<ColoredPolygon>>>();
+  /**
+   * Gets the sole child of this Node.
+   * 
+   * This method assumes that the child Node can be cast to ColoredPolygonNode.
+   * 
+   * @return The sole child of this Node.
+   */
+  public ColoredPolygonNode child() {
+    return (ColoredPolygonNode) this.children().get(CHILD_INDEX);
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.gp.Node#children()
+   */
+  @Override
+  public List<Node> children() {
+    return this.children;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @throws CopyingException
+   *           {@inheritDoc}
+   * @see jmona.DeepCopyable#deepCopy()
+   */
+  @Override
+  public ColoredPolygonNode deepCopy() throws CopyingException {
+    final ColoredPolygonNode result = new ColoredPolygonNode();
+
+    result.setColoredPolygon(this.coloredPolygon.deepCopy());
+
+    Node clonedChild = null;
+    if (this.children.size() > 0) {
+      clonedChild = this.children().get(CHILD_INDEX).deepCopy();
+
+      TreeUtils.attachChildToParent(result, clonedChild);
+    }
+
+    return result;
+  }
 
   /**
    * Evaluate this Node by adding its ColoredPolygon to the List of
@@ -75,7 +128,7 @@ public class ColoredPolygonNode extends AbstractNode<List<ColoredPolygon>>
     if (this.children().size() == 0) {
       result = new Vector<ColoredPolygon>();
     } else { // if this is a function node
-      result = this.children().get(CHILD_INDEX).evaluate();
+      result = this.child().evaluate();
     }
 
     // add the colored polygon in this node to the list
@@ -85,57 +138,12 @@ public class ColoredPolygonNode extends AbstractNode<List<ColoredPolygon>>
   }
 
   /**
-   * The index in the List of children of the single child of this Node, if it
-   * exists.
-   */
-  public static final int CHILD_INDEX = 0;
-
-  /**
-   * {@inheritDoc}
+   * Set the ColoredPolygon contained in this Node.
    * 
-   * @return {@inheritDoc}
-   * @see jmona.gp.Node#arity()
+   * @param newColoredPolygon
+   *          The ColoredPolygon contained in this Node.
    */
-  @Override
-  public int arity() {
-    return ARITY;
-  }
-
-  /** The "arity" of this Node. */
-  public static final int ARITY = 1;
-
-  /**
-   * {@inheritDoc}
-   * 
-   * @return {@inheritDoc}
-   * @see jmona.gp.Node#children()
-   */
-  @Override
-  public List<Node<List<ColoredPolygon>>> children() {
-    return this.children;
-  }
-
-  /**
-   * {@inheritDoc}
-   * 
-   * @return {@inheritDoc}
-   * @throws CopyingException
-   *           {@inheritDoc}
-   * @see jmona.DeepCopyable#deepCopy()
-   */
-  @Override
-  public ColoredPolygonNode deepCopy() throws CopyingException {
-    final ColoredPolygonNode result = new ColoredPolygonNode();
-
-    result.setColoredPolygon(this.coloredPolygon.deepCopy());
-
-    Node<List<ColoredPolygon>> clonedChild = null;
-    if (this.children.size() > 0) {
-      clonedChild = this.children().get(CHILD_INDEX).deepCopy();
-
-      AbstractFunctionNode.attachChildToParent(result, clonedChild);
-    }
-
-    return result;
+  public void setColoredPolygon(final ColoredPolygon newColoredPolygon) {
+    this.coloredPolygon = newColoredPolygon;
   }
 }

@@ -24,8 +24,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.functional.Range;
 import jmona.impl.Pair;
-import jmona.impl.Range;
 
 import org.junit.Before;
 import org.junit.Test;

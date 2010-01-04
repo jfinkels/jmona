@@ -24,39 +24,23 @@ import jmona.DeepCopyable;
 /**
  * A Tree of Nodes, which is also an Individual.
  * 
- * @param <V>
- *          The return type of the {@link #evaluate()} method on this Tree.
  * @author Jeffrey Finkelstein
  */
-public interface Tree<V> extends DeepCopyable<Tree<V>> {
-
-  /**
-   * Evaluate this tree by recursively evaluating each Node starting from the
-   * root.
-   * 
-   * This method is equivalent to calling {@link Node#evaluate()} on the result
-   * of the {@link Tree#root()} method.
-   * 
-   * @return The overall evaluation of this tree by recursively evaluating each
-   *         Node starting from the root.
-   * @throws EvaluationException
-   *           If there is a problem evaluating the Nodes of this Tree.
-   */
-  V evaluate() throws EvaluationException;
+public interface Tree extends DeepCopyable<Tree> {
 
   /**
    * Get a random Node in the Tree.
    * 
    * @return A random Node in the Tree.
    */
-  Node<V> randomNode();
+  Node randomNode();
 
   /**
    * Get the root Node of this Tree.
    * 
    * @return The root Node of this Tree.
    */
-  Node<V> root();
+  Node root();
 
   /**
    * Set the root Node of this Tree.
@@ -64,5 +48,5 @@ public interface Tree<V> extends DeepCopyable<Tree<V>> {
    * @param newRoot
    *          The root Node of this Tree.
    */
-  void setRoot(final Node<V> newRoot);
+  void setRoot(final Node newRoot);
 }

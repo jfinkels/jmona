@@ -22,7 +22,7 @@ package jmona.example.monalisa;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-import jmona.SingleInputFunction;
+import jmona.Function;
 
 /**
  * A function which maps a List of ColoredPolygon objects to the BufferedImage
@@ -31,7 +31,7 @@ import jmona.SingleInputFunction;
  * @author Jeffrey Finkelstein
  */
 public class MonaMapping implements
-    SingleInputFunction<List<ColoredPolygon>, BufferedImage> {
+    Function<List<ColoredPolygon>, BufferedImage> {
 
   /** The width of the image to output. */
   private final int width;
@@ -59,7 +59,7 @@ public class MonaMapping implements
    * @param input
    *          A List of ColoredPolygon objects which represent an image.
    * @return The BufferedImage which the specified List represents.
-   * @see jmona.SingleInputFunction#execute(java.lang.Object)
+   * @see jmona.Function#execute(java.lang.Object)
    */
   @Override
   public BufferedImage execute(final List<ColoredPolygon> input) {

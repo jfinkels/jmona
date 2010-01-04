@@ -24,7 +24,7 @@
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
   
   <!-- mapping from Tree<List<ColoredPolygon>> to BufferedImage -->
-  <bean id="mapping" class="jmona.example.monalisa.gp.TreeMapping">
+  <bean id="mapping" class="jmona.example.monalisa.gp.MonaTreeMapping">
     <constructor-arg ref="width" />
     <constructor-arg ref="height" />
   </bean>
@@ -48,7 +48,7 @@
     <property name="treeFactory" ref="individualFactory" />
   </bean>
 
-  <bean id="fitnessFunction" class="jmona.ga.impl.MappingFitnessFunction">
+  <bean id="fitnessFunction" class="jmona.impl.TargetedFitnessFunction">
     <property name="mapping" ref="mapping" />
     <property name="target" ref="targetImage" />
     <property name="metric" ref="metric" />

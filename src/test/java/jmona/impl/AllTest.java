@@ -42,8 +42,8 @@ import org.junit.runners.Suite.SuiteClasses;
     ListMutationFunctionTester.class, LoggingPostProcessorTester.class,
     PairTester.class, PartialDeepCopyableListFactoryTester.class,
     PartialDeepCopyableVectorTester.class, PeriodicPostProcessorTester.class,
-    PopulationLoggingPostProcessorTester.class, RangeTester.class,
-    UtilTester.class })
+    PopulationLoggingPostProcessorTester.class,
+    TargetedFitnessFunctionTester.class, UtilTester.class })
 public class AllTest {
 
 }

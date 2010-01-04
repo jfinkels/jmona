@@ -20,16 +20,9 @@
 package jmona.gp.impl;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 import jmona.CopyingException;
-import jmona.gp.EvaluationException;
 import jmona.gp.Node;
-import jmona.gp.impl.example.ExampleTernaryNode;
-import jmona.gp.impl.example.IntegerNode;
-import jmona.impl.Range;
-import jmona.test.Util;
 
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -39,107 +32,18 @@ import org.junit.Test;
  */
 public class TernaryNodeTester {
 
-  /** The arity of a ternary node. */
-  public static final int ARITY = 3;
-  /** The value of the left child Node. */
-  public static final int LEFT_VALUE = 1;
-  /** The value of the middle child Node. */
-  public static final int MIDDLE_VALUE = 2;
-  /** The value of the right child Node. */
-  public static final int RIGHT_VALUE = 3;
-  /** The left child Node. */
-  private Node<Integer> leftChild = null;
-  /** The middle child Node. */
-  private Node<Integer> middleChild = null;
-  /** The Node under test. */
-  private TernaryNode<Integer> node = null;
-  /** The right child Node. */
-  private Node<Integer> rightChild = null;
-
-  /** Establish a fixture for tests in this class. */
-  @Before
-  public final void setUp() {
-    this.node = new ExampleTernaryNode();
-    this.leftChild = new IntegerNode(LEFT_VALUE);
-    this.middleChild = new IntegerNode(MIDDLE_VALUE);
-    this.rightChild = new IntegerNode(RIGHT_VALUE);
-
-    this.node.children().add(this.leftChild);
-    this.node.children().add(this.middleChild);
-    this.node.children().add(this.rightChild);
-
-    this.leftChild.setParent(this.node);
-    this.middleChild.setParent(this.node);
-    this.rightChild.setParent(this.node);
-  }
-
   /**
    * Test method for {@link jmona.gp.impl.TernaryNode#arity()}.
    */
   @Test
   public void testArity() {
-    assertEquals(ARITY, this.node.arity());
-    assertEquals(TernaryNode.ARITY, this.node.arity());
-  }
-
-  /**
-   * Test method for {@link jmona.gp.impl.TernaryNode#deepCopy()}.
-   */
-  @Test
-  public void testDeepCopy() {
-    try {
-      final TernaryNode<Integer> clonedNode = this.node.deepCopy();
-
-      Node<Integer> child = null;
-      Node<Integer> clonedChild = null;
-      for (final int i : new Range(this.node.children().size())) {
-        child = this.node.children().get(i);
-        clonedChild = clonedNode.children().get(i);
-        assertEquals(child.evaluate().intValue(), clonedChild.evaluate()
-            .intValue());
+    final TernaryNode node = new TernaryNode() {
+      @Override
+      public Node deepCopy() throws CopyingException {
+        return null;
       }
-    } catch (final EvaluationException exception) {
-      Util.fail(exception);
-    } catch (final CopyingException exception) {
-      Util.fail(exception);
-    }
-  }
-
-  /**
-   * Test method for {@link jmona.gp.impl.TernaryNode#evaluate()}.
-   */
-  @Test
-  public void testEvaluate() {
-    try {
-      assertEquals(LEFT_VALUE + MIDDLE_VALUE + RIGHT_VALUE, this.node
-          .evaluate().intValue());
-    } catch (final EvaluationException exception) {
-      Util.fail(exception);
-    }
-  }
-
-  /**
-   * Test method for {@link jmona.gp.impl.TernaryNode#left()}.
-   */
-  @Test
-  public void testLeft() {
-    assertSame(this.leftChild, this.node.left());
-  }
-
-  /**
-   * Test method for {@link jmona.gp.impl.TernaryNode#middle()}.
-   */
-  @Test
-  public void testMiddle() {
-    assertSame(this.middleChild, this.node.middle());
-  }
-
-  /**
-   * Test method for {@link jmona.gp.impl.TernaryNode#right()}.
-   */
-  @Test
-  public void testRight() {
-    assertSame(this.rightChild, this.node.right());
+    };
+    assertEquals(TernaryNode.ARITY, node.arity());
   }
 
 }

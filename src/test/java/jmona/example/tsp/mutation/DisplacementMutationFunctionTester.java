@@ -22,7 +22,7 @@ package jmona.example.tsp.mutation;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import jmona.MutationException;
-import jmona.impl.Range;
+import jmona.functional.Range;
 import jmona.test.Util;
 
 import org.junit.Test;

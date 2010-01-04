@@ -29,12 +29,12 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.InitializationException;
+import jmona.functional.Range;
 import jmona.gp.Node;
 import jmona.gp.TerminalNode;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleFunctionNodeFactory;
 import jmona.gp.impl.example.ExampleTerminalNodeFactory;
-import jmona.impl.Range;
 import jmona.test.Util;
 
 import org.junit.Before;
@@ -52,12 +52,12 @@ public class GrowTreeFactoryTester {
   /** The number of tests to run. */
   public static final int NUM_TESTS = 1000;
   /** The factory under test. */
-  private GrowTreeFactory<Integer> factory = null;
+  private GrowTreeFactory factory = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.factory = new GrowTreeFactory<Integer>();
+    this.factory = new GrowTreeFactory();
     this.factory.setFunctionNodeFactory(new ExampleFunctionNodeFactory());
     this.factory.setTerminalNodeFactory(new ExampleTerminalNodeFactory());
   }
@@ -69,7 +69,7 @@ public class GrowTreeFactoryTester {
   public void testCreateTree() {
     this.factory.setMaxDepth(DEPTH);
 
-    Tree<Integer> tree = null;
+    Tree tree = null;
     try {
       tree = this.factory.createObject();
     } catch (final InitializationException exception) {
@@ -82,7 +82,7 @@ public class GrowTreeFactoryTester {
     assertTrue(numNodes <= Math.pow(2, depth) - 1);
 
     // instantiate a list to hold all the nodes in this tree
-    final List<Node<Integer>> allNodes = new Vector<Node<Integer>>();
+    final List<Node> allNodes = new Vector<Node>();
 
     // add the root to the list
     allNodes.add(tree.root());
@@ -91,9 +91,9 @@ public class GrowTreeFactoryTester {
     int i = 0;
 
     // iterate over all nodes until each node has been examined
-    List<Node<Integer>> children = null;
-    Node<Integer> currentNode = null;
-    Node<Integer> parent = null;
+    List<Node> children = null;
+    Node currentNode = null;
+    Node parent = null;
     int parentIndex = 0;
     while (i < allNodes.size()) {
       // get the current Node
@@ -113,7 +113,7 @@ public class GrowTreeFactoryTester {
 
       // add this check for possible problematic Node.children() return values
       if (children != null && children.size() > 0) {
-        for (final Node<Integer> child : children) {
+        for (final Node child : children) {
           assertNotNull(child);
           assertFalse(allNodes.contains(child));
         }
@@ -126,7 +126,7 @@ public class GrowTreeFactoryTester {
       i += 1;
     }
 
-    for (final Node<Integer> node : allNodes) {
+    for (final Node node : allNodes) {
       assertEquals(allNodes.indexOf(node), allNodes.lastIndexOf(node));
     }
   }
@@ -139,11 +139,11 @@ public class GrowTreeFactoryTester {
   public void testSetProbabilityTerminal() {
     this.factory.setProbabilityTerminal(1);
     try {
-      Tree<Integer> tree = null;
+      Tree tree = null;
       for (final int i : new Range(NUM_TESTS)) {
         tree = this.factory.createObject();
         assertNull(tree.root().children());
-        assertTrue(tree.root() instanceof TerminalNode<?>);
+        assertTrue(tree.root() instanceof TerminalNode);
         assertEquals(1, Util.countNodes(tree));
       }
 

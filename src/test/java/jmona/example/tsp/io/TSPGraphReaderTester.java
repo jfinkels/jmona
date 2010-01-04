@@ -24,8 +24,9 @@ import static org.junit.Assert.assertEquals;
 import java.io.File;
 import java.io.IOException;
 
+import jmona.MappingException;
 import jmona.example.tsp.DirectedGraph;
-import jmona.impl.Range;
+import jmona.functional.Range;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -59,6 +60,8 @@ public class TSPGraphReaderTester {
       graph = TSPGraphReader.fromFile(new File(TESTFILE));
     } catch (final IOException exception) {
       Util.fail(exception);
+    } catch (final MappingException exception) {
+      Util.fail(exception);
     }
 
     for (final int i : new Range(NUM_VERTICES)) {
@@ -70,6 +73,8 @@ public class TSPGraphReaderTester {
     try {
       graph = TSPGraphReader.fromFile(new File(TESTFILE_EMPTY_LINES));
     } catch (final IOException exception) {
+      Util.fail(exception);
+    } catch (final MappingException exception) {
       Util.fail(exception);
     }
 
