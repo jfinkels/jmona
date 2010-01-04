@@ -28,7 +28,7 @@ import jmona.EvolutionException;
 import jmona.MutationException;
 import jmona.SelectionException;
 import jmona.gp.Tree;
-import jmona.impl.AbstractGeneticEvolutionContext;
+import jmona.impl.context.AbstractGeneticEvolutionContext;
 
 /**
  * A default EvolutionContext for a Genetic Programming evolution.

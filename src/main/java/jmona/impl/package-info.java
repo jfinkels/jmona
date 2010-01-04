@@ -26,12 +26,12 @@
  * <p>
  * Among other classes, this package provides:
  * <ul>
- * <li>{@link jmona.impl.AbstractEvolutionContext}, a base class for
+ * <li>{@link jmona.impl.context.AbstractEvolutionContext}, a base class for
  * {@link jmona.EvolutionContext} implementations</li>
- * <li>{@link jmona.impl.DefaultCompletionCondition}, a default
+ * <li>{@link jmona.impl.completion.DefaultCompletionCondition}, a default
  * {@link jmona.CompletionCondition} implementation which checks an {@code
  * EvolutionContext} for maximum fitness or maximum number of generations</li>
- * <li>{@link jmona.impl.PeriodicPostProcessor}, a base class for
+ * <li>{@link jmona.impl.postprocessing.PeriodicPostProcessor}, a base class for
  * {@link jmona.PostProcessor} implementations which execute periodically.</li>
  * <li>{@link jmona.impl.CompleteDeepCopyableListFactory}, a factory for
  * creating a List of objects which implement {@link jmona.DeepCopyable}, for

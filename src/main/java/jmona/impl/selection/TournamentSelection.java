@@ -25,6 +25,7 @@ import java.util.List;
 import jmona.FitnessFunction;
 import jmona.IndependentSelectionFunction;
 import jmona.impl.Util;
+import jmona.impl.fitness.StandardizedFitnessComparator;
 
 /**
  * A tournament selection which selects the best individual from a tournament of
@@ -42,7 +43,7 @@ public class TournamentSelection<T> implements IndependentSelectionFunction<T> {
    */
   public static final int DEFAULT_TOURNAMENT_SIZE = 5;
   /** A comparator for individuals based on their fitnesses. */
-  private final FitnessComparator<T> standardizedFitnessComparator = new FitnessComparator<T>();
+  private final StandardizedFitnessComparator<T> standardizedFitnessComparator = new StandardizedFitnessComparator<T>();
   /**
    * The number of Individuals to be chosen at random to compete in the
    * tournament.

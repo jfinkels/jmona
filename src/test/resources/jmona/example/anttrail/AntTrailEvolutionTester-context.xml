@@ -31,7 +31,7 @@
     factory-bean="populationFactory" 
     factory-method="createObject" />
 
-  <bean id="completionCondition" class="jmona.impl.DefaultCompletionCondition" >
+  <bean id="completionCondition" class="jmona.impl.completion.DefaultCompletionCondition" >
     <property name="maxFitness" value="89" />
     <property name="maxGenerations" value="100" />
   </bean>

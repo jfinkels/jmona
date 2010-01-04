@@ -26,7 +26,7 @@ import jmona.EvolutionException;
 import jmona.PostProcessor;
 import jmona.ProcessingException;
 import jmona.gp.Tree;
-import jmona.impl.FitnessLoggingPostProcessor;
+import jmona.impl.postprocessing.FitnessLoggingPostProcessor;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;

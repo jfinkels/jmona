@@ -27,6 +27,7 @@ import jmona.MappingException;
 import jmona.SelectionException;
 import jmona.functional.Functional;
 import jmona.impl.Util;
+import jmona.impl.fitness.AdjustedFitnessGetter;
 
 /**
  * Fitness-proportionate selection, also known as "roulette wheel selection".

@@ -31,9 +31,9 @@
 
   <bean id="selectionFunction" 
         class="jmona.impl.selection.FitnessProportionateSelection" />
-  <!--<bean id="crossoverFunction" class="jmona.impl.IdentityCrossoverFunction" />-->
+  <!--<bean id="crossoverFunction" class="jmona.impl.crossover.IdentityCrossoverFunction" />-->
   <bean id="crossoverFunction" class="jmona.gp.impl.GPCrossoverFunction" />
-  <!--<bean id="mutationFunction" class="jmona.impl.IdentityMutationFunction" />-->  
+  <!--<bean id="mutationFunction" class="jmona.impl.mutation.IdentityMutationFunction" />-->  
   <bean id="mutationFunction" class="jmona.gp.impl.GPMutationFunction">
     <property name="treeFactory" ref="individualFactory" />
   </bean>

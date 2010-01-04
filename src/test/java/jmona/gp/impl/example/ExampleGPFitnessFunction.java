@@ -22,7 +22,7 @@ package jmona.gp.impl.example;
 import jmona.FitnessException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Tree;
-import jmona.impl.MinimizingFitnessFunction;
+import jmona.impl.fitness.MinimizingFitnessFunction;
 
 /**
  * An example FitnessFunction for Trees of ExampleNodes.

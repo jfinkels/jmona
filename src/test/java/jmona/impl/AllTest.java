@@ -29,20 +29,10 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author Jeffrey Finkelstein
  */
 @RunWith(Suite.class)
-@SuiteClasses({ AbstractGeneticEvolutionContextTester.class,
-    CompleteDeepCopyableListFactoryTester.class,
-    CompleteDeepCopyableVectorTester.class,
-    DefaultCompletionConditionTester.class,
-    DefaultMaxFitnessCompletionConditionTester.class,
-    DefaultMaxGenerationCompletionConditionTester.class,
-    FitnessLoggingPostProcessorTester.class,
-    IdentityCrossoverFunctionTester.class, IdentityFunctionTester.class,
-    IdentityMutationFunctionTester.class,
-    ImmutableElementsListMutationFunctionTester.class,
-    ListMutationFunctionTester.class, LoggingPostProcessorTester.class,
-    PairTester.class, PartialDeepCopyableListFactoryTester.class,
-    PartialDeepCopyableVectorTester.class, PeriodicPostProcessorTester.class,
-    PopulationLoggingPostProcessorTester.class, UtilTester.class })
+@SuiteClasses({ CompleteDeepCopyableListFactoryTester.class,
+    CompleteDeepCopyableVectorTester.class, IdentityFunctionTester.class,
+    PartialDeepCopyableListFactoryTester.class,
+    PartialDeepCopyableVectorTester.class, UtilTester.class })
 public class AllTest {
 
 }

@@ -27,7 +27,7 @@ import jmona.MetricException;
 import jmona.example.monalisa.ColoredPolygon;
 import jmona.example.monalisa.Converter;
 import jmona.example.monalisa.FixedImageMetric;
-import jmona.impl.MinimizingFitnessFunction;
+import jmona.impl.fitness.MinimizingFitnessFunction;
 
 /**
  * A FitnessFunction which measures raw fitness as Euclidean distance between

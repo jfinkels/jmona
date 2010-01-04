@@ -27,7 +27,7 @@ import jmona.DeepCopyableList;
 import jmona.EvolutionContext;
 import jmona.ProcessingException;
 import jmona.example.monalisa.io.ImageWriter;
-import jmona.impl.PeriodicPostProcessor;
+import jmona.impl.postprocessing.PeriodicPostProcessor;
 
 /**
  * A PostProcessor which writes an individual out to an image on the filesystem.
@@ -106,7 +106,7 @@ public class ImageOutputPostProcessor extends
    * @throws ProcessingException
    *           If the height or width of the output image has not been set, or
    *           if there is a problem writing the image to disk.
-   * @see jmona.impl.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
+   * @see jmona.impl.postprocessing.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
    */
   @Override
   protected void processAtInterval(

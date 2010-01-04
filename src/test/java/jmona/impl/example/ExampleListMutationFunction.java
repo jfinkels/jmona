@@ -19,7 +19,7 @@
  */
 package jmona.impl.example;
 
-import jmona.impl.ImmutableElementsListMutationFunction;
+import jmona.impl.mutation.ImmutableElementsListMutationFunction;
 
 /**
  * A MutationFunction for a List of ExampleIndividual objects.
@@ -37,7 +37,7 @@ public class ExampleListMutationFunction extends
    *          The individual to mutate.
    *@return A copy of an ExampleIndividual with the additive inverse of the
    *         specified input ExampleIndividual.
-   * @see jmona.impl.ImmutableElementsListMutationFunction#mutated(java.lang.Object)
+   * @see jmona.impl.mutation.ImmutableElementsListMutationFunction#mutated(java.lang.Object)
    */
   @Override
   protected ExampleIndividual mutated(final ExampleIndividual individual) {

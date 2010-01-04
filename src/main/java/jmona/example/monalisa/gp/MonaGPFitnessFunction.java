@@ -25,7 +25,7 @@ import jmona.FitnessException;
 import jmona.example.monalisa.ga.MonaGAFitnessFunction;
 import jmona.gp.EvaluationException;
 import jmona.gp.Tree;
-import jmona.impl.MinimizingFitnessFunction;
+import jmona.impl.fitness.MinimizingFitnessFunction;
 
 /**
  * Determines the distance between the evaluation of a Tree and a target image.

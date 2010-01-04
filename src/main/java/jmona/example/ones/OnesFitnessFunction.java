@@ -24,7 +24,7 @@ import java.util.List;
 import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.functional.Functional;
-import jmona.impl.MaximizingFitnessFunction;
+import jmona.impl.fitness.MaximizingFitnessFunction;
 
 /**
  * A fitness function which gives higher fitness to individuals with a greater

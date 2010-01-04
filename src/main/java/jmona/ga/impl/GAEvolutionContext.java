@@ -28,8 +28,8 @@ import jmona.DeepCopyable;
 import jmona.EvolutionException;
 import jmona.MutationException;
 import jmona.SelectionException;
-import jmona.impl.AbstractEvolutionContext;
-import jmona.impl.AbstractGeneticEvolutionContext;
+import jmona.impl.context.AbstractEvolutionContext;
+import jmona.impl.context.AbstractGeneticEvolutionContext;
 
 /**
  * A default implementation of the evolution context interface, which provides

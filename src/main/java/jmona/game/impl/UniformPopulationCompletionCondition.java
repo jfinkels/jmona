@@ -23,7 +23,7 @@ import java.util.List;
 
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.impl.DefaultMaxGenerationCompletionCondition;
+import jmona.impl.completion.DefaultMaxGenerationCompletionCondition;
 
 /**
  * Determines whether a Population in an EvolutionContext contains only

@@ -24,7 +24,7 @@ import java.util.Map;
 
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.impl.PeriodicPostProcessor;
+import jmona.impl.postprocessing.PeriodicPostProcessor;
 
 import org.apache.log4j.Logger;
 
@@ -49,7 +49,7 @@ public class ClassCountingPostProcessor<T extends DeepCopyable<T>> extends
    * @param context
    *          The context from which to get the population of objects whose
    *          classes will be counted.
-   * @see jmona.impl.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
+   * @see jmona.impl.postprocessing.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
    */
   @SuppressWarnings("unchecked")
   @Override

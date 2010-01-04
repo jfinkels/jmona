@@ -25,7 +25,7 @@ import jmona.FitnessException;
 import jmona.Function;
 import jmona.MappingException;
 import jmona.gp.Tree;
-import jmona.impl.MaximizingFitnessFunction;
+import jmona.impl.fitness.MaximizingFitnessFunction;
 
 /**
  * Determines how close a Tree is to representing a target function.

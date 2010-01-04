@@ -21,7 +21,7 @@ package jmona.impl.example;
 
 import java.util.List;
 
-import jmona.impl.AbstractGeneticEvolutionContext;
+import jmona.impl.context.AbstractGeneticEvolutionContext;
 
 /**
  * An example EvolutionContext.

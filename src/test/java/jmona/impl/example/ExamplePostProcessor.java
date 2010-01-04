@@ -20,7 +20,7 @@
 package jmona.impl.example;
 
 import jmona.EvolutionContext;
-import jmona.impl.PeriodicPostProcessor;
+import jmona.impl.postprocessing.PeriodicPostProcessor;
 
 /**
  * A PostProcessor which simply increments a counter.
@@ -52,7 +52,7 @@ public class ExamplePostProcessor extends
    * 
    * @param evolutionContext
    *          This parameter is ignored.
-   * @see jmona.impl.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
+   * @see jmona.impl.postprocessing.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
    */
   @Override
   protected void processAtInterval(

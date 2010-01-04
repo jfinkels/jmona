@@ -28,7 +28,7 @@ import jmona.EvolutionException;
 import jmona.SelectionException;
 import jmona.game.Strategy;
 import jmona.game.TwoPlayerGame;
-import jmona.impl.AbstractEvolutionContext;
+import jmona.impl.context.AbstractEvolutionContext;
 
 /**
  * A context for playing Strategy objects against one another and reproducing

@@ -21,7 +21,7 @@ package jmona.example.tsp;
 
 import java.util.List;
 
-import jmona.impl.MinimizingFitnessFunction;
+import jmona.impl.fitness.MinimizingFitnessFunction;
 
 /**
  * A FitnessFunction which determines the raw fitness of a tour based on its
