@@ -1,5 +1,5 @@
 /**
- * RankSelectionTester.java
+ * LinearRankingSelectionTester.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -33,24 +33,24 @@ import jmona.test.Util;
 import org.junit.Test;
 
 /**
- * Test class for the RankSelection class.
+ * Test class for the LinearRankingSelection class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
-public class RankSelectionTester {
+public class LinearRankingSelectionTester {
 
   /** The number of selections to make. */
   public static final int NUM_SELECTIONS = 10000;
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.RankSelection#select(java.util.List, jmona.FitnessFunction)}
+   * {@link jmona.impl.selection.LinearRankingSelection#select(java.util.List, jmona.FitnessFunction)}
    * .
    */
   @Test
   public void testSelect() {
-    final RankSelection<ExampleIndividual> function = new RankSelection<ExampleIndividual>();
+    final LinearRankingSelection<ExampleIndividual> function = new LinearRankingSelection<ExampleIndividual>();
     final ExampleFitnessFunction fitnessFunction = new ExampleFitnessFunction();
     fitnessFunction.setExtremum(0.0);
 
