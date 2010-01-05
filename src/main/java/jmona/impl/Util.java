@@ -152,8 +152,6 @@ public final class Util {
       return new Vector<T>(collection);
     }
 
-    // TODO if numberToChoose > (collection.size() / 2), then remove elements
-
     // create a list to contain the randomly chosen elements
     final List<T> result = new Vector<T>();
 
