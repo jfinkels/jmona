@@ -42,8 +42,7 @@ import jmona.impl.fitness.StandardizedFitnessComparator;
  *          The type of individual to choose.
  * @since 0.3
  */
-public class LinearRankingSelection<T> implements
-    IndependentSelectionFunction<T> {
+public class LinearRankingSelection<T> extends FitnessProportionateSelection<T> {
 
   /** The comparator with which to rank the individuals in the population. */
   private final StandardizedFitnessComparator<T> standardizedFitnessComparator = new StandardizedFitnessComparator<T>();
@@ -100,9 +99,6 @@ public class LinearRankingSelection<T> implements
 
     // use fitness proportionate selection where the adjusted fitness is the
     // rank of the individual
-    final FitnessProportionateSelection<T> fitnessProportionateSelection = new FitnessProportionateSelection<T>();
-
-    return fitnessProportionateSelection.select(individuals,
-        presetFitnessFunction);
+    return super.select(individuals, presetFitnessFunction);
   }
 }
