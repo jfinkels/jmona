@@ -45,7 +45,7 @@ public class ExampleGPFitnessFunction extends MinimizingFitnessFunction<Tree> {
   @Override
   public double rawFitness(final Tree individual) throws FitnessException {
     try {
-      return ((ExampleNode) individual.root()).evaluate();
+      return Math.abs(((ExampleNode) individual.root()).evaluate());
     } catch (final EvaluationException exception) {
       throw new FitnessException(exception);
     }
