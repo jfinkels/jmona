@@ -94,19 +94,18 @@ public class FitnessProportionateSelection<T> implements
     }
 
     // choose a number between 0 and the sum of all fitnesses
-    final double selectionPointer = Math.random() * fitnessesSum;
+    final double selection = Math.random() * fitnessesSum;
 
     // iterate over all entries in the list of fitnesses
     T result = null;
-    double currentPointer = 0.0;
+    double pointer = 0.0;
     int i = 0;
-    for (final double currentFitness : fitnesses) {
-      if (currentPointer < selectionPointer
-          && currentPointer + currentFitness >= selectionPointer) {
+    for (final double fitness : fitnesses) {
+      if (pointer < selection && pointer + fitness >= selection) {
         result = population.get(i);
         break;
       }
-      currentPointer += currentFitness;
+      pointer += fitness;
       i += 1;
     }
 
