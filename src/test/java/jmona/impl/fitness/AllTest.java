@@ -35,7 +35,8 @@ import org.junit.runners.Suite.SuiteClasses;
     KnownExtremumFitnessFunctionTester.class,
     MaximizingFitnessFunctionTester.class,
     MinimizingFitnessFunctionTester.class, PresetFitnessFunctionTester.class,
-    RawFitnessGetterTester.class, StandardizedFitnessComparatorTester.class })
+    RawFitnessGetterTester.class, StandardizedFitnessComparatorTester.class,
+    StandardizedFitnessGetterTester.class })
 public class AllTest {
 
 }
