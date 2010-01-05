@@ -203,4 +203,50 @@ public class FitnessProportionateSelectionTester {
 
   }
 
+  /** If no individual has any fitness, the selection should be random. */
+  @Test
+  public void testNoFitnesses() {
+    final ExampleIndividual individual1 = new ExampleIndividual(
+        Double.POSITIVE_INFINITY);
+    final ExampleIndividual individual2 = new ExampleIndividual(
+        Double.POSITIVE_INFINITY);
+    final ExampleIndividual individual3 = new ExampleIndividual(
+        Double.POSITIVE_INFINITY);
+
+    final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
+    population.add(individual1);
+    population.add(individual2);
+    population.add(individual3);
+
+    int selectionsOfIndividual1 = 0;
+    int selectionsOfIndividual2 = 0;
+    int selectionsOfIndividual3 = 0;
+    try {
+
+      ExampleIndividual selection = null;
+      for (final int i : new Range(NUM_SELECTIONS)) {
+        selection = this.function.select(population,
+            new ExampleFitnessFunction());
+
+        if (selection.equals(individual1)) {
+          selectionsOfIndividual1 += 1;
+        } else if (selection.equals(individual2)) {
+          selectionsOfIndividual2 += 1;
+        } else {
+          selectionsOfIndividual3 += 1;
+        }
+      }
+
+    } catch (final SelectionException exception) {
+      Util.fail(exception);
+    }
+
+    final double expected = NUM_SELECTIONS / 3.0;
+    final double delta = expected * 0.1;
+
+    assertEquals(expected, selectionsOfIndividual1, delta);
+    assertEquals(expected, selectionsOfIndividual2, delta);
+    assertEquals(expected, selectionsOfIndividual3, delta);
+  }
+
 }
