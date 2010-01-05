@@ -115,7 +115,7 @@
 
   <build>
     <plugins>
-      <plugin>
+      <plugin> <!-- make release plugin aware of git and scp:// -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
         <version>${version.plugin.release}</version>
@@ -133,7 +133,7 @@
         </dependencies>
       </plugin>
 
-      <plugin>
+      <plugin> <!-- make SCM plugin aware of Git -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-scm-plugin</artifactId>
         <version>${version.plugin.scm}</version>
@@ -191,7 +191,7 @@
         <version>${version.plugin.site}</version>
       </plugin>
       
-      <plugin>
+      <plugin> <!-- package source and test-sources, too -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
         <version>${version.plugin.source}</version>
