@@ -34,6 +34,7 @@ import jmona.MappingException;
 import jmona.functional.Functional;
 import jmona.functional.Range;
 import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * Edge recombination crossover (also known as ERX) for tours in the traveling
@@ -115,7 +116,7 @@ public class EdgeRecombinationCrossoverFunction implements
 
     // choose an initial city to add from a random parent
     int cityToAdd = 0;
-    if (Util.RANDOM.nextBoolean()) {
+    if (RandomUtils.RANDOM.nextInt(0, 1) == 0) {
       cityToAdd = tour1.get(0);
     } else {
       cityToAdd = tour2.get(0);

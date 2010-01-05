@@ -48,8 +48,7 @@ public class DisplacementMutationFunctionTester extends
 
   /**
    * Test method for
-   * {@link jmona.impl.mutation.DisplacementMutationFunction#mutate(List)}
-   * .
+   * {@link jmona.impl.mutation.DisplacementMutationFunction#mutate(List)} .
    */
   @Override
   @Test
@@ -91,8 +90,9 @@ public class DisplacementMutationFunctionTester extends
         }
       }
 
-      // get the index of the end of the second slice
-      int end = 0;
+      // get the index of the end of the second slice. if the last change isn't
+      // found, it is at the end
+      int end = this.list().size();
       for (final int i : new Range(middle + 1, this.list().size())) {
         if (this.list().get(i) != this.list().get(i - 1) + 1) {
           end = i;

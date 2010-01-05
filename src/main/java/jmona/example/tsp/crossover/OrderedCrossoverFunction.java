@@ -25,7 +25,7 @@ import java.util.Vector;
 
 import jmona.CrossoverFunction;
 import jmona.functional.Range;
-import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * Ordered crossover (also known as OX) for a tour in the traveling salesman
@@ -60,8 +60,9 @@ public class OrderedCrossoverFunction implements
     final int size = tour1.size();
 
     // choose two random numbers for the start and end indices of the slice
-    final int number1 = Util.RANDOM.nextInt(size);
-    final int number2 = Util.RANDOM.nextInt(size);
+    // (one can be at index "size")
+    final int number1 = RandomUtils.RANDOM.nextInt(0, size - 1);
+    final int number2 = RandomUtils.RANDOM.nextInt(0, size);
 
     // make the smaller the start and the larger the end
     final int start = Math.min(number1, number2);

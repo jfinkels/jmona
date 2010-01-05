@@ -20,7 +20,7 @@
 package jmona.example.ipd.strategy;
 
 import jmona.DeepCopyable;
-import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * A strategy which chooses to cooperate or defect randomly.
@@ -52,7 +52,7 @@ public class RandomStrategy extends IPDStrategy implements
   @Override
   public Action nextAction() {
     Action result = null;
-    if (Util.RANDOM.nextBoolean()) {
+    if (RandomUtils.RANDOM.nextInt(0, 1) == 0) {
       result = Action.COOPERATE;
     } else {
       result = Action.DEFECT;

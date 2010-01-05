@@ -19,6 +19,7 @@
  */
 package jmona.impl;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,7 @@ import java.util.Vector;
 import jmona.CopyingException;
 import jmona.DeepCopyable;
 import jmona.functional.Range;
+import jmona.random.RandomUtils;
 
 /**
  * Utility class containing useful static utility methods.
@@ -36,10 +38,6 @@ import jmona.functional.Range;
  * @since 0.1
  */
 public final class Util {
-
-  /** Random number generator. */
-  // TODO allow custom random number generators
-  public static final Random RANDOM = new Random();
 
   /**
    * Perform a deep copy on the specified Collection of deep copyable elements.
@@ -84,19 +82,6 @@ public final class Util {
   }
 
   /**
-   * Get a random integer between {@code min} and {@code max-1}, inclusive.
-   * 
-   * @param min
-   *          The minimum of the range from which to choose a random integer.
-   * @param max
-   *          The maximum of the range from which to choose a random integer.
-   * @return A random integer between the specified minimum and maximum.
-   */
-  public static int randomBetween(final int min, final int max) {
-    return Util.RANDOM.nextInt(max - min) + min;
-  }
-
-  /**
    * Return an element from the Collection chosen with uniform distribution over
    * all elements.
    * 
@@ -107,17 +92,7 @@ public final class Util {
    * @return An element chosen with uniform probability over all elements.
    */
   public static <T> T randomFromCollection(final Collection<T> collection) {
-    // generate the random index which defines which element to choose
-    int selection = RANDOM.nextInt(collection.size());
-
-    // iterate over all elements of the set until the selection has been reached
-    for (final T element : collection) {
-      if (0 == selection--) {
-        return element;
-      }
-    }
-
-    return null;
+    return randomWithoutReplacement(collection, 1).get(0);
   }
 
   /**
@@ -132,48 +107,11 @@ public final class Util {
    *          The number of elements to choose from the specified collection.
    * @return A sublist of the requested size of elements chosen randomly from
    *         the specified collection without repeats.
-   * @throws IllegalArgumentException
-   *           If the specified number of elements to choose is greater than the
-   *           size of the specified collection.
    */
   public static <T> List<T> randomWithoutReplacement(
       final Collection<T> collection, final int numberToChoose) {
-
-    // if the requested number to choose is greater than the size of the
-    // collection, throw an IllegalArgumentException
-    if (numberToChoose > collection.size()) {
-      throw new IllegalArgumentException();
-    }
-
-    // if the requested number to choose is exactly equal to the size of the
-    // collection, simply return a list containing references to all elements in
-    // the collection
-    if (numberToChoose == collection.size()) {
-      return new Vector<T>(collection);
-    }
-
-    // create a list to contain the randomly chosen elements
-    final List<T> result = new Vector<T>();
-
-    // get a list of references to all possible choices
-    final List<T> allPossibleChoices = new Vector<T>(collection);
-
-    // while the result list size is not yet the requested size
-    T randomElement = null;
-    while (result.size() < numberToChoose) {
-
-      // choose a random element from the list of all possible choices
-      randomElement = Util.randomFromCollection(allPossibleChoices);
-
-      // remove that element from the list of all possible choices so it won't
-      // be chosen again
-      allPossibleChoices.remove(randomElement);
-
-      // add that randomly chosen element to the result list
-      result.add(randomElement);
-    }
-
-    return result;
+    return Arrays.asList((T[]) RandomUtils.RANDOM.nextSample(collection,
+        numberToChoose));
   }
 
   /**

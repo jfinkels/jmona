@@ -1,7 +1,7 @@
 /**
- * BitFactory.java
+ * RandomUtils.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -17,28 +17,27 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.ga.impl;
+package jmona.random;
 
-import jmona.Factory;
-import jmona.random.RandomUtils;
+import org.apache.commons.math.random.RandomData;
+import org.apache.commons.math.random.RandomDataImpl;
 
 /**
- * A factory for bits (0s or 1s).
+ * Utilities for random number generation.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @since 0.4
  */
-public class BitFactory implements Factory<Byte> {
+public final class RandomUtils {
 
   /**
-   * Generate a random bit, with value 0 or 1, uniformly distributed.
-   * 
-   * @return A 0 or a 1.
-   * @see jmona.Factory#createObject()
+   * A RandomData object which has access to a (not cryptographically secure)
+   * RandomNumberGenerator.
    */
-  @Override
-  public Byte createObject() {
-    return (byte) RandomUtils.RANDOM.nextInt(0, 1);
-  }
+  public static final RandomData RANDOM = new RandomDataImpl();
 
+  /** Instantiation disallowed except by subclasses. */
+  protected RandomUtils() {
+    // intentionally unimplemented
+  }
 }

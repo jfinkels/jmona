@@ -20,7 +20,7 @@
 package jmona.ga.impl;
 
 import jmona.impl.Pair;
-import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * Performs a one-point crossover between two Lists.
@@ -46,7 +46,7 @@ public class OnePointCrossoverFunction<E> extends
    */
   @Override
   protected Pair<Integer, Integer> sliceStartEnd(final int length) {
-    final int start = Util.RANDOM.nextInt(length);
+    final int start = RandomUtils.RANDOM.nextInt(0, length - 1);
 
     return new Pair<Integer, Integer>(start, length);
   }

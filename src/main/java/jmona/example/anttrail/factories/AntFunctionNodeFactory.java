@@ -24,6 +24,7 @@ import jmona.example.anttrail.nodes.DoEachNode;
 import jmona.example.anttrail.nodes.IfFoodAheadNode;
 import jmona.gp.FunctionNode;
 import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * A factory for creating function nodes for ant trail evolution.
@@ -57,11 +58,11 @@ public class AntFunctionNodeFactory extends AntNodeFactory implements
   public FunctionNode createObject() {
     FunctionNode result = null;
 
-    if (Util.RANDOM.nextBoolean()) {
+    if (RandomUtils.RANDOM.nextInt(0, 1) == 0) {
       result = new IfFoodAheadNode(this.ant());
     } else {
-      result = new DoEachNode(this.ant(), Util.randomBetween(this.minArity,
-          this.maxArity));
+      result = new DoEachNode(this.ant(), RandomUtils.RANDOM.nextInt(
+          this.minArity, this.maxArity));
     }
 
     return result;

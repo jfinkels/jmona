@@ -23,7 +23,7 @@ import jmona.Factory;
 import jmona.example.calc.nodes.NumberNode;
 import jmona.example.calc.nodes.VariableNode;
 import jmona.gp.TerminalNode;
-import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * A TerminalNodeFactory for the Calc example, which creates either
@@ -38,7 +38,6 @@ public class CalcTerminalNodeFactory implements Factory<TerminalNode> {
   public static final int DEFAULT_MAX_VALUE = 2;
   /** The default minimum value for a NumberNode. */
   public static final int DEFAULT_MIN_VALUE = 1;
-
   /** The maximum value for a NumberNode. */
   private int maxValue = DEFAULT_MAX_VALUE;
   /** The minimum value for a NumberNode. */
@@ -54,12 +53,11 @@ public class CalcTerminalNodeFactory implements Factory<TerminalNode> {
   public TerminalNode createObject() {
     TerminalNode result = null;
 
-    if (Util.RANDOM.nextBoolean()) {
+    if (RandomUtils.RANDOM.nextInt(0, 1) == 0) {
       result = new VariableNode();
     } else {
-      final int difference = this.maxValue - this.minValue;
-      result = new NumberNode((double) (this.minValue + Util.RANDOM
-          .nextInt(difference)));
+      result = new NumberNode((double) RandomUtils.RANDOM.nextInt(
+          this.minValue, this.maxValue));
     }
 
     return result;

@@ -22,7 +22,7 @@ package jmona.impl.mutation;
 import java.util.Collections;
 import java.util.List;
 
-import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * A MutationFunction which mutates a List by inverting the order of a sublist
@@ -45,9 +45,13 @@ public class InversionMutationFunction<E> implements
    */
   @Override
   public void mutate(final List<E> list) {
-    // get a random start and end of the sublist
-    final int start = Util.RANDOM.nextInt(list.size());
-    final int end = start + Util.RANDOM.nextInt(list.size() - start);
+
+    // get a random start and end of the sublist (one can be at list.size())
+    final int number1 = RandomUtils.RANDOM.nextInt(0, list.size());
+    final int number2 = RandomUtils.RANDOM.nextInt(0, list.size() - 1);
+
+    final int start = Math.min(number1, number2);
+    final int end = Math.max(number1, number2);
 
     // reverse the sublist between start and end
     Collections.reverse(list.subList(start, end));

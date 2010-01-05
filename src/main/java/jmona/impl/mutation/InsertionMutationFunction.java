@@ -21,7 +21,7 @@ package jmona.impl.mutation;
 
 import java.util.List;
 
-import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * Chooses an element in the List at random and inserts it at a new random
@@ -46,13 +46,13 @@ public class InsertionMutationFunction<E> implements
   @Override
   public void mutate(final List<E> list) {
     // choose a random index of a city to remove from the tour
-    final int source = Util.RANDOM.nextInt(list.size());
+    final int source = RandomUtils.RANDOM.nextInt(0, list.size() - 1);
 
     // remove that city from the tour
     final E city = list.remove(source);
 
     // choose a random index for reinsertion of that city into the tour
-    final int target = Util.RANDOM.nextInt(list.size());
+    final int target = RandomUtils.RANDOM.nextInt(0, list.size() - 1);
 
     // reinsert the city into the tour
     list.add(target, city);

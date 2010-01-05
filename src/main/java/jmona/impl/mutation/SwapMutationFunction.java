@@ -22,7 +22,7 @@ package jmona.impl.mutation;
 import java.util.Collections;
 import java.util.List;
 
-import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * Swap two elements chosen at random from a List.
@@ -48,8 +48,8 @@ public class SwapMutationFunction<E> implements OrderedListMutationFunction<E> {
   public void mutate(final List<E> list) {
 
     // get two random indices into the tour
-    final int source = Util.RANDOM.nextInt(list.size());
-    final int target = Util.RANDOM.nextInt(list.size());
+    final int source = RandomUtils.RANDOM.nextInt(0, list.size() - 1);
+    final int target = RandomUtils.RANDOM.nextInt(0, list.size() - 1);
 
     // swap the cities at the source index and target index in the tour
     Collections.swap(list, source, target);

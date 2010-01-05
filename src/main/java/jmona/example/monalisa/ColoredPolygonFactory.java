@@ -24,6 +24,7 @@ import java.awt.Color;
 import jmona.Factory;
 import jmona.functional.Range;
 import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * A factory which creates ColoredPolygon objects.
@@ -48,11 +49,12 @@ public class ColoredPolygonFactory implements Factory<ColoredPolygon> {
    * 
    * @return A random Color.
    */
+  // TODO ColorFactory
   protected static Color randomColor() {
-    final int alpha = Util.RANDOM.nextInt(MAX_VALUE);
-    final int red = Util.RANDOM.nextInt(MAX_VALUE);
-    final int green = Util.RANDOM.nextInt(MAX_VALUE);
-    final int blue = Util.RANDOM.nextInt(MAX_VALUE);
+    final int alpha = RandomUtils.RANDOM.nextInt(0, MAX_VALUE);
+    final int red = RandomUtils.RANDOM.nextInt(0, MAX_VALUE);
+    final int green = RandomUtils.RANDOM.nextInt(0, MAX_VALUE);
+    final int blue = RandomUtils.RANDOM.nextInt(0, MAX_VALUE);
 
     final Color result = new Color(alpha, red, green, blue);
 
@@ -77,8 +79,7 @@ public class ColoredPolygonFactory implements Factory<ColoredPolygon> {
   @Override
   public ColoredPolygon createObject() {
     // randomly select the number of points in the polygon between min and max
-    int numPoints = this.minPoints
-        + Util.RANDOM.nextInt(this.maxPoints - this.minPoints);
+    int numPoints = RandomUtils.RANDOM.nextInt(this.minPoints, this.maxPoints);
 
     // create new arrays to contain the x and y coordinates
     int[] xpoints = new int[numPoints];
@@ -87,8 +88,8 @@ public class ColoredPolygonFactory implements Factory<ColoredPolygon> {
     // iterate over the number of points in the array
     for (final int i : new Range(numPoints)) {
       // randomly select a new x and y less than the max width and height
-      xpoints[i] = Util.RANDOM.nextInt(this.maxX);
-      ypoints[i] = Util.RANDOM.nextInt(this.maxY);
+      xpoints[i] = RandomUtils.RANDOM.nextInt(0, this.maxX);
+      ypoints[i] = RandomUtils.RANDOM.nextInt(0, this.maxY);
     }
 
     // create a new ColoredPolygon with the specified points

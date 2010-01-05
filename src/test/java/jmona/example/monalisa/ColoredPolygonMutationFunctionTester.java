@@ -134,11 +134,11 @@ public class ColoredPolygonMutationFunctionTester extends
 
     final Color newColor = this.function.mutate(this.color);
 
-    assertTrue(newColor.getRed() < GRAY_VALUE + newShift);
+    assertTrue(newColor.getRed() <= GRAY_VALUE + newShift);
     assertTrue(newColor.getRed() >= GRAY_VALUE - newShift);
-    assertTrue(newColor.getGreen() < GRAY_VALUE + newShift);
+    assertTrue(newColor.getGreen() <= GRAY_VALUE + newShift);
     assertTrue(newColor.getGreen() >= GRAY_VALUE - newShift);
-    assertTrue(newColor.getBlue() < GRAY_VALUE + newShift);
+    assertTrue(newColor.getBlue() <= GRAY_VALUE + newShift);
     assertTrue(newColor.getBlue() >= GRAY_VALUE - newShift);
 
   }

@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import jmona.CrossoverFunction;
 import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * Cycle crossover (also known as CX) on tours in the traveling salesman
@@ -69,7 +70,7 @@ public class CycleCrossoverFunction implements CrossoverFunction<List<Integer>> 
     final List<Integer> cycleIndices = new Vector<Integer>();
 
     // choose a random initial index of a city in the tour
-    int tour1index = Util.RANDOM.nextInt(tour1.size());
+    int tour1index = RandomUtils.RANDOM.nextInt(0, tour1.size() - 1);
 
     // add that index to the cycle indices
     cycleIndices.add(tour1index);

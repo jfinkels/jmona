@@ -19,7 +19,7 @@
  */
 package jmona.gp.impl.example;
 
-import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * An example TerminalNode with a random integer value.
@@ -30,6 +30,6 @@ import jmona.impl.Util;
 public class ExampleTerminalNode extends IntegerNode {
   /** Instantiate this Node with a random integer value. */
   public ExampleTerminalNode() {
-    super(Math.abs(Util.RANDOM.nextInt()));
+    super(RandomUtils.RANDOM.nextInt(0, Integer.MAX_VALUE));
   }
 }

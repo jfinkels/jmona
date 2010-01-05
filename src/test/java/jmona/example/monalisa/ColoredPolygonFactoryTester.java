@@ -59,13 +59,13 @@ public class ColoredPolygonFactoryTester extends ColoredPolygonTestSupport {
     for (int j = 0; j < NUM_POLYGONS; ++j) {
       final ColoredPolygon polygon = this.factory.createObject();
 
-      assertTrue(polygon.npoints < MAX_POINTS);
+      assertTrue(polygon.npoints <= MAX_POINTS);
       assertTrue(polygon.npoints >= MIN_POINTS);
 
       for (final int i : new Range(polygon.npoints)) {
-        assertTrue(polygon.xpoints[i] < WIDTH);
+        assertTrue(polygon.xpoints[i] <= WIDTH);
         assertTrue(polygon.xpoints[i] >= 0);
-        assertTrue(polygon.ypoints[i] < HEIGHT);
+        assertTrue(polygon.ypoints[i] <= HEIGHT);
         assertTrue(polygon.ypoints[i] >= 0);
       }
     }

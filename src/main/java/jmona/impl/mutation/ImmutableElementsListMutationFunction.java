@@ -22,11 +22,12 @@ package jmona.impl.mutation;
 import java.util.List;
 
 import jmona.MutationException;
-import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
- * A ElementwiseMutationFunction which operates on Lists of immutable elements, by
- * inserting a mutated copy of a random element of the List back into the List.
+ * A ElementwiseMutationFunction which operates on Lists of immutable elements,
+ * by inserting a mutated copy of a random element of the List back into the
+ * List.
  * 
  * @author Jeffrey Finkelstein
  * @param <E>
@@ -49,8 +50,11 @@ public abstract class ImmutableElementsListMutationFunction<E> implements
    */
   @Override
   public void mutate(final List<E> list) throws MutationException {
-    // choose a random index into the list
-    final int index = Util.RANDOM.nextInt(list.size());
+    int index = 0;
+    if (list.size() > 1) {
+      // choose a random index into the list
+      index = RandomUtils.RANDOM.nextInt(0, list.size() - 1);
+    }
 
     // get the element at that index
     final E element = list.get(index);

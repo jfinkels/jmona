@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * Displaces a random sublist within a List to a new random location in the
@@ -46,10 +47,13 @@ public class DisplacementMutationFunction<E> implements
    */
   @Override
   public void mutate(final List<E> list) {
-    // get a random start and end of the sublist
-    final int start = Util.RANDOM.nextInt(list.size());
-    final int end = start + Util.RANDOM.nextInt(list.size() - start);
+    // get a random start and end of the sublist (one can be at list.size())
+    final int number1 = RandomUtils.RANDOM.nextInt(0, list.size() - 1);
+    final int number2 = RandomUtils.RANDOM.nextInt(0, list.size());
 
+    final int start = Math.min(number1, number2);
+    final int end = Math.max(number1, number2);
+    
     // make a list of references to elements in the sublist
     final List<E> sublist = new Vector<E>(list.subList(start, end));
 
@@ -57,7 +61,7 @@ public class DisplacementMutationFunction<E> implements
     list.removeAll(sublist);
 
     // choose a random index for reinsertion of the sublist into the list
-    final int insertionPoint = Util.RANDOM.nextInt(list.size());
+    final int insertionPoint = RandomUtils.RANDOM.nextInt(0, list.size());
 
     // add the sublist back into the tour
     list.addAll(insertionPoint, sublist);

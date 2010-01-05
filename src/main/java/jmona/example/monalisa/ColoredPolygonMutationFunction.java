@@ -23,6 +23,7 @@ import java.awt.Color;
 
 import jmona.MutationFunction;
 import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * A MutationFunction which mutates ColoredPolygons by randomly changing the
@@ -80,19 +81,28 @@ public class ColoredPolygonMutationFunction implements
    * @return The mutated copy of the input color.
    */
   protected Color mutate(final Color color) {
-    // get the shifted colors
-    int newRed = color.getRed()
-        + (Util.RANDOM.nextInt(this.colorShift * 2) - this.colorShift);
-    int newGreen = color.getGreen()
-        + (Util.RANDOM.nextInt(this.colorShift * 2) - this.colorShift);
-    int newBlue = color.getBlue()
-        + (Util.RANDOM.nextInt(this.colorShift * 2) - this.colorShift);
+    // get the original colors and alpha
+    final int red = color.getRed();
+    final int green = color.getGreen();
+    final int blue = color.getBlue();
+    final int alpha = color.getAlpha();
+
+    // get the shifted colors and alpha
+    int newRed = RandomUtils.RANDOM.nextInt(red - this.colorShift, red
+        + this.colorShift);
+    int newGreen = RandomUtils.RANDOM.nextInt(green - this.colorShift, green
+        + this.colorShift);
+    int newBlue = RandomUtils.RANDOM.nextInt(blue - this.colorShift, blue
+        + this.colorShift);
+    int newAlpha = RandomUtils.RANDOM.nextInt(alpha - this.colorShift, alpha
+        + this.colorShift);
 
     // ensure that the values are within the permissible range of values for
     // fields of a color, that is, between 0 and 255, inclusive
     newRed = Math.max(Math.min(newRed, MAX_COLOR_VALUE), 0);
     newGreen = Math.max(Math.min(newGreen, MAX_COLOR_VALUE), 0);
     newBlue = Math.max(Math.min(newBlue, MAX_COLOR_VALUE), 0);
+    newAlpha = Math.max(Math.min(newAlpha, MAX_COLOR_VALUE), 0);
 
     return new Color(newRed, newGreen, newBlue, color.getAlpha());
   }
@@ -111,7 +121,8 @@ public class ColoredPolygonMutationFunction implements
     individual.setColor(newColor);
 
     // choose a point to mutate
-    final int mutationPoint = Util.RANDOM.nextInt(individual.npoints);
+    final int mutationPoint = RandomUtils.RANDOM.nextInt(0,
+        individual.npoints - 1);
 
     // mutate the x and y values of the point
     individual.xpoints[mutationPoint] = (int) (Math.random() * this.width);

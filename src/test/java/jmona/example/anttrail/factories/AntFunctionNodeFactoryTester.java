@@ -102,7 +102,7 @@ public class AntFunctionNodeFactoryTester {
 
       if (node instanceof DoEachNode) {
         assertTrue(node.arity() >= newMinArity);
-        assertTrue(node.arity() < newMaxArity);
+        assertTrue(node.arity() <= newMaxArity);
       }
     }
   }
