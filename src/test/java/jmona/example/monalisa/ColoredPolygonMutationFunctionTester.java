@@ -1,7 +1,7 @@
 /**
  * ColoredPolygonMutationFunctionTester.java
  * 
- * Copyright 2009 Jeffrey Finkelstein
+ * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
