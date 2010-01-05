@@ -34,11 +34,8 @@ import org.apache.commons.math.random.RandomDataImpl;
  */
 public final class RandomUtils {
 
-  /**
-   * A RandomData object which has access to a (not cryptographically secure)
-   * RandomNumberGenerator.
-   */
-  public static final RandomData RANDOM = new RandomDataImpl();
+  /** A RandomData object which has access to a RandomNumberGenerator. */
+  private static RandomData randomData = new RandomDataImpl();
 
   /**
    * Return an element from the Collection chosen with uniform distribution over
@@ -55,6 +52,15 @@ public final class RandomUtils {
   }
 
   /**
+   * Gets the static RandomData object stored in this class.
+   * 
+   * @return The static RandomData object stored in this class.
+   */
+  public static synchronized RandomData randomData() {
+    return randomData;
+  }
+
+  /**
    * Choose a random sublist from the specified collection with uniform
    * distribution without replacement.
    * 
@@ -67,10 +73,21 @@ public final class RandomUtils {
    * @return A sublist of the requested size of elements chosen randomly from
    *         the specified collection without repeats.
    */
-  public static <T> List<T> sample(
-      final Collection<T> collection, final int numberToChoose) {
-    return Arrays.asList((T[]) RANDOM.nextSample(collection,
-        numberToChoose));
+  @SuppressWarnings("unchecked")
+  public static <T> List<T> sample(final Collection<T> collection,
+      final int numberToChoose) {
+    return Arrays.asList((T[]) randomData
+        .nextSample(collection, numberToChoose));
+  }
+
+  /**
+   * Sets the static RandomData object stored in this class.
+   * 
+   * @param newRandomData
+   *          The static RandomData object stored in this class.
+   */
+  public static synchronized void setRandomData(final RandomData newRandomData) {
+    randomData = newRandomData;
   }
 
   /** Instantiation disallowed except by subclasses. */

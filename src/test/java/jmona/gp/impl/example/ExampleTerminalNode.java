@@ -30,6 +30,6 @@ import jmona.random.RandomUtils;
 public class ExampleTerminalNode extends IntegerNode {
   /** Instantiate this Node with a random integer value. */
   public ExampleTerminalNode() {
-    super(RandomUtils.RANDOM.nextInt(0, Integer.MAX_VALUE));
+    super(RandomUtils.randomData().nextInt(0, Integer.MAX_VALUE));
   }
 }

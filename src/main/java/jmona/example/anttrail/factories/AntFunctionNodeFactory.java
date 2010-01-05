@@ -58,10 +58,10 @@ public class AntFunctionNodeFactory extends AntNodeFactory implements
   public FunctionNode createObject() {
     FunctionNode result = null;
 
-    if (RandomUtils.RANDOM.nextInt(0, 1) == 0) {
+    if (RandomUtils.randomData().nextInt(0, 1) == 0) {
       result = new IfFoodAheadNode(this.ant());
     } else {
-      result = new DoEachNode(this.ant(), RandomUtils.RANDOM.nextInt(
+      result = new DoEachNode(this.ant(), RandomUtils.randomData().nextInt(
           this.minArity, this.maxArity));
     }
 

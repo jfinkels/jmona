@@ -88,13 +88,13 @@ public class ColoredPolygonMutationFunction implements
     final int alpha = color.getAlpha();
 
     // get the shifted colors and alpha
-    int newRed = RandomUtils.RANDOM.nextInt(red - this.colorShift, red
+    int newRed = RandomUtils.randomData().nextInt(red - this.colorShift, red
         + this.colorShift);
-    int newGreen = RandomUtils.RANDOM.nextInt(green - this.colorShift, green
+    int newGreen = RandomUtils.randomData().nextInt(green - this.colorShift, green
         + this.colorShift);
-    int newBlue = RandomUtils.RANDOM.nextInt(blue - this.colorShift, blue
+    int newBlue = RandomUtils.randomData().nextInt(blue - this.colorShift, blue
         + this.colorShift);
-    int newAlpha = RandomUtils.RANDOM.nextInt(alpha - this.colorShift, alpha
+    int newAlpha = RandomUtils.randomData().nextInt(alpha - this.colorShift, alpha
         + this.colorShift);
 
     // ensure that the values are within the permissible range of values for
@@ -121,7 +121,7 @@ public class ColoredPolygonMutationFunction implements
     individual.setColor(newColor);
 
     // choose a point to mutate
-    final int mutationPoint = RandomUtils.RANDOM.nextInt(0,
+    final int mutationPoint = RandomUtils.randomData().nextInt(0,
         individual.npoints - 1);
 
     // mutate the x and y values of the point

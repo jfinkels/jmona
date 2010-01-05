@@ -48,8 +48,8 @@ public class SwapMutationFunction<E> implements OrderedListMutationFunction<E> {
   public void mutate(final List<E> list) {
 
     // get two random indices into the tour
-    final int source = RandomUtils.RANDOM.nextInt(0, list.size() - 1);
-    final int target = RandomUtils.RANDOM.nextInt(0, list.size() - 1);
+    final int source = RandomUtils.randomData().nextInt(0, list.size() - 1);
+    final int target = RandomUtils.randomData().nextInt(0, list.size() - 1);
 
     // swap the cities at the source index and target index in the tour
     Collections.swap(list, source, target);

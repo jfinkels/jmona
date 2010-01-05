@@ -53,10 +53,10 @@ public class CalcTerminalNodeFactory implements Factory<TerminalNode> {
   public TerminalNode createObject() {
     TerminalNode result = null;
 
-    if (RandomUtils.RANDOM.nextInt(0, 1) == 0) {
+    if (RandomUtils.randomData().nextInt(0, 1) == 0) {
       result = new VariableNode();
     } else {
-      result = new NumberNode((double) RandomUtils.RANDOM.nextInt(
+      result = new NumberNode((double) RandomUtils.randomData().nextInt(
           this.minValue, this.maxValue));
     }
 

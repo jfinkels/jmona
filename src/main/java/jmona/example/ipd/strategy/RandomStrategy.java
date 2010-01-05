@@ -52,7 +52,7 @@ public class RandomStrategy extends IPDStrategy implements
   @Override
   public Action nextAction() {
     Action result = null;
-    if (RandomUtils.RANDOM.nextInt(0, 1) == 0) {
+    if (RandomUtils.randomData().nextInt(0, 1) == 0) {
       result = Action.COOPERATE;
     } else {
       result = Action.DEFECT;

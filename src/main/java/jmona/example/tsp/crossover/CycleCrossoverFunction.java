@@ -70,7 +70,7 @@ public class CycleCrossoverFunction implements CrossoverFunction<List<Integer>> 
     final List<Integer> cycleIndices = new Vector<Integer>();
 
     // choose a random initial index of a city in the tour
-    int tour1index = RandomUtils.RANDOM.nextInt(0, tour1.size() - 1);
+    int tour1index = RandomUtils.randomData().nextInt(0, tour1.size() - 1);
 
     // add that index to the cycle indices
     cycleIndices.add(tour1index);

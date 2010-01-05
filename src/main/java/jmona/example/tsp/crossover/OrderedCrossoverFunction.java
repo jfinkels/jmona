@@ -61,8 +61,8 @@ public class OrderedCrossoverFunction implements
 
     // choose two random numbers for the start and end indices of the slice
     // (one can be at index "size")
-    final int number1 = RandomUtils.RANDOM.nextInt(0, size - 1);
-    final int number2 = RandomUtils.RANDOM.nextInt(0, size);
+    final int number1 = RandomUtils.randomData().nextInt(0, size - 1);
+    final int number2 = RandomUtils.randomData().nextInt(0, size);
 
     // make the smaller the start and the larger the end
     final int start = Math.min(number1, number2);

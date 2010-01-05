@@ -51,10 +51,10 @@ public class ColoredPolygonFactory implements Factory<ColoredPolygon> {
    */
   // TODO ColorFactory
   protected static Color randomColor() {
-    final int alpha = RandomUtils.RANDOM.nextInt(0, MAX_VALUE);
-    final int red = RandomUtils.RANDOM.nextInt(0, MAX_VALUE);
-    final int green = RandomUtils.RANDOM.nextInt(0, MAX_VALUE);
-    final int blue = RandomUtils.RANDOM.nextInt(0, MAX_VALUE);
+    final int alpha = RandomUtils.randomData().nextInt(0, MAX_VALUE);
+    final int red = RandomUtils.randomData().nextInt(0, MAX_VALUE);
+    final int green = RandomUtils.randomData().nextInt(0, MAX_VALUE);
+    final int blue = RandomUtils.randomData().nextInt(0, MAX_VALUE);
 
     final Color result = new Color(alpha, red, green, blue);
 
@@ -79,7 +79,7 @@ public class ColoredPolygonFactory implements Factory<ColoredPolygon> {
   @Override
   public ColoredPolygon createObject() {
     // randomly select the number of points in the polygon between min and max
-    int numPoints = RandomUtils.RANDOM.nextInt(this.minPoints, this.maxPoints);
+    int numPoints = RandomUtils.randomData().nextInt(this.minPoints, this.maxPoints);
 
     // create new arrays to contain the x and y coordinates
     int[] xpoints = new int[numPoints];
@@ -88,8 +88,8 @@ public class ColoredPolygonFactory implements Factory<ColoredPolygon> {
     // iterate over the number of points in the array
     for (final int i : new Range(numPoints)) {
       // randomly select a new x and y less than the max width and height
-      xpoints[i] = RandomUtils.RANDOM.nextInt(0, this.maxX);
-      ypoints[i] = RandomUtils.RANDOM.nextInt(0, this.maxY);
+      xpoints[i] = RandomUtils.randomData().nextInt(0, this.maxX);
+      ypoints[i] = RandomUtils.randomData().nextInt(0, this.maxY);
     }
 
     // create a new ColoredPolygon with the specified points

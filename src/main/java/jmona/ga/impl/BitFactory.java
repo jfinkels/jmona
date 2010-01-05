@@ -38,7 +38,7 @@ public class BitFactory implements Factory<Byte> {
    */
   @Override
   public Byte createObject() {
-    return (byte) RandomUtils.RANDOM.nextInt(0, 1);
+    return (byte) RandomUtils.randomData().nextInt(0, 1);
   }
 
 }

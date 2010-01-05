@@ -53,7 +53,7 @@ public abstract class ImmutableElementsListMutationFunction<E> implements
     int index = 0;
     if (list.size() > 1) {
       // choose a random index into the list
-      index = RandomUtils.RANDOM.nextInt(0, list.size() - 1);
+      index = RandomUtils.randomData().nextInt(0, list.size() - 1);
     }
 
     // get the element at that index
