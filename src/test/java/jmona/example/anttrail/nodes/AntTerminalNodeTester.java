@@ -20,7 +20,6 @@
 package jmona.example.anttrail.nodes;
 
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.fail;
 import jmona.CopyingException;
 import jmona.example.anttrail.Ant;
 import jmona.example.anttrail.DefaultAnt;

@@ -34,7 +34,6 @@ import java.util.Map;
 import jmona.CopyingException;
 import jmona.MappingException;
 import jmona.functional.Range;
-import jmona.gp.EvaluationException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.gp.TerminalNode;

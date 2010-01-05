@@ -25,7 +25,6 @@ import jmona.CompletionException;
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 import jmona.FitnessFunction;
-import jmona.Function;
 import jmona.GeneticEvolutionContext;
 import jmona.MappingException;
 import jmona.MaxFitnessCompletionCondition;

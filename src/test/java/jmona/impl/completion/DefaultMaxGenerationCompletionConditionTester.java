@@ -30,7 +30,6 @@ import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.MaxGenerationCompletionCondition;
 import jmona.ga.impl.GAEvolutionContext;
-import jmona.impl.completion.DefaultMaxGenerationCompletionCondition;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Test;

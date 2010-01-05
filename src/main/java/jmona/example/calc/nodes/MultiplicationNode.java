@@ -19,9 +19,7 @@
  */
 package jmona.example.calc.nodes;
 
-import jmona.Function;
 import jmona.example.calc.operations.FunctionMultiplication;
-import jmona.gp.impl.BinaryNode;
 
 /**
  * A node representing multiplication of real numbers.

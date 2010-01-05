@@ -27,7 +27,6 @@ import java.util.Vector;
 import jmona.MutationException;
 import jmona.impl.example.ExampleIndividual;
 import jmona.impl.example.ExampleListMutationFunction;
-import jmona.impl.mutation.ImmutableElementsListMutationFunction;
 import jmona.test.Util;
 
 import org.junit.Test;

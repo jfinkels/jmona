@@ -19,7 +19,7 @@
  */
 package jmona.impl.fitness;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import jmona.MappingException;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;

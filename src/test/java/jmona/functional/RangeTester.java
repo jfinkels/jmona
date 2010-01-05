@@ -26,7 +26,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import jmona.functional.Range;
 import jmona.test.Util;
 
 import org.junit.Test;

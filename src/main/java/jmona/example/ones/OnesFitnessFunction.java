@@ -21,8 +21,6 @@ package jmona.example.ones;
 
 import java.util.List;
 
-import jmona.FitnessException;
-import jmona.FitnessFunction;
 import jmona.functional.Functional;
 import jmona.impl.fitness.MaximizingFitnessFunction;
 

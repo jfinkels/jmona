@@ -19,8 +19,8 @@
  */
 package jmona.example.calc.functions;
 
-import jmona.MappingException;
 import jmona.Function;
+import jmona.MappingException;
 
 /**
  * A function which returns the quotient of two specified functions.

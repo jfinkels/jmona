@@ -34,7 +34,6 @@ import jmona.gp.TerminalNode;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleFunctionNodeFactory;
 import jmona.gp.impl.example.ExampleTerminalNodeFactory;
-import jmona.gp.impl.example.ExampleTreeEvaluator;
 import jmona.gp.impl.example.ExampleTreeFactory;
 import jmona.test.Util;
 

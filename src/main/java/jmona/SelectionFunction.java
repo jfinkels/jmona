@@ -19,7 +19,6 @@
  */
 package jmona;
 
-import java.util.List;
 
 /**
  * A class which provides methods for selecting an individual from a population.

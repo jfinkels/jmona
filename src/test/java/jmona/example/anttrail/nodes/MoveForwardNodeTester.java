@@ -22,14 +22,11 @@ package jmona.example.anttrail.nodes;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-import jmona.CopyingException;
 import jmona.example.anttrail.Ant;
 import jmona.example.anttrail.CoordinatePair;
 import jmona.example.anttrail.DefaultAnt;
 import jmona.example.anttrail.Orientation;
 import jmona.example.anttrail.Trail;
-import jmona.test.Util;
 
 import org.junit.Test;
 

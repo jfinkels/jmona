@@ -20,7 +20,6 @@
 package jmona.impl.mutation;
 
 import static org.junit.Assert.assertEquals;
-import jmona.impl.mutation.IdentityMutationFunction;
 
 import org.junit.Test;
 

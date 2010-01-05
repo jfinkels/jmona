@@ -27,8 +27,6 @@ import java.util.Vector;
 
 import jmona.CompletionException;
 import jmona.GeneticEvolutionContext;
-import jmona.impl.completion.DefaultCompletionCondition;
-import jmona.impl.completion.DefaultMaxFitnessCompletionCondition;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;

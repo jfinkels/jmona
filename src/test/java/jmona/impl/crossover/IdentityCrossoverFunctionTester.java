@@ -22,7 +22,6 @@ package jmona.impl.crossover;
 import static org.junit.Assert.assertEquals;
 import jmona.CrossoverException;
 import jmona.CrossoverFunction;
-import jmona.impl.crossover.IdentityCrossoverFunction;
 import jmona.impl.example.ExampleIndividual;
 import jmona.test.Util;
 

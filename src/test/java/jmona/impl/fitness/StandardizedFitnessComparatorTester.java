@@ -27,7 +27,6 @@ import java.util.Map;
 
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
-import jmona.impl.fitness.StandardizedFitnessComparator;
 
 import org.junit.Test;
 

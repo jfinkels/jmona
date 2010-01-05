@@ -31,12 +31,9 @@ import java.util.Vector;
 
 import jmona.CrossoverFunction;
 import jmona.EvolutionException;
-import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.IndependentSelectionFunction;
 import jmona.MutationFunction;
-import jmona.SelectionFunction;
-import jmona.impl.context.AbstractGeneticEvolutionContext;
 import jmona.impl.example.ExampleCrossoverFunction;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;

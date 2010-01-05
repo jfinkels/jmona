@@ -19,7 +19,9 @@
  */
 package jmona.example.anttrail.nodes;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
 import jmona.example.anttrail.Ant;
 import jmona.example.anttrail.CoordinatePair;
 import jmona.example.anttrail.DefaultAnt;

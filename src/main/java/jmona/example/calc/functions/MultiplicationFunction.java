@@ -19,8 +19,8 @@
  */
 package jmona.example.calc.functions;
 
-import jmona.MappingException;
 import jmona.Function;
+import jmona.MappingException;
 
 /**
  * A function which returns the product of two specified functions.

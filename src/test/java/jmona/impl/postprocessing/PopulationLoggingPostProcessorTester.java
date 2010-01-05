@@ -27,7 +27,6 @@ import java.util.Vector;
 
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
-import jmona.impl.postprocessing.PopulationLoggingPostProcessor;
 
 import org.junit.Test;
 

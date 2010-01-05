@@ -19,7 +19,6 @@
  */
 package jmona.io;
 
-import jmona.MappingException;
 import jmona.Function;
 
 /**

@@ -21,7 +21,6 @@ package jmona.example.calc.factories;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-import jmona.Function;
 import jmona.example.calc.nodes.AdditionNode;
 import jmona.example.calc.nodes.DivisionNode;
 import jmona.example.calc.nodes.MultiplicationNode;

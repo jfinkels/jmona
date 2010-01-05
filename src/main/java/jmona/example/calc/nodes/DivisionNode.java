@@ -19,9 +19,7 @@
  */
 package jmona.example.calc.nodes;
 
-import jmona.Function;
 import jmona.example.calc.operations.FunctionDivision;
-import jmona.gp.impl.BinaryNode;
 
 /**
  * A node representing division of real numbers.

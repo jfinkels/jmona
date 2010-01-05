@@ -26,7 +26,6 @@ import jmona.example.anttrail.Ant;
 import jmona.example.anttrail.DefaultAnt;
 import jmona.example.anttrail.Trail;
 import jmona.example.anttrail.nodes.AntNode;
-import jmona.example.anttrail.nodes.DoEachNode;
 import jmona.example.anttrail.nodes.MoveForwardNode;
 import jmona.example.anttrail.nodes.TurnLeftNode;
 import jmona.example.anttrail.nodes.TurnRightNode;

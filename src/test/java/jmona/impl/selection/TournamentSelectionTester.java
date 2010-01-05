@@ -21,7 +21,6 @@ package jmona.impl.selection;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 

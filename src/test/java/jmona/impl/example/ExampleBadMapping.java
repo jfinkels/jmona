@@ -19,8 +19,8 @@
  */
 package jmona.impl.example;
 
-import jmona.MappingException;
 import jmona.Function;
+import jmona.MappingException;
 
 /**
  * A mapping which always throws an Exception.
