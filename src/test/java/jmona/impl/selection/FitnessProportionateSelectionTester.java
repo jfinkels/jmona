@@ -27,7 +27,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-import java.util.Map.Entry;
 
 import jmona.FitnessFunction;
 import jmona.SelectionException;
@@ -48,7 +47,7 @@ import org.junit.Test;
 public class FitnessProportionateSelectionTester {
 
   /** The number of individuals over which to make a selection. */
-  public static final int NUM_INDIVIDUALS = 10;
+  public static final int NUM_INDIVIDUALS = 20;
   /** The number of selections to make. */
   public static final int NUM_SELECTIONS = 100000;
 
@@ -176,51 +175,32 @@ public class FitnessProportionateSelectionTester {
       numberOfSelections.put(i, 0);
     }
 
+    int lowerSelections = 0;
+    int upperSelections = 0;
+
     try {
       for (final int i : new Range(NUM_SELECTIONS)) {
         individual = this.function.select(population,
             new ExampleFitnessFunction());
-        numberOfSelections.put(individual,
-            numberOfSelections.get(individual) + 1);
+
+        if (individual.fitness() == 1.0) {
+          lowerSelections += 1;
+        } else {
+          upperSelections += 1;
+        }
       }
     } catch (final SelectionException exception) {
       Util.fail(exception);
     }
 
-    // get the total number of selections made over all individuals
-    int lowerSum = 0;
-    int upperSum = 0;
-    for (final Entry<ExampleIndividual, Integer> entry : numberOfSelections
-        .entrySet()) {
-      if (entry.getKey().fitness() == 2.0) {
-        upperSum += entry.getValue();
-      } else {
-        lowerSum += entry.getValue();
-      }
-    }
-    final int sum = upperSum + lowerSum;
+    // the total number of selections must equal NUM_SELECTIONS
+    assertEquals(NUM_SELECTIONS, lowerSelections + upperSelections);
 
     // assert that the correct number of selections were made
     final double epsilon = NUM_SELECTIONS * 0.1;
-    assertEquals(NUM_SELECTIONS * 0.333, lowerSum, epsilon);
-    assertEquals(NUM_SELECTIONS * 0.666, upperSum, epsilon);
-    assertEquals(NUM_SELECTIONS, sum);
+    assertEquals(NUM_SELECTIONS / 3.0, upperSelections, epsilon);
+    assertEquals(2 * NUM_SELECTIONS / 3.0, lowerSelections, epsilon);
 
-    // get the arithmetic mean number of selections
-    double meanLowerSelections = lowerSum / (NUM_INDIVIDUALS / 2.0);
-    double meanUpperSelections = upperSum / (NUM_INDIVIDUALS / 2.0);
-
-    final double lowerEpsilon = meanLowerSelections * 0.1;
-    final double upperEpsilon = meanUpperSelections * 0.1;
-
-    for (final Entry<ExampleIndividual, Integer> entry : numberOfSelections
-        .entrySet()) {
-      if (entry.getKey().fitness() == 1.0) {
-        assertEquals(entry.getValue(), meanLowerSelections, lowerEpsilon);
-      } else {
-        assertEquals(entry.getValue(), meanUpperSelections, upperEpsilon);
-      }
-    }
   }
 
 }
