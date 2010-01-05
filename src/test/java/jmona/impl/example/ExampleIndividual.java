@@ -75,4 +75,14 @@ public class ExampleIndividual implements DeepCopyable<ExampleIndividual> {
   public void setFitness(final double newFitness) {
     this.fitness = newFitness;
   }
+
+  /**
+   * Gets the String representation of this individual.
+   * 
+   * @return The String representation of this individual.
+   */
+  @Override
+  public String toString() {
+    return "ExampleIndividual[" + this.fitness + "]";
+  }
 }
