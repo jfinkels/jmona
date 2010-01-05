@@ -170,7 +170,6 @@ public class CoordinatePair extends Pair<Short, Short> implements
    *         the y component.
    */
   // TODO many coordinate pairs are in the same eq. class under the hashcode
-  // TODO extends Pair<Short, Short>?
   @Override
   public int hashCode() {
     return (this.x() << (Integer.SIZE / 2)) | this.y();
