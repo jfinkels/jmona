@@ -24,7 +24,9 @@
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
   <bean id="crossoverFunction" class="jmona.ga.impl.TwoPointCrossoverFunction" />
-  <bean id="fitnessFunction" class="jmona.example.ones.OnesFitnessFunction" />
+  <bean id="fitnessFunction" class="jmona.example.ones.OnesFitnessFunction" >
+    <constructor-arg ref="geneLength" />
+  </bean>
   <bean id="mutationFunction" class="jmona.example.ones.OnesMutationFunction" />
   <bean id="selectionFunction" class="jmona.impl.selection.FitnessProportionateSelection" />
 

@@ -27,7 +27,6 @@ import jmona.FitnessFunction;
 import jmona.GeneticEvolutionContext;
 import jmona.IndependentSelectionFunction;
 import jmona.MutationFunction;
-import jmona.SelectionFunction;
 
 /**
  * An abstract base class for GeneticEvolutionContexts.

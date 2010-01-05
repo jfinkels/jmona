@@ -49,8 +49,7 @@ public class ExampleBadSelectionFunction implements
   public ExampleIndividual select(final List<ExampleIndividual> population,
       final FitnessFunction<ExampleIndividual> fitnessFunction)
       throws SelectionException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new SelectionException();
   }
 
 }

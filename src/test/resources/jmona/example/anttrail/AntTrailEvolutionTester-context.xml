@@ -32,8 +32,8 @@
     factory-method="createObject" />
 
   <bean id="completionCondition" class="jmona.impl.completion.DefaultCompletionCondition" >
-    <property name="maxFitness" value="89" />
-    <property name="maxGenerations" value="100" />
+    <property name="maxFitness" ref="totalFood" />
+    <property name="maxGenerations" value="5" />
   </bean>
 
   <bean id="evolutionContext" class="jmona.gp.impl.GPEvolutionContext">

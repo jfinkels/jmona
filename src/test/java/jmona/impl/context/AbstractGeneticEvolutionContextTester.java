@@ -229,6 +229,18 @@ public class AbstractGeneticEvolutionContextTester {
       this.unsetContext.sanityCheck();
       Util.shouldHaveThrownException();
     } catch (final NullPointerException exception) {
+      // fitness function has not been set
+      assertNull(this.unsetContext.fitnessFunction());
+      assertNull(this.unsetContext.mutationFunction());
+      assertNull(this.unsetContext.selectionFunction());
+      assertNull(this.unsetContext.crossoverFunction());
+      this.unsetContext.setFitnessFunction(new ExampleFitnessFunction());
+    }
+    
+    try {
+      this.unsetContext.sanityCheck();
+      Util.shouldHaveThrownException();
+    } catch (final NullPointerException exception) {
       // mutation function has not been set
       assertNotNull(this.unsetContext.fitnessFunction());
       assertNull(this.unsetContext.mutationFunction());

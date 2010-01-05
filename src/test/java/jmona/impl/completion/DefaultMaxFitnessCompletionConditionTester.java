@@ -21,7 +21,6 @@ package jmona.impl.completion;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.List;
 import java.util.Vector;
@@ -29,7 +28,6 @@ import java.util.Vector;
 import jmona.CompletionException;
 import jmona.GeneticEvolutionContext;
 import jmona.ga.impl.GAEvolutionContext;
-import jmona.impl.completion.DefaultMaxFitnessCompletionCondition;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
 import jmona.test.Util;
@@ -81,7 +79,7 @@ public class DefaultMaxFitnessCompletionConditionTester {
 
     try {
       this.completionCriteria.isSatisfied(this.emptyContext);
-      fail("Exception should have been thrown on previous line.");
+      Util.shouldHaveThrownException();
     } catch (final CompletionException exception) {
       assertTrue(exception instanceof CompletionException);
     }

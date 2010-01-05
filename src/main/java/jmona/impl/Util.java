@@ -119,15 +119,39 @@ public final class Util {
     return null;
   }
 
+  /**
+   * Choose a random sublist from the specified collection with uniform
+   * distribution without replacement.
+   * 
+   * @param <T>
+   *          The type of element in the collection from which to choose.
+   * @param collection
+   *          The collection from which to choose a sublist.
+   * @param numberToChoose
+   *          The number of elements to choose from the specified collection.
+   * @return A sublist of the requested size of elements chosen randomly from
+   *         the specified collection without repeats.
+   * @throws IllegalArgumentException
+   *           If the specified number of elements to choose is greater than the
+   *           size of the specified collection.
+   */
   public static <T> List<T> randomWithoutReplacement(
       final Collection<T> collection, final int numberToChoose) {
 
-    // if the requested number to choose is smaller than the size of the
+    // if the requested number to choose is greater than the size of the
+    // collection, throw an IllegalArgumentException
+    if (numberToChoose > collection.size()) {
+      throw new IllegalArgumentException();
+    }
+
+    // if the requested number to choose is exactly equal to the size of the
     // collection, simply return a list containing references to all elements in
     // the collection
-    if (numberToChoose < collection.size()) {
+    if (numberToChoose == collection.size()) {
       return new Vector<T>(collection);
     }
+
+    // TODO if numberToChoose > (collection.size() / 2), then remove elements
 
     // create a list to contain the randomly chosen elements
     final List<T> result = new Vector<T>();

@@ -128,14 +128,14 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
       this.setCurrentPopulation(nextPopulation);
 
       // recalculate the fitnesses of the current generation
-      //this.recalculateFitnesses();
+      // this.recalculateFitnesses();
 
     } catch (final CrossoverException exception) {
       throw new EvolutionException(
           "Failed to perform crossover on two Individuals.", exception);
-//    } catch (final FitnessException exception) {
-//      throw new EvolutionException(
-//          "Failed determining fitness of an individual.", exception);
+      // } catch (final FitnessException exception) {
+      // throw new EvolutionException(
+      // "Failed determining fitness of an individual.", exception);
     } catch (final MutationException exception) {
       throw new EvolutionException("Failed mutating an individual.", exception);
     } catch (final SelectionException exception) {

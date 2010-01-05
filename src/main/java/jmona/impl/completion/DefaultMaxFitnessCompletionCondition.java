@@ -25,6 +25,7 @@ import jmona.CompletionException;
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 import jmona.FitnessFunction;
+import jmona.Function;
 import jmona.GeneticEvolutionContext;
 import jmona.MappingException;
 import jmona.MaxFitnessCompletionCondition;
@@ -48,6 +49,8 @@ public class DefaultMaxFitnessCompletionCondition<T extends DeepCopyable<T>>
   public static final double DEFAULT_MAX_FITNESS = Double.MAX_VALUE;
   /** The maximum fitness of an Individual. */
   private double maxFitness = DEFAULT_MAX_FITNESS;
+  /** The function which gets raw fitnesses of individuals. */
+  private final RawFitnessGetter<T> rawFitnessGetter = new RawFitnessGetter<T>();
 
   /**
    * Determine whether an Individual with the maximum fitness exists in the
@@ -77,24 +80,28 @@ public class DefaultMaxFitnessCompletionCondition<T extends DeepCopyable<T>>
     // get the fitness function from the EvolutionContext
     final FitnessFunction<T> fitnessFunction = ((GeneticEvolutionContext<T>) context)
         .fitnessFunction();
-
+    
     if (fitnessFunction == null) {
       throw new CompletionException(
           "No FitnessFunction has been set on the EvolutionContext, so no fitnesses can be determined.");
     }
+    
+    // set the fitness function on the raw fitness getter function
+    this.rawFitnessGetter.setFitnessFunction(fitnessFunction);
 
     try {
       // get the list of fitnesses
-      final List<Double> fitnesses = Functional.map(new RawFitnessGetter<T>(),
+      final List<Double> fitnesses = Functional.map(this.rawFitnessGetter,
           context.currentPopulation());
-      
-      // map the list to booleans representing whether any is greater than or equal to the max fitness
+
+      // map the list to booleans representing whether any is greater than or
+      // equal to the max fitness
       final List<Boolean> greaterThan = Functional.map(
           new GreaterThanOrEqualTo(this.maxFitness), fitnesses);
-      
+
       // return whether any fitness is greater than the max fitness
       return Functional.any(greaterThan);
-      
+
     } catch (final MappingException exception) {
       throw new CompletionException("Failed to get fitnesses.", exception);
     }

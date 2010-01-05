@@ -23,11 +23,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the DefaultAnt class.
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
@@ -35,8 +36,6 @@ public class DefaultAntTester {
 
   /** The height of the trail. */
   public static final int HEIGHT = 2;
-  private static final transient Logger LOG = Logger
-      .getLogger(DefaultAntTester.class);
   /** The width of the trail. */
   public static final int WIDTH = 2;
   /** The DefaultAnt under test. */
@@ -91,18 +90,6 @@ public class DefaultAntTester {
     assertEquals(1, this.ant.foodEaten());
     this.ant.consumeFood();
     assertEquals(1, this.ant.foodEaten());
-    LOG.debug("END OF TEST CONSUME FOOD");
-    LOG.debug(" LOCATION " + this.ant.location());
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.example.anttrail.DefaultAnt#DefaultAnt(jmona.example.anttrail.Trail)}
-   * .
-   */
-  @Test
-  public void testDefaultAnt() {
-
   }
 
   /**
@@ -121,8 +108,6 @@ public class DefaultAntTester {
     assertEquals(3, this.ant.foodEaten());
     this.ant.advance();
     assertEquals(3, this.ant.foodEaten());
-    LOG.debug(" END OF TEST FOOD EATEN");
-    LOG.debug("LOCATION: " + this.ant.location());
   }
 
   /**
@@ -130,12 +115,9 @@ public class DefaultAntTester {
    */
   @Test
   public void testIsFoodAhead() {
-    LOG.debug("IS FOOD AHEAD?");
-    LOG.debug("location: " + this.ant.location());
     assertTrue(this.ant.isFoodAhead());
     this.ant.advance();
     assertFalse(this.ant.isFoodAhead());
-    LOG.debug("/IS FOOD AHEAD?");
   }
 
   /**

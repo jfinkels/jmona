@@ -65,21 +65,16 @@ public class FitnessLoggingPostProcessor<T extends DeepCopyable<T>> extends
 
     final StringBuilder result = new StringBuilder();
 
-    result.append("Generation ");
-    result.append(context.currentGeneration());
-    result.append(":");
-    result.append(NEWLINE);
-
     final FitnessFunction<T> fitnessFunction = ((GeneticEvolutionContext<T>) context)
         .fitnessFunction();
     final List<T> currentPopulation = context.currentPopulation();
 
     try {
       for (final T individual : currentPopulation) {
+        result.append(NEWLINE);
         result.append(individual);
         result.append(": ");
         result.append(fitnessFunction.rawFitness(individual));
-        result.append(NEWLINE);
       }
     } catch (final FitnessException exception) {
       throw new LoggingException("Failed to get fitness of an individual.",

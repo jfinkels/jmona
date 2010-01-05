@@ -86,8 +86,15 @@ public class RoundRobinTournament<S extends Strategy> implements
       throws SelectionException {
 
     // get a random subset of competitors to compete in the round-robin tourn.
-    final List<S> competitors = Util.randomWithoutReplacement(population,
-        this.tournamentSize);
+    List<S> competitors = null;
+    try {
+      competitors = Util.randomWithoutReplacement(population,
+          this.tournamentSize);
+    } catch (final IllegalArgumentException exception) {
+      throw new SelectionException(
+          "Tournament size must be less than or equal to the total size of the population.",
+          exception);
+    }
 
     // initialize the score of each strategy to 0
     final Map<S, Double> scores = new HashMap<S, Double>();

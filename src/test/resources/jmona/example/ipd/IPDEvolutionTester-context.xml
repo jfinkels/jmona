@@ -39,8 +39,7 @@
     <property name="maxGenerations" value="10" />
   </bean>
   
-  <bean id="selectionFunction"
-    class="jmona.impl.selection.FitnessProportionateSelection" />
+  <bean id="tournament" class="jmona.game.impl.RoundRobinTournament" />
 
   <bean id="game" class="jmona.example.ipd.IPDGame" />
 
@@ -49,7 +48,7 @@
     <constructor-arg>
       <ref bean="population" />
     </constructor-arg>
-    <property name="selectionFunction" ref="selectionFunction" />
+    <property name="tournament" ref="tournament" />
     <property name="game" ref="game" />
   </bean>
 

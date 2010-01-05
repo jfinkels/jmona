@@ -32,7 +32,6 @@ import jmona.game.TwoPlayerGame;
 import jmona.game.impl.example.ExampleBadGame;
 import jmona.game.impl.example.ExampleGame;
 import jmona.game.impl.example.ExampleStrategy;
-import jmona.impl.selection.FitnessProportionateSelection;
 import jmona.test.Util;
 
 import org.junit.Before;
@@ -59,8 +58,13 @@ public class TwoPlayerGameEvolutionContextTester {
 
     this.context = new TwoPlayerGameEvolutionContext<ExampleStrategy>(
         this.population);
+
     this.context.setGame(new ExampleGame());
-    this.context.setTournament(new RoundRobinTournament<ExampleStrategy>());
+
+    final RoundRobinTournament<ExampleStrategy> tournament = new RoundRobinTournament<ExampleStrategy>();
+    tournament.setTournamentSize(this.population.size());
+    this.context.setTournament(tournament);
+
   }
 
   /**
@@ -113,7 +117,8 @@ public class TwoPlayerGameEvolutionContextTester {
       this.context.executeGenerationStep();
       Util.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
-      assertTrue(exception.getCause() instanceof GameplayException);
+      assertTrue(exception.getCause() instanceof SelectionException);
+      assertTrue(exception.getCause().getCause() instanceof GameplayException);
     }
   }
 
@@ -147,7 +152,9 @@ public class TwoPlayerGameEvolutionContextTester {
       Util.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
       assertTrue(exception.getCause() instanceof SelectionException);
-      this.context.setTournament(new RoundRobinTournament<ExampleStrategy>());
+      final RoundRobinTournament<ExampleStrategy> tournament = new RoundRobinTournament<ExampleStrategy>();
+      tournament.setTournamentSize(this.population.size());
+      this.context.setTournament(tournament);
     }
 
     try {

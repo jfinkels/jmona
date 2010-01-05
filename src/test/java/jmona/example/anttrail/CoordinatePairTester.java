@@ -21,7 +21,9 @@ package jmona.example.anttrail;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
+import jmona.impl.Pair;
 
 import org.junit.Test;
 
@@ -43,6 +45,32 @@ public class CoordinatePairTester {
     final CoordinatePair pair = new CoordinatePair(1, 1);
     pair.add(new CoordinatePair(-1, 1));
     assertEquals(new CoordinatePair(0, 2), pair);
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.example.anttrail.CoordinatePair#add(jmona.impl.Pair)}.
+   */
+  @Test
+  public void testAddPairOfIntegerInteger() {
+    final CoordinatePair pair = new CoordinatePair(0, 0);
+    pair.add(new Pair<Integer, Integer>(1, 1));
+    assertEquals(new CoordinatePair(1, 1), pair);
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.example.anttrail.CoordinatePair#add(jmona.impl.Pair, jmona.example.anttrail.CoordinatePair)}
+   * .
+   */
+  @Test
+  public void testAddPairOfIntegerIntegerCoordinatePair() {
+    final CoordinatePair pair = new CoordinatePair(1, 1);
+    final CoordinatePair bounds = new CoordinatePair(2, 2);
+    pair.add(new Pair<Integer, Integer>(-2, 2), bounds);
+    assertEquals(new CoordinatePair(1, 1), pair);
+    pair.add(new Pair<Integer, Integer>(1, 1), bounds);
+    assertEquals(new CoordinatePair(0, 0), pair);
   }
 
   /**
@@ -78,6 +106,17 @@ public class CoordinatePairTester {
   }
 
   /**
+   * Test method for {@link jmona.example.anttrail.CoordinatePair#deepCopy()}.
+   */
+  @Test
+  public void testDeepCopy() {
+    final CoordinatePair pair = new CoordinatePair(1, 2);
+
+    assertNotSame(pair.deepCopy(), pair);
+    assertEquals(pair, pair.deepCopy());
+  }
+
+  /**
    * Test method for
    * {@link jmona.example.anttrail.CoordinatePair#equals(java.lang.Object)}.
    */
@@ -109,8 +148,6 @@ public class CoordinatePairTester {
     assertFalse(pair4.equals(pair1));
     assertFalse(pair4.equals(pair2));
     assertTrue(pair4.equals(pair3));
-    
-    assertFalse(pair1.equals(new Object()));
   }
 
   /**
@@ -126,6 +163,14 @@ public class CoordinatePairTester {
     final int hashcode = pair.hashCode();
 
     assertEquals(0xFFFF1111, hashcode);
+  }
+
+  /**
+   * Test method for {@link jmona.example.anttrail.CoordinatePair#origin()}.
+   */
+  @Test
+  public void testOrigin() {
+    assertEquals(new CoordinatePair(0, 0), CoordinatePair.origin());
   }
 
   /**
@@ -162,6 +207,18 @@ public class CoordinatePairTester {
   }
 
   /**
+   * Test method for {@link jmona.example.anttrail.CoordinatePair#set(int, int)}
+   * .
+   */
+  @Test
+  public void testSet() {
+    final CoordinatePair pair = new CoordinatePair(0, 0);
+    pair.set(1, 1);
+
+    assertEquals(new CoordinatePair(1, 1), pair);
+  }
+
+  /**
    * Test method for {@link jmona.example.anttrail.CoordinatePair#setX(int)}.
    */
   @Test
@@ -194,6 +251,42 @@ public class CoordinatePairTester {
     final CoordinatePair pair2 = new CoordinatePair(-1, 1);
 
     assertEquals(new CoordinatePair(0, 2), pair1.sumWith(pair2));
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.example.anttrail.CoordinatePair#sumWith(jmona.impl.Pair)}.
+   */
+  @Test
+  public void testSumWithPairOfIntegerInteger() {
+    final CoordinatePair pair = new CoordinatePair(0, 1);
+    assertEquals(new CoordinatePair(1, 2), pair
+        .sumWith(new Pair<Integer, Integer>(1, 1)));
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.example.anttrail.CoordinatePair#sumWith(jmona.impl.Pair, jmona.example.anttrail.CoordinatePair)}
+   * .
+   */
+  @Test
+  public void testSumWithPairOfIntegerIntegerCoordinatePair() {
+    final CoordinatePair pair = new CoordinatePair(1, 1);
+    final CoordinatePair bounds = new CoordinatePair(2, 2);
+    final Pair<Integer, Integer> toAdd = new Pair<Integer, Integer>(1, 1);
+    assertEquals(new CoordinatePair(0, 0), pair.sumWith(toAdd, bounds));
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.example.anttrail.CoordinatePair#toOrientation()}.
+   */
+  @Test
+  public void testToOrientation() {
+    final CoordinatePair pair = new CoordinatePair(1, 0);
+    final Orientation orientation = pair.toOrientation();
+
+    assertEquals(Orientation.east(), orientation);
   }
 
   /**

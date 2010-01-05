@@ -33,6 +33,7 @@
   </bean>
 
   <bean id="fitnessFunction" class="jmona.example.calc.CalcFitnessFunction">
+    <constructor-arg value="11" />
     <property name="target" ref="target" />
     <property name="evaluationInputs">
       <set>

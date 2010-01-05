@@ -58,40 +58,6 @@ public class TwoPlayerGameEvolutionContext<S extends Strategy & DeepCopyable<S>>
   }
 
   /**
-   * Perform some sanity checks, that is, check that all necessary properties
-   * have been set.
-   * 
-   * The necessary properties are the game, and the TournamentGameSelection.
-   * 
-   * @throws NullPointerException
-   *           If one of the necessary properties have not been set on this
-   *           object.
-   */
-  protected void sanityCheck() {
-    if (this.game == null) {
-      throw new NullPointerException("Game has not been set.");
-    }
-
-    if (this.tournament == null) {
-      throw new NullPointerException("Tournament has not been set.");
-    }
-  }
-
-  /**
-   * Set the game to play during this evolution.
-   * 
-   * @param newGame
-   *          The game to play during this evolution.
-   */
-  public void setGame(final TwoPlayerGame<S> newGame) {
-    this.game = newGame;
-  }
-
-  public void setTournament(final TournamentGameSelection<S> newTournament) {
-    this.tournament = newTournament;
-  }
-
-  /**
    * A GameEvolution only requires a selection function; it doesn't use a
    * crossover function or a mutation function.
    * 
@@ -125,6 +91,46 @@ public class TwoPlayerGameEvolutionContext<S extends Strategy & DeepCopyable<S>>
 
     // set the population for the next generation
     this.setCurrentPopulation(nextPopulation);
+  }
+
+  /**
+   * Perform some sanity checks, that is, check that all necessary properties
+   * have been set.
+   * 
+   * The necessary properties are the game, and the TournamentGameSelection.
+   * 
+   * @throws NullPointerException
+   *           If one of the necessary properties have not been set on this
+   *           object.
+   */
+  protected void sanityCheck() {
+    if (this.game == null) {
+      throw new NullPointerException("Game has not been set.");
+    }
+
+    if (this.tournament == null) {
+      throw new NullPointerException("Tournament has not been set.");
+    }
+  }
+
+  /**
+   * Set the game to play during this evolution.
+   * 
+   * @param newGame
+   *          The game to play during this evolution.
+   */
+  public void setGame(final TwoPlayerGame<S> newGame) {
+    this.game = newGame;
+  }
+
+  /**
+   * Set the tournament used to select Strategy objects.
+   * 
+   * @param newTournament
+   *          The tournament used to select Strategy objects.
+   */
+  public void setTournament(final TournamentGameSelection<S> newTournament) {
+    this.tournament = newTournament;
   }
 
 }

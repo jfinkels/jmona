@@ -28,7 +28,6 @@ import java.util.Vector;
 
 import jmona.CrossoverException;
 import jmona.EvolutionException;
-import jmona.FitnessException;
 import jmona.MutationException;
 import jmona.SelectionException;
 import jmona.impl.example.ExampleBadCrossoverFunction;
@@ -82,6 +81,7 @@ public class GAEvolutionContextTester {
       context.stepGeneration();
       Util.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
+      // bad selection function
       assertTrue(exception.getCause() instanceof SelectionException);
       context
           .setSelectionFunction(new FitnessProportionateSelection<ExampleIndividual>());
@@ -91,6 +91,16 @@ public class GAEvolutionContextTester {
       context.stepGeneration();
       Util.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
+      // bad fitness function
+      assertTrue(exception.getCause() instanceof SelectionException);
+      context.setFitnessFunction(new ExampleFitnessFunction());
+    }
+
+    try {
+      context.stepGeneration();
+      Util.shouldHaveThrownException();
+    } catch (final EvolutionException exception) {
+      // bad crossover function
       assertTrue(exception.getCause() instanceof CrossoverException);
       context.setCrossoverFunction(new ExampleCrossoverFunction());
     }
@@ -99,6 +109,7 @@ public class GAEvolutionContextTester {
       context.stepGeneration();
       Util.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
+      // bad mutation function
       assertTrue(exception.getCause() instanceof MutationException);
       context.setMutationFunction(new ExampleMutationFunction());
     }

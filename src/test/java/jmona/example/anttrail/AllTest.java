@@ -29,7 +29,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author Jeffrey Finkelstein
  */
 @RunWith(Suite.class)
-@SuiteClasses({ AntTrailExecutorTester.class, CoordinatePairTester.class,
+@SuiteClasses({ AntTrailEvolutionTester.class, AntTrailExecutorTester.class,
+    AntTrailFitnessFunctionTester.class, CoordinatePairTester.class,
     DefaultAntTester.class, OrientationTester.class, TrailTester.class })
 public class AllTest {
 

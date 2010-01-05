@@ -23,24 +23,20 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-  <bean id="metric" class="jmona.impl.metrics.EuclideanMetric" />
-  
-  <bean id="mapping" class="jmona.example.anttrail.AntTrailExecutor" />
-
   <!-- evolution functions -->
 
   <bean id="selectionFunction" 
         class="jmona.impl.selection.FitnessProportionateSelection" />
-  <!--<bean id="crossoverFunction" class="jmona.impl.crossover.IdentityCrossoverFunction" />-->
+
   <bean id="crossoverFunction" class="jmona.gp.impl.GPCrossoverFunction" />
-  <!--<bean id="mutationFunction" class="jmona.impl.mutation.IdentityMutationFunction" />-->  
+
   <bean id="mutationFunction" class="jmona.gp.impl.GPMutationFunction">
     <property name="treeFactory" ref="individualFactory" />
   </bean>
-  <bean id="fitnessFunction" class="jmona.impl.TargetedFitnessFunction">
-    <property name="target" ref="totalFood" />
-    <property name="mapping" ref="mapping" />
-    <property name="metric" ref="metric" />
+
+  <bean id="fitnessFunction"
+    class="jmona.example.anttrail.AntTrailFitnessFunction">
+    <constructor-arg ref="totalFood" />
   </bean>
 
 </beans>
