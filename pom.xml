@@ -10,7 +10,7 @@
 
   <dependencies>
     <!-- COMPILE DEPENDENCIES -->    
-    <dependency>
+    <dependency> <!-- command-line arguments parsing -->
       <groupId>net.sf.jopt-simple</groupId>
       <artifactId>jopt-simple</artifactId>
       <version>${version.dependency.jopt-simple}</version>
@@ -30,6 +30,14 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <version>${version.dependency.spring}</version>
+      <scope>compile</scope>
+      <type>jar</type>
+    </dependency>
+
+    <dependency> <!-- Apache Commons math -->
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-math</artifactId>
+      <version>${version.dependency.math}</version>
       <scope>compile</scope>
       <type>jar</type>
     </dependency>
@@ -59,6 +67,7 @@
     <version.dependency.junit>4.7</version.dependency.junit>
     <version.dependency.log4j>1.2.14</version.dependency.log4j>
     <version.dependency.spring>3.0.0.RELEASE</version.dependency.spring>
+    <version.dependency.math>2.0</version.dependency.math>
     
     <!-- plugin versions -->
     <version.plugin.changelog>2.2-SNAPSHOT</version.plugin.changelog>
