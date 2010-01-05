@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import jmona.CopyingException;
 import jmona.example.monalisa.ColoredPolygon;
+import jmona.gp.EvaluatableNode;
 import jmona.gp.EvaluationException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
@@ -39,7 +40,7 @@ import jmona.gp.impl.TreeUtils;
  * @author Jeffrey Finkelstein
  */
 public class ColoredPolygonNode extends AbstractNode implements FunctionNode,
-    TerminalNode {
+    TerminalNode, EvaluatableNode<List<ColoredPolygon>> {
 
   /** The ColoredPolygon contained in this Node. */
   private ColoredPolygon coloredPolygon = null;
@@ -120,6 +121,7 @@ public class ColoredPolygonNode extends AbstractNode implements FunctionNode,
    * @throws EvaluationException
    *           If the child Node throws an EvaluationException.
    */
+  @Override
   public List<ColoredPolygon> evaluate() throws EvaluationException {
 
     List<ColoredPolygon> result = null;
