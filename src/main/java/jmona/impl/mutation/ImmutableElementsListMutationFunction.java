@@ -29,9 +29,9 @@ import jmona.impl.Util;
  * A ListMutationFunction which operates on Lists of immutable elements, by
  * inserting a mutated copy of a random element of the List back into the List.
  * 
+ * @author Jeffrey Finkelstein
  * @param <E>
  *          The type of element in the List.
- * @author Jeffrey Finkelstein
  * @since 0.1
  */
 public abstract class ImmutableElementsListMutationFunction<E> implements

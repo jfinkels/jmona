@@ -28,9 +28,9 @@ import jmona.impl.Util;
 /**
  * A class which mutates elements in a List by mutating one element at random.
  * 
+ * @author Jeffrey Finkelstein
  * @param <E>
  *          The type of element contained in the List to mutate.
- * @author Jeffrey Finkelstein
  * @since 0.1
  */
 public class ListMutationFunction<E> implements MutationFunction<List<E>> {
