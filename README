@@ -1,18 +1,22 @@
-jmona is a framework for creating genetic algorithms. It provides a basic,
-generic API for building customized genetic algorithms. See the examples in
-"src/main/java/jmona.example.*", and the corresponding tests in
-"src/test/java/jmona.example.*".
+jmona is a framework for creating evolutionar algorithms. It provides a basic,
+generic API for building customized instances of genetic algorithms, genetic 
+programming, and other evolutionary algorithms. See the examples in
+"src/main/java/jmona/example/*", and the corresponding tests in
+"src/test/java/jmona/example/*".
 
 This software is released under the GPLv3; see COPYING for more information.
 
 I release all original images in 
 "src/test/resources/jmona/example/monalisa/images/" to the Public Domain.
 
+See "http://wiki.github.com/jfinkels/jmona" for more information on using this 
+project. For the impatient, read on.
+
 To prepare this package for development in Eclipse, first run
 
-  mvn install
+  mvn test
 
-to download all the dependencies. Then run
+to download all the dependencies and ensure that all tests pass. Then run
 
   mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true
 
