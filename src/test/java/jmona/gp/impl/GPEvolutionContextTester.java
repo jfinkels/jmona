@@ -25,7 +25,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
@@ -190,14 +189,15 @@ public class GPEvolutionContextTester {
     LOG.debug(after2);
 
     this.context.setCrossoverFunction(new CrossoverFunction<Tree>() {
-
       @Override
-      public void crossover(Tree individual1, Tree individual2)
+      public void crossover(final Tree individual1, final Tree individual2)
           throws CrossoverException {
         throw new CrossoverException();
       }
     });
 
+    this.context.setMutationProbability(0);
+    
     try {
       this.context.executeGenerationStep();
       Util.shouldHaveThrownException();
@@ -225,7 +225,8 @@ public class GPEvolutionContextTester {
     this.context.setSelectionFunction(new IndependentSelectionFunction<Tree>() {
       @Override
       public Tree select(final List<Tree> aPopulation,
-          final FitnessFunction<Tree> fitnessFunction) throws SelectionException {
+          final FitnessFunction<Tree> fitnessFunction)
+          throws SelectionException {
         throw new SelectionException();
       }
     });
