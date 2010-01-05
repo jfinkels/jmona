@@ -86,11 +86,11 @@ public class ColoredPolygonMutationFunctionTester extends
 
     final Color newColor = this.function.mutate(this.color);
 
-    assertTrue(newColor.getRed() < GRAY_VALUE + SHIFT);
+    assertTrue(newColor.getRed() <= GRAY_VALUE + SHIFT);
     assertTrue(newColor.getRed() >= GRAY_VALUE - SHIFT);
-    assertTrue(newColor.getGreen() < GRAY_VALUE + SHIFT);
+    assertTrue(newColor.getGreen() <= GRAY_VALUE + SHIFT);
     assertTrue(newColor.getGreen() >= GRAY_VALUE - SHIFT);
-    assertTrue(newColor.getBlue() < GRAY_VALUE + SHIFT);
+    assertTrue(newColor.getBlue() <= GRAY_VALUE + SHIFT);
     assertTrue(newColor.getBlue() >= GRAY_VALUE - SHIFT);
   }
 
@@ -110,10 +110,10 @@ public class ColoredPolygonMutationFunctionTester extends
     assertFalse(samePolygon(original, this.polygon));
 
     for (final int i : new Range(this.polygon.npoints)) {
-      assertTrue(this.polygon.ypoints[i] < HEIGHT);
+      assertTrue(this.polygon.ypoints[i] <= HEIGHT);
       assertTrue(this.polygon.ypoints[i] >= 0);
 
-      assertTrue(this.polygon.xpoints[i] < WIDTH);
+      assertTrue(this.polygon.xpoints[i] <= WIDTH);
       assertTrue(this.polygon.xpoints[i] >= 0);
     }
   }
