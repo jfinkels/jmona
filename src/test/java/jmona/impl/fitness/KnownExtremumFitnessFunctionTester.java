@@ -19,54 +19,87 @@
  */
 package jmona.impl.fitness;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import jmona.FitnessException;
+import jmona.impl.example.ExampleFitnessFunction;
+import jmona.impl.example.ExampleIndividual;
+import jmona.test.Util;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test class for the KnownExtremumFitnessFunction class.
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
 public class KnownExtremumFitnessFunctionTester {
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
+  /** The FitnessFunction under test. */
+  private KnownExtremumFitnessFunction<ExampleIndividual> function = null;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public final void setUp() {
+    this.function = new ExampleFitnessFunction();
+  }
 
   /**
-   * Test method for {@link jmona.impl.fitness.KnownExtremumFitnessFunction#adjustedFitness(java.lang.Object)}.
+   * Test method for
+   * {@link jmona.impl.fitness.KnownExtremumFitnessFunction#adjustedFitness(java.lang.Object)}
+   * .
    */
   @Test
   public void testAdjustedFitness() {
-    fail("Not yet implemented");
+    final int fitness = 10;
+    final ExampleIndividual individual = new ExampleIndividual(fitness);
+    try {
+      assertEquals(1.0 / (1 + individual.fitness()), this.function
+          .adjustedFitness(individual), ZERO_DELTA);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
-   * Test method for {@link jmona.impl.fitness.KnownExtremumFitnessFunction#extremum()}.
+   * Test method for
+   * {@link jmona.impl.fitness.KnownExtremumFitnessFunction#extremum()}.
    */
   @Test
   public void testExtremum() {
-    fail("Not yet implemented");
+    final double newExtremum = 10;
+    this.function.setExtremum(newExtremum);
+    assertEquals(newExtremum, this.function.extremum().doubleValue(),
+        ZERO_DELTA);
   }
 
   /**
-   * Test method for {@link jmona.impl.fitness.KnownExtremumFitnessFunction#setExtremum(java.lang.Double)}.
-   */
-  @Test
-  public void testSetExtremum() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.impl.fitness.KnownExtremumFitnessFunction#standardizedFitness(java.lang.Object)}.
+   * Test method for
+   * {@link jmona.impl.fitness.KnownExtremumFitnessFunction#standardizedFitness(java.lang.Object)}
+   * .
    */
   @Test
   public void testStandardizedFitness() {
-    fail("Not yet implemented");
+    final double fitness = 10;
+    final ExampleIndividual individual = new ExampleIndividual(fitness);
+    try {
+      assertEquals(individual.fitness(), this.function
+          .standardizedFitness(individual), ZERO_DELTA);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
-   * Test method for {@link jmona.impl.fitness.KnownExtremumFitnessFunction#typeOfExtremum()}.
+   * Test method for
+   * {@link jmona.impl.fitness.KnownExtremumFitnessFunction#typeOfExtremum()}.
    */
   @Test
   public void testTypeOfExtremum() {
-    fail("Not yet implemented");
+    assertEquals(KnownExtremumFitnessFunction.MINIMUM, this.function
+        .typeOfExtremum());
   }
 
 }
