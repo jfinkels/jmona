@@ -86,14 +86,14 @@ public class ColoredPolygonNodeFactoryTester {
     final ColoredPolygon polygon = polygons.get(0);
     assertNotNull(polygon.color());
 
-    assertTrue(polygon.npoints < MAX_POINTS);
+    assertTrue(polygon.npoints <= MAX_POINTS);
     assertTrue(polygon.npoints >= MIN_POINTS);
 
     for (final int i : new Range(polygon.npoints)) {
-      assertTrue(polygon.xpoints[i] < WIDTH);
+      assertTrue(polygon.xpoints[i] <= WIDTH);
       assertTrue(polygon.xpoints[i] >= 0);
 
-      assertTrue(polygon.ypoints[i] < HEIGHT);
+      assertTrue(polygon.ypoints[i] <= HEIGHT);
       assertTrue(polygon.ypoints[i] >= 0);
     }
   }
