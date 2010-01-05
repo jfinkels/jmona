@@ -20,8 +20,7 @@
 package jmona.example.calc.nodes;
 
 import jmona.Function;
-import jmona.gp.EvaluationException;
-import jmona.gp.Node;
+import jmona.gp.EvaluatableNode;
 
 /**
  * A node in the "calc" evolution, which can be evaluated to a function.
@@ -29,14 +28,6 @@ import jmona.gp.Node;
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
-public interface CalcNode extends Node {
-  /**
-   * Evaluate this Node to a function.
-   * 
-   * @return The evaluation of this Node with respect to the evaluation of its
-   *         child Nodes.
-   * @throws EvaluationException
-   *           If there is a problem evaluating this Node.
-   */
-  Function<Double, Double> evaluate() throws EvaluationException;
+public interface CalcNode extends EvaluatableNode<Function<Double, Double>> {
+
 }
