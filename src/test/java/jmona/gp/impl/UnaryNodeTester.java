@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * UnaryNodeTester.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -19,24 +19,32 @@
  */
 package jmona.gp.impl;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import static org.junit.Assert.assertEquals;
+import jmona.CopyingException;
+import jmona.gp.Node;
+
+import org.junit.Test;
 
 /**
- * Runs all tests in this package.
+ * Test class for the UnaryNode class.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @since 0.4
  */
-@RunWith(Suite.class)
-@SuiteClasses({ AbstractFunctionNodeTester.class, AbstractNodeTester.class,
-    AbstractTerminalNodeTester.class, AbstractTreeFactoryTester.class,
-    BinaryNodeTester.class, DefaultTreeTester.class,
-    FullTreeFactoryTester.class, GPCrossoverFunctionTester.class,
-    GPEvolutionContextTester.class, GPMutationFunctionTester.class,
-    GrowTreeFactoryTester.class, TernaryNodeTester.class,
-    TreeUtilsTester.class, UnaryNodeTester.class })
-public class AllTest {
+public class UnaryNodeTester {
+
+  /**
+   * Test method for {@link jmona.gp.impl.UnaryNode#arity()}.
+   */
+  @Test
+  public void testArity() {
+    final UnaryNode node = new UnaryNode() {
+      @Override
+      public Node deepCopy() throws CopyingException {
+        return null;
+      }
+    };
+    assertEquals(UnaryNode.ARITY, node.arity());
+  }
 
 }

@@ -25,7 +25,6 @@ package jmona.gp.impl;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-// TODO add UnaryNode
 public abstract class BinaryNode extends AbstractFunctionNode {
 
   /** The "arity" of this Node. */

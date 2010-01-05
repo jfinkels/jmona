@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * UnaryNode.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -19,24 +19,28 @@
  */
 package jmona.gp.impl;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
-
 /**
- * Runs all tests in this package.
+ * A Node with a single child Node.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @since 0.4
  */
-@RunWith(Suite.class)
-@SuiteClasses({ AbstractFunctionNodeTester.class, AbstractNodeTester.class,
-    AbstractTerminalNodeTester.class, AbstractTreeFactoryTester.class,
-    BinaryNodeTester.class, DefaultTreeTester.class,
-    FullTreeFactoryTester.class, GPCrossoverFunctionTester.class,
-    GPEvolutionContextTester.class, GPMutationFunctionTester.class,
-    GrowTreeFactoryTester.class, TernaryNodeTester.class,
-    TreeUtilsTester.class, UnaryNodeTester.class })
-public class AllTest {
+public abstract class UnaryNode extends AbstractFunctionNode {
+
+  /** The "arity" of this Node. */
+  public static final int ARITY = 1;
+  /** The index of the sole child of this Node in the List of children. */
+  public static final int CHILD_INDEX = 0;
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.gp.Node#arity()
+   */
+  @Override
+  public int arity() {
+    return ARITY;
+  }
 
 }
