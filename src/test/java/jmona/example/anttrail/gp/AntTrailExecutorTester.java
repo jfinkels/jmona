@@ -1,5 +1,5 @@
 /**
- * AntTrailFitnessFunctionTester.java
+ * AntTrailExecutorTester.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -17,9 +17,13 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.anttrail;
+package jmona.example.anttrail.gp;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import jmona.example.anttrail.Ant;
+import jmona.example.anttrail.DefaultAnt;
+import jmona.example.anttrail.Trail;
+import jmona.example.anttrail.gp.AntTrailExecutor;
 import jmona.example.anttrail.nodes.DoEachNode;
 import jmona.example.anttrail.nodes.MoveForwardNode;
 import jmona.gp.Tree;
@@ -28,35 +32,19 @@ import jmona.gp.impl.DefaultTree;
 import org.junit.Test;
 
 /**
- * Test class for the AntTrailFitnessFunction class.
+ * Test class for the AntTrailExecutor class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
-public class AntTrailFitnessFunctionTester {
-
-  /** Zero. */
-  public static final double ZERO_DELTA = 0.0;
+public class AntTrailExecutorTester {
 
   /**
    * Test method for
-   * {@link jmona.example.anttrail.AntTrailFitnessFunction#AntTrailFitnessFunction(double)}
-   * .
+   * {@link jmona.example.anttrail.gp.AntTrailExecutor#execute(jmona.gp.Tree)}.
    */
   @Test
-  public void testAntTrailFitnessFunction() {
-    final int max = 89;
-    final AntTrailFitnessFunction function = new AntTrailFitnessFunction(max);
-    assertEquals((double) max, function.extremum(), ZERO_DELTA);
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.example.anttrail.AntTrailFitnessFunction#rawFitness(jmona.gp.Tree)}
-   * .
-   */
-  @Test
-  public void testRawFitness() {
+  public void testExecute() {
     final int rows = 1;
     final int cols = 4;
 
@@ -77,11 +65,11 @@ public class AntTrailFitnessFunctionTester {
 
     final Tree tree = new DefaultTree(doEachNode);
 
-    final AntTrailFitnessFunction function = new AntTrailFitnessFunction(3);
+    final AntTrailExecutor executor = new AntTrailExecutor();
 
-    function.rawFitness(tree);
+    final int foodEaten = executor.execute(tree);
 
-    assertEquals(3, function.rawFitness(tree), ZERO_DELTA);
+    assertEquals(3, foodEaten);
   }
 
 }

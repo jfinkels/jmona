@@ -17,9 +17,10 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.anttrail;
+package jmona.example.anttrail.gp;
 
 import jmona.Function;
+import jmona.example.anttrail.Ant;
 import jmona.example.anttrail.nodes.AntNode;
 import jmona.gp.Tree;
 

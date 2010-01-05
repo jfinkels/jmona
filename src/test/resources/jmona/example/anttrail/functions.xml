@@ -35,7 +35,7 @@
   </bean>
 
   <bean id="fitnessFunction"
-    class="jmona.example.anttrail.AntTrailFitnessFunction">
+    class="jmona.example.anttrail.gp.AntTrailFitnessFunction">
     <constructor-arg ref="totalFood" />
   </bean>
 
