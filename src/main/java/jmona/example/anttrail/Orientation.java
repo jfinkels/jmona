@@ -28,7 +28,7 @@ import jmona.impl.Pair;
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
-public class Orientation extends Pair<Integer, Integer> implements
+public class Orientation extends Pair<Short, Short> implements
     DeepCopyable<Orientation> {
 
   /**
@@ -37,7 +37,7 @@ public class Orientation extends Pair<Integer, Integer> implements
    * @return The eastward unit vector, that is (1, 0).
    */
   public static Orientation east() {
-    return new Orientation(1, 0);
+    return new Orientation((short) 1, (short) 0);
   }
 
   /**
@@ -46,7 +46,7 @@ public class Orientation extends Pair<Integer, Integer> implements
    * @return The northward unit vector, that is (0, -1).
    */
   public static Orientation north() {
-    return new Orientation(0, -1);
+    return new Orientation((short) 0, (short) -1);
   }
 
   /**
@@ -55,7 +55,7 @@ public class Orientation extends Pair<Integer, Integer> implements
    * @return The southward unit vector, that is (0, 1).
    */
   public static Orientation south() {
-    return new Orientation(0, 1);
+    return new Orientation((short) 0, (short) 1);
   }
 
   /**
@@ -64,7 +64,7 @@ public class Orientation extends Pair<Integer, Integer> implements
    * @return The westward unit vector, that is (-1, 0).
    */
   public static Orientation west() {
-    return new Orientation(-1, 0);
+    return new Orientation((short) -1, (short) 0);
   }
 
   /**
@@ -75,7 +75,7 @@ public class Orientation extends Pair<Integer, Integer> implements
    * @param initialY
    *          The y component of this pair.
    */
-  public Orientation(final Integer initialX, final Integer initialY) {
+  public Orientation(final Short initialX, final Short initialY) {
     super(initialX, initialY);
   }
 
@@ -129,11 +129,9 @@ public class Orientation extends Pair<Integer, Integer> implements
    *         the y component.
    */
   // TODO many orientations are in the same eq. class under the hashcode
-  // TODO extends Pair<Short, Short>?
   @Override
   public int hashCode() {
-    return ((this.left() & CoordinatePair.HALF_MASK) << (Integer.SIZE / 2))
-        | (this.right() & CoordinatePair.HALF_MASK);
+    return (this.left() << (Integer.SIZE / 2)) | this.right();
   }
 
   /**
@@ -172,7 +170,7 @@ public class Orientation extends Pair<Integer, Integer> implements
    *           This Exception is always thrown.
    */
   @Override
-  public void setLeft(final Integer newLeft) {
+  public void setLeft(final Short newLeft) {
     throw new UnsupportedOperationException();
   }
 
@@ -185,7 +183,7 @@ public class Orientation extends Pair<Integer, Integer> implements
    *           This Exception is always thrown.
    */
   @Override
-  public void setRight(final Integer newRight) {
+  public void setRight(final Short newRight) {
     throw new UnsupportedOperationException();
   }
 

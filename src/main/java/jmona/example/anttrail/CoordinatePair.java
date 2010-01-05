@@ -30,11 +30,8 @@ import jmona.impl.Pair;
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
-public class CoordinatePair extends Pair<Integer, Integer> implements
+public class CoordinatePair extends Pair<Short, Short> implements
     DeepCopyable<CoordinatePair> {
-
-  /** A bitmask consisting of all ones on the right half of the bitstring. */
-  public static final int HALF_MASK = -1 >>> (Integer.SIZE / 2);
 
   /**
    * Gets the coordinates of the origin, (0, 0).
@@ -42,7 +39,22 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
    * @return The CoordinatePair (0, 0).
    */
   public static CoordinatePair origin() {
-    return new CoordinatePair(0, 0);
+    return new CoordinatePair((short) 0, (short) 0);
+  }
+
+  /**
+   * Instantiates this Pair with the specified x and y components, which will be
+   * cast to {@code short}s.
+   * 
+   * @param initialX
+   *          The initial x component of this coordinate pair (this will be cast
+   *          to a {@code short}).
+   * @param initialY
+   *          The initial y component of this coordinate pair (this will be cast
+   *          to a {@code short}).
+   */
+  public CoordinatePair(final int initialX, final int initialY) {
+    this(new Short((short) initialX), new Short((short) initialY));
   }
 
   /**
@@ -54,7 +66,7 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
    * @param initialY
    *          The initial y component of this coordinate pair.
    */
-  public CoordinatePair(final Integer initialX, final Integer initialY) {
+  public CoordinatePair(final Short initialX, final Short initialY) {
     super(initialX, initialY);
   }
 
@@ -65,9 +77,9 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
    * @param otherPair
    *          A coordinate pair to add to this one.
    */
-  public void add(final Pair<Integer, Integer> otherPair) {
-    this.setX(this.x() + otherPair.left());
-    this.setY(this.y() + otherPair.right());
+  public void add(final Pair<Short, Short> otherPair) {
+    this.setX((short) (this.x() + otherPair.left()));
+    this.setY((short) (this.y() + otherPair.right()));
   }
 
   /**
@@ -92,19 +104,19 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
    *          The bounds of the toroidal grid when expressed as a Cartesian
    *          plane.
    */
-  public void add(final Pair<Integer, Integer> otherPair,
+  public void add(final Pair<Short, Short> otherPair,
       final CoordinatePair bounds) {
 
-    this.setX((this.x() + otherPair.left()) % bounds.x());
-    this.setY((this.y() + otherPair.right()) % bounds.y());
+    this.setX((short) ((this.x() + otherPair.left()) % bounds.x()));
+    this.setY((short) ((this.y() + otherPair.right()) % bounds.y()));
 
     // check for negatives; the Java % operator keeps the sign of the dividend
     if (this.x() < 0) {
-      this.setX(bounds.x() + this.x());
+      this.setX((short) (bounds.x() + this.x()));
     }
 
     if (this.y() < 0) {
-      this.setY(bounds.y() + this.y());
+      this.setY((short) (bounds.y() + this.y()));
     }
   }
 
@@ -161,18 +173,17 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
   // TODO extends Pair<Short, Short>?
   @Override
   public int hashCode() {
-    return ((this.x() & HALF_MASK) << (Integer.SIZE / 2))
-        | (this.y() & HALF_MASK);
+    return (this.x() << (Integer.SIZE / 2)) | this.y();
   }
 
   /** Rotates this vector by 90&deg; (&Pi;/2 radians). */
   public void rotateLeft() {
-    this.set(this.y(), -1 * this.x());
+    this.set(this.y(), (short) (-1 * this.x()));
   }
 
   /** Rotates this vector by -90&deg; (-&Pi;/2 radians). */
   public void rotateRight() {
-    this.set(-1 * this.y(), this.x());
+    this.set((short) (-1 * this.y()), this.x());
   }
 
   /**
@@ -183,7 +194,7 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
    * @param newY
    *          The y component of this coordinate pair.
    */
-  public void set(final int newX, final int newY) {
+  public void set(final short newX, final short newY) {
     this.setX(newX);
     this.setY(newY);
   }
@@ -194,7 +205,7 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
    * @param newX
    *          The x component of this coordinate pair.
    */
-  public void setX(final int newX) {
+  public void setX(final short newX) {
     this.setLeft(newX);
   }
 
@@ -204,7 +215,7 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
    * @param newY
    *          The y component of this coordinate pair.
    */
-  public void setY(final int newY) {
+  public void setY(final short newY) {
     this.setRight(newY);
   }
 
@@ -217,7 +228,7 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
    * @return A new CoordinatePair representing the sum of this coordinate pair
    *         with the specified other pair.
    */
-  public CoordinatePair sumWith(final Pair<Integer, Integer> otherPair) {
+  public CoordinatePair sumWith(final Pair<Short, Short> otherPair) {
     final CoordinatePair result = new CoordinatePair(this.x(), this.y());
 
     result.add(otherPair);
@@ -239,7 +250,7 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
    *         and the specified other Pair of Integers on the toroidal grid with
    *         the specified bounds.
    */
-  public CoordinatePair sumWith(final Pair<Integer, Integer> otherPair,
+  public CoordinatePair sumWith(final Pair<Short, Short> otherPair,
       final CoordinatePair bounds) {
     final CoordinatePair result = new CoordinatePair(this.x(), this.y());
 
@@ -264,7 +275,7 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
    * 
    * @return The x component of this coordinate pair.
    */
-  public int x() {
+  public short x() {
     return this.left();
   }
 
@@ -273,7 +284,7 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
    * 
    * @return The y component of this coordinate pair.
    */
-  public int y() {
+  public short y() {
     return this.right();
   }
 }

@@ -54,7 +54,7 @@ public class CoordinatePairTester {
   @Test
   public void testAddPairOfIntegerInteger() {
     final CoordinatePair pair = new CoordinatePair(0, 0);
-    pair.add(new Pair<Integer, Integer>(1, 1));
+    pair.add(new Pair<Short, Short>((short) 1, (short) 1));
     assertEquals(new CoordinatePair(1, 1), pair);
   }
 
@@ -67,9 +67,9 @@ public class CoordinatePairTester {
   public void testAddPairOfIntegerIntegerCoordinatePair() {
     final CoordinatePair pair = new CoordinatePair(1, 1);
     final CoordinatePair bounds = new CoordinatePair(2, 2);
-    pair.add(new Pair<Integer, Integer>(-2, 2), bounds);
+    pair.add(new Pair<Short, Short>((short) -2, (short) 2), bounds);
     assertEquals(new CoordinatePair(1, 1), pair);
-    pair.add(new Pair<Integer, Integer>(1, 1), bounds);
+    pair.add(new Pair<Short, Short>((short) 1, (short) 1), bounds);
     assertEquals(new CoordinatePair(0, 0), pair);
   }
 
@@ -213,7 +213,7 @@ public class CoordinatePairTester {
   @Test
   public void testSet() {
     final CoordinatePair pair = new CoordinatePair(0, 0);
-    pair.set(1, 1);
+    pair.set((short) 1, (short) 1);
 
     assertEquals(new CoordinatePair(1, 1), pair);
   }
@@ -224,7 +224,7 @@ public class CoordinatePairTester {
   @Test
   public void testSetX() {
     final CoordinatePair pair = new CoordinatePair(0, 0);
-    pair.setX(1);
+    pair.setX((short) 1);
 
     assertEquals(1, pair.x());
   }
@@ -235,7 +235,7 @@ public class CoordinatePairTester {
   @Test
   public void testSetY() {
     final CoordinatePair pair = new CoordinatePair(0, 0);
-    pair.setY(1);
+    pair.setY((short) 1);
 
     assertEquals(1, pair.y());
   }
@@ -260,8 +260,8 @@ public class CoordinatePairTester {
   @Test
   public void testSumWithPairOfIntegerInteger() {
     final CoordinatePair pair = new CoordinatePair(0, 1);
-    assertEquals(new CoordinatePair(1, 2), pair
-        .sumWith(new Pair<Integer, Integer>(1, 1)));
+    assertEquals(new CoordinatePair(1, 2), pair.sumWith(new Pair<Short, Short>(
+        (short) 1, (short) 1)));
   }
 
   /**
@@ -273,7 +273,8 @@ public class CoordinatePairTester {
   public void testSumWithPairOfIntegerIntegerCoordinatePair() {
     final CoordinatePair pair = new CoordinatePair(1, 1);
     final CoordinatePair bounds = new CoordinatePair(2, 2);
-    final Pair<Integer, Integer> toAdd = new Pair<Integer, Integer>(1, 1);
+    final Pair<Short, Short> toAdd = new Pair<Short, Short>((short) 1,
+        (short) 1);
     assertEquals(new CoordinatePair(0, 0), pair.sumWith(toAdd, bounds));
   }
 

@@ -46,7 +46,7 @@ public class Trail {
     final int width = this.foodLocations[0].length;
 
     // assume this trail is a square when determining its bounds
-    this.bounds = new CoordinatePair(width, height);
+    this.bounds = new CoordinatePair((short) width, (short) height);
   }
 
   /**

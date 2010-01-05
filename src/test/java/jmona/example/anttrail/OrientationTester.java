@@ -49,7 +49,7 @@ public class OrientationTester {
    */
   @Test
   public void testEast() {
-    assertEquals(new Orientation(1, 0), Orientation.east());
+    assertEquals(new Orientation((short) 1, (short) 0), Orientation.east());
   }
 
   /**
@@ -58,12 +58,15 @@ public class OrientationTester {
    */
   @Test
   public void testEqualsObject() {
-    assertEquals(Orientation.east(), new Orientation(1, 0));
-    assertEquals(new Orientation(1, 1), new Orientation(1, 1));
+    assertEquals(Orientation.east(), new Orientation((short) 1, (short) 0));
+    assertEquals(new Orientation((short) 1, (short) 1), new Orientation(
+        (short) 1, (short) 1));
     assertFalse(Orientation.north().equals(Orientation.south()));
-    assertFalse(new Orientation(1, 0).equals(new Orientation(1, 1)));
-    assertFalse(new Orientation(0, 1).equals(new Orientation(1, 1)));
-    assertFalse(new Orientation(0, 0).equals(new Object()));
+    assertFalse(new Orientation((short) 1, (short) 0).equals(new Orientation(
+        (short) 1, (short) 1)));
+    assertFalse(new Orientation((short) 0, (short) 1).equals(new Orientation(
+        (short) 1, (short) 1)));
+    assertFalse(new Orientation((short) 0, (short) 0).equals(new Object()));
   }
 
   /**
@@ -71,14 +74,14 @@ public class OrientationTester {
    */
   @Test
   public void testHashCode() {
-    final int x = 0xFFFF;
-    final int y = 0x1111;
+    final short x = 0x7F7F;
+    final short y = 0x1111;
 
     final Orientation pair = new Orientation(x, y);
 
     final int hashcode = pair.hashCode();
 
-    assertEquals(0xFFFF1111, hashcode);
+    assertEquals(0x7F7F1111, hashcode);
   }
 
   /**
@@ -86,7 +89,7 @@ public class OrientationTester {
    */
   @Test
   public void testNorth() {
-    assertEquals(new Orientation(0, -1), Orientation.north());
+    assertEquals(new Orientation((short) 0, (short) -1), Orientation.north());
   }
 
   /**
@@ -96,7 +99,7 @@ public class OrientationTester {
    */
   @Test
   public void testOrientation() {
-    final Orientation pair = new Orientation(0, 1);
+    final Orientation pair = new Orientation((short) 0, (short) 1);
     assertEquals(0, pair.left().intValue());
     assertEquals(1, pair.right().intValue());
   }
@@ -131,7 +134,7 @@ public class OrientationTester {
   public void testSetLeftInteger() {
     final Orientation orientation = Orientation.east();
     try {
-      orientation.setLeft(0);
+      orientation.setLeft((short) 0);
       Util.shouldHaveThrownException();
     } catch (final UnsupportedOperationException exception) {
       assertTrue(exception instanceof UnsupportedOperationException);
@@ -146,7 +149,7 @@ public class OrientationTester {
   public void testSetRightInteger() {
     final Orientation orientation = Orientation.east();
     try {
-      orientation.setRight(0);
+      orientation.setRight((short) 0);
       Util.shouldHaveThrownException();
     } catch (final UnsupportedOperationException exception) {
       assertTrue(exception instanceof UnsupportedOperationException);
@@ -158,7 +161,7 @@ public class OrientationTester {
    */
   @Test
   public void testSouth() {
-    assertEquals(new Orientation(0, 1), Orientation.south());
+    assertEquals(new Orientation((short) 0, (short) 1), Orientation.south());
   }
 
   /**
@@ -178,7 +181,7 @@ public class OrientationTester {
    */
   @Test
   public void testWest() {
-    assertEquals(new Orientation(-1, 0), Orientation.west());
+    assertEquals(new Orientation((short) -1, (short) 0), Orientation.west());
   }
 
 }
