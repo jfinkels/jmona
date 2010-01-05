@@ -20,6 +20,7 @@
 package jmona.impl.fitness;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import jmona.FitnessException;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
@@ -73,6 +74,14 @@ public class KnownExtremumFitnessFunctionTester {
     this.function.setExtremum(newExtremum);
     assertEquals(newExtremum, this.function.extremum().doubleValue(),
         ZERO_DELTA);
+    
+    this.function.setExtremum(null);
+    try {
+      this.function.standardizedFitness(new ExampleIndividual());
+      Util.shouldHaveThrownException();
+    } catch (final FitnessException exception) {
+      assertNull(this.function.extremum());
+    }
   }
 
   /**
