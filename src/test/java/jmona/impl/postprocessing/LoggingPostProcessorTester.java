@@ -19,15 +19,18 @@
  */
 package jmona.impl.postprocessing;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.List;
 import java.util.Vector;
 
 import jmona.EvolutionContext;
+import jmona.EvolutionException;
+import jmona.LoggingException;
 import jmona.ProcessingException;
+import jmona.impl.context.AbstractEvolutionContext;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
-import jmona.impl.postprocessing.LoggingPostProcessor;
-import jmona.impl.postprocessing.PopulationLoggingPostProcessor;
 import jmona.test.Util;
 
 import org.apache.log4j.Level;
@@ -51,6 +54,8 @@ public class LoggingPostProcessorTester {
 
   /** The PostProcessor under test. */
   private LoggingPostProcessor<ExampleIndividual> processor = null;
+  /** The population in the EvolutionContext. */
+  private List<ExampleIndividual> population = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
@@ -58,18 +63,19 @@ public class LoggingPostProcessorTester {
     final ExampleIndividual individual1 = new ExampleIndividual();
     final ExampleIndividual individual2 = new ExampleIndividual();
 
-    final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
-    population.add(individual1);
-    population.add(individual2);
+    this.population = new Vector<ExampleIndividual>();
+    this.population.add(individual1);
+    this.population.add(individual2);
 
-    this.context = new ExampleEvolutionContext(population);
+    this.context = new ExampleEvolutionContext(this.population);
 
     this.processor = new PopulationLoggingPostProcessor<ExampleIndividual>();
   }
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.LoggingPostProcessor#log(java.lang.String)}.
+   * {@link jmona.impl.postprocessing.LoggingPostProcessor#log(java.lang.String)}
+   * .
    */
   @Test
   public void testLogString() {
@@ -97,6 +103,22 @@ public class LoggingPostProcessorTester {
       this.processor.processAtInterval(this.context);
     } catch (final ProcessingException exception) {
       Util.fail(exception);
+    }
+    
+    this.processor = new FitnessLoggingPostProcessor<ExampleIndividual>();
+    
+    final EvolutionContext<ExampleIndividual> badContext = new AbstractEvolutionContext<ExampleIndividual>(this.population) {
+      @Override
+      protected void executeGenerationStep() throws EvolutionException {
+        // intentionally unimplemented
+      }
+    };
+        
+    try {
+      this.processor.processAtInterval(badContext);
+      Util.shouldHaveThrownException();
+    } catch (final ProcessingException exception) {
+      assertTrue(exception.getCause() instanceof LoggingException);
     }
   }
 
