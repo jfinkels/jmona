@@ -29,6 +29,7 @@ import jmona.example.anttrail.CoordinatePair;
 import jmona.example.anttrail.DefaultAnt;
 import jmona.example.anttrail.Orientation;
 import jmona.example.anttrail.Trail;
+import jmona.gp.ExecutionException;
 import jmona.gp.impl.TreeUtils;
 import jmona.test.Util;
 
@@ -80,7 +81,11 @@ public class DoEachNodeTester {
     assertEquals(node.children().get(1).getClass(), clonedNode.children()
         .get(1).getClass());
 
-    node.execute();
+    try {
+      node.execute();
+    } catch (final ExecutionException exception) {
+      Util.fail(exception);
+    }
 
     assertEquals(Orientation.west(), ant.orientation());
     assertEquals(new CoordinatePair(1, 1), ant.location());

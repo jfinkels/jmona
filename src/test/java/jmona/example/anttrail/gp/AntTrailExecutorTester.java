@@ -20,14 +20,15 @@
 package jmona.example.anttrail.gp;
 
 import static org.junit.Assert.assertEquals;
+import jmona.MappingException;
 import jmona.example.anttrail.Ant;
 import jmona.example.anttrail.DefaultAnt;
 import jmona.example.anttrail.Trail;
-import jmona.example.anttrail.gp.AntTrailExecutor;
 import jmona.example.anttrail.nodes.DoEachNode;
 import jmona.example.anttrail.nodes.MoveForwardNode;
 import jmona.gp.Tree;
 import jmona.gp.impl.DefaultTree;
+import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -67,9 +68,11 @@ public class AntTrailExecutorTester {
 
     final AntTrailExecutor executor = new AntTrailExecutor();
 
-    final int foodEaten = executor.execute(tree);
-
-    assertEquals(3, foodEaten);
+    try {
+      assertEquals(3, executor.execute(tree).intValue());
+    } catch (final MappingException exception) {
+      Util.fail(exception);
+    }
   }
 
 }

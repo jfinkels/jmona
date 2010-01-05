@@ -19,15 +19,16 @@
  */
 package jmona.example.anttrail.gp;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import jmona.FitnessException;
 import jmona.example.anttrail.Ant;
 import jmona.example.anttrail.DefaultAnt;
 import jmona.example.anttrail.Trail;
-import jmona.example.anttrail.gp.AntTrailFitnessFunction;
 import jmona.example.anttrail.nodes.DoEachNode;
 import jmona.example.anttrail.nodes.MoveForwardNode;
 import jmona.gp.Tree;
 import jmona.gp.impl.DefaultTree;
+import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -83,9 +84,11 @@ public class AntTrailFitnessFunctionTester {
 
     final AntTrailFitnessFunction function = new AntTrailFitnessFunction(3);
 
-    function.rawFitness(tree);
-
-    assertEquals(3, function.rawFitness(tree), ZERO_DELTA);
+    try {
+      assertEquals(3, function.rawFitness(tree), ZERO_DELTA);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
   }
 
 }

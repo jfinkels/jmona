@@ -21,6 +21,7 @@ package jmona.example.anttrail.nodes;
 
 import jmona.CopyingException;
 import jmona.example.anttrail.Ant;
+import jmona.gp.ExecutionException;
 import jmona.gp.impl.TreeUtils;
 
 /**
@@ -66,10 +67,12 @@ public class IfFoodAheadNode extends BinaryAntNode {
    * Executes the left child Node if the ant has food in the cell directly in
    * front of it, otherwise executes the right child Node.
    * 
+   * @throws ExecutionException
+   *           {@inheritDoc}
    * @see jmona.example.anttrail.nodes.AntNode#execute()
    */
   @Override
-  public void execute() {
+  public void execute() throws ExecutionException {
     if (this.ant().isFoodAhead()) {
       this.left().execute();
     } else {

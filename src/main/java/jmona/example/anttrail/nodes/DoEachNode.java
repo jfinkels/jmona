@@ -21,6 +21,7 @@ package jmona.example.anttrail.nodes;
 
 import jmona.CopyingException;
 import jmona.example.anttrail.Ant;
+import jmona.gp.ExecutionException;
 import jmona.gp.impl.TreeUtils;
 
 /**
@@ -82,10 +83,12 @@ public class DoEachNode extends AntFunctionNode {
    * Unconditionally execute of the children of this Node in the order that they
    * appear in this Node's List of children.
    * 
+   * @throws ExecutionException
+   *           {@inheritDoc}
    * @see jmona.example.anttrail.nodes.AntNode#execute()
    */
   @Override
-  public void execute() {
+  public void execute() throws ExecutionException {
 
     // until the ant has exceeded its maximum number of allowed steps
     int i = 0;

@@ -28,6 +28,7 @@ import jmona.example.anttrail.CoordinatePair;
 import jmona.example.anttrail.DefaultAnt;
 import jmona.example.anttrail.Orientation;
 import jmona.example.anttrail.Trail;
+import jmona.gp.ExecutionException;
 import jmona.gp.impl.TreeUtils;
 import jmona.test.Util;
 
@@ -61,13 +62,21 @@ public class IfFoodAheadNodeTester {
     TreeUtils.attachChildToParent(node, leftChild);
     TreeUtils.attachChildToParent(node, rightChild);
 
-    node.execute();
+    try {
+      node.execute();
+    } catch (final ExecutionException exception) {
+      Util.fail(exception);
+    }
 
     assertEquals(1, ant.foodEaten());
     assertEquals(Orientation.east(), ant.orientation());
     assertEquals(new CoordinatePair(1, 0), ant.location());
 
-    node.execute();
+    try {
+      node.execute();
+    } catch (final ExecutionException exception) {
+      Util.fail(exception);
+    }
 
     assertEquals(1, ant.foodEaten());
     assertEquals(Orientation.south(), ant.orientation());

@@ -20,7 +20,7 @@
 package jmona.example.anttrail.nodes;
 
 import jmona.example.anttrail.Ant;
-import jmona.gp.Node;
+import jmona.gp.ExecutableNode;
 
 /**
  * A Node which interacts with an Ant.
@@ -28,7 +28,7 @@ import jmona.gp.Node;
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
-public interface AntNode extends Node {
+public interface AntNode extends ExecutableNode {
   /**
    * Gets the ant with which this Node interacts.
    * 
@@ -36,6 +36,4 @@ public interface AntNode extends Node {
    */
   Ant ant();
 
-  /** Perform the action represented by this Node on the Ant. */
-  void execute();
 }

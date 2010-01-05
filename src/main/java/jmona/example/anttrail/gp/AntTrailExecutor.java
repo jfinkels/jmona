@@ -20,8 +20,10 @@
 package jmona.example.anttrail.gp;
 
 import jmona.Function;
+import jmona.MappingException;
 import jmona.example.anttrail.Ant;
 import jmona.example.anttrail.nodes.AntNode;
+import jmona.gp.ExecutionException;
 import jmona.gp.Tree;
 
 import org.apache.log4j.Logger;
@@ -48,16 +50,22 @@ public class AntTrailExecutor implements Function<Tree, Integer> {
    *          The Tree representing the program which controls the movements of
    *          the DefaultAnt.
    * @return The amount of food eaten by the Ant.
+   * @throws MappingException
+   *           If there is a problem executing the Tree.
    * @see jmona.Function#execute(java.lang.Object)
    */
   @Override
-  public Integer execute(final Tree tree) {
+  public Integer execute(final Tree tree) throws MappingException {
 
     // get the root of the Tree
     final AntNode root = (AntNode) tree.root();
 
     // execute the program specified by the tree
-    root.execute();
+    try {
+      root.execute();
+    } catch (final ExecutionException exception) {
+      throw new MappingException("Failed to execute the Tree.", exception);
+    }
 
     // get the ant which the tree controls
     final Ant ant = root.ant();

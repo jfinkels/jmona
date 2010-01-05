@@ -19,6 +19,8 @@
  */
 package jmona.example.anttrail.gp;
 
+import jmona.FitnessException;
+import jmona.MappingException;
 import jmona.gp.Tree;
 import jmona.impl.fitness.MaximizingFitnessFunction;
 
@@ -56,11 +58,17 @@ public class AntTrailFitnessFunction extends MaximizingFitnessFunction<Tree> {
    * @param tree
    *          The tree representing the program that controls an Ant on a Trail.
    * @return The number of units of food that the Ant ate.
+   * @throws FitnessException
+   *           If there is a problem executing the specified Tree.
    * @see jmona.FitnessFunction#rawFitness(java.lang.Object)
    */
   @Override
-  public double rawFitness(final Tree tree) {
-    return EXECUTOR.execute(tree);
+  public double rawFitness(final Tree tree) throws FitnessException {
+    try {
+      return EXECUTOR.execute(tree);
+    } catch (final MappingException exception) {
+      throw new FitnessException("Failed to execute Tree.", exception);
+    }
   }
 
 }
