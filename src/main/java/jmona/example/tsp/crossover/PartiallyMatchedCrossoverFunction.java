@@ -65,8 +65,8 @@ public class PartiallyMatchedCrossoverFunction implements
 
     // choose two random numbers for the start and end indices of the slice
     // (one can be at index "size")
-    final int number1 = RandomUtils.RANDOM.nextInt(0, size - 1);
-    final int number2 = RandomUtils.RANDOM.nextInt(0, size);
+    final int number1 = RandomUtils.randomData().nextInt(0, size - 1);
+    final int number2 = RandomUtils.randomData().nextInt(0, size);
 
     // make the smaller the start and the larger the end
     final int start = Math.min(number1, number2);
@@ -84,7 +84,7 @@ public class PartiallyMatchedCrossoverFunction implements
     int replacementCity = 0;
 
     // iterate over each city in not in the crossed over section
-    for (int i = end; i >= end || i < start; i = (i + 1) % size) {
+    for (int i = end % size; i >= end || i < start; i = (i + 1) % size) {
 
       // get the current city being examined in tour 1
       currentCity = tour1.get(i);
