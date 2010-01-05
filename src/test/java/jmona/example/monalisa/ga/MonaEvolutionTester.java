@@ -101,7 +101,6 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
 
       // could not autowire because spring could distinguish between these 2
       // beans
-      // TODO try this with the new version of spring, 3.0.0-RELEASE
       final int width = (Integer) this.applicationContext.getBean("width");
       final int height = (Integer) this.applicationContext.getBean("height");
 
