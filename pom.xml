@@ -222,14 +222,14 @@
 
   <reporting>
     <plugins>
-      <plugin> <!-- changelog generation from SCM -->
+      <!--<plugin> -- changelog generation from SCM --
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changelog-plugin</artifactId>
         <version>${version.plugin.changelog}</version>
         <configuration>
           <displayFileDetailUrl>http://github.com/jfinkels/jmona/blob/master/</displayFileDetailUrl>
         </configuration>
-      </plugin> 
+      </plugin> -->
 
       <plugin> <!-- Checkstyle coding style violations report -->
         <groupId>org.apache.maven.plugins</groupId>
