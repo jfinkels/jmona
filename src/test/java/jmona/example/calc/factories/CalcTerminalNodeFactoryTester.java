@@ -26,7 +26,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.Random;
 
 import jmona.MappingException;
-import jmona.Function;
 import jmona.example.calc.nodes.NumberNode;
 import jmona.example.calc.nodes.VariableNode;
 import jmona.functional.Range;
@@ -48,7 +47,7 @@ public class CalcTerminalNodeFactoryTester {
    */
   public static final int MAX_VALUE = 100;
   /** The number of times to repeat the test. */
-  public static final int NUM_TESTS = 1000;
+  public static final int NUM_TESTS = 10000;
 
   /**
    * Test method for
@@ -101,7 +100,7 @@ public class CalcTerminalNodeFactoryTester {
 
     final Random random = new Random();
     int newMinValue = random.nextInt(MAX_VALUE);
-    int newMaxValue = newMinValue + random.nextInt(MAX_VALUE);
+    int newMaxValue = newMinValue + random.nextInt(MAX_VALUE - 1) + 1;
 
     factory.setMinValue(newMinValue);
     factory.setMaxValue(newMaxValue);
