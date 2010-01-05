@@ -1,5 +1,5 @@
 /**
- * FitnessComparator.java
+ * StandardizedFitnessComparator.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
