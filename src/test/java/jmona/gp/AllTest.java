@@ -29,7 +29,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author Jeffrey Finkelstein
  */
 @RunWith(Suite.class)
-@SuiteClasses({ EvaluationExceptionTester.class })
+@SuiteClasses({ EvaluationExceptionTester.class,
+    ExecutionExceptionTester.class })
 public class AllTest {
 
 }
