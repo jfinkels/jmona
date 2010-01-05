@@ -54,7 +54,7 @@ public class UniformPopulationCompletionCondition<T extends DeepCopyable<T>>
     if (super.isSatisfied(context)) {
       return true;
     }
-    
+
     // get the current population from the evolution context
     final List<T> population = context.currentPopulation();
 

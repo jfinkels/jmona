@@ -57,7 +57,7 @@ public abstract class AbstractEvolutionContext<T extends DeepCopyable<T>>
     }
     this.population = initialPopulation;
   }
-  
+
   /**
    * {@inheritDoc}
    * 

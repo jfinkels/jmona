@@ -103,8 +103,8 @@ public abstract class LoggingPostProcessor<T extends DeepCopyable<T>> extends
   protected void processAtInterval(final EvolutionContext<T> context)
       throws ProcessingException {
     try {
-      this.log(String.format(DEFAULT_MESSAGE_FORMAT, context.currentGeneration(),
-          this.message(context)));
+      this.log(String.format(DEFAULT_MESSAGE_FORMAT, context
+          .currentGeneration(), this.message(context)));
     } catch (final LoggingException exception) {
       throw new ProcessingException("Failed to log a message.", exception);
     }

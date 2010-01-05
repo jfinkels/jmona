@@ -57,8 +57,7 @@ public class VariableNode extends AbstractCalcTerminalNode implements CalcNode {
    * @see jmona.gp.Node#evaluate()
    */
   @Override
-  public Function<Double, Double> evaluate()
-      throws EvaluationException {
+  public Function<Double, Double> evaluate() throws EvaluationException {
     return DoubleIdentityFunction.newInstance();
   }
 }

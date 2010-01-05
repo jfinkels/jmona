@@ -19,7 +19,6 @@
  */
 package jmona;
 
-
 /**
  * An object which contains a method which tells whether the criteria for the
  * completion of the evolution have been met.

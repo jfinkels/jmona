@@ -57,11 +57,10 @@ public interface TwoPlayerGameResult<S extends Strategy> extends GameResult<S> {
    */
   void setScoreOfStrategy2(final double newScoreOfStrategy2);
 
-/*  void setStrategy1(final S newStrategy1);
-  void setStrategy2(final S newStrategy2);
-  S strategy1();
-  S strategy2();
-*/  
+  /*
+   * void setStrategy1(final S newStrategy1); void setStrategy2(final S
+   * newStrategy2); S strategy1(); S strategy2();
+   */
   /**
    * Set the winning Strategy of the game.
    * 

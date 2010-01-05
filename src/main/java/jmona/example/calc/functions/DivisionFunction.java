@@ -38,8 +38,7 @@ public class DivisionFunction extends SecondOrderFunction {
    * @param initialFunction2
    *          The function whose image will be the divisor.
    */
-  public DivisionFunction(
-      final Function<Double, Double> initialFunction1,
+  public DivisionFunction(final Function<Double, Double> initialFunction1,
       final Function<Double, Double> initialFunction2) {
     super(initialFunction1, initialFunction2);
   }

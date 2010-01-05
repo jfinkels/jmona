@@ -19,7 +19,6 @@
  */
 package jmona;
 
-
 /**
  * A factory which creates objects of type E.
  * 

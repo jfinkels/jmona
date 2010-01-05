@@ -19,7 +19,6 @@
  */
 package jmona;
 
-
 /**
  * A class which provides a single method which performs a crossover (in place)
  * between genes of Individuals.

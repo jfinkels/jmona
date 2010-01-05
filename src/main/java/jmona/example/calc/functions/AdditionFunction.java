@@ -37,8 +37,7 @@ public class AdditionFunction extends SecondOrderFunction {
    * @param initialFunction2
    *          Another function to sum.
    */
-  public AdditionFunction(
-      final Function<Double, Double> initialFunction1,
+  public AdditionFunction(final Function<Double, Double> initialFunction1,
       final Function<Double, Double> initialFunction2) {
     super(initialFunction1, initialFunction2);
   }

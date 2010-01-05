@@ -26,8 +26,7 @@ import jmona.example.calc.operations.FunctionSubtraction;
  * 
  * @author Jeffrey Finkelstein
  */
-public class SubtractionNode extends
-    CalcFunctionNode{
+public class SubtractionNode extends CalcFunctionNode {
 
   /** Instantiate this Node using the FunctionSubtraction operation. */
   public SubtractionNode() {

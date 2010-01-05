@@ -42,7 +42,8 @@ import jmona.impl.fitness.StandardizedFitnessComparator;
  *          The type of individual to choose.
  * @since 0.3
  */
-public class LinearRankingSelection<T> implements IndependentSelectionFunction<T> {
+public class LinearRankingSelection<T> implements
+    IndependentSelectionFunction<T> {
 
   /** The comparator with which to rank the individuals in the population. */
   private final StandardizedFitnessComparator<T> standardizedFitnessComparator = new StandardizedFitnessComparator<T>();

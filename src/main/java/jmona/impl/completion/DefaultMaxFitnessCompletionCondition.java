@@ -79,12 +79,12 @@ public class DefaultMaxFitnessCompletionCondition<T extends DeepCopyable<T>>
     // get the fitness function from the EvolutionContext
     final FitnessFunction<T> fitnessFunction = ((GeneticEvolutionContext<T>) context)
         .fitnessFunction();
-    
+
     if (fitnessFunction == null) {
       throw new CompletionException(
           "No FitnessFunction has been set on the EvolutionContext, so no fitnesses can be determined.");
     }
-    
+
     // set the fitness function on the raw fitness getter function
     this.rawFitnessGetter.setFitnessFunction(fitnessFunction);
 

@@ -19,7 +19,6 @@
  */
 package jmona;
 
-
 /**
  * A class which can be deep copied.
  * 

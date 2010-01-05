@@ -103,8 +103,8 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
         } else { // variation operation is crossover
 
           // select another individual (different from the first!)
-          individual2 = this.selectionFunction().select(this.currentPopulation(),
-              this.fitnessFunction()).deepCopy();
+          individual2 = this.selectionFunction().select(
+              this.currentPopulation(), this.fitnessFunction()).deepCopy();
 
           // perform crossover
           this.crossoverFunction().crossover(individual1, individual2);
@@ -121,14 +121,14 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
       this.setCurrentPopulation(nextGeneration);
 
       // recalculate the fitnesses of the current generation
-//      this.recalculateFitnesses();
+      // this.recalculateFitnesses();
 
     } catch (final CrossoverException exception) {
       throw new EvolutionException(
           "Failed to perform crossover on two Individuals.", exception);
-//    } catch (final FitnessException exception) {
-//      throw new EvolutionException(
-//          "Failed determining fitness of an Individual.", exception);
+      // } catch (final FitnessException exception) {
+      // throw new EvolutionException(
+      // "Failed determining fitness of an Individual.", exception);
     } catch (final MutationException exception) {
       throw new EvolutionException("Failed mutating an Individual.", exception);
     } catch (final SelectionException exception) {

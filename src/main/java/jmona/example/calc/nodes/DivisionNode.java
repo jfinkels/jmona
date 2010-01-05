@@ -26,8 +26,7 @@ import jmona.example.calc.operations.FunctionDivision;
  * 
  * @author Jeffrey Finkelstein
  */
-public class DivisionNode extends
-    CalcFunctionNode {
+public class DivisionNode extends CalcFunctionNode {
 
   /** Instantiate this Node using the FunctionDivision operation. */
   public DivisionNode() {

@@ -19,7 +19,6 @@
  */
 package jmona;
 
-
 /**
  * This Exception is thrown when there is a problem measuring two objects, as in
  * a {@link Metric#measure(Object, Object)} method.

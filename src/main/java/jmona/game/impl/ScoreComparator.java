@@ -38,7 +38,7 @@ public class ScoreComparator<S extends Strategy> implements Comparator<S>,
 
   /** Default generated serial version UID. */
   private static final long serialVersionUID = -4878374316552575890L;
-  
+
   /** The mapping from Strategy to cumulative score. */
   private Map<S, Double> scores = null;
 

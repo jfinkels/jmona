@@ -29,8 +29,9 @@ public class SplitOnWhitespace implements Function<String, String[]> {
   /** A regular expression matching any whitespace character. */
   public static final String WHITESPACE = "\\s+";
 
-
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see jmona.Function#execute(java.lang.Object)
    */
   @Override

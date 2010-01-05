@@ -26,8 +26,7 @@ import jmona.example.calc.operations.FunctionMultiplication;
  * 
  * @author Jeffrey Finkelstein
  */
-public class MultiplicationNode extends
-    CalcFunctionNode {
+public class MultiplicationNode extends CalcFunctionNode {
 
   /** Instantiate this Node using the FunctionMultiplication operation. */
   public MultiplicationNode() {

@@ -47,7 +47,7 @@ public class LineReader {
    */
   public static List<String> readLines(final File file) throws IOException {
     final List<String> result = new Vector<String>();
-    
+
     BufferedReader reader = null;
     try {
       reader = new BufferedReader(new FileReader(file));

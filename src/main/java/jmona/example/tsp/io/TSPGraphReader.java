@@ -56,8 +56,8 @@ public class TSPGraphReader {
       throws IOException, MappingException {
 
     // get all lines, split on whitespace
-    final List<String[]> allLines = Functional.map(new SplitOnWhitespace(), LineReader
-        .readLines(file));
+    final List<String[]> allLines = Functional.map(new SplitOnWhitespace(),
+        LineReader.readLines(file));
 
     // get the number of vertices in the graph
     final int numberOfVertices = allLines.size();

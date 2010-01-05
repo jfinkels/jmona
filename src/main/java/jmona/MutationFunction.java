@@ -19,7 +19,6 @@
  */
 package jmona;
 
-
 /**
  * A class which provides one method for mutating an individual in place.
  * 

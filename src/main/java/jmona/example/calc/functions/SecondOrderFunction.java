@@ -26,8 +26,7 @@ import jmona.Function;
  * 
  * @author Jeffrey Finkelstein
  */
-public abstract class SecondOrderFunction implements
-    Function<Double, Double> {
+public abstract class SecondOrderFunction implements Function<Double, Double> {
 
   /** One of the functions on which to operate. */
   private final Function<Double, Double> function1;
@@ -43,8 +42,7 @@ public abstract class SecondOrderFunction implements
    * @param initialFunction2
    *          Another function on which to operate.
    */
-  public SecondOrderFunction(
-      final Function<Double, Double> initialFunction1,
+  public SecondOrderFunction(final Function<Double, Double> initialFunction1,
       final Function<Double, Double> initialFunction2) {
     this.function1 = initialFunction1;
     this.function2 = initialFunction2;

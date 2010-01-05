@@ -27,5 +27,5 @@ package jmona.example.calc.operations;
  * @author Jeffrey Finkelstein
  */
 public interface UniformBinaryOperation<T> extends BinaryOperation<T, T, T> {
-  
+
 }

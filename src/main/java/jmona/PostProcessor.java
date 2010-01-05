@@ -19,7 +19,6 @@
  */
 package jmona;
 
-
 /**
  * An object which performs some processing on an EvolutionContext after each
  * generation.

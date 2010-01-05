@@ -38,8 +38,7 @@ public class SubtractionFunction extends SecondOrderFunction {
    * @param initialFunction2
    *          The function whose image will be the subtrahend.
    */
-  public SubtractionFunction(
-      final Function<Double, Double> initialFunction1,
+  public SubtractionFunction(final Function<Double, Double> initialFunction1,
       final Function<Double, Double> initialFunction2) {
     super(initialFunction1, initialFunction2);
   }

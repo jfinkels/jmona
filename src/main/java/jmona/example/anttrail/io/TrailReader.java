@@ -85,7 +85,7 @@ public class TrailReader {
 
     return new Trail(foodAt);
   }
-  
+
   /** Instantiation disallowed except by subclasses. */
   protected TrailReader() {
     // intentionally unimplemented

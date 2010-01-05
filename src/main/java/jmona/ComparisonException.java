@@ -57,8 +57,7 @@ public class ComparisonException extends RuntimeException {
    * @param cause
    *          The cause of this Exception.
    */
-  public ComparisonException(final String message,
-      final Throwable cause) {
+  public ComparisonException(final String message, final Throwable cause) {
     super(message, cause);
   }
 

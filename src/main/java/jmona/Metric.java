@@ -19,7 +19,6 @@
  */
 package jmona;
 
-
 /**
  * A metric on elements of type E.
  * 

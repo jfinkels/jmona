@@ -167,8 +167,8 @@ public class EdgeRecombinationCrossoverFunction implements
 
         // get all cities with the same number of neighbors
         try {
-          citiesWithSameNumberOfNeighbors = Functional.filter(sameNumberOfNeighbors,
-              allPossibleCities);
+          citiesWithSameNumberOfNeighbors = Functional.filter(
+              sameNumberOfNeighbors, allPossibleCities);
         } catch (final MappingException exception) {
           throw new CrossoverException(
               "Failed to filter cities by number of neighbors.", exception);
