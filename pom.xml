@@ -222,7 +222,7 @@
 
   <reporting>
     <plugins>
-      <!--<plugin> -- changelog generation from SCM --
+      <!--<plugin>  changelog generation from SCM 
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changelog-plugin</artifactId>
         <version>${version.plugin.changelog}</version>
