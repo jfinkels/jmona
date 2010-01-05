@@ -19,38 +19,67 @@
  */
 package jmona.impl.fitness;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import jmona.FitnessException;
+import jmona.impl.example.ExampleIndividual;
+import jmona.test.Util;
 
 import org.junit.Test;
 
 /**
+ * Test class for the MinimizingFitnessFunction class.
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
 public class MinimizingFitnessFunctionTester {
 
-  /**
-   * Test method for {@link jmona.impl.fitness.MinimizingFitnessFunction#typeOfExtremum()}.
-   */
-  @Test
-  public void testTypeOfExtremum() {
-    fail("Not yet implemented");
-  }
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
 
   /**
-   * Test method for {@link jmona.impl.fitness.MinimizingFitnessFunction#MinimizingFitnessFunction()}.
+   * Test method for
+   * {@link jmona.impl.fitness.MinimizingFitnessFunction#MinimizingFitnessFunction()}
+   * .
    */
   @Test
   public void testMinimizingFitnessFunction() {
-    fail("Not yet implemented");
-  }
+    final double minimum = 10;
+    MinimizingFitnessFunction<ExampleIndividual> function = new MinimizingFitnessFunction<ExampleIndividual>(
+        minimum) {
+      @Override
+      public double rawFitness(final ExampleIndividual individual) {
+        return individual.fitness();
+      }
+    };
+    assertEquals(KnownExtremumFitnessFunction.MINIMUM, function
+        .typeOfExtremum());
 
-  /**
-   * Test method for {@link jmona.impl.fitness.MinimizingFitnessFunction#MinimizingFitnessFunction(double)}.
-   */
-  @Test
-  public void testMinimizingFitnessFunctionDouble() {
-    fail("Not yet implemented");
+    try {
+      assertEquals(minimum, function.standardizedFitness(new ExampleIndividual(
+          2 * minimum)), ZERO_DELTA);
+      assertEquals(0, function.standardizedFitness(new ExampleIndividual(
+          minimum)), ZERO_DELTA);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
+
+    function = new MinimizingFitnessFunction<ExampleIndividual>() {
+      @Override
+      public double rawFitness(final ExampleIndividual individual) {
+        return individual.fitness();
+      }
+    };
+
+    try {
+      assertEquals(minimum, function.standardizedFitness(new ExampleIndividual(
+          minimum)), ZERO_DELTA);
+      assertEquals(0, function.standardizedFitness(new ExampleIndividual(0)),
+          ZERO_DELTA);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
+
   }
 
 }
