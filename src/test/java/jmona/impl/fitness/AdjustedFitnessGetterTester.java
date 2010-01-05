@@ -20,21 +20,41 @@
 package jmona.impl.fitness;
 
 import static org.junit.Assert.*;
+import jmona.MappingException;
+import jmona.impl.example.ExampleFitnessFunction;
+import jmona.impl.example.ExampleIndividual;
+import jmona.test.Util;
 
 import org.junit.Test;
 
 /**
+ * Test class for the AdjustedFitnessGetter class.
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
 public class AdjustedFitnessGetterTester {
 
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
+
   /**
-   * Test method for {@link jmona.impl.fitness.AdjustedFitnessGetter#execute(java.lang.Object)}.
+   * Test method for
+   * {@link jmona.impl.fitness.AdjustedFitnessGetter#execute(java.lang.Object)}.
    */
   @Test
   public void testExecute() {
-    fail("Not yet implemented");
+    final AdjustedFitnessGetter<ExampleIndividual> function = new AdjustedFitnessGetter<ExampleIndividual>();
+    function.setFitnessFunction(new ExampleFitnessFunction());
+
+    final double fitness = 10;
+    final ExampleIndividual individual = new ExampleIndividual(fitness);
+    try {
+      assertEquals(1.0 / (1 + fitness), function.execute(individual)
+          .doubleValue(), ZERO_DELTA);
+    } catch (final MappingException exception) {
+      Util.fail(exception);
+    }
   }
 
 }
