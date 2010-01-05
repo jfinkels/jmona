@@ -25,6 +25,7 @@ import java.util.Vector;
 import jmona.CopyingException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
+import jmona.impl.Util;
 
 /**
  * A default implementation of a Tree.
@@ -108,12 +109,7 @@ public class DefaultTree implements Tree {
    */
   @Override
   public Node randomNode() {
-    // get all the nodes in this tree
-    final List<Node> allNodes = this.allNodes();
-
-    // TODO use randomFromCollection()
-    // get a random node from the list of all nodes in the tree
-    return allNodes.get(jmona.impl.Util.RANDOM.nextInt(allNodes.size()));
+    return Util.randomFromCollection(this.allNodes());
   }
 
   /**
