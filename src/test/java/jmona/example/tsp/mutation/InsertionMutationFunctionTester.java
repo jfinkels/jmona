@@ -45,6 +45,7 @@ public class InsertionMutationFunctionTester extends
    * {@link jmona.example.tsp.mutation.InsertionMutationFunction#mutate(List)}.
    */
   @Test
+  @Override
   public void testMutate() {
     for (final int j : new Range(NUM_TESTS)) {
       this.setUp();
@@ -108,8 +109,9 @@ public class InsertionMutationFunctionTester extends
           assertEquals(i + 1, this.tour().get(i).intValue());
         }
 
-        for (int i = lastChange + 1; i > lastChange || i < firstChange; i = (i + 1)
-            % this.tour().size()) {
+        final int size = this.tour().size();
+        for (int i = (lastChange + 1) % size; i > lastChange || i < firstChange; i = (i + 1)
+            % size) {
           assertEquals(i, this.tour().get(i).intValue());
         }
       }
