@@ -1,5 +1,5 @@
 /**
- * ListMutationFunctionTester.java
+ * ElementwiseMutationFunctionTester.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -34,23 +34,23 @@ import jmona.test.Util;
 import org.junit.Test;
 
 /**
- * Test class for the ListMutationFunction class.
+ * Test class for the ElementwiseMutationFunction class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ListMutationFunctionTester {
+public class ElementwiseMutationFunctionTester {
 
   /** Zero. */
   public static final double ZERO_DELTA = 0.0;
 
   /**
    * Test method for
-   * {@link jmona.impl.mutation.ListMutationFunction#mutate(java.util.List)}.
+   * {@link jmona.impl.mutation.ElementwiseMutationFunction#mutate(java.util.List)}.
    */
   @Test
   public void testMutate() {
-    final ListMutationFunction<ExampleIndividual> function = new ListMutationFunction<ExampleIndividual>();
+    final ElementwiseMutationFunction<ExampleIndividual> function = new ElementwiseMutationFunction<ExampleIndividual>();
 
     try {
       function.mutate(null);

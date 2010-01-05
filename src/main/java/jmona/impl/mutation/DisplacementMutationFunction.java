@@ -17,52 +17,49 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp.mutation;
+package jmona.impl.mutation;
 
 import java.util.List;
 import java.util.Vector;
 
-import jmona.MutationFunction;
 import jmona.impl.Util;
 
 /**
- * Displaces a random sublist within a Tour to a new random location in the
- * Tour.
+ * Displaces a random sublist within a List to a new random location in the
+ * List.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @param <E>
+ *          The type of element in the List to mutate.
+ * @since 0.4
  */
-// TODO generalize all TSP MutationFunctions to all Lists
-public class DisplacementMutationFunction implements
-    MutationFunction<List<Integer>> {
+public class DisplacementMutationFunction<E> implements
+    OrderedListMutationFunction<E> {
 
   /**
-   * Select a random sublist from the specified Tour and displace it to a random
-   * new location in the Tour.
+   * Select a random sublist from the specified List and displace it to a random
+   * new location in the List.
    * 
-   * @param tour
-   *          The tour to mutate.
+   * @param list
+   *          The List to mutate.
    * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
-  public void mutate(final List<Integer> tour) {
+  public void mutate(final List<E> list) {
     // get a random start and end of the sublist
-    final int start = Util.RANDOM.nextInt(tour.size());
-    final int end = start + Util.RANDOM.nextInt(tour.size() - start);
+    final int start = Util.RANDOM.nextInt(list.size());
+    final int end = start + Util.RANDOM.nextInt(list.size() - start);
 
-    // make a copy of the sublist
-    final List<Integer> sublist = new Vector<Integer>();
-    for (final int i : tour.subList(start, end)) {
-      sublist.add(i);
-    }
+    // make a list of references to elements in the sublist
+    final List<E> sublist = new Vector<E>(list.subList(start, end));
 
     // remove all elements from the tour which are in the sublist
-    tour.removeAll(sublist);
+    list.removeAll(sublist);
 
-    // choose a random index for reinsertion of the sublist into the tour
-    final int insertionPoint = Util.RANDOM.nextInt(tour.size());
+    // choose a random index for reinsertion of the sublist into the list
+    final int insertionPoint = Util.RANDOM.nextInt(list.size());
 
     // add the sublist back into the tour
-    tour.addAll(insertionPoint, sublist);
+    list.addAll(insertionPoint, sublist);
   }
 }

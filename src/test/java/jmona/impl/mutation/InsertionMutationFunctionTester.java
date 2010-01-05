@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp.mutation;
+package jmona.impl.mutation;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -34,19 +34,19 @@ import org.junit.Test;
  * Test class for the InsertionMutationFunction class.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @since 0.4
  */
 public class InsertionMutationFunctionTester extends
-    AbstractTSPMutationFunctionTester {
+    AbstractListMutationFunctionTester {
 
   /** Instantiate this test class with access to an InsertionMutationFunction. */
   public InsertionMutationFunctionTester() {
-    super(new InsertionMutationFunction());
+    super(new InsertionMutationFunction<Integer>());
   }
 
   /**
    * Test method for
-   * {@link jmona.example.tsp.mutation.InsertionMutationFunction#mutate(List)}.
+   * {@link jmona.impl.mutation.InsertionMutationFunction#mutate(List)}.
    */
   @Test
   @Override
@@ -55,27 +55,27 @@ public class InsertionMutationFunctionTester extends
       this.setUp();
 
       try {
-        this.function().mutate(this.tour());
+        this.function().mutate(this.list());
       } catch (final MutationException exception) {
         Util.fail(exception);
       }
 
-      assertEquals(LENGTH, this.tour().size());
+      assertEquals(LENGTH, this.list().size());
       for (final int i : new Range(LENGTH)) {
-        assertTrue(this.tour().contains(i));
+        assertTrue(this.list().contains(i));
       }
 
       int firstChange = 0;
-      for (final int i : new Range(this.tour().size())) {
-        if (!this.tour().get(i).equals(i)) {
+      for (final int i : new Range(this.list().size())) {
+        if (!this.list().get(i).equals(i)) {
           firstChange = i;
           break;
         }
       }
 
       int lastChange = 0;
-      for (int i = this.tour().size() - 1; i >= 0; --i) {
-        if (!this.tour().get(i).equals(i)) {
+      for (int i = this.list().size() - 1; i >= 0; --i) {
+        if (!this.list().get(i).equals(i)) {
           lastChange = i;
           break;
         }
@@ -83,40 +83,40 @@ public class InsertionMutationFunctionTester extends
 
       // TODO check the case of final element being moved
 
-      // if a city was moved to a location previous to its original location
+      // if a element was moved to a location previous to its original location
       // for example:
       //
       // before: 0 1 2 3 4 5 6 7 8 9 10 11 12
       // after : 0 1 2 3 4 10 5 6 7 8 9 11 12
-      if (this.tour().get(lastChange) == lastChange - 1) {
-        assertEquals(lastChange, this.tour().get(firstChange).intValue());
+      if (this.list().get(lastChange) == lastChange - 1) {
+        assertEquals(lastChange, this.list().get(firstChange).intValue());
 
         for (final int i : new Range(firstChange + 1, lastChange)) {
-          assertEquals(i - 1, this.tour().get(i).intValue());
+          assertEquals(i - 1, this.list().get(i).intValue());
         }
 
-        for (int i = (lastChange + 1) % this.tour().size(); i > lastChange
-            || i < firstChange; i = (i + 1) % this.tour().size()) {
-          assertEquals(i, this.tour().get(i).intValue());
+        for (int i = (lastChange + 1) % this.list().size(); i > lastChange
+            || i < firstChange; i = (i + 1) % this.list().size()) {
+          assertEquals(i, this.list().get(i).intValue());
         }
       }
 
-      // if a city was moved to an location after its original location
+      // if an element was moved to an location after its original location
       // for example:
       //
       // before: 0 1 2 3 4 5 6 7 8 9 10 11 12
       // after : 0 1 2 3 4 6 7 8 9 10 5 11 12
-      if (this.tour().get(firstChange) == firstChange + 1) {
-        assertEquals(firstChange, this.tour().get(lastChange).intValue());
+      if (this.list().get(firstChange) == firstChange + 1) {
+        assertEquals(firstChange, this.list().get(lastChange).intValue());
 
         for (final int i : new Range(firstChange, lastChange)) {
-          assertEquals(i + 1, this.tour().get(i).intValue());
+          assertEquals(i + 1, this.list().get(i).intValue());
         }
 
-        final int size = this.tour().size();
+        final int size = this.list().size();
         for (int i = (lastChange + 1) % size; i > lastChange || i < firstChange; i = (i + 1)
             % size) {
-          assertEquals(i, this.tour().get(i).intValue());
+          assertEquals(i, this.list().get(i).intValue());
         }
       }
     }

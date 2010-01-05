@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp.mutation;
+package jmona.impl.mutation;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -34,30 +34,31 @@ import org.junit.Test;
  * Test class for the DisplacementMutationFunction class.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @since 0.4
  */
 public class DisplacementMutationFunctionTester extends
-    AbstractTSPMutationFunctionTester {
+    AbstractListMutationFunctionTester {
 
   /**
    * Instantiate this test class with access to an DisplacementMutationFunction.
    */
   public DisplacementMutationFunctionTester() {
-    super(new DisplacementMutationFunction());
+    super(new DisplacementMutationFunction<Integer>());
   }
 
   /**
    * Test method for
-   * {@link jmona.example.tsp.mutation.DisplacementMutationFunction#mutate(List)}
+   * {@link jmona.impl.mutation.DisplacementMutationFunction#mutate(List)}
    * .
    */
+  @Override
   @Test
   public void testMutate() {
     for (final int j : new Range(NUM_TESTS)) {
       this.setUp();
 
       try {
-        this.function().mutate(this.tour());
+        this.function().mutate(this.list());
       } catch (final MutationException exception) {
         Util.fail(exception);
       }
@@ -66,16 +67,16 @@ public class DisplacementMutationFunctionTester extends
       // before: 0 1 2 3 4 5 6 7 8 9
       // after : 0|4 5 6 7|1 2 3|8 9
 
-      assertEquals(LENGTH, this.tour().size());
+      assertEquals(LENGTH, this.list().size());
 
       for (final int i : new Range(LENGTH)) {
-        assertTrue(this.tour().contains(i));
+        assertTrue(this.list().contains(i));
       }
 
       // get the index of the start of the first slice
       int start = 0;
-      for (final int i : new Range(this.tour().size())) {
-        if (this.tour().get(i) != i) {
+      for (final int i : new Range(this.list().size())) {
+        if (this.list().get(i) != i) {
           start = i;
           break;
         }
@@ -83,8 +84,8 @@ public class DisplacementMutationFunctionTester extends
 
       // get the index between the first and second slices
       int middle = 0;
-      for (final int i : new Range(start + 1, this.tour().size())) {
-        if (this.tour().get(i) != this.tour().get(i - 1) + 1) {
+      for (final int i : new Range(start + 1, this.list().size())) {
+        if (this.list().get(i) != this.list().get(i - 1) + 1) {
           middle = i;
           break;
         }
@@ -92,8 +93,8 @@ public class DisplacementMutationFunctionTester extends
 
       // get the index of the end of the second slice
       int end = 0;
-      for (final int i : new Range(middle + 1, this.tour().size())) {
-        if (this.tour().get(i) != this.tour().get(i - 1) + 1) {
+      for (final int i : new Range(middle + 1, this.list().size())) {
+        if (this.list().get(i) != this.list().get(i - 1) + 1) {
           end = i;
           break;
         }
@@ -105,24 +106,24 @@ public class DisplacementMutationFunctionTester extends
 
       // from the start to the first change
       for (final int i : new Range(start)) {
-        assertEquals(i, this.tour().get(i).intValue());
+        assertEquals(i, this.list().get(i).intValue());
       }
 
       // from the first change to the second change
       for (final int i : new Range(firstLength)) {
-        assertEquals(this.tour().get(start) + i, this.tour().get(start + i)
+        assertEquals(this.list().get(start) + i, this.list().get(start + i)
             .intValue());
       }
 
       // from the second change to the end of the slices
       for (final int i : new Range(secondLength)) {
-        assertEquals(this.tour().get(middle) + i, this.tour().get(middle + i)
+        assertEquals(this.list().get(middle) + i, this.list().get(middle + i)
             .intValue());
       }
 
-      // from the end of the slices to the end of the tour
-      for (final int i : new Range(end, this.tour().size())) {
-        assertEquals(i, this.tour().get(i).intValue());
+      // from the end of the slices to the end of the list
+      for (final int i : new Range(end, this.list().size())) {
+        assertEquals(i, this.list().get(i).intValue());
       }
 
     }

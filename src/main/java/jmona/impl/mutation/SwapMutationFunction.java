@@ -1,5 +1,5 @@
 /**
- * InversionMutationFunction.java
+ * SwapMutationFunction.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -17,39 +17,42 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp.mutation;
+package jmona.impl.mutation;
 
 import java.util.Collections;
 import java.util.List;
 
-import jmona.MutationFunction;
 import jmona.impl.Util;
 
 /**
- * A MutationFunction which mutates a Tour by inverting the order of a sublist
- * of cities in the tour.
+ * Swap two elements chosen at random from a List.
+ * 
+ * This MutationFunction is only useful for a List (representing an individual)
+ * in which order matters.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @param <E>
+ *          The type of element in the List to swap.
+ * @since 0.4
  */
-public class InversionMutationFunction implements
-    MutationFunction<List<Integer>> {
+public class SwapMutationFunction<E> implements OrderedListMutationFunction<E> {
 
   /**
-   * Invert a random sublist of cities in the Tour.
+   * Swap two element chosen at random from a List.
    * 
-   * @param tour
-   *          The Tour to mutate.
+   * @param list
+   *          The List of elements in which to swap a random pair.
    * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
-  public void mutate(final List<Integer> tour) {
-    // get a random start and end of the sublist
-    final int start = Util.RANDOM.nextInt(tour.size());
-    final int end = start + Util.RANDOM.nextInt(tour.size() - start);
+  public void mutate(final List<E> list) {
 
-    // reverse the sublist between start and end
-    Collections.reverse(tour.subList(start, end));
+    // get two random indices into the tour
+    final int source = Util.RANDOM.nextInt(list.size());
+    final int target = Util.RANDOM.nextInt(list.size());
+
+    // swap the cities at the source index and target index in the tour
+    Collections.swap(list, source, target);
   }
 
 }

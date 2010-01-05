@@ -1,7 +1,7 @@
 /**
  * ListMutationFunction.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -21,50 +21,16 @@ package jmona.impl.mutation;
 
 import java.util.List;
 
-import jmona.MutationException;
 import jmona.MutationFunction;
-import jmona.impl.Util;
 
 /**
- * A class which mutates elements in a List by mutating one element at random.
+ * A MutationFunction on List objects.
  * 
  * @author Jeffrey Finkelstein
  * @param <E>
- *          The type of element contained in the List to mutate.
- * @since 0.1
+ *          The type of element in the Lists to mutate.
+ * @since 0.4
  */
-public class ListMutationFunction<E> implements MutationFunction<List<E>> {
+public interface ListMutationFunction<E> extends MutationFunction<List<E>> {
 
-  /** The mutation function on elements of the List. */
-  private MutationFunction<E> elementMutationFunction = null;
-
-  /**
-   * Mutate a random element in the specified List.
-   * 
-   * @param list
-   *          The List in which to mutate a random element.
-   * @throws MutationException
-   *           If the mutation of the random element throws an Exception, or if
-   *           the ListElementMutationException has not been set.
-   * @see jmona.MutationFunction#mutate(Object)
-   */
-  @Override
-  public void mutate(final List<E> list) throws MutationException {
-    if (this.elementMutationFunction == null) {
-      throw new MutationException(
-          "No ListElementMutationFunction has been set.");
-    }
-
-    this.elementMutationFunction.mutate(Util.randomFromCollection(list));
-  }
-
-  /**
-   * Set the mutation function on elements of the List.
-   * 
-   * @param newFunction
-   *          The mutation function on elements of the List.
-   */
-  public void setElementMutationFunction(final MutationFunction<E> newFunction) {
-    this.elementMutationFunction = newFunction;
-  }
 }

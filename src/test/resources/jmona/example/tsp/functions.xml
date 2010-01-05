@@ -40,13 +40,13 @@
     class="jmona.example.tsp.crossover.PartiallyMatchedCrossoverFunction" />-->
 
   <!--<bean id="mutationFunction" 
-    class="jmona.example.tsp.mutation.DisplacementMutationFunction" />-->
+    class="jmona.impl.mutation.DisplacementMutationFunction" />-->
   <!--<bean id="mutationFunction" 
-    class="jmona.example.tsp.mutation.InsertionMutationFunction" />-->
+    class="jmona.impl.mutation.InsertionMutationFunction" />-->
   <bean id="mutationFunction" 
-    class="jmona.example.tsp.mutation.InversionMutationFunction" />
+    class="jmona.impl.mutation.InversionMutationFunction" />
   <!--<bean id="mutationFunction" 
-    class="jmona.example.tsp.mutation.SwapMutationFunction" />-->
+    class="jmona.impl.mutation.SwapMutationFunction" />-->
 
 
   <bean id="selectionFunction" 

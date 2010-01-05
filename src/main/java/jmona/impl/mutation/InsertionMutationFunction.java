@@ -17,44 +17,45 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp.mutation;
+package jmona.impl.mutation;
 
 import java.util.List;
 
-import jmona.MutationFunction;
 import jmona.impl.Util;
 
 /**
- * Chooses a city in the Tour at random and inserts it at a new random location
- * in the Tour.
+ * Chooses an element in the List at random and inserts it at a new random
+ * location in the List.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @param <E>
+ *          The type of element in the List to reinsert.
+ * @since 0.4
  */
-public class InsertionMutationFunction implements
-    MutationFunction<List<Integer>> {
+public class InsertionMutationFunction<E> implements
+    OrderedListMutationFunction<E> {
 
   /**
-   * Choose a city in the specified Tour at random and move it to a new random
-   * location in the Tour.
+   * Choose an element in the specified List at random and move it to a new
+   * random location in the List.
    * 
-   * @param tour
-   *          The tour to mutate.
+   * @param list
+   *          The List from which to choose an element for reinsertion.
    * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
-  public void mutate(final List<Integer> tour) {
+  public void mutate(final List<E> list) {
     // choose a random index of a city to remove from the tour
-    final int source = Util.RANDOM.nextInt(tour.size());
+    final int source = Util.RANDOM.nextInt(list.size());
 
     // remove that city from the tour
-    final int city = tour.remove(source);
+    final E city = list.remove(source);
 
     // choose a random index for reinsertion of that city into the tour
-    final int target = Util.RANDOM.nextInt(tour.size());
+    final int target = Util.RANDOM.nextInt(list.size());
 
     // reinsert the city into the tour
-    tour.add(target, city);
+    list.add(target, city);
   }
 
 }

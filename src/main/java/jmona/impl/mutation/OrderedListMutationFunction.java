@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * OrderedListMutationFunction.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -17,22 +17,17 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp.mutation;
-
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+package jmona.impl.mutation;
 
 /**
- * Runs all tests in this package.
+ * A ListMutationFunction in which the order of individual elements in the list
+ * is significant.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @param <E>
+ *          The type of element in the Lists to mutate.
+ * @since 0.4
  */
-@RunWith(Suite.class)
-@SuiteClasses({ DisplacementMutationFunctionTester.class,
-    InsertionMutationFunctionTester.class,
-    InversionMutationFunctionTester.class, SwapMutationFunctionTester.class })
-public class AllTest {
+public interface OrderedListMutationFunction<E> extends ListMutationFunction<E> {
 
 }

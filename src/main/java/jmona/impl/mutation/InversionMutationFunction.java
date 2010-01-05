@@ -1,5 +1,5 @@
 /**
- * SwapMutationFunction.java
+ * InversionMutationFunction.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -17,38 +17,40 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp.mutation;
+package jmona.impl.mutation;
 
 import java.util.Collections;
 import java.util.List;
 
-import jmona.MutationFunction;
 import jmona.impl.Util;
 
 /**
- * Swap two cities chosen at random from a Tour.
+ * A MutationFunction which mutates a List by inverting the order of a sublist
+ * of elements in place.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @param <E>
+ *          The type of element in the List to mutate.
+ * @since 0.4
  */
-public class SwapMutationFunction implements MutationFunction<List<Integer>> {
+public class InversionMutationFunction<E> implements
+    OrderedListMutationFunction<E> {
 
   /**
-   * Swap two cities chosen at random from the specified Tour.
+   * Invert a random sublist of elements in the specified sublist.
    * 
-   * @param tour
-   *          The Tour to mutate.
+   * @param list
+   *          The List in which to invert a random sublist.
    * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
-  public void mutate(final List<Integer> tour) {
+  public void mutate(final List<E> list) {
+    // get a random start and end of the sublist
+    final int start = Util.RANDOM.nextInt(list.size());
+    final int end = start + Util.RANDOM.nextInt(list.size() - start);
 
-    // get two random indices into the tour
-    final int source = Util.RANDOM.nextInt(tour.size());
-    final int target = Util.RANDOM.nextInt(tour.size());
-
-    // swap the cities at the source index and target index in the tour
-    Collections.swap(tour, source, target);
+    // reverse the sublist between start and end
+    Collections.reverse(list.subList(start, end));
   }
 
 }

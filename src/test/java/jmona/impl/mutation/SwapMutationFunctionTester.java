@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp.mutation;
+package jmona.impl.mutation;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -34,19 +34,19 @@ import org.junit.Test;
  * Test class for the SwapMutationFunction class.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @since 0.4
  */
 public class SwapMutationFunctionTester extends
-    AbstractTSPMutationFunctionTester {
+    AbstractListMutationFunctionTester {
 
   /** Instantiate this test class with access to a SwapMutationFunction. */
   public SwapMutationFunctionTester() {
-    super(new SwapMutationFunction());
+    super(new SwapMutationFunction<Integer>());
   }
 
   /**
    * Test method for
-   * {@link jmona.example.tsp.mutation.SwapMutationFunction#mutate(List)}.
+   * {@link jmona.impl.mutation.SwapMutationFunction#mutate(List)}.
    */
   @Override
   @Test
@@ -56,27 +56,27 @@ public class SwapMutationFunctionTester extends
       this.setUp();
 
       try {
-        this.function().mutate(this.tour());
+        this.function().mutate(this.list());
       } catch (final MutationException exception) {
         Util.fail(exception);
       }
 
-      assertEquals(LENGTH, this.tour().size());
+      assertEquals(LENGTH, this.list().size());
       for (final int i : new Range(LENGTH)) {
-        assertTrue(this.tour().contains(i));
+        assertTrue(this.list().contains(i));
       }
 
       int changed = 0;
-      for (final int i : new Range(this.tour().size())) {
-        if (this.tour().get(i) != i) {
+      for (final int i : new Range(this.list().size())) {
+        if (this.list().get(i) != i) {
           changed = i;
           break;
         }
       }
 
-      final int swappedCity = this.tour().get(changed);
+      final int swappedElement = this.list().get(changed);
 
-      assertEquals(changed, this.tour().get(swappedCity).intValue());
+      assertEquals(changed, this.list().get(swappedElement).intValue());
     }
 
   }

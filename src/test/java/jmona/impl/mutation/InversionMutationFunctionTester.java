@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp.mutation;
+package jmona.impl.mutation;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -34,59 +34,61 @@ import org.junit.Test;
  * Test class for the InversionMutationFunction class.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @since 0.4
  */
 public class InversionMutationFunctionTester extends
-    AbstractTSPMutationFunctionTester {
+    AbstractListMutationFunctionTester {
 
   /**
    * Instantiate this test class with access to an InversionMutationFunction.
    */
   public InversionMutationFunctionTester() {
-    super(new InversionMutationFunction());
+    super(new InversionMutationFunction<Integer>());
   }
 
   /**
    * Test method for
-   * {@link jmona.example.tsp.mutation.InversionMutationFunction#mutate(List)}.
+   * {@link jmona.impl.mutation.InversionMutationFunction#mutate(List)}.
    */
+  @Override
   @Test
   public void testMutate() {
     for (final int j : new Range(NUM_TESTS)) {
       this.setUp();
 
-      assertEquals(LENGTH, this.tour().size());
+      assertEquals(LENGTH, this.list().size());
 
       try {
-        this.function().mutate(this.tour());
+        this.function().mutate(this.list());
       } catch (final MutationException exception) {
         Util.fail(exception);
       }
 
-      assertEquals(LENGTH, this.tour().size());
+      assertEquals(LENGTH, this.list().size());
       for (final int i : new Range(LENGTH)) {
-        assertTrue(this.tour().contains(i));
+        assertTrue(this.list().contains(i));
       }
 
-      // find the first city which is different from the pre-mutation tour city
+      // find the first element which is different from the pre-mutation list
+      // element
       int start = 0;
-      while (start < LENGTH && this.tour().get(start) == start) {
+      while (start < LENGTH && this.list().get(start) == start) {
         start += 1;
       }
 
       if (start >= LENGTH) {
 
         for (final int i : new Range(LENGTH)) {
-          assertEquals(i, this.tour().get(i).intValue());
+          assertEquals(i, this.list().get(i).intValue());
         }
 
       } else {
 
         // determine the ending index of the inverted sublist
-        final int end = this.tour().get(start) + 1;
+        final int end = this.list().get(start) + 1;
 
         for (final int i : new Range(start - end)) {
-          assertEquals(end - i, this.tour().get(start + i).intValue());
+          assertEquals(end - i, this.list().get(start + i).intValue());
         }
       }
     }
