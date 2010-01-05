@@ -31,9 +31,15 @@
     factory-bean="populationFactory" 
     factory-method="createObject" />
 
-  <bean id="completionCondition" class="jmona.impl.completion.DefaultCompletionCondition" >
-    <property name="maxFitness" ref="totalFood" />
-    <property name="maxGenerations" value="5" />
+  <bean id="completionCondition" class="jmona.impl.completion.AggregatorCompletionCondition" >
+    <constructor-arg>
+      <set>
+        <bean class="jmona.impl.completion.PerfectMatchCompletionCondition" />
+        <bean class="jmona.impl.completion.MaxGenerationCompletionCondition" >
+          <property name="maxGenerations" value="3" />
+        </bean>
+      </set>
+    </constructor-arg>
   </bean>
 
   <bean id="evolutionContext" class="jmona.gp.impl.GPEvolutionContext">

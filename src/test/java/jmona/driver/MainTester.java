@@ -87,8 +87,7 @@ public class MainTester {
   public void testMain() {
     try {
       Main.main(new String[] { CONFIG_FILE_BAD });
-      org.junit.Assert
-          .fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final BeanDefinitionStoreException exception) {
       assertTrue(exception instanceof BeanDefinitionStoreException);
     } catch (final RuntimeException exception) {
@@ -111,17 +110,15 @@ public class MainTester {
     // too few EvolutionContext beans
     try {
       Main.main(new String[] { CONFIG_TOO_FEW_EC });
-      org.junit.Assert
-          .fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final RuntimeException exception) {
       assertTrue(exception instanceof RuntimeException);
     }
 
-    // tooCompletionConditiondition beans
+    // too many CompletionConditiondition beans
     try {
       Main.main(new String[] { CONFIG_TOO_FEW_CC });
-      org.junit.Assert
-          .fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final RuntimeException exception) {
       assertTrue(exception instanceof RuntimeException);
     }
@@ -129,8 +126,7 @@ public class MainTester {
     // too few of both classes of beans
     try {
       Main.main(new String[] { CONFIG_TOO_FEW_BOTH });
-      org.junit.Assert
-          .fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final RuntimeException exception) {
       assertTrue(exception instanceof RuntimeException);
     }
@@ -146,8 +142,7 @@ public class MainTester {
     // toCompletionConditionondition beans
     try {
       Main.main(new String[] { CONFIG_TOO_MANY_CC });
-      org.junit.Assert
-          .fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final RuntimeException exception) {
       assertTrue(exception instanceof RuntimeException);
     }
@@ -155,8 +150,7 @@ public class MainTester {
     // too many EvolutionContext beans
     try {
       Main.main(new String[] { CONFIG_TOO_MANY_EC });
-      org.junit.Assert
-          .fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final RuntimeException exception) {
       assertTrue(exception instanceof RuntimeException);
     }
@@ -164,8 +158,7 @@ public class MainTester {
     // too many of both classes of beans
     try {
       Main.main(new String[] { CONFIG_TOO_MANY_BOTH });
-      org.junit.Assert
-          .fail("Exception should have been thrown on the previous line.");
+      Util.shouldHaveThrownException();
     } catch (final RuntimeException exception) {
       assertTrue(exception instanceof RuntimeException);
     }

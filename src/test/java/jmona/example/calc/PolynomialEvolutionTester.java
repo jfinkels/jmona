@@ -61,7 +61,7 @@ public class PolynomialEvolutionTester extends AbstractJUnit4SpringContextTests 
   @DirtiesContext
   public final void testEvolution() {
     try {
-      while (!this.completionCondition.isSatisfied(this.context)) {
+      while (!this.completionCondition.execute(this.context)) {
         this.context.stepGeneration();
         LOG.debug("Generation " + this.context.currentGeneration());
         LOG.debug("  " + this.context.currentPopulation());

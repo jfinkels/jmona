@@ -72,7 +72,7 @@ public class IPDEvolutionTester<S extends DeepCopyable<S> & Strategy> extends
     final Map<Class<S>, Integer> results = new HashMap<Class<S>, Integer>();
 
     try {
-      while (!this.completionCondition.isSatisfied(this.context)) {
+      while (!this.completionCondition.execute(this.context)) {
         this.context.stepGeneration();
 
         for (final S strategy : this.context.currentPopulation()) {

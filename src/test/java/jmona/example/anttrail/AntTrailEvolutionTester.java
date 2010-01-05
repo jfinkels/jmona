@@ -65,7 +65,7 @@ public class AntTrailEvolutionTester extends AbstractJUnit4SpringContextTests {
     final PostProcessor<Tree> processor = new FitnessLoggingPostProcessor<Tree>();
 
     try {
-      while (!this.completionCondition.isSatisfied(this.context)) {
+      while (!this.completionCondition.execute(this.context)) {
         this.context.stepGeneration();
         processor.process(this.context);
       }

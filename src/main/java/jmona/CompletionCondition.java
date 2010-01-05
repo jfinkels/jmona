@@ -20,29 +20,29 @@
 package jmona;
 
 /**
- * An object which contains a method which tells whether the criteria for the
- * completion of the evolution have been met.
- * 
- * For example, a certain number of generations have been evolved, or an
- * individual with a maximum fitness has been born, etc.
+ * A condition on EvolutionContexts which determines when the evolution should
+ * stop.
  * 
  * @param <T>
- *          The type of the Individual in the evolution whose completion
+ *          The type of the individual in the evolution whose completion
  *          criteria this object encapsulates.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public interface CompletionCondition<T extends DeepCopyable<T>> {
+public interface CompletionCondition<T extends DeepCopyable<T>> extends
+    Condition<EvolutionContext<T>> {
+
   /**
-   * Whether the criteria for completion of the evolution have been met.
+   * Whether the evolution of the specified EvolutionContext should complete.
    * 
    * @param context
-   *          The evolution context which contains this completion criteria.
-   * @return Whether the criteria for completion of the evolution have been met.
+   *          The EvolutionContext to test for completion.
+   * @return Whether the specified EvolutionContext satisfies the condition
+   *         encapsulated by this class.
    * @throws CompletionException
-   *           If there is a problem determining whether this completion
-   *           criteria has been satisfied.
+   *           If there is a problem determining whether this condition is
+   *           satisfied.
    */
-  boolean isSatisfied(final EvolutionContext<T> context)
-      throws CompletionException;
+  @Override
+  Boolean execute(final EvolutionContext<T> context) throws CompletionException;
 }

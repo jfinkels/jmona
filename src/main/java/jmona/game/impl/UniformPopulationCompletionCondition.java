@@ -21,40 +21,35 @@ package jmona.game.impl;
 
 import java.util.List;
 
+import jmona.CompletionCondition;
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.impl.completion.DefaultMaxGenerationCompletionCondition;
 
 /**
- * Determines whether a Population in an EvolutionContext contains only
- * Individuals of one class.
+ * Determines whether a population in an EvolutionContext contains only
+ * individuals of one class.
  * 
  * @param <T>
- *          The type of Individual in the Population.
+ *          The type of individual in the population.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
 public class UniformPopulationCompletionCondition<T extends DeepCopyable<T>>
-    extends DefaultMaxGenerationCompletionCondition<T> {
+    implements CompletionCondition<T> {
 
   /**
-   * Determines whether the current Population in the specified EvolutionContext
-   * contains only Individuals of one class.
+   * Determines whether the current population in the specified EvolutionContext
+   * contains only individuals of one class.
    * 
    * @param context
-   *          The EvolutionContext containing the Population.
-   * @return Whether the current Population in the specified EvolutionContext
-   *         contains only Individuals of one class.
-   * @see jmona.CompletionCondition#isSatisfied(jmona.EvolutionContext)
+   *          The EvolutionContext containing the population.
+   * @return Whether the current population in the specified EvolutionContext
+   *         contains only individuals of one class.
+   * @see jmona.CompletionCondition#execute(jmona.EvolutionContext)
    */
   @SuppressWarnings("unchecked")
   @Override
-  public boolean isSatisfied(final EvolutionContext<T> context) {
-
-    // if the maximum number of generations have passed, return true
-    if (super.isSatisfied(context)) {
-      return true;
-    }
+  public Boolean execute(final EvolutionContext<T> context) {
 
     // get the current population from the evolution context
     final List<T> population = context.currentPopulation();
@@ -63,10 +58,10 @@ public class UniformPopulationCompletionCondition<T extends DeepCopyable<T>>
     final Class<T> someClass = (Class<T>) population.get(0).getClass();
 
     // iterate over every individual in the population
-    for (final T strategy : population) {
+    for (final T individual : population) {
 
       // if any strategy is of a different class the population is not uniform
-      if (!strategy.getClass().equals(someClass)) {
+      if (!individual.getClass().equals(someClass)) {
         return false;
       }
     }

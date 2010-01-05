@@ -34,9 +34,15 @@
     factory-bean="populationFactory" 
     factory-method="createObject" />
 
-  <bean id="completionCondition"
-    class="jmona.game.impl.UniformPopulationCompletionCondition">
-    <property name="maxGenerations" value="10" />
+  <bean id="completionCondition" class="jmona.impl.completion.AggregatorCompletionCondition" >
+    <constructor-arg>
+      <set>
+        <bean class="jmona.impl.completion.MaxGenerationCompletionCondition" >
+          <property name="maxGenerations" value="3" />
+        </bean>
+        <bean class="jmona.game.impl.UniformPopulationCompletionCondition" />
+      </set>
+    </constructor-arg>
   </bean>
   
   <bean id="tournament" class="jmona.game.impl.RoundRobinTournament" />

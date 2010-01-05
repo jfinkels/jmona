@@ -26,7 +26,7 @@ package jmona;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class CompletionException extends Exception {
+public class CompletionException extends MappingException {
 
   /** Default generated serial version UID. */
   private static final long serialVersionUID = -7625342192624956820L;

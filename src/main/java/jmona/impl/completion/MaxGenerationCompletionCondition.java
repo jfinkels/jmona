@@ -1,5 +1,5 @@
 /**
- * DefaultCompletionCriteria.java
+ * MaxGenerationCompletionCriteria.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -19,21 +19,23 @@
  */
 package jmona.impl.completion;
 
+import jmona.CompletionCondition;
+import jmona.CompletionException;
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.MaxGenerationCompletionCondition;
 
 /**
  * An object which checks if the specified maximum number of generations has
  * been achieved in the specified evolution context.
  * 
- * @param <T>
- *          The type of Individual being evolved.
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @param <T>
+ *          The type of individual in the EvolutionContext to check for
+ *          completion.
+ * @since 0.4
  */
-public class DefaultMaxGenerationCompletionCondition<T extends DeepCopyable<T>>
-    implements MaxGenerationCompletionCondition<T> {
+public class MaxGenerationCompletionCondition<T extends DeepCopyable<T>>
+    implements CompletionCondition<T> {
 
   /** The default maximum number of generations in the evolution. */
   public static final int DEFAULT_MAX_GENERATIONS = Integer.MAX_VALUE;
@@ -53,7 +55,7 @@ public class DefaultMaxGenerationCompletionCondition<T extends DeepCopyable<T>>
    * @see jmona.CompletionCondition#isSatisfied(jmona.EvolutionContext)
    */
   @Override
-  public boolean isSatisfied(final EvolutionContext<T> context) {
+  public Boolean execute(final EvolutionContext<T> context) {
     return context.currentGeneration() >= this.maxGenerations;
   }
 

@@ -1,5 +1,5 @@
 /**
- * DefaultMaxFitnessCompletionConditionTester.java
+ * PerfectMatchCompletionConditionTester.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -25,8 +25,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.CompletionException;
 import jmona.GeneticEvolutionContext;
+import jmona.MappingException;
 import jmona.ga.impl.GAEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
@@ -36,15 +36,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test class for the DefaultMaxFitnessCompletionCondition class.
+ * Test class for the PerfectMatchCompletionCondition class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class DefaultMaxFitnessCompletionConditionTester {
+public class PerfectMatchCompletionConditionTester {
 
   /** The completion criteria under test. */
-  private DefaultMaxFitnessCompletionCondition<ExampleIndividual> completionCriteria = null;
+  private PerfectMatchCompletionCondition<ExampleIndividual> completionCriteria = null;
   /** An EvolutionContext with no functions set. */
   private GeneticEvolutionContext<ExampleIndividual> emptyContext = null;
   /** The evolution context on which to test the completion criteria. */
@@ -55,7 +55,7 @@ public class DefaultMaxFitnessCompletionConditionTester {
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.completionCriteria = new DefaultMaxFitnessCompletionCondition<ExampleIndividual>();
+    this.completionCriteria = new PerfectMatchCompletionCondition<ExampleIndividual>();
 
     this.population = new Vector<ExampleIndividual>();
     this.population.add(new ExampleIndividual(1));
@@ -79,34 +79,17 @@ public class DefaultMaxFitnessCompletionConditionTester {
   public void testIsSatisfied() {
 
     try {
-      this.completionCriteria.isSatisfied(this.emptyContext);
+      this.completionCriteria.execute(this.emptyContext);
       Util.shouldHaveThrownException();
-    } catch (final CompletionException exception) {
-      assertTrue(exception instanceof CompletionException);
+    } catch (final MappingException exception) {
+      assertTrue(exception instanceof MappingException);
     }
 
     try {
-      assertFalse(this.completionCriteria.isSatisfied(this.evolutionContext));
-      this.population.add(new ExampleIndividual(
-          DefaultMaxFitnessCompletionCondition.DEFAULT_MAX_FITNESS));
-      assertTrue(this.completionCriteria.isSatisfied(this.evolutionContext));
-    } catch (final CompletionException exception) {
-      Util.fail(exception);
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.impl.completion.DefaultMaxFitnessCompletionCondition#setMaxFitness(double)}
-   * .
-   */
-  @Test
-  public void testSetMaxFitness() {
-    try {
-      assertFalse(this.completionCriteria.isSatisfied(this.evolutionContext));
-      this.completionCriteria.setMaxFitness(1);
-      assertTrue(this.completionCriteria.isSatisfied(this.evolutionContext));
-    } catch (final CompletionException exception) {
+      assertFalse(this.completionCriteria.execute(this.evolutionContext));
+      this.population.add(new ExampleIndividual(0));
+      assertTrue(this.completionCriteria.execute(this.evolutionContext));
+    } catch (final MappingException exception) {
       Util.fail(exception);
     }
   }

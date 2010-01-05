@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * IsZero.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -17,21 +17,28 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.impl.completion;
+package jmona.functional.operators;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import jmona.Condition;
 
 /**
- * Runs all tests in this package.
+ * Condition for testing whether a specified number is 0.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @since 0.4
  */
-@RunWith(Suite.class)
-@SuiteClasses({ PerfectMatchCompletionConditionTester.class,
-    MaxGenerationCompletionConditionTester.class })
-public class AllTest {
+public class IsZero implements Condition<Double> {
+
+  /**
+   * Whether the specified input number is 0.
+   * 
+   * @param input
+   *          The number to test for zero.
+   * @return Whether the specified input number is 0.
+   */
+  @Override
+  public Boolean execute(final Double input) {
+    return input == 0.0;
+  }
 
 }

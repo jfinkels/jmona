@@ -63,7 +63,7 @@ public class OnesEvolutionTester extends AbstractJUnit4SpringContextTests {
   public final void testOnesEvolution() {
     try {
       LOG.debug("initial population: " + this.context.currentPopulation());
-      while (!this.completionCondition.isSatisfied(this.context)) {
+      while (!this.completionCondition.execute(this.context)) {
         this.context.stepGeneration();
         LOG.debug("Generation " + this.context.currentGeneration() + ": "
             + this.context.currentPopulation());

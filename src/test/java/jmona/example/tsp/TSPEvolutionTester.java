@@ -20,10 +20,10 @@
 package jmona.example.tsp;
 
 import jmona.CompletionCondition;
-import jmona.CompletionException;
 import jmona.DeepCopyableList;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
+import jmona.MappingException;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
@@ -62,12 +62,12 @@ public class TSPEvolutionTester extends AbstractJUnit4SpringContextTests {
   @DirtiesContext
   public final void testTSPEvolution() {
     try {
-      while (!this.completionCondition.isSatisfied(this.context)) {
+      while (!this.completionCondition.execute(this.context)) {
         this.context.stepGeneration();
         LOG.debug("Generation " + this.context.currentGeneration() + ": "
             + this.context.currentPopulation());
       }
-    } catch (final CompletionException exception) {
+    } catch (final MappingException exception) {
       Util.fail(exception);
     } catch (final EvolutionException exception) {
       Util.fail(exception);

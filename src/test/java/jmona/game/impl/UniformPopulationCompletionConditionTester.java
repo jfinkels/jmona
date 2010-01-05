@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.impl.example.ExampleEvolutionContext;
+import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Test;
@@ -40,7 +41,7 @@ public class UniformPopulationCompletionConditionTester {
 
   /**
    * Test method for
-   * {@link jmona.game.impl.UniformPopulationCompletionCondition#isSatisfied(jmona.EvolutionContext)}
+   * {@link jmona.game.impl.UniformPopulationMappingCondition#isSatisfied(jmona.EvolutionContext)}
    * .
    */
   @Test
@@ -48,16 +49,19 @@ public class UniformPopulationCompletionConditionTester {
     final UniformPopulationCompletionCondition<ExampleIndividual> criteria = new UniformPopulationCompletionCondition<ExampleIndividual>();
 
     final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
-    population.add(new ExampleIndividual());
-    population.add(new ExampleIndividual());
+    population.add(new ExampleIndividual(1));
+    population.add(new ExampleIndividual(2));
 
     final ExampleEvolutionContext context = new ExampleEvolutionContext(
         population);
+    context.setFitnessFunction(new ExampleFitnessFunction());
 
-    assertTrue(criteria.isSatisfied(context));
-    population.add(new ExampleIndividual() {
+    assertTrue(criteria.execute(context));
+
+    population.add(new ExampleIndividual(1) {
     });
-    assertFalse(criteria.isSatisfied(context));
+
+    assertFalse(criteria.execute(context));
 
   }
 }

@@ -114,7 +114,7 @@ public class Main {
 
     try {
       // while the criteria has not been satisfied, create the next generation
-      while (!completionCondition.isSatisfied(evolutionContext)) {
+      while (!completionCondition.execute(evolutionContext)) {
         // create the next generation in the evolution
         evolutionContext.stepGeneration();
 

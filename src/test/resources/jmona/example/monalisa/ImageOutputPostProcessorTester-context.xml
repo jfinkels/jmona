@@ -28,7 +28,7 @@
   <import resource="./ga/functions.xml" />
   <import resource="./ga/factories.xml" />
 
-  <bean id="completionCondition" class="jmona.impl.completion.DefaultMaxGenerationCompletionCondition">
+  <bean id="completionCondition" class="jmona.impl.completion.MaxGenerationCompletionCondition">
     <property name="maxGenerations" value="3" />
   </bean>
 
