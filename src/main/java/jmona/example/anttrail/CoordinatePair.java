@@ -22,8 +22,6 @@ package jmona.example.anttrail;
 import jmona.DeepCopyable;
 import jmona.impl.Pair;
 
-import org.apache.log4j.Logger;
-
 /**
  * A coordinate pair on the Cartesian plane in which the upper left corner is
  * the origin (the point (0,0)), so positive values for the y component
@@ -38,11 +36,10 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
   /** A bitmask consisting of all ones on the right half of the bitstring. */
   public static final int HALF_MASK = -1 >>> (Integer.SIZE / 2);
 
-  private static final transient Logger LOG = Logger
-      .getLogger(CoordinatePair.class);
-
   /**
-   * @return
+   * Gets the coordinates of the origin, (0, 0).
+   * 
+   * @return The CoordinatePair (0, 0).
    */
   public static CoordinatePair origin() {
     return new CoordinatePair(0, 0);
@@ -111,9 +108,10 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
     }
   }
 
-  /*
-   * (non-Javadoc)
+  /**
+   * {@inheritDoc}
    * 
+   * @return {@inheritDoc}
    * @see jmona.DeepCopyable#deepCopy()
    */
   @Override
@@ -227,6 +225,20 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
     return result;
   }
 
+  /**
+   * Return a new CoordinatePair which represents the sum of this CoordinatePair
+   * and the specified other Pair of Integers on the toroidal grid of specified
+   * bounds.
+   * 
+   * @param otherPair
+   *          The Pair of Integers to add to this one.
+   * @param bounds
+   *          The bounds of the toroidal grid on which to add these Pairs of
+   *          Integers.
+   * @return A new CoordinatePair representing the sum of this CoordinatePair
+   *         and the specified other Pair of Integers on the toroidal grid with
+   *         the specified bounds.
+   */
   public CoordinatePair sumWith(final Pair<Integer, Integer> otherPair,
       final CoordinatePair bounds) {
     final CoordinatePair result = new CoordinatePair(this.x(), this.y());
@@ -236,6 +248,13 @@ public class CoordinatePair extends Pair<Integer, Integer> implements
     return result;
   }
 
+  /**
+   * Gets an orientation object which has the same x and y components as this
+   * CoordinatePair.
+   * 
+   * @return An orientation object which has the same x and y components as this
+   *         CoordinatePair.
+   */
   public Orientation toOrientation() {
     return new Orientation(this.x(), this.y());
   }
