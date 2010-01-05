@@ -19,6 +19,7 @@
  */
 package jmona.game.impl;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Map;
 
@@ -32,8 +33,12 @@ import jmona.game.Strategy;
  *          The type of Strategy whose cumulative scores will be compared.
  * @since 0.3
  */
-public class ScoreComparator<S extends Strategy> implements Comparator<S> {
+public class ScoreComparator<S extends Strategy> implements Comparator<S>,
+    Serializable {
 
+  /** Default generated serial version UID. */
+  private static final long serialVersionUID = -4878374316552575890L;
+  
   /** The mapping from Strategy to cumulative score. */
   private Map<S, Double> scores = null;
 
