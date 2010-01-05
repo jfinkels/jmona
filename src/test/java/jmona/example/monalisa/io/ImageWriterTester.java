@@ -33,6 +33,7 @@ import org.junit.Test;
  * Test class for the ImageWriter class.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ImageWriterTester {
 

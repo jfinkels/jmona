@@ -29,6 +29,7 @@ import jmona.game.TwoPlayerGameResult;
  * @param <S>
  *          The type of strategy employed in the game.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class DefaultTwoPlayerGameResult<S extends Strategy> implements
     TwoPlayerGameResult<S> {

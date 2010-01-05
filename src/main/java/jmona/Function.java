@@ -27,6 +27,7 @@ package jmona;
  * @param <R>
  *          The type of the codomain of this function.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface Function<T, R> {
 

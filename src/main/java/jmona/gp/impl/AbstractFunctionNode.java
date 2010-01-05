@@ -30,6 +30,7 @@ import jmona.gp.Node;
  * function set.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public abstract class AbstractFunctionNode extends AbstractNode implements
     FunctionNode {

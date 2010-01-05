@@ -29,6 +29,7 @@ import jmona.functional.Range;
  * A Polygon with a Color.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ColoredPolygon extends Polygon implements
     DeepCopyable<ColoredPolygon> {

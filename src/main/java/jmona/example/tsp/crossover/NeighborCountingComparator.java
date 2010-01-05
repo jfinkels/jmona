@@ -29,6 +29,7 @@ import java.util.Set;
  * salesman problem tour.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 class NeighborCountingComparator implements Comparator<Integer>, Serializable {
 

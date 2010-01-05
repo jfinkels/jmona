@@ -23,6 +23,7 @@ package jmona.gp;
  * An internal Node of a Tree.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface FunctionNode extends Node {
 

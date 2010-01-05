@@ -34,6 +34,7 @@ import jmona.functional.Range;
  * @param <E>
  *          The type of element in the List to create.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class CompleteDeepCopyableListFactory<E extends DeepCopyable<E>> extends
     PartialDeepCopyableListFactory<E> {

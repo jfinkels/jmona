@@ -29,6 +29,7 @@ import jmona.impl.Util;
  *          The type of element contained in the List on which to perform
  *          crossover.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class OnePointCrossoverFunction<E> extends
     AbstractListCrossoverFunction<E> {

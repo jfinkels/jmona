@@ -32,6 +32,7 @@ import jmona.impl.completion.DefaultMaxGenerationCompletionCondition;
  * @param <T>
  *          The type of Individual in the Population.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class UniformPopulationCompletionCondition<T extends DeepCopyable<T>>
     extends DefaultMaxGenerationCompletionCondition<T> {

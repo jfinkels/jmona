@@ -31,6 +31,7 @@ import org.junit.Test;
  * Test class for the DefaultTwoPlayerGameResult class.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class DefaultTwoPlayerGameResultTester {
 

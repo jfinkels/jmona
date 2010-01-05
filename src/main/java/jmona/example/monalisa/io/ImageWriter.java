@@ -31,6 +31,7 @@ import org.apache.log4j.Logger;
  * An utility class for outputting images.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public final class ImageWriter {
 

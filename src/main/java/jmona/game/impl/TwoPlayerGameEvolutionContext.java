@@ -37,6 +37,7 @@ import jmona.impl.context.AbstractEvolutionContext;
  * @param <S>
  *          The type of Strategy to play a game against one another.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class TwoPlayerGameEvolutionContext<S extends Strategy & DeepCopyable<S>>
     extends AbstractEvolutionContext<S> {

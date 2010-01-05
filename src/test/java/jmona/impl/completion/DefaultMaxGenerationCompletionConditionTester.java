@@ -38,6 +38,7 @@ import org.junit.Test;
  * Test class for the MaxGenerationCompletionCondition class.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class DefaultMaxGenerationCompletionConditionTester {
 

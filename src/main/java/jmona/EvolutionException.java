@@ -23,6 +23,7 @@ package jmona;
  * This Exception is thrown when there is a problem during evolution.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class EvolutionException extends Exception {
 

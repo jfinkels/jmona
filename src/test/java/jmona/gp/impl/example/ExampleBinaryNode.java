@@ -28,6 +28,7 @@ import jmona.gp.impl.TreeUtils;
  * An example BinaryNode.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ExampleBinaryNode extends BinaryNode implements ExampleNode {
 

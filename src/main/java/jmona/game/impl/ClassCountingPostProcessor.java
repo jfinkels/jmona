@@ -34,6 +34,7 @@ import org.apache.log4j.Logger;
  * @param <T>
  *          Classes of this type of object will be counted.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ClassCountingPostProcessor<T extends DeepCopyable<T>> extends
     PeriodicPostProcessor<T> {

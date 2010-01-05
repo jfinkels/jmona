@@ -36,6 +36,7 @@ import org.junit.Test;
  * Test class for the EuclideanVectorMetric class.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class EuclideanVectorMetricTester extends
     AbstractMetricTester<List<Double>, EuclideanVectorMetric<Double>> {

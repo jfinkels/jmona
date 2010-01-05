@@ -36,6 +36,7 @@ import jmona.functional.Range;
  * @param <E>
  *          The type of element in the List to create.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class PartialDeepCopyableListFactory<E> implements ListFactory<E> {
   /** The default size of the List to create. */

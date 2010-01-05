@@ -35,6 +35,7 @@ import jmona.impl.Util;
  * AdditionNode, a SubtractionNode, a MultiplicationNode, or a DivisionNode.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class CalcFunctionNodeFactory implements Factory<FunctionNode> {
 

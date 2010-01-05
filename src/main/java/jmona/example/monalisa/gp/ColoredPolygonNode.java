@@ -38,6 +38,7 @@ import jmona.gp.impl.TreeUtils;
  * evaluates.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ColoredPolygonNode extends AbstractNode implements FunctionNode,
     TerminalNode, EvaluatableNode<List<ColoredPolygon>> {

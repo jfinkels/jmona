@@ -27,6 +27,7 @@ import jmona.impl.context.AbstractGeneticEvolutionContext;
  * An example EvolutionContext.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ExampleEvolutionContext extends
     AbstractGeneticEvolutionContext<ExampleIndividual> {

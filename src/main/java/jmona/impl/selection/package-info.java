@@ -34,6 +34,7 @@
  * </ul>
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 package jmona.impl.selection;
 

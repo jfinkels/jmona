@@ -40,6 +40,7 @@ import jmona.impl.fitness.RawFitnessGetter;
  *          The type of Individual in the EvolutionContext to test for
  *          completion.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class DefaultMaxFitnessCompletionCondition<T extends DeepCopyable<T>>
     implements MaxFitnessCompletionCondition<T> {

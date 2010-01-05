@@ -26,6 +26,7 @@ import jmona.game.Strategy;
  * An example strategy with a score property.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ExampleStrategy implements Strategy, DeepCopyable<ExampleStrategy> {
 

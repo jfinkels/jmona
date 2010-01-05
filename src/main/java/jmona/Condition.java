@@ -25,6 +25,7 @@ package jmona;
  * @param <T>
  *          The type of the domain of this function.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface Condition<T> extends Function<T, Boolean> {
 

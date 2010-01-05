@@ -25,6 +25,7 @@ import jmona.impl.mutation.ImmutableElementsListMutationFunction;
  * Mutation function which flips a bit randomly in a List of bits.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class OnesMutationFunction extends
     ImmutableElementsListMutationFunction<Byte> {

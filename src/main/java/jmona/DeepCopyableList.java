@@ -28,6 +28,7 @@ import java.util.List;
  * @param <E>
  *          The type of element contained in this List.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface DeepCopyableList<E> extends DeepCopyable<DeepCopyableList<E>>,
     List<E> {

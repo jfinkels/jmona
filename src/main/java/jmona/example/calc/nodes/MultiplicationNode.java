@@ -25,6 +25,7 @@ import jmona.example.calc.operations.FunctionMultiplication;
  * A node representing multiplication of real numbers.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class MultiplicationNode extends CalcFunctionNode {
 

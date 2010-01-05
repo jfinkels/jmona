@@ -31,6 +31,7 @@ import jmona.gp.Tree;
  * an Exception's message.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class Util {
   /**

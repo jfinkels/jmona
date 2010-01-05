@@ -31,6 +31,7 @@ import jmona.gp.TerminalNode;
  * returns {@code null}.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public abstract class AbstractTerminalNode extends AbstractNode implements
     TerminalNode {

@@ -29,6 +29,7 @@ import jmona.impl.Util;
  * A factory which creates ColoredPolygon objects.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ColoredPolygonFactory implements Factory<ColoredPolygon> {
   /** The default maximum number of points in a polygon. */

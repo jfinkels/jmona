@@ -31,6 +31,7 @@ import jmona.EvolutionException;
  * @param <T>
  *          The type of individual to evolve.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public abstract class AbstractEvolutionContext<T extends DeepCopyable<T>>
     implements EvolutionContext<T> {

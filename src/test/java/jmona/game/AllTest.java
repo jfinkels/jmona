@@ -27,6 +27,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * Runs all tests in this package.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 @RunWith(Suite.class)
 @SuiteClasses({ GameplayExceptionTester.class })

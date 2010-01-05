@@ -25,6 +25,7 @@ package jmona.example.calc.operations;
  * @param <T>
  *          The type of the domain and codomain of this operation.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface UniformBinaryOperation<T> extends BinaryOperation<T, T, T> {
 

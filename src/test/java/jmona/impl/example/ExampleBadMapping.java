@@ -26,6 +26,7 @@ import jmona.MappingException;
  * A mapping which always throws an Exception.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ExampleBadMapping implements Function<Double, Double> {
 

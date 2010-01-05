@@ -40,6 +40,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * Test class for the ant trail genetic programming evolution.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 @ContextConfiguration
 public class AntTrailEvolutionTester extends AbstractJUnit4SpringContextTests {

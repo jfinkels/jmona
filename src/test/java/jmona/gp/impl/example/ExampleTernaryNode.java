@@ -29,6 +29,7 @@ import jmona.gp.impl.TernaryNode;
  * An example TernaryNode.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ExampleTernaryNode extends TernaryNode implements ExampleNode {
 

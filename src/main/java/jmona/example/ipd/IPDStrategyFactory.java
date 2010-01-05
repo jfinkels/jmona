@@ -36,6 +36,7 @@ import jmona.impl.Util;
  * A factory which creates IPDStrategy objects at random.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class IPDStrategyFactory implements Factory<IPDStrategy> {
 

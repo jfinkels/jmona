@@ -27,6 +27,7 @@ import jmona.DeepCopyable;
  * A Node in a Tree.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface Node extends DeepCopyable<Node> {
   /**

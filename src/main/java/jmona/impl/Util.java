@@ -33,6 +33,7 @@ import jmona.functional.Range;
  * Utility class containing useful static utility methods.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public final class Util {
 

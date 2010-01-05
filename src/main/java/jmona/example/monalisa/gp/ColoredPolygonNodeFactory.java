@@ -27,6 +27,7 @@ import jmona.example.monalisa.ColoredPolygonFactory;
  * ColoredPolygon.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ColoredPolygonNodeFactory implements Factory<ColoredPolygonNode> {
 

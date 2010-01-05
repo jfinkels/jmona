@@ -24,6 +24,7 @@ package jmona;
  * a {@link Metric#measure(Object, Object)} method.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class MetricException extends Exception {
 

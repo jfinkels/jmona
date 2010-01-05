@@ -25,6 +25,7 @@ import jmona.example.calc.operations.FunctionSubtraction;
  * A node representing subtraction of real numbers.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class SubtractionNode extends CalcFunctionNode {
 

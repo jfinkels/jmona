@@ -27,6 +27,7 @@ import jmona.example.calc.functions.DivisionFunction;
  * SingleInputFunctions.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class FunctionDivision implements
     UniformBinaryOperation<Function<Double, Double>> {

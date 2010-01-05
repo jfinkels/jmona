@@ -40,6 +40,7 @@ import jmona.impl.Util;
  * salesman problem.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class EdgeRecombinationCrossoverFunction implements
     CrossoverFunction<List<Integer>> {

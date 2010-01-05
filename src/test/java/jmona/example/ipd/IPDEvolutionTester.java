@@ -43,6 +43,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * @param <S>
  *          The type of Strategy in the evolution.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 @ContextConfiguration
 public class IPDEvolutionTester<S extends DeepCopyable<S> & Strategy> extends

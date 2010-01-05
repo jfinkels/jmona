@@ -23,6 +23,7 @@ package jmona.gp;
  * A leaf Node of a Tree.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface TerminalNode extends Node {
 

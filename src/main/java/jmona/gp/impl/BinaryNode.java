@@ -23,6 +23,7 @@ package jmona.gp.impl;
  * A Node with two children.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 // TODO add UnaryNode
 public abstract class BinaryNode extends AbstractFunctionNode {

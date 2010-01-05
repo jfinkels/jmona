@@ -25,6 +25,7 @@ import jmona.example.calc.functions.ConstantFunction;
  * Utility class for FunctionOperationTester classes.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class Util {
   /** The ConstantFunction which always returns 0.5. */

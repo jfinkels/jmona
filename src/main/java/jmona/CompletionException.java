@@ -24,6 +24,7 @@ package jmona;
  * CompletionCondition has satisfied.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class CompletionException extends Exception {
 

@@ -23,6 +23,7 @@ package jmona.gp.impl;
  * A Node with three children which represent inputs to a TernaryOperation.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public abstract class TernaryNode extends AbstractFunctionNode {
 

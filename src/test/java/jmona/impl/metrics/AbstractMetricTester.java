@@ -35,6 +35,7 @@ import org.junit.Test;
  * @param <E>
  *          The type of the domain of the Metric.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class AbstractMetricTester<E, M extends Metric<E>> {
   /** The metric for this test. */

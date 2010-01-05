@@ -27,6 +27,7 @@ import jmona.MutationFunction;
  * @param <T>
  *          The type of Individual to mutate.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class IdentityMutationFunction<T> implements MutationFunction<T> {
 

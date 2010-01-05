@@ -25,6 +25,7 @@ import jmona.DeepCopyable;
  * A strategy which always cooperates.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class CooperativeStrategy extends IPDStrategy implements
     DeepCopyable<CooperativeStrategy> {

@@ -24,6 +24,7 @@ package jmona;
  * the setting the property is disallowed.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class PropertyNotWritableException extends RuntimeException {
 

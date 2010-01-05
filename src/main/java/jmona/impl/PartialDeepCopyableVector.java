@@ -33,6 +33,7 @@ import jmona.DeepCopyableList;
  * @param <E>
  *          The type of element contained in this Vector.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class PartialDeepCopyableVector<E> extends Vector<E> implements
     DeepCopyableList<E> {

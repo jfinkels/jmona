@@ -27,6 +27,7 @@ import jmona.gp.FunctionNode;
  * An example FunctionNodeFactory.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ExampleFunctionNodeFactory implements
     Factory<FunctionNode> {

@@ -25,6 +25,7 @@ package jmona;
  * 
  * @see CrossoverFunction#crossover(Object, Object)
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class CrossoverException extends Exception {
 

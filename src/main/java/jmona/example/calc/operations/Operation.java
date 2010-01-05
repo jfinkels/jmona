@@ -25,6 +25,7 @@ package jmona.example.calc.operations;
  * @param <V>
  *          The type of the codomain of this operation.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface Operation<V> {
 

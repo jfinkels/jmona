@@ -28,6 +28,7 @@ import jmona.PropertyNotWritableException;
  * maximum depth are chosen from the terminal set.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class FullTreeFactory extends GrowTreeFactory {
   /**

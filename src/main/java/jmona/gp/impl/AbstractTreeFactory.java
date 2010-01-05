@@ -30,6 +30,7 @@ import jmona.gp.Tree;
  * A base class for a TreeFactory which has a maximum depth.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public abstract class AbstractTreeFactory implements Factory<Tree> {
 

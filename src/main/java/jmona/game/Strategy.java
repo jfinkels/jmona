@@ -26,6 +26,7 @@ package jmona.game;
  * EvolutionContext must also implement the DeepCopyable interface.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface Strategy {
   /** Reset the strategy to an initial state. */

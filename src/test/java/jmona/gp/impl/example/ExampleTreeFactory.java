@@ -29,6 +29,7 @@ import jmona.gp.impl.TreeUtils;
  * An example TreeFactory.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ExampleTreeFactory extends AbstractTreeFactory {
 

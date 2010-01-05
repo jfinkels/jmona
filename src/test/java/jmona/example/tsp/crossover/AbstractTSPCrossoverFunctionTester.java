@@ -39,6 +39,7 @@ import org.junit.Test;
  * Test class for the traveling salesman problem CrossoverFunction classes.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public abstract class AbstractTSPCrossoverFunctionTester {
 

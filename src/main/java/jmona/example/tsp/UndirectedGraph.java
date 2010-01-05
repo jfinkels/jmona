@@ -27,6 +27,7 @@ package jmona.example.tsp;
  * @param <E>
  *          The type of the edges in this graph.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface UndirectedGraph<V, E> extends DirectedGraph<V, E> {
   /**

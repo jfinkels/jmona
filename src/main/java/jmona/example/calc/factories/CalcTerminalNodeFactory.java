@@ -30,6 +30,7 @@ import jmona.impl.Util;
  * {@link VariableNode} or {@link NumberNode} objects.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class CalcTerminalNodeFactory implements Factory<TerminalNode> {
 

@@ -23,6 +23,7 @@ package jmona;
  * This Exception is thrown when there is a problem while copying an object.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class CopyingException extends Exception {
 

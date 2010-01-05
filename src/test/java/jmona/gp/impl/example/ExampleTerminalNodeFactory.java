@@ -27,6 +27,7 @@ import jmona.gp.TerminalNode;
  * An example TerminalNodeFactory.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ExampleTerminalNodeFactory implements
     Factory<TerminalNode> {

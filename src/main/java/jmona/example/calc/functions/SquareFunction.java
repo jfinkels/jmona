@@ -23,6 +23,7 @@ package jmona.example.calc.functions;
  * A function which returns the square of its input.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class SquareFunction extends PolynomialFunction {
 

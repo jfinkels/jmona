@@ -24,6 +24,7 @@ package jmona;
  * processing of an EvolutionContext.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ProcessingException extends Exception {
 

@@ -30,6 +30,7 @@ import jmona.impl.Util;
  * problem.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class CycleCrossoverFunction implements CrossoverFunction<List<Integer>> {
 

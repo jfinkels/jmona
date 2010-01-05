@@ -41,6 +41,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * function.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 @ContextConfiguration
 public class CalcEvolutionTester extends AbstractJUnit4SpringContextTests {

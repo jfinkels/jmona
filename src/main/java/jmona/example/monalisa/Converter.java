@@ -30,6 +30,7 @@ import java.util.List;
  * BufferedImage.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public final class Converter {
 

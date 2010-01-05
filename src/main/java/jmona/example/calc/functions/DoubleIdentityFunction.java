@@ -25,6 +25,7 @@ import jmona.impl.IdentityFunction;
  * The identity function on Doubles.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class DoubleIdentityFunction extends IdentityFunction<Double> {
   /** A singleton instance of this class. */

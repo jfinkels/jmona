@@ -31,6 +31,7 @@ import org.junit.Test;
  * Test class for the MultiplicationNode class.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class MultiplicationNodeTester {
   /** The value by which to increment the input to the function. */

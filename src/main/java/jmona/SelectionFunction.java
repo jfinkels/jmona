@@ -25,6 +25,7 @@ package jmona;
  * @param <T>
  *          The type of individual which will be selected.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface SelectionFunction<T> {
 

@@ -30,6 +30,7 @@ import jmona.impl.PartialDeepCopyableVector;
  * A factory which generates random Tours.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class TourFactory extends PartialDeepCopyableListFactory<Integer> {
 

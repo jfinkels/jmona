@@ -35,6 +35,7 @@ import jmona.LoggingException;
  *          The type of individual in the EvolutionContext whose raw fitness
  *          will be logged.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class FitnessLoggingPostProcessor<T extends DeepCopyable<T>> extends
     LoggingPostProcessor<T> {

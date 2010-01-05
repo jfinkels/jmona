@@ -24,6 +24,7 @@ package jmona;
  * an Individual.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class FitnessException extends Exception {
 

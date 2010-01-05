@@ -28,6 +28,7 @@ import jmona.impl.fitness.MinimizingFitnessFunction;
  * total distance in a graph.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class TSPFitnessFunction extends
     MinimizingFitnessFunction<List<Integer>> {

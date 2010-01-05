@@ -26,6 +26,7 @@ package jmona.game;
  *          The type of Strategy which plays the Game for which this class
  *          encapsulates a result.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface GameResult<S extends Strategy> {
 

@@ -29,6 +29,7 @@ import jmona.impl.Util;
  * in the Tour.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class InsertionMutationFunction implements
     MutationFunction<List<Integer>> {

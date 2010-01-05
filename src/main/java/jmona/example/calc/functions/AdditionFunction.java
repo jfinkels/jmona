@@ -26,6 +26,7 @@ import jmona.MappingException;
  * A function which returns the sum of two specified functions.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class AdditionFunction extends SecondOrderFunction {
 

@@ -27,6 +27,7 @@ import jmona.Function;
  * @param <T>
  *          The type of the domain of this function.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class IdentityFunction<T> implements Function<T, T> {
 

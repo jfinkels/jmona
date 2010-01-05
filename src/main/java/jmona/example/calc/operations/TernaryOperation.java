@@ -36,6 +36,7 @@ package jmona.example.calc.operations;
  *          The type of the codomain of this ternary operation (the return
  *          type).
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface TernaryOperation<T, U, V, R> extends Operation<R> {
   /**

@@ -25,6 +25,7 @@ import jmona.example.calc.operations.FunctionAddition;
  * A node representing addition of real numbers.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class AdditionNode extends CalcFunctionNode {
 

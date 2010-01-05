@@ -23,6 +23,7 @@ package jmona.game;
  * This Exception is thrown when there is a problem during execution of a Game.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class GameplayException extends Exception {
 

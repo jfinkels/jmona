@@ -26,6 +26,7 @@ package jmona;
  * @param <T>
  *          The type of Individual in the EvolutionContext to process.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 // TODO PreProcessor?
 public interface PostProcessor<T extends DeepCopyable<T>> {

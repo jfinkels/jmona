@@ -23,6 +23,7 @@ package jmona.example.ipd.strategy;
  * A defect or cooperate action.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public enum Action {
   /** A cooperate action. */

@@ -25,6 +25,7 @@ package jmona.game;
  * @param <S>
  *          The type of Strategy which plays this Game.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface Game<S extends Strategy> {
 

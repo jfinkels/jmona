@@ -30,6 +30,7 @@ package jmona;
  *          The type of the Individual in the evolution whose completion
  *          criteria this object encapsulates.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface CompletionCondition<T extends DeepCopyable<T>> {
   /**

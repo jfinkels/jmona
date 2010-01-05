@@ -25,6 +25,7 @@ import jmona.gp.Node;
  * A base class for a Node with a parent Node and a value.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public abstract class AbstractNode implements Node {
 

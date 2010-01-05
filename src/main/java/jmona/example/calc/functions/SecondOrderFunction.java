@@ -25,6 +25,7 @@ import jmona.Function;
  * A function which operates on functions.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public abstract class SecondOrderFunction implements Function<Double, Double> {
 

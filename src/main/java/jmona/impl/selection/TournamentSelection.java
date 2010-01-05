@@ -34,6 +34,7 @@ import jmona.impl.fitness.StandardizedFitnessComparator;
  * @param <T>
  *          The type of Individual to select.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class TournamentSelection<T> implements IndependentSelectionFunction<T> {
 

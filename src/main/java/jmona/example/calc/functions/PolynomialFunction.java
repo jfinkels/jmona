@@ -32,6 +32,7 @@ import jmona.functional.Range;
  * is, with variables in order of decreasing degree).
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class PolynomialFunction implements Function<Double, Double> {
 

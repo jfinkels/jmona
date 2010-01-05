@@ -27,6 +27,7 @@ package jmona.impl;
  * @param <T>
  *          The type of the right object.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class Pair<S, T> {
   /** The left object. */

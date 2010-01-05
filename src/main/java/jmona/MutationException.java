@@ -24,6 +24,7 @@ package jmona;
  * Individual in the evolution.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class MutationException extends Exception {
 

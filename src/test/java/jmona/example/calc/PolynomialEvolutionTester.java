@@ -38,6 +38,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * polynomial function.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 @ContextConfiguration
 public class PolynomialEvolutionTester extends AbstractJUnit4SpringContextTests {

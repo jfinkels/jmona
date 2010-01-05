@@ -27,6 +27,7 @@ import jmona.functional.Range;
  * Base class for tests involving ColoredPolygon objects.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public abstract class ColoredPolygonTestSupport {
   /** The maximum x component for a point of a polygon. */

@@ -25,6 +25,7 @@ import jmona.Function;
  * An example mapping from an ExampleIndividual to its fitness.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ExampleMapping implements
     Function<ExampleIndividual, Double> {

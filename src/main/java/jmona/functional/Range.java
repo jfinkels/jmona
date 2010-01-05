@@ -31,6 +31,7 @@ import java.util.NoSuchElementException;
  * integer in the interval.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 // TODO negative increments
 public class Range implements Iterable<Integer>, Iterator<Integer> {

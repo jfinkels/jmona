@@ -37,6 +37,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * Test class for an evolution of the Ones example.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 @ContextConfiguration
 public class OnesEvolutionTester extends AbstractJUnit4SpringContextTests {

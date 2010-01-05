@@ -100,6 +100,7 @@ import jmona.impl.Pair;
  * </p>
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class IPDGame implements TwoPlayerGame<IPDStrategy> {
 

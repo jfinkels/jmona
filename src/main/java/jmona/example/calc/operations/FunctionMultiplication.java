@@ -27,6 +27,7 @@ import jmona.example.calc.functions.MultiplicationFunction;
  * SingleInputFunctions.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class FunctionMultiplication implements
     UniformBinaryOperation<Function<Double, Double>> {

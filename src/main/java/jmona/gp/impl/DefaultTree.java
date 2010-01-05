@@ -30,6 +30,7 @@ import jmona.gp.Tree;
  * A default implementation of a Tree.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class DefaultTree implements Tree {
 

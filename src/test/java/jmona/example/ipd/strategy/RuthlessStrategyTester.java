@@ -27,6 +27,7 @@ import org.junit.Test;
 
 /**
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class RuthlessStrategyTester {
 

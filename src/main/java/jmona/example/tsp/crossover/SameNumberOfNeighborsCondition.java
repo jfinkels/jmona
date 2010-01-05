@@ -29,6 +29,7 @@ import jmona.Condition;
  * neighbors.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 class SameNumberOfNeighborsCondition implements Condition<Integer> {
 

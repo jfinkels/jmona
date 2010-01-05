@@ -38,6 +38,7 @@ import jmona.impl.context.AbstractGeneticEvolutionContext;
  * @param <T>
  *          The type of individual on which the evolution occurs.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class GAEvolutionContext<T extends DeepCopyable<T>> extends
     AbstractGeneticEvolutionContext<T> {

@@ -27,6 +27,7 @@ import jmona.gp.EvaluationException;
  * A Node which evaluates to the value of the specified input value.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class VariableNode extends AbstractCalcTerminalNode implements CalcNode {
 

@@ -25,6 +25,7 @@ import jmona.DeepCopyable;
  * A strategy which always defects.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class RuthlessStrategy extends IPDStrategy implements
     DeepCopyable<RuthlessStrategy> {

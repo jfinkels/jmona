@@ -31,6 +31,7 @@ package jmona.example.calc.operations;
  * @param <R>
  *          The type of the codomain of this binary operation (the return type).
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface BinaryOperation<T, V, R> extends Operation<R> {
   /**

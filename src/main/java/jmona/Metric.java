@@ -44,6 +44,7 @@ package jmona;
  * @param <E>
  *          The domain of this metric.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface Metric<E> {
   /**

@@ -29,6 +29,7 @@ import jmona.impl.fitness.MaximizingFitnessFunction;
  * number of ones in their genes.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class OnesFitnessFunction extends MaximizingFitnessFunction<List<Byte>> {
 

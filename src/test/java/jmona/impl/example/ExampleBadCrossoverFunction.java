@@ -26,6 +26,7 @@ import jmona.CrossoverFunction;
  * A CrossoverFunction which always throws an Exception.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ExampleBadCrossoverFunction implements
     CrossoverFunction<ExampleIndividual> {

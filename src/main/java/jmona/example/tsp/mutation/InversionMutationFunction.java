@@ -30,6 +30,7 @@ import jmona.impl.Util;
  * of cities in the tour.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class InversionMutationFunction implements
     MutationFunction<List<Integer>> {

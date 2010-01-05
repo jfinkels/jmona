@@ -26,6 +26,7 @@ import jmona.DeepCopyable;
  * property.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ExampleIndividual implements DeepCopyable<ExampleIndividual> {
   /** The fitness of this Individual. */

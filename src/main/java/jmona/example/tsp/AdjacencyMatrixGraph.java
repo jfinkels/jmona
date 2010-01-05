@@ -27,6 +27,7 @@ package jmona.example.tsp;
  * be complete.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class AdjacencyMatrixGraph implements DirectedGraph<Integer, Double> {
 

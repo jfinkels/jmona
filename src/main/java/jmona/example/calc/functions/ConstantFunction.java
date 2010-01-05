@@ -29,6 +29,7 @@ import jmona.Function;
  * @param <R>
  *          The type of the codomain of this function.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ConstantFunction<T, R> implements Function<T, R> {
 

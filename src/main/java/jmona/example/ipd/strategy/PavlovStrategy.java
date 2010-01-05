@@ -29,6 +29,7 @@ import jmona.impl.Pair;
  * previous iteration.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class PavlovStrategy extends IPDStrategy implements
     DeepCopyable<PavlovStrategy> {

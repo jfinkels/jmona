@@ -25,6 +25,7 @@ import jmona.DeepCopyable;
  * A Tree of Nodes, which is also an Individual.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface Tree extends DeepCopyable<Tree> {
 

@@ -29,6 +29,7 @@ import jmona.gp.Node;
  * selecting whether to create a terminal node or a function node at each depth.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class GrowTreeFactory extends AbstractTreeFactory {
 

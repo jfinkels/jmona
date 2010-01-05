@@ -39,6 +39,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
  * <code>--config</code> option.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class Main {
   /** The long name of the option for specifying a configuration file. */

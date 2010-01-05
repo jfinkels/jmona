@@ -30,6 +30,7 @@ import jmona.impl.Util;
  * slices to replace repeated cities in the non-swapped sections of the tours.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 // TODO inherit from two-point crossover?
 public class PartiallyMatchedCrossoverFunction implements

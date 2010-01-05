@@ -27,6 +27,7 @@ import java.util.List;
  * @param <E>
  *          The type of element in the List to create.
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public interface DeepCopyableListFactory<E extends DeepCopyable<E>> extends
     Factory<List<E>> {

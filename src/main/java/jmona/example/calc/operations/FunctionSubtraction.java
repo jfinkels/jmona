@@ -27,6 +27,7 @@ import jmona.example.calc.functions.SubtractionFunction;
  * SingleInputFunctions.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class FunctionSubtraction implements
     UniformBinaryOperation<Function<Double, Double>> {

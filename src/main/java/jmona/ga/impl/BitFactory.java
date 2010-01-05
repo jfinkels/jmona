@@ -26,6 +26,7 @@ import jmona.impl.Util;
  * A factory for bits (0s or 1s).
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class BitFactory implements Factory<Byte> {
 

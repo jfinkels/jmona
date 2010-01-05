@@ -29,6 +29,7 @@ import jmona.impl.Util;
  * color and coordinates of vertices of the polygon.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class ColoredPolygonMutationFunction implements
     MutationFunction<ColoredPolygon> {

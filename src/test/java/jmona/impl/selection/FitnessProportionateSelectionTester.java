@@ -42,6 +42,7 @@ import org.junit.Test;
  * Test class for the FitnessProportionateSelection class.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 // TODO I don't know much about statistics; a statistician should make tests
 public class FitnessProportionateSelectionTester {

@@ -26,6 +26,7 @@ import jmona.gp.impl.AbstractTerminalNode;
  * An example TerminalNode which contains an integer value.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class IntegerNode extends AbstractTerminalNode implements ExampleNode {
 

@@ -30,6 +30,7 @@ import org.junit.Test;
  * Test class for the AdditionNode class.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class AdditionNodeTester {
   /** The value by which to increment the input to the function. */

@@ -27,6 +27,7 @@ import jmona.impl.Pair;
  * adversary did on the previous iteration.
  * 
  * @author Jeffrey Finkelstein
+ * @since 0.1
  */
 public class TitForTatStrategy extends IPDStrategy implements
     DeepCopyable<TitForTatStrategy> {
