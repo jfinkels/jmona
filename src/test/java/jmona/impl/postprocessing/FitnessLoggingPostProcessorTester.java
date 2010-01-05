@@ -80,21 +80,21 @@ public class FitnessLoggingPostProcessorTester {
     assertTrue(result.contains(String.valueOf(individual1.fitness())));
     assertTrue(result.contains(String.valueOf(individual2.fitness())));
 
-    final EvolutionContext<ExampleIndividual> badContext = new AbstractEvolutionContext<ExampleIndividual>(population) {
+    final EvolutionContext<ExampleIndividual> badContext = new AbstractEvolutionContext<ExampleIndividual>(
+        population) {
       @Override
       protected void executeGenerationStep() throws EvolutionException {
         // intentionally unimplemented
       }
     };
-    
-    
+
     try {
       processor.message(badContext);
       Util.shouldHaveThrownException();
     } catch (final LoggingException exception) {
-      assertFalse(badContext instanceof GeneticEvolutionContext<?>);
+      assertFalse(badContext.getClass().equals(GeneticEvolutionContext.class));
     }
-    
+
   }
 
 }
