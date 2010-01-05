@@ -19,30 +19,32 @@
  */
 package jmona.impl.fitness;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import jmona.impl.example.ExampleFitnessFunction;
+import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Test;
 
 /**
+ * Test class for the FitnessFunctionCollaborator class.
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
 public class FitnessFunctionCollaboratorTester {
 
   /**
-   * Test method for {@link jmona.impl.fitness.FitnessFunctionCollaborator#fitnessFunction()}.
+   * Test method for
+   * {@link jmona.impl.fitness.FitnessFunctionCollaborator#fitnessFunction()}.
    */
   @Test
   public void testFitnessFunction() {
-    fail("Not yet implemented");
-  }
-
-  /**
-   * Test method for {@link jmona.impl.fitness.FitnessFunctionCollaborator#setFitnessFunction(jmona.FitnessFunction)}.
-   */
-  @Test
-  public void testSetFitnessFunction() {
-    fail("Not yet implemented");
+    final FitnessFunctionCollaborator<ExampleIndividual> object = new FitnessFunctionCollaborator<ExampleIndividual>();
+    assertNull(object.fitnessFunction());
+    final ExampleFitnessFunction function = new ExampleFitnessFunction();
+    object.setFitnessFunction(function);
+    assertSame(function, object.fitnessFunction());
   }
 
 }
