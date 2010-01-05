@@ -27,7 +27,7 @@ import jmona.example.anttrail.nodes.MoveForwardNode;
 import jmona.example.anttrail.nodes.TurnLeftNode;
 import jmona.example.anttrail.nodes.TurnRightNode;
 import jmona.gp.TerminalNode;
-import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * A factory for terminal nodes in the ant trail evolution.
@@ -73,7 +73,7 @@ public class AntTerminalNodeFactory extends AntNodeFactory implements
 
     TerminalNode result = null;
 
-    switch (Util.randomFromCollection(this.actions)) {
+    switch (RandomUtils.choice(this.actions)) {
     case MOVE_FORWARD:
     default:
       result = new MoveForwardNode(this.ant());

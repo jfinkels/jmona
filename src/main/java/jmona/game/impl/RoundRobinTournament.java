@@ -29,7 +29,7 @@ import jmona.game.GameplayException;
 import jmona.game.Strategy;
 import jmona.game.TwoPlayerGame;
 import jmona.game.TwoPlayerGameResult;
-import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * A SelectionFunction which chooses the Strategy with the highest score after a
@@ -88,7 +88,7 @@ public class RoundRobinTournament<S extends Strategy> implements
     // get a random subset of competitors to compete in the round-robin tourn.
     List<S> competitors = null;
     try {
-      competitors = Util.randomWithoutReplacement(population,
+      competitors = RandomUtils.sample(population,
           this.tournamentSize);
     } catch (final IllegalArgumentException exception) {
       throw new SelectionException(

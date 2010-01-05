@@ -33,7 +33,6 @@ import jmona.CrossoverFunction;
 import jmona.MappingException;
 import jmona.functional.Functional;
 import jmona.functional.Range;
-import jmona.impl.Util;
 import jmona.random.RandomUtils;
 
 /**
@@ -153,7 +152,7 @@ public class EdgeRecombinationCrossoverFunction implements
       if (neighbors.size() == 0) {
 
         // choose a random city not already in the new tour
-        cityToAdd = Util.randomFromCollection(allPossibleCities);
+        cityToAdd = RandomUtils.choice(allPossibleCities);
 
       } else {
 
@@ -177,7 +176,7 @@ public class EdgeRecombinationCrossoverFunction implements
         }
 
         // choose a random city from that list
-        cityToAdd = Util.randomFromCollection(citiesWithSameNumberOfNeighbors);
+        cityToAdd = RandomUtils.choice(citiesWithSameNumberOfNeighbors);
 
       }
 

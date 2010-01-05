@@ -28,7 +28,7 @@ import jmona.example.calc.nodes.DivisionNode;
 import jmona.example.calc.nodes.MultiplicationNode;
 import jmona.example.calc.nodes.SubtractionNode;
 import jmona.gp.FunctionNode;
-import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * A FunctionNodeFactory for the Calc evolution, which randomly generates an
@@ -80,7 +80,7 @@ public class CalcFunctionNodeFactory implements Factory<FunctionNode> {
   public FunctionNode createObject() {
     FunctionNode result = null;
 
-    switch (Util.randomFromCollection(this.operations)) {
+    switch (RandomUtils.choice(this.operations)) {
     case ADDITION:
     default:
       result = new AdditionNode();

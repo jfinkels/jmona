@@ -19,17 +19,14 @@
  */
 package jmona.impl;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Vector;
 
 import jmona.CopyingException;
 import jmona.DeepCopyable;
 import jmona.functional.Range;
-import jmona.random.RandomUtils;
 
 /**
  * Utility class containing useful static utility methods.
@@ -79,39 +76,6 @@ public final class Util {
    */
   public static <K, V> V firstValue(final Map<K, V> map) {
     return map.values().iterator().next();
-  }
-
-  /**
-   * Return an element from the Collection chosen with uniform distribution over
-   * all elements.
-   * 
-   * @param <T>
-   *          The type of element in the Collection.
-   * @param collection
-   *          The Collection from which to randomly choose an element.
-   * @return An element chosen with uniform probability over all elements.
-   */
-  public static <T> T randomFromCollection(final Collection<T> collection) {
-    return randomWithoutReplacement(collection, 1).get(0);
-  }
-
-  /**
-   * Choose a random sublist from the specified collection with uniform
-   * distribution without replacement.
-   * 
-   * @param <T>
-   *          The type of element in the collection from which to choose.
-   * @param collection
-   *          The collection from which to choose a sublist.
-   * @param numberToChoose
-   *          The number of elements to choose from the specified collection.
-   * @return A sublist of the requested size of elements chosen randomly from
-   *         the specified collection without repeats.
-   */
-  public static <T> List<T> randomWithoutReplacement(
-      final Collection<T> collection, final int numberToChoose) {
-    return Arrays.asList((T[]) RandomUtils.RANDOM.nextSample(collection,
-        numberToChoose));
   }
 
   /**

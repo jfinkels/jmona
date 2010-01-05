@@ -30,7 +30,7 @@ import jmona.example.ipd.strategy.PavlovStrategy;
 import jmona.example.ipd.strategy.RandomStrategy;
 import jmona.example.ipd.strategy.RuthlessStrategy;
 import jmona.example.ipd.strategy.TitForTatStrategy;
-import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * A factory which creates IPDStrategy objects at random.
@@ -84,7 +84,7 @@ public class IPDStrategyFactory implements Factory<IPDStrategy> {
   public IPDStrategy createObject() throws InitializationException {
     IPDStrategy result = null;
 
-    switch (Util.randomFromCollection(this.strategies)) {
+    switch (RandomUtils.choice(this.strategies)) {
     case COOPERATIVE:
       result = new CooperativeStrategy();
       break;

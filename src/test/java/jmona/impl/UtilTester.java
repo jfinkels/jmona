@@ -24,10 +24,8 @@ import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Vector;
 
 import jmona.CopyingException;
@@ -46,8 +44,6 @@ public class UtilTester {
 
   /** The number of individuals in a list. */
   public static final int NUM_INDIVIDUALS = 100;
-  /** The number of times to repeat the test. */
-  public static final int NUM_TESTS = 10000;
   /** Zero. */
   public static final double ZERO_DELTA = 0.0;
 
@@ -91,66 +87,6 @@ public class UtilTester {
     map.put(key, value);
 
     assertEquals(value, Util.firstValue(map));
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.impl.Util#randomFromCollection(java.util.Collection)}.
-   */
-  @Test
-  public void testRandomFromCollection() {
-    final Set<Object> set = new HashSet<Object>();
-    final Object object1 = new Object();
-    final Object object2 = new Object();
-    final Object object3 = new Object();
-
-    set.add(object1);
-    set.add(object2);
-    set.add(object3);
-
-    Map<Object, Integer> selectionsMap = new HashMap<Object, Integer>();
-
-    Object choice = null;
-    for (final int i : new Range(NUM_TESTS)) {
-      choice = Util.randomFromCollection(set);
-
-      if (selectionsMap.containsKey(choice)) {
-        selectionsMap.put(choice, selectionsMap.get(choice) + 1);
-      } else {
-        selectionsMap.put(choice, 1);
-      }
-    }
-
-    int sum = 0;
-    for (final Integer selections : selectionsMap.values()) {
-      sum += selections;
-    }
-
-    final double meanSelections = (double) sum / selectionsMap.size();
-
-    final double delta = meanSelections * 0.1;
-
-    for (final Integer selection : selectionsMap.values()) {
-      assertEquals(meanSelections, selection, delta);
-    }
-    
-  }
-
-  /**
-   * Test for randomly selecting an Object uniformly from a set with only one
-   * element.
-   */
-  @Test
-  public void testRandomFromSingletonSet() {
-    final Set<Object> set = new HashSet<Object>();
-    final Object object = new Object();
-    set.add(object);
-
-    Object choice = null;
-    for (final int i : new Range(NUM_TESTS)) {
-      choice = Util.randomFromCollection(set);
-      assertSame(object, choice);
-    }
   }
 
   /**

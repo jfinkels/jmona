@@ -26,8 +26,8 @@ import jmona.IndependentSelectionFunction;
 import jmona.MappingException;
 import jmona.SelectionException;
 import jmona.functional.Functional;
-import jmona.impl.Util;
 import jmona.impl.fitness.AdjustedFitnessGetter;
+import jmona.random.RandomUtils;
 
 /**
  * Fitness-proportionate selection, also known as "roulette wheel selection".
@@ -91,7 +91,7 @@ public class FitnessProportionateSelection<T> implements
 
     // if no individual has any fitness, just return a random one
     if (fitnessesSum == 0.0) {
-      return Util.randomFromCollection(population);
+      return RandomUtils.choice(population);
     }
 
     // choose a number between 0 and the sum of all fitnesses

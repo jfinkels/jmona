@@ -24,8 +24,8 @@ import java.util.List;
 
 import jmona.FitnessFunction;
 import jmona.IndependentSelectionFunction;
-import jmona.impl.Util;
 import jmona.impl.fitness.StandardizedFitnessComparator;
+import jmona.random.RandomUtils;
 
 /**
  * A tournament selection which selects the best individual from a tournament of
@@ -70,7 +70,7 @@ public class TournamentSelection<T> implements IndependentSelectionFunction<T> {
       final FitnessFunction<T> fitnessFunction) {
 
     // get a random subset of the population to compete in the "tournament"
-    final List<T> competitors = Util.randomWithoutReplacement(population,
+    final List<T> competitors = RandomUtils.sample(population,
         this.tournamentSize);
 
     // set the fitness function on the comparator so it known how to compare

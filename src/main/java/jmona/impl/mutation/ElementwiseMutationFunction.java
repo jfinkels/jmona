@@ -23,7 +23,7 @@ import java.util.List;
 
 import jmona.MutationException;
 import jmona.MutationFunction;
-import jmona.impl.Util;
+import jmona.random.RandomUtils;
 
 /**
  * A class which mutates elements in a List by mutating one element at random.
@@ -55,7 +55,7 @@ public class ElementwiseMutationFunction<E> implements ListMutationFunction<E> {
           "No ListElementMutationFunction has been set.");
     }
 
-    this.elementMutationFunction.mutate(Util.randomFromCollection(list));
+    this.elementMutationFunction.mutate(RandomUtils.choice(list));
   }
 
   /**
