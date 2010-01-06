@@ -104,6 +104,7 @@ public class CoordinatePair extends Pair<Short, Short> implements
    *          The bounds of the toroidal grid when expressed as a Cartesian
    *          plane.
    */
+  // TODO Pair<Integer, Integer> bounds
   public void add(final Pair<Short, Short> otherPair,
       final CoordinatePair bounds) {
 
