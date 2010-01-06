@@ -70,17 +70,4 @@ public class ColoredPolygonFactoryTester extends ColoredPolygonTestSupport {
       }
     }
   }
-
-  /**
-   * Test method for
-   * {@link jmona.example.monalisa.ColoredPolygonFactory#randomColor()}.
-   */
-  @Test
-  public void testRandomColor() {
-    final Color color1 = ColoredPolygonFactory.randomColor();
-    final Color color2 = ColoredPolygonFactory.randomColor();
-
-    assertFalse(color1.equals(color2));
-  }
-
 }

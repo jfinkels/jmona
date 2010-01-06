@@ -19,11 +19,8 @@
  */
 package jmona.example.monalisa;
 
-import java.awt.Color;
-
 import jmona.Factory;
 import jmona.functional.Range;
-import jmona.impl.Util;
 import jmona.random.RandomUtils;
 
 /**
@@ -41,26 +38,9 @@ public class ColoredPolygonFactory implements Factory<ColoredPolygon> {
   public static final int DEFAULT_MAX_Y = 256;
   /** The default minimum number of points in a polygon. */
   public static final int DEFAULT_MIN_POINTS = 3;
-  /** The maximum value for a red, green, blue, or alpha color value. */
-  public static final int MAX_VALUE = 0xFF;
-
-  /**
-   * Generate a random Color (including random alpha value).
-   * 
-   * @return A random Color.
-   */
-  // TODO ColorFactory
-  protected static Color randomColor() {
-    final int alpha = RandomUtils.randomData().nextInt(0, MAX_VALUE);
-    final int red = RandomUtils.randomData().nextInt(0, MAX_VALUE);
-    final int green = RandomUtils.randomData().nextInt(0, MAX_VALUE);
-    final int blue = RandomUtils.randomData().nextInt(0, MAX_VALUE);
-
-    final Color result = new Color(alpha, red, green, blue);
-
-    return result;
-  }
-
+  /** A factory which generates random colors. */
+  private static final ColorFactory COLOR_FACTORY = new ColorFactory();
+  
   /** The maximum number of points in a polygon. */
   private int maxPoints = DEFAULT_MAX_POINTS;
   /** The maximum x value of a polygon. */
@@ -99,7 +79,7 @@ public class ColoredPolygonFactory implements Factory<ColoredPolygon> {
     result.ypoints = ypoints;
 
     // set the color of the ColoredPolygon to be a random color
-    result.setColor(randomColor());
+    result.setColor(COLOR_FACTORY.createObject());
 
     return result;
   }
