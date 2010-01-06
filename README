@@ -1,4 +1,4 @@
-jmona is a framework for creating evolutionar algorithms. It provides a basic,
+jmona is a framework for creating evolutionary algorithms. It provides a basic,
 generic API for building customized instances of genetic algorithms, genetic 
 programming, and other evolutionary algorithms. See the examples in
 "src/main/java/jmona/example/*", and the corresponding tests in
