@@ -28,6 +28,7 @@ import java.util.Vector;
 import jmona.EvolutionException;
 import jmona.SelectionException;
 import jmona.game.GameplayException;
+import jmona.game.TournamentGameSelection;
 import jmona.game.TwoPlayerGame;
 import jmona.game.impl.example.ExampleBadGame;
 import jmona.game.impl.example.ExampleGame;

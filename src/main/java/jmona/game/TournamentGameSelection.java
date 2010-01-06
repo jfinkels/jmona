@@ -17,14 +17,12 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.game.impl;
+package jmona.game;
 
 import java.util.List;
 
 import jmona.SelectionException;
 import jmona.SelectionFunction;
-import jmona.game.Strategy;
-import jmona.game.TwoPlayerGame;
 
 /**
  * A selection function which plays a tournament and selects the winner.
@@ -34,7 +32,6 @@ import jmona.game.TwoPlayerGame;
  *          The type of Strategy which competes in this tournament.
  * @since 0.3
  */
-// TODO move up to jmona.game
 public interface TournamentGameSelection<S extends Strategy> extends
     SelectionFunction<S> {
 

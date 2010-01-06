@@ -27,6 +27,7 @@ import jmona.DeepCopyable;
 import jmona.EvolutionException;
 import jmona.SelectionException;
 import jmona.game.Strategy;
+import jmona.game.TournamentGameSelection;
 import jmona.game.TwoPlayerGame;
 import jmona.impl.context.AbstractEvolutionContext;
 

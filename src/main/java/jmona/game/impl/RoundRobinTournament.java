@@ -27,6 +27,7 @@ import java.util.Map;
 import jmona.SelectionException;
 import jmona.game.GameplayException;
 import jmona.game.Strategy;
+import jmona.game.TournamentGameSelection;
 import jmona.game.TwoPlayerGame;
 import jmona.game.TwoPlayerGameResult;
 import jmona.random.RandomUtils;
@@ -78,7 +79,7 @@ public class RoundRobinTournament<S extends Strategy> implements
    *         round-robin tournament of the specified game is complete.
    * @throws SelectionException
    *           If there is a problem during gameplay.
-   * @see jmona.game.impl.TournamentGameSelection#select(List, TwoPlayerGame)
+   * @see jmona.game.TournamentGameSelection#select(List, TwoPlayerGame)
    */
   @Override
   public S select(final List<S> population, final TwoPlayerGame<S> game)
