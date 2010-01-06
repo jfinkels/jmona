@@ -37,18 +37,6 @@ public class CoordinatePairTester {
 
   /**
    * Test method for
-   * {@link jmona.example.anttrail.CoordinatePair#add(jmona.example.anttrail.CoordinatePair)}
-   * .
-   */
-  @Test
-  public void testAdd() {
-    final CoordinatePair pair = new CoordinatePair(1, 1);
-    pair.add(new CoordinatePair(-1, 1));
-    assertEquals(new CoordinatePair(0, 2), pair);
-  }
-
-  /**
-   * Test method for
    * {@link jmona.example.anttrail.CoordinatePair#add(jmona.impl.Pair)}.
    */
   @Test
@@ -61,7 +49,7 @@ public class CoordinatePairTester {
   /**
    * Test method for
    * {@link jmona.example.anttrail.CoordinatePair#add(jmona.impl.Pair, jmona.example.anttrail.CoordinatePair)}
-   * .
+   * . .
    */
   @Test
   public void testAddPairOfIntegerIntegerCoordinatePair() {
@@ -75,28 +63,7 @@ public class CoordinatePairTester {
 
   /**
    * Test method for
-   * {@link jmona.example.anttrail.CoordinatePair#add(jmona.example.anttrail.CoordinatePair, jmona.example.anttrail.CoordinatePair)}
-   * .
-   */
-  @Test
-  public void testAddToroidal() {
-    final CoordinatePair pair = new CoordinatePair(1, 1);
-    final CoordinatePair bounds = new CoordinatePair(2, 2);
-
-    pair.add(pair, bounds);
-
-    assertEquals(new CoordinatePair(0, 0), pair);
-
-    pair.add(new CoordinatePair(-1, -1), bounds);
-
-    assertEquals(new CoordinatePair(1, 1), pair);
-
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.example.anttrail.CoordinatePair#CoordinatePair(java.lang.Integer, java.lang.Integer)}
-   * .
+   * {@link jmona.example.anttrail.CoordinatePair#CoordinatePair(int, int)} .
    */
   @Test
   public void testCoordinatePair() {
@@ -207,8 +174,8 @@ public class CoordinatePairTester {
   }
 
   /**
-   * Test method for {@link jmona.example.anttrail.CoordinatePair#set(int, int)}
-   * .
+   * Test method for
+   * {@link jmona.example.anttrail.CoordinatePair#set(short, short)} .
    */
   @Test
   public void testSet() {
@@ -219,7 +186,7 @@ public class CoordinatePairTester {
   }
 
   /**
-   * Test method for {@link jmona.example.anttrail.CoordinatePair#setX(int)}.
+   * Test method for {@link jmona.example.anttrail.CoordinatePair#setX(short)}.
    */
   @Test
   public void testSetX() {
@@ -230,7 +197,7 @@ public class CoordinatePairTester {
   }
 
   /**
-   * Test method for {@link jmona.example.anttrail.CoordinatePair#setY(int)}.
+   * Test method for {@link jmona.example.anttrail.CoordinatePair#setY(short)}.
    */
   @Test
   public void testSetY() {
@@ -266,7 +233,7 @@ public class CoordinatePairTester {
 
   /**
    * Test method for
-   * {@link jmona.example.anttrail.CoordinatePair#sumWith(jmona.impl.Pair, jmona.example.anttrail.CoordinatePair)}
+   * {@link jmona.example.anttrail.CoordinatePair#sumWith(jmona.impl.Pair, CoordinatePair)}
    * .
    */
   @Test

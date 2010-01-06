@@ -41,11 +41,11 @@ public class UniformPopulationCompletionConditionTester {
 
   /**
    * Test method for
-   * {@link jmona.game.impl.UniformPopulationMappingCondition#isSatisfied(jmona.EvolutionContext)}
+   * {@link jmona.game.impl.UniformPopulationMappingCondition#execute(jmona.EvolutionContext)}
    * .
    */
   @Test
-  public void testIsSatisfied() {
+  public void testExecute() {
     final UniformPopulationCompletionCondition<ExampleIndividual> criteria = new UniformPopulationCompletionCondition<ExampleIndividual>();
 
     final List<ExampleIndividual> population = new Vector<ExampleIndividual>();

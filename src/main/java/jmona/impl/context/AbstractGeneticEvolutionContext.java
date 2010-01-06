@@ -78,7 +78,7 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.EvolutionContext#crossoverFunction()
+   * @see jmona.GeneticEvolutionContext#crossoverFunction()
    */
   @Override
   public CrossoverFunction<T> crossoverFunction() {
@@ -90,6 +90,7 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * selected for breeding.
    * 
    * @return The probability that crossover will be performed.
+   * @see jmona.GeneticEvolutionContext#crossoverProbability()
    */
   @Override
   public double crossoverProbability() {
@@ -100,7 +101,7 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.EvolutionContext#fitnessFunction()
+   * @see jmona.GeneticEvolutionContext#fitnessFunction()
    */
   @Override
   public FitnessFunction<T> fitnessFunction() {
@@ -111,7 +112,7 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.EvolutionContext#mutationFunction()
+   * @see jmona.GeneticEvolutionContext#mutationFunction()
    */
   @Override
   public MutationFunction<T> mutationFunction() {
@@ -122,7 +123,7 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.EvolutionContext#mutationProbability()
+   * @see jmona.GeneticEvolutionContext#mutationProbability()
    */
   @Override
   public double mutationProbability() {
@@ -159,7 +160,7 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.EvolutionContext#selectionFunction()
+   * @see jmona.GeneticEvolutionContext#selectionFunction()
    */
   @Override
   public IndependentSelectionFunction<T> selectionFunction() {
@@ -171,7 +172,7 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * 
    * @param function
    *          {@inheritDoc}
-   * @see jmona.EvolutionContext#setCrossoverFunction(jmona.CrossoverFunction)
+   * @see jmona.GeneticEvolutionContext#setCrossoverFunction(jmona.CrossoverFunction)
    */
   @Override
   public void setCrossoverFunction(final CrossoverFunction<T> function) {
@@ -183,7 +184,7 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * 
    * @param newCrossoverProbability
    *          {@inheritDoc}
-   * @see jmona.EvolutionContext#setCrossoverProbability(double)
+   * @see jmona.GeneticEvolutionContext#setCrossoverProbability(double)
    */
   @Override
   public void setCrossoverProbability(final double newCrossoverProbability) {
@@ -195,7 +196,7 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * 
    * @param function
    *          {@inheritDoc}
-   * @see jmona.EvolutionContext#setFitnessFunction(jmona.FitnessFunction)
+   * @see jmona.GeneticEvolutionContext#setFitnessFunction(jmona.FitnessFunction)
    */
   @Override
   public void setFitnessFunction(final FitnessFunction<T> function) {
@@ -207,7 +208,7 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * 
    * @param function
    *          {@inheritDoc}
-   * @see jmona.EvolutionContext#setMutationFunction(MutationFunction)
+   * @see jmona.GeneticEvolutionContext#setMutationFunction(MutationFunction)
    */
   @Override
   public void setMutationFunction(final MutationFunction<T> function) {
@@ -219,7 +220,7 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * 
    * @param newMutationProbability
    *          {@inheritDoc}
-   * @see jmona.EvolutionContext#setMutationProbability(double)
+   * @see jmona.GeneticEvolutionContext#setMutationProbability(double)
    */
   @Override
   public void setMutationProbability(final double newMutationProbability) {

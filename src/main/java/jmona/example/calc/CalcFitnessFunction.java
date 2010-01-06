@@ -69,7 +69,7 @@ public class CalcFitnessFunction extends MaximizingFitnessFunction<Tree> {
    * @throws FitnessException
    *           If there is a problem evaluating the Tree, or if there is a
    *           problem getting the output of either of the functions.
-   * @see jmona.FitnessFunction#fitness(java.lang.Object)
+   * @see jmona.FitnessFunction#rawFitness(Object)
    */
   @Override
   public double rawFitness(final Tree tree) throws FitnessException {

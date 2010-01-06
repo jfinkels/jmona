@@ -1,5 +1,5 @@
 /**
- * AbstractEvolutionContextTester.java
+ * AbstractGeneticEvolutionContextTester.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -135,7 +135,8 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#crossoverFunction()}.
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#crossoverFunction()}
+   * .
    */
   @Test
   public void testCrossoverFunction() {
@@ -145,7 +146,8 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#crossoverProbability()}.
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#crossoverProbability()}
+   * .
    */
   @Test
   public void testCrossoverProbability() {
@@ -155,7 +157,8 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#currentGeneration()}.
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#currentGeneration()}
+   * .
    */
   @Test
   public void testCurrentGeneration() {
@@ -182,7 +185,8 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#currentPopulation()}.
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#currentPopulation()}
+   * .
    */
   @Test
   public void testCurrentPopulation() {
@@ -191,7 +195,8 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#fitnessFunction()}.
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#fitnessFunction()}
+   * .
    */
   @Test
   public void testFitnessFunction() {
@@ -200,7 +205,8 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#mutationFunction()}.
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#mutationFunction()}
+   * .
    */
   @Test
   public void testMutationFunction() {
@@ -210,7 +216,8 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#mutationProbability()}.
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#mutationProbability()}
+   * .
    */
   @Test
   public void testMutationProbability() {
@@ -219,7 +226,8 @@ public class AbstractGeneticEvolutionContextTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.context.AbstractEvolutionContext#sanityCheck()}.
+   * Test method for
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#sanityCheck()}.
    */
   @Test
   public void testSanityCheck() {
@@ -234,7 +242,7 @@ public class AbstractGeneticEvolutionContextTester {
       assertNull(this.unsetContext.crossoverFunction());
       this.unsetContext.setFitnessFunction(new ExampleFitnessFunction());
     }
-    
+
     try {
       this.unsetContext.sanityCheck();
       Util.shouldHaveThrownException();
@@ -286,7 +294,8 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#selectionFunction()}.
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#selectionFunction()}
+   * .
    */
   @Test
   public void testSelectionFunction() {
@@ -296,7 +305,7 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#setCrossoverFunction(jmona.CrossoverFunction)}
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#setCrossoverFunction(jmona.CrossoverFunction)}
    * .
    */
   @Test
@@ -311,7 +320,7 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#setCrossoverProbability(double)}
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#setCrossoverProbability(double)}
    * .
    */
   @Test
@@ -324,7 +333,8 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#setCurrentPopulation(List)} .
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#setCurrentPopulation(List)}
+   * .
    */
   @Test
   public void testSetCurrentPopulation() {
@@ -336,7 +346,7 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#setFitnessFunction(jmona.FitnessFunction)}
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#setFitnessFunction(jmona.FitnessFunction)}
    * .
    */
   @Test
@@ -351,7 +361,7 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#setMutationFunction(MutationFunction)}
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#setMutationFunction(MutationFunction)}
    * .
    */
   @Test
@@ -366,7 +376,8 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#setMutationProbability(double)}.
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#setMutationProbability(double)}
+   * .
    */
   @Test
   public void testSetMutationProbability() {
@@ -377,7 +388,7 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#setSelectionFunction(jmona.SelectionFunction)}
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#setSelectionFunction(jmona.SelectionFunction)}
    * .
    */
   @Test

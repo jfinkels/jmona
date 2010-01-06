@@ -65,7 +65,7 @@ public class LinearRankingSelection<T> extends FitnessProportionateSelection<T> 
    * @throws SelectionException
    *           If the fitness-proportionate selection phase of this method
    *           throws a SelectionException.
-   * @see jmona.SelectionFunction#select(java.util.List, jmona.FitnessFunction)
+   * @see jmona.IndependentSelectionFunction#select(java.util.List, jmona.FitnessFunction)
    */
   @Override
   public T select(final List<T> population,

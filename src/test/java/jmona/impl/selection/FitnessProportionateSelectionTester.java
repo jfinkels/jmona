@@ -63,8 +63,8 @@ public class FitnessProportionateSelectionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.FitnessProportionateSelection#select(java.util.Map)}
-   * on Individuals of equal weights.
+   * {@link jmona.impl.selection.FitnessProportionateSelection#select(List, FitnessFunction)}
+   * on individuals of equal weights.
    */
   @Test
   public void testEqualWeightSelect() {
@@ -127,7 +127,7 @@ public class FitnessProportionateSelectionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.FitnessProportionateSelection#select(java.util.Map)}
+   * {@link jmona.impl.selection.FitnessProportionateSelection#select(List, FitnessFunction)}
    * with a fitnesses map with no elements.
    */
   @Test
@@ -142,8 +142,8 @@ public class FitnessProportionateSelectionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.FitnessProportionateSelection#select(java.util.Map)}
-   * on Individual of unequal weight.
+   * {@link jmona.impl.selection.FitnessProportionateSelection#select(List, FitnessFunction)}
+   * on individuals of unequal weight.
    */
   @Test
   public void testUnequalWeightSelect() {

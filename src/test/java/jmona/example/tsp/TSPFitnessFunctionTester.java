@@ -43,10 +43,11 @@ public class TSPFitnessFunctionTester {
   public static final double ZERO_DELTA = 0.0;
 
   /**
-   * Test method for {@link jmona.example.tsp.TSPFitnessFunction#fitness(List)}.
+   * Test method for
+   * {@link jmona.example.tsp.TSPFitnessFunction#rawFitness(List)}.
    */
   @Test
-  public void testFitness() {
+  public void testRawFitness() {
 
     final double[][] weights = new double[NUM_VERTICES][NUM_VERTICES];
 

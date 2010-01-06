@@ -200,7 +200,7 @@ public class CoordinatePair extends Pair<Short, Short> implements
   }
 
   /**
-   * Convenience method for {@link #setLeft(Integer)}.
+   * Convenience method for {@link jmona.impl.Pair#setLeft(Object)}.
    * 
    * @param newX
    *          The x component of this coordinate pair.
@@ -210,7 +210,7 @@ public class CoordinatePair extends Pair<Short, Short> implements
   }
 
   /**
-   * Convenience method for {@link #setRight(Integer)}.
+   * Convenience method for {@link jmona.impl.Pair#setRight(Object)}.
    * 
    * @param newY
    *          The y component of this coordinate pair.

@@ -55,7 +55,7 @@ public class VariableNode extends AbstractCalcTerminalNode implements CalcNode {
    * 
    * @throws EvaluationException
    *           {@inheritDoc}
-   * @see jmona.gp.Node#evaluate()
+   * @see jmona.gp.EvaluatableNode#evaluate()
    */
   @Override
   public Function<Double, Double> evaluate() throws EvaluationException {

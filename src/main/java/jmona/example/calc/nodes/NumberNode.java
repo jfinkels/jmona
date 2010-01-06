@@ -60,7 +60,7 @@ public class NumberNode extends AbstractCalcTerminalNode implements CalcNode {
    * Get the (constant) value of this Node.
    * 
    * @return The value of this Node.
-   * @see jmona.gp.Node#evaluate()
+   * @see jmona.gp.EvaluatableNode#evaluate()
    */
   @Override
   public Function<Double, Double> evaluate() {

@@ -43,9 +43,9 @@ public abstract class MaximizingFitnessFunction<T> extends
   }
 
   /**
-   * Returns {@value KnownExtremumFitnessFunction#MAXIMUM}.
+   * Returns {@link KnownExtremumFitnessFunction#MAXIMUM}.
    * 
-   * @return {@value KnownExtremumFitnessFunction#MAXIMUM}.
+   * @return {@link KnownExtremumFitnessFunction#MAXIMUM}.
    * @see jmona.impl.fitness.KnownExtremumFitnessFunction#typeOfExtremum()
    */
   @Override

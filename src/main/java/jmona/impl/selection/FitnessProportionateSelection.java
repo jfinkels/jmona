@@ -63,7 +63,7 @@ public class FitnessProportionateSelection<T> implements
    * @throws SelectionException
    *           If there is a problem determining the adjusted fitnesses of the
    *           population.
-   * @see jmona.SelectionFunction#select(java.util.Map)
+   * @see jmona.IndependentSelectionFunction#select(List, FitnessFunction)
    */
   // TODO more documentation on fitness-proportionate selection, i.e. formulae
   @Override

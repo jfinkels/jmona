@@ -72,11 +72,11 @@ public class PerfectMatchCompletionConditionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.completion.DefaultMaxFitnessCompletionCondition#isSatisfied(jmona.EvolutionContext)}
+   * {@link jmona.impl.completion.PerfectMatchCompletionCondition#execute(jmona.EvolutionContext)}
    * .
    */
   @Test
-  public void testIsSatisfied() {
+  public void testExecute() {
 
     try {
       this.completionCriteria.execute(this.emptyContext);

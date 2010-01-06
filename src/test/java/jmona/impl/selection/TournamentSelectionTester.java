@@ -65,7 +65,7 @@ public class TournamentSelectionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.TournamentSelection#select(java.util.Map)}.
+   * {@link jmona.impl.selection.TournamentSelection#select(List, FitnessFunction)}.
    */
   @Test
   public void testSelect() {

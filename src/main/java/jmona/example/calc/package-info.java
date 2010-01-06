@@ -19,10 +19,10 @@
  */
 /**
  * <p>
- * Provides an {@link jmona.example.calc.EquivalenceTester} which measures
- * equivalence of functions for use in evaluating {@link jmona.gp.Tree} objects
- * in the "calc" evolution, which evolves a formula matching a specified target
- * polynomial.
+ * Provides an {@link jmona.example.calc.CalcFitnessFunction} and an associated
+ * {@link jmona.example.calc.CalcTreeEvaluator} for use in evaluating
+ * {@link jmona.gp.Tree} objects in the "calc" evolution, which evolves a
+ * formula matching a specified target polynomial.
  * </p>
  * 
  * <p>

@@ -62,7 +62,7 @@ public class TournamentSelection<T> implements IndependentSelectionFunction<T> {
    * @param fitnessFunction
    *          The FitnessFunction to use to determine the standardized fitness
    *          of individuals in the specified population.
-   * @see jmona.SelectionFunction#select(java.util.Map)
+   * @see jmona.IndependentSelectionFunction#select(List, FitnessFunction)
    */
   // TODO documentation for this method, i.e. formulae
   @Override

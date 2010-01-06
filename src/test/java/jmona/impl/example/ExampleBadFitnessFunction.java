@@ -39,7 +39,7 @@ public class ExampleBadFitnessFunction extends
    * @return No value is returned, because a FitnessException is always thrown.
    * @throws FitnessException
    *           Always throws this Exception.
-   * @see jmona.FitnessFunction#fitness(Object)
+   * @see jmona.FitnessFunction#rawFitness(Object)
    */
   @Override
   public double rawFitness(final ExampleIndividual individual)

@@ -25,7 +25,6 @@
  * 
  * <p>
  * The {@link jmona.gp.impl.GPEvolutionContext},
- * {@link jmona.gp.impl.GPFitnessFunction},
  * {@link jmona.gp.impl.GPMutationFunction}, and
  * {@link jmona.gp.impl.GPCrossoverFunction} classes provide most of the
  * functionality of the genetic programming evolution (with various parameters
@@ -41,14 +40,6 @@
  * {@link jmona.gp.TerminalNode} classes, as well as the {@link jmona.Factory}
  * classes for creating them. Provide these factories to one of the tree
  * factories.
- * </p>
- * 
- * <p>
- * The {@link jmona.gp.impl.GPFitnessFunction} evaluates {@link jmona.gp.Tree}
- * objects, then measures the equivalence of that evaluation value to a
- * specified target value. Users should implement their own
- * {@link jmona.example.calc.EquivalenceTester} for whatever type of object to
- * which their Trees evaluate.
  * </p>
  * 
  * <p>

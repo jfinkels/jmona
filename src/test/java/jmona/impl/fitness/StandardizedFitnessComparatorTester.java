@@ -40,7 +40,8 @@ public class StandardizedFitnessComparatorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.fitness.StandardizedFitnessComparator#setFitnessFunction(java.util.Map)}.
+   * {@link jmona.impl.fitness.StandardizedFitnessComparator#setFitnessFunction(jmona.FitnessFunction)}
+   * .
    */
   @Test
   public void testSetFitnesses() {

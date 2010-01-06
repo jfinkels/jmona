@@ -37,12 +37,6 @@
  * </p>
  * 
  * <p>
- * The {@link jmona.ga.impl.GAFitnessFunction} measures the distance of
- * individuals to a specified target individual, and assigns a greater fitness
- * to a smaller distance from the target.
- * </p>
- * 
- * <p>
  * For more information, see the <a
  * href="http://en.wikipedia.org/wiki/Genetic_algorithm">Wikipedia article on
  * genetic algorithms</a>.

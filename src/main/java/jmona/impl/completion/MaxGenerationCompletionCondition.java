@@ -20,7 +20,6 @@
 package jmona.impl.completion;
 
 import jmona.CompletionCondition;
-import jmona.CompletionException;
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 
@@ -52,7 +51,7 @@ public class MaxGenerationCompletionCondition<T extends DeepCopyable<T>>
    * @param context
    *          {@inheritDoc}
    * @return Whether the maximum number of generations has already occurred.
-   * @see jmona.CompletionCondition#isSatisfied(jmona.EvolutionContext)
+   * @see jmona.CompletionCondition#execute(jmona.EvolutionContext)
    */
   @Override
   public Boolean execute(final EvolutionContext<T> context) {
@@ -60,10 +59,11 @@ public class MaxGenerationCompletionCondition<T extends DeepCopyable<T>>
   }
 
   /**
-   * {@inheritDoc}
+   * Set the maximum number of generations for an evolution to occur before this
+   * condition is satisfied.
    * 
    * @param newMaxGenerations
-   *          {@inheritDoc}
+   *          The maximum number of generations for an evolution to occur.
    */
   public void setMaxGenerations(final int newMaxGenerations) {
     this.maxGenerations = newMaxGenerations;

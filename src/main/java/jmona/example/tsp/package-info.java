@@ -28,16 +28,16 @@
  * problem can be modeled as a sequence of integers, representing the sequence
  * of cities traveled in a graph of known size. The evolution evolves toward a
  * minimum distance tour of all vertices in the graph (the shortest Hamiltonian
- * cycle). Mutation functions are provided in {@link jmona.example.tsp.mutation}
- * package and crossover functions are provided in
- * {@link jmona.example.tsp.crossover} package (these are the most involved part
- * of the TSP evolution).
+ * cycle). Mutation functions can be found in the {@link jmona.impl.mutation}
+ * package (because they are generic enough to apply to any List of elements)
+ * and crossover functions are provided in {@link jmona.example.tsp.crossover}
+ * package (these are the most involved part of the TSP evolution).
  * </p>
  * 
  * @author Jeffrey Finkelstein
  * @see jmona.example.tsp.crossover
  * @see jmona.example.tsp.io
- * @see jmona.example.tsp.mutation
+ * @see jmona.impl.mutation
  */
 package jmona.example.tsp;
 

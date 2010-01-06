@@ -41,11 +41,11 @@ public class MaxGenerationCompletionConditionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.completion.MaxGenerationCompletionCondition#isSatisfied(jmona.EvolutionContext)}
+   * {@link jmona.impl.completion.MaxGenerationCompletionCondition#execute(jmona.EvolutionContext)}
    * .
    */
   @Test
-  public void testIsSatisfied() {
+  public void testExecute() {
     final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
     population.add(new ExampleIndividual());
     population.add(new ExampleIndividual());

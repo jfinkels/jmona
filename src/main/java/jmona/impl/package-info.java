@@ -27,10 +27,10 @@
  * Among other classes, this package provides:
  * <ul>
  * <li>{@link jmona.impl.context.AbstractEvolutionContext}, a base class for
- * {@link jmona.EvolutionContext} implementations</li>
- * <li>{@link jmona.impl.completion.DefaultCompletionCondition}, a default
+ * {@link jmona.EvolutionContext} implementations.</li>
+ * <li>{@link jmona.impl.completion.MaxGenerationCompletionCondition}, a default
  * {@link jmona.CompletionCondition} implementation which checks an {@code
- * EvolutionContext} for maximum fitness or maximum number of generations</li>
+ * EvolutionContext} for a maximum number of generations evolved.</li>
  * <li>{@link jmona.impl.postprocessing.PeriodicPostProcessor}, a base class for
  * {@link jmona.PostProcessor} implementations which execute periodically.</li>
  * <li>{@link jmona.impl.CompleteDeepCopyableListFactory}, a factory for

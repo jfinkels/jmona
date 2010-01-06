@@ -78,8 +78,7 @@ public class RoundRobinTournament<S extends Strategy> implements
    *         round-robin tournament of the specified game is complete.
    * @throws SelectionException
    *           If there is a problem during gameplay.
-   * @see jmona.game.impl.TournamentGameSelection#select(java.util.List,
-   *      jmona.game.Game)
+   * @see jmona.game.impl.TournamentGameSelection#select(List, TwoPlayerGame)
    */
   @Override
   public S select(final List<S> population, final TwoPlayerGame<S> game)

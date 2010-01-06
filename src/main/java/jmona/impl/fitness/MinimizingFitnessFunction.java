@@ -33,7 +33,7 @@ public abstract class MinimizingFitnessFunction<T> extends
 
   /**
    * Instantiates this FitnessFunction by setting the minimum raw fitness value
-   * to {@value KnownExtremumFitnessFunction#DEFAULT_MINIMUM_FITNESS}.
+   * to {@link KnownExtremumFitnessFunction#DEFAULT_MINIMUM_FITNESS}.
    */
   public MinimizingFitnessFunction() {
     this(DEFAULT_MINIMUM_FITNESS);
@@ -51,9 +51,9 @@ public abstract class MinimizingFitnessFunction<T> extends
   }
 
   /**
-   * Returns {@value KnownExtremumFitnessFunction#MINIMUM}.
+   * Returns {@link KnownExtremumFitnessFunction#MINIMUM}.
    * 
-   * @return {@value KnownExtremumFitnessFunction#MINIMUM}.
+   * @return {@link KnownExtremumFitnessFunction#MINIMUM}.
    * @see jmona.impl.fitness.KnownExtremumFitnessFunction#typeOfExtremum()
    */
   @Override

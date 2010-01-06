@@ -41,10 +41,10 @@ public class OnesFitnessFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.ones.OnesFitnessFunction#fitness(List)}.
+   * {@link jmona.example.ones.OnesFitnessFunction#rawFitness(List)}.
    */
   @Test
-  public void testFitness() {
+  public void testRawFitness() {
     final int length = 10;
     final OnesFitnessFunction function = new OnesFitnessFunction(length);
     final List<Byte> individual = new Vector<Byte>();

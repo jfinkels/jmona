@@ -56,7 +56,7 @@ public class TSPFitnessFunction extends
    * @return The total distance of this tour.
    * @throws IllegalArgumentException
    *           If the specified tour is empty (that is, it has size 0).
-   * @see jmona.FitnessFunction#fitness(Object)
+   * @see jmona.FitnessFunction#rawFitness(Object)
    */
   @Override
   public double rawFitness(final List<Integer> tour) {

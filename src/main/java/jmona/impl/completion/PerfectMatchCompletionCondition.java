@@ -54,15 +54,15 @@ public class PerfectMatchCompletionCondition<T extends DeepCopyable<T>>
    * is, an individual which is a perfect match to the solution of the problem).
    * 
    * This method uses the FitnessFunction from
-   * {@link EvolutionContext#fitnessFunction()} to measure the fitness of
-   * individuals.
+   * {@link jmona.GeneticEvolutionContext#fitnessFunction()} to measure the
+   * fitness of individuals.
    * 
    * @param context
    *          {@inheritDoc}
    * @throws CompletionException
    *           If the fitness function of the EvolutionContext throws a
    *           FitnessException.
-   * @see jmona.CompletionCondition#isSatisfied(jmona.EvolutionContext)
+   * @see jmona.CompletionCondition#execute(jmona.EvolutionContext)
    */
   @Override
   public Boolean execute(final EvolutionContext<T> context)

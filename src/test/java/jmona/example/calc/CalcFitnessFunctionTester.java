@@ -50,10 +50,10 @@ public class CalcFitnessFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.calc.CalcFitnessFunction#fitness(jmona.gp.Tree)}.
+   * {@link jmona.example.calc.CalcFitnessFunction#rawFitness(jmona.gp.Tree)}.
    */
   @Test
-  public void testFitness() {
+  public void testRawFitness() {
     final CalcFitnessFunction function = new CalcFitnessFunction(2);
     final Node root = new AbstractCalcTerminalNode("x") {
       @Override

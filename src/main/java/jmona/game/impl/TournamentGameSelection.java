@@ -27,12 +27,31 @@ import jmona.game.Strategy;
 import jmona.game.TwoPlayerGame;
 
 /**
+ * A selection function which plays a tournament and selects the winner.
+ * 
  * @author Jeffrey Finkelstein
+ * @param <S>
+ *          The type of Strategy which competes in this tournament.
  * @since 0.3
  */
+// TODO move up to jmona.game
 public interface TournamentGameSelection<S extends Strategy> extends
     SelectionFunction<S> {
 
+  /**
+   * Play a tournament of the specified game with competitors chosen from the
+   * specified population and return the winner.
+   * 
+   * @param population
+   *          The population from which to choose competitors for the
+   *          tournament.
+   * @param game
+   *          The game to play.
+   * @return The winner after playing a tournament of the specified game with
+   *         competitors chosen from the specified population.
+   * @throws SelectionException
+   *           If there is a problem selecting the winner of a tournament.
+   */
   public S select(final List<S> population, final TwoPlayerGame<S> game)
       throws SelectionException;
 
