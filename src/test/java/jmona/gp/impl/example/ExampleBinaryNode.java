@@ -58,7 +58,7 @@ public class ExampleBinaryNode extends BinaryNode implements ExampleNode {
    * @see jmona.gp.impl.example.ExampleNode#evaluate()
    */
   @Override
-  public int evaluate() throws EvaluationException {
+  public Integer evaluate() throws EvaluationException {
     final ExampleNode leftChild = (ExampleNode) this.children().get(
         LEFT_CHILD_INDEX);
     final ExampleNode rightChild = (ExampleNode) this.children().get(

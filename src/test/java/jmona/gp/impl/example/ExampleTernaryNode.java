@@ -53,7 +53,7 @@ public class ExampleTernaryNode extends TernaryNode implements ExampleNode {
    * @see jmona.gp.impl.example.ExampleNode#evaluate()
    */
   @Override
-  public int evaluate() throws EvaluationException {
+  public Integer evaluate() throws EvaluationException {
     try {
       return Functional.sum(Functional.map(new ExampleNodeEvaluator(), this
           .children()));

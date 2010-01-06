@@ -19,7 +19,7 @@
  */
 package jmona.gp.impl.example;
 
-import jmona.gp.EvaluationException;
+import jmona.gp.EvaluatableNode;
 
 /**
  * A Node which can be evaluated to an Integer.
@@ -27,13 +27,6 @@ import jmona.gp.EvaluationException;
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
-public interface ExampleNode {
-  /**
-   * Evaluate this Node recursively.
-   * 
-   * @return The result of evaluating this Node recursively.
-   * @throws EvaluationException
-   *           If there is a problem evaluating this Node.
-   */
-  int evaluate() throws EvaluationException;
+public interface ExampleNode extends EvaluatableNode<Integer> {
+
 }
