@@ -54,7 +54,7 @@ public class CoordinatePair extends Pair<Short, Short> implements
    *          to a {@code short}).
    */
   public CoordinatePair(final int initialX, final int initialY) {
-    this(new Short((short) initialX), new Short((short) initialY));
+    this(Short.valueOf((short) initialX), Short.valueOf((short) initialY));
   }
 
   /**
