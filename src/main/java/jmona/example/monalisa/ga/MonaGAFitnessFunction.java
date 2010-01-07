@@ -20,7 +20,6 @@
 package jmona.example.monalisa.ga;
 
 import java.awt.image.BufferedImage;
-import java.util.List;
 
 import jmona.FitnessException;
 import jmona.MetricException;
@@ -37,7 +36,7 @@ import jmona.impl.fitness.MinimizingFitnessFunction;
  * @since 0.3
  */
 public class MonaGAFitnessFunction extends
-    MinimizingFitnessFunction<List<ColoredPolygon>> {
+    MinimizingFitnessFunction<Iterable<ColoredPolygon>> {
 
   /** The height of the target image. */
   private final int height;
@@ -83,7 +82,7 @@ public class MonaGAFitnessFunction extends
    * @see jmona.FitnessFunction#rawFitness(java.lang.Object)
    */
   @Override
-  public double rawFitness(final List<ColoredPolygon> individual)
+  public double rawFitness(final Iterable<ColoredPolygon> individual)
       throws FitnessException {
     try {
       return this.metric.distanceFromTarget(Converter.toImage(individual,

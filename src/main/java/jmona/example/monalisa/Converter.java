@@ -23,7 +23,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.util.List;
 
 /**
  * A utility class for converting a List of ColoredPolygon objects to a
@@ -47,7 +46,7 @@ public final class Converter {
    * @return A BufferedImage containing the specified List of polygons filled
    *         with their respective colors.
    */
-  public static BufferedImage toImage(final List<ColoredPolygon> polygons,
+  public static BufferedImage toImage(final Iterable<ColoredPolygon> polygons,
       final int width, final int height) {
     // create an image on which to draw the polygons from the individual
     final BufferedImage result = new BufferedImage(width, height,
