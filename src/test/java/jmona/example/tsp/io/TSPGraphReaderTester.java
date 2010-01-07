@@ -25,8 +25,8 @@ import java.io.File;
 import java.io.IOException;
 
 import jmona.MappingException;
-import jmona.example.tsp.DirectedGraph;
 import jmona.functional.Range;
+import jmona.graph.DirectedGraph;
 import jmona.test.Util;
 
 import org.junit.Test;

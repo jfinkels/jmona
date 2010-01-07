@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp;
+package jmona.graph;
 
 import java.util.Set;
 
@@ -76,7 +76,7 @@ public class AdjacencyMatrixGraph implements DirectedGraph<Integer, Double> {
    *          {@inheritDoc}
    * @return The weight of the edge incident to both specified vertices,
    *         directed from the source vertex to the target vertex.
-   * @see jmona.example.tsp.DirectedGraph#edgeBetween(java.lang.Object,
+   * @see jmona.graph.DirectedGraph#edgeBetween(java.lang.Object,
    *      java.lang.Object)
    */
   @Override
@@ -89,7 +89,7 @@ public class AdjacencyMatrixGraph implements DirectedGraph<Integer, Double> {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.example.tsp.Graph#allVertices()
+   * @see jmona.graph.Graph#allVertices()
    */
   @Override
   public Set<Integer> allVertices() {

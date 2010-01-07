@@ -1,5 +1,5 @@
 /**
- * UndirectedGraph.java
+ * Graph.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -17,34 +17,25 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp;
+package jmona.graph;
+
+import java.util.Set;
 
 /**
- * An undirected graph.
+ * A graph.
  * 
  * @param <V>
- *          The type of the vertices in this graph.
+ *          The type of vertex in this Graph.
  * @param <E>
- *          The type of the edges in this graph.
+ *          The type of edge in this Graph.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public interface UndirectedGraph<V, E> extends DirectedGraph<V, E> {
+public interface Graph<V, E> {
   /**
-   * Get the edge between the two specified vertices.
+   * Gets the Set of all vertices in this graph.
    * 
-   * This method is symmetric on vertices. In other words, if {@code v1} and
-   * {@code v2} are two vertices, then {@code edgeBetween(v1, v2)} returns the
-   * same value as {@code edgeBetween(v2, v1)}, because this graph is
-   * undirected.
-   * 
-   * @param vertex1
-   *          A vertex in this graph.
-   * @param vertex2
-   *          Another vertex in this graph.
-   * @return The edge between the two specified vertices.
+   * @return The Set of all vertices in this graph.
    */
-  @Override
-  E edgeBetween(final V vertex1, final V vertex2);
-
+  public Set<V> allVertices();
 }

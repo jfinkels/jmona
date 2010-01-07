@@ -21,6 +21,8 @@ package jmona.example.tsp;
 
 import java.util.List;
 
+import jmona.graph.DirectedGraph;
+import jmona.graph.GraphUtil;
 import jmona.impl.fitness.MinimizingFitnessFunction;
 
 /**

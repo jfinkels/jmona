@@ -24,9 +24,9 @@ import java.io.IOException;
 import java.util.List;
 
 import jmona.MappingException;
-import jmona.example.tsp.AdjacencyMatrixGraph;
-import jmona.example.tsp.DirectedGraph;
 import jmona.functional.Functional;
+import jmona.graph.AdjacencyMatrixGraph;
+import jmona.graph.DirectedGraph;
 import jmona.io.LineReader;
 import jmona.io.SplitOnWhitespace;
 

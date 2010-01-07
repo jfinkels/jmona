@@ -1,5 +1,5 @@
 /**
- * Graph.java
+ * DirectedGraph.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -17,12 +17,10 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp;
-
-import java.util.Set;
+package jmona.graph;
 
 /**
- * A graph.
+ * A directed graph.
  * 
  * @param <V>
  *          The type of vertex in this Graph.
@@ -31,11 +29,16 @@ import java.util.Set;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public interface Graph<V, E> {
+public interface DirectedGraph<V, E> extends Graph<V, E> {
   /**
-   * Gets the Set of all vertices in this graph.
+   * Get the edge between the two specified vertices, directed from the source
+   * vertex to the target vertex.
    * 
-   * @return The Set of all vertices in this graph.
+   * @param sourceVertex
+   *          The source vertex of the edge to get.
+   * @param targetVertex
+   *          The target vertex of the edge to get.
+   * @return The edge from the source vertex to the target vertex.
    */
-  public Set<V> allVertices();
+  E edgeBetween(final V sourceVertex, final V targetVertex);
 }

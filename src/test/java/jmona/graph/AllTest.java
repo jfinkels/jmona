@@ -1,5 +1,5 @@
 /**
- * DirectedGraph.java
+ * AllTest.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -17,28 +17,20 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp;
+package jmona.graph;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
 /**
- * A directed graph.
+ * Runs all tests in this package.
  * 
- * @param <V>
- *          The type of vertex in this Graph.
- * @param <E>
- *          The type of edge in this Graph.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public interface DirectedGraph<V, E> extends Graph<V, E> {
-  /**
-   * Get the edge between the two specified vertices, directed from the source
-   * vertex to the target vertex.
-   * 
-   * @param sourceVertex
-   *          The source vertex of the edge to get.
-   * @param targetVertex
-   *          The target vertex of the edge to get.
-   * @return The edge from the source vertex to the target vertex.
-   */
-  E edgeBetween(final V sourceVertex, final V targetVertex);
+@RunWith(Suite.class)
+@SuiteClasses({ AdjacencyMatrixGraphTester.class })
+public class AllTest {
+
 }

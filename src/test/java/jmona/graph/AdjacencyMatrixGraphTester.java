@@ -17,10 +17,11 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp;
+package jmona.graph;
 
 import static org.junit.Assert.assertEquals;
 import jmona.functional.Range;
+import jmona.graph.AdjacencyMatrixGraph;
 
 import org.junit.Test;
 
@@ -39,7 +40,7 @@ public class AdjacencyMatrixGraphTester {
 
   /**
    * Test method for
-   * {@link jmona.example.tsp.AdjacencyMatrixGraph#edgeBetween(java.lang.Integer, java.lang.Integer)}
+   * {@link jmona.graph.AdjacencyMatrixGraph#edgeBetween(java.lang.Integer, java.lang.Integer)}
    * .
    */
   @Test
