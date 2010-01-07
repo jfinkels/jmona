@@ -21,7 +21,6 @@ package jmona.graph;
 
 import static org.junit.Assert.assertEquals;
 import jmona.functional.Range;
-import jmona.graph.AdjacencyMatrixGraph;
 
 import org.junit.Test;
 

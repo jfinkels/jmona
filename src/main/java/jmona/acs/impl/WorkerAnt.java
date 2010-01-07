@@ -22,8 +22,8 @@ package jmona.acs.impl;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.acs.Ant;
 import jmona.acs.AlreadyVisitedException;
+import jmona.acs.Ant;
 
 /**
  * A default implementation of an Ant in the ant colony system.

@@ -22,7 +22,6 @@ package jmona.impl.mutation;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.impl.Util;
 import jmona.random.RandomUtils;
 
 /**

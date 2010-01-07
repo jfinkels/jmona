@@ -19,7 +19,6 @@
  */
 package jmona.impl.postprocessing;
 
-import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 
 /**

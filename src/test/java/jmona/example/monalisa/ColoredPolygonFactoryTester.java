@@ -19,11 +19,7 @@
  */
 package jmona.example.monalisa;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import java.awt.Color;
-
 import jmona.functional.Range;
 
 import org.junit.Before;

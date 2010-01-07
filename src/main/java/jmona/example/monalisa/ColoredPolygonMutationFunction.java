@@ -22,7 +22,6 @@ package jmona.example.monalisa;
 import java.awt.Color;
 
 import jmona.MutationFunction;
-import jmona.impl.Util;
 import jmona.random.RandomUtils;
 
 /**

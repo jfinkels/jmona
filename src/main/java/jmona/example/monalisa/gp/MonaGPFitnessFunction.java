@@ -23,7 +23,6 @@ import java.awt.image.BufferedImage;
 
 import jmona.FitnessException;
 import jmona.example.monalisa.ga.MonaGAFitnessFunction;
-import jmona.gp.EvaluationException;
 import jmona.gp.Tree;
 import jmona.impl.fitness.MinimizingFitnessFunction;
 

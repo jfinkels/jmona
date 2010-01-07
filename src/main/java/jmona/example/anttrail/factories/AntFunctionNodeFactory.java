@@ -23,7 +23,6 @@ import jmona.Factory;
 import jmona.example.anttrail.nodes.DoEachNode;
 import jmona.example.anttrail.nodes.IfFoodAheadNode;
 import jmona.gp.FunctionNode;
-import jmona.impl.Util;
 import jmona.random.RandomUtils;
 
 /**

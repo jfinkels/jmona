@@ -26,7 +26,6 @@ import java.util.Map;
 import java.util.Vector;
 
 import jmona.FitnessFunction;
-import jmona.IndependentSelectionFunction;
 import jmona.SelectionException;
 import jmona.functional.Range;
 import jmona.impl.fitness.PresetFitnessFunction;
