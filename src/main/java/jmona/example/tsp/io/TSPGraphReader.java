@@ -37,6 +37,8 @@ import jmona.io.SplitOnWhitespace;
  * @since 0.1
  */
 // TODO use the canonical TSP graph form
+// TODO support for GraphML
+// TODO possible support for JUNG?
 public class TSPGraphReader {
 
   /**
