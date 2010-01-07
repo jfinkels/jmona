@@ -49,11 +49,8 @@ public class TourFactory extends PartialDeepCopyableListFactory<Integer> {
    */
   @Override
   public DeepCopyableList<Integer> createObject() {
-    final DeepCopyableList<Integer> result = new PartialDeepCopyableVector<Integer>();
-
-    for (final int i : new Range(this.size())) {
-      result.add(i);
-    }
+    final DeepCopyableList<Integer> result = new PartialDeepCopyableVector<Integer>(
+        new Range(this.size()));
 
     Collections.shuffle(result);
 
