@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.acs.impl;
+package jmona.aco.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,9 +28,9 @@ import java.util.Map.Entry;
 import jmona.EvolutionException;
 import jmona.IndependentSelectionFunction;
 import jmona.SelectionException;
-import jmona.acs.Ant;
-import jmona.acs.PheromoneDirectedGraph;
-import jmona.acs.PheromoneUpdateStrategy;
+import jmona.aco.Ant;
+import jmona.aco.PheromoneDirectedGraph;
+import jmona.aco.PheromoneUpdateStrategy;
 import jmona.functional.Functional;
 import jmona.impl.context.AbstractEvolutionContext;
 import jmona.impl.fitness.PresetFitnessFunction;

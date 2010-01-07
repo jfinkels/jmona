@@ -17,10 +17,10 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.acs.impl;
+package jmona.aco.impl;
 
 import jmona.EvolutionContext;
-import jmona.acs.Ant;
+import jmona.aco.Ant;
 import jmona.graph.DirectedGraph;
 import jmona.graph.GraphUtil;
 import jmona.impl.postprocessing.LoggingPostProcessor;

@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.acs.impl;
+package jmona.aco.impl;
 
 /**
  * A strategy which adds pheromone to each edge of a tour only after a full
@@ -42,8 +42,8 @@ public class AntCycleStrategy extends AbstractPheromoneUpdateStrategy {
    *          The value by which to divide the pheromone quantity index.
    * @return The quotient of the pheromone quantity index divided by the
    *         specified total distance of the tour.
-   * @see jmona.acs.PheromoneUpdateStrategy#pheromoneToAddFullCycle(double)
-   * @see jmona.acs.impl.AbstractPheromoneUpdateStrategy#pheromoneQuantityIndex()
+   * @see jmona.aco.PheromoneUpdateStrategy#pheromoneToAddFullCycle(double)
+   * @see jmona.aco.impl.AbstractPheromoneUpdateStrategy#pheromoneQuantityIndex()
    */
   @Override
   public double pheromoneToAddFullCycle(final double totalDistance) {
@@ -56,7 +56,7 @@ public class AntCycleStrategy extends AbstractPheromoneUpdateStrategy {
    * @param edgeDistance
    *          This parameter is ignored.
    * @return Zero.
-   * @see jmona.acs.PheromoneUpdateStrategy#pheromoneToAddSingleEdge(double)
+   * @see jmona.aco.PheromoneUpdateStrategy#pheromoneToAddSingleEdge(double)
    */
   @Override
   public double pheromoneToAddSingleEdge(final double edgeDistance) {

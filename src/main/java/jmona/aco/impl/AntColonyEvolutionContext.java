@@ -17,14 +17,14 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.acs.impl;
+package jmona.aco.impl;
 
 import java.util.List;
 
 import jmona.EvolutionException;
-import jmona.acs.Ant;
-import jmona.acs.PheromoneDirectedGraph;
-import jmona.acs.PheromoneUpdateStrategy;
+import jmona.aco.Ant;
+import jmona.aco.PheromoneDirectedGraph;
+import jmona.aco.PheromoneUpdateStrategy;
 import jmona.functional.Range;
 import jmona.graph.GraphUtil;
 import jmona.impl.completion.MaxGenerationCompletionCondition;
@@ -167,7 +167,7 @@ public abstract class AntColonyEvolutionContext<A extends Ant> extends
    * 
    * @param newPheromonePersistence
    *          The persistence factor of the pheromone on the edges of the graph.
-   * @see jmona.acs.PheromoneDirectedGraph#evaporate(double)
+   * @see jmona.aco.PheromoneDirectedGraph#evaporate(double)
    */
   public void setPheromonePersistence(final double newPheromonePersistence) {
     this.pheromonePersistence = newPheromonePersistence;

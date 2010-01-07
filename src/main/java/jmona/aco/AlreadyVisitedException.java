@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.acs;
+package jmona.aco;
 
 /**
  * This Exception is thrown when an ant attempts to move to a city which it has

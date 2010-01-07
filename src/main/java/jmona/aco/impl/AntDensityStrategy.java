@@ -1,5 +1,5 @@
 /**
- * AntQuantityStrategy.java
+ * AntDensityStrategy.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -17,20 +17,17 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.acs.impl;
+package jmona.aco.impl;
 
 /**
- * A strategy which adds pheromone to each edge of an Ant's tour as it
- * encounters it.
- * 
- * The amount of pheromone added to each edge is inversely proportional to the
- * distance of that edge. In this way, locally good solutions get more pheromone
- * than globally good solutions (most of the time).
+ * A strategy which adds the full pheromone quantity index amount of pheromone
+ * to each edge in an Ant's tour, independent of both the weight of the edge and
+ * the total distance of the tour.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class AntQuantityStrategy extends AbstractPheromoneUpdateStrategy {
+public class AntDensityStrategy extends AbstractPheromoneUpdateStrategy {
 
   /**
    * Always returns zero.
@@ -38,7 +35,7 @@ public class AntQuantityStrategy extends AbstractPheromoneUpdateStrategy {
    * @param totalDistance
    *          This parameter is ignored.
    * @return Zero.
-   * @see jmona.acs.PheromoneUpdateStrategy#pheromoneToAddFullCycle(double)
+   * @see jmona.aco.PheromoneUpdateStrategy#pheromoneToAddFullCycle(double)
    */
   @Override
   public double pheromoneToAddFullCycle(final double totalDistance) {
@@ -46,20 +43,17 @@ public class AntQuantityStrategy extends AbstractPheromoneUpdateStrategy {
   }
 
   /**
-   * Returns the quotient of the pheromone quantity index divided by the
-   * specified distance of this particular edge.
+   * Returns the {@link #pheromoneQuantityIndex()} exactly.
    * 
    * @param edgeDistance
-   *          The distance of the edge to which this amount of pheromone will be
-   *          added.
-   * @return The quotient of the pheromone quantity index divided by the
-   *         specified distance of this particular edge.
-   * @see jmona.acs.PheromoneUpdateStrategy#pheromoneToAddSingleEdge(double)
-   * @see jmona.acs.impl.AbstractPheromoneUpdateStrategy#pheromoneQuantityIndex()
+   *          This parameter is ignored.
+   * @return The pheromone quantity index exactly.
+   * @see jmona.aco.PheromoneUpdateStrategy#pheromoneToAddSingleEdge(double)
+   * @see jmona.aco.impl.AbstractPheromoneUpdateStrategy#pheromoneQuantityIndex()
    */
   @Override
   public double pheromoneToAddSingleEdge(final double edgeDistance) {
-    return this.pheromoneQuantityIndex() / edgeDistance;
+    return this.pheromoneQuantityIndex();
   }
 
 }

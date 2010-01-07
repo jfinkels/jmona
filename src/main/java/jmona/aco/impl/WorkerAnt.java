@@ -17,13 +17,13 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.acs.impl;
+package jmona.aco.impl;
 
 import java.util.List;
 import java.util.Vector;
 
-import jmona.acs.AlreadyVisitedException;
-import jmona.acs.Ant;
+import jmona.aco.AlreadyVisitedException;
+import jmona.aco.Ant;
 
 /**
  * A default implementation of an Ant in the ant colony system.

@@ -17,9 +17,9 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.acs.impl;
+package jmona.aco.impl;
 
-import jmona.acs.PheromoneUpdateStrategy;
+import jmona.aco.PheromoneUpdateStrategy;
 
 /**
  * A base class for PheromoneUpdateStrategy classes.
@@ -43,7 +43,7 @@ public abstract class AbstractPheromoneUpdateStrategy implements
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.acs.PheromoneUpdateStrategy#pheromoneQuantityIndex()
+   * @see jmona.aco.PheromoneUpdateStrategy#pheromoneQuantityIndex()
    */
   @Override
   public int pheromoneQuantityIndex() {
@@ -55,7 +55,7 @@ public abstract class AbstractPheromoneUpdateStrategy implements
    * 
    * @param newPheromoneQuantityIndex
    *          {@inheritDoc}
-   * @see jmona.acs.PheromoneUpdateStrategy#setPheromoneQuantityIndex(int)
+   * @see jmona.aco.PheromoneUpdateStrategy#setPheromoneQuantityIndex(int)
    */
   @Override
   public void setPheromoneQuantityIndex(final int newPheromoneQuantityIndex) {
