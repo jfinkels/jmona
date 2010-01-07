@@ -42,7 +42,7 @@ public class AntCycleStrategy extends AbstractPheromoneUpdateStrategy {
    *          The value by which to divide the pheromone quantity index.
    * @return The quotient of the pheromone quantity index divided by the
    *         specified total distance of the tour.
-   * @see jmona.acs.PheromoneUpdateStrategy#trailToAddAllEdges(double)
+   * @see jmona.acs.PheromoneUpdateStrategy#pheromoneToAddFullCycle(double)
    * @see jmona.acs.impl.AbstractPheromoneUpdateStrategy#pheromoneQuantityIndex()
    */
   @Override
@@ -56,7 +56,7 @@ public class AntCycleStrategy extends AbstractPheromoneUpdateStrategy {
    * @param edgeDistance
    *          This parameter is ignored.
    * @return Zero.
-   * @see jmona.acs.PheromoneUpdateStrategy#trailToAddSingleEdge(double)
+   * @see jmona.acs.PheromoneUpdateStrategy#pheromoneToAddSingleEdge(double)
    */
   @Override
   public double pheromoneToAddSingleEdge(final double edgeDistance) {
