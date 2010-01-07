@@ -19,13 +19,14 @@
  */
 package jmona.example.monalisa.gp;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.Vector;
 
 import jmona.CopyingException;
 import jmona.example.monalisa.ColoredPolygon;
 import jmona.gp.EvaluatableNode;
-import jmona.gp.EvaluationException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.gp.TerminalNode;
@@ -41,7 +42,7 @@ import jmona.gp.impl.TreeUtils;
  * @since 0.1
  */
 public class ColoredPolygonNode extends AbstractNode implements FunctionNode,
-    TerminalNode, EvaluatableNode<List<ColoredPolygon>> {
+    TerminalNode, EvaluatableNode<Set<ColoredPolygon>> {
 
   /** The ColoredPolygon contained in this Node. */
   private ColoredPolygon coloredPolygon = null;
@@ -119,17 +120,15 @@ public class ColoredPolygonNode extends AbstractNode implements FunctionNode,
    * 
    * @return A List of ColoredPolygon, including the one contained in this Node
    *         and each of the ones contained in the descendants of this Node.
-   * @throws EvaluationException
-   *           If the child Node throws an EvaluationException.
    */
   @Override
-  public List<ColoredPolygon> evaluate() throws EvaluationException {
+  public Set<ColoredPolygon> evaluate() {
 
-    List<ColoredPolygon> result = null;
+    Set<ColoredPolygon> result = null;
 
     // if this is a terminal node
     if (this.children().size() == 0) {
-      result = new Vector<ColoredPolygon>();
+      result = new HashSet<ColoredPolygon>();
     } else { // if this is a function node
       result = this.child().evaluate();
     }

@@ -23,13 +23,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.List;
+import java.util.Set;
 
 import jmona.example.monalisa.ColoredPolygon;
 import jmona.example.monalisa.ColoredPolygonFactory;
 import jmona.functional.Range;
-import jmona.gp.EvaluationException;
-import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -74,16 +72,11 @@ public class ColoredPolygonNodeFactoryTester {
   @Test
   public void testCreateNode() {
     final ColoredPolygonNode node = this.factory.createObject();
-    List<ColoredPolygon> polygons = null;
-    try {
-      polygons = node.evaluate();
-    } catch (final EvaluationException exception) {
-      Util.fail(exception);
-    }
+    Set<ColoredPolygon> polygons = node.evaluate();
 
     assertEquals(1, polygons.size());
 
-    final ColoredPolygon polygon = polygons.get(0);
+    final ColoredPolygon polygon = (ColoredPolygon) polygons.toArray()[0];
     assertNotNull(polygon.color());
 
     assertTrue(polygon.npoints <= MAX_POINTS);

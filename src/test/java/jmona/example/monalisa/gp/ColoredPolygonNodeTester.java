@@ -25,13 +25,12 @@ import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
-import java.util.List;
+import java.util.Set;
 
 import jmona.CopyingException;
 import jmona.example.monalisa.ColoredPolygon;
 import jmona.example.monalisa.ColoredPolygonFactory;
-import jmona.functional.Range;
-import jmona.gp.EvaluationException;
+import jmona.example.monalisa.ColoredPolygonTestSupport;
 import jmona.test.Util;
 
 import org.junit.Before;
@@ -43,47 +42,7 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ColoredPolygonNodeTester {
-
-  /** The color of the polygon. */
-  public static final Color COLOR = Color.GRAY;
-  /** The number of points in the polygon. */
-  public static final int NPOINTS = 3;
-  /** The x component of the coordinates of the vertices of the polygon. */
-  public static final int[] XPOINTS = { 0, 1, 2 };
-  /** The y component of the coordinates of the vertices of the polygon. */
-  public static final int[] YPOINTS = { 3, 4, 5 };
-
-  /**
-   * Determines whether the specified polygons have the same color and the same
-   * coordinates.
-   * 
-   * @param polygon1
-   *          A polygon.
-   * @param polygon2
-   *          Another polygon.
-   * @return Whether the two polygons have the same color and the same
-   *         coordinates.
-   */
-  protected static boolean samePolygon(final ColoredPolygon polygon1,
-      final ColoredPolygon polygon2) {
-    if (polygon1.npoints != polygon2.npoints) {
-      return false;
-    }
-
-    if (!polygon1.color().equals(polygon2.color())) {
-      return false;
-    }
-
-    for (final int i : new Range(polygon1.npoints)) {
-      if (polygon1.xpoints[i] != polygon2.xpoints[i]
-          || polygon1.ypoints[i] != polygon2.ypoints[i]) {
-        return false;
-      }
-    }
-
-    return true;
-  }
+public class ColoredPolygonNodeTester extends ColoredPolygonTestSupport {
 
   /** The Node under test. */
   private ColoredPolygonNode node = null;
@@ -137,13 +96,8 @@ public class ColoredPolygonNodeTester {
 
     assertNotNull(clonedNode);
 
-    ColoredPolygon clonedPolygon = null;
-
-    try {
-      clonedPolygon = clonedNode.evaluate().get(0);
-    } catch (final EvaluationException exception) {
-      Util.fail(exception);
-    }
+    ColoredPolygon clonedPolygon = (ColoredPolygon) clonedNode.evaluate()
+        .toArray()[0];
 
     assertNotNull(clonedPolygon);
     assertNotSame(clonedPolygon, this.polygon);
@@ -156,26 +110,17 @@ public class ColoredPolygonNodeTester {
    */
   @Test
   public void testEvaluate() {
-    List<ColoredPolygon> polygons = null;
-    try {
-      polygons = this.node.evaluate();
-    } catch (final EvaluationException exception) {
-      Util.fail(exception);
-    }
+    Set<ColoredPolygon> polygons = this.node.evaluate();
 
     assertEquals(1, polygons.size());
     assertTrue(polygons.contains(this.polygon));
-    assertTrue(samePolygon(polygons.get(0), this.polygon));
+    assertTrue(samePolygon((ColoredPolygon) polygons.toArray()[0], this.polygon));
 
     final ColoredPolygonNodeFactory factory = new ColoredPolygonNodeFactory();
     factory.setColoredPolygonFactory(new ColoredPolygonFactory());
     this.node.children().add(factory.createObject());
 
-    try {
-      polygons = this.node.evaluate();
-    } catch (final EvaluationException exception) {
-      Util.fail(exception);
-    }
+    polygons = this.node.evaluate();
 
     assertEquals(2, polygons.size());
     assertTrue(polygons.contains(this.polygon));
@@ -192,12 +137,8 @@ public class ColoredPolygonNodeTester {
 
     this.node.setColoredPolygon(newPolygon);
 
-    ColoredPolygon newNodePolygon = null;
-    try {
-      newNodePolygon = this.node.evaluate().get(0);
-    } catch (final EvaluationException exception) {
-      Util.fail(exception);
-    }
+    ColoredPolygon newNodePolygon = (ColoredPolygon) this.node.evaluate()
+        .toArray()[0];
 
     assertTrue(samePolygon(newPolygon, newNodePolygon));
     assertNotSame(newNodePolygon, this.polygon);

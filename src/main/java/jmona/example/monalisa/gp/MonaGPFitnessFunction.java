@@ -71,14 +71,8 @@ public class MonaGPFitnessFunction extends MinimizingFitnessFunction<Tree> {
    */
   @Override
   public double rawFitness(final Tree tree) throws FitnessException {
-    try {
-      return this.fitnessFunction.rawFitness(((ColoredPolygonNode) tree.root())
-          .evaluate());
-    } catch (final EvaluationException exception) {
-      throw new FitnessException(
-          "Failed to evaluate tree to a List of ColoredPolygon objects.",
-          exception);
-    }
+    return this.fitnessFunction.rawFitness(((ColoredPolygonNode) tree.root())
+        .evaluate());
   }
 
 }
