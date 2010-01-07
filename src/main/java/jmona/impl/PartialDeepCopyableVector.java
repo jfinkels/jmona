@@ -43,7 +43,7 @@ public class PartialDeepCopyableVector<E> extends Vector<E> implements
 
   /** Instantiate this Vector as an empty List. */
   public PartialDeepCopyableVector() {
-    // intentionally unimplemented
+    super();
   }
 
   /**
