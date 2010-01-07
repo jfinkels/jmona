@@ -38,6 +38,7 @@ import org.apache.log4j.Logger;
  */
 public class AntTrailExecutor implements Function<Tree, Integer> {
 
+  /** The Logger for this class. */
   private static final transient Logger LOG = Logger
       .getLogger(AntTrailExecutor.class);
 
