@@ -19,6 +19,8 @@
  */
 package jmona.example.tsp;
 
+import java.util.Set;
+
 /**
  * A graph.
  * 
@@ -30,5 +32,10 @@ package jmona.example.tsp;
  * @since 0.1
  */
 public interface Graph<V, E> {
-
+  /**
+   * Gets the Set of all vertices in this graph.
+   * 
+   * @return The Set of all vertices in this graph.
+   */
+  public Set<V> allVertices();
 }

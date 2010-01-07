@@ -19,12 +19,14 @@
  */
 package jmona.example.tsp;
 
+import java.util.Set;
+
+import jmona.functional.HashSetFromIterable;
+import jmona.functional.Range;
+
 /**
- * An DirectedGraph backed by an adjacency matrix containing edge weights for
- * use in the traveling salesman problem evolution.
- * 
- * For the purposes of this specific evolution example, this graph is assumed to
- * be complete.
+ * A DirectedGraph backed by an adjacency matrix (a two-dimensional array)
+ * storing edge weights as {@code double}s.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
@@ -41,24 +43,37 @@ public class AdjacencyMatrixGraph implements DirectedGraph<Integer, Double> {
    */
   private double[][] adjacencyMatrix = null;
 
+  /** The Set of all vertices in this graph. */
+  private final Set<Integer> vertices;
+
   /**
-   * Instantiate this graph with the specified adjacency matrix representation.
+   * Instantiates this graph with the specified adjacency matrix representation.
+   * 
+   * If the number of rows in the two-dimensional array is <em>m</em>, then the
+   * set of all vertices in this Graph is defined to be
+   * <em>{0, 1, 2, &hellip;, m-1}</em>.
    * 
    * @param initialAdjacencyMatrix
    *          The adjacency matrix which represents this graph.
    */
   public AdjacencyMatrixGraph(final double[][] initialAdjacencyMatrix) {
+
+    // copy the array
     this.adjacencyMatrix = initialAdjacencyMatrix.clone();
+
+    // add all the integers up to the length of the array - 1 to the set of all
+    // vertices
+    this.vertices = new HashSetFromIterable<Integer>(new Range(
+        this.adjacencyMatrix.length));
   }
 
   /**
-   * Get the weight of the edge between the two specified vertices, directed
-   * from the source vertex to the target vertex.
+   * {@inheritDoc}
    * 
    * @param sourceVertex
-   *          The source vertex.
+   *          {@inheritDoc}
    * @param targetVertex
-   *          The target vertex.
+   *          {@inheritDoc}
    * @return The weight of the edge incident to both specified vertices,
    *         directed from the source vertex to the target vertex.
    * @see jmona.example.tsp.DirectedGraph#edgeBetween(java.lang.Object,
@@ -68,6 +83,17 @@ public class AdjacencyMatrixGraph implements DirectedGraph<Integer, Double> {
   public Double edgeBetween(final Integer sourceVertex,
       final Integer targetVertex) {
     return this.adjacencyMatrix[sourceVertex][targetVertex];
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.example.tsp.Graph#allVertices()
+   */
+  @Override
+  public Set<Integer> allVertices() {
+    return this.vertices;
   }
 
 }
