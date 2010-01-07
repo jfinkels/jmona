@@ -22,7 +22,6 @@ package jmona.game.impl;
 import java.util.List;
 
 import jmona.CompletionCondition;
-import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 
 /**
@@ -34,8 +33,8 @@ import jmona.EvolutionContext;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class UniformPopulationCompletionCondition<T extends DeepCopyable<T>>
-    implements CompletionCondition<T> {
+public class UniformPopulationCompletionCondition<T> implements
+    CompletionCondition<T> {
 
   /**
    * Determines whether the current population in the specified EvolutionContext
