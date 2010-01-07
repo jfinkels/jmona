@@ -31,8 +31,7 @@ import jmona.EvolutionContext;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class PopulationLoggingPostProcessor<T extends DeepCopyable<T>> extends
-    LoggingPostProcessor<T> {
+public class PopulationLoggingPostProcessor<T> extends LoggingPostProcessor<T> {
 
   /**
    * Get the current population of the specified EvolutionContext, as a String.

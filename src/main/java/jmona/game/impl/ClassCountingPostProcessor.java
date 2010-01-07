@@ -22,7 +22,6 @@ package jmona.game.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 import jmona.impl.postprocessing.PeriodicPostProcessor;
 
@@ -36,8 +35,7 @@ import org.apache.log4j.Logger;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ClassCountingPostProcessor<T extends DeepCopyable<T>> extends
-    PeriodicPostProcessor<T> {
+public class ClassCountingPostProcessor<T> extends PeriodicPostProcessor<T> {
 
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger

@@ -19,7 +19,6 @@
  */
 package jmona.impl.postprocessing;
 
-import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 import jmona.LoggingException;
 import jmona.ProcessingException;
@@ -39,8 +38,7 @@ import org.apache.log4j.Logger;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public abstract class LoggingPostProcessor<T extends DeepCopyable<T>> extends
-    PeriodicPostProcessor<T> {
+public abstract class LoggingPostProcessor<T> extends PeriodicPostProcessor<T> {
   /** The default level at which to log information. */
   public static final Level DEFAULT_LOGGING_LEVEL = Level.INFO;
   /** The default format of the message to log. */

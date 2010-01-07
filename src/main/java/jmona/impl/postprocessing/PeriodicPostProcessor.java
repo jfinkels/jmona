@@ -19,7 +19,6 @@
  */
 package jmona.impl.postprocessing;
 
-import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 import jmona.PostProcessor;
 import jmona.ProcessingException;
@@ -29,13 +28,12 @@ import jmona.ProcessingException;
  * number of generations only.
  * 
  * @param <T>
- *          The type of Individual in the EvolutionContext which this class
+ *          The type of individual in the EvolutionContext which this class
  *          processes.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public abstract class PeriodicPostProcessor<T extends DeepCopyable<T>>
-    implements PostProcessor<T> {
+public abstract class PeriodicPostProcessor<T> implements PostProcessor<T> {
 
   /**
    * The number of times that the {@link #process(EvolutionContext)} method has
