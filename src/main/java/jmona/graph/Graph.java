@@ -37,5 +37,5 @@ public interface Graph<V, E> {
    * 
    * @return The Set of all vertices in this graph.
    */
-  public Set<V> allVertices();
+  Set<V> allVertices();
 }
