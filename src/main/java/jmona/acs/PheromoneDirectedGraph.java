@@ -25,6 +25,10 @@ import jmona.graph.DirectedGraph;
  * A DirectedGraph which has pheromone on its edges.
  * 
  * @author Jeffrey Finkelstein
+ * @param <V>
+ *          The type of vertex in this graph.
+ * @param <E>
+ *          The type of edge in this graph.
  * @since 0.5
  */
 public interface PheromoneDirectedGraph<V, E> extends DirectedGraph<V, E> {

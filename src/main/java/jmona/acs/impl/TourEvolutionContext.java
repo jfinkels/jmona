@@ -171,6 +171,8 @@ class TourEvolutionContext<A extends Ant> extends AbstractEvolutionContext<A> {
    * Moves each Ant in the current population to one vertex not already visited
    * by the Ant.
    * 
+   * @throws EvolutionException
+   *           If there is a problem selecting a vertex to which to move an Ant.
    * @see jmona.impl.context.AbstractEvolutionContext#executeGenerationStep()
    */
   @Override

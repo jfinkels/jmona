@@ -30,6 +30,8 @@ import jmona.impl.postprocessing.LoggingPostProcessor;
  * distance if a graph is specified.
  * 
  * @author Jeffrey Finkelstein
+ * @param <A>
+ *          The type of Ant whose paths will be logged.
  * @since 0.5
  */
 public class PathLoggingPostProcessor<A extends Ant> extends

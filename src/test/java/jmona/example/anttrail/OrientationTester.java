@@ -94,7 +94,7 @@ public class OrientationTester {
 
   /**
    * Test method for
-   * {@link jmona.example.anttrail.Orientation#Orientation(Short, Short)} .
+   * {@link jmona.example.anttrail.Orientation#Orientation(Short, Short)}.
    */
   @Test
   public void testOrientation() {
@@ -126,7 +126,7 @@ public class OrientationTester {
   }
 
   /**
-   * Test method for {@link jmona.example.anttrail.Orientation#setLeft(Short)}
+   * Test method for {@link jmona.example.anttrail.Orientation#setLeft(Short)}.
    */
   @Test
   public void testSetLeftInteger() {
