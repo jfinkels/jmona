@@ -29,7 +29,7 @@ package jmona;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public interface CompletionCondition<T extends DeepCopyable<T>> extends
+public interface CompletionCondition<T> extends
     Condition<EvolutionContext<T>> {
 
   /**

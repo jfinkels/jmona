@@ -23,7 +23,6 @@ import java.util.Collection;
 
 import jmona.CompletionCondition;
 import jmona.CompletionException;
-import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 
 /**
@@ -36,8 +35,7 @@ import jmona.EvolutionContext;
  *          completion.
  * @since 0.4
  */
-public class AggregatorCompletionCondition<T extends DeepCopyable<T>>
-    implements CompletionCondition<T> {
+public class AggregatorCompletionCondition<T> implements CompletionCondition<T> {
 
   /**
    * The Set of CompletionConditions to check every time this Condition is

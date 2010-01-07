@@ -29,10 +29,11 @@ import java.util.List;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public interface EvolutionContext<T extends DeepCopyable<T>> {
+public interface EvolutionContext<T> {
   /**
-   * Get the current generation number; the initial generation should be 0, and
-   * each subsequent generation should be incremented by 1.
+   * Get the current generation number; the initial generation is 0, and the
+   * generation number is incremented by 1 after each call to
+   * {@link #stepGeneration()}.
    * 
    * @return The current generation number of the evolution.
    */
@@ -46,8 +47,8 @@ public interface EvolutionContext<T extends DeepCopyable<T>> {
   List<T> currentPopulation();
 
   /**
-   * Perform some action on the current population and assign that new
-   * Population to be the current population.
+   * Perform some action on the current population and increment the number of
+   * the current generation.
    * 
    * @throws EvolutionException
    *           If there is a problem during creation of the next generation.

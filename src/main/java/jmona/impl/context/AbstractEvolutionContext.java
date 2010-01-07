@@ -21,7 +21,6 @@ package jmona.impl.context;
 
 import java.util.List;
 
-import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
 
@@ -33,8 +32,8 @@ import jmona.EvolutionException;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public abstract class AbstractEvolutionContext<T extends DeepCopyable<T>>
-    implements EvolutionContext<T> {
+public abstract class AbstractEvolutionContext<T> implements
+    EvolutionContext<T> {
 
   /** The current generation of the evolution. */
   private int generation = 0;

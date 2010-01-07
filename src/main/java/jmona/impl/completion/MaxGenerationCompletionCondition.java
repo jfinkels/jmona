@@ -20,7 +20,6 @@
 package jmona.impl.completion;
 
 import jmona.CompletionCondition;
-import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 
 /**
@@ -33,7 +32,7 @@ import jmona.EvolutionContext;
  *          completion.
  * @since 0.4
  */
-public class MaxGenerationCompletionCondition<T extends DeepCopyable<T>>
+public class MaxGenerationCompletionCondition<T>
     implements CompletionCondition<T> {
 
   /** The default maximum number of generations in the evolution. */
