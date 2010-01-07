@@ -19,7 +19,7 @@
  */
 package jmona.impl;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.Vector;
 
 import jmona.CopyingException;
@@ -27,8 +27,10 @@ import jmona.DeepCopyableList;
 
 /**
  * A Vector which can be deep copied, but whose elements are assumed to be
- * immutable. Therefore, a deep copy of this Vector will only copy references to
- * the elements of the original Vector into the cloned vector.
+ * immutable.
+ * 
+ * Therefore, a deep copy of this Vector will only copy references to the
+ * elements of the original Vector into the cloned vector.
  * 
  * @param <E>
  *          The type of element contained in this Vector.
@@ -48,14 +50,26 @@ public class PartialDeepCopyableVector<E> extends Vector<E> implements
 
   /**
    * Instantiate this vector and copy references of the elements contained in
-   * the specified List to this Vector.
+   * the specified Collection to this Vector.
    * 
-   * @param list
-   *          The List from which to copy references of elements contained
-   *          within.
+   * @param collection
+   *          The Collection from which to copy references of elements.
    */
-  public PartialDeepCopyableVector(final List<E> list) {
-    this.addAll(list);
+  public PartialDeepCopyableVector(final Collection<E> collection) {
+    super(collection);
+  }
+
+  /**
+   * Instantiates this vector and copies references of the elements returned by
+   * the specified Iterable into this Vector in order.
+   * 
+   * @param iterable
+   *          The Iterable from which to copy references of elements.
+   */
+  public PartialDeepCopyableVector(final Iterable<E> iterable) {
+    for (final E element : iterable) {
+      this.add(element);
+    }
   }
 
   /**
