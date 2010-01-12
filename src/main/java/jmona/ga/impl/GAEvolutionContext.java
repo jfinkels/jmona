@@ -91,14 +91,16 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
       throw new EvolutionException("Sanity check failed.", exception);
     }
 
-    // instantiate a population which will represent the next generation
-    final List<T> nextPopulation = new Vector<T>();
-
     // get a reference to the current population
     final List<T> currentPopulation = this.currentPopulation();
 
     // get the size of the current population
     final int currentSize = currentPopulation.size();
+
+    // if the size of the population is too small
+    if (currentSize < 2) {
+      throw new RuntimeException("The size of the population is less than 2.");
+    }
 
     // get a reference to the fitness function for this evolution
     final FitnessFunction<T> fitnessFunction = this.fitnessFunction();
@@ -107,10 +109,8 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
     final IndependentSelectionFunction<T> selectionFunction = this
         .selectionFunction();
 
-    // if the size of the population is too small
-    if (currentSize < 2) {
-      throw new RuntimeException("The size of the population is less than 2.");
-    }
+    // instantiate a population which will represent the next generation
+    final List<T> nextPopulation = new Vector<T>();
 
     try {
       // while the size of the next generation is less than the size of the
