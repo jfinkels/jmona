@@ -87,14 +87,14 @@ public class ColoredPolygonMutationFunction implements
     final int alpha = color.getAlpha();
 
     // get the shifted colors and alpha
-    int newRed = RandomUtils.randomData().nextInt(red - this.colorShift, red
-        + this.colorShift);
-    int newGreen = RandomUtils.randomData().nextInt(green - this.colorShift, green
-        + this.colorShift);
-    int newBlue = RandomUtils.randomData().nextInt(blue - this.colorShift, blue
-        + this.colorShift);
-    int newAlpha = RandomUtils.randomData().nextInt(alpha - this.colorShift, alpha
-        + this.colorShift);
+    int newRed = RandomUtils.randomData().nextInt(red - this.colorShift,
+        red + this.colorShift);
+    int newGreen = RandomUtils.randomData().nextInt(green - this.colorShift,
+        green + this.colorShift);
+    int newBlue = RandomUtils.randomData().nextInt(blue - this.colorShift,
+        blue + this.colorShift);
+    int newAlpha = RandomUtils.randomData().nextInt(alpha - this.colorShift,
+        alpha + this.colorShift);
 
     // ensure that the values are within the permissible range of values for
     // fields of a color, that is, between 0 and 255, inclusive
@@ -124,7 +124,9 @@ public class ColoredPolygonMutationFunction implements
         individual.npoints - 1);
 
     // mutate the x and y values of the point
-    individual.xpoints[mutationPoint] = (int) (Math.random() * this.width);
-    individual.ypoints[mutationPoint] = (int) (Math.random() * this.height);
+    individual.xpoints[mutationPoint] = RandomUtils.randomData().nextInt(0,
+        this.width);
+    individual.ypoints[mutationPoint] = RandomUtils.randomData().nextInt(0,
+        this.height);
   }
 }

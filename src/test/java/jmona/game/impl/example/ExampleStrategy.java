@@ -21,6 +21,7 @@ package jmona.game.impl.example;
 
 import jmona.DeepCopyable;
 import jmona.game.Strategy;
+import jmona.random.RandomUtils;
 
 /**
  * An example strategy with a score property.
@@ -35,7 +36,7 @@ public class ExampleStrategy implements Strategy, DeepCopyable<ExampleStrategy> 
 
   /** Instantiate this Strategy with a random score between 0 and 1. */
   public ExampleStrategy() {
-    this(Math.random());
+    this(RandomUtils.nextDouble());
   }
 
   /**

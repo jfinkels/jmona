@@ -29,6 +29,7 @@ import jmona.MutationException;
 import jmona.SelectionException;
 import jmona.gp.Tree;
 import jmona.impl.context.AbstractGeneticEvolutionContext;
+import jmona.random.RandomUtils;
 
 /**
  * A default EvolutionContext for a Genetic Programming evolution.
@@ -95,7 +96,7 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
 
         // choose variation operation probabilistically
         // TODO I am ignoring the crossoverProbability property
-        if (Math.random() < this.mutationProbability()
+        if (RandomUtils.nextDouble() < this.mutationProbability()
             || nextGeneration.size() >= currentSize - 1) {
 
           // perform mutation

@@ -95,7 +95,8 @@ public class FitnessProportionateSelection<T> implements
     }
 
     // choose a number between 0 and the sum of all fitnesses
-    final double selection = Math.random() * fitnessesSum;
+    final double selection = RandomUtils.randomData().nextUniform(0,
+        fitnessesSum);
 
     // iterate over all entries in the list of fitnesses
     T result = null;

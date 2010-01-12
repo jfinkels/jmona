@@ -29,6 +29,7 @@ import jmona.EvolutionException;
 import jmona.MutationException;
 import jmona.SelectionException;
 import jmona.impl.context.AbstractGeneticEvolutionContext;
+import jmona.random.RandomUtils;
 
 /**
  * A default implementation of the evolution context interface, which provides
@@ -116,17 +117,17 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
         /**
          * Step 2: Perform crossover with probability p_crossover
          */
-        if (Math.random() < this.crossoverProbability()) {
+        if (RandomUtils.nextDouble() < this.crossoverProbability()) {
           this.crossoverFunction().crossover(individual1, individual2);
         }
 
         /**
          * Step 3: Perform mutation with probability p_mutation
          */
-        if (Math.random() < this.mutationProbability()) {
+        if (RandomUtils.nextDouble() < this.mutationProbability()) {
           this.mutationFunction().mutate(individual1);
         }
-        if (Math.random() < this.mutationProbability()) {
+        if (RandomUtils.nextDouble() < this.mutationProbability()) {
           this.mutationFunction().mutate(individual2);
         }
 

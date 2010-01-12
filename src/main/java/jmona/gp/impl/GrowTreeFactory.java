@@ -23,6 +23,7 @@ import jmona.InitializationException;
 import jmona.functional.Range;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
+import jmona.random.RandomUtils;
 
 /**
  * A TreeFactory which uses the "grow" method to generate a Tree, that is,
@@ -53,7 +54,8 @@ public class GrowTreeFactory extends AbstractTreeFactory {
   protected Node createTree(final int currentDepth)
       throws InitializationException {
 
-    if (currentDepth <= 1 || Math.random() < this.probabilityTerminal) {
+    if (currentDepth <= 1
+        || RandomUtils.nextDouble() < this.probabilityTerminal) {
       return this.terminalNodeFactory().createObject();
     } else {
       // create a function node
