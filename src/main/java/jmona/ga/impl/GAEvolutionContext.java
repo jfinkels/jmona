@@ -60,6 +60,7 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
    *           {@inheritDoc}
    */
   // TODO documentation for this method
+  // TODO refactor to calculate fitnesses only once before selection
   @Override
   public void executeGenerationStep() throws EvolutionException {
     // perform a sanity check (i.e. make sure there are no null properties)
