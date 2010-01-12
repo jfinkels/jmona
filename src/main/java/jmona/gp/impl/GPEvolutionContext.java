@@ -25,6 +25,8 @@ import java.util.Vector;
 import jmona.CopyingException;
 import jmona.CrossoverException;
 import jmona.EvolutionException;
+import jmona.FitnessFunction;
+import jmona.IndependentSelectionFunction;
 import jmona.MutationException;
 import jmona.SelectionException;
 import jmona.gp.Tree;
@@ -71,8 +73,11 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
       throw new EvolutionException("Sanity check failed.", exception);
     }
 
+    // get a reference to the current population
+    final List<Tree> currentPopulation = this.currentPopulation();
+
     // get the size of the current population
-    final int currentSize = this.currentPopulation().size();
+    final int currentSize = currentPopulation.size();
 
     // if the size of the population is too small
     if (currentSize < 2) {
@@ -82,17 +87,23 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
     // initialize a new population to hold the next generation
     final List<Tree> nextGeneration = new Vector<Tree>();
 
-    Tree individual1 = null;
-    Tree individual2 = null;
+    // get a reference to the fitness function for this evolution
+    final FitnessFunction<Tree> fitnessFunction = this.fitnessFunction();
+
+    // get a reference to the selection function for this evolution
+    final IndependentSelectionFunction<Tree> selectionFunction = this
+        .selectionFunction();
 
     try {
       // while the size of the next generation is less than the size of the
       // current generation
+      Tree individual1 = null;
+      Tree individual2 = null;
       while (nextGeneration.size() < currentSize) {
 
         // select one individual, because each op. requires at least one
-        individual1 = this.selectionFunction().select(this.currentPopulation(),
-            this.fitnessFunction()).deepCopy();
+        individual1 = selectionFunction.select(currentPopulation,
+            fitnessFunction).deepCopy();
 
         // choose variation operation probabilistically
         // TODO I am ignoring the crossoverProbability property
@@ -105,8 +116,8 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
         } else { // variation operation is crossover
 
           // select another individual (different from the first!)
-          individual2 = this.selectionFunction().select(
-              this.currentPopulation(), this.fitnessFunction()).deepCopy();
+          individual2 = selectionFunction.select(currentPopulation,
+              fitnessFunction).deepCopy();
 
           // perform crossover
           this.crossoverFunction().crossover(individual1, individual2);
