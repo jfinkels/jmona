@@ -103,7 +103,7 @@ public class ColoredPolygonMutationFunction implements
     newBlue = Math.max(Math.min(newBlue, MAX_COLOR_VALUE), 0);
     newAlpha = Math.max(Math.min(newAlpha, MAX_COLOR_VALUE), 0);
 
-    return new Color(newRed, newGreen, newBlue, color.getAlpha());
+    return new Color(newRed, newGreen, newBlue, newAlpha);
   }
 
   /**
