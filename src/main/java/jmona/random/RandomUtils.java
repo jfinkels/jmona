@@ -52,6 +52,17 @@ public final class RandomUtils {
   }
 
   /**
+   * Returns a uniformly random {@code double} between 0 and 1, exclusive (this
+   * is a convenience method for {@code
+   * RandomData.randomData().nextUniform(0,1)}).
+   * 
+   * @return A uniformly random {@code double} between 0 and 1, exclusive.
+   */
+  public static double nextDouble() {
+    return randomData.nextUniform(0, 1);
+  }
+
+  /**
    * Gets the static RandomData object stored in this class.
    * 
    * @return The static RandomData object stored in this class.
