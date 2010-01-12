@@ -95,6 +95,12 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
         .selectionFunction();
 
     try {
+      // if elitism is enabled, copy the best individuals to the next generation
+      if (this.elitism() > 0) {
+        nextPopulation.addAll(this.elitismSelectionFunction().select(
+            currentPopulation, fitnessFunction, this.elitism()));
+      }
+
       // while the size of the next generation is less than the size of the
       // current generation
       Tree individual1 = null;
