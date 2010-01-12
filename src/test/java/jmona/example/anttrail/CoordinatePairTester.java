@@ -209,7 +209,7 @@ public class CoordinatePairTester {
 
   /**
    * Test method for
-   * {@link jmona.example.anttrail.CoordinatePair#sumWith(jmona.example.anttrail.CoordinatePair)}
+   * {@link jmona.example.anttrail.CoordinatePair#sumWith(Pair, CoordinatePair)}
    * .
    */
   @Test
