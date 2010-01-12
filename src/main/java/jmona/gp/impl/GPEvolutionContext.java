@@ -85,7 +85,7 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
     }
 
     // initialize a new population to hold the next generation
-    final List<Tree> nextGeneration = new Vector<Tree>();
+    final List<Tree> nextPopulation = new Vector<Tree>();
 
     // get a reference to the fitness function for this evolution
     final FitnessFunction<Tree> fitnessFunction = this.fitnessFunction();
@@ -99,7 +99,7 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
       // current generation
       Tree individual1 = null;
       Tree individual2 = null;
-      while (nextGeneration.size() < currentSize) {
+      while (nextPopulation.size() < currentSize) {
 
         // select one individual, because each op. requires at least one
         individual1 = selectionFunction.select(currentPopulation,
@@ -108,7 +108,7 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
         // choose variation operation probabilistically
         // TODO I am ignoring the crossoverProbability property
         if (RandomUtils.nextDouble() < this.mutationProbability()
-            || nextGeneration.size() >= currentSize - 1) {
+            || nextPopulation.size() >= currentSize - 1) {
 
           // perform mutation
           this.mutationFunction().mutate(individual1);
@@ -123,15 +123,15 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
           this.crossoverFunction().crossover(individual1, individual2);
 
           // add the second individual to the next generation
-          nextGeneration.add(individual2);
+          nextPopulation.add(individual2);
         }
 
         // add the original individual to the next generation
-        nextGeneration.add(individual1);
+        nextPopulation.add(individual1);
       }
 
       // set the current population to the next generation
-      this.setCurrentPopulation(nextGeneration);
+      this.setCurrentPopulation(nextPopulation);
 
       // recalculate the fitnesses of the current generation
       // this.recalculateFitnesses();
