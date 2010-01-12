@@ -156,7 +156,7 @@ class TourEvolutionContext<A extends Ant> extends AbstractEvolutionContext<A> {
 
     // normalize each of the probabilities by dividing by their sum
     for (final Entry<Integer, Double> entry : probabilities.entrySet()) {
-      probability = probabilities.put(entry.getKey(), entry.getValue() / sum);
+      probabilities.put(entry.getKey(), entry.getValue() / sum);
     }
 
     // create a fitness function which knows about those probabilities
