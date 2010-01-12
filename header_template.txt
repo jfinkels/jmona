@@ -2,7 +2,7 @@
 ^/\*\*$
 ^ \* .*\.java
 ^ \* $
-^ \* Copyright \d\d\d\d
+^ \* Copyright \d\d\d\d(, \d\d\d\d)* .* .*$
 ^ \* $
 ^ \* This file is part of jmona\.$
 ^ \* $
