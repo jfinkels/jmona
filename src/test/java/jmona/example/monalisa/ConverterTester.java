@@ -42,7 +42,7 @@ public class ConverterTester {
 
   /**
    * Test method for
-   * {@link jmona.example.monalisa.Converter#toImage(java.util.List, int, int)}.
+   * {@link jmona.example.monalisa.Converter#toImage(Iterable, int, int)}.
    */
   @Test
   public void testToImage() {
