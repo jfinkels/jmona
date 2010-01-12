@@ -32,49 +32,49 @@ public interface GeneticEvolutionContext<T extends DeepCopyable<T>> extends
     EvolutionContext<T> {
 
   /**
-   * Get the crossover function used by this context.
+   * Gets the crossover function used by this context.
    * 
    * @return The crossover function used by this context.
    */
   CrossoverFunction<T> crossoverFunction();
 
   /**
-   * Get the probability of crossover for selected Individuals.
+   * Gets the probability of crossover for selected individuals.
    * 
-   * @return The probability of crossover for selected Individuals.
+   * @return The probability of crossover for selected individuals.
    */
   double crossoverProbability();
 
   /**
-   * Get the fitness function used by this context.
+   * Gets the fitness function used by this context.
    * 
    * @return The fitness function used by this context.
    */
   FitnessFunction<T> fitnessFunction();
 
   /**
-   * Get the mutation function used by this context.
+   * Gets the mutation function used by this context.
    * 
    * @return The mutation function used by this context.
    */
   MutationFunction<T> mutationFunction();
 
   /**
-   * Get the probability of mutation for selected Individuals.
+   * Gets the probability of mutation for selected individuals.
    * 
-   * @return The probability of mutation for selected Individuals.
+   * @return The probability of mutation for selected individuals.
    */
   double mutationProbability();
 
   /**
-   * Get the selection function used by this context.
+   * Gets the selection function used by this context.
    * 
    * @return The selection function used by this context.
    */
   IndependentSelectionFunction<T> selectionFunction();
 
   /**
-   * Set the crossover function used by this context.
+   * Sets the crossover function used by this context.
    * 
    * @param function
    *          The crossover function used by this context.
@@ -82,15 +82,15 @@ public interface GeneticEvolutionContext<T extends DeepCopyable<T>> extends
   void setCrossoverFunction(final CrossoverFunction<T> function);
 
   /**
-   * Set the probability of crossover for selected Individuals.
+   * Sets the probability of crossover for selected individuals.
    * 
    * @param newCrossoverProbability
-   *          The probability of crossover for selected Individuals.
+   *          The probability of crossover for selected individuals.
    */
   void setCrossoverProbability(final double newCrossoverProbability);
 
   /**
-   * Set the fitness function used by this context.
+   * Sets the fitness function used by this context.
    * 
    * @param function
    *          The fitness function used by this context.
@@ -98,7 +98,7 @@ public interface GeneticEvolutionContext<T extends DeepCopyable<T>> extends
   void setFitnessFunction(final FitnessFunction<T> function);
 
   /**
-   * Set the mutation function used by this context.
+   * Sets the mutation function used by this context.
    * 
    * @param function
    *          The mutation function used by this context.
@@ -106,15 +106,15 @@ public interface GeneticEvolutionContext<T extends DeepCopyable<T>> extends
   void setMutationFunction(final MutationFunction<T> function);
 
   /**
-   * Set the probability of mutation for selected Individuals.
+   * Sets the probability of mutation for selected individuals.
    * 
    * @param newMutationProbability
-   *          The probability of mutation for selected Individuals.
+   *          The probability of mutation for selected individuals.
    */
   void setMutationProbability(final double newMutationProbability);
 
   /**
-   * Set the selection function used by this context.
+   * Sets the selection function used by this context.
    * 
    * @param function
    *          The selection function used by this context
