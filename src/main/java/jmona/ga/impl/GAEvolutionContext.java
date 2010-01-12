@@ -55,11 +55,29 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
   }
 
   /**
+   * Evolve the next generation of the current population by using a standard
+   * genetic algorithms evolution algorithm.
+   * 
+   * The generation step essentially proceeds in four phases, which repeat until
+   * the next generation has been fully determined:
+   * 
+   * <ul>
+   * <li>Phase 1: clone two individuals selected using the SelectionFunction
+   * previously set on this object to produce two child individuals</li>
+   * <li>Phase 2: perform crossover on those individuals with the specified
+   * probability, using the CrossoverFunction previously set on this object</li>
+   * <li>Phase 3: perform mutation on those individuals with the specified
+   * probability, using the MutationFuncion previously set on this object</li>
+   * <li>Phase 4: add those individuals to the list containing the next
+   * generation
+   * </ul>
+   * 
+   * Once the next generation has been fully determined by repeating these four
+   * phases, that list of individuals is assigned to be the current population.
    * 
    * @throws EvolutionException
    *           {@inheritDoc}
    */
-  // TODO documentation for this method
   // TODO refactor to calculate fitnesses only once before selection
   @Override
   public void executeGenerationStep() throws EvolutionException {
