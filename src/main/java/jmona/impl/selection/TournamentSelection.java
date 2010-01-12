@@ -43,7 +43,7 @@ public class TournamentSelection<T> implements IndependentSelectionFunction<T> {
    * tournament.
    */
   public static final int DEFAULT_TOURNAMENT_SIZE = 5;
-  /** A comparator for individuals based on their fitnesses. */
+  /** A comparator for individuals based on their standardized fitnesses. */
   private final StandardizedFitnessComparator<T> standardizedFitnessComparator = new StandardizedFitnessComparator<T>();
   /**
    * The number of Individuals to be chosen at random to compete in the
