@@ -30,7 +30,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.1
  */
 @RunWith(Suite.class)
-@SuiteClasses({ FitnessProportionateSelectionTester.class,
+@SuiteClasses({ ElitismSelectionFunctionTester.class,
+    FitnessProportionateSelectionTester.class,
     LinearRankingSelectionTester.class, TournamentSelectionTester.class })
 public class AllTest {
 
