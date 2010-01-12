@@ -388,7 +388,7 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#setSelectionFunction(jmona.SelectionFunction)}
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#setSelectionFunction(jmona.IndependentSelectionFunction)}
    * .
    */
   @Test
