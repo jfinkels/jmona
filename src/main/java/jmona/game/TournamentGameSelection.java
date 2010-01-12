@@ -49,7 +49,7 @@ public interface TournamentGameSelection<S extends Strategy> extends
    * @throws SelectionException
    *           If there is a problem selecting the winner of a tournament.
    */
-  public S select(final List<S> population, final TwoPlayerGame<S> game)
+  S select(final List<S> population, final TwoPlayerGame<S> game)
       throws SelectionException;
 
 }
