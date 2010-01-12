@@ -195,6 +195,20 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#setElitism(int)}
+   * and {@link jmona.impl.context.AbstractGeneticEvolutionContext#elitism()}.
+   */
+  @Test
+  public void testSetElitism() {
+    assertEquals(AbstractGeneticEvolutionContext.DEFAULT_ELITISM, this.context
+        .elitism());
+    final int newElitism = 10;
+    this.context.setElitism(newElitism);
+    assertEquals(newElitism, this.context.elitism());
+  }
+
+  /**
+   * Test method for
    * {@link jmona.impl.context.AbstractGeneticEvolutionContext#fitnessFunction()}
    * .
    */

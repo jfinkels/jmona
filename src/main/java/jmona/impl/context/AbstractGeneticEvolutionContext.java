@@ -26,7 +26,9 @@ import jmona.DeepCopyable;
 import jmona.FitnessFunction;
 import jmona.GeneticEvolutionContext;
 import jmona.IndependentSelectionFunction;
+import jmona.MultipleSelectionFunction;
 import jmona.MutationFunction;
+import jmona.impl.selection.ElitismSelectionFunction;
 
 /**
  * An abstract base class for GeneticEvolutionContexts.
@@ -40,21 +42,17 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
     extends AbstractEvolutionContext<T> implements GeneticEvolutionContext<T> {
 
   /**
-   * Instantiates thie GeneticEvolutionContext with the specified initial
-   * population.
-   * 
-   * @param initialPopulation
-   *          The initial population.
-   */
-  public AbstractGeneticEvolutionContext(final List<T> initialPopulation) {
-    super(initialPopulation);
-  }
-
-  /**
    * The default probability that crossover will be performed on Individuals
    * selected for breeding.
    */
   public static final double DEFAULT_CROSSOVER_PROBABILITY = 0.6;
+
+  /**
+   * The default number of top individuals which are copied directly from the
+   * current generation to the next generation without variation on each
+   * generation step.
+   */
+  public static final int DEFAULT_ELITISM = 0;
   /** The default probability of mutating an Individual. */
   public static final double DEFAULT_MUTATION_PROBABILITY = 0.1;
   /** The crossover function. */
@@ -64,7 +62,14 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * for breeding.
    */
   private double crossoverProbability = DEFAULT_CROSSOVER_PROBABILITY;
-
+  /**
+   * The number of top individuals which are copied directly from the current
+   * generation to the next generation without variation on each generation
+   * step.
+   */
+  private int elitism = DEFAULT_ELITISM;
+  /** The SelectionFunction which is used when elitism is greater than 0. */
+  private final MultipleSelectionFunction<T> elitismSelectionFunction = new ElitismSelectionFunction<T>();
   /** The fitness function for determining fitness of individuals. */
   private FitnessFunction<T> fitnessFunction = null;
   /** The mutation function for this context. */
@@ -73,6 +78,17 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
   private double mutationProbability = DEFAULT_MUTATION_PROBABILITY;
   /** The selection function for this context. */
   private IndependentSelectionFunction<T> selectionFunction = null;
+
+  /**
+   * Instantiates thie GeneticEvolutionContext with the specified initial
+   * population.
+   * 
+   * @param initialPopulation
+   *          The initial population.
+   */
+  public AbstractGeneticEvolutionContext(final List<T> initialPopulation) {
+    super(initialPopulation);
+  }
 
   /**
    * {@inheritDoc}
@@ -95,6 +111,28 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
   @Override
   public double crossoverProbability() {
     return this.crossoverProbability;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.GeneticEvolutionContext#elitism()
+   */
+  @Override
+  public int elitism() {
+    return this.elitism;
+  }
+
+  /**
+   * Gets the ElitismSelectionFunction to select the most fit individuals in a
+   * population.
+   * 
+   * @return The ElitismSelectionFunction to select the most fit individuals in
+   *         a population.
+   */
+  protected MultipleSelectionFunction<T> elitismSelectionFunction() {
+    return this.elitismSelectionFunction;
   }
 
   /**
@@ -189,6 +227,18 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
   @Override
   public void setCrossoverProbability(final double newCrossoverProbability) {
     this.crossoverProbability = newCrossoverProbability;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @param newElitism
+   *          {@inheritDoc}
+   * @see jmona.GeneticEvolutionContext#setElitism(int)
+   */
+  @Override
+  public void setElitism(final int newElitism) {
+    this.elitism = newElitism;
   }
 
   /**

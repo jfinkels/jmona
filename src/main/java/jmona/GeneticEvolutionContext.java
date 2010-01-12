@@ -46,6 +46,16 @@ public interface GeneticEvolutionContext<T extends DeepCopyable<T>> extends
   double crossoverProbability();
 
   /**
+   * Gets the number of top individuals which are copied directly from the
+   * current population to the next generation without variation (crossover or
+   * mutation) in the {@link #stepGeneration()} method.
+   * 
+   * @return The number of top individuals which are copied directly from the
+   *         current population to the next generation without variation.
+   */
+  int elitism();
+
+  /**
    * Gets the fitness function used by this context.
    * 
    * @return The fitness function used by this context.
@@ -88,6 +98,17 @@ public interface GeneticEvolutionContext<T extends DeepCopyable<T>> extends
    *          The probability of crossover for selected individuals.
    */
   void setCrossoverProbability(final double newCrossoverProbability);
+
+  /**
+   * Sets the number of top individuals which are copied directly from the
+   * current population to the next generation without variation (crossover or
+   * mutation) in the {@link #stepGeneration()} method.
+   * 
+   * @param newElitism
+   *          The number of top individuals which are copied directly from the
+   *          current population to the next generation without variation.
+   */
+  void setElitism(final int newElitism);
 
   /**
    * Sets the fitness function used by this context.
