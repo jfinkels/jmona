@@ -26,6 +26,8 @@ import jmona.CopyingException;
 import jmona.CrossoverException;
 import jmona.DeepCopyable;
 import jmona.EvolutionException;
+import jmona.FitnessFunction;
+import jmona.IndependentSelectionFunction;
 import jmona.MutationException;
 import jmona.SelectionException;
 import jmona.impl.context.AbstractGeneticEvolutionContext;
@@ -92,8 +94,18 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
     // instantiate a population which will represent the next generation
     final List<T> nextPopulation = new Vector<T>();
 
+    // get a reference to the current population
+    final List<T> currentPopulation = this.currentPopulation();
+
     // get the size of the current population
-    final int currentSize = this.currentPopulation().size();
+    final int currentSize = currentPopulation.size();
+
+    // get a reference to the fitness function for this evolution
+    final FitnessFunction<T> fitnessFunction = this.fitnessFunction();
+
+    // get a reference to the selection function for this evolution
+    final IndependentSelectionFunction<T> selectionFunction = this
+        .selectionFunction();
 
     // if the size of the population is too small
     if (currentSize < 2) {
@@ -109,10 +121,10 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
         /**
          * Step 1: select two individuals
          */
-        individual1 = this.selectionFunction().select(this.currentPopulation(),
-            this.fitnessFunction()).deepCopy();
-        individual2 = this.selectionFunction().select(this.currentPopulation(),
-            this.fitnessFunction()).deepCopy();
+        individual1 = selectionFunction.select(currentPopulation,
+            fitnessFunction).deepCopy();
+        individual2 = selectionFunction.select(currentPopulation,
+            fitnessFunction).deepCopy();
 
         /**
          * Step 2: Perform crossover with probability p_crossover
@@ -124,10 +136,11 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
         /**
          * Step 3: Perform mutation with probability p_mutation
          */
-        if (RandomUtils.nextDouble() < this.mutationProbability()) {
+        final double mutationProbability = this.mutationProbability();
+        if (RandomUtils.nextDouble() < mutationProbability) {
           this.mutationFunction().mutate(individual1);
         }
-        if (RandomUtils.nextDouble() < this.mutationProbability()) {
+        if (RandomUtils.nextDouble() < mutationProbability) {
           this.mutationFunction().mutate(individual2);
         }
 
@@ -140,8 +153,8 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
 
       // if the population size was an odd number, just add one more individual
       if ((currentSize & 1) == 1) {
-        nextPopulation.add(this.selectionFunction().select(
-            this.currentPopulation(), this.fitnessFunction()).deepCopy());
+        nextPopulation.add(selectionFunction.select(currentPopulation,
+            fitnessFunction).deepCopy());
       }
 
       // set the current population to the next generation
