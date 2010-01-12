@@ -75,7 +75,7 @@ public class PartialDeepCopyableVectorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.PartialDeepCopyableVector#PartialDeepCopyableVector(java.util.List)}
+   * {@link jmona.impl.PartialDeepCopyableVector#PartialDeepCopyableVector(java.lang.Iterable)}
    * .
    */
   @Test
