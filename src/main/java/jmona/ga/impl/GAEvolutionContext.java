@@ -28,7 +28,6 @@ import jmona.DeepCopyable;
 import jmona.EvolutionException;
 import jmona.MutationException;
 import jmona.SelectionException;
-import jmona.impl.context.AbstractEvolutionContext;
 import jmona.impl.context.AbstractGeneticEvolutionContext;
 
 /**
@@ -49,7 +48,7 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
    * 
    * @param initialPopulation
    *          The initial population.
-   * @see AbstractEvolutionContext#AbstractEvolutionContext(List)
+   * @see AbstractGeneticEvolutionContext#AbstractEvolutionContext(List)
    */
   public GAEvolutionContext(final List<T> initialPopulation) {
     super(initialPopulation);
