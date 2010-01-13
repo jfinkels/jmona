@@ -51,7 +51,7 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
    * 
    * @param initialPopulation
    *          The initial population.
-   * @see AbstractGeneticEvolutionContext#AbstractEvolutionContext(List)
+   * @see AbstractGeneticEvolutionContext#AbstractGeneticEvolutionContext(List)
    */
   public GAEvolutionContext(final List<T> initialPopulation) {
     super(initialPopulation);
