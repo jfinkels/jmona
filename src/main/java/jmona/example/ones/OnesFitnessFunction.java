@@ -26,7 +26,7 @@ import jmona.impl.fitness.MaximizingFitnessFunction;
 
 /**
  * A fitness function which gives higher fitness to individuals with a greater
- * number of ones in their genes.
+ * number of ones.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
@@ -50,11 +50,11 @@ public class OnesFitnessFunction extends MaximizingFitnessFunction<List<Byte>> {
   }
 
   /**
-   * Get the number of ones in the gene of the specified individual.
+   * Gets the number of ones in the specified individual.
    * 
    * @param individual
    *          The individual whose fitness is to be determined.
-   * @return The number of ones in the gene of the specified individual.
+   * @return The number of ones in the specified individual.
    * @see jmona.FitnessFunction#rawFitness(Object)
    */
   @Override
