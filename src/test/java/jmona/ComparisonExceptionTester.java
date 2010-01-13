@@ -19,10 +19,7 @@
  */
 package jmona;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the ComparisonException class.
@@ -30,69 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
-public class ComparisonExceptionTester {
-
-  /**
-   * Test method for
-   * {@link jmona.ComparisonException#ComparisonException()}.
-   */
-  @Test
-  public void testComparisonException() {
-    try {
-      throw new ComparisonException();
-    } catch (final ComparisonException exception) {
-      assertTrue(exception instanceof ComparisonException);
-    }
+public class ComparisonExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the AlreadyVisitedException. */
+  public ComparisonExceptionTester() {
+    super(ComparisonException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.ComparisonException#ComparisonException(java.lang.String)}
-   * .
-   */
-  @Test
-  public void testComparisonExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new ComparisonException(message);
-    } catch (final ComparisonException exception) {
-      assertTrue(exception instanceof ComparisonException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.ComparisonException#ComparisonException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testComparisonExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new ComparisonException(message, cause);
-    } catch (final ComparisonException exception) {
-      assertTrue(exception instanceof ComparisonException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.ComparisonException#ComparisonException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testComparisonExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new ComparisonException(cause);
-    } catch (final ComparisonException exception) {
-      assertTrue(exception instanceof ComparisonException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }

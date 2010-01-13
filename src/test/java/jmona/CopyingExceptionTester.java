@@ -19,10 +19,7 @@
  */
 package jmona;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the CopyingException class.
@@ -30,69 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class CopyingExceptionTester {
-
-  /**
-   * Test method for
-   * {@link jmona.CopyingException#CopyingException()}.
-   */
-  @Test
-  public void testCopyingException() {
-    try {
-      throw new CopyingException();
-    } catch (final CopyingException exception) {
-      assertTrue(exception instanceof CopyingException);
-    }
+public class CopyingExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the CopyingException. */
+  public CopyingExceptionTester() {
+    super(CopyingException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.CopyingException#CopyingException(java.lang.String)}
-   * .
-   */
-  @Test
-  public void testCopyingExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new CopyingException(message);
-    } catch (final CopyingException exception) {
-      assertTrue(exception instanceof CopyingException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.CopyingException#CopyingException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testCopyingExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new CopyingException(message, cause);
-    } catch (final CopyingException exception) {
-      assertTrue(exception instanceof CopyingException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.CopyingException#CopyingException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testCopyingExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new CopyingException(cause);
-    } catch (final CopyingException exception) {
-      assertTrue(exception instanceof CopyingException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }

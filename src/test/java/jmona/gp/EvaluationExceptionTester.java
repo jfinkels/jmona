@@ -19,10 +19,7 @@
  */
 package jmona.gp;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the EvaluationException class.
@@ -30,67 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class EvaluationExceptionTester {
-
-  /**
-   * Test method for {@link jmona.gp.EvaluationException#EvaluationException()}.
-   */
-  @Test
-  public void testEvaluationException() {
-    try {
-      throw new EvaluationException();
-    } catch (final EvaluationException exception) {
-      assertTrue(exception instanceof EvaluationException);
-    }
+public class EvaluationExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the EvaluationException. */
+  public EvaluationExceptionTester() {
+    super(EvaluationException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.gp.EvaluationException#EvaluationException(java.lang.String)}.
-   */
-  @Test
-  public void testEvaluationExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new EvaluationException(message);
-    } catch (final EvaluationException exception) {
-      assertTrue(exception instanceof EvaluationException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.gp.EvaluationException#EvaluationException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testEvaluationExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new EvaluationException(message, cause);
-    } catch (final EvaluationException exception) {
-      assertTrue(exception instanceof EvaluationException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.gp.EvaluationException#EvaluationException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testEvaluationExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new EvaluationException(cause);
-    } catch (final EvaluationException exception) {
-      assertTrue(exception instanceof EvaluationException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }

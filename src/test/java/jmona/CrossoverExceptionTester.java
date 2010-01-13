@@ -19,10 +19,7 @@
  */
 package jmona;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the CrossoverException class.
@@ -30,69 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class CrossoverExceptionTester {
-
-  /**
-   * Test method for
-   * {@link jmona.CrossoverException#CrossoverException()}.
-   */
-  @Test
-  public void testCrossoverException() {
-    try {
-      throw new CrossoverException();
-    } catch (final CrossoverException exception) {
-      assertTrue(exception instanceof CrossoverException);
-    }
+public class CrossoverExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the CrossoverException. */
+  public CrossoverExceptionTester() {
+    super(CrossoverException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.CrossoverException#CrossoverException(java.lang.String)}
-   * .
-   */
-  @Test
-  public void testCrossoverExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new CrossoverException(message);
-    } catch (final CrossoverException exception) {
-      assertTrue(exception instanceof CrossoverException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.CrossoverException#CrossoverException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testCrossoverExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new CrossoverException(message, cause);
-    } catch (final CrossoverException exception) {
-      assertTrue(exception instanceof CrossoverException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.CrossoverException#CrossoverException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testCrossoverExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new CrossoverException(cause);
-    } catch (final CrossoverException exception) {
-      assertTrue(exception instanceof CrossoverException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }

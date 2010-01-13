@@ -19,10 +19,7 @@
  */
 package jmona;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the PropertyNotWritableException class.
@@ -30,69 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class PropertyNotWritableExceptionTester {
-
-  /**
-   * Test method for
-   * {@link jmona.PropertyNotWritableException#PropertyNotWritableException()}.
-   */
-  @Test
-  public void testPropertyNotWritableException() {
-    try {
-      throw new PropertyNotWritableException();
-    } catch (final PropertyNotWritableException exception) {
-      assertTrue(exception instanceof PropertyNotWritableException);
-    }
+public class PropertyNotWritableExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the PropertyNotWritableException. */
+  public PropertyNotWritableExceptionTester() {
+    super(PropertyNotWritableException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.PropertyNotWritableException#PropertyNotWritableException(java.lang.String)}
-   * .
-   */
-  @Test
-  public void testPropertyNotWritableExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new PropertyNotWritableException(message);
-    } catch (final PropertyNotWritableException exception) {
-      assertTrue(exception instanceof PropertyNotWritableException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.PropertyNotWritableException#PropertyNotWritableException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testPropertyNotWritableExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new PropertyNotWritableException(message, cause);
-    } catch (final PropertyNotWritableException exception) {
-      assertTrue(exception instanceof PropertyNotWritableException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.PropertyNotWritableException#PropertyNotWritableException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testPropertyNotWritableExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new PropertyNotWritableException(cause);
-    } catch (final PropertyNotWritableException exception) {
-      assertTrue(exception instanceof PropertyNotWritableException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }

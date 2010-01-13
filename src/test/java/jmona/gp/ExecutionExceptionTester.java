@@ -19,10 +19,7 @@
  */
 package jmona.gp;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the ExecutionException class.
@@ -30,67 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ExecutionExceptionTester {
-
-  /**
-   * Test method for {@link jmona.gp.ExecutionException#ExecutionException()}.
-   */
-  @Test
-  public void testExecutionException() {
-    try {
-      throw new ExecutionException();
-    } catch (final ExecutionException exception) {
-      assertTrue(exception instanceof ExecutionException);
-    }
+public class ExecutionExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the ExecutionException. */
+  public ExecutionExceptionTester() {
+    super(ExecutionException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.gp.ExecutionException#ExecutionException(java.lang.String)}.
-   */
-  @Test
-  public void testExecutionExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new ExecutionException(message);
-    } catch (final ExecutionException exception) {
-      assertTrue(exception instanceof ExecutionException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.gp.ExecutionException#ExecutionException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testExecutionExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new ExecutionException(message, cause);
-    } catch (final ExecutionException exception) {
-      assertTrue(exception instanceof ExecutionException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.gp.ExecutionException#ExecutionException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testExecutionExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new ExecutionException(cause);
-    } catch (final ExecutionException exception) {
-      assertTrue(exception instanceof ExecutionException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }

@@ -19,10 +19,7 @@
  */
 package jmona;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the InitializationException class.
@@ -30,69 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class InitializationExceptionTester {
-
-  /**
-   * Test method for
-   * {@link jmona.InitializationException#InitializationException()}.
-   */
-  @Test
-  public void testInitializationException() {
-    try {
-      throw new InitializationException();
-    } catch (final InitializationException exception) {
-      assertTrue(exception instanceof InitializationException);
-    }
+public class InitializationExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the InitializationException. */
+  public InitializationExceptionTester() {
+    super(InitializationException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.InitializationException#InitializationException(java.lang.String)}
-   * .
-   */
-  @Test
-  public void testInitializationExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new InitializationException(message);
-    } catch (final InitializationException exception) {
-      assertTrue(exception instanceof InitializationException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.InitializationException#InitializationException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testInitializationExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new InitializationException(message, cause);
-    } catch (final InitializationException exception) {
-      assertTrue(exception instanceof InitializationException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.InitializationException#InitializationException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testInitializationExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new InitializationException(cause);
-    } catch (final InitializationException exception) {
-      assertTrue(exception instanceof InitializationException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }

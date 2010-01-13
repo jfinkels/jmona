@@ -19,10 +19,7 @@
  */
 package jmona;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the EvolutionException class.
@@ -30,69 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class EvolutionExceptionTester {
-
-  /**
-   * Test method for
-   * {@link jmona.EvolutionException#EvolutionException()}.
-   */
-  @Test
-  public void testEvolutionException() {
-    try {
-      throw new EvolutionException();
-    } catch (final EvolutionException exception) {
-      assertTrue(exception instanceof EvolutionException);
-    }
+public class EvolutionExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the EvolutionException. */
+  public EvolutionExceptionTester() {
+    super(EvolutionException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.EvolutionException#EvolutionException(java.lang.String)}
-   * .
-   */
-  @Test
-  public void testEvolutionExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new EvolutionException(message);
-    } catch (final EvolutionException exception) {
-      assertTrue(exception instanceof EvolutionException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.EvolutionException#EvolutionException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testEvolutionExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new EvolutionException(message, cause);
-    } catch (final EvolutionException exception) {
-      assertTrue(exception instanceof EvolutionException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.EvolutionException#EvolutionException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testEvolutionExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new EvolutionException(cause);
-    } catch (final EvolutionException exception) {
-      assertTrue(exception instanceof EvolutionException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }

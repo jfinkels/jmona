@@ -19,10 +19,7 @@
  */
 package jmona.game;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the GameplayException class.
@@ -30,67 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class GameplayExceptionTester {
-
-  /**
-   * Test method for {@link jmona.game.GameplayException#GameplayException()}.
-   */
-  @Test
-  public void testGameplayException() {
-    try {
-      throw new GameplayException();
-    } catch (final GameplayException exception) {
-      assertTrue(exception instanceof GameplayException);
-    }
+public class GameplayExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the GameplayException. */
+  public GameplayExceptionTester() {
+    super(GameplayException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.game.GameplayException#GameplayException(java.lang.String)}.
-   */
-  @Test
-  public void testGameplayExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new GameplayException(message);
-    } catch (final GameplayException exception) {
-      assertTrue(exception instanceof GameplayException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.game.GameplayException#GameplayException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testGameplayExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new GameplayException(message, cause);
-    } catch (final GameplayException exception) {
-      assertTrue(exception instanceof GameplayException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.game.GameplayException#GameplayException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testGameplayExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new GameplayException(cause);
-    } catch (final GameplayException exception) {
-      assertTrue(exception instanceof GameplayException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }

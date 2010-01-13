@@ -19,10 +19,7 @@
  */
 package jmona.aco;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the AlreadyVisitedException class.
@@ -30,69 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class AlreadyVisitedExceptionTester {
-
-  /**
-   * Test method for
-   * {@link jmona.AlreadyVisitedException#AlreadyVisitedException()}.
-   */
-  @Test
-  public void testAlreadyVisitedException() {
-    try {
-      throw new AlreadyVisitedException();
-    } catch (final AlreadyVisitedException exception) {
-      assertTrue(exception instanceof AlreadyVisitedException);
-    }
+public class AlreadyVisitedExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the AlreadyVisitedException. */
+  public AlreadyVisitedExceptionTester() {
+    super(AlreadyVisitedException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.AlreadyVisitedException#AlreadyVisitedException(java.lang.String)}
-   * .
-   */
-  @Test
-  public void testAlreadyVisitedExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new AlreadyVisitedException(message);
-    } catch (final AlreadyVisitedException exception) {
-      assertTrue(exception instanceof AlreadyVisitedException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.AlreadyVisitedException#AlreadyVisitedException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testAlreadyVisitedExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new AlreadyVisitedException(message, cause);
-    } catch (final AlreadyVisitedException exception) {
-      assertTrue(exception instanceof AlreadyVisitedException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.AlreadyVisitedException#AlreadyVisitedException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testAlreadyVisitedExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new AlreadyVisitedException(cause);
-    } catch (final AlreadyVisitedException exception) {
-      assertTrue(exception instanceof AlreadyVisitedException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }

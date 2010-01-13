@@ -19,10 +19,7 @@
  */
 package jmona;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the MetricException class.
@@ -30,67 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class MetricExceptionTester {
-
-  /**
-   * Test method for {@link jmona.MetricException#MetricException()}.
-   */
-  @Test
-  public void testMetricException() {
-    try {
-      throw new MetricException();
-    } catch (final MetricException exception) {
-      assertTrue(exception instanceof MetricException);
-    }
+public class MetricExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the MetricException. */
+  public MetricExceptionTester() {
+    super(MetricException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.MetricException#MetricException(java.lang.String)}.
-   */
-  @Test
-  public void testMetricExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new MetricException(message);
-    } catch (final MetricException exception) {
-      assertTrue(exception instanceof MetricException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.MetricException#MetricException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testMetricExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new MetricException(message, cause);
-    } catch (final MetricException exception) {
-      assertTrue(exception instanceof MetricException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.MetricException#MetricException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testMetricExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new MetricException(cause);
-    } catch (final MetricException exception) {
-      assertTrue(exception instanceof MetricException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }

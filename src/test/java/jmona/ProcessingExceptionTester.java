@@ -19,10 +19,7 @@
  */
 package jmona;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the ProcessingException class.
@@ -30,69 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ProcessingExceptionTester {
-
-  /**
-   * Test method for
-   * {@link jmona.ProcessingException#ProcessingException()}.
-   */
-  @Test
-  public void testProcessingException() {
-    try {
-      throw new ProcessingException();
-    } catch (final ProcessingException exception) {
-      assertTrue(exception instanceof ProcessingException);
-    }
+public class ProcessingExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the ProcessingException. */
+  public ProcessingExceptionTester() {
+    super(ProcessingException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.ProcessingException#ProcessingException(java.lang.String)}
-   * .
-   */
-  @Test
-  public void testProcessingExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new ProcessingException(message);
-    } catch (final ProcessingException exception) {
-      assertTrue(exception instanceof ProcessingException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.ProcessingException#ProcessingException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testProcessingExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new ProcessingException(message, cause);
-    } catch (final ProcessingException exception) {
-      assertTrue(exception instanceof ProcessingException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.ProcessingException#ProcessingException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testProcessingExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new ProcessingException(cause);
-    } catch (final ProcessingException exception) {
-      assertTrue(exception instanceof ProcessingException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }

@@ -19,10 +19,7 @@
  */
 package jmona;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the FitnessException class.
@@ -30,69 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class FitnessExceptionTester {
-
-  /**
-   * Test method for
-   * {@link jmona.FitnessException#FitnessException()}.
-   */
-  @Test
-  public void testFitnessException() {
-    try {
-      throw new FitnessException();
-    } catch (final FitnessException exception) {
-      assertTrue(exception instanceof FitnessException);
-    }
+public class FitnessExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the FitnessException. */
+  public FitnessExceptionTester() {
+    super(FitnessException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.FitnessException#FitnessException(java.lang.String)}
-   * .
-   */
-  @Test
-  public void testFitnessExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new FitnessException(message);
-    } catch (final FitnessException exception) {
-      assertTrue(exception instanceof FitnessException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.FitnessException#FitnessException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testFitnessExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new FitnessException(message, cause);
-    } catch (final FitnessException exception) {
-      assertTrue(exception instanceof FitnessException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.FitnessException#FitnessException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testFitnessExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new FitnessException(cause);
-    } catch (final FitnessException exception) {
-      assertTrue(exception instanceof FitnessException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }

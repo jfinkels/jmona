@@ -19,10 +19,7 @@
  */
 package jmona;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the MappingException class.
@@ -30,69 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class MappingExceptionTester {
-
-  /**
-   * Test method for
-   * {@link jmona.MappingException#MappingException()}.
-   */
-  @Test
-  public void testMappingException() {
-    try {
-      throw new MappingException();
-    } catch (final MappingException exception) {
-      assertTrue(exception instanceof MappingException);
-    }
+public class MappingExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the MappingException. */
+  public MappingExceptionTester() {
+    super(MappingException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.MappingException#MappingException(java.lang.String)}
-   * .
-   */
-  @Test
-  public void testMappingExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new MappingException(message);
-    } catch (final MappingException exception) {
-      assertTrue(exception instanceof MappingException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.MappingException#MappingException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testMappingExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new MappingException(message, cause);
-    } catch (final MappingException exception) {
-      assertTrue(exception instanceof MappingException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.MappingException#MappingException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testMappingExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new MappingException(cause);
-    } catch (final MappingException exception) {
-      assertTrue(exception instanceof MappingException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }

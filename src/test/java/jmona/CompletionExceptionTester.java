@@ -19,10 +19,7 @@
  */
 package jmona;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import jmona.test.AbstractExceptionTester;
 
 /**
  * Test class for the CompletionException class.
@@ -30,69 +27,9 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class CompletionExceptionTester {
-
-  /**
-   * Test method for
-   * {@link jmona.CompletionException#CompletionException()}.
-   */
-  @Test
-  public void testCompletionException() {
-    try {
-      throw new CompletionException();
-    } catch (final CompletionException exception) {
-      assertTrue(exception instanceof CompletionException);
-    }
+public class CompletionExceptionTester extends AbstractExceptionTester {
+  /** Instantiates this test class for the CompletionException. */
+  public CompletionExceptionTester() {
+    super(CompletionException.class);
   }
-
-  /**
-   * Test method for
-   * {@link jmona.CompletionException#CompletionException(java.lang.String)}
-   * .
-   */
-  @Test
-  public void testCompletionExceptionString() {
-    final String message = "Hello, world!";
-    try {
-      throw new CompletionException(message);
-    } catch (final CompletionException exception) {
-      assertTrue(exception instanceof CompletionException);
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.CompletionException#CompletionException(java.lang.String, java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testCompletionExceptionStringThrowable() {
-    final Throwable cause = new Exception();
-    final String message = "Hello, world!";
-    try {
-      throw new CompletionException(message, cause);
-    } catch (final CompletionException exception) {
-      assertTrue(exception instanceof CompletionException);
-      assertSame(cause, exception.getCause());
-      assertSame(message, exception.getMessage());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.CompletionException#CompletionException(java.lang.Throwable)}
-   * .
-   */
-  @Test
-  public void testCompletionExceptionThrowable() {
-    final Throwable cause = new Exception();
-    try {
-      throw new CompletionException(cause);
-    } catch (final CompletionException exception) {
-      assertTrue(exception instanceof CompletionException);
-      assertSame(cause, exception.getCause());
-    }
-  }
-
 }
