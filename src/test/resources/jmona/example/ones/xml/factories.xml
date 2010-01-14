@@ -34,7 +34,7 @@
     <property name="size" ref="geneLength" />
   </bean>
   
-  <bean id="populationFactory" class="jmona.impl.CompleteDeepCopyableListFactory">
+  <bean id="populationFactory" class="jmona.impl.DefaultListFactory">
     <property name="elementFactory" ref="individualFactory" />
     <property name="size" value="20" />
   </bean>

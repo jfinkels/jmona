@@ -22,9 +22,10 @@ package jmona.example.ones;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
-import java.util.Vector;
 
+import jmona.DeepCopyableList;
 import jmona.functional.Range;
+import jmona.impl.PartialDeepCopyableVector;
 
 import org.junit.Test;
 
@@ -47,7 +48,7 @@ public class OnesFitnessFunctionTester {
   public void testRawFitness() {
     final int length = 10;
     final OnesFitnessFunction function = new OnesFitnessFunction(length);
-    final List<Byte> individual = new Vector<Byte>();
+    final DeepCopyableList<Byte> individual = new PartialDeepCopyableVector<Byte>();
 
     for (final int i : new Range(length)) {
       individual.add((byte) 0);

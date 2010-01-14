@@ -20,8 +20,8 @@
 package jmona.impl.mutation;
 
 import java.util.Collections;
-import java.util.List;
 
+import jmona.DeepCopyableList;
 import jmona.random.RandomUtils;
 
 /**
@@ -45,7 +45,7 @@ public class SwapMutationFunction<E> implements OrderedListMutationFunction<E> {
    * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
-  public void mutate(final List<E> list) {
+  public void mutate(final DeepCopyableList<E> list) {
 
     // get two random indices into the tour
     final int source = RandomUtils.randomData().nextInt(0, list.size() - 1);

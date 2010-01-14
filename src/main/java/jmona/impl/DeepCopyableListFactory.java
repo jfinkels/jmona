@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * DeepCopyableListFactory.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -17,21 +17,20 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.ones;
+package jmona.impl;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import jmona.DeepCopyableList;
+import jmona.Factory;
 
 /**
- * Runs all tests in this package.
+ * A factory which creates DeepCopyableList objects.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @param <E>
+ *          The type of element in the List to create.
+ * @since 0.5
  */
-@RunWith(Suite.class)
-@SuiteClasses({ OnesFitnessFunctionTester.class,
-    OnesMutationFunctionTester.class })
-public class AllTest {
+public abstract class DeepCopyableListFactory<E> extends ListFactorySupport<E>
+    implements Factory<DeepCopyableList<E>> {
 
 }

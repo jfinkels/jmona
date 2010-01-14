@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.ones;
+package jmona.example.ones.code;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -30,8 +30,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.1
  */
 @RunWith(Suite.class)
-@SuiteClasses({ OnesFitnessFunctionTester.class,
-    OnesMutationFunctionTester.class })
+@SuiteClasses({ OnesEvolutionTester.class })
 public class AllTest {
 
 }

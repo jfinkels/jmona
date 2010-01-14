@@ -20,12 +20,10 @@
 package jmona.ga.impl;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.List;
-import java.util.Vector;
-
+import jmona.DeepCopyableList;
 import jmona.functional.Range;
 import jmona.impl.Pair;
+import jmona.impl.PartialDeepCopyableVector;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -43,9 +41,9 @@ public class AbstractListCrossoverFunctionTester {
   /** The length of the binary strings in the tests. */
   public static final int LENGTH = 10;
   /** The binary string of all zeros. */
-  private List<Byte> individual1 = null;
+  private DeepCopyableList<Byte> individual1 = null;
   /** The binary string of all ones. */
-  private List<Byte> individual2 = null;
+  private DeepCopyableList<Byte> individual2 = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
@@ -59,8 +57,8 @@ public class AbstractListCrossoverFunctionTester {
     };
 
     // this is the binary string of all zeros
-    this.individual1 = new Vector<Byte>();
-    this.individual2 = new Vector<Byte>();
+    this.individual1 = new PartialDeepCopyableVector<Byte>();
+    this.individual2 = new PartialDeepCopyableVector<Byte>();
 
     for (final int i : new Range(LENGTH)) {
       this.individual1.add((byte) 0);

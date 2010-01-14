@@ -22,6 +22,8 @@ package jmona.ga.impl;
 import java.util.List;
 
 import jmona.CrossoverFunction;
+import jmona.DeepCopyable;
+import jmona.DeepCopyableList;
 import jmona.impl.Pair;
 import jmona.impl.Util;
 
@@ -35,7 +37,7 @@ import jmona.impl.Util;
  * @since 0.1
  */
 public abstract class AbstractListCrossoverFunction<E> implements
-    CrossoverFunction<List<E>> {
+    CrossoverFunction<DeepCopyableList<E>> {
 
   /**
    * Perform a crossover between a range of elements specified by the
@@ -48,7 +50,8 @@ public abstract class AbstractListCrossoverFunction<E> implements
    */
   // TODO if end < start, swap (0, end) and (start, length)
   @Override
-  public void crossover(final List<E> list1, final List<E> list2) {
+  public void crossover(final DeepCopyableList<E> list1,
+      final DeepCopyableList<E> list2) {
     final int length = list1.size();
 
     final Pair<Integer, Integer> sliceIndices = this.sliceStartEnd(length);

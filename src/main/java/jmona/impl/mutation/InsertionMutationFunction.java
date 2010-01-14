@@ -19,8 +19,7 @@
  */
 package jmona.impl.mutation;
 
-import java.util.List;
-
+import jmona.DeepCopyableList;
 import jmona.random.RandomUtils;
 
 /**
@@ -44,7 +43,7 @@ public class InsertionMutationFunction<E> implements
    * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
-  public void mutate(final List<E> list) {
+  public void mutate(final DeepCopyableList<E> list) {
     // choose a random index of a city to remove from the tour
     final int source = RandomUtils.randomData().nextInt(0, list.size() - 1);
 

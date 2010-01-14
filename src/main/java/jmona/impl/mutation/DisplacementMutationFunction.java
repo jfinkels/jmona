@@ -22,6 +22,7 @@ package jmona.impl.mutation;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.DeepCopyableList;
 import jmona.random.RandomUtils;
 
 /**
@@ -45,7 +46,7 @@ public class DisplacementMutationFunction<E> implements
 	 * @see jmona.MutationFunction#mutate(Object)
 	 */
 	@Override
-	public void mutate(final List<E> list) {
+	public void mutate(final DeepCopyableList<E> list) {
 		// get a random start and end of the sublist (one can be at list.size())
 		final int number1 = RandomUtils.randomData()
 				.nextInt(0, list.size() - 1);

@@ -22,11 +22,8 @@ package jmona.impl.mutation;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-import java.util.Vector;
-
 import jmona.MutationException;
+import jmona.impl.CompleteDeepCopyableVector;
 import jmona.impl.example.ExampleIndividual;
 import jmona.impl.example.ExampleMutationFunction;
 import jmona.test.Util;
@@ -46,7 +43,8 @@ public class ElementwiseMutationFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.mutation.ElementwiseMutationFunction#mutate(java.util.List)}.
+   * {@link jmona.impl.mutation.ElementwiseMutationFunction#mutate(java.util.List)}
+   * .
    */
   @Test
   public void testMutate() {
@@ -63,7 +61,7 @@ public class ElementwiseMutationFunctionTester {
     final double initialFitness = 1;
     final ExampleIndividual individual = new ExampleIndividual(initialFitness);
 
-    final List<ExampleIndividual> list = new Vector<ExampleIndividual>();
+    final CompleteDeepCopyableVector<ExampleIndividual> list = new CompleteDeepCopyableVector<ExampleIndividual>();
     list.add(individual);
 
     function.setElementMutationFunction(new ExampleMutationFunction());

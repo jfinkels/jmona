@@ -50,6 +50,7 @@ public final class Util {
    * @throws CopyingException
    *           If there is a problem copying the elements of the Collection.
    */
+  // TODO iterable
   public static <E extends DeepCopyable<E>> List<E> deepCopy(
       final Collection<E> collection) throws CopyingException {
 
@@ -89,8 +90,10 @@ public final class Util {
    *          The index of the element to swap.
    * @param <E>
    *          The type of element in the List to swap.
+   * @param <L>
+   *          The type of Lists to swap between.
    */
-  public static <E> void swap(final List<E> list1, final List<E> list2,
+  public static <E, L extends List<E>> void swap(final L list1, final L list2,
       final int index) {
 
     final E temp = list1.get(index);
@@ -113,8 +116,10 @@ public final class Util {
    *          The index of the last element to swap.
    * @param <E>
    *          The type of elements in the List to swap.
+   * @param <L>
+   *          The type of Lists to swap between.
    */
-  public static <E> void swap(final List<E> list1, final List<E> list2,
+  public static <E, L extends List<E>> void swap(final L list1, final L list2,
       final int start, final int end) {
     for (final int i : new Range(start, end)) {
       swap(list1, list2, i);

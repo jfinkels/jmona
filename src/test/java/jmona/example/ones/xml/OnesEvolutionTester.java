@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.ones;
+package jmona.example.ones.xml;
 
 import jmona.CompletionCondition;
 import jmona.CompletionException;

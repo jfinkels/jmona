@@ -19,8 +19,7 @@
  */
 package jmona.example.ones;
 
-import java.util.List;
-
+import jmona.DeepCopyableList;
 import jmona.functional.Functional;
 import jmona.impl.fitness.MaximizingFitnessFunction;
 
@@ -31,7 +30,8 @@ import jmona.impl.fitness.MaximizingFitnessFunction;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class OnesFitnessFunction extends MaximizingFitnessFunction<List<Byte>> {
+public class OnesFitnessFunction extends
+    MaximizingFitnessFunction<DeepCopyableList<Byte>> {
 
   /**
    * Instantiates this FitnessFunction with the specified length of binary
@@ -58,7 +58,7 @@ public class OnesFitnessFunction extends MaximizingFitnessFunction<List<Byte>> {
    * @see jmona.FitnessFunction#rawFitness(Object)
    */
   @Override
-  public double rawFitness(final List<Byte> individual) {
+  public double rawFitness(final DeepCopyableList<Byte> individual) {
     return Functional.sumBytes(individual);
   }
 

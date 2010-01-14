@@ -19,8 +19,7 @@
  */
 package jmona.impl.mutation;
 
-import java.util.List;
-
+import jmona.DeepCopyableList;
 import jmona.MutationException;
 import jmona.MutationFunction;
 import jmona.random.RandomUtils;
@@ -49,7 +48,7 @@ public class ElementwiseMutationFunction<E> implements ListMutationFunction<E> {
    * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
-  public void mutate(final List<E> list) throws MutationException {
+  public void mutate(final DeepCopyableList<E> list) throws MutationException {
     if (this.elementMutationFunction == null) {
       throw new MutationException(
           "No ListElementMutationFunction has been set.");

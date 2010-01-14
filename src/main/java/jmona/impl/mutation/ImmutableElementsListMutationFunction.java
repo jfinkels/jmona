@@ -19,8 +19,7 @@
  */
 package jmona.impl.mutation;
 
-import java.util.List;
-
+import jmona.DeepCopyableList;
 import jmona.MutationException;
 import jmona.random.RandomUtils;
 
@@ -49,7 +48,7 @@ public abstract class ImmutableElementsListMutationFunction<E> implements
    *           List.
    */
   @Override
-  public void mutate(final List<E> list) throws MutationException {
+  public void mutate(final DeepCopyableList<E> list) throws MutationException {
     int index = 0;
     if (list.size() > 1) {
       // choose a random index into the list

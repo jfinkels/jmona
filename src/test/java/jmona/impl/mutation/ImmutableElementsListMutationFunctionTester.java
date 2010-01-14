@@ -20,11 +20,8 @@
 package jmona.impl.mutation;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.List;
-import java.util.Vector;
-
 import jmona.MutationException;
+import jmona.impl.CompleteDeepCopyableVector;
 import jmona.impl.example.ExampleIndividual;
 import jmona.impl.example.ExampleListMutationFunction;
 import jmona.test.Util;
@@ -50,7 +47,7 @@ public class ImmutableElementsListMutationFunctionTester {
   @Test
   public void testMutate() {
     final ImmutableElementsListMutationFunction<ExampleIndividual> function = new ExampleListMutationFunction();
-    final List<ExampleIndividual> list = new Vector<ExampleIndividual>();
+    final CompleteDeepCopyableVector<ExampleIndividual> list = new CompleteDeepCopyableVector<ExampleIndividual>();
     final ExampleIndividual individual = new ExampleIndividual();
     list.add(individual);
     try {
