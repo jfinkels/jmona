@@ -42,12 +42,12 @@ public abstract class LoggingPostProcessor<T> extends PeriodicPostProcessor<T> {
   /** The default level at which to log information. */
   public static final Level DEFAULT_LOGGING_LEVEL = Level.INFO;
   /** The default format of the message to log. */
-  public static final String DEFAULT_MESSAGE_FORMAT = "Generation %d: %s";
+  public static final String DEFAULT_MESSAGE_FORMAT = "Generation %d: %s"; //$NON-NLS-1$
   /**
    * The Java system property whose value is the line separator character on
    * this system.
    */
-  public static final String NEWLINE_PROPERTY = "line.separator";
+  public static final String NEWLINE_PROPERTY = "line.separator"; //$NON-NLS-1$
   /** The line separator character on this system. */
   public static final String NEWLINE = System.getProperty(NEWLINE_PROPERTY);
   /** The Logger for this class. */
@@ -105,7 +105,7 @@ public abstract class LoggingPostProcessor<T> extends PeriodicPostProcessor<T> {
       this.log(String.format(DEFAULT_MESSAGE_FORMAT, context
           .currentGeneration(), this.message(context)));
     } catch (final LoggingException exception) {
-      throw new ProcessingException("Failed to log a message.", exception);
+      throw new ProcessingException(Messages.getString("LoggingPostProcessor.2"), exception); //$NON-NLS-1$
     }
   }
 

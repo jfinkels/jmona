@@ -63,7 +63,7 @@ public class StandardizedFitnessComparator<T> extends
               this.fitnessFunction().standardizedFitness(individual2));
     } catch (final FitnessException exception) {
       throw new ComparisonException(
-          "Failed to get the standardized fitness of an individual.", exception);
+          Messages.getString("StandardizedFitnessComparator.0"), exception); //$NON-NLS-1$
     }
   }
 

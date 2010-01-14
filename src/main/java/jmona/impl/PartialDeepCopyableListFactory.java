@@ -59,7 +59,7 @@ public class PartialDeepCopyableListFactory<E> extends
     try {
       this.sanityCheck();
     } catch (final NullPointerException exception) {
-      throw new InitializationException("Sanity check failed.");
+      throw new InitializationException(Messages.getString("PartialDeepCopyableListFactory.0")); //$NON-NLS-1$
     }
 
     final DeepCopyableList<E> result = new PartialDeepCopyableVector<E>();

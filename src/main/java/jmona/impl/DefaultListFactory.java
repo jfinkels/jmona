@@ -53,7 +53,7 @@ public class DefaultListFactory<E> extends ListFactorySupport<E> implements
     try {
       this.sanityCheck();
     } catch (final NullPointerException exception) {
-      throw new InitializationException("Sanity check failed.");
+      throw new InitializationException(Messages.getString("DefaultListFactory.0")); //$NON-NLS-1$
     }
 
     final List<E> result = new Vector<E>();

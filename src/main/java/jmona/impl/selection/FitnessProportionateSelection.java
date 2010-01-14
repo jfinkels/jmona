@@ -83,7 +83,7 @@ public class FitnessProportionateSelection<T> implements
       fitnesses = Functional.map(this.adjustedFitnessGetter, population);
     } catch (final MappingException exception) {
       throw new SelectionException(
-          "Failed to get adjusted fitnesses of the population.", exception);
+          Messages.getString("FitnessProportionateSelection.0"), exception); //$NON-NLS-1$
     }
 
     // get the sum of all fitnesses

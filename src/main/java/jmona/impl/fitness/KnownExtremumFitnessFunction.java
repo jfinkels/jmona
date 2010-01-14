@@ -95,7 +95,7 @@ public abstract class KnownExtremumFitnessFunction<T> implements
   public double standardizedFitness(final T individual) throws FitnessException {
     if (this.extremum == null) {
       throw new FitnessException(
-          "Extremum (maximum or minimum) raw fitness value has not been set.");
+          Messages.getString("KnownExtremumFitnessFunction.0")); //$NON-NLS-1$
     }
 
     return this.typeOfExtremum()

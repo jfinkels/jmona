@@ -51,7 +51,7 @@ public class ElementwiseMutationFunction<E> implements ListMutationFunction<E> {
   public void mutate(final DeepCopyableList<E> list) throws MutationException {
     if (this.elementMutationFunction == null) {
       throw new MutationException(
-          "No ListElementMutationFunction has been set.");
+          Messages.getString("ElementwiseMutationFunction.0")); //$NON-NLS-1$
     }
 
     this.elementMutationFunction.mutate(RandomUtils.choice(list));

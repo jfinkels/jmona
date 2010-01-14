@@ -52,7 +52,7 @@ public class RawFitnessGetter<T> extends FitnessFunctionCollaborator<T>
     try {
       return this.fitnessFunction().rawFitness(input);
     } catch (final FitnessException exception) {
-      throw new MappingException("Failed to get raw fitness of individual.",
+      throw new MappingException(Messages.getString("RawFitnessGetter.0"), //$NON-NLS-1$
           exception);
     }
   }

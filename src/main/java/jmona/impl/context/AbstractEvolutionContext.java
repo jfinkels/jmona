@@ -53,7 +53,7 @@ public abstract class AbstractEvolutionContext<T> implements
   public AbstractEvolutionContext(final List<T> initialPopulation) {
     if (initialPopulation.size() < 2) {
       throw new IllegalArgumentException(
-          "The initial population must be of size greater than or equal to 2.");
+          Messages.getString("AbstractEvolutionContext.0")); //$NON-NLS-1$
     }
     this.population = initialPopulation;
   }

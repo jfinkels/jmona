@@ -70,7 +70,7 @@ public class PerfectMatchCompletionCondition<T extends DeepCopyable<T>>
 
     if (!(context instanceof GeneticEvolutionContext<?>)) {
       throw new CompletionException(
-          "Cannot get a fitness function from the EvolutionContext unless it is a GeneticEvolutionContext. Class of EvolutionContext is "
+          Messages.getString("PerfectMatchCompletionCondition.0") //$NON-NLS-1$
               + context.getClass());
     }
 
@@ -80,7 +80,7 @@ public class PerfectMatchCompletionCondition<T extends DeepCopyable<T>>
 
     if (fitnessFunction == null) {
       throw new CompletionException(
-          "No FitnessFunction has been set on the EvolutionContext, so no fitnesses can be determined.");
+          Messages.getString("PerfectMatchCompletionCondition.1")); //$NON-NLS-1$
     }
 
     // set the fitness function on the standardized fitness getter function
@@ -97,7 +97,7 @@ public class PerfectMatchCompletionCondition<T extends DeepCopyable<T>>
       return Functional.any(isZero);
     } catch (final MappingException exception) {
       throw new CompletionException(
-          "Failed to determine which individuals had which fitness.", exception);
+          Messages.getString("PerfectMatchCompletionCondition.2"), exception); //$NON-NLS-1$
     }
 
   }

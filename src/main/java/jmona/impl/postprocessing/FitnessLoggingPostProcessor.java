@@ -60,7 +60,7 @@ public class FitnessLoggingPostProcessor<T extends DeepCopyable<T>> extends
       throws LoggingException {
     if (!(context instanceof GeneticEvolutionContext<?>)) {
       throw new LoggingException(
-          "Cannot get a fitness function from the EvolutionContext unless it is a GeneticEvolutionContext. Class of EvolutionContext is "
+          Messages.getString("FitnessLoggingPostProcessor.0") //$NON-NLS-1$
               + context.getClass());
     }
 
@@ -74,11 +74,11 @@ public class FitnessLoggingPostProcessor<T extends DeepCopyable<T>> extends
       for (final T individual : currentPopulation) {
         result.append(NEWLINE);
         result.append(individual);
-        result.append(": ");
+        result.append(": "); //$NON-NLS-1$
         result.append(fitnessFunction.rawFitness(individual));
       }
     } catch (final FitnessException exception) {
-      throw new LoggingException("Failed to get fitness of an individual.",
+      throw new LoggingException(Messages.getString("FitnessLoggingPostProcessor.2"), //$NON-NLS-1$
           exception);
     }
 

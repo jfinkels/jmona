@@ -57,7 +57,7 @@ public abstract class ListFactorySupport<E> {
    */
   protected void sanityCheck() {
     if (this.elementFactory() == null) {
-      throw new NullPointerException("Element factory has not been set.");
+      throw new NullPointerException(Messages.getString("ListFactorySupport.0")); //$NON-NLS-1$
     }
   }
 

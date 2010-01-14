@@ -53,7 +53,7 @@ public class StandardizedFitnessGetter<T> extends
       return this.fitnessFunction().standardizedFitness(input);
     } catch (final FitnessException exception) {
       throw new MappingException(
-          "Failed to get standardized fitness of individual.", exception);
+          Messages.getString("StandardizedFitnessGetter.0"), exception); //$NON-NLS-1$
     }
   }
 }

@@ -53,7 +53,7 @@ public class AdjustedFitnessGetter<T> extends FitnessFunctionCollaborator<T>
       return this.fitnessFunction().adjustedFitness(input);
     } catch (final FitnessException exception) {
       throw new MappingException(
-          "Failed to get adjusted fitness of individual.", exception);
+          Messages.getString("AdjustedFitnessGetter.0"), exception); //$NON-NLS-1$
     }
   }
 

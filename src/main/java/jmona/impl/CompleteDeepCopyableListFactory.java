@@ -55,7 +55,7 @@ public class CompleteDeepCopyableListFactory<E extends DeepCopyable<E>> extends
     try {
       this.sanityCheck();
     } catch (final NullPointerException exception) {
-      throw new InitializationException("Sanity check failed.");
+      throw new InitializationException(Messages.getString("CompleteDeepCopyableListFactory.0")); //$NON-NLS-1$
     }
 
     final DeepCopyableList<E> result = new CompleteDeepCopyableVector<E>();

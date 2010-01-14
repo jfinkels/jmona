@@ -181,16 +181,16 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    */
   protected void sanityCheck() {
     if (this.fitnessFunction() == null) {
-      throw new NullPointerException("Fitness function has not been set.");
+      throw new NullPointerException(Messages.getString("AbstractGeneticEvolutionContext.0")); //$NON-NLS-1$
     }
     if (this.mutationFunction() == null) {
-      throw new NullPointerException("Mutation function has not been set.");
+      throw new NullPointerException(Messages.getString("AbstractGeneticEvolutionContext.1")); //$NON-NLS-1$
     }
     if (this.selectionFunction() == null) {
-      throw new NullPointerException("Selection function has not been set.");
+      throw new NullPointerException(Messages.getString("AbstractGeneticEvolutionContext.2")); //$NON-NLS-1$
     }
     if (this.crossoverFunction() == null) {
-      throw new NullPointerException("Crossover function has not been set.");
+      throw new NullPointerException(Messages.getString("AbstractGeneticEvolutionContext.3")); //$NON-NLS-1$
     }
   }
 
