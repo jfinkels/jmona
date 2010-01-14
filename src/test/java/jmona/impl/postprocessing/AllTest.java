@@ -30,8 +30,9 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.1
  */
 @RunWith(Suite.class)
-@SuiteClasses({ FitnessLoggingPostProcessorTester.class,
-    LoggingPostProcessorTester.class, PeriodicPostProcessorTester.class,
+@SuiteClasses({ BestIndividualPostProcessorTester.class,
+    FitnessLoggingPostProcessorTester.class, LoggingPostProcessorTester.class,
+    PeriodicPostProcessorTester.class,
     PopulationLoggingPostProcessorTester.class })
 public class AllTest {
 
