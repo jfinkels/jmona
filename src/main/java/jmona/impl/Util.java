@@ -19,7 +19,6 @@
  */
 package jmona.impl;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -50,9 +49,8 @@ public final class Util {
    * @throws CopyingException
    *           If there is a problem copying the elements of the Collection.
    */
-  // TODO iterable
   public static <E extends DeepCopyable<E>> List<E> deepCopy(
-      final Collection<E> collection) throws CopyingException {
+      final Iterable<E> collection) throws CopyingException {
 
     final List<E> result = new Vector<E>();
 
