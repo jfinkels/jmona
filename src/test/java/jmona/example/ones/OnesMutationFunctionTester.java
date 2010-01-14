@@ -19,11 +19,13 @@
  */
 package jmona.example.ones;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 /**
+ * Test class for the OnesMutationFunction class.
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
@@ -35,7 +37,9 @@ public class OnesMutationFunctionTester {
    */
   @Test
   public void testMutatedByte() {
-    fail("Not yet implemented");
+    final OnesMutationFunction function = new OnesMutationFunction();
+    assertEquals(1, function.mutated((byte) 0).intValue());
+    assertEquals(0, function.mutated((byte) 1).intValue());
   }
 
 }
