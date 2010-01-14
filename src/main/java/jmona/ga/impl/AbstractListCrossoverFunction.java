@@ -19,10 +19,7 @@
  */
 package jmona.ga.impl;
 
-import java.util.List;
-
 import jmona.CrossoverFunction;
-import jmona.DeepCopyable;
 import jmona.DeepCopyableList;
 import jmona.impl.Pair;
 import jmona.impl.Util;
