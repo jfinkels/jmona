@@ -70,7 +70,7 @@
     <version.dependency.spring>3.0.0.RELEASE</version.dependency.spring>
     
     <!-- plugin versions -->
-    <version.plugin.changelog>2.2-SNAPSHOT</version.plugin.changelog>
+    <!--<version.plugin.changelog>2.2-SNAPSHOT</version.plugin.changelog>-->
     <version.plugin.checkstyle>2.4</version.plugin.checkstyle>
     <version.plugin.clirr>2.2.2</version.plugin.clirr>
     <version.plugin.cobertura>2.3</version.plugin.cobertura>
@@ -410,12 +410,12 @@
     <url>http://github.com/jfinkels/jmona</url>
   </scm>
   
-  <pluginRepositories>
+  <!--<pluginRepositories>
     <pluginRepository>
       <id>apache.snapshots</id>
       <url>http://repository.apache.org/snapshots/</url>
     </pluginRepository>
-  </pluginRepositories>
+  </pluginRepositories>-->
     
   <distributionManagement>
     <downloadUrl>http://www.cs.tufts.edu/~jfinke02/jmona/</downloadUrl>
