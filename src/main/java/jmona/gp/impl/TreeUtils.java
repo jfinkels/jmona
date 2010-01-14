@@ -26,7 +26,7 @@ import jmona.functional.Range;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.gp.Tree;
-import jmona.impl.Util;
+import jmona.impl.DeepCopyUtils;
 
 /**
  * A utility class for this package containing a method which swaps Nodes within
@@ -69,7 +69,7 @@ public class TreeUtils {
       final List<Node> childrenToCopy) throws CopyingException {
 
     // copy each child node
-    final List<Node> copiedChildren = Util.deepCopy(childrenToCopy);
+    final List<Node> copiedChildren = DeepCopyUtils.deepCopy(childrenToCopy);
 
     // iterate over each cloned child Node
     for (final Node clonedChild : copiedChildren) {

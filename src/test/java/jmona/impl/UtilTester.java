@@ -20,58 +20,19 @@
 package jmona.impl;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotSame;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Vector;
-
-import jmona.CopyingException;
-import jmona.functional.Range;
-import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Test;
 
 /**
- * Test class for the TreeUtils class.
+ * Test class for the Util class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
 public class UtilTester {
-
-  /** The number of individuals in a list. */
-  public static final int NUM_INDIVIDUALS = 100;
-  /** Zero. */
-  public static final double ZERO_DELTA = 0.0;
-
-  /**
-   * Test method for {@link jmona.impl.Util#deepCopy(java.util.Collection)}.
-   */
-  @Test
-  public void testDeepCopy() {
-    final List<ExampleIndividual> list = new Vector<ExampleIndividual>();
-
-    for (final int i : new Range(NUM_INDIVIDUALS)) {
-      list.add(new ExampleIndividual(i));
-    }
-
-    List<ExampleIndividual> clonedList = null;
-    try {
-      clonedList = Util.deepCopy(list);
-    } catch (final CopyingException exception) {
-      jmona.test.Util.fail(exception);
-    }
-
-    assertEquals(list.size(), clonedList.size());
-
-    for (final int i : new Range(list.size())) {
-      assertNotSame(list.get(i), clonedList.get(i));
-      assertEquals(list.get(i).fitness(), clonedList.get(i).fitness(),
-          ZERO_DELTA);
-    }
-  }
 
   /**
    * Test method for {@link jmona.impl.Util#firstValue(java.util.Map)}.

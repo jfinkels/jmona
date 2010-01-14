@@ -57,7 +57,7 @@ public class CompleteDeepCopyableVector<E extends DeepCopyable<E>> extends
    */
   public CompleteDeepCopyableVector(final Collection<E> collection)
       throws CopyingException {
-    this.addAll(Util.deepCopy(collection));
+    this.addAll(DeepCopyUtils.deepCopy(collection));
   }
 
   /**

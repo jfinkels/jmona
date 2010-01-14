@@ -19,12 +19,8 @@
  */
 package jmona.impl;
 
-import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 
-import jmona.CopyingException;
-import jmona.DeepCopyable;
 
 /**
  * Utility class containing useful static utility methods.
@@ -33,32 +29,6 @@ import jmona.DeepCopyable;
  * @since 0.1
  */
 public final class Util {
-
-  /**
-   * Perform a deep copy on the specified Collection of deep copyable elements.
-   * 
-   * This method runs in <em>O(n)</em> time.
-   * 
-   * @param <E>
-   *          The type of deep copyable element in the Collection to be deep
-   *          copied.
-   * @param collection
-   *          The Collection of elements on which to perform a deep copy.
-   * @return A List of the copied elements from the specified Collection.
-   * @throws CopyingException
-   *           If there is a problem copying the elements of the Collection.
-   */
-  public static <E extends DeepCopyable<E>> List<E> deepCopy(
-      final Iterable<E> collection) throws CopyingException {
-
-    final List<E> result = new Vector<E>();
-
-    for (final E element : collection) {
-      result.add((E) element.deepCopy());
-    }
-
-    return result;
-  }
 
   /**
    * Get the first value from the specified Map as returned by the iterator over
