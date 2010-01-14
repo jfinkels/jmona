@@ -34,7 +34,7 @@ import org.junit.runners.Suite.SuiteClasses;
     CompleteDeepCopyableVectorTester.class, DeepCopyUtilsTester.class,
     IdentityFunctionTester.class, ListUtilsTester.class,
     PartialDeepCopyableListFactoryTester.class,
-    PartialDeepCopyableVectorTester.class, UtilTester.class })
+    PartialDeepCopyableVectorTester.class, MapUtilsTester.class })
 public class AllTest {
 
 }

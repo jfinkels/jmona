@@ -1,5 +1,5 @@
 /**
- * TreeUtils.java
+ * MapUtils.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -21,14 +21,13 @@ package jmona.impl;
 
 import java.util.Map;
 
-
 /**
- * Utility class containing useful static utility methods.
+ * Utility class which provides static methods for operating on Maps.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @since 0.5
  */
-public final class Util {
+public final class MapUtils {
 
   /**
    * Get the first value from the specified Map as returned by the iterator over
@@ -46,8 +45,8 @@ public final class Util {
     return map.values().iterator().next();
   }
 
-  /** Instantiation disallowed. */
-  protected Util() {
+  /** Instantiation disallowed except by subclasses. */
+  protected MapUtils() {
     // intentionally unimplemented
   }
 }

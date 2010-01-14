@@ -1,5 +1,5 @@
 /**
- * UtilTester.java
+ * MapUtilsTester.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -27,15 +27,15 @@ import java.util.Map;
 import org.junit.Test;
 
 /**
- * Test class for the Util class.
+ * Test class for the MapUtils class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class UtilTester {
+public class MapUtilsTester {
 
   /**
-   * Test method for {@link jmona.impl.Util#firstValue(java.util.Map)}.
+   * Test method for {@link jmona.impl.MapUtils#firstValue(java.util.Map)}.
    */
   @Test
   public void testFirstValue() {
@@ -46,14 +46,14 @@ public class UtilTester {
 
     map.put(key, value);
 
-    assertEquals(value, Util.firstValue(map));
+    assertEquals(value, MapUtils.firstValue(map));
   }
 
   /**
-   * Test method for {@link jmona.impl.Util#Util()}.
+   * Test method for {@link jmona.impl.MapUtils#MapUtils()}.
    */
   @Test
-  public void testUtil() {
-    new Util();
+  public void testMapUtils() {
+    new MapUtils();
   }
 }

@@ -27,7 +27,7 @@ import jmona.EvolutionContext;
 import jmona.EvolutionException;
 import jmona.PostProcessor;
 import jmona.ProcessingException;
-import jmona.impl.Util;
+import jmona.impl.MapUtils;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
@@ -107,9 +107,9 @@ public class Main {
     }
 
     // get the evolution context and completion condition from their maps
-    final EvolutionContext evolutionContext = Util
+    final EvolutionContext evolutionContext = MapUtils
         .firstValue(evolutionContextsMap);
-    final CompletionCondition completionCondition = Util
+    final CompletionCondition completionCondition = MapUtils
         .firstValue(completionCriteriaMap);
 
     try {
