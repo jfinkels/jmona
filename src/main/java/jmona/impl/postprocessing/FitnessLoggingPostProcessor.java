@@ -50,7 +50,7 @@ public class FitnessLoggingPostProcessor<T extends DeepCopyable<T>> extends
    * @return The raw fitnesses of the individuals in the current population, as
    *         a String.
    * @throws LoggingException
-   *           If the speicifed EvolutionContext is not a
+   *           If the specified EvolutionContext is not a
    *           GeneticEvolutionContext, or if there is a problem determining the
    *           raw fitness of an individual.
    * @see jmona.impl.postprocessing.LoggingPostProcessor#message(jmona.EvolutionContext)
