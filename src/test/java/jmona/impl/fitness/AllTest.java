@@ -32,6 +32,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ AdjustedFitnessGetterTester.class,
     FitnessFunctionCollaboratorTester.class,
+    FittestIndividualGetterTester.class,
     KnownExtremumFitnessFunctionTester.class,
     MaximizingFitnessFunctionTester.class,
     MinimizingFitnessFunctionTester.class, PresetFitnessFunctionTester.class,
