@@ -29,7 +29,6 @@ import jmona.gp.Tree;
 import jmona.impl.postprocessing.FitnessLoggingPostProcessor;
 import jmona.test.Util;
 
-import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
@@ -45,10 +44,6 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  */
 @ContextConfiguration
 public class CalcEvolutionTester extends AbstractJUnit4SpringContextTests {
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(CalcEvolutionTester.class);
-
   /**
    * Get the completion criteria for this evolution from the Spring XML
    * configuration file.
