@@ -66,8 +66,8 @@
     <version.dependency.jopt-simple>3.2</version.dependency.jopt-simple>
     <version.dependency.junit>4.7</version.dependency.junit>
     <version.dependency.log4j>1.2.14</version.dependency.log4j>
-    <version.dependency.spring>3.0.0.RELEASE</version.dependency.spring>
     <version.dependency.math>2.0</version.dependency.math>
+    <version.dependency.spring>3.0.0.RELEASE</version.dependency.spring>
     
     <!-- plugin versions -->
     <version.plugin.changelog>2.2-SNAPSHOT</version.plugin.changelog>
