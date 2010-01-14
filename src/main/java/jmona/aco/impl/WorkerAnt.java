@@ -72,6 +72,8 @@ public class WorkerAnt implements Ant {
    * 
    * @param newVertex
    *          {@inheritDoc}
+   * @throws AlreadyVisitedException
+   *           {@inheritDoc}
    */
   public void moveTo(final Integer newVertex) {
     if (this.memory.contains(newVertex)) {
