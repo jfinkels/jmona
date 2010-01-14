@@ -19,11 +19,16 @@
  */
 package jmona.aco.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import jmona.aco.AlreadyVisitedException;
+import jmona.test.Util;
 
 import org.junit.Test;
 
 /**
+ * Test class for the WorkerAnt class.
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
@@ -34,7 +39,8 @@ public class WorkerAntTester {
    */
   @Test
   public void testWorkerAnt() {
-    fail("Not yet implemented");
+    final WorkerAnt ant = new WorkerAnt(0);
+    assertEquals(0, ant.currentVertex().intValue());
   }
 
   /**
@@ -42,7 +48,20 @@ public class WorkerAntTester {
    */
   @Test
   public void testMemory() {
-    fail("Not yet implemented");
+    final WorkerAnt ant = new WorkerAnt(0);
+
+    assertEquals(1, ant.memory().size());
+    assertTrue(ant.memory().contains(0));
+
+    ant.moveTo(1);
+    assertEquals(2, ant.memory().size());
+    assertTrue(ant.memory().contains(0));
+    assertTrue(ant.memory().contains(1));
+
+    ant.reset();
+    assertEquals(1, ant.memory().size());
+    assertTrue(ant.memory().contains(0));
+
   }
 
   /**
@@ -50,7 +69,10 @@ public class WorkerAntTester {
    */
   @Test
   public void testCurrentVertex() {
-    fail("Not yet implemented");
+    final WorkerAnt ant = new WorkerAnt(0);
+    assertEquals(0, ant.currentVertex().intValue());
+    ant.moveTo(1);
+    assertEquals(1, ant.currentVertex().intValue());
   }
 
   /**
@@ -58,7 +80,16 @@ public class WorkerAntTester {
    */
   @Test
   public void testMoveTo() {
-    fail("Not yet implemented");
+    final WorkerAnt ant = new WorkerAnt(0);
+    assertEquals(0, ant.currentVertex().intValue());
+    ant.moveTo(1);
+    assertEquals(1, ant.currentVertex().intValue());
+    try {
+      ant.moveTo(0);
+      Util.shouldHaveThrownException();
+    } catch (final AlreadyVisitedException exception) {
+      assertEquals(2, ant.memory().size());
+    }
   }
 
   /**
@@ -66,7 +97,26 @@ public class WorkerAntTester {
    */
   @Test
   public void testReset() {
-    fail("Not yet implemented");
+    final WorkerAnt ant = new WorkerAnt(0);
+
+    assertEquals(1, ant.memory().size());
+    assertTrue(ant.memory().contains(0));
+
+    ant.reset();
+
+    assertEquals(1, ant.memory().size());
+    assertTrue(ant.memory().contains(0));
+
+    ant.moveTo(1);
+
+    assertEquals(2, ant.memory().size());
+    assertTrue(ant.memory().contains(0));
+    assertTrue(ant.memory().contains(1));
+
+    ant.reset();
+
+    assertEquals(1, ant.memory().size());
+    assertTrue(ant.memory().contains(0));
   }
 
 }

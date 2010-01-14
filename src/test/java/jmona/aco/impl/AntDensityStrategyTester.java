@@ -19,30 +19,34 @@
  */
 package jmona.aco.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 /**
+ * Test class for the AntDensityStrategy class.
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
 public class AntDensityStrategyTester {
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
 
   /**
-   * Test method for {@link jmona.aco.impl.AntDensityStrategy#pheromoneToAddFullCycle(double)}.
+   * Test method for
+   * {@link jmona.aco.impl.AntDensityStrategy#pheromoneToAddFullCycle(double)}
+   * and
+   * {@link jmona.aco.impl.AntDensityStrategy#pheromoneToAddSingleEdge(double)}.
    */
   @Test
   public void testPheromoneToAddFullCycle() {
-    fail("Not yet implemented");
-  }
+    final AntDensityStrategy strategy = new AntDensityStrategy();
+    final double distance = 100;
 
-  /**
-   * Test method for {@link jmona.aco.impl.AntDensityStrategy#pheromoneToAddSingleEdge(double)}.
-   */
-  @Test
-  public void testPheromoneToAddSingleEdge() {
-    fail("Not yet implemented");
-  }
+    assertEquals(0, strategy.pheromoneToAddFullCycle(distance), ZERO_DELTA);
 
+    assertEquals(strategy.pheromoneQuantityIndex(), strategy
+        .pheromoneToAddSingleEdge(distance), ZERO_DELTA);
+  }
 }

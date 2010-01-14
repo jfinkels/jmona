@@ -19,30 +19,47 @@
  */
 package jmona.aco.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 /**
+ * Test class for the AbstractPheromoneUpdateStrategy class.
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
 public class AbstractPheromoneUpdateStrategyTester {
 
   /**
-   * Test method for {@link jmona.aco.impl.AbstractPheromoneUpdateStrategy#pheromoneQuantityIndex()}.
+   * Test method for
+   * {@link jmona.aco.impl.AbstractPheromoneUpdateStrategy#pheromoneQuantityIndex()}
+   * and
+   * {@link jmona.aco.impl.AbstractPheromoneUpdateStrategy#setPheromoneQuantityIndex(int)}
+   * .
    */
   @Test
   public void testPheromoneQuantityIndex() {
-    fail("Not yet implemented");
-  }
+    final AbstractPheromoneUpdateStrategy strategy = new AbstractPheromoneUpdateStrategy() {
 
-  /**
-   * Test method for {@link jmona.aco.impl.AbstractPheromoneUpdateStrategy#setPheromoneQuantityIndex(int)}.
-   */
-  @Test
-  public void testSetPheromoneQuantityIndex() {
-    fail("Not yet implemented");
+      @Override
+      public double pheromoneToAddFullCycle(double totalDistance) {
+        return 0;
+      }
+
+      @Override
+      public double pheromoneToAddSingleEdge(double edgeDistance) {
+        return 0;
+      }
+    };
+
+    assertEquals(AbstractPheromoneUpdateStrategy.DEFAULT_TRAIL_QUANTITY_INDEX,
+        strategy.pheromoneQuantityIndex());
+
+    final int newPheromoneQuantityIndex = 10;
+    strategy.setPheromoneQuantityIndex(newPheromoneQuantityIndex);
+
+    assertEquals(newPheromoneQuantityIndex, strategy.pheromoneQuantityIndex());
   }
 
 }

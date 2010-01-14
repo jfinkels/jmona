@@ -24,25 +24,31 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
+ * Test class for the AntQuantityStrategy class.
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
 public class AntQuantityStrategyTester {
 
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
+
   /**
-   * Test method for {@link jmona.aco.impl.AntQuantityStrategy#pheromoneToAddFullCycle(double)}.
+   * Test method for
+   * {@link jmona.aco.impl.AntQuantityStrategy#pheromoneToAddFullCycle(double)}
+   * and
+   * {@link jmona.aco.impl.AntQuantityStrategy#pheromoneToAddSingleEdge(double)}
+   * .
    */
   @Test
   public void testPheromoneToAddFullCycle() {
-    fail("Not yet implemented");
-  }
+    final AntQuantityStrategy strategy = new AntQuantityStrategy();
+    final double distance = 100;
 
-  /**
-   * Test method for {@link jmona.aco.impl.AntQuantityStrategy#pheromoneToAddSingleEdge(double)}.
-   */
-  @Test
-  public void testPheromoneToAddSingleEdge() {
-    fail("Not yet implemented");
-  }
+    assertEquals(0, strategy.pheromoneToAddFullCycle(distance), ZERO_DELTA);
 
+    assertEquals(strategy.pheromoneQuantityIndex() / distance, strategy
+        .pheromoneToAddSingleEdge(distance), ZERO_DELTA);
+  }
 }
