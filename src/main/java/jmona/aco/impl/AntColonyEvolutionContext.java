@@ -42,7 +42,7 @@ import jmona.impl.context.AbstractEvolutionContext;
  *          The type of Ant which is moved around the graph.
  * @since 0.5
  */
-public abstract class AntColonyEvolutionContext<A extends Ant> extends
+public class AntColonyEvolutionContext<A extends Ant> extends
     AbstractEvolutionContext<A> {
 
   /** The default pheromone persistence factor. */
