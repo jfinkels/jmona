@@ -19,10 +19,15 @@
  */
 package jmona.example.monalisa.gp;
 
+import java.awt.image.RenderedImage;
+import java.io.IOException;
+
 import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
+import jmona.example.monalisa.Converter;
+import jmona.example.monalisa.io.ImageWriter;
 import jmona.gp.Tree;
 import jmona.test.Util;
 
@@ -47,9 +52,13 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
    * The file to which to write the best individual at the end of the evolution.
    */
   public static final String FILENAME = "target/mona.png";
+  /** The ID of the bean containing the height of the image. */
+  public static final String HEIGHT_BEAN = "height";
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger
       .getLogger(MonaEvolutionTester.class);
+  /** The ID of the bean containing the width of the image. */
+  public static final String WIDTH_BEAN = "width";
   /**
    * Get the completion criteria for this evolution from the Spring XML
    * configuration file.
@@ -74,27 +83,21 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
       Util.fail(exception);
     } catch (final EvolutionException exception) {
       Util.fail(exception);
-    } catch (final ArrayIndexOutOfBoundsException exception) {
-      Util.fail(exception);
-    } catch (final NullPointerException exception) {
-      Util.fail(exception);
     }
 
     // could not autowire because spring could distinguish between these 2 beans
-    final int width = (Integer) this.applicationContext.getBean("width");
-    final int height = (Integer) this.applicationContext.getBean("height");
+    final int width = (Integer) this.applicationContext.getBean(WIDTH_BEAN);
+    final int height = (Integer) this.applicationContext.getBean(HEIGHT_BEAN);
 
-//    try {
-      final Tree individual = this.context
-          .currentPopulation().get(0);
-//      final RenderedImage image = Converter.toImage(individual.evaluate(),
-//          width, height);
-//      ImageWriter.writeImage(image, FILENAME);
-//    } catch (final EvaluationException exception) {
-//      TreeUtils.fail(exception);
-//    } catch (final IOException exception) {
-//      TreeUtils.fail(exception);
-//    }
+    try {
+      final Tree individual = this.context.currentPopulation().get(0);
+      final ColoredPolygonNode root = (ColoredPolygonNode) individual.root();
+      final RenderedImage image = Converter.toImage(root.evaluate(), width,
+          height);
+      ImageWriter.writeImage(image, FILENAME);
+    } catch (final IOException exception) {
+      Util.fail(exception);
+    }
 
   }
 }
