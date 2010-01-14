@@ -21,8 +21,8 @@ package jmona.ga.impl;
 
 import jmona.CrossoverFunction;
 import jmona.DeepCopyableList;
+import jmona.impl.ListUtils;
 import jmona.impl.Pair;
-import jmona.impl.Util;
 
 /**
  * Base class for a CrossoverFunction which operates on Lists.
@@ -56,7 +56,7 @@ public abstract class AbstractListCrossoverFunction<E> implements
     final int start = sliceIndices.left();
     final int end = sliceIndices.right();
 
-    Util.swap(list1, list2, start, end);
+    ListUtils.swap(list1, list2, start, end);
   }
 
   /**

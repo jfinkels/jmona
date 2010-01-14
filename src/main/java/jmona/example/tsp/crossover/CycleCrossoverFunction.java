@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.CrossoverFunction;
-import jmona.impl.Util;
+import jmona.impl.ListUtils;
 import jmona.random.RandomUtils;
 
 /**
@@ -96,7 +96,7 @@ public class CycleCrossoverFunction implements CrossoverFunction<List<Integer>> 
 
     // swap the cities at each of the indices of the determined cycle
     for (final int index : cycleIndices) {
-      Util.swap(tour1, tour2, index);
+      ListUtils.swap(tour1, tour2, index);
     }
   }
 }

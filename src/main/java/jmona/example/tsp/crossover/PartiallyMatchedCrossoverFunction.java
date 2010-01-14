@@ -22,7 +22,7 @@ package jmona.example.tsp.crossover;
 import java.util.List;
 
 import jmona.CrossoverFunction;
-import jmona.impl.Util;
+import jmona.impl.ListUtils;
 import jmona.random.RandomUtils;
 
 /**
@@ -73,7 +73,7 @@ public class PartiallyMatchedCrossoverFunction implements
     final int end = Math.max(number1, number2);
 
     // crossover the section in between the start and end indices
-    Util.swap(tour1, tour2, start, end);
+    ListUtils.swap(tour1, tour2, start, end);
 
     // get a view of the crossover over sections in each tour
     final List<Integer> swappedSectionInTour1 = tour1.subList(start, end);

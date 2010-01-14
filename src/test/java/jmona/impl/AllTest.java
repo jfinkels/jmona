@@ -32,7 +32,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ CompleteDeepCopyableListFactoryTester.class,
     CompleteDeepCopyableVectorTester.class, IdentityFunctionTester.class,
-    PartialDeepCopyableListFactoryTester.class,
+    ListUtilsTester.class, PartialDeepCopyableListFactoryTester.class,
     PartialDeepCopyableVectorTester.class, UtilTester.class })
 public class AllTest {
 
