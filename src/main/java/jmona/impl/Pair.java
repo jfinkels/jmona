@@ -30,6 +30,15 @@ package jmona.impl;
  * @since 0.1
  */
 public class Pair<S, T> {
+  /** The comma character. */
+  public static final char COMMA = ',';
+  /** The left parenthesis character. */
+  public static final char LPAREN = '(';
+  /** The right parenthesis character. */
+  public static final char RPAREN = ')';
+  /** The space character. */
+  public static final char SPACE = ' ';
+
   /** The left object. */
   private S left;
   /** The right object. */
@@ -93,6 +102,7 @@ public class Pair<S, T> {
    */
   @Override
   public String toString() {
-    return "(" + left.toString() + ", " + right.toString() + ")";
+    return LPAREN + this.left.toString() + COMMA + SPACE
+        + this.right.toString() + RPAREN;
   }
 }
