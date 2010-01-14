@@ -24,12 +24,12 @@ import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.InvocationTargetException;
 
-import jmona.ComparisonException;
-
 import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Base class for all Exception test classes.
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
@@ -39,17 +39,38 @@ public abstract class AbstractExceptionTester {
   public static final String TEST_MESSAGE = "Hello, world!";
   /** The Throwable to provide to the constructors of the Exceptions under test. */
   public static final Throwable TEST_CAUSE = new Exception();
+  /** The Exception instantiated using the constructor with no arguments. */
   private Exception exceptionNoArgs = null;
+  /**
+   * The Exception instantiated using the constructor with a single String
+   * argument.
+   */
   private Exception exceptionString = null;
+  /**
+   * The Exception instantiated using the constructor with a single Throwable
+   * argument.
+   */
   private Exception exceptionThrowable = null;
+  /**
+   * The Exception instantiated using the constructor with a String argument and
+   * a Throwable argument.
+   */
   private Exception exceptionStringThrowable = null;
 
+  /** The class of the Exception to test. */
   private final Class<? extends Exception> exceptionClass;
 
+  /**
+   * Instantiates this test class for an Exception of the specified class.
+   * 
+   * @param clazz
+   *          The class of the Exception to test.
+   */
   public AbstractExceptionTester(final Class<? extends Exception> clazz) {
     this.exceptionClass = clazz;
   }
 
+  /** Instantiate the Exception using each of the four constructors. */
   @Before
   public void setUp() {
     try {
@@ -75,6 +96,7 @@ public abstract class AbstractExceptionTester {
     }
   }
 
+  /** Test the Exception. */
   @Test
   public void testException() {
     try {
