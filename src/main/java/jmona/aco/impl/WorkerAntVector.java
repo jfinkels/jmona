@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * WorkerAntVector.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -19,23 +19,31 @@
  */
 package jmona.aco.impl;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import java.util.Vector;
+
+import jmona.functional.Range;
 
 /**
- * Runs all tests in this package.
+ * A Vector of WorkerAnt objects, which initially places one WorkerAnt on each
+ * vertex.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-@RunWith(Suite.class)
-@SuiteClasses({ AbstractPheromoneUpdateStrategyTester.class,
-    AntColonyEvolutionContextTester.class, AntCycleStrategyTester.class,
-    AntDensityStrategyTester.class, AntQuantityStrategyTester.class,
-    DefaultPheromoneDirectedGraphTester.class,
-    PathLoggingPostProcessorTester.class, TourEvolutionContextTester.class,
-    WorkerAntTester.class, WorkerAntVectorTester.class })
-public class AllTest {
+public class WorkerAntVector extends Vector<WorkerAnt> {
 
+  /** Default generated serial version UID. */
+  private static final long serialVersionUID = -4951012312707300676L;
+
+  /**
+   * Instantiates this Vector with one WorkerAnt initially on each vertex.
+   * 
+   * @param numberOfVertices
+   *          The number of vertices in the graph on which the WorkerAnts live.
+   */
+  public WorkerAntVector(final int numberOfVertices) {
+    for (final int i : new Range(numberOfVertices)) {
+      this.add(new WorkerAnt(i));
+    }
+  }
 }
