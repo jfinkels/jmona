@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.tsp.io;
+package jmona.graph.io;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -30,7 +30,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.1
  */
 @RunWith(Suite.class)
-@SuiteClasses({ TSPGraphReaderTester.class })
+@SuiteClasses({ GraphReaderTester.class })
 public class AllTest {
 
 }

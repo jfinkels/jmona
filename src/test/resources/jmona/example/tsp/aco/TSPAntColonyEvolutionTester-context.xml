@@ -1,0 +1,63 @@
+<!--
+ TSPAntColonyEvolutionTester-context.xml
+
+ Copyright 2010 Jeffrey Finkelstein
+ 
+ This file is part of jmona.
+ 
+ jmona is free software: you can redistribute it and/or modify it under the
+ terms of the GNU General Public License as published by the Free Software
+ Foundation, either version 3 of the License, or (at your option) any later
+ version.
+ 
+ jmona is distributed in the hope that it will be useful, but WITHOUT ANY
+ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License along with
+ jmona. If not, see <http://www.gnu.org/licenses/>.
+-->
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+  <!-- get the graph -->
+  <import resource="../graph.xml" />
+  
+  <!-- the graph to use for the traveling salesman problem evolution -->
+  <bean id="graph" class="jmona.aco.impl.DefaultPheromoneDirectedGraph">
+    <constructor-arg ref="adjacencyMatrix" />
+    <constructor-arg value="50" />
+  </bean>
+  
+  <!-- the initial population of ants with one on each vertex -->
+  <bean id="population" class="jmona.aco.impl.WorkerAntVector" >
+    <constructor-arg ref="numberOfVertices" />
+  </bean>
+
+  <!-- the pheromone update strategy to use -->
+  <!-- <bean id="updateStrategy" class="jmona.aco.impl.AntDensityStrategy"> -->
+  <!-- <bean id="updateStrategy" class="jmona.aco.impl.AntQuantityStrategy"> -->
+  <bean id="updateStrategy" class="jmona.aco.impl.AntCycleStrategy">
+    <property name="pheromoneQuantityIndex" value="100" />
+  </bean>
+
+  <bean id="completionCondition" class="jmona.impl.completion.MaxGenerationCompletionCondition" >
+    <property name="maxGenerations" value="20" />
+  </bean>
+
+  <bean id="evolutionContext" class="jmona.aco.impl.AntColonyEvolutionContext">
+    <constructor-arg ref="population" />
+    <constructor-arg ref="graph" />
+    <constructor-arg ref="updateStrategy" />
+    <property name="pheromonePersistence" value="0.5" />
+    <property name="pheromoneImportance" value="1" />
+    <property name="visibilityImportance" value="1" />
+  </bean>
+
+  <bean id="postProcessor" class="jmona.aco.impl.BestAntLoggingPostProcessor">
+    <constructor-arg ref="graph" />
+  </bean>
+</beans>

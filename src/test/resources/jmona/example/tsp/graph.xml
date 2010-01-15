@@ -1,7 +1,7 @@
 <!--
- dataset3.xml
+ graph.xml
 
- Copyright 2009, 2010 Jeffrey Finkelstein
+ Copyright 2010 Jeffrey Finkelstein
  
  This file is part of jmona.
  
@@ -23,14 +23,22 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-  <!-- this configuration file corresponds to the "tsp-data3.txt" file -->
-
-  <bean id="numberOfCities" class="java.lang.Integer">
-    <constructor-arg value="100" />
+  <!-- the file containing the graph data -->
+  <bean id="dataFile" class="java.io.File">
+    <constructor-arg
+      value="src/test/resources/jmona/example/tsp/graphs/eil51.tsp" />
   </bean>
 
-  <bean id="dataFile" class="java.io.File" >
-    <constructor-arg value="src/test/resources/jmona/example/tsp/tsp-data3.txt" />
+  <!-- the adjacency matrix of the graph -->
+  <bean id="adjacencyMatrix" 
+    class="jmona.graph.io.GraphReader" 
+    factory-method="adjacencyMatrix">
+    <constructor-arg 
+      value="src/test/resources/jmona/example/tsp/graphs/eil51.tsp" />
   </bean>
 
+  <bean id="numberOfVertices"
+    factory-bean="graph" 
+    factory-method="numberOfVertices" />
+  
 </beans>

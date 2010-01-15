@@ -125,9 +125,10 @@ public class AntColonyEvolutionContext<A extends Ant> extends
       this.tourContext.stepGeneration();
     }
 
-    // reset the condition for next evolution step
+    // reset the condition for next evolution step (since each ant starts on one
+    // vertex, it needs to make numberOfVertices - 1 moves)
     this.condition.setMaxGenerations(this.tourContext.currentGeneration()
-        + this.numberOfVertices);
+        + (this.numberOfVertices - 1));
 
     // evaporate trail from every edge after the ant's have chosen their tours
     this.graph.evaporate(this.pheromonePersistence);

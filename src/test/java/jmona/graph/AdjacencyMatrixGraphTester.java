@@ -58,5 +58,25 @@ public class AdjacencyMatrixGraphTester {
       }
     }
   }
+  
+  /**
+   * Test method for
+   * {@link jmona.graph.AdjacencyMatrixGraph#numberOfVertices()}
+   * .
+   */
+  @Test  
+  public void testNumberOfVertices() {
+    final double[][] weights = new double[NUM_VERTICES][NUM_VERTICES];
+    for (final int i : new Range(weights.length)) {
+      for (final int j : new Range(weights.length)) {
+        weights[i][j] = i + j;
+      }
+    }
+    final AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(weights);
+
+    assertEquals(graph.numberOfVertices(), NUM_VERTICES);
+  }
+  
+  
 
 }

@@ -24,12 +24,10 @@
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
   <!-- the graph to use for the traveling salesman problem evolution -->
-  
-  <bean id="graph" class="jmona.example.tsp.io.TSPGraphReader"
-    factory-method="fromFile">
-    <constructor-arg ref="dataFile" />    
+  <bean id="graph" class="jmona.graph.AdjacencyMatrixGraph">
+    <constructor-arg ref="adjacencyMatrix" />
   </bean>
-  
+
   <bean id="crossoverFunction" 
     class="jmona.example.tsp.crossover.CycleCrossoverFunction" />
   <!--<bean id="crossoverFunction" 

@@ -53,6 +53,7 @@ public class WorkerAnt implements Ant {
    * 
    * @return {@inheritDoc}
    */
+  @Override
   public List<Integer> memory() {
     return this.memory;
   }
@@ -62,6 +63,7 @@ public class WorkerAnt implements Ant {
    * 
    * @return {@inheritDoc}
    */
+  @Override
   public Integer currentVertex() {
     // get the last (most recently added) element of the list
     return this.memory.get(this.memory.size() - 1);
@@ -75,6 +77,7 @@ public class WorkerAnt implements Ant {
    * @throws AlreadyVisitedException
    *           {@inheritDoc}
    */
+  @Override
   public void moveTo(final Integer newVertex) {
     if (this.memory.contains(newVertex)) {
       throw new AlreadyVisitedException("Vertex " + newVertex
@@ -86,9 +89,19 @@ public class WorkerAnt implements Ant {
   }
 
   /** {@inheritDoc} */
+  @Override
   public void reset() {
     // clear all but the first element of the list
     this.memory.subList(1, this.memory.size()).clear();
   }
 
+  /**
+   * Returns the String representation of this Ant's memory.
+   * 
+   * @return The String representation of this Ant's memory.
+   */
+  @Override
+  public String toString() {
+    return "Ant" + this.memory;
+  }
 }

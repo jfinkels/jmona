@@ -1,5 +1,5 @@
 /**
- * package-info.java
+ * AllTest.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -17,11 +17,20 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
+package jmona.example.tsp.aco;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
 /**
- * Provides a class for reading graphs from files.
+ * Runs all tests in this package.
  * 
  * @author Jeffrey Finkelstein
- * @see jmona.example.tsp
+ * @since 0.1
  */
-package jmona.example.tsp.io;
+@RunWith(Suite.class)
+@SuiteClasses({ TSPAntColonyEvolutionTester.class })
+public class AllTest {
 
+}

@@ -44,11 +44,11 @@ public final class ArrayUtils {
    * @return An array containing references to the Objects in the specified
    *         array between the specified start and end indices.
    */
-  public static Object[] slice(final Object[] array, final int startIndex,
+  public static String[] slice(final String[] array, final int startIndex,
       final int endIndex) {
     final int length = endIndex - startIndex;
-    final Object[] result = new Object[length];
-
+    final String[] result = new String[length];
+    
     for (final int i : new Range(0, length)) {
       result[i] = array[startIndex + i];
     }

@@ -34,14 +34,14 @@ public class ArrayUtilsTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.ArrayUtils#slice(java.lang.Object[], int, int)}.
+   * {@link jmona.impl.ArrayUtils#slice(java.lang.String[], int, int)}.
    */
   @Test
   public void testSlice() {
-    final Object[] array = { new Object(), new Object(), new Object() };
+    final String[] array = { new String(), new String(), new String() };
     int start = 1;
     int end = 2;
-    Object[] result = ArrayUtils.slice(array, start, end);
+    String[] result = ArrayUtils.slice(array, start, end);
     for (final int i : new Range(0, end - start)) {
       assertSame(array[start + i], result[i]);
     }

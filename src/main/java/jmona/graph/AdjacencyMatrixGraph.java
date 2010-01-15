@@ -70,6 +70,17 @@ public class AdjacencyMatrixGraph implements DirectedGraph<Integer, Double> {
   /**
    * {@inheritDoc}
    * 
+   * @return {@inheritDoc}
+   * @see jmona.graph.Graph#allVertices()
+   */
+  @Override
+  public Set<Integer> allVertices() {
+    return this.vertices;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
    * @param sourceVertex
    *          {@inheritDoc}
    * @param targetVertex
@@ -86,14 +97,14 @@ public class AdjacencyMatrixGraph implements DirectedGraph<Integer, Double> {
   }
 
   /**
-   * {@inheritDoc}
+   * Gets the number of vertices in this graph.
    * 
-   * @return {@inheritDoc}
-   * @see jmona.graph.Graph#allVertices()
+   * This method returns the size of the Set returned by the
+   * {@link #allVertices()} method.
+   * 
+   * @return The number of vertices in this graph.
    */
-  @Override
-  public Set<Integer> allVertices() {
-    return this.vertices;
+  public int numberOfVertices() {
+    return this.vertices.size();
   }
-
 }

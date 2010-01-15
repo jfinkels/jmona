@@ -46,6 +46,7 @@ import jmona.impl.selection.FitnessProportionateSelection;
  * @since 0.5
  */
 class TourEvolutionContext<A extends Ant> extends AbstractEvolutionContext<A> {
+
   /**
    * The default relative importance of pheromone on an edge with respect to the
    * visibility of the vertices incident to that edge.
