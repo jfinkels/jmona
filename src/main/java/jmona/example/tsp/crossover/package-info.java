@@ -53,7 +53,9 @@
  * 
  * @author Jeffrey Finkelstein
  * @see jmona.example.tsp
- * @see jmona.example.tsp.io
+ * @see jmona.graph
+ * @see jmona.graph.impl
+ * @see jmona.graph.io
  * @see jmona.impl.mutation
  */
 package jmona.example.tsp.crossover;
