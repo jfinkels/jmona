@@ -26,6 +26,7 @@ import static org.junit.Assert.assertTrue;
 import jmona.CopyingException;
 import jmona.DeepCopyableList;
 import jmona.InitializationException;
+import jmona.PropertyNotSetException;
 import jmona.functional.Range;
 import jmona.impl.example.ExampleIndividual;
 import jmona.impl.example.ExampleIndividualFactory;
@@ -58,9 +59,11 @@ public class CompleteDeepCopyableListFactoryTester {
     try {
       factory.createObject();
       Util.shouldHaveThrownException();
-    } catch (final InitializationException exception) {
+    } catch (final PropertyNotSetException exception) {
       // elementFactory has not been set
-      assertTrue(exception instanceof InitializationException);
+      assertTrue(exception instanceof PropertyNotSetException);
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
     }
 
     factory.setElementFactory(new ExampleIndividualFactory());

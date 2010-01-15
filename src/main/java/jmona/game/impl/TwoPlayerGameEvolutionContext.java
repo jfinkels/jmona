@@ -25,6 +25,7 @@ import java.util.Vector;
 import jmona.CopyingException;
 import jmona.DeepCopyable;
 import jmona.EvolutionException;
+import jmona.PropertyNotSetException;
 import jmona.SelectionException;
 import jmona.game.Strategy;
 import jmona.game.TournamentGameSelection;
@@ -65,16 +66,14 @@ public class TwoPlayerGameEvolutionContext<S extends Strategy & DeepCopyable<S>>
    * 
    * @throws EvolutionException
    *           {@inheritDoc}
+   * @throws PropertyNotSetException
+   *           If one of the necessary properties has not been set.
    */
   @Override
   // TODO documentation
   protected void executeGenerationStep() throws EvolutionException {
     // perform a sanity check (i.e. make sure there are no null properties)
-    try {
-      this.sanityCheck();
-    } catch (final NullPointerException exception) {
-      throw new EvolutionException("Sanity check failed.", exception);
-    }
+    this.sanityCheck();
 
     // initialize a population to hold the selections for the next generation
     final List<S> nextPopulation = new Vector<S>();
@@ -101,17 +100,17 @@ public class TwoPlayerGameEvolutionContext<S extends Strategy & DeepCopyable<S>>
    * 
    * The necessary properties are the game, and the TournamentGameSelection.
    * 
-   * @throws NullPointerException
+   * @throws PropertyNotSetException
    *           If one of the necessary properties have not been set on this
    *           object.
    */
   protected void sanityCheck() {
     if (this.game == null) {
-      throw new NullPointerException("Game has not been set.");
+      throw new PropertyNotSetException("Game has not been set.");
     }
 
     if (this.tournament == null) {
-      throw new NullPointerException("Tournament has not been set.");
+      throw new PropertyNotSetException("Tournament has not been set.");
     }
   }
 

@@ -52,15 +52,13 @@ public class PartialDeepCopyableListFactory<E> extends
    * @throws InitializationException
    *           If an Exception is thrown when generating an element, or if no
    *           element factory has been set.
+   * @throws PropertyNotSetException
+   *           If any of the necessary properties have not been set.
    * @see jmona.impl.DefaultListFactory#createObject()
    */
   @Override
   public DeepCopyableList<E> createObject() throws InitializationException {
-    try {
-      this.sanityCheck();
-    } catch (final NullPointerException exception) {
-      throw new InitializationException("Sanity check failed.");
-    }
+    this.sanityCheck();
 
     final DeepCopyableList<E> result = new PartialDeepCopyableVector<E>();
 

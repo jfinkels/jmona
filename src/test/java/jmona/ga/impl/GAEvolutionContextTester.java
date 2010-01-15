@@ -29,6 +29,7 @@ import java.util.Vector;
 import jmona.CrossoverException;
 import jmona.EvolutionException;
 import jmona.MutationException;
+import jmona.PropertyNotSetException;
 import jmona.SelectionException;
 import jmona.impl.example.ExampleBadCrossoverFunction;
 import jmona.impl.example.ExampleBadFitnessFunction;
@@ -182,8 +183,10 @@ public class GAEvolutionContextTester {
     try {
       context.executeGenerationStep();
       Util.shouldHaveThrownException();
+    } catch (final PropertyNotSetException exception) {
+      assertTrue(exception instanceof PropertyNotSetException);
     } catch (final EvolutionException exception) {
-      assertTrue(exception.getCause() instanceof NullPointerException);
+      Util.fail(exception);
     }
 
   }

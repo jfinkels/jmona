@@ -34,6 +34,7 @@ import jmona.EvolutionException;
 import jmona.FitnessFunction;
 import jmona.IndependentSelectionFunction;
 import jmona.MutationFunction;
+import jmona.PropertyNotSetException;
 import jmona.impl.example.ExampleCrossoverFunction;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
@@ -248,7 +249,7 @@ public class AbstractGeneticEvolutionContextTester {
     try {
       this.unsetContext.sanityCheck();
       Util.shouldHaveThrownException();
-    } catch (final NullPointerException exception) {
+    } catch (final PropertyNotSetException exception) {
       // fitness function has not been set
       assertNull(this.unsetContext.fitnessFunction());
       assertNull(this.unsetContext.mutationFunction());
@@ -260,7 +261,7 @@ public class AbstractGeneticEvolutionContextTester {
     try {
       this.unsetContext.sanityCheck();
       Util.shouldHaveThrownException();
-    } catch (final NullPointerException exception) {
+    } catch (final PropertyNotSetException exception) {
       // mutation function has not been set
       assertNotNull(this.unsetContext.fitnessFunction());
       assertNull(this.unsetContext.mutationFunction());
@@ -272,7 +273,7 @@ public class AbstractGeneticEvolutionContextTester {
     try {
       this.unsetContext.sanityCheck();
       Util.shouldHaveThrownException();
-    } catch (final NullPointerException exception) {
+    } catch (final PropertyNotSetException exception) {
       // selection function has not been set
       assertNotNull(this.unsetContext.fitnessFunction());
       assertNotNull(this.unsetContext.mutationFunction());
@@ -285,7 +286,7 @@ public class AbstractGeneticEvolutionContextTester {
     try {
       this.unsetContext.sanityCheck();
       Util.shouldHaveThrownException();
-    } catch (final NullPointerException exception) {
+    } catch (final PropertyNotSetException exception) {
       // crossover function has not been set
       assertNotNull(this.unsetContext.fitnessFunction());
       assertNotNull(this.unsetContext.mutationFunction());
@@ -301,7 +302,7 @@ public class AbstractGeneticEvolutionContextTester {
       assertNotNull(this.unsetContext.selectionFunction());
       assertNotNull(this.unsetContext.crossoverFunction());
       this.unsetContext.sanityCheck();
-    } catch (final NullPointerException exception) {
+    } catch (final PropertyNotSetException exception) {
       Util.fail(exception);
     }
   }

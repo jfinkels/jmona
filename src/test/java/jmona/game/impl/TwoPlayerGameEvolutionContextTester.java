@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.EvolutionException;
+import jmona.PropertyNotSetException;
 import jmona.SelectionException;
 import jmona.game.GameplayException;
 import jmona.game.TournamentGameSelection;
@@ -80,21 +81,21 @@ public class TwoPlayerGameEvolutionContextTester {
     try {
       this.context.sanityCheck();
       Util.shouldHaveThrownException();
-    } catch (final NullPointerException exception) {
+    } catch (final PropertyNotSetException exception) {
       this.context.setGame(new ExampleGame());
     }
 
     try {
       this.context.sanityCheck();
       Util.shouldHaveThrownException();
-    } catch (final NullPointerException exception) {
+    } catch (final PropertyNotSetException exception) {
       // tournament has not been set
       this.context.setTournament(new RoundRobinTournament<ExampleStrategy>());
     }
 
     try {
       this.context.sanityCheck();
-    } catch (final NullPointerException exception) {
+    } catch (final PropertyNotSetException exception) {
       Util.fail(exception);
     }
 
@@ -102,8 +103,10 @@ public class TwoPlayerGameEvolutionContextTester {
     try {
       this.context.stepGeneration();
       Util.shouldHaveThrownException();
+    } catch (final PropertyNotSetException exception) {
+      assertTrue(exception instanceof PropertyNotSetException);
     } catch (final EvolutionException exception) {
-      assertTrue(exception.getCause() instanceof NullPointerException);
+      Util.fail(exception);
     }
   }
 

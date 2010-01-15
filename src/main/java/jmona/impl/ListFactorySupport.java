@@ -20,6 +20,7 @@
 package jmona.impl;
 
 import jmona.Factory;
+import jmona.PropertyNotSetException;
 
 /**
  * A class which has access to a factory of type E, and which has a size
@@ -52,12 +53,12 @@ public abstract class ListFactorySupport<E> {
    * 
    * The only necessary property for this class is the element factory.
    * 
-   * @throws NullPointerException
+   * @throws PropertyNotSetException
    *           If any of the necessary properties have not been set.
    */
   protected void sanityCheck() {
     if (this.elementFactory() == null) {
-      throw new NullPointerException("Element factory has not been set.");
+      throw new PropertyNotSetException("Element factory has not been set.");
     }
   }
 

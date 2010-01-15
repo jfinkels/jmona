@@ -19,7 +19,6 @@
  */
 package jmona.gp.impl;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -37,6 +36,7 @@ import jmona.IndependentSelectionFunction;
 import jmona.InitializationException;
 import jmona.MutationException;
 import jmona.MutationFunction;
+import jmona.PropertyNotSetException;
 import jmona.SelectionException;
 import jmona.functional.Range;
 import jmona.gp.Tree;
@@ -131,9 +131,11 @@ public class GPEvolutionContextTester {
     try {
       this.context.stepGeneration();
       Util.shouldHaveThrownException();
-    } catch (final EvolutionException exception) {
-      assertTrue(exception.getCause() instanceof NullPointerException);
+    } catch (final PropertyNotSetException exception) {
+      assertTrue(exception instanceof PropertyNotSetException);
       assertNull(this.context.crossoverFunction());
+    } catch (final EvolutionException exception) {
+      Util.fail(exception);
     }
   }
 

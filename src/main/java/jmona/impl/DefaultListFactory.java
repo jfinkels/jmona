@@ -46,15 +46,13 @@ public class DefaultListFactory<E> extends ListFactorySupport<E> implements
    * @throws InitializationException
    *           If an Exception is thrown when generating an element, or if no
    *           element factory has been set.
+   * @throws PropertyNotSetException
+   *           If any of the necessary properties have not been set.
    * @see jmona.Factory#createObject()
    */
   @Override
   public List<E> createObject() throws InitializationException {
-    try {
-      this.sanityCheck();
-    } catch (final NullPointerException exception) {
-      throw new InitializationException("Sanity check failed.");
-    }
+    this.sanityCheck();
 
     final List<E> result = new Vector<E>();
 

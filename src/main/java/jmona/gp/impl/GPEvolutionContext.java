@@ -61,17 +61,15 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
    * 
    * @throws EvolutionException
    *           {@inheritDoc}
+   * @throws PropertyNotSetException
+   *           If one of the necessary properties has not been set.
    * @see jmona.EvolutionContext#stepGeneration()
    */
   // TODO documentation for this method
   @Override
   protected void executeGenerationStep() throws EvolutionException {
-    // perform sanity check
-    try {
-      this.sanityCheck();
-    } catch (final NullPointerException exception) {
-      throw new EvolutionException("Sanity check failed.", exception);
-    }
+    // perform sanity check (i.e. check all necessary properties have been set)
+    this.sanityCheck();
 
     // get a reference to the current population
     final List<Tree> currentPopulation = this.currentPopulation();

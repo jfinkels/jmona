@@ -80,16 +80,14 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
    * 
    * @throws EvolutionException
    *           {@inheritDoc}
+   * @throws PropertyNotSetException
+   *           If one of the necessary properties has not been set.
    */
   // TODO refactor to calculate fitnesses only once before selection
   @Override
   public void executeGenerationStep() throws EvolutionException {
     // perform a sanity check (i.e. make sure there are no null properties)
-    try {
-      this.sanityCheck();
-    } catch (final NullPointerException exception) {
-      throw new EvolutionException("Sanity check failed.", exception);
-    }
+    this.sanityCheck();
 
     // get a reference to the current population
     final List<T> currentPopulation = this.currentPopulation();

@@ -28,6 +28,7 @@ import jmona.GeneticEvolutionContext;
 import jmona.IndependentSelectionFunction;
 import jmona.MultipleSelectionFunction;
 import jmona.MutationFunction;
+import jmona.PropertyNotSetException;
 import jmona.impl.selection.ElitismSelectionFunction;
 
 /**
@@ -176,21 +177,21 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * SelectionFunction, and the CrossoverFunction. The functions are checked in
    * that order.
    * 
-   * @throws NullPointerException
+   * @throws PropertyNotSetException
    *           If any of the necessary properties have not been set.
    */
   protected void sanityCheck() {
     if (this.fitnessFunction() == null) {
-      throw new NullPointerException("Fitness function has not been set.");
+      throw new PropertyNotSetException("Fitness function has not been set.");
     }
     if (this.mutationFunction() == null) {
-      throw new NullPointerException("Mutation function has not been set.");
+      throw new PropertyNotSetException("Mutation function has not been set.");
     }
     if (this.selectionFunction() == null) {
-      throw new NullPointerException("Selection function has not been set.");
+      throw new PropertyNotSetException("Selection function has not been set.");
     }
     if (this.crossoverFunction() == null) {
-      throw new NullPointerException("Crossover function has not been set.");
+      throw new PropertyNotSetException("Crossover function has not been set.");
     }
   }
 
