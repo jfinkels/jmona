@@ -79,11 +79,6 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
     // get the size of the current population
     final int currentSize = currentPopulation.size();
 
-    // if the size of the population is too small
-    if (currentSize < 2) {
-      throw new RuntimeException("The size of the population is less than 2.");
-    }
-
     // initialize a new population to hold the next generation
     final List<Tree> nextPopulation = new Vector<Tree>();
 
@@ -103,29 +98,27 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
 
       // while the size of the next generation is less than the size of the
       // current generation
-      Tree individual1 = null;
-      Tree individual2 = null;
       while (nextPopulation.size() < currentSize) {
 
-        // select one individual, because each op. requires at least one
-        individual1 = selectionFunction.select(currentPopulation,
+        // select one individual and copy it to create the offspring
+        Tree individual1 = selectionFunction.select(currentPopulation,
             fitnessFunction).deepCopy();
 
         // choose variation operation probabilistically
-        // TODO I am ignoring the crossoverProbability property
-        if (RandomUtils.nextDouble() < this.mutationProbability()
-            || nextPopulation.size() >= currentSize - 1) {
+        // TODO we are ignoring the crossoverProbability property
+        if (nextPopulation.size() >= currentSize - 1
+            || RandomUtils.nextDouble() < this.mutationProbability()) {
 
-          // perform mutation
+          // perform mutation with certain probability
           this.mutationFunction().mutate(individual1);
 
         } else { // variation operation is crossover
 
-          // select another individual (different from the first!)
-          individual2 = selectionFunction.select(currentPopulation,
+          // select another individual and copy it to create another offspring
+          Tree individual2 = selectionFunction.select(currentPopulation,
               fitnessFunction).deepCopy();
 
-          // perform crossover
+          // perform crossover on the two offspring
           this.crossoverFunction().crossover(individual1, individual2);
 
           // add the second individual to the next generation
@@ -139,15 +132,9 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
       // set the current population to the next generation
       this.setCurrentPopulation(nextPopulation);
 
-      // recalculate the fitnesses of the current generation
-      // this.recalculateFitnesses();
-
     } catch (final CrossoverException exception) {
       throw new EvolutionException(
           "Failed to perform crossover on two Individuals.", exception);
-      // } catch (final FitnessException exception) {
-      // throw new EvolutionException(
-      // "Failed determining fitness of an Individual.", exception);
     } catch (final MutationException exception) {
       throw new EvolutionException("Failed mutating an Individual.", exception);
     } catch (final SelectionException exception) {

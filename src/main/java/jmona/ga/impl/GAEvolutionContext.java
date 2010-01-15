@@ -97,11 +97,6 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
     // get the size of the current population
     final int currentSize = currentPopulation.size();
 
-    // if the size of the population is too small
-    if (currentSize < 2) {
-      throw new RuntimeException("The size of the population is less than 2.");
-    }
-
     // get a reference to the fitness function for this evolution
     final FitnessFunction<T> fitnessFunction = this.fitnessFunction();
 
@@ -116,71 +111,65 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
       // if elitism is enabled, copy the best individuals to the next generation
       if (this.elitism() > 0) {
         nextPopulation.addAll(this.elitismSelectionFunction().select(
-            currentPopulation, fitnessFunction, this.elitism()));                                                                    
+            currentPopulation, fitnessFunction, this.elitism()));
       }
 
       // while the size of the next generation is less than the size of the
       // current generation
-      T individual1 = null;
-      T individual2 = null;
-      while (nextPopulation.size() < currentSize - 1) {
-        /**
-         * Step 1: select two individuals
-         */
-        individual1 = selectionFunction.select(currentPopulation,
-            fitnessFunction).deepCopy();
-        individual2 = selectionFunction.select(currentPopulation,
-            fitnessFunction).deepCopy();
+      while (nextPopulation.size() < currentSize) {
 
-        /**
-         * Step 2: Perform crossover with probability p_crossover
-         */
-        if (RandomUtils.nextDouble() < this.crossoverProbability()) {
+        // select an individual and copy it to create the offspring
+        T individual1 = selectionFunction.select(currentPopulation,
+            fitnessFunction).deepCopy();
+        T individual2 = null;
+
+        // perform crossover (if there is enough room in the next generation)
+        // with certain probability
+        if (nextPopulation.size() < currentSize - 1
+            && RandomUtils.nextDouble() < this.crossoverProbability()) {
+
+          // select another individual and copy it to create another offspring
+          individual2 = selectionFunction.select(currentPopulation,
+              fitnessFunction).deepCopy();
+
+          // perform crossover on the two offspring
           this.crossoverFunction().crossover(individual1, individual2);
         }
 
-        /**
-         * Step 3: Perform mutation with probability p_mutation
-         */
+        // get the probability of performing mutation
         final double mutationProbability = this.mutationProbability();
+
+        // perform mutation with certain probability
         if (RandomUtils.nextDouble() < mutationProbability) {
           this.mutationFunction().mutate(individual1);
         }
-        if (RandomUtils.nextDouble() < mutationProbability) {
+
+        // perform mutation with certain probability (if the second individual
+        // is not null)
+        if (individual2 != null
+            && RandomUtils.nextDouble() < mutationProbability) {
           this.mutationFunction().mutate(individual2);
         }
 
-        /**
-         * Step 4: Add offspring to next generation
-         */
+        // add the offspring to the next generation
         nextPopulation.add(individual1);
-        nextPopulation.add(individual2);
-      }
-
-      // if the population size was an odd number, just add one more individual
-      if ((currentSize & 1) == 1) {
-        nextPopulation.add(selectionFunction.select(currentPopulation,
-            fitnessFunction).deepCopy());
+        if (individual2 != null) {
+          nextPopulation.add(individual2);
+        }
       }
 
       // set the current population to the next generation
       this.setCurrentPopulation(nextPopulation);
 
-      // recalculate the fitnesses of the current generation
-      // this.recalculateFitnesses();
-
     } catch (final CrossoverException exception) {
       throw new EvolutionException(
-          "Failed to perform crossover on two Individuals.", exception);
-      // } catch (final FitnessException exception) {
-      // throw new EvolutionException(
-      // "Failed determining fitness of an individual.", exception);
+          "Failed to perform crossover on two individuals.", exception);
     } catch (final MutationException exception) {
       throw new EvolutionException("Failed mutating an individual.", exception);
     } catch (final SelectionException exception) {
-      throw new EvolutionException("Failed selecting an Individual.", exception);
+      throw new EvolutionException("Failed selecting an individual.", exception);
     } catch (final CopyingException exception) {
-      throw new EvolutionException("Failed to copy an Individual.", exception);
+      throw new EvolutionException("Failed to copy an individual.", exception);
     }
   }
 }

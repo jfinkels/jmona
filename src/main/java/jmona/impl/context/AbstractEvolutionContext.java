@@ -51,10 +51,6 @@ public abstract class AbstractEvolutionContext<T> implements
    *           If the size of the initial population is less than 2.
    */
   public AbstractEvolutionContext(final List<T> initialPopulation) {
-    if (initialPopulation.size() < 2) {
-      throw new IllegalArgumentException(
-          "The initial population must be of size greater than or equal to 2.");
-    }
     this.population = initialPopulation;
   }
 

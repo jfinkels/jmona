@@ -125,16 +125,6 @@ public class GPEvolutionContextTester {
   /** Test for throwing exceptions. */
   @Test
   public void testExceptions() {
-    this.context.currentPopulation().clear();
-    try {
-      this.context.stepGeneration();
-      Util.shouldHaveThrownException();
-    } catch (final EvolutionException exception) {
-      Util.fail(exception);
-    } catch (final RuntimeException exception) {
-      assertEquals(0, this.context.currentPopulation().size());
-      assertTrue(exception instanceof RuntimeException);
-    }
 
     this.context.setCrossoverFunction(null);
 
@@ -144,20 +134,6 @@ public class GPEvolutionContextTester {
     } catch (final EvolutionException exception) {
       assertTrue(exception.getCause() instanceof NullPointerException);
       assertNull(this.context.crossoverFunction());
-    }
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.gp.impl.GPEvolutionContext#GPEvolutionContext(List)} .
-   */
-  @Test
-  public void testGPEvolutionContext() {
-    try {
-      new GPEvolutionContext(new Vector<Tree>());
-      Util.shouldHaveThrownException();
-    } catch (final IllegalArgumentException exception) {
-      assertTrue(exception instanceof IllegalArgumentException);
     }
   }
 

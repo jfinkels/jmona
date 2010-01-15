@@ -178,16 +178,6 @@ public class GAEvolutionContextTester {
 
     assertEquals(population.size() - 1, context.currentPopulation().size());
 
-    context.currentPopulation().remove(0);
-    try {
-      context.executeGenerationStep();
-      Util.shouldHaveThrownException();
-    } catch (final EvolutionException exception) {
-      Util.fail(exception);
-    } catch (final RuntimeException exception) {
-      assertTrue(exception instanceof RuntimeException);
-    }
-
     context.setMutationFunction(null);
     try {
       context.executeGenerationStep();
