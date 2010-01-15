@@ -22,7 +22,7 @@ package jmona.aco.impl;
 import jmona.EvolutionContext;
 import jmona.aco.Ant;
 import jmona.graph.DirectedGraph;
-import jmona.graph.GraphUtil;
+import jmona.graph.GraphUtils;
 import jmona.impl.postprocessing.LoggingPostProcessor;
 
 /**
@@ -70,7 +70,7 @@ public class PathLoggingPostProcessor<A extends Ant> extends
       result.append(agent.memory());
       if (this.graph != null) {
         result.append(", total distance: ");
-        result.append(GraphUtil.totalDistance(agent.memory(), this.graph));
+        result.append(GraphUtils.totalDistance(agent.memory(), this.graph));
       }
     }
 

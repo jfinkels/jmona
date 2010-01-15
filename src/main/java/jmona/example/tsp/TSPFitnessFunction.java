@@ -22,7 +22,7 @@ package jmona.example.tsp;
 import java.util.List;
 
 import jmona.graph.DirectedGraph;
-import jmona.graph.GraphUtil;
+import jmona.graph.GraphUtils;
 import jmona.impl.fitness.MinimizingFitnessFunction;
 
 /**
@@ -66,7 +66,7 @@ public class TSPFitnessFunction extends
       throw new IllegalArgumentException("Tour must have size greater than 0.");
     }
 
-    return GraphUtil.totalDistance(tour, this.graph);
+    return GraphUtils.totalDistance(tour, this.graph);
   }
 
 }

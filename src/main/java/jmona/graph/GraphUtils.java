@@ -1,5 +1,5 @@
 /**
- * GraphUtil.java
+ * GraphUtils.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -30,11 +30,13 @@ import jmona.functional.Range;
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
-public final class GraphUtil {
+public final class GraphUtils {
 
   /**
    * Determines the total distance in the specified tour with respect to the
    * specified DirectedGraph.
+   * 
+   * A tour of length 0 or 1 has a total distance of 0.
    * 
    * @param tour
    *          The tour whose total distance is to be determined.
@@ -60,7 +62,7 @@ public final class GraphUtil {
   }
 
   /** Instantiation disallowed except by subclasses. */
-  protected GraphUtil() {
+  protected GraphUtils() {
     // intentionally unimplemented
   }
 }

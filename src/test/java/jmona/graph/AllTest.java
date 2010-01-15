@@ -30,7 +30,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.1
  */
 @RunWith(Suite.class)
-@SuiteClasses({ AdjacencyMatrixGraphTester.class })
+@SuiteClasses({ AdjacencyMatrixGraphTester.class, GraphUtilsTester.class })
 public class AllTest {
 
 }

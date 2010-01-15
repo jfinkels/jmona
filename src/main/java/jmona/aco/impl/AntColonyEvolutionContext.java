@@ -26,7 +26,7 @@ import jmona.aco.Ant;
 import jmona.aco.PheromoneDirectedGraph;
 import jmona.aco.PheromoneUpdateStrategy;
 import jmona.functional.Range;
-import jmona.graph.GraphUtil;
+import jmona.graph.GraphUtils;
 import jmona.impl.completion.MaxGenerationCompletionCondition;
 import jmona.impl.context.AbstractEvolutionContext;
 
@@ -139,7 +139,7 @@ public class AntColonyEvolutionContext<A extends Ant> extends
       final List<Integer> tour = ant.memory();
 
       // get the total distance of the tour
-      final double totalDistance = GraphUtil.totalDistance(tour, this.graph);
+      final double totalDistance = GraphUtils.totalDistance(tour, this.graph);
 
       // get the amount of trail to add on all edges in the tour
       final double trailToAdd = this.updateStrategy
