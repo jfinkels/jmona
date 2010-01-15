@@ -19,7 +19,6 @@
  */
 package jmona.ga.impl;
 
-import jmona.MutationException;
 import jmona.MutationFunction;
 import jmona.ga.BinaryString;
 import jmona.random.RandomUtils;
@@ -41,9 +40,13 @@ public class BinaryStringMutationFunction implements
    * @see jmona.MutationFunction#mutate(java.lang.Object)
    */
   @Override
-  public void mutate(final BinaryString binaryString) throws MutationException {
-    binaryString.flipBit(RandomUtils.randomData().nextInt(0,
-        binaryString.size() - 1));
+  public void mutate(final BinaryString binaryString) {
+    int index = 0;
+    if (binaryString.size() > 1) {
+      index = RandomUtils.randomData().nextInt(0, binaryString.size() - 1);
+    }
+
+    binaryString.flipBit(index);
   }
 
 }
