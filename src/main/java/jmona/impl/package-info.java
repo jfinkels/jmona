@@ -46,11 +46,6 @@
  * </ul>
  * </p>
  * 
- * <p>
- * The {@link jmona.impl.Util} class contains a potpourri of useful static
- * methods which don't quite fit elsewhere.
- * </p>
- * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
