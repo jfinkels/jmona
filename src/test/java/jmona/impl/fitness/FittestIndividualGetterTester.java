@@ -20,6 +20,7 @@
 package jmona.impl.fitness;
 
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.List;
@@ -50,8 +51,7 @@ public class FittestIndividualGetterTester {
   @Test
   public void testExecute() {
     final FittestIndividualGetter<ExampleIndividual> getter = new FittestIndividualGetter<ExampleIndividual>();
-    getter.setFitnessFunction(new ExampleFitnessFunction());
-
+    
     final ExampleIndividual individual1 = new ExampleIndividual(1);
     final ExampleIndividual individual2 = new ExampleIndividual(2);
 
@@ -61,6 +61,15 @@ public class FittestIndividualGetterTester {
 
     final EvolutionContext<ExampleIndividual> context = new ExampleEvolutionContext(
         population);
+
+    try {
+      getter.execute(context);
+      Util.shouldHaveThrownException();
+    } catch (final MappingException exception) {
+      assertTrue(exception instanceof MappingException);
+    }
+    
+    getter.setFitnessFunction(new ExampleFitnessFunction());
 
     ExampleIndividual fittestIndividual = null;
     try {
