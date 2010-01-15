@@ -19,8 +19,6 @@
  */
 package jmona.impl.completion;
 
-import java.util.Collection;
-
 import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
@@ -28,6 +26,9 @@ import jmona.EvolutionContext;
 /**
  * A CompletionCondition which checks whether a specified set
  * CompletionConditions are satisfied.
+ * 
+ * This class makes no guarantees on the order in which CompletionConditions are
+ * checked.
  * 
  * @author Jeffrey Finkelstein
  * @param <T>
@@ -41,7 +42,7 @@ public class AggregatorCompletionCondition<T> implements CompletionCondition<T> 
    * The Set of CompletionConditions to check every time this Condition is
    * executed.
    */
-  private final Collection<CompletionCondition<T>> conditions;
+  private final Iterable<CompletionCondition<T>> conditions;
 
   /**
    * Instantiates this class with the specified Set of CompletionConditions to
@@ -52,13 +53,16 @@ public class AggregatorCompletionCondition<T> implements CompletionCondition<T> 
    *          is executed.
    */
   public AggregatorCompletionCondition(
-      final Collection<CompletionCondition<T>> initialConditions) {
+      final Iterable<CompletionCondition<T>> initialConditions) {
     this.conditions = initialConditions;
   }
 
   /**
    * Whether the specified EvolutionContext satisfies any of the
    * CompletionConditions specified in the constructor of this class.
+   * 
+   * This method makes no guarantees on the order in which CompletionConditions
+   * are checked.
    * 
    * @param input
    *          The EvolutionContext to test for completion.
