@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.graph;
+package jmona.graph.impl;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,6 +25,9 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.functional.Range;
+import jmona.graph.DirectedGraph;
+import jmona.graph.impl.AdjacencyMatrixGraph;
+import jmona.graph.impl.GraphUtils;
 
 import org.junit.Test;
 
@@ -43,7 +46,7 @@ public class GraphUtilsTester {
 
   /**
    * Test method for
-   * {@link jmona.graph.GraphUtils#totalDistance(java.util.List, jmona.graph.DirectedGraph)}
+   * {@link jmona.graph.impl.GraphUtils#totalDistance(java.util.List, jmona.graph.DirectedGraph)}
    * .
    */
   @Test
@@ -86,7 +89,7 @@ public class GraphUtilsTester {
   }
 
   /**
-   * Test method for {@link jmona.graph.GraphUtils#GraphUtils()}.
+   * Test method for {@link jmona.graph.impl.GraphUtils#GraphUtils()}.
    */
   @Test
   public void testGraphUtils() {

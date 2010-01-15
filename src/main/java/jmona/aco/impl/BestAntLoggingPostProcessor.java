@@ -24,7 +24,7 @@ import java.util.Collections;
 import jmona.EvolutionContext;
 import jmona.aco.Ant;
 import jmona.graph.DirectedGraph;
-import jmona.graph.GraphUtils;
+import jmona.graph.impl.GraphUtils;
 import jmona.impl.postprocessing.LoggingPostProcessor;
 
 /**

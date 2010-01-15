@@ -22,7 +22,7 @@ package jmona.aco.impl;
 import jmona.Function;
 import jmona.aco.Ant;
 import jmona.graph.DirectedGraph;
-import jmona.graph.GraphUtils;
+import jmona.graph.impl.GraphUtils;
 
 /**
  * Function which gets the distance of an Ant's currently completed tour.

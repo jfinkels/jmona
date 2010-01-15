@@ -26,7 +26,7 @@ import jmona.aco.Ant;
 import jmona.aco.PheromoneDirectedGraph;
 import jmona.aco.PheromoneUpdateStrategy;
 import jmona.functional.Range;
-import jmona.graph.GraphUtils;
+import jmona.graph.impl.GraphUtils;
 import jmona.impl.completion.MaxGenerationCompletionCondition;
 import jmona.impl.context.AbstractEvolutionContext;
 

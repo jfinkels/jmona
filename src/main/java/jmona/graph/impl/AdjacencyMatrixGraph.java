@@ -17,12 +17,14 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.graph;
+package jmona.graph.impl;
 
 import java.util.Set;
 
 import jmona.functional.HashSetFromIterable;
 import jmona.functional.Range;
+import jmona.graph.DirectedGraph;
+import jmona.graph.Graph;
 
 /**
  * A DirectedGraph backed by an adjacency matrix (a two-dimensional array)

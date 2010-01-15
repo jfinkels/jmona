@@ -17,10 +17,12 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.graph;
+package jmona.graph.impl;
 
 import java.util.Comparator;
 import java.util.List;
+
+import jmona.graph.DirectedGraph;
 
 /**
  * A comparator for total distances of tours.

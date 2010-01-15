@@ -24,7 +24,7 @@
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
   <!-- the graph to use for the traveling salesman problem evolution -->
-  <bean id="graph" class="jmona.graph.AdjacencyMatrixGraph">
+  <bean id="graph" class="jmona.graph.impl.AdjacencyMatrixGraph">
     <constructor-arg ref="adjacencyMatrix" />
   </bean>
 

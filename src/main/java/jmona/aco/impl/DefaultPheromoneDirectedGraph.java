@@ -21,7 +21,7 @@ package jmona.aco.impl;
 
 import jmona.aco.PheromoneDirectedGraph;
 import jmona.functional.Range;
-import jmona.graph.AdjacencyMatrixGraph;
+import jmona.graph.impl.AdjacencyMatrixGraph;
 
 /**
  * A PheromoneDirectedGraph with Integers as vertices and Doubles as edge

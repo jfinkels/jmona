@@ -17,11 +17,12 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.graph;
+package jmona.graph.impl;
 
 import java.util.List;
 
 import jmona.functional.Range;
+import jmona.graph.DirectedGraph;
 
 /**
  * A utility class which contains a static method for determining the total

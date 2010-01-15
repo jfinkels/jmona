@@ -22,7 +22,7 @@ package jmona.example.tsp;
 import java.util.List;
 
 import jmona.graph.DirectedGraph;
-import jmona.graph.GraphUtils;
+import jmona.graph.impl.GraphUtils;
 import jmona.impl.fitness.MinimizingFitnessFunction;
 
 /**

@@ -23,7 +23,7 @@ import java.util.Comparator;
 
 import jmona.aco.Ant;
 import jmona.graph.DirectedGraph;
-import jmona.graph.TourComparator;
+import jmona.graph.impl.TourComparator;
 
 /**
  * Compares Ants with respect to the length of the tours stored in the memory of
