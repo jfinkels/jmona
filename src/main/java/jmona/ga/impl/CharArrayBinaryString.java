@@ -171,7 +171,7 @@ public class CharArrayBinaryString implements BinaryString {
    * @return Never returns.
    * @throws UnsupportedOperationException
    *           Always throws this Exception.
-   * @see java.util.Collection#add(java.lang.Object)
+   * @see java.util.List#add(java.lang.Object)
    */
   @Override
   public boolean add(final Byte bit) {
@@ -205,7 +205,7 @@ public class CharArrayBinaryString implements BinaryString {
    * @return Never returns.
    * @throws UnsupportedOperationException
    *           Always throws this Exception.
-   * @see java.util.Collection#addAll(java.util.Collection)
+   * @see java.util.List#addAll(java.util.Collection)
    */
   @Override
   public boolean addAll(final Collection<? extends Byte> c) {
@@ -254,7 +254,7 @@ public class CharArrayBinaryString implements BinaryString {
    * 
    * @throws UnsupportedOperationException
    *           Always throws this Exception.
-   * @see java.util.Collection#clear()
+   * @see java.util.List#clear()
    */
   @Override
   public void clear() {
@@ -268,7 +268,7 @@ public class CharArrayBinaryString implements BinaryString {
    * @param o
    *          {@inheritDoc}
    * @return {@inheritDoc}
-   * @see java.util.Collection#contains(java.lang.Object)
+   * @see java.util.List#contains(java.lang.Object)
    */
   @Override
   public boolean contains(final Object o) {
@@ -288,7 +288,7 @@ public class CharArrayBinaryString implements BinaryString {
    * @param c
    *          {@inheritDoc}
    * @return {@inheritDoc}
-   * @see java.util.Collection#containsAll(java.util.Collection)
+   * @see java.util.List#containsAll(java.util.Collection)
    */
   @Override
   public boolean containsAll(final Collection<?> c) {
@@ -381,7 +381,7 @@ public class CharArrayBinaryString implements BinaryString {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see java.util.Collection#isEmpty()
+   * @see java.util.List#isEmpty()
    */
   @Override
   public boolean isEmpty() {
@@ -491,7 +491,7 @@ public class CharArrayBinaryString implements BinaryString {
    * @return Never returns.
    * @throws UnsupportedOperationException
    *           Always throws this Exception.
-   * @see java.util.Collection#removeAll(java.util.Collection)
+   * @see java.util.List#removeAll(java.util.Collection)
    */
   @Override
   public boolean removeAll(final Collection<?> collection) {
@@ -507,7 +507,7 @@ public class CharArrayBinaryString implements BinaryString {
    * @return Never returns.
    * @throws UnsupportedOperationException
    *           Always throws this Exception.
-   * @see java.util.Collection#retainAll(java.util.Collection)
+   * @see java.util.List#retainAll(java.util.Collection)
    */
   @Override
   public boolean retainAll(final Collection<?> collection) {
@@ -548,7 +548,7 @@ public class CharArrayBinaryString implements BinaryString {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see java.util.Collection#size()
+   * @see java.util.List#size()
    */
   @Override
   public int size() {
@@ -577,7 +577,7 @@ public class CharArrayBinaryString implements BinaryString {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see java.util.Collection#toArray()
+   * @see java.util.List#toArray()
    */
   @Override
   public Byte[] toArray() {
@@ -598,7 +598,7 @@ public class CharArrayBinaryString implements BinaryString {
    * @param array
    *          {@inheritDoc}
    * @return {@inheritDoc}
-   * @see java.util.Collection#toArray(Object[])
+   * @see java.util.List#toArray(Object[])
    */
   @SuppressWarnings("unchecked")
   @Override
