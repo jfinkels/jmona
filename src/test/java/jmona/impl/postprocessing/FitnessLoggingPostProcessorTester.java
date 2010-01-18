@@ -28,6 +28,7 @@ import java.util.Vector;
 
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
+import jmona.FitnessException;
 import jmona.GeneticEvolutionContext;
 import jmona.LoggingException;
 import jmona.impl.context.AbstractEvolutionContext;
@@ -66,7 +67,11 @@ public class FitnessLoggingPostProcessorTester {
     population.add(individual2);
 
     ExampleEvolutionContext context = new ExampleEvolutionContext(population);
-    context.setFitnessFunction(new ExampleFitnessFunction());
+    try {
+      context.setFitnessFunction(new ExampleFitnessFunction());
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
 
     final FitnessLoggingPostProcessor<ExampleIndividual> processor = new FitnessLoggingPostProcessor<ExampleIndividual>();
 

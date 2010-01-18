@@ -28,7 +28,8 @@
   <import resource="./functions.xml" />
   <import resource="./factories.xml" />
 
-  <bean id="completionCondition" class="jmona.impl.completion.MaxGenerationCompletionCondition">
+  <bean id="completionCondition"
+    class="jmona.impl.completion.MaxGenerationCompletionCondition">
     <property name="maxGenerations" value="3" />
   </bean>
 
@@ -40,10 +41,17 @@
     <constructor-arg>
       <ref bean="population" />
     </constructor-arg>
+    <property name="elitism" value="2" />
     <property name="fitnessFunction" ref="fitnessFunction" />
     <property name="crossoverFunction" ref="crossoverFunction" />
     <property name="mutationFunction" ref="mutationFunction" />
     <property name="selectionFunction" ref="selectionFunction" />
   </bean>
 
+  <bean id="postProcessor"
+    class="jmona.example.monalisa.ImageOutputPostProcessor">
+    <constructor-arg ref="width" />
+    <constructor-arg ref="height" />
+  </bean>
+    
 </beans>

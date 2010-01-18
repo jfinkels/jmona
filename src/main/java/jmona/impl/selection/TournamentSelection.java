@@ -19,12 +19,13 @@
  */
 package jmona.impl.selection;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.Map.Entry;
 
-import jmona.FitnessFunction;
 import jmona.IndependentSelectionFunction;
-import jmona.impl.fitness.StandardizedFitnessComparator;
 import jmona.random.RandomUtils;
 
 /**
@@ -43,8 +44,7 @@ public class TournamentSelection<T> implements IndependentSelectionFunction<T> {
    * tournament.
    */
   public static final int DEFAULT_TOURNAMENT_SIZE = 5;
-  /** A comparator for individuals based on their standardized fitnesses. */
-  private final StandardizedFitnessComparator<T> standardizedFitnessComparator = new StandardizedFitnessComparator<T>();
+
   /**
    * The number of Individuals to be chosen at random to compete in the
    * tournament.
@@ -57,28 +57,28 @@ public class TournamentSelection<T> implements IndependentSelectionFunction<T> {
    * 
    * The tournament has size specified in the property {@link #tournamentSize}.
    * 
-   * @param population
+   * @param fitnesses
    *          {@inheritDoc}
-   * @param fitnessFunction
-   *          The FitnessFunction to use to determine the standardized fitness
-   *          of individuals in the specified population.
-   * @see jmona.IndependentSelectionFunction#select(List, FitnessFunction)
+   * @see jmona.IndependentSelectionFunction#select(java.util.Map)
    */
-  // TODO documentation for this method, i.e. formulae
   @Override
-  public T select(final List<T> population,
-      final FitnessFunction<T> fitnessFunction) {
+  public T select(final Map<T, Double> fitnesses) {
+
+    // create a comparator based on the fitnesses of the individuals as
+    // specified in the map given as input to this method
+    final Comparator<T> comparator = new ValueComparator<T, Double>(fitnesses);
+
+    // create a SortedMap containing the subset of keys from the fitnesses map
+    final SortedMap<T, Double> competitors = new TreeMap<T, Double>(comparator);
 
     // get a random subset of the population to compete in the "tournament"
-    final List<T> competitors = RandomUtils.sample(population,
-        this.tournamentSize);
+    for (final Entry<T, Double> entry : RandomUtils.sample(
+        fitnesses.entrySet(), this.tournamentSize)) {
+      competitors.put(entry.getKey(), entry.getValue());
+    }
 
-    // set the fitness function on the comparator so it known how to compare
-    // competitors
-    this.standardizedFitnessComparator.setFitnessFunction(fitnessFunction);
-
-    // return the competitor with the minimum standardized fitness
-    return Collections.min(competitors, this.standardizedFitnessComparator);
+    // return the competitor with the maximum adjusted fitness
+    return competitors.lastKey();
   }
 
   /**

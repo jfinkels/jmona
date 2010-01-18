@@ -25,23 +25,28 @@
 
   <!-- colored polygon mutation function -->
   
-  <bean id="polygonMutationFunction" class="jmona.example.monalisa.ColoredPolygonMutationFunction">
+  <bean id="polygonMutationFunction" 
+    class="jmona.example.monalisa.ColoredPolygonMutationFunction">
     <constructor-arg ref="width" />
     <constructor-arg ref="height" />
   </bean>
 
   <!-- functions for use in the evolution context -->
 
-  <bean id="fitnessFunction" class="jmona.example.monalisa.ga.MonaGAFitnessFunction">
+  <bean id="fitnessFunction"
+    class="jmona.example.monalisa.ga.MonaGAFitnessFunction">
     <constructor-arg ref="targetImage" />
   </bean>
 
-  <bean id="crossoverFunction" class="jmona.ga.impl.TwoPointCrossoverFunction" />
+  <bean id="crossoverFunction"
+    class="jmona.ga.impl.TwoPointCrossoverFunction" />
   
-  <bean id="mutationFunction" class="jmona.impl.mutation.ElementwiseMutationFunction">
+  <bean id="mutationFunction"
+    class="jmona.impl.mutation.ElementwiseMutationFunction">
     <property name="elementMutationFunction" ref="polygonMutationFunction" />
   </bean>
   
-  <bean id="selectionFunction" class="jmona.impl.selection.FitnessProportionateSelection" />
+  <bean id="selectionFunction"
+    class="jmona.impl.selection.FitnessProportionateSelection" />
 
 </beans>

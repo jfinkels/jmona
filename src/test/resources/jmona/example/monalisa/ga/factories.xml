@@ -23,21 +23,24 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
   
-  <bean id="polygonFactory" class="jmona.example.monalisa.ColoredPolygonFactory">
-    <property name="maxPoints" value="7" />
+  <bean id="polygonFactory" 
+    class="jmona.example.monalisa.ColoredPolygonFactory">
+    <property name="maxPoints" value="4" />
     <property name="minPoints" value="3" />
     <property name="maxX" ref="width" />
     <property name="maxY" ref="height" />
   </bean>
   
-  <bean id="individualFactory" class="jmona.impl.CompleteDeepCopyableListFactory">
+  <bean id="individualFactory"
+    class="jmona.impl.CompleteDeepCopyableListFactory">
     <property name="elementFactory" ref="polygonFactory" />
-    <property name="size" value="20" />
+    <property name="size" value="50" />
   </bean>
   
-  <bean id="populationFactory" class="jmona.impl.CompleteDeepCopyableListFactory">
+  <bean id="populationFactory"
+    class="jmona.impl.DefaultListFactory">
     <property name="elementFactory" ref="individualFactory" />
-    <property name="size" value="2" />
+    <property name="size" value="10" />
   </bean>
 
 </beans>

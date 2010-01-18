@@ -20,14 +20,16 @@
 package jmona.gp.impl;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import jmona.CopyingException;
 import jmona.CrossoverException;
 import jmona.EvolutionException;
-import jmona.FitnessFunction;
+import jmona.FitnessException;
 import jmona.IndependentSelectionFunction;
 import jmona.MutationException;
+import jmona.PropertyNotSetException;
 import jmona.SelectionException;
 import jmona.gp.Tree;
 import jmona.impl.context.AbstractGeneticEvolutionContext;
@@ -80,8 +82,9 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
     // initialize a new population to hold the next generation
     final List<Tree> nextPopulation = new Vector<Tree>();
 
-    // get a reference to the fitness function for this evolution
-    final FitnessFunction<Tree> fitnessFunction = this.fitnessFunction();
+    // get a reference to the current adjusted fitnesses of individuals in the
+    // current population
+    final Map<Tree, Double> currentFitnesses = this.currentAdjustedFitnesses();
 
     // get a reference to the selection function for this evolution
     final IndependentSelectionFunction<Tree> selectionFunction = this
@@ -91,7 +94,7 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
       // if elitism is enabled, copy the best individuals to the next generation
       if (this.elitism() > 0) {
         nextPopulation.addAll(this.elitismSelectionFunction().select(
-            currentPopulation, fitnessFunction, this.elitism()));
+            currentFitnesses, this.elitism()));
       }
 
       // while the size of the next generation is less than the size of the
@@ -99,8 +102,8 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
       while (nextPopulation.size() < currentSize) {
 
         // select one individual and copy it to create the offspring
-        Tree individual1 = selectionFunction.select(currentPopulation,
-            fitnessFunction).deepCopy();
+        Tree individual1 = selectionFunction.select(currentFitnesses)
+            .deepCopy();
 
         // choose variation operation probabilistically
         // TODO we are ignoring the crossoverProbability property
@@ -113,8 +116,8 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
         } else { // variation operation is crossover
 
           // select another individual and copy it to create another offspring
-          Tree individual2 = selectionFunction.select(currentPopulation,
-              fitnessFunction).deepCopy();
+          Tree individual2 = selectionFunction.select(currentFitnesses)
+              .deepCopy();
 
           // perform crossover on the two offspring
           this.crossoverFunction().crossover(individual1, individual2);
@@ -132,13 +135,13 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
 
     } catch (final CrossoverException exception) {
       throw new EvolutionException(
-          "Failed to perform crossover on two Individuals.", exception);
+          "Failed to perform crossover on two individuals.", exception);
     } catch (final MutationException exception) {
-      throw new EvolutionException("Failed mutating an Individual.", exception);
+      throw new EvolutionException("Failed mutating an individual.", exception);
     } catch (final SelectionException exception) {
-      throw new EvolutionException("Failed to select an Individual.", exception);
+      throw new EvolutionException("Failed to select an individual.", exception);
     } catch (final CopyingException exception) {
-      throw new EvolutionException("Failed to copy an Individual.", exception);
+      throw new EvolutionException("Failed to copy an individual.", exception);
     }
   }
 }

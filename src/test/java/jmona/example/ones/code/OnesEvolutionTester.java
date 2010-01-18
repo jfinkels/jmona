@@ -24,6 +24,7 @@ import java.util.List;
 import jmona.DeepCopyableList;
 import jmona.EvolutionException;
 import jmona.Factory;
+import jmona.FitnessException;
 import jmona.GeneticEvolutionContext;
 import jmona.InitializationException;
 import jmona.example.ones.OnesFitnessFunction;
@@ -79,7 +80,11 @@ public class OnesEvolutionTester {
         population);
 
     context.setCrossoverFunction(new TwoPointCrossoverFunction<Byte>());
-    context.setFitnessFunction(new OnesFitnessFunction(length));
+    try {
+      context.setFitnessFunction(new OnesFitnessFunction(length));
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
     context.setMutationFunction(new OnesMutationFunction());
     context
         .setSelectionFunction(new FitnessProportionateSelection<DeepCopyableList<Byte>>());

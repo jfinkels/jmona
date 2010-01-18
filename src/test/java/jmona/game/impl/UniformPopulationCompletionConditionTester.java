@@ -25,9 +25,11 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.FitnessException;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
+import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -54,7 +56,11 @@ public class UniformPopulationCompletionConditionTester {
 
     final ExampleEvolutionContext context = new ExampleEvolutionContext(
         population);
-    context.setFitnessFunction(new ExampleFitnessFunction());
+    try {
+      context.setFitnessFunction(new ExampleFitnessFunction());
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
 
     assertTrue(criteria.execute(context));
 

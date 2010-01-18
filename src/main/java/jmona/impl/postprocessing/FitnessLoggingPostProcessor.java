@@ -19,12 +19,12 @@
  */
 package jmona.impl.postprocessing;
 
-import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
 import jmona.FitnessException;
-import jmona.FitnessFunction;
 import jmona.GeneticEvolutionContext;
 import jmona.LoggingException;
 
@@ -66,20 +66,14 @@ public class FitnessLoggingPostProcessor<T extends DeepCopyable<T>> extends
 
     final StringBuilder result = new StringBuilder();
 
-    final FitnessFunction<T> fitnessFunction = ((GeneticEvolutionContext<T>) context)
-        .fitnessFunction();
-    final List<T> currentPopulation = context.currentPopulation();
+    final Map<T, Double> fitnesses = ((GeneticEvolutionContext<T>) context)
+        .currentAdjustedFitnesses();
 
-    try {
-      for (final T individual : currentPopulation) {
-        result.append(NEWLINE);
-        result.append(individual);
-        result.append(": ");
-        result.append(fitnessFunction.rawFitness(individual));
-      }
-    } catch (final FitnessException exception) {
-      throw new LoggingException("Failed to get fitness of an individual.",
-          exception);
+    for (final Entry<T, Double> entry : fitnesses.entrySet()) {
+      result.append(NEWLINE);
+      result.append(entry.getKey());
+      result.append(": ");
+      result.append(entry.getValue());
     }
 
     return result.toString();

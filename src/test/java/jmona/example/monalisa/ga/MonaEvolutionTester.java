@@ -19,21 +19,16 @@
  */
 package jmona.example.monalisa.ga;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.List;
-
 import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.DeepCopyableList;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
+import jmona.PostProcessor;
+import jmona.ProcessingException;
 import jmona.example.monalisa.ColoredPolygon;
-import jmona.example.monalisa.Converter;
-import jmona.example.monalisa.io.ImageWriter;
 import jmona.test.Util;
 
-import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,13 +45,6 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 @ContextConfiguration
 public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
 
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(MonaEvolutionTester.class);
-
-  /** The filename at which to write a test image. */
-  public static final String OUTPUT_FILENAME = "target/final.png";
-
   /**
    * Get the completion criteria for this evolution from the Spring XML
    * configuration file.
@@ -68,14 +56,14 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
   @Autowired
   private EvolutionContext<DeepCopyableList<ColoredPolygon>> context = null;
 
+  /** Get the PostProcessor from the Spring XML configuration file. */
+  @Autowired
+  private PostProcessor<DeepCopyableList<ColoredPolygon>> processor = null;
+
   /** Perform cleanup after each test. */
   @After
   public final void tearDown() {
-    /*
-     * final File outputFile = new File(OUTPUT_FILENAME); if
-     * (outputFile.exists() && !outputFile.delete()) {
-     * LOG.debug("Failed to delete output file at " + OUTPUT_FILENAME); }
-     */
+    // possible delete the output files here
   }
 
   /** Test method for a Mona evolution. */
@@ -85,35 +73,14 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
     try {
       while (!this.completionCondition.execute(this.context)) {
         this.context.stepGeneration();
-        LOG.debug("Current generation: " + this.context.currentGeneration());
+        this.processor.process(this.context);
       }
     } catch (final CompletionException exception) {
       Util.fail(exception);
     } catch (final EvolutionException exception) {
       Util.fail(exception);
-    } finally {
-      // get the population at the last generation of the evolution
-      final List<DeepCopyableList<ColoredPolygon>> currentPopulation = this.context
-          .currentPopulation();
-
-      // get one of the population
-      final List<ColoredPolygon> individual = currentPopulation.get(0);
-
-      // could not autowire because spring could distinguish between these 2
-      // beans
-      final int width = (Integer) this.applicationContext.getBean("width");
-      final int height = (Integer) this.applicationContext.getBean("height");
-
-      // convert the individual into an image
-      final BufferedImage image = Converter.toImage(individual, width, height);
-
-      // write the image to a file
-      try {
-        LOG.debug("Writing image to file: " + OUTPUT_FILENAME);
-        ImageWriter.writeImage(image, OUTPUT_FILENAME);
-      } catch (final IOException exception) {
-        Util.fail(exception);
-      }
+    } catch (final ProcessingException exception) {
+      Util.fail(exception);
     }
   }
 }

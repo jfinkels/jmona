@@ -32,7 +32,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ ElitismSelectionFunctionTester.class,
     FitnessProportionateSelectionTester.class,
-    LinearRankingSelectionTester.class, TournamentSelectionTester.class })
+    LinearRankingSelectionTester.class, TournamentSelectionTester.class,
+    ValueComparatorTester.class })
 public class AllTest {
 
 }

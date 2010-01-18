@@ -24,6 +24,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
@@ -31,6 +32,7 @@ import jmona.CrossoverException;
 import jmona.CrossoverFunction;
 import jmona.EvolutionException;
 import jmona.Factory;
+import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.IndependentSelectionFunction;
 import jmona.InitializationException;
@@ -95,7 +97,11 @@ public class GPEvolutionContextTester {
     evaluationInputs.add(new Object());
 
     final FitnessFunction<Tree> fitnessFunction = new ExampleGPFitnessFunction();
-    this.context.setFitnessFunction(fitnessFunction);
+    try {
+      this.context.setFitnessFunction(fitnessFunction);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
 
   }
 
@@ -176,7 +182,7 @@ public class GPEvolutionContextTester {
     });
 
     this.context.setMutationProbability(0);
-    
+
     try {
       this.context.executeGenerationStep();
       Util.shouldHaveThrownException();
@@ -203,8 +209,7 @@ public class GPEvolutionContextTester {
 
     this.context.setSelectionFunction(new IndependentSelectionFunction<Tree>() {
       @Override
-      public Tree select(final List<Tree> aPopulation,
-          final FitnessFunction<Tree> fitnessFunction)
+      public Tree select(final Map<Tree, Double> fitnesses)
           throws SelectionException {
         throw new SelectionException();
       }

@@ -21,6 +21,8 @@ package jmona.impl.example;
 
 import java.util.List;
 
+import jmona.EvolutionException;
+import jmona.FitnessException;
 import jmona.impl.context.AbstractGeneticEvolutionContext;
 
 /**
@@ -45,10 +47,18 @@ public class ExampleEvolutionContext extends
 
   /**
    * Does nothing.
+   * 
+   * @throws EvolutionException
+   *           If recalculating fitnesses throws an Exception.
    */
   @Override
-  public void executeGenerationStep() {
-    // intentionally unimplemented
+  protected void executeGenerationStep() throws EvolutionException {
+    try {
+      this.recalculateAdjustedFitnesses();
+    } catch (final FitnessException exception) {
+      throw new EvolutionException("Failed to recalculate fitnesses.",
+          exception);
+    }
   }
 
 }

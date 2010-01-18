@@ -20,12 +20,14 @@
 package jmona.impl.selection;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.Vector;
 
-import jmona.FitnessFunction;
 import jmona.MultipleSelectionFunction;
-import jmona.impl.fitness.StandardizedFitnessComparator;
 
 /**
  * A SelectionFunction which chooses an arbitrary number of the most fit
@@ -39,9 +41,6 @@ import jmona.impl.fitness.StandardizedFitnessComparator;
 public class ElitismSelectionFunction<T> implements
     MultipleSelectionFunction<T> {
 
-  /** A comparator for individuals based on their standardized fitnesses. */
-  private final StandardizedFitnessComparator<T> standardizedFitnessComparator = new StandardizedFitnessComparator<T>();
-
   /**
    * Select the specified number of the most fit individuals from the specified
    * population with respect to the specified fitness function.
@@ -53,32 +52,38 @@ public class ElitismSelectionFunction<T> implements
    * @param numberToSelect
    *          The number of most fit individuals to select from the specified
    *          population.
-   * @see jmona.MultipleSelectionFunction#select(java.util.List,
-   *      jmona.FitnessFunction, int)
+   * @see jmona.MultipleSelectionFunction#select(java.util.Map, int)
    */
   @Override
-  public List<T> select(final List<T> population,
-      final FitnessFunction<T> fitnessFunction, final int numberToSelect) {
+  public List<T> select(final Map<T, Double> fitnesses, final int numberToSelect) {
 
-    // cannot choose more individuals than there are in the population
-    if (numberToSelect > population.size()) {
-      throw new IllegalArgumentException("Cannot choose " + numberToSelect
-          + " individuals from a population of size " + population.size());
+    if (numberToSelect > fitnesses.size()) {
+      throw new IllegalArgumentException(
+          "Number to select must be less than or equal to size of fitnesses map.");
     }
 
-    // make the fitness comparator aware of the fitness function
-    this.standardizedFitnessComparator.setFitnessFunction(fitnessFunction);
+    // create a comparator based on the fitnesses of the individuals as
+    // specified in the map given as input to this method
+    final Comparator<T> comparator = new ValueComparator<T, Double>(fitnesses);
 
-    // create a new list containing references to all the individuals in the
-    // population (so as not to upset the order of the elements in the
-    // population list)
-    final List<T> individuals = new Vector<T>(population);
+    // create a map from individual to its rank based on fitness, with highest
+    // fitness individuals first and lowest fitness individuals last
+    final SortedMap<T, Double> sortedFitnesses = new TreeMap<T, Double>(
+        Collections.reverseOrder(comparator));
+    sortedFitnesses.putAll(fitnesses);
 
-    // sort the population based on fitness (better individuals first)
-    Collections.sort(individuals, this.standardizedFitnessComparator);
+    final List<T> result = new Vector<T>();
 
-    // return the top individuals
-    return individuals.subList(0, numberToSelect);
+    int i = numberToSelect;
+    for (final T individual : sortedFitnesses.keySet()) {
+      if (i == 0) {
+        break;
+      }
+      result.add(individual);
+      i -= 1;
+    }
+
+    return result;
   }
 
 }

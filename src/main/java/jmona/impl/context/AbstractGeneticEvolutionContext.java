@@ -19,10 +19,14 @@
  */
 package jmona.impl.context;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import jmona.CrossoverFunction;
 import jmona.DeepCopyable;
+import jmona.EvolutionException;
+import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.GeneticEvolutionContext;
 import jmona.IndependentSelectionFunction;
@@ -30,6 +34,8 @@ import jmona.MultipleSelectionFunction;
 import jmona.MutationFunction;
 import jmona.PropertyNotSetException;
 import jmona.impl.selection.ElitismSelectionFunction;
+
+import org.apache.log4j.Logger;
 
 /**
  * An abstract base class for GeneticEvolutionContexts.
@@ -47,7 +53,6 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * selected for breeding.
    */
   public static final double DEFAULT_CROSSOVER_PROBABILITY = 0.6;
-
   /**
    * The default number of top individuals which are copied directly from the
    * current generation to the next generation without variation on each
@@ -56,6 +61,9 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
   public static final int DEFAULT_ELITISM = 0;
   /** The default probability of mutating an Individual. */
   public static final double DEFAULT_MUTATION_PROBABILITY = 0.1;
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(AbstractGeneticEvolutionContext.class);
   /** The crossover function. */
   private CrossoverFunction<T> crossoverFunction = null;
   /**
@@ -63,6 +71,8 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * for breeding.
    */
   private double crossoverProbability = DEFAULT_CROSSOVER_PROBABILITY;
+  /** The adjusted fitnesses of individuals in the current population. */
+  private Map<T, Double> currentAdjustedFitnesses = new HashMap<T, Double>();
   /**
    * The number of top individuals which are copied directly from the current
    * generation to the next generation without variation on each generation
@@ -81,7 +91,7 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
   private IndependentSelectionFunction<T> selectionFunction = null;
 
   /**
-   * Instantiates thie GeneticEvolutionContext with the specified initial
+   * Instantiates this GeneticEvolutionContext with the specified initial
    * population.
    * 
    * @param initialPopulation
@@ -112,6 +122,25 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
   @Override
   public double crossoverProbability() {
     return this.crossoverProbability;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   */
+  @Override
+  public Map<T, Double> currentAdjustedFitnesses() {
+    return this.currentAdjustedFitnesses;
+  }
+
+  /**
+   * Gets the raw fitnesses of individuals in the current population.
+   * 
+   * @return The raw fitnesses of individuals in the current population.
+   */
+  protected Map<T, Double> currentRawFitnesses() {
+    return this.currentAdjustedFitnesses;
   }
 
   /**
@@ -167,6 +196,26 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
   @Override
   public double mutationProbability() {
     return this.mutationProbability;
+  }
+
+  /**
+   * Recalculates the adjusted fitnesses of individuals in the current
+   * population.
+   * 
+   * This method clears all existing mappings before recalculating fitnesses of
+   * all individuals.
+   * 
+   * @throws FitnessException
+   *           If there is a problem determining the fitness of an individual in
+   *           the current population.
+   */
+  protected void recalculateAdjustedFitnesses() throws FitnessException {
+    this.currentAdjustedFitnesses.clear();
+
+    for (final T individual : this.currentPopulation()) {
+      this.currentAdjustedFitnesses.put(individual, this.fitnessFunction
+          .adjustedFitness(individual));
+    }
   }
 
   /**
@@ -247,11 +296,15 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
    * 
    * @param function
    *          {@inheritDoc}
+   * @throws FitnessException
+   *           {@inheritDoc}
    * @see jmona.GeneticEvolutionContext#setFitnessFunction(jmona.FitnessFunction)
    */
   @Override
-  public void setFitnessFunction(final FitnessFunction<T> function) {
+  public void setFitnessFunction(final FitnessFunction<T> function)
+      throws FitnessException {
     this.fitnessFunction = function;
+    this.recalculateAdjustedFitnesses();
   }
 
   /**
@@ -289,5 +342,19 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
   public void setSelectionFunction(
       final IndependentSelectionFunction<T> function) {
     this.selectionFunction = function;
+  }
+
+  @Override
+  public void stepGeneration() throws EvolutionException {
+    super.stepGeneration();
+
+    try {
+      LOG.debug("Recalculating fitnesses...");
+      this.recalculateAdjustedFitnesses();
+      LOG.debug("...done.");
+    } catch (final FitnessException exception) {
+      throw new EvolutionException(
+          "Failed to calculate fitnesses of the population.", exception);
+    }
   }
 }

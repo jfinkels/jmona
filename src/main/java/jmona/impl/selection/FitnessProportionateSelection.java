@@ -19,15 +19,15 @@
  */
 package jmona.impl.selection;
 
-import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-import jmona.FitnessFunction;
 import jmona.IndependentSelectionFunction;
-import jmona.MappingException;
 import jmona.SelectionException;
 import jmona.functional.Functional;
-import jmona.impl.fitness.AdjustedFitnessGetter;
 import jmona.random.RandomUtils;
+
+import org.apache.log4j.Logger;
 
 /**
  * Fitness-proportionate selection, also known as "roulette wheel selection".
@@ -41,57 +41,36 @@ import jmona.random.RandomUtils;
 // TODO what happens on Double.POSITIVE_INFINITY fitnesses?
 public class FitnessProportionateSelection<T> implements
     IndependentSelectionFunction<T> {
-
-  /**
-   * The function which gets adjusted fitnesses from individuals in the
-   * population using a FitnessFunction.
-   */
-  private final AdjustedFitnessGetter<T> adjustedFitnessGetter = new AdjustedFitnessGetter<T>();
+  private static final transient Logger LOG = Logger
+      .getLogger(FitnessProportionateSelection.class);
 
   /**
    * Fitness-proportionate selection, also known as "roulette wheel selection",
    * which chooses an individual from the specified mapping with a probability
    * weighted by the corresponding fitnesses.
    * 
-   * @param population
-   *          The list of individuals from which to select.
-   * @param fitnessFunction
-   *          The FitnessFunction which determines the adjusted fitness of
-   *          individuals in the specified population.
-   * @return An Individual chosen with probability weighted by corresponding
+   * @param fitnesses
+   *          {@inheritDoc}
+   * @return An individual chosen with probability weighted by corresponding
    *         fitnesses.
    * @throws SelectionException
-   *           If there is a problem determining the adjusted fitnesses of the
-   *           population.
-   * @see jmona.IndependentSelectionFunction#select(List, FitnessFunction)
+   *           {@inheritDoc}
+   * @see jmona.IndependentSelectionFunction#select(Map)
    */
-  // TODO more documentation on fitness-proportionate selection, i.e. formulae
   @Override
-  public T select(final List<T> population,
-      final FitnessFunction<T> fitnessFunction) throws SelectionException {
+  public T select(final Map<T, Double> fitnesses) {
+
     // if the map is empty, return null
-    if (population.size() == 0) {
+    if (fitnesses.size() == 0) {
       return null;
     }
 
-    // set the fitness function with which to get the adjusted fitnesses
-    this.adjustedFitnessGetter.setFitnessFunction(fitnessFunction);
-
-    // get the list of fitnesses in the same order of the population
-    List<Double> fitnesses = null;
-    try {
-      fitnesses = Functional.map(this.adjustedFitnessGetter, population);
-    } catch (final MappingException exception) {
-      throw new SelectionException(
-          "Failed to get adjusted fitnesses of the population.", exception);
-    }
-
     // get the sum of all fitnesses
-    final double fitnessesSum = Functional.sum(fitnesses);
+    final double fitnessesSum = Functional.sum(fitnesses.values());
 
     // if no individual has any fitness, just return a random one
     if (fitnessesSum == 0.0) {
-      return RandomUtils.choice(population);
+      return RandomUtils.choice(fitnesses.keySet());
     }
 
     // choose a number between 0 and the sum of all fitnesses
@@ -99,18 +78,22 @@ public class FitnessProportionateSelection<T> implements
         fitnessesSum);
 
     // iterate over all entries in the list of fitnesses
-    T result = null;
     double pointer = 0.0;
-    int i = 0;
-    for (final double fitness : fitnesses) {
+    for (final Entry<T, Double> entry : fitnesses.entrySet()) {
+
+      // get the fitness of the current individual
+      final double fitness = entry.getValue();
+
+      // if the selection is between the pointer and the pointer plus the
+      // fitness of the current individual, return the current individual
       if (pointer < selection && pointer + fitness >= selection) {
-        result = population.get(i);
-        break;
+        return entry.getKey();
       }
+
+      // increment the pointer by the fitness of the current individual
       pointer += fitness;
-      i += 1;
     }
 
-    return result;
+    return null;
   }
 }

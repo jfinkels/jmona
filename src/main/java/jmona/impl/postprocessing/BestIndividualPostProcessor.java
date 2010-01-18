@@ -19,15 +19,15 @@
  */
 package jmona.impl.postprocessing;
 
-import jmona.EvolutionContext;
-import jmona.FitnessException;
-import jmona.FitnessFunction;
-import jmona.LoggingException;
-import jmona.MappingException;
-import jmona.PropertyNotSetException;
-import jmona.impl.fitness.FittestIndividualGetter;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Map;
 
-import org.apache.log4j.Logger;
+import jmona.DeepCopyable;
+import jmona.EvolutionContext;
+import jmona.GeneticEvolutionContext;
+import jmona.LoggingException;
+import jmona.impl.selection.ValueComparator;
 
 /**
  * A LoggingPostProcessor which logs the most fit individual and its fitness (if
@@ -39,33 +39,8 @@ import org.apache.log4j.Logger;
  *          most fit individual.
  * @since 0.5
  */
-public class BestIndividualPostProcessor<T> extends LoggingPostProcessor<T> {
-
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(BestIndividualPostProcessor.class);
-
-  /** The function which gets the most fit individual from an EvolutionContext. */
-  private final FittestIndividualGetter<T> fittestIndividualGetter = new FittestIndividualGetter<T>();
-
-  /**
-   * The fitness function with which to evaluate fitness of individuals in an
-   * EvolutionContext.
-   */
-  private FitnessFunction<T> fitnessFunction = null;
-
-  /**
-   * Sets the FitnessFunction with which to evaluate fitness of individuals in
-   * an EvolutionContext.
-   * 
-   * @param newFitnessFunction
-   *          The FitnessFunction with which to evaluate fitness of individuals
-   *          in an EvolutionContext.
-   */
-  public void setFitnessFunction(final FitnessFunction<T> newFitnessFunction) {
-    this.fitnessFunction = newFitnessFunction;
-    this.fittestIndividualGetter.setFitnessFunction(newFitnessFunction);
-  }
+public class BestIndividualPostProcessor<T extends DeepCopyable<T>> extends
+    LoggingPostProcessor<T> {
 
   /**
    * Gets the String representation of the most fit individual in the specified
@@ -77,25 +52,26 @@ public class BestIndividualPostProcessor<T> extends LoggingPostProcessor<T> {
    *           If the specified EvolutionContext is not a
    *           GeneticEvolutionContext, or if there is a problem getting the
    *           most fit individual from the specified EvolutionContext.
-   * @throws PropertyNotSetException
-   *           If the FitnessFunction with which to evaluate individuals has not
-   *           been set.
    * @see jmona.impl.postprocessing.LoggingPostProcessor#message(jmona.EvolutionContext)
    */
   @Override
-  protected String message(final EvolutionContext<T> context) {
-    if (this.fitnessFunction == null) {
-      throw new PropertyNotSetException("The FitnessFunction has not been set.");
+  protected String message(final EvolutionContext<T> context)
+      throws LoggingException {
+    if (!(context instanceof GeneticEvolutionContext<?>)) {
+      throw new LoggingException(
+          "Cannot get a fitness function from the EvolutionContext unless it is a GeneticEvolutionContext. Class of EvolutionContext is "
+              + context.getClass());
     }
 
-    // get the most fit individual from the EvolutionContext
-    T fittestIndividual = null;
-    try {
-      fittestIndividual = this.fittestIndividualGetter.execute(context);
-    } catch (final MappingException exception) {
-      LOG.error("Failed to get most fit individual from EvolutionContext.",
-          exception);
-    }
+    // get the map of fitnesses of individuals in the EvolutionContext
+    final Map<T, Double> fitnesses = ((GeneticEvolutionContext<T>) context)
+        .currentAdjustedFitnesses();
+
+    // create a comparator based on the fitnesses of the individuals
+    final Comparator<T> comparator = new ValueComparator<T, Double>(fitnesses);
+
+    // get the fittest individual
+    final T fittestIndividual = Collections.max(fitnesses.keySet(), comparator);
 
     // create a string builder to contain the String to return
     final StringBuilder result = new StringBuilder();
@@ -104,13 +80,9 @@ public class BestIndividualPostProcessor<T> extends LoggingPostProcessor<T> {
     result.append(fittestIndividual);
 
     // append the fitness of that individual if possible
-    try {
-      result.append(" (fitness = ");
-      result.append(this.fitnessFunction.rawFitness(fittestIndividual));
-      result.append(")");
-    } catch (final FitnessException exception) {
-      LOG.error("Failed to determine fitness of an individual.", exception);
-    }
+    result.append(" (fitness = ");
+    result.append(fitnesses.get(fittestIndividual));
+    result.append(")");
 
     return result.toString();
   }

@@ -24,11 +24,14 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.GeneticEvolutionContext;
+import jmona.LoggingException;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
+import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -60,11 +63,19 @@ public class BestIndividualPostProcessorTester {
 
     final GeneticEvolutionContext<ExampleIndividual> context = new ExampleEvolutionContext(
         population);
+    
+    try {
+      context.setFitnessFunction(fitnessFunction);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
 
-    context.setFitnessFunction(fitnessFunction);
-    processor.setFitnessFunction(fitnessFunction);
-
-    final String fittestIndividual = processor.message(context);
+    String fittestIndividual = null;
+    try {
+      fittestIndividual = processor.message(context);
+    } catch (final LoggingException exception) {
+      Util.fail(exception);
+    }
 
     assertTrue(fittestIndividual.contains(individual1.toString()));
     assertTrue(fittestIndividual

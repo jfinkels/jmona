@@ -31,11 +31,11 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses({ DisplacementMutationFunctionTester.class,
+    ElementwiseMutationFunctionTester.class,
     IdentityMutationFunctionTester.class,
     ImmutableElementsListMutationFunctionTester.class,
     InsertionMutationFunctionTester.class,
-    InversionMutationFunctionTester.class, ElementwiseMutationFunctionTester.class,
-    SwapMutationFunctionTester.class })
+    InversionMutationFunctionTester.class, SwapMutationFunctionTester.class })
 public class AllTest {
 
 }

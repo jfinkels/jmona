@@ -31,6 +31,7 @@ import java.util.Vector;
 
 import jmona.CrossoverFunction;
 import jmona.EvolutionException;
+import jmona.FitnessException;
 import jmona.FitnessFunction;
 import jmona.IndependentSelectionFunction;
 import jmona.MutationFunction;
@@ -102,7 +103,11 @@ public class AbstractGeneticEvolutionContextTester {
     this.context.setCrossoverFunction(this.crossoverFunction);
     this.context.setMutationFunction(this.mutationFunction);
     this.context.setSelectionFunction(this.selectionFunction);
-    this.context.setFitnessFunction(this.fitnessFunction);
+    try {
+      this.context.setFitnessFunction(this.fitnessFunction);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
 
   }
 
@@ -255,7 +260,11 @@ public class AbstractGeneticEvolutionContextTester {
       assertNull(this.unsetContext.mutationFunction());
       assertNull(this.unsetContext.selectionFunction());
       assertNull(this.unsetContext.crossoverFunction());
-      this.unsetContext.setFitnessFunction(new ExampleFitnessFunction());
+      try {
+        this.unsetContext.setFitnessFunction(new ExampleFitnessFunction());
+      } catch (final FitnessException fitnessException) {
+        Util.fail(fitnessException);
+      }
     }
 
     try {
@@ -368,7 +377,11 @@ public class AbstractGeneticEvolutionContextTester {
   public void testSetFitnessFunction() {
     final FitnessFunction<ExampleIndividual> newFunction = new ExampleFitnessFunction();
 
-    this.context.setFitnessFunction(newFunction);
+    try {
+      this.context.setFitnessFunction(newFunction);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
 
     assertSame(newFunction, this.context.fitnessFunction());
     assertNotSame(this.fitnessFunction, this.context.fitnessFunction());

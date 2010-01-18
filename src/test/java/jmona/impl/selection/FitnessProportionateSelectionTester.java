@@ -29,12 +29,10 @@ import java.util.Map;
 import java.util.Vector;
 
 import jmona.FitnessFunction;
-import jmona.SelectionException;
 import jmona.functional.Range;
-import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
-import jmona.test.Util;
 
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,15 +49,20 @@ public class FitnessProportionateSelectionTester {
   public static final int NUM_INDIVIDUALS = 20;
   /** The number of selections to make. */
   public static final int NUM_SELECTIONS = 100000;
-
   /** The SelectionFunction under test. */
   private FitnessProportionateSelection<ExampleIndividual> function = null;
+  /** The map of fitnesses from which to select individuals. */
+  private Map<ExampleIndividual, Double> fitnesses = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
     this.function = new FitnessProportionateSelection<ExampleIndividual>();
+    this.fitnesses = new HashMap<ExampleIndividual, Double>();
   }
+
+  private static final transient Logger LOG = Logger
+      .getLogger(FitnessProportionateSelectionTester.class);
 
   /**
    * Test method for
@@ -68,52 +71,38 @@ public class FitnessProportionateSelectionTester {
    */
   @Test
   public void testEqualWeightSelect() {
-    final FitnessFunction<ExampleIndividual> fitnessFunction = new ExampleFitnessFunction();
-    final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
+    assertNull(this.function.select(this.fitnesses));
 
-    try {
-      assertNull(this.function.select(population, fitnessFunction));
-    } catch (final SelectionException exception) {
-      Util.fail(exception);
-    }
+    ExampleIndividual individual = new ExampleIndividual(1);
+    this.fitnesses.put(individual, individual.fitness());
 
-    ExampleIndividual individual = new ExampleIndividual();
-    population.add(individual);
-
-    try {
-      for (final int i : new Range(NUM_SELECTIONS)) {
-        assertSame(individual, this.function
-            .select(population, fitnessFunction));
-      }
-    } catch (final SelectionException exception) {
-      Util.fail(exception);
+    for (final int i : new Range(NUM_SELECTIONS)) {
+      assertSame(individual, this.function.select(this.fitnesses));
     }
 
     // initialize some individuals all with equal fitness
     for (final int i : new Range(NUM_INDIVIDUALS)) {
-      population.add(new ExampleIndividual());
+      individual = new ExampleIndividual(1);
+      this.fitnesses.put(individual, individual.fitness());
     }
 
     // initialize the number of selections of each individual
     final Map<ExampleIndividual, Integer> numberOfSelections = new HashMap<ExampleIndividual, Integer>();
-    for (final ExampleIndividual i : population) {
+    for (final ExampleIndividual i : this.fitnesses.keySet()) {
       numberOfSelections.put(i, 0);
     }
 
-    try {
-      for (final int i : new Range(NUM_SELECTIONS)) {
-        individual = this.function.select(population, fitnessFunction);
-        numberOfSelections.put(individual,
-            numberOfSelections.get(individual) + 1);
-      }
-    } catch (final SelectionException exception) {
-      Util.fail(exception);
+    for (final int i : new Range(NUM_SELECTIONS)) {
+      individual = this.function.select(this.fitnesses);
+      numberOfSelections
+          .put(individual, numberOfSelections.get(individual) + 1);
     }
 
     int sum = 0;
     for (final Integer selections : numberOfSelections.values()) {
       sum += selections;
     }
+
     double meanSelections = (double) sum / numberOfSelections.size();
 
     double expectedSelectionsPerIndividual = (double) NUM_SELECTIONS
@@ -132,12 +121,7 @@ public class FitnessProportionateSelectionTester {
    */
   @Test
   public void testSelectionEmptyMap() {
-    final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
-    try {
-      assertNull(this.function.select(population, new ExampleFitnessFunction()));
-    } catch (final SelectionException exception) {
-      Util.fail(exception);
-    }
+    assertNull(this.function.select(this.fitnesses));
   }
 
   /**
@@ -147,51 +131,28 @@ public class FitnessProportionateSelectionTester {
    */
   @Test
   public void testUnequalWeightSelect() {
-
-    final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
-    ExampleIndividual individual = new ExampleIndividual(1);
-    population.add(individual);
-
-    try {
-      for (final int i : new Range(NUM_SELECTIONS)) {
-        assertSame(individual, this.function.select(population,
-            new ExampleFitnessFunction()));
-      }
-    } catch (final SelectionException exception) {
-      Util.fail(exception);
-    }
-    population.clear();
-
     // initialize some individuals all with equal fitness
-    individual = null;
+    ExampleIndividual individual = null;
     for (final int i : new Range(NUM_INDIVIDUALS / 2)) {
-      population.add(new ExampleIndividual(1.0));
-    }
-    for (final int i : new Range(NUM_INDIVIDUALS / 2, NUM_INDIVIDUALS)) {
-      population.add(new ExampleIndividual(2.0));
+      individual = new ExampleIndividual(1);
+      this.fitnesses.put(individual, individual.fitness());
     }
 
-    final Map<ExampleIndividual, Integer> numberOfSelections = new HashMap<ExampleIndividual, Integer>();
-    for (final ExampleIndividual i : population) {
-      numberOfSelections.put(i, 0);
+    for (final int i : new Range(NUM_INDIVIDUALS / 2)) {
+      individual = new ExampleIndividual(2);
+      this.fitnesses.put(individual, individual.fitness());
     }
 
     int lowerSelections = 0;
     int upperSelections = 0;
+    for (final int i : new Range(NUM_SELECTIONS)) {
+      individual = this.function.select(this.fitnesses);
 
-    try {
-      for (final int i : new Range(NUM_SELECTIONS)) {
-        individual = this.function.select(population,
-            new ExampleFitnessFunction());
-
-        if (individual.fitness() == 1.0) {
-          lowerSelections += 1;
-        } else {
-          upperSelections += 1;
-        }
+      if (individual.fitness() == 1.0) {
+        lowerSelections += 1;
+      } else {
+        upperSelections += 1;
       }
-    } catch (final SelectionException exception) {
-      Util.fail(exception);
     }
 
     // the total number of selections must equal NUM_SELECTIONS
@@ -199,52 +160,44 @@ public class FitnessProportionateSelectionTester {
 
     // assert that the correct number of selections were made
     final double epsilon = NUM_SELECTIONS * 0.1;
-    assertEquals(NUM_SELECTIONS / 3.0, upperSelections, epsilon);
-    assertEquals(2 * NUM_SELECTIONS / 3.0, lowerSelections, epsilon);
+    assertEquals(2 * NUM_SELECTIONS / 3.0, upperSelections, epsilon);
+    assertEquals(NUM_SELECTIONS / 3.0, lowerSelections, epsilon);
 
   }
 
   /** If no individual has any fitness, the selection should be random. */
   @Test
   public void testNoFitnesses() {
-    final ExampleIndividual individual1 = new ExampleIndividual(
-        Double.POSITIVE_INFINITY);
-    final ExampleIndividual individual2 = new ExampleIndividual(
-        Double.POSITIVE_INFINITY);
-    final ExampleIndividual individual3 = new ExampleIndividual(
-        Double.POSITIVE_INFINITY);
+    final ExampleIndividual individual1 = new ExampleIndividual(0);
+    final ExampleIndividual individual2 = new ExampleIndividual(0);
+    final ExampleIndividual individual3 = new ExampleIndividual(0);
 
-    final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
-    population.add(individual1);
-    population.add(individual2);
-    population.add(individual3);
+    this.fitnesses.put(individual1, individual1.fitness());
+    this.fitnesses.put(individual2, individual2.fitness());
+    this.fitnesses.put(individual3, individual3.fitness());
 
     int selectionsOfIndividual1 = 0;
     int selectionsOfIndividual2 = 0;
     int selectionsOfIndividual3 = 0;
-    try {
 
-      ExampleIndividual selection = null;
-      for (final int i : new Range(NUM_SELECTIONS)) {
-        selection = this.function.select(population,
-            new ExampleFitnessFunction());
+    ExampleIndividual selection = null;
+    for (final int i : new Range(NUM_SELECTIONS)) {
+      selection = this.function.select(this.fitnesses);
 
-        if (selection.equals(individual1)) {
-          selectionsOfIndividual1 += 1;
-        } else if (selection.equals(individual2)) {
-          selectionsOfIndividual2 += 1;
-        } else {
-          selectionsOfIndividual3 += 1;
-        }
+      if (selection.equals(individual1)) {
+        selectionsOfIndividual1 += 1;
+      } else if (selection.equals(individual2)) {
+        selectionsOfIndividual2 += 1;
+      } else {
+        selectionsOfIndividual3 += 1;
       }
-
-    } catch (final SelectionException exception) {
-      Util.fail(exception);
     }
 
     final double expected = NUM_SELECTIONS / 3.0;
     final double delta = expected * 0.1;
-
+    LOG.debug(selectionsOfIndividual1);
+    LOG.debug(selectionsOfIndividual2);
+    LOG.debug(selectionsOfIndividual3);
     assertEquals(expected, selectionsOfIndividual1, delta);
     assertEquals(expected, selectionsOfIndividual2, delta);
     assertEquals(expected, selectionsOfIndividual3, delta);

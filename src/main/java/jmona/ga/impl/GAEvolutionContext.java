@@ -20,18 +20,22 @@
 package jmona.ga.impl;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import jmona.CopyingException;
 import jmona.CrossoverException;
 import jmona.DeepCopyable;
 import jmona.EvolutionException;
-import jmona.FitnessFunction;
+import jmona.FitnessException;
 import jmona.IndependentSelectionFunction;
 import jmona.MutationException;
+import jmona.PropertyNotSetException;
 import jmona.SelectionException;
 import jmona.impl.context.AbstractGeneticEvolutionContext;
 import jmona.random.RandomUtils;
+
+import org.apache.log4j.Logger;
 
 /**
  * A default implementation of the evolution context interface, which provides
@@ -44,6 +48,9 @@ import jmona.random.RandomUtils;
  */
 public class GAEvolutionContext<T extends DeepCopyable<T>> extends
     AbstractGeneticEvolutionContext<T> {
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(GAEvolutionContext.class);
 
   /**
    * Instantiate this evolution context with the specified initial population by
@@ -83,11 +90,12 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
    * @throws PropertyNotSetException
    *           If one of the necessary properties has not been set.
    */
-  // TODO refactor to calculate fitnesses only once before selection
   @Override
-  public void executeGenerationStep() throws EvolutionException {
+  protected void executeGenerationStep() throws EvolutionException {
     // perform a sanity check (i.e. make sure there are no null properties)
     this.sanityCheck();
+
+    LOG.debug("Starting generation " + this.currentGeneration());
 
     // get a reference to the current population
     final List<T> currentPopulation = this.currentPopulation();
@@ -95,8 +103,9 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
     // get the size of the current population
     final int currentSize = currentPopulation.size();
 
-    // get a reference to the fitness function for this evolution
-    final FitnessFunction<T> fitnessFunction = this.fitnessFunction();
+    // get a reference to the current adjusted fitnesses of individuals in the
+    // current population
+    final Map<T, Double> currentFitnesses = this.currentAdjustedFitnesses();
 
     // get a reference to the selection function for this evolution
     final IndependentSelectionFunction<T> selectionFunction = this
@@ -109,29 +118,39 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
       // if elitism is enabled, copy the best individuals to the next generation
       if (this.elitism() > 0) {
         nextPopulation.addAll(this.elitismSelectionFunction().select(
-            currentPopulation, fitnessFunction, this.elitism()));
+            currentFitnesses, this.elitism()));
       }
 
       // while the size of the next generation is less than the size of the
       // current generation
       while (nextPopulation.size() < currentSize) {
 
+        LOG.debug("Selecting first individual...");
+
         // select an individual and copy it to create the offspring
-        T individual1 = selectionFunction.select(currentPopulation,
-            fitnessFunction).deepCopy();
+        T individual1 = selectionFunction.select(currentFitnesses).deepCopy();
         T individual2 = null;
+
+        LOG.debug("...done.");
 
         // perform crossover (if there is enough room in the next generation)
         // with certain probability
         if (nextPopulation.size() < currentSize - 1
             && RandomUtils.nextDouble() < this.crossoverProbability()) {
 
+          LOG.debug("Selecting second individual...");
+
           // select another individual and copy it to create another offspring
-          individual2 = selectionFunction.select(currentPopulation,
-              fitnessFunction).deepCopy();
+          individual2 = selectionFunction.select(currentFitnesses).deepCopy();
+
+          LOG.debug("...done.");
+
+          LOG.debug("Performing crossover...");
 
           // perform crossover on the two offspring
           this.crossoverFunction().crossover(individual1, individual2);
+
+          LOG.debug("...done.");
         }
 
         // get the probability of performing mutation
@@ -139,14 +158,18 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
 
         // perform mutation with certain probability
         if (RandomUtils.nextDouble() < mutationProbability) {
+          LOG.debug("Performing mutation on individual 1...");
           this.mutationFunction().mutate(individual1);
+          LOG.debug("...done.");
         }
 
         // perform mutation with certain probability (if the second individual
         // is not null)
         if (individual2 != null
             && RandomUtils.nextDouble() < mutationProbability) {
+          LOG.debug("Performing mutation on individual 2...");
           this.mutationFunction().mutate(individual2);
+          LOG.debug("...done.");
         }
 
         // add the offspring to the next generation

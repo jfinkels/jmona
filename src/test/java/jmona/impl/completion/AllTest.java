@@ -30,7 +30,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.1
  */
 @RunWith(Suite.class)
-@SuiteClasses({ PerfectMatchCompletionConditionTester.class,
+@SuiteClasses({ AggregatorCompletionConditionTester.class,
+    PerfectMatchCompletionConditionTester.class,
     MaxGenerationCompletionConditionTester.class })
 public class AllTest {
 

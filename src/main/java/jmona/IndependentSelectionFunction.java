@@ -19,7 +19,7 @@
  */
 package jmona;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * A selection function in which the fitness of each individual can be measured
@@ -31,19 +31,16 @@ import java.util.List;
  * @since 0.3
  */
 public interface IndependentSelectionFunction<T> extends SelectionFunction<T> {
+
   /**
-   * Select an individual from the specified population using the specified
-   * fitness function.
+   * Selects an individual from the specified mapping from individual to
+   * fitness.
    * 
-   * @param population
-   *          The population from which to select an individual.
-   * @param fitnessFunction
-   *          The fitness function to use to determine the fitnesses of
-   *          individuals in the specified population.
-   * @return An individual chosen from the specified population.
+   * @param fitnesses
+   *          The mapping from individual to fitness.
+   * @return An individual chosen from the specified Map.
    * @throws SelectionException
    *           If there is a problem during selection of an individual.
    */
-  T select(final List<T> population, final FitnessFunction<T> fitnessFunction)
-      throws SelectionException;
+  T select(final Map<T, Double> fitnesses) throws SelectionException;
 }

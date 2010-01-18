@@ -25,6 +25,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.FitnessException;
 import jmona.GeneticEvolutionContext;
 import jmona.MappingException;
 import jmona.ga.impl.GAEvolutionContext;
@@ -67,7 +68,11 @@ public class PerfectMatchCompletionConditionTester {
     this.evolutionContext = new GAEvolutionContext<ExampleIndividual>(
         this.population);
 
-    this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
+    try {
+      this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
@@ -79,17 +84,13 @@ public class PerfectMatchCompletionConditionTester {
   public void testExecute() {
 
     try {
-      this.completionCriteria.execute(this.emptyContext);
-      Util.shouldHaveThrownException();
-    } catch (final MappingException exception) {
-      assertTrue(exception instanceof MappingException);
-    }
-
-    try {
       assertFalse(this.completionCriteria.execute(this.evolutionContext));
       this.population.add(new ExampleIndividual(0));
+      this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
       assertTrue(this.completionCriteria.execute(this.evolutionContext));
     } catch (final MappingException exception) {
+      Util.fail(exception);
+    } catch (final FitnessException exception) {
       Util.fail(exception);
     }
   }

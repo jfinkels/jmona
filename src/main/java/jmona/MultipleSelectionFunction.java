@@ -20,6 +20,7 @@
 package jmona;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * A SelectionFunction in which multiple individuals can be selected
@@ -33,22 +34,17 @@ import java.util.List;
 public interface MultipleSelectionFunction<T> extends SelectionFunction<T> {
 
   /**
-   * Selects the specified number of individuals from the specified population
-   * using the specified fitness function.
+   * Selects the specified number of individuals from the specified mapping from
+   * individual to fitness.
    * 
-   * @param population
-   *          The population from which to select individuals.
-   * @param fitnessFunction
-   *          The fitness function to use to determine the fitnesses of
-   *          individuals in the specified population.
+   * @param fitnesses
+   *          The mapping from individual to fitness.
    * @param numberToSelect
-   *          The number of individuals to select from the specified population.
-   * @return A List of individuals of size {@code numberToSelect}, chosen from
-   *         the specified population.
+   *          The number of individuals to select.
+   * @return An individual chosen from the specified Map.
    * @throws SelectionException
-   *           If there is a problem during selection of individuals.
+   *           If there is a problem during selection of an individual.
    */
-  List<T> select(final List<T> population,
-      final FitnessFunction<T> fitnessFunction, final int numberToSelect)
+  List<T> select(final Map<T, Double> fitnesses, final int numberToSelect)
       throws SelectionException;
 }

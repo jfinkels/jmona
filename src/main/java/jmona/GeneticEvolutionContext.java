@@ -19,6 +19,8 @@
  */
 package jmona;
 
+import java.util.Map;
+
 /**
  * A context in which genetic evolution occurs.
  * 
@@ -44,6 +46,18 @@ public interface GeneticEvolutionContext<T extends DeepCopyable<T>> extends
    * @return The probability of crossover for selected individuals.
    */
   double crossoverProbability();
+
+  /**
+   * Gets the adjusted fitnesses of individuals in the current population as a
+   * SortedMap.
+   * 
+   * The SortedMap has individuals with least fitness first and individuals with
+   * greatest fitness last.
+   * 
+   * @return The adjusted fitness of individuals in the current population as a
+   *         SortedMap.
+   */
+  Map<T, Double> currentAdjustedFitnesses();
 
   /**
    * Gets the number of top individuals which are copied directly from the
@@ -115,8 +129,12 @@ public interface GeneticEvolutionContext<T extends DeepCopyable<T>> extends
    * 
    * @param function
    *          The fitness function used by this context.
+   * @throws FitnessException
+   *           If there is a problem determining the initial fitnesses of
+   *           individuals in this EvolutionContext.
    */
-  void setFitnessFunction(final FitnessFunction<T> function);
+  void setFitnessFunction(final FitnessFunction<T> function)
+      throws FitnessException;
 
   /**
    * Sets the mutation function used by this context.

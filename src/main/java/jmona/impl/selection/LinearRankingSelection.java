@@ -19,17 +19,13 @@
  */
 package jmona.impl.selection;
 
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Vector;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
-import jmona.FitnessFunction;
 import jmona.SelectionException;
-import jmona.functional.Range;
-import jmona.impl.fitness.PresetFitnessFunction;
-import jmona.impl.fitness.StandardizedFitnessComparator;
 
 /**
  * SelectionFunction which assigns a linear rank to individuals (1, 2, 3,
@@ -42,9 +38,6 @@ import jmona.impl.fitness.StandardizedFitnessComparator;
  * @since 0.3
  */
 public class LinearRankingSelection<T> extends FitnessProportionateSelection<T> {
-
-  /** The comparator with which to rank the individuals in the population. */
-  private final StandardizedFitnessComparator<T> standardizedFitnessComparator = new StandardizedFitnessComparator<T>();
 
   /**
    * Use a linear ranking as the probability distribution with which to choose
@@ -64,40 +57,35 @@ public class LinearRankingSelection<T> extends FitnessProportionateSelection<T> 
    * @throws SelectionException
    *           If the fitness-proportionate selection phase of this method
    *           throws a SelectionException.
-   * @see jmona.IndependentSelectionFunction#select(java.util.List, jmona.FitnessFunction)
+   * @see jmona.IndependentSelectionFunction#select(java.util.List,
+   *      jmona.FitnessFunction)
    */
   @Override
-  public T select(final List<T> population,
-      final FitnessFunction<T> fitnessFunction) throws SelectionException {
+  public T select(final Map<T, Double> fitnesses) {
 
-    // make the fitness comparator aware of the fitness function
-    this.standardizedFitnessComparator.setFitnessFunction(fitnessFunction);
+    // create a comparator based on the fitnesses of the individuals as
+    // specified in the map given as input to this method
+    final Comparator<T> comparator = new ValueComparator<T, Double>(fitnesses);
 
-    // create a new list containing references to all the individuals in the
-    // population (so as not to upset the order of the elements in the
-    // population list)
-    final List<T> individuals = new Vector<T>(population);
+    // sort individuals by fitness value, from lowest to highest
+    final SortedMap<T, Double> sortedFitnesses = new TreeMap<T, Double>(
+        comparator);
+    sortedFitnesses.putAll(fitnesses);
 
-    // sort the population based on fitness (better individuals first)
-    Collections.sort(individuals, this.standardizedFitnessComparator);
-
-    // reverse the order so that better individuals have a higher index in the
-    // list
-    Collections.reverse(individuals);
-
-    // define a map from individual to its rank (that is, its index in the list)
+    // create a map from individual to its rank based on fitness, with lowest
+    // fitness individuals first and highest fitness individuals last
     final Map<T, Double> rank = new HashMap<T, Double>();
-    for (final int i : new Range(individuals.size())) {
-      rank.put(individuals.get(i), (double) (i + 1));
-    }
 
-    // create a fitness function which uses that Map to determine adjusted
-    // fitnesses
-    final FitnessFunction<T> presetFitnessFunction = new PresetFitnessFunction<T>(
-        rank);
+    // add the rank of the individual to the ranking map, where rank 1 is the
+    // least fit individual
+    int i = 1;
+    for (final T individual : sortedFitnesses.keySet()) {
+      rank.put(individual, (double) i);
+      i += 1;
+    }
 
     // use fitness proportionate selection where the adjusted fitness is the
     // rank of the individual
-    return super.select(individuals, presetFitnessFunction);
+    return super.select(rank);
   }
 }

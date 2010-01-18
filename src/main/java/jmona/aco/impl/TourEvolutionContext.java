@@ -23,7 +23,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-import java.util.Map.Entry;
 
 import jmona.EvolutionException;
 import jmona.IndependentSelectionFunction;
@@ -31,9 +30,7 @@ import jmona.SelectionException;
 import jmona.aco.Ant;
 import jmona.aco.PheromoneDirectedGraph;
 import jmona.aco.PheromoneUpdateStrategy;
-import jmona.functional.Functional;
 import jmona.impl.context.AbstractEvolutionContext;
-import jmona.impl.fitness.PresetFitnessFunction;
 import jmona.impl.selection.FitnessProportionateSelection;
 
 /**
@@ -152,20 +149,8 @@ class TourEvolutionContext<A extends Ant> extends AbstractEvolutionContext<A> {
       probabilities.put(vertex, probability);
     }
 
-    // get the sum of all the probabilities for possible next vertices
-    double sum = Functional.sum(probabilities.values());
-
-    // normalize each of the probabilities by dividing by their sum
-    for (final Entry<Integer, Double> entry : probabilities.entrySet()) {
-      probabilities.put(entry.getKey(), entry.getValue() / sum);
-    }
-
-    // create a fitness function which knows about those probabilities
-    final PresetFitnessFunction<Integer> fitnessFunction = new PresetFitnessFunction<Integer>(
-        probabilities);
-
     // use fitness-proportionate selection to choose a vertex to which to move
-    return FPS.select(allowedVertices, fitnessFunction);
+    return FPS.select(probabilities);
   }
 
   /**

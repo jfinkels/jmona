@@ -1,5 +1,5 @@
 /**
- * ElitismSelectionFunctionTester.java
+ * ValueComparatorTester.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -20,38 +20,32 @@
 package jmona.impl.selection;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 
-import jmona.FitnessFunction;
-import jmona.impl.example.ExampleFitnessFunction;
+import jmona.ComparisonException;
 import jmona.impl.example.ExampleIndividual;
-import jmona.test.Util;
 
 import org.junit.Test;
 
 /**
- * Test class for the ElitismSelectionFunction class.
+ * Test class for the ValueComparator class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class ElitismSelectionFunctionTester {
+public class ValueComparatorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.ElitismSelectionFunction#select(java.util.List, jmona.FitnessFunction, int)}
+   * {@link jmona.impl.selection.ValueComparator#ValueComparator(java.util.Map)}
    * .
    */
   @Test
-  public void testSelect() {
-    final ElitismSelectionFunction<ExampleIndividual> function = new ElitismSelectionFunction<ExampleIndividual>();
-
+  public void testValueComparator() {
     final ExampleIndividual individual1 = new ExampleIndividual(0);
     final ExampleIndividual individual2 = new ExampleIndividual(1);
 
@@ -59,30 +53,19 @@ public class ElitismSelectionFunctionTester {
     fitnesses.put(individual1, individual1.fitness());
     fitnesses.put(individual2, individual2.fitness());
 
-    int numberToSelect = 1;
-    List<ExampleIndividual> selection = function.select(fitnesses,
-        numberToSelect);
+    final ValueComparator<ExampleIndividual, Double> comparator = new ValueComparator<ExampleIndividual, Double>(
+        fitnesses);
 
-    assertEquals(numberToSelect, selection.size());
+    assertEquals(0, comparator.compare(individual1, individual1));
+    assertEquals(0, comparator.compare(individual2, individual2));
+    assertTrue(comparator.compare(individual1, individual2) < 0);
+    assertTrue(comparator.compare(individual2, individual1) > 0);
 
-    assertSame(individual2, selection.get(0));
-
-    numberToSelect = 2;
-
-    selection = function.select(fitnesses, numberToSelect);
-
-    assertEquals(numberToSelect, selection.size());
-
-    assertSame(individual2, selection.get(0));
-    assertSame(individual1, selection.get(1));
-
-    numberToSelect = 3;
-
+    final ExampleIndividual newIndividual = new ExampleIndividual();
     try {
-      selection = function.select(fitnesses, numberToSelect);
-      Util.shouldHaveThrownException();
-    } catch (final IllegalArgumentException exception) {
-      assertTrue(fitnesses.size() < numberToSelect);
+      comparator.compare(newIndividual, individual1);
+    } catch (final ComparisonException exception) {
+      assertFalse(fitnesses.containsKey(newIndividual));
     }
   }
 

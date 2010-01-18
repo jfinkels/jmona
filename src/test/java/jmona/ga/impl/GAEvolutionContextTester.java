@@ -28,6 +28,7 @@ import java.util.Vector;
 
 import jmona.CrossoverException;
 import jmona.EvolutionException;
+import jmona.FitnessException;
 import jmona.MutationException;
 import jmona.PropertyNotSetException;
 import jmona.SelectionException;
@@ -74,7 +75,16 @@ public class GAEvolutionContextTester {
     context.setCrossoverFunction(new ExampleBadCrossoverFunction());
     context.setMutationFunction(new ExampleBadMutationFunction());
     context.setSelectionFunction(new ExampleBadSelectionFunction());
-    context.setFitnessFunction(new ExampleBadFitnessFunction());
+    try {
+      context.setFitnessFunction(new ExampleBadFitnessFunction());
+      Util.shouldHaveThrownException();
+    } catch (final FitnessException exception) {
+      try {
+        context.setFitnessFunction(new ExampleFitnessFunction());
+      } catch (final FitnessException exception2) {
+        Util.fail(exception2);
+      }
+    }
 
     context.setMutationProbability(1);
     context.setCrossoverProbability(1);
@@ -88,16 +98,7 @@ public class GAEvolutionContextTester {
       context
           .setSelectionFunction(new FitnessProportionateSelection<ExampleIndividual>());
     }
-
-    try {
-      context.stepGeneration();
-      Util.shouldHaveThrownException();
-    } catch (final EvolutionException exception) {
-      // bad fitness function
-      assertTrue(exception.getCause() instanceof SelectionException);
-      context.setFitnessFunction(new ExampleFitnessFunction());
-    }
-
+    
     try {
       context.stepGeneration();
       Util.shouldHaveThrownException();
@@ -149,7 +150,11 @@ public class GAEvolutionContextTester {
     context.setMutationFunction(new ExampleMutationFunction());
     context
         .setSelectionFunction(new FitnessProportionateSelection<ExampleIndividual>());
-    context.setFitnessFunction(new ExampleFitnessFunction());
+    try {
+      context.setFitnessFunction(new ExampleFitnessFunction());
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
 
     assertEquals(0, context.currentGeneration());
 

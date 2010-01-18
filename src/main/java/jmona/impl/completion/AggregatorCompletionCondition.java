@@ -42,19 +42,19 @@ public class AggregatorCompletionCondition<T> implements CompletionCondition<T> 
    * The Set of CompletionConditions to check every time this Condition is
    * executed.
    */
-  private final Iterable<CompletionCondition<T>> conditions;
+  private final CompletionCondition<T>[] conditions;
 
   /**
-   * Instantiates this class with the specified Set of CompletionConditions to
+   * Instantiates this class with the specified array of CompletionConditions to
    * check every time this Condition is executed.
    * 
    * @param initialConditions
-   *          The Set of CompletionConditions to check every time this Condition
-   *          is executed.
+   *          The array of CompletionConditions to check every time this
+   *          Condition is executed.
    */
   public AggregatorCompletionCondition(
-      final Iterable<CompletionCondition<T>> initialConditions) {
-    this.conditions = initialConditions;
+      final CompletionCondition<T>... initialConditions) {
+    this.conditions = initialConditions.clone();
   }
 
   /**

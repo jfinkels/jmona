@@ -21,8 +21,8 @@ package jmona.impl.selection;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.List;
-import java.util.Vector;
+import java.util.HashMap;
+import java.util.Map;
 
 import jmona.FitnessFunction;
 import jmona.functional.Range;
@@ -47,7 +47,7 @@ public class TournamentSelectionTester {
   /** Zero. */
   public static final double ZERO_DELTA = 0.0;
   /** All individuals in the tournament. */
-  private List<ExampleIndividual> population = null;
+  private Map<ExampleIndividual, Double> population = null;
   /** The SelectionFunction under test. */
   private TournamentSelection<ExampleIndividual> function = null;
 
@@ -56,16 +56,16 @@ public class TournamentSelectionTester {
   public final void setUp() {
     this.function = new TournamentSelection<ExampleIndividual>();
 
-    this.population = new Vector<ExampleIndividual>();
+    this.population = new HashMap<ExampleIndividual, Double>();
     for (final int i : new Range(NUM_INDIVIDUALS)) {
-      this.population.add(new ExampleIndividual(i));
+      this.population.put(new ExampleIndividual(i), (double) i);
     }
 
   }
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.TournamentSelection#select(List, FitnessFunction)}.
+   * {@link jmona.impl.selection.TournamentSelection#select(Map)}.
    */
   @Test
   public void testSelect() {
@@ -74,18 +74,18 @@ public class TournamentSelectionTester {
 
     ExampleIndividual individual = null;
     for (final int i : new Range(NUM_SELECTIONS)) {
-      individual = this.function.select(this.population, fitnessFunction);
-      assertTrue(this.population.contains(individual));
+      individual = this.function.select(this.population);
+      assertTrue(this.population.containsKey(individual));
     }
 
     // add some more individuals
     for (final int i : new Range(NUM_INDIVIDUALS, 2 * NUM_INDIVIDUALS)) {
-      this.population.add(new ExampleIndividual(i));
+      this.population.put(new ExampleIndividual(i), (double) i);
     }
 
     for (final int i : new Range(NUM_INDIVIDUALS)) {
-      individual = this.function.select(this.population, fitnessFunction);
-      assertTrue(this.population.contains(individual));
+      individual = this.function.select(this.population);
+      assertTrue(this.population.containsKey(individual));
     }
   }
 

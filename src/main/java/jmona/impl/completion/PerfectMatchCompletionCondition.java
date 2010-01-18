@@ -19,49 +19,39 @@
  */
 package jmona.impl.completion;
 
-import java.util.List;
+import java.util.Map;
 
 import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.FitnessFunction;
 import jmona.GeneticEvolutionContext;
-import jmona.MappingException;
-import jmona.functional.Functional;
-import jmona.functional.operators.IsZero;
-import jmona.impl.fitness.StandardizedFitnessGetter;
 
 /**
  * CompletionCondition used to determine whether an EvolutionContext contains an
- * individual with a standardized fitness of 0 (that is, a perfect match to the
+ * individual with a adjusted fitness of 1 (that is, a perfect match to the
  * exact solution).
  * 
+ * @author Jeffrey Finkelstein
  * @param <T>
  *          The type of individual in the EvolutionContext to test for
  *          completion.
- * @author Jeffrey Finkelstein
  * @since 0.4
  */
 public class PerfectMatchCompletionCondition<T extends DeepCopyable<T>>
     implements CompletionCondition<T> {
 
-  /** The function which gets standardized fitnesses of individuals. */
-  private final StandardizedFitnessGetter<T> standardizedFitnessGetter = new StandardizedFitnessGetter<T>();
+  /** The optimal adjusted fitness for an individual. */
+  public static final double PERFECT_FITNESS = 1.0;
 
   /**
-   * Determine whether an individual with standardized fitness 0 exists (that
-   * is, an individual which is a perfect match to the solution of the problem).
-   * 
-   * This method uses the FitnessFunction from
-   * {@link jmona.GeneticEvolutionContext#fitnessFunction()} to measure the
-   * fitness of individuals.
+   * Determine whether an individual with adjusted fitness 1 exists (that is, an
+   * individual which is a perfect match to the solution of the problem).
    * 
    * @param context
    *          {@inheritDoc}
    * @throws CompletionException
-   *           If the fitness function of the EvolutionContext throws a
-   *           FitnessException.
+   *           If the specified context is not a GeneticEvolutionContext
    * @see jmona.CompletionCondition#execute(jmona.EvolutionContext)
    */
   @Override
@@ -74,32 +64,9 @@ public class PerfectMatchCompletionCondition<T extends DeepCopyable<T>>
               + context.getClass());
     }
 
-    // get the fitness function from the EvolutionContext
-    final FitnessFunction<T> fitnessFunction = ((GeneticEvolutionContext<T>) context)
-        .fitnessFunction();
+    final Map<T, Double> fitnesses = ((GeneticEvolutionContext<T>) context)
+        .currentAdjustedFitnesses();
 
-    if (fitnessFunction == null) {
-      throw new CompletionException(
-          "No FitnessFunction has been set on the EvolutionContext, so no fitnesses can be determined.");
-    }
-
-    // set the fitness function on the standardized fitness getter function
-    this.standardizedFitnessGetter.setFitnessFunction(fitnessFunction);
-    try {
-      // get the list of fitnesses
-      final List<Double> fitnesses = Functional.map(
-          this.standardizedFitnessGetter, context.currentPopulation());
-
-      // map the list to booleans representing whether any fitness is 0
-      final List<Boolean> isZero = Functional.map(new IsZero(), fitnesses);
-
-      // return whether any fitness is greater than the max fitness
-      return Functional.any(isZero);
-    } catch (final MappingException exception) {
-      throw new CompletionException(
-          "Failed to determine which individuals had which fitness.", exception);
-    }
-
+    return fitnesses.containsValue(PERFECT_FITNESS);
   }
-
 }
