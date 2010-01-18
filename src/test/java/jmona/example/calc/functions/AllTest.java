@@ -34,7 +34,7 @@ import org.junit.runners.Suite.SuiteClasses;
     DivisionFunctionTester.class, DoubleConstantFunctionTester.class,
     DoubleIdentityFunctionTester.class, MultiplicationFunctionTester.class,
     PolynomialFunctionTester.class, SecondOrderFunctionTester.class,
-    SubtractionFunctionTester.class })
+    SquareFunctionTester.class, SubtractionFunctionTester.class })
 public class AllTest {
 
 }
