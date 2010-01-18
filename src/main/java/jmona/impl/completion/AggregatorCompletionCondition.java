@@ -27,8 +27,8 @@ import jmona.EvolutionContext;
  * A CompletionCondition which checks whether a specified set
  * CompletionConditions are satisfied.
  * 
- * This class makes no guarantees on the order in which CompletionConditions are
- * checked.
+ * This class iterates over CompletionCondition in the order defined by the
+ * iterator of the Iterable provided in the constructor of this class.
  * 
  * @author Jeffrey Finkelstein
  * @param <T>
@@ -39,22 +39,22 @@ import jmona.EvolutionContext;
 public class AggregatorCompletionCondition<T> implements CompletionCondition<T> {
 
   /**
-   * The Set of CompletionConditions to check every time this Condition is
+   * The Iterable of CompletionConditions to check every time this Condition is
    * executed.
    */
-  private final CompletionCondition<T>[] conditions;
+  private final Iterable<CompletionCondition<T>> conditions;
 
   /**
-   * Instantiates this class with the specified array of CompletionConditions to
-   * check every time this Condition is executed.
+   * Instantiates this class with the specified Iterable of CompletionConditions
+   * to check every time this Condition is executed.
    * 
    * @param initialConditions
-   *          The array of CompletionConditions to check every time this
+   *          The Iterable of CompletionConditions to check every time this
    *          Condition is executed.
    */
   public AggregatorCompletionCondition(
-      final CompletionCondition<T>... initialConditions) {
-    this.conditions = initialConditions.clone();
+      final Iterable<CompletionCondition<T>> initialConditions) {
+    this.conditions = initialConditions;
   }
 
   /**
