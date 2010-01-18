@@ -19,16 +19,19 @@
  */
 package jmona.impl.completion;
 
+import java.util.Collection;
+
 import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
+import jmona.impl.UnmodifiableCollectionAggregator;
 
 /**
  * A CompletionCondition which checks whether a specified set
  * CompletionConditions are satisfied.
  * 
  * This class iterates over CompletionCondition in the order defined by the
- * iterator of the Iterable provided in the constructor of this class.
+ * iterator of the Collection provided in the constructor of this class.
  * 
  * @author Jeffrey Finkelstein
  * @param <T>
@@ -36,33 +39,29 @@ import jmona.EvolutionContext;
  *          completion.
  * @since 0.4
  */
-public class AggregatorCompletionCondition<T> implements CompletionCondition<T> {
+public class AggregatorCompletionCondition<T> extends
+    UnmodifiableCollectionAggregator<CompletionCondition<T>> implements
+    CompletionCondition<T> {
 
   /**
-   * The Iterable of CompletionConditions to check every time this Condition is
-   * executed.
-   */
-  private final Iterable<CompletionCondition<T>> conditions;
-
-  /**
-   * Instantiates this class with the specified Iterable of CompletionConditions
-   * to check every time this Condition is executed.
+   * Instantiates this class with the specified Collection of
+   * CompletionConditions to check every time this Condition is executed.
    * 
    * @param initialConditions
    *          The Iterable of CompletionConditions to check every time this
    *          Condition is executed.
    */
   public AggregatorCompletionCondition(
-      final Iterable<CompletionCondition<T>> initialConditions) {
-    this.conditions = initialConditions;
+      final Collection<CompletionCondition<T>> initialConditions) {
+    super(initialConditions);
   }
 
   /**
    * Whether the specified EvolutionContext satisfies any of the
    * CompletionConditions specified in the constructor of this class.
    * 
-   * This method makes no guarantees on the order in which CompletionConditions
-   * are checked.
+   * This method iterates over CompletionCondition in the order defined by the
+   * iterator of the Collection provided in the constructor of this class.
    * 
    * @param input
    *          The EvolutionContext to test for completion.
@@ -76,7 +75,7 @@ public class AggregatorCompletionCondition<T> implements CompletionCondition<T> 
   public Boolean execute(final EvolutionContext<T> input)
       throws CompletionException {
 
-    for (final CompletionCondition<T> condition : this.conditions) {
+    for (final CompletionCondition<T> condition : this.collection()) {
       if (condition.execute(input)) {
         return true;
       }

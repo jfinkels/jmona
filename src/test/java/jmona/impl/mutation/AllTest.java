@@ -30,7 +30,8 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.1
  */
 @RunWith(Suite.class)
-@SuiteClasses({ DisplacementMutationFunctionTester.class,
+@SuiteClasses({ AggregatorMutationFunctionTester.class,
+    DisplacementMutationFunctionTester.class,
     ElementwiseMutationFunctionTester.class,
     IdentityMutationFunctionTester.class,
     ImmutableElementsListMutationFunctionTester.class,
