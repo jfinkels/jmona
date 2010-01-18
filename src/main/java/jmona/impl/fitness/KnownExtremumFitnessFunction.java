@@ -20,7 +20,6 @@
 package jmona.impl.fitness;
 
 import jmona.FitnessException;
-import jmona.FitnessFunction;
 
 /**
  * A fitness function which determines the fitness of an individual with respect
@@ -31,8 +30,8 @@ import jmona.FitnessFunction;
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
-public abstract class KnownExtremumFitnessFunction<T> implements
-    FitnessFunction<T> {
+public abstract class KnownExtremumFitnessFunction<T> extends
+    CachingFitnessFunction<T> {
 
   /** The default minimum raw fitness value. */
   public static final double DEFAULT_MINIMUM_FITNESS = 0;
@@ -59,7 +58,21 @@ public abstract class KnownExtremumFitnessFunction<T> implements
    */
   @Override
   public double adjustedFitness(final T individual) throws FitnessException {
-    return 1.0 / (1.0 + this.standardizedFitness(individual));
+    
+    // get the cached adjusted fitness of the individual
+    Double result = this.getCachedFitness(individual);
+    
+    // if the adjusted fitness of the individual is not in the cache
+    if (result == null) {
+      
+      // compute the adjusted fitness of the individual
+      result = 1.0 / (1.0 + this.standardizedFitness(individual));
+      
+      // add it to the cache
+      this.putCachedFitness(individual, result);
+    }
+        
+    return result;
   }
 
   /**
