@@ -64,36 +64,37 @@
   <properties>
     <!-- dependency versions -->
     <version.dependency.jopt-simple>3.2</version.dependency.jopt-simple>
-    <version.dependency.junit>4.7</version.dependency.junit>
+    <version.dependency.junit>4.8.1</version.dependency.junit>
     <version.dependency.log4j>1.2.14</version.dependency.log4j>
-    <version.dependency.math>2.0</version.dependency.math>
-    <version.dependency.spring>3.0.0.RELEASE</version.dependency.spring>
+    <version.dependency.math>2.1</version.dependency.math>
+    <version.dependency.spring>3.0.3.RELEASE</version.dependency.spring>
     
     <!-- plugin versions -->
     <!--<version.plugin.changelog>2.2-SNAPSHOT</version.plugin.changelog>-->
-    <version.plugin.checkstyle>2.4</version.plugin.checkstyle>
+    <version.plugin.checkstyle>2.5</version.plugin.checkstyle>
     <version.plugin.clirr>2.2.2</version.plugin.clirr>
-    <version.plugin.cobertura>2.3</version.plugin.cobertura>
-    <version.plugin.compiler>2.0.2</version.plugin.compiler>
-    <version.plugin.findbugs>2.3</version.plugin.findbugs>
-    <version.plugin.jar>2.3</version.plugin.jar>
-    <version.plugin.javadoc>2.6.1</version.plugin.javadoc>
+    <version.plugin.cobertura>2.4</version.plugin.cobertura>
+    <version.plugin.compiler>2.3</version.plugin.compiler>
+    <version.plugin.findbugs>2.3.1</version.plugin.findbugs>
+    <version.plugin.jar>2.3.1</version.plugin.jar>
+    <version.plugin.javadoc>2.7</version.plugin.javadoc>
     <version.plugin.javancss>2.0</version.plugin.javancss>
     <version.plugin.jdepend>2.0-beta-2</version.plugin.jdepend>
-    <version.plugin.jxr>2.1</version.plugin.jxr>
-    <version.plugin.pmd>2.4</version.plugin.pmd>
-    <version.plugin.reports>2.1.2</version.plugin.reports>
-    <version.plugin.release>2.0-beta-9</version.plugin.release>
-    <version.plugin.resources>2.4.1</version.plugin.resources>
-    <version.plugin.scm>1.2</version.plugin.scm>
-    <version.plugin.site>2.0.1</version.plugin.site>
-    <version.plugin.source>2.1.1</version.plugin.source>
-    <version.plugin.surefire>2.4.3</version.plugin.surefire>
+    <version.plugin.jxr>2.2</version.plugin.jxr>
+    <version.plugin.pmd>2.5</version.plugin.pmd>
+    <version.plugin.reports>2.2</version.plugin.reports>
+    <version.plugin.release>2.0</version.plugin.release>
+    <version.plugin.resources>2.4.3</version.plugin.resources>
+    <version.plugin.resources.plexus>1.0-alpha-7</version.plugin.resources.plexus>
+    <version.plugin.scm>1.3</version.plugin.scm>
+    <version.plugin.site>2.1.1</version.plugin.site>
+    <version.plugin.source>2.1.2</version.plugin.source>
+    <version.plugin.surefire>2.5</version.plugin.surefire>
     <version.plugin.taglist>2.4</version.plugin.taglist>
-    <version.plugin.versions>1.1</version.plugin.versions>
+    <version.plugin.versions>1.2</version.plugin.versions>
     
     <!-- SCM provider versions -->
-    <version.scm.git>1.2</version.scm.git>
+    <version.scm.git>1.3</version.scm.git>
     
     <!-- wagon provider versions -->
     <version.wagon.ssh>1.0-beta-6</version.wagon.ssh>
@@ -208,7 +209,7 @@
           </execution>
         </executions>
       </plugin>
-      
+
       <plugin> <!-- Javadoc generation -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
@@ -227,6 +228,24 @@
         </executions>
       </plugin>
     </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>${version.plugin.checkstyle}</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.codehaus.plexus</groupId>
+              <artifactId>plexus-resources</artifactId>
+              <version>${version.plugin.resources.plexus}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
   </build>
 
   <reporting>
