@@ -37,7 +37,6 @@ import org.apache.log4j.Logger;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-// TODO allow for stochastic universal sampling
 // TODO what happens on Double.POSITIVE_INFINITY fitnesses?
 public class FitnessProportionateSelection<T> implements
     IndependentSelectionFunction<T> {
@@ -48,6 +47,10 @@ public class FitnessProportionateSelection<T> implements
    * Fitness-proportionate selection, also known as "roulette wheel selection",
    * which chooses an individual from the specified mapping with a probability
    * weighted by the corresponding fitnesses.
+   * 
+   * For more information, see <a
+   * href="http://en.wikipedia.org/wiki/Fitness_proportionate_selection">the
+   * Wikipedia article on fitness proportionate selection</a>.
    * 
    * @param fitnesses
    *          {@inheritDoc}
@@ -86,7 +89,7 @@ public class FitnessProportionateSelection<T> implements
 
       // if the selection is between the pointer and the pointer plus the
       // fitness of the current individual, return the current individual
-      if (pointer < selection && pointer + fitness >= selection) {
+      if (pointer < selection && selection <= pointer + fitness) {
         return entry.getKey();
       }
 
