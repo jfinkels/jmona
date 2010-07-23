@@ -20,8 +20,10 @@
 package jmona.functional;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
@@ -43,6 +45,42 @@ public class FunctionalTester {
 
   /** Zero. */
   public static final double ZERO_DELTA = 0.0;
+
+  /**
+   * Test method for {@link jmona.functional.Functional#any(Iterable).
+   */
+  @Test
+  public void testAny() {
+    Iterable<Boolean> iterable = Arrays.asList();
+    assertFalse(Functional.any(iterable));
+    
+    iterable = Arrays.asList(true, false, false);
+    assertTrue(Functional.any(iterable));
+    
+    iterable = Arrays.asList(false, false, true);
+    assertTrue(Functional.any(iterable));
+    
+    iterable = Arrays.asList(false, false, false);
+    assertFalse(Functional.any(iterable));
+  }
+
+  /**
+   * Test method for {@link jmona.functional.Functional#all(Iterable).
+   */
+  @Test
+  public void testAll() {
+    Iterable<Boolean> iterable = Arrays.asList();
+    assertTrue(Functional.all(iterable));
+    
+    iterable = Arrays.asList(true, false, false);
+    assertFalse(Functional.all(iterable));
+    
+    iterable = Arrays.asList(true, false, true);
+    assertFalse(Functional.all(iterable));
+    
+    iterable = Arrays.asList(true, true, true);
+    assertTrue(Functional.all(iterable));
+  }
 
   /**
    * Test method for
@@ -132,6 +170,7 @@ public class FunctionalTester {
       assertTrue(exception instanceof MappingException);
     }
   }
+
   /**
    * Test method for {@link jmona.functional.Functional#sum(Iterable)}.
    */
@@ -141,15 +180,15 @@ public class FunctionalTester {
     integerList.add(0);
     integerList.add(1);
     integerList.add(2);
-    
+
     assertEquals(0 + 1 + 2, Functional.sum(integerList));
-    
+
     final List<Double> doubleList = new Vector<Double>();
     doubleList.add(0.0);
     doubleList.add(0.1);
     doubleList.add(0.2);
-   
+
     assertEquals(0.0 + 0.1 + 0.2, Functional.sum(doubleList), ZERO_DELTA);
-   
+
   }
 }
