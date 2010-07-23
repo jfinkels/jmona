@@ -27,7 +27,6 @@ import jmona.CopyingException;
 import jmona.CrossoverException;
 import jmona.DeepCopyable;
 import jmona.EvolutionException;
-import jmona.FitnessException;
 import jmona.IndependentSelectionFunction;
 import jmona.MutationException;
 import jmona.PropertyNotSetException;
@@ -108,6 +107,7 @@ public class GAEvolutionContext<T extends DeepCopyable<T>> extends
     final Map<T, Double> currentFitnesses = this.currentAdjustedFitnesses();
 
     // get a reference to the selection function for this evolution
+    // TODO allow for a multiple selection function
     final IndependentSelectionFunction<T> selectionFunction = this
         .selectionFunction();
 
