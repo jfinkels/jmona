@@ -19,19 +19,13 @@
  */
 package jmona.example.tsp.aco;
 
-import java.util.Collections;
-
 import jmona.CompletionCondition;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
-import jmona.Function;
 import jmona.MappingException;
 import jmona.PostProcessor;
 import jmona.ProcessingException;
-import jmona.aco.impl.DistanceGetter;
 import jmona.aco.impl.WorkerAnt;
-import jmona.functional.Functional;
-import jmona.graph.DirectedGraph;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
