@@ -30,7 +30,7 @@ import jmona.SelectionException;
 import jmona.aco.Ant;
 import jmona.aco.PheromoneDirectedGraph;
 import jmona.aco.PheromoneUpdateStrategy;
-import jmona.impl.context.AbstractEvolutionContext;
+import jmona.impl.context.AbstractPopulationEvolutionContext;
 import jmona.impl.selection.FitnessProportionateSelection;
 
 /**
@@ -42,7 +42,8 @@ import jmona.impl.selection.FitnessProportionateSelection;
  *          The type of Ant which is moved around the graph.
  * @since 0.5
  */
-class TourEvolutionContext<A extends Ant> extends AbstractEvolutionContext<A> {
+class TourEvolutionContext<A extends Ant> extends
+    AbstractPopulationEvolutionContext<A> {
 
   /**
    * The default relative importance of pheromone on an edge with respect to the

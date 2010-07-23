@@ -28,7 +28,7 @@ import jmona.aco.PheromoneUpdateStrategy;
 import jmona.functional.Range;
 import jmona.graph.impl.GraphUtils;
 import jmona.impl.completion.MaxGenerationCompletionCondition;
-import jmona.impl.context.AbstractEvolutionContext;
+import jmona.impl.context.AbstractPopulationEvolutionContext;
 
 /**
  * An evolution of the Ant colony system for optimization of a shortest
@@ -43,7 +43,7 @@ import jmona.impl.context.AbstractEvolutionContext;
  * @since 0.5
  */
 public class AntColonyEvolutionContext<A extends Ant> extends
-    AbstractEvolutionContext<A> {
+    AbstractPopulationEvolutionContext<A> {
 
   /** The default pheromone persistence factor. */
   public static final double DEFAULT_TRAIL_PERSISTENCE = 0.5;

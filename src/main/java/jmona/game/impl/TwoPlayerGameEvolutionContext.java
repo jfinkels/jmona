@@ -30,7 +30,7 @@ import jmona.SelectionException;
 import jmona.game.Strategy;
 import jmona.game.TournamentGameSelection;
 import jmona.game.TwoPlayerGame;
-import jmona.impl.context.AbstractEvolutionContext;
+import jmona.impl.context.AbstractPopulationEvolutionContext;
 
 /**
  * A context for playing Strategy objects against one another and reproducing
@@ -42,7 +42,7 @@ import jmona.impl.context.AbstractEvolutionContext;
  * @since 0.1
  */
 public class TwoPlayerGameEvolutionContext<S extends Strategy & DeepCopyable<S>>
-    extends AbstractEvolutionContext<S> {
+    extends AbstractPopulationEvolutionContext<S> {
 
   /** The game to play in this evolution. */
   private TwoPlayerGame<S> game = null;

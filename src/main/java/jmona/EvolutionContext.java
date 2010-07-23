@@ -40,13 +40,6 @@ public interface EvolutionContext<T> {
   int currentGeneration();
 
   /**
-   * Get the current population.
-   * 
-   * @return The current population.
-   */
-  List<T> currentPopulation();
-
-  /**
    * Perform some action on the current population and increment the number of
    * the current generation.
    * 

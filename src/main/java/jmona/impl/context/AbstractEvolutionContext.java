@@ -19,8 +19,6 @@
  */
 package jmona.impl.context;
 
-import java.util.List;
-
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
 
@@ -37,22 +35,6 @@ public abstract class AbstractEvolutionContext<T> implements
 
   /** The current generation of the evolution. */
   private int generation = 0;
-  /** The current population. */
-  private List<T> population = null;
-
-  /**
-   * Instantiate this evolution context with the specified initial population.
-   * The initial population must be greater than or equal to 2 so that mating
-   * can occur.
-   * 
-   * @param initialPopulation
-   *          The initial population for the evolution.
-   * @throws IllegalArgumentException
-   *           If the size of the initial population is less than 2.
-   */
-  public AbstractEvolutionContext(final List<T> initialPopulation) {
-    this.population = initialPopulation;
-  }
 
   /**
    * {@inheritDoc}
@@ -66,17 +48,6 @@ public abstract class AbstractEvolutionContext<T> implements
   }
 
   /**
-   * {@inheritDoc}
-   * 
-   * @return {@inheritDoc}
-   * @see jmona.EvolutionContext#currentPopulation()
-   */
-  @Override
-  public List<T> currentPopulation() {
-    return this.population;
-  }
-
-  /**
    * Perform the steps necessary for selection, variation, and fitness
    * calculation for this EvolutionContext.
    * 
@@ -84,16 +55,6 @@ public abstract class AbstractEvolutionContext<T> implements
    *           If there is a problem during the evolution.
    */
   protected abstract void executeGenerationStep() throws EvolutionException;
-
-  /**
-   * Set the current population.
-   * 
-   * @param newCurrentPopulation
-   *          The new current population.
-   */
-  protected void setCurrentPopulation(final List<T> newCurrentPopulation) {
-    this.population = newCurrentPopulation;
-  }
 
   /**
    * {@inheritDoc}

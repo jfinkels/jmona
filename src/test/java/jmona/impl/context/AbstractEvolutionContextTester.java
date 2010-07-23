@@ -1,5 +1,5 @@
 /**
- * AbstractEvolutionContextTester.java
+ * AbstractPopulationEvolutionContextTester.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -20,11 +20,6 @@
 package jmona.impl.context;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-
-import java.util.List;
-import java.util.Vector;
-
 import jmona.EvolutionException;
 import jmona.impl.example.ExampleIndividual;
 import jmona.test.Util;
@@ -46,34 +41,18 @@ public class AbstractEvolutionContextTester {
       .getLogger(AbstractEvolutionContextTester.class);
   /** The EvolutionContext under test. */
   private AbstractEvolutionContext<ExampleIndividual> context = null;
-  /** The population in the AbstractEvolutionContext. */
-  private List<ExampleIndividual> population = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.population = new Vector<ExampleIndividual>();
 
-    this.population.add(new ExampleIndividual(0));
-    this.population.add(new ExampleIndividual(1));
-    this.context = new AbstractEvolutionContext<ExampleIndividual>(
-        this.population) {
+    this.context = new AbstractEvolutionContext<ExampleIndividual>() {
       @Override
       protected void executeGenerationStep() throws EvolutionException {
         LOG.debug("Executing generation step.");
       }
     };
 
-  }
-
-  /**
-   * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#AbstractEvolutionContext(java.util.List)}
-   * .
-   */
-  @Test
-  public void testAbstractEvolutionContext() {
-    assertSame(this.population, this.context.currentPopulation());
   }
 
   /**
@@ -93,15 +72,6 @@ public class AbstractEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#currentPopulation()}.
-   */
-  @Test
-  public void testCurrentPopulation() {
-    assertSame(this.population, this.context.currentPopulation());
-  }
-
-  /**
-   * Test method for
    * {@link jmona.impl.context.AbstractEvolutionContext#executeGenerationStep()}
    * .
    */
@@ -116,19 +86,6 @@ public class AbstractEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#setCurrentPopulation(java.util.List)}
-   * .
-   */
-  @Test
-  public void testSetCurrentPopulation() {
-    final List<ExampleIndividual> newPopulation = new Vector<ExampleIndividual>();
-    this.context.setCurrentPopulation(newPopulation);
-
-    assertSame(newPopulation, this.context.currentPopulation());
-  }
-
-  /**
-   * Test method for
    * {@link jmona.impl.context.AbstractEvolutionContext#stepGeneration()}.
    */
   @Test
@@ -138,9 +95,6 @@ public class AbstractEvolutionContextTester {
     } catch (final EvolutionException exception) {
       Util.fail(exception);
     }
-
-    assertSame(this.population.get(0), this.context.currentPopulation().get(0));
-    assertSame(this.population.get(1), this.context.currentPopulation().get(1));
   }
 
 }

@@ -21,8 +21,8 @@ package jmona.example.calc;
 
 import jmona.CompletionCondition;
 import jmona.CompletionException;
-import jmona.EvolutionContext;
 import jmona.EvolutionException;
+import jmona.PopulationEvolutionContext;
 import jmona.gp.Tree;
 import jmona.test.Util;
 
@@ -54,7 +54,7 @@ public class PolynomialEvolutionTester extends AbstractJUnit4SpringContextTests 
   private CompletionCondition<Tree> completionCondition = null;
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
-  private EvolutionContext<Tree> context = null;
+  private PopulationEvolutionContext<Tree> context = null;
 
   /** Test the evolution. */
   @Test

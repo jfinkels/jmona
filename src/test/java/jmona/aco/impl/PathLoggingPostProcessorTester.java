@@ -24,7 +24,10 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.LoggingException;
 import jmona.functional.Range;
+import jmona.test.Util;
+import joptsimple.internal.Strings;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -87,14 +90,23 @@ public class PathLoggingPostProcessorTester {
     final AntColonyEvolutionContext<WorkerAnt> context = new AntColonyEvolutionContext<WorkerAnt>(
         population, this.graph, new AntCycleStrategy());
 
-    String result = processor.message(context);
+    String result = Strings.EMPTY;
+    try {
+      result = processor.message(context);
+    } catch (final LoggingException exception) {
+      Util.fail(exception);
+    }
 
     assertTrue(result.contains("[0, 1, 2]"));
     assertTrue(result.contains("[1, 2, 0]"));
 
     processor.setGraph(this.graph);
 
-    result = processor.message(context);
+    try {
+      result = processor.message(context);
+    } catch (final LoggingException exception) {
+      Util.fail(exception);
+    }
 
     assertTrue(result.contains("[0, 1, 2], total distance: 6.0"));
     assertTrue(result.contains("[1, 2, 0], total distance: 6.0"));

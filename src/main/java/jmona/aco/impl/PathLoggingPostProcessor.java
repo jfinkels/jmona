@@ -20,6 +20,8 @@
 package jmona.aco.impl;
 
 import jmona.EvolutionContext;
+import jmona.LoggingException;
+import jmona.PopulationEvolutionContext;
 import jmona.aco.Ant;
 import jmona.graph.DirectedGraph;
 import jmona.graph.impl.GraphUtils;
@@ -62,10 +64,18 @@ public class PathLoggingPostProcessor<A extends Ant> extends
    * @see jmona.impl.postprocessing.LoggingPostProcessor#message(jmona.EvolutionContext)
    */
   @Override
-  protected String message(final EvolutionContext<A> context) {
+  protected String message(final EvolutionContext<A> context)
+      throws LoggingException {
+    if (!(context instanceof PopulationEvolutionContext<?>)) {
+      throw new LoggingException(
+          "Cannot get population from the EvolutionContext unless it is a PopulationEvolutionContext. Class of EvolutionContext is "
+              + context.getClass());
+    }
+
     final StringBuilder result = new StringBuilder();
 
-    for (final A agent : context.currentPopulation()) {
+    for (final A agent : ((PopulationEvolutionContext<A>) context)
+        .currentPopulation()) {
       result.append(NEWLINE);
       result.append(agent.memory());
       if (this.graph != null) {

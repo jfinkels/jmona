@@ -25,8 +25,8 @@ import java.util.Map;
 import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.DeepCopyable;
-import jmona.EvolutionContext;
 import jmona.EvolutionException;
+import jmona.PopulationEvolutionContext;
 import jmona.game.Strategy;
 import jmona.test.Util;
 
@@ -62,7 +62,7 @@ public class IPDEvolutionTester<S extends DeepCopyable<S> & Strategy> extends
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
-  private EvolutionContext<S> context = null;
+  private PopulationEvolutionContext<S> context = null;
 
   /** Test method for an iterated prisoner's dilemma evolution. */
   @SuppressWarnings("unchecked")

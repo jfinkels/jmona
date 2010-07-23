@@ -23,9 +23,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import jmona.EvolutionContext;
-import jmona.impl.postprocessing.PeriodicPostProcessor;
-
-import org.apache.log4j.Logger;
+import jmona.LoggingException;
+import jmona.PopulationEvolutionContext;
+import jmona.impl.postprocessing.LoggingPostProcessor;
 
 /**
  * Count the number of objects of each class in an EvolutionContext.
@@ -35,11 +35,7 @@ import org.apache.log4j.Logger;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ClassCountingPostProcessor<T> extends PeriodicPostProcessor<T> {
-
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(ClassCountingPostProcessor.class);
+public class ClassCountingPostProcessor<T> extends LoggingPostProcessor<T> {
 
   /**
    * Count the number of objects of each class in the specified
@@ -52,11 +48,19 @@ public class ClassCountingPostProcessor<T> extends PeriodicPostProcessor<T> {
    */
   @SuppressWarnings("unchecked")
   @Override
-  protected void processAtInterval(final EvolutionContext<T> context) {
+  protected String message(final EvolutionContext<T> context)
+      throws LoggingException {
+    if (!(context instanceof PopulationEvolutionContext<?>)) {
+      throw new LoggingException(
+          "Cannot get population from the EvolutionContext unless it is a PopulationEvolutionContext. Class of EvolutionContext is "
+              + context.getClass());
+    }
+
     final Map<Class<T>, Integer> results = new HashMap<Class<T>, Integer>();
 
     Class<T> clazz = null;
-    for (final T individual : context.currentPopulation()) {
+    for (final T individual : ((PopulationEvolutionContext<T>) context)
+        .currentPopulation()) {
       clazz = (Class<T>) individual.getClass();
 
       if (results.containsKey(clazz)) {
@@ -66,7 +70,7 @@ public class ClassCountingPostProcessor<T> extends PeriodicPostProcessor<T> {
       }
     }
 
-    LOG.info(results);
+    return results.toString();
   }
 
 }

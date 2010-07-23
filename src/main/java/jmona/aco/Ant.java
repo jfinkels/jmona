@@ -42,6 +42,7 @@ public interface Ant {
    * @return The Set of vertices which this Ant has already visited, including
    *         its current vertex.
    */
+  // TODO should this be a queue?
   List<Integer> memory();
 
   /**

@@ -19,11 +19,19 @@
  */
 package jmona.game.impl;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import jmona.EvolutionContext;
+import jmona.LoggingException;
+import jmona.game.Strategy;
 import jmona.game.impl.example.ExampleStrategy;
+import jmona.test.Util;
+import joptsimple.internal.Strings;
 
 import org.junit.Test;
 
@@ -57,10 +65,18 @@ public class ClassCountingPostProcessorTester {
     // instantiate the processor with the context initialized above
     final ClassCountingPostProcessor<ExampleStrategy> processor = new ClassCountingPostProcessor<ExampleStrategy>();
 
-    // process the context
-    processor.processAtInterval(context);
+    String result = Strings.EMPTY;
 
-    // TODO assert that the output string showed exactly two ExampleStrategys
+    try {
+      result = processor.message(context);
+    } catch (final LoggingException exception) {
+      Util.fail(exception);
+    }
+
+    final Map<Class<ExampleStrategy>, Integer> counts = new HashMap<Class<ExampleStrategy>, Integer>();
+    counts.put(ExampleStrategy.class, 2);
+
+    assertEquals(counts.toString(), result);
   }
 
 }

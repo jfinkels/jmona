@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * PopulationEvolutionContext.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -17,22 +17,23 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.impl.context;
+package jmona;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import java.util.List;
 
 /**
- * Runs all tests in this package.
+ * An EvolutionContext controlling a population of individuals.
  * 
+ * @param <T>
+ *          The type of individual in the population.
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @since 0.5
  */
-@RunWith(Suite.class)
-@SuiteClasses({ AbstractEvolutionContextTester.class,
-    AbstractPopulationEvolutionContextTester.class,
-    AbstractGeneticEvolutionContextTester.class })
-public class AllTest {
-
+public interface PopulationEvolutionContext<T> extends EvolutionContext<T> {
+  /**
+   * Gets the current population.
+   * 
+   * @return The current population.
+   */
+  List<T> currentPopulation();
 }

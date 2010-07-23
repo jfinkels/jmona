@@ -108,7 +108,7 @@ public class LoggingPostProcessorTester {
     
     this.processor = new FitnessLoggingPostProcessor<ExampleIndividual>();
     
-    final EvolutionContext<ExampleIndividual> badContext = new AbstractEvolutionContext<ExampleIndividual>(this.population) {
+    final EvolutionContext<ExampleIndividual> badContext = new AbstractEvolutionContext<ExampleIndividual>() {
       @Override
       protected void executeGenerationStep() throws EvolutionException {
         // intentionally unimplemented

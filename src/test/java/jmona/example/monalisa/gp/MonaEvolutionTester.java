@@ -24,8 +24,8 @@ import java.io.IOException;
 
 import jmona.CompletionCondition;
 import jmona.CompletionException;
-import jmona.EvolutionContext;
 import jmona.EvolutionException;
+import jmona.PopulationEvolutionContext;
 import jmona.example.monalisa.Converter;
 import jmona.example.monalisa.io.ImageWriter;
 import jmona.gp.Tree;
@@ -67,7 +67,7 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
   private CompletionCondition<Tree> completionCondition = null;
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
-  private EvolutionContext<Tree> context = null;
+  private PopulationEvolutionContext<Tree> context = null;
 
   /** Test the evolution. */
   @Test

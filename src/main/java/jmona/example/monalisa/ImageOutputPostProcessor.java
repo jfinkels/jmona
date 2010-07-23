@@ -25,6 +25,7 @@ import java.util.List;
 
 import jmona.DeepCopyableList;
 import jmona.EvolutionContext;
+import jmona.PopulationEvolutionContext;
 import jmona.ProcessingException;
 import jmona.example.monalisa.io.ImageWriter;
 import jmona.impl.postprocessing.PeriodicPostProcessor;
@@ -113,11 +114,17 @@ public class ImageOutputPostProcessor extends
   protected void processAtInterval(
       final EvolutionContext<DeepCopyableList<ColoredPolygon>> evolutionContext)
       throws ProcessingException {
+    if (!(evolutionContext instanceof PopulationEvolutionContext<?>)) {
+      throw new ProcessingException(
+          "EvolutionContext must be an instance of PopulationEvolutionContext. Specified EvolutionContext was of type: "
+              + evolutionContext.getClass());
+    }
+
     // get the current generation number
     final int currentGeneration = evolutionContext.currentGeneration();
 
     // get an individual from the current population
-    final List<ColoredPolygon> individual = evolutionContext
+    final List<ColoredPolygon> individual = ((PopulationEvolutionContext<DeepCopyableList<ColoredPolygon>>) evolutionContext)
         .currentPopulation().get(0);
 
     // create an image from the specified individual

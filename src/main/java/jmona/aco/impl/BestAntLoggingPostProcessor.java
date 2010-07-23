@@ -22,9 +22,10 @@ package jmona.aco.impl;
 import java.util.Collections;
 
 import jmona.EvolutionContext;
+import jmona.LoggingException;
+import jmona.PopulationEvolutionContext;
 import jmona.aco.Ant;
 import jmona.graph.DirectedGraph;
-import jmona.graph.impl.GraphUtils;
 import jmona.impl.postprocessing.LoggingPostProcessor;
 
 /**
@@ -72,16 +73,23 @@ public class BestAntLoggingPostProcessor<A extends Ant> extends
    * @see jmona.impl.postprocessing.LoggingPostProcessor#message(jmona.EvolutionContext)
    */
   @Override
-  protected String message(final EvolutionContext<A> context) {
+  protected String message(final EvolutionContext<A> context)
+      throws LoggingException {
+    if (!(context instanceof PopulationEvolutionContext<?>)) {
+      throw new LoggingException(
+          "Cannot get population from the EvolutionContext unless it is a PopulationEvolutionContext. Class of EvolutionContext is "
+              + context.getClass());
+    }
+
     final StringBuilder result = new StringBuilder();
 
-    final A bestAnt = Collections.min(context.currentPopulation(),
-        this.comparator);
+    final A bestAnt = Collections.min(((PopulationEvolutionContext<A>) context)
+        .currentPopulation(), this.comparator);
 
     result.append("distance " + this.distanceGetter.execute(bestAnt));
     result.append(": ");
     result.append(bestAnt);
-    
+
     return result.toString();
   }
 }

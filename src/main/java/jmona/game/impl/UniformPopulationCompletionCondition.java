@@ -22,7 +22,9 @@ package jmona.game.impl;
 import java.util.List;
 
 import jmona.CompletionCondition;
+import jmona.CompletionException;
 import jmona.EvolutionContext;
+import jmona.PopulationEvolutionContext;
 
 /**
  * Determines whether a population in an EvolutionContext contains only
@@ -48,10 +50,18 @@ public class UniformPopulationCompletionCondition<T> implements
    */
   @SuppressWarnings("unchecked")
   @Override
-  public Boolean execute(final EvolutionContext<T> context) {
+  public Boolean execute(final EvolutionContext<T> context)
+      throws CompletionException {
+
+    if (!(context instanceof PopulationEvolutionContext<?>)) {
+      throw new CompletionException(
+          "The specified EvolutionContext must be an instance of PopulationEvolutionContext. Class of specified EvolutionContext was: "
+              + context.getClass());
+    }
 
     // get the current population from the evolution context
-    final List<T> population = context.currentPopulation();
+    final List<T> population = ((PopulationEvolutionContext<T>) context)
+        .currentPopulation();
 
     // get a class for comparison with classes of the rest of the population
     final Class<T> someClass = (Class<T>) population.get(0).getClass();

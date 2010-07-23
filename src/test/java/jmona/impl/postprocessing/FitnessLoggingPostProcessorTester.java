@@ -86,8 +86,7 @@ public class FitnessLoggingPostProcessorTester {
     assertTrue(result.contains(String.valueOf(individual1.fitness())));
     assertTrue(result.contains(String.valueOf(individual2.fitness())));
 
-    final EvolutionContext<ExampleIndividual> badContext = new AbstractEvolutionContext<ExampleIndividual>(
-        population) {
+    final EvolutionContext<ExampleIndividual> badContext = new AbstractEvolutionContext<ExampleIndividual>() {
       @Override
       protected void executeGenerationStep() throws EvolutionException {
         // intentionally unimplemented

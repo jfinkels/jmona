@@ -31,7 +31,7 @@ import java.util.Map;
  */
 // TODO allow multiple MutationFunctions or CrossoverFunctions?
 public interface GeneticEvolutionContext<T extends DeepCopyable<T>> extends
-    EvolutionContext<T> {
+    PopulationEvolutionContext<T> {
 
   /**
    * Gets the crossover function used by this context.

@@ -46,7 +46,8 @@ import org.apache.log4j.Logger;
  * @since 0.3
  */
 public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
-    extends AbstractEvolutionContext<T> implements GeneticEvolutionContext<T> {
+    extends AbstractPopulationEvolutionContext<T> implements
+    GeneticEvolutionContext<T> {
 
   /**
    * The default probability that crossover will be performed on Individuals
