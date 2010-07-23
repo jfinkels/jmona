@@ -631,6 +631,7 @@ public class CharArrayBinaryString implements BinaryString {
    * 
    * @return The String representation of this binary string.
    */
+  @Override
   public String toString() {
     final StringBuilder result = new StringBuilder();
 

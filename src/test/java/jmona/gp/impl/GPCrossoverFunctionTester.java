@@ -75,7 +75,7 @@ public class GPCrossoverFunctionTester {
     this.root1 = new ExampleBinaryNode();
 
     this.root1.children().add(this.leftChild);
-    this.leftChild.setParent(root1);
+    this.leftChild.setParent(this.root1);
 
     this.root1.children().add(this.rightChild);
     this.rightChild.setParent(this.root1);

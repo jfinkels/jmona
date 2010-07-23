@@ -69,7 +69,7 @@ public class PartialDeepCopyableVectorTester {
   @Test
   public void testPartialDeepCopyableVector() {
     this.vector = new PartialDeepCopyableVector<Byte>();
-    assertEquals(0, vector.size());
+    assertEquals(0, this.vector.size());
 
   }
 

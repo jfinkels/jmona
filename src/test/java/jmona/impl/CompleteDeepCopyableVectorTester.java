@@ -75,7 +75,7 @@ public class CompleteDeepCopyableVectorTester {
   @Test
   public void testCompleteDeepCopyableVector() {
     this.vector = new CompleteDeepCopyableVector<ExampleIndividual>();
-    assertEquals(0, vector.size());
+    assertEquals(0, this.vector.size());
   }
 
   /**

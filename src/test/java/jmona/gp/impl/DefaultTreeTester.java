@@ -128,7 +128,7 @@ public class DefaultTreeTester {
 
     // get all the nodes
     final List<Node> allCopyNodes = Util.allNodes(copy);
-    final List<Node> allOriginalNodes = Util.allNodes(bigTree);
+    final List<Node> allOriginalNodes = Util.allNodes(this.bigTree);
 
     // the copied tree and original tree should have the same number of nodes
     assertEquals(allOriginalNodes.size(), allCopyNodes.size());

@@ -78,7 +78,7 @@ public class MultiplicationNodeTester {
 
     try {
       for (double x = MIN_VALUE; x < MAX_VALUE; x += INCREMENT) {
-        assertEquals(LEFT_VALUE * RIGHT_VALUE, node.evaluate().execute(x),
+        assertEquals(LEFT_VALUE * RIGHT_VALUE, this.node.evaluate().execute(x),
             ZERO_DELTA);
       }
     } catch (final EvaluationException exception) {

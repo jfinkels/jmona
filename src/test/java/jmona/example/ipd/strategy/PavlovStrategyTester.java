@@ -52,10 +52,10 @@ public class PavlovStrategyTester {
   public void testDeepCopy() {
     final Pair<Action, Action> pair = new Pair<Action, Action>(Action.DEFECT,
         Action.COOPERATE);
-    strategy.addToMemory(pair);
+    this.strategy.addToMemory(pair);
 
-    final PavlovStrategy clone = strategy.deepCopy();
-    assertNotSame(clone, strategy);
+    final PavlovStrategy clone = this.strategy.deepCopy();
+    assertNotSame(clone, this.strategy);
     assertEquals(1, clone.memory().size());
     assertSame(pair, clone.memory().get(0));
   }

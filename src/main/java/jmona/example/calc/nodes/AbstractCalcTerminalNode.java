@@ -47,6 +47,7 @@ public abstract class AbstractCalcTerminalNode extends AbstractTerminalNode
    * 
    * @return The symbol which represents this Node.
    */
+  @Override
   public String toString() {
     return this.symbol;
   }

@@ -95,39 +95,51 @@ public class AbstractMetricTester<E, M extends Metric<E>> {
     try {
 
       // property 1: non-negativity
-      assertTrue(this.metric.measure(x, x) >= 0);
-      assertTrue(this.metric.measure(x, y) >= 0);
-      assertTrue(this.metric.measure(x, z) >= 0);
-      assertTrue(this.metric.measure(y, x) >= 0);
-      assertTrue(this.metric.measure(y, y) >= 0);
-      assertTrue(this.metric.measure(y, z) >= 0);
-      assertTrue(this.metric.measure(z, x) >= 0);
-      assertTrue(this.metric.measure(z, y) >= 0);
-      assertTrue(this.metric.measure(z, z) >= 0);
+      assertTrue(this.metric.measure(this.x, this.x) >= 0);
+      assertTrue(this.metric.measure(this.x, this.y) >= 0);
+      assertTrue(this.metric.measure(this.x, this.z) >= 0);
+      assertTrue(this.metric.measure(this.y, this.x) >= 0);
+      assertTrue(this.metric.measure(this.y, this.y) >= 0);
+      assertTrue(this.metric.measure(this.y, this.z) >= 0);
+      assertTrue(this.metric.measure(this.z, this.x) >= 0);
+      assertTrue(this.metric.measure(this.z, this.y) >= 0);
+      assertTrue(this.metric.measure(this.z, this.z) >= 0);
 
       // property 2: identity of indiscernibles
-      assertEquals(0, this.metric.measure(x, x), 0);
-      assertEquals(0, this.metric.measure(y, y), 0);
-      assertEquals(0, this.metric.measure(z, z), 0);
+      assertEquals(0, this.metric.measure(this.x, this.x), 0);
+      assertEquals(0, this.metric.measure(this.y, this.y), 0);
+      assertEquals(0, this.metric.measure(this.z, this.z), 0);
 
       // property 3: symmetry
-      assertEquals(this.metric.measure(x, x), this.metric.measure(x, x), 0);
-      assertEquals(this.metric.measure(x, y), this.metric.measure(y, x), 0);
-      assertEquals(this.metric.measure(x, z), this.metric.measure(z, x), 0);
-      assertEquals(this.metric.measure(y, x), this.metric.measure(x, y), 0);
-      assertEquals(this.metric.measure(y, y), this.metric.measure(y, y), 0);
-      assertEquals(this.metric.measure(y, z), this.metric.measure(z, y), 0);
-      assertEquals(this.metric.measure(z, x), this.metric.measure(x, z), 0);
-      assertEquals(this.metric.measure(z, y), this.metric.measure(y, z), 0);
-      assertEquals(this.metric.measure(z, z), this.metric.measure(z, z), 0);
+      assertEquals(this.metric.measure(this.x, this.x), this.metric.measure(
+          this.x, this.x), 0);
+      assertEquals(this.metric.measure(this.x, this.y), this.metric.measure(
+          this.y, this.x), 0);
+      assertEquals(this.metric.measure(this.x, this.z), this.metric.measure(
+          this.z, this.x), 0);
+      assertEquals(this.metric.measure(this.y, this.x), this.metric.measure(
+          this.x, this.y), 0);
+      assertEquals(this.metric.measure(this.y, this.y), this.metric.measure(
+          this.y, this.y), 0);
+      assertEquals(this.metric.measure(this.y, this.z), this.metric.measure(
+          this.z, this.y), 0);
+      assertEquals(this.metric.measure(this.z, this.x), this.metric.measure(
+          this.x, this.z), 0);
+      assertEquals(this.metric.measure(this.z, this.y), this.metric.measure(
+          this.y, this.z), 0);
+      assertEquals(this.metric.measure(this.z, this.z), this.metric.measure(
+          this.z, this.z), 0);
 
       // property 4: triangle inequality
-      assertTrue(this.metric.measure(x, y) <= this.metric.measure(x, z)
-          + this.metric.measure(z, y));
-      assertTrue(this.metric.measure(x, z) <= this.metric.measure(x, y)
-          + this.metric.measure(y, z));
-      assertTrue(this.metric.measure(y, z) <= this.metric.measure(y, x)
-          + this.metric.measure(x, z));
+      assertTrue(this.metric.measure(this.x, this.y) <= this.metric.measure(
+          this.x, this.z)
+          + this.metric.measure(this.z, this.y));
+      assertTrue(this.metric.measure(this.x, this.z) <= this.metric.measure(
+          this.x, this.y)
+          + this.metric.measure(this.y, this.z));
+      assertTrue(this.metric.measure(this.y, this.z) <= this.metric.measure(
+          this.y, this.x)
+          + this.metric.measure(this.x, this.z));
     } catch (final MetricException exception) {
       Util.fail(exception);
     }

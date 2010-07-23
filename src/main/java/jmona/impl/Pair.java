@@ -93,6 +93,6 @@ public class Pair<S, T> {
    */
   @Override
   public String toString() {
-    return "(" + left.toString() + ", " + right.toString() + ")";
+    return "(" + this.left.toString() + ", " + this.right.toString() + ")";
   }
 }
