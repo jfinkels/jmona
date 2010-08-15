@@ -10,10 +10,18 @@
 
   <dependencies>
     <!-- COMPILE DEPENDENCIES -->    
-    <dependency> <!-- Apache Commons math -->
+    <dependency> <!-- Apache Commons math, for better random numbers -->
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-math</artifactId>
       <version>${version.dependency.math}</version>
+      <scope>compile</scope>
+      <type>jar</type>
+    </dependency>
+
+    <dependency> <!-- Apache Commons lang, for mutable primitive wrappers -->
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>${version.dependency.lang}</version>
       <scope>compile</scope>
       <type>jar</type>
     </dependency>
@@ -65,16 +73,17 @@
     <!-- dependency versions -->
     <version.dependency.jopt-simple>3.2</version.dependency.jopt-simple>
     <version.dependency.junit>4.8.1</version.dependency.junit>
+    <version.dependency.lang>3.0-SNAPSHOT</version.dependency.lang>
     <version.dependency.log4j>1.2.14</version.dependency.log4j>
     <version.dependency.math>2.1</version.dependency.math>
     <version.dependency.spring>3.0.3.RELEASE</version.dependency.spring>
     
     <!-- plugin versions -->
-    <!--<version.plugin.changelog>2.2-SNAPSHOT</version.plugin.changelog>-->
+    <version.plugin.changelog>2.2</version.plugin.changelog>
     <version.plugin.checkstyle>2.5</version.plugin.checkstyle>
     <version.plugin.clirr>2.2.2</version.plugin.clirr>
     <version.plugin.cobertura>2.4</version.plugin.cobertura>
-    <version.plugin.compiler>2.3</version.plugin.compiler>
+    <version.plugin.compiler>2.3.1</version.plugin.compiler>
     <version.plugin.findbugs>2.3.1</version.plugin.findbugs>
     <version.plugin.jar>2.3.1</version.plugin.jar>
     <version.plugin.javadoc>2.7</version.plugin.javadoc>
@@ -104,7 +113,7 @@
     <version.java.target>1.6</version.java.target>
 
     <!-- configuration variables -->
-    <config.checkstyle>checkstyle.xml</config.checkstyle>
+    <config.checkstyle>${basedir}/checkstyle.xml</config.checkstyle>
     <mainClass>jmona.driver.Main</mainClass>
     
     <!-- character encodings -->
@@ -228,36 +237,18 @@
         </executions>
       </plugin>
     </plugins>
-
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>${version.plugin.checkstyle}</version>
-          <dependencies>
-            <dependency>
-              <groupId>org.codehaus.plexus</groupId>
-              <artifactId>plexus-resources</artifactId>
-              <version>${version.plugin.resources.plexus}</version>
-            </dependency>
-          </dependencies>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-
   </build>
 
   <reporting>
     <plugins>
-      <!--<plugin>  changelog generation from SCM 
+      <plugin> <!-- changelog generation from SCM -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changelog-plugin</artifactId>
         <version>${version.plugin.changelog}</version>
         <configuration>
           <displayFileDetailUrl>http://github.com/jfinkels/jmona/blob/master/</displayFileDetailUrl>
         </configuration>
-      </plugin> -->
+      </plugin>
 
       <plugin> <!-- Checkstyle coding style violations report -->
         <groupId>org.apache.maven.plugins</groupId>
@@ -428,7 +419,26 @@
     <connection>scm:git:git://github.com/jfinkels/jmona.git</connection>
     <url>http://github.com/jfinkels/jmona</url>
   </scm>
-  
+
+  <repositories>
+    <repository> <!-- apache commons repo, to get commons-lang 3 -->
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>daily</updatePolicy>
+        <checksumPolicy>warn</checksumPolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>daily</updatePolicy>
+        <checksumPolicy>warn</checksumPolicy>
+      </snapshots>
+      <id>commons-repo</id>
+      <name>Apache Commons public repository</name>
+      <url>https://repository.apache.org/content/groups/public</url>
+      <layout>default</layout>
+    </repository>
+  </repositories>
+
   <!--<pluginRepositories>
     <pluginRepository>
       <id>apache.snapshots</id>
