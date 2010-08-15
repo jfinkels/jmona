@@ -41,9 +41,9 @@
     <property name="terminalNodeFactory" ref="nodeFactory" />
   </bean>
   
-  <bean id="populationFactory" class="jmona.impl.CompleteDeepCopyableListFactory">
+  <bean id="populationFactory" class="jmona.impl.DeepCopyableListFactory">
+    <constructor-arg value="2" />
     <property name="elementFactory" ref="individualFactory" />
-    <property name="size" value="2" />
   </bean>
 
 </beans>

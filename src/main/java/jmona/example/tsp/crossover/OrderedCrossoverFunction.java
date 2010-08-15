@@ -25,6 +25,7 @@ import java.util.Vector;
 
 import jmona.CrossoverFunction;
 import jmona.functional.Range;
+import jmona.impl.mutable.MutableInteger;
 import jmona.random.RandomUtils;
 
 /**
@@ -36,7 +37,7 @@ import jmona.random.RandomUtils;
  */
 // TODO references for the original authors of TSP crossover functions
 public class OrderedCrossoverFunction implements
-    CrossoverFunction<List<Integer>> {
+    CrossoverFunction<List<MutableInteger>> {
 
   /**
    * Perform ordered crossover (also known as OX) on the specified tours.
@@ -54,7 +55,8 @@ public class OrderedCrossoverFunction implements
    * @see jmona.CrossoverFunction#crossover(Object, Object)
    */
   @Override
-  public void crossover(final List<Integer> tour1, final List<Integer> tour2) {
+  public void crossover(final List<MutableInteger> tour1,
+      final List<MutableInteger> tour2) {
 
     // get the size of the tours
     final int size = tour1.size();
@@ -69,8 +71,8 @@ public class OrderedCrossoverFunction implements
     final int end = Math.max(number1, number2);
 
     // instantiate two child tours
-    final List<Integer> child1 = new Vector<Integer>();
-    final List<Integer> child2 = new Vector<Integer>();
+    final List<MutableInteger> child1 = new Vector<MutableInteger>();
+    final List<MutableInteger> child2 = new Vector<MutableInteger>();
 
     // add the sublist in between the start and end points to the children
     child1.addAll(tour1.subList(start, end));
@@ -78,8 +80,8 @@ public class OrderedCrossoverFunction implements
 
     // iterate over each city in the parent tours
     int currentCityIndex = 0;
-    int currentCityInTour1 = 0;
-    int currentCityInTour2 = 0;
+    MutableInteger currentCityInTour1 = null;
+    MutableInteger currentCityInTour2 = null;
     for (final int i : new Range(size)) {
 
       // get the index of the current city
@@ -90,11 +92,13 @@ public class OrderedCrossoverFunction implements
       currentCityInTour2 = tour2.get(currentCityIndex);
 
       // if child 1 does not already contain the current city in tour 2, add it
+      // Note: MutableIntegers override equals() so .contains() works
       if (!child1.contains(currentCityInTour2)) {
         child1.add(currentCityInTour2);
       }
 
       // if child 2 does not already contain the current city in tour 1, add it
+      // Note: MutableIntegers override equals() so .contains() works
       if (!child2.contains(currentCityInTour1)) {
         child2.add(currentCityInTour1);
       }

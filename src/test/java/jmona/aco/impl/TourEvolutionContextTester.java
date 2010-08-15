@@ -113,7 +113,7 @@ public class TourEvolutionContextTester {
       Util.fail(exception);
     }
 
-    final int totalSelections = Functional.sum(selections.values());
+    final int totalSelections = Functional.sumInteger(selections.values());
     assertEquals(totalSelections, NUM_SELECTIONS);
 
     assertEquals(0, selections.get(0).intValue());

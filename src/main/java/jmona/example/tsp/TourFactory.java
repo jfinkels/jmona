@@ -21,10 +21,13 @@ package jmona.example.tsp;
 
 import java.util.Collections;
 
+import jmona.CopyingException;
 import jmona.DeepCopyableList;
-import jmona.functional.Range;
-import jmona.impl.PartialDeepCopyableListFactory;
-import jmona.impl.PartialDeepCopyableVector;
+import jmona.InitializationException;
+import jmona.functional.MutableRange;
+import jmona.impl.DeepCopyableListFactory;
+import jmona.impl.DeepCopyableVector;
+import jmona.impl.mutable.MutableInteger;
 
 /**
  * A factory which generates random Tours.
@@ -32,7 +35,14 @@ import jmona.impl.PartialDeepCopyableVector;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class TourFactory extends PartialDeepCopyableListFactory<Integer> {
+public class TourFactory extends DeepCopyableListFactory<MutableInteger> {
+
+  /**
+   * @param initialSize
+   */
+  public TourFactory(final int initialSize) {
+    super(initialSize);
+  }
 
   /**
    * Generate a random Tour of length specified in the constructor.
@@ -41,16 +51,25 @@ public class TourFactory extends PartialDeepCopyableListFactory<Integer> {
    * <em>0</em> to <em>l-1</em>, inclusive.
    * 
    * Unlike the corresponding method in the superclass, this method does not
-   * require that the {@link PartialDeepCopyableListFactory#elementFactory()} be
+   * require that the {@link DeepCopyableListFactory#elementFactory()} be
    * non-null (because it doesn't use that property at all).
    * 
    * @return A randomly generated Tour.
+   * @throws InitializationException
+   *           If there is a problem generating the sequence of integers.
    * @see jmona.Factory#createObject()
    */
   @Override
-  public DeepCopyableList<Integer> createObject() {
-    final DeepCopyableList<Integer> result = new PartialDeepCopyableVector<Integer>(
-        new Range(this.size()));
+  public DeepCopyableList<MutableInteger> createObject()
+      throws InitializationException {
+    DeepCopyableList<MutableInteger> result;
+    try {
+      result = new DeepCopyableVector<MutableInteger>(new MutableRange(this
+          .size()));
+    } catch (final CopyingException exception) {
+      throw new InitializationException(
+          "Failed to create initial list of integers.", exception);
+    }
 
     Collections.shuffle(result);
 

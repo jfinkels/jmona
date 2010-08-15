@@ -1,5 +1,5 @@
 /**
- * CompleteDeepCopyableVectorTester.java
+ * DeepCopyableVectorTester.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -35,12 +35,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test class for the CompleteDeepCopyableVector class.
+ * Test class for the DeepCopyableVector class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class CompleteDeepCopyableVectorTester {
+public class DeepCopyableVectorTester {
 
   /** The number of individuals in the vector. */
   public static final int NUM_INDIVIDUALS = 100;
@@ -49,7 +49,7 @@ public class CompleteDeepCopyableVectorTester {
   /** The List of individuals to add to the vector. */
   private List<ExampleIndividual> beforeList = null;
   /** The vector under test in this class. */
-  private CompleteDeepCopyableVector<ExampleIndividual> vector = null;
+  private DeepCopyableVector<ExampleIndividual> vector = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
@@ -61,7 +61,7 @@ public class CompleteDeepCopyableVectorTester {
     }
 
     try {
-      this.vector = new CompleteDeepCopyableVector<ExampleIndividual>(
+      this.vector = new DeepCopyableVector<ExampleIndividual>(
           this.beforeList);
     } catch (final CopyingException exception) {
       Util.fail(exception);
@@ -70,21 +70,21 @@ public class CompleteDeepCopyableVectorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.CompleteDeepCopyableVector#CompleteDeepCopyableVector()}.
+   * {@link jmona.impl.DeepCopyableVector#DeepCopyableVector()}.
    */
   @Test
-  public void testCompleteDeepCopyableVector() {
-    this.vector = new CompleteDeepCopyableVector<ExampleIndividual>();
+  public void testDeepCopyableVector() {
+    this.vector = new DeepCopyableVector<ExampleIndividual>();
     assertEquals(0, this.vector.size());
   }
 
   /**
    * Test method for
-   * {@link jmona.impl.CompleteDeepCopyableVector#CompleteDeepCopyableVector(java.util.Collection)}
+   * {@link jmona.impl.DeepCopyableVector#DeepCopyableVector(java.util.Collection)}
    * .
    */
   @Test
-  public void testCompleteDeepCopyableVectorCollectionOfE() {
+  public void testDeepCopyableVectorCollectionOfE() {
     assertEquals(this.beforeList.size(), this.vector.size());
     assertNotSame(this.beforeList, this.vector);
 
@@ -96,7 +96,7 @@ public class CompleteDeepCopyableVectorTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.CompleteDeepCopyableVector#deepCopy()}.
+   * Test method for {@link jmona.impl.DeepCopyableVector#deepCopy()}.
    */
   @Test
   public void testDeepCopy() {

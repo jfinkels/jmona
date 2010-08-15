@@ -25,7 +25,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import jmona.MutationException;
+import jmona.functional.MutableRange;
 import jmona.functional.Range;
+import jmona.impl.mutable.MutableInteger;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -43,7 +45,7 @@ public class DisplacementMutationFunctionTester extends
    * Instantiate this test class with access to an DisplacementMutationFunction.
    */
   public DisplacementMutationFunctionTester() {
-    super(new DisplacementMutationFunction<Integer>());
+    super(new DisplacementMutationFunction<MutableInteger>());
   }
 
   /**
@@ -68,14 +70,14 @@ public class DisplacementMutationFunctionTester extends
 
       assertEquals(LENGTH, this.list().size());
 
-      for (final int i : new Range(LENGTH)) {
+      for (final MutableInteger i : new MutableRange(LENGTH)) {
         assertTrue(this.list().contains(i));
       }
 
       // get the index of the start of the first slice
       int start = 0;
       for (final int i : new Range(this.list().size())) {
-        if (this.list().get(i) != i) {
+        if (this.list().get(i).intValue() != i) {
           start = i;
           break;
         }
@@ -84,7 +86,7 @@ public class DisplacementMutationFunctionTester extends
       // get the index between the first and second slices
       int middle = 0;
       for (final int i : new Range(start + 1, this.list().size())) {
-        if (this.list().get(i) != this.list().get(i - 1) + 1) {
+        if (this.list().get(i).intValue() != this.list().get(i - 1).intValue() + 1) {
           middle = i;
           break;
         }
@@ -94,7 +96,7 @@ public class DisplacementMutationFunctionTester extends
       // found, it is at the end
       int end = this.list().size();
       for (final int i : new Range(middle + 1, this.list().size())) {
-        if (this.list().get(i) != this.list().get(i - 1) + 1) {
+        if (this.list().get(i).intValue() != this.list().get(i - 1).intValue() + 1) {
           end = i;
           break;
         }
@@ -111,14 +113,14 @@ public class DisplacementMutationFunctionTester extends
 
       // from the first change to the second change
       for (final int i : new Range(firstLength)) {
-        assertEquals(this.list().get(start) + i, this.list().get(start + i)
-            .intValue());
+        assertEquals(this.list().get(start).intValue() + i, this.list().get(
+            start + i).intValue());
       }
 
       // from the second change to the end of the slices
       for (final int i : new Range(secondLength)) {
-        assertEquals(this.list().get(middle) + i, this.list().get(middle + i)
-            .intValue());
+        assertEquals(this.list().get(middle).intValue() + i, this.list().get(
+            middle + i).intValue());
       }
 
       // from the end of the slices to the end of the list

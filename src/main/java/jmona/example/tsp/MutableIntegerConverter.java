@@ -1,7 +1,7 @@
 /**
- * OnesMutationFunction.java
+ * MutableIntegerConverter.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -17,30 +17,26 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.ones;
+package jmona.example.tsp;
 
-import jmona.impl.mutation.ImmutableElementsListMutationFunction;
+import jmona.Function;
+import jmona.impl.mutable.MutableInteger;
 
 /**
- * Mutation function which flips a bit randomly in a List of bits.
- * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @since 0.5
  */
-public class OnesMutationFunction extends
-    ImmutableElementsListMutationFunction<Byte> {
+public class MutableIntegerConverter implements
+    Function<MutableInteger, Integer> {
 
-  /**
-   * Return 1 if the specified bit is 0, and return 0 if the specified bit is 1.
+  /*
+   * (non-Javadoc)
    * 
-   * @param bit
-   *          The bit to mutate.
-   * @return The bitwise inverse of the specified bit.
-   * @see jmona.impl.mutation.ImmutableElementsListMutationFunction#mutated(java.lang.Object)
+   * @see jmona.Function#execute(java.lang.Object)
    */
   @Override
-  protected Byte mutated(final Byte bit) {
-    return (byte) (1 - bit);
+  public Integer execute(final MutableInteger input) {
+    return input.intValue();
   }
 
 }

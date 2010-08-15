@@ -32,8 +32,8 @@ import jmona.EvolutionContext;
  *          completion.
  * @since 0.4
  */
-public class MaxGenerationCompletionCondition<T>
-    implements CompletionCondition<T> {
+public class MaxGenerationCompletionCondition<T> implements
+    CompletionCondition<T> {
 
   /** The default maximum number of generations in the evolution. */
   public static final int DEFAULT_MAX_GENERATIONS = Integer.MAX_VALUE;
@@ -43,6 +43,31 @@ public class MaxGenerationCompletionCondition<T>
    * evolution stops.
    */
   private int maxGenerations = DEFAULT_MAX_GENERATIONS;
+
+  /**
+   * Instantiates this CompletionCondition with the default number of maximum
+   * generations.
+   * 
+   * @see MaxGenerationCompletionCondition#DEFAULT_MAX_GENERATIONS
+   */
+  public MaxGenerationCompletionCondition() {
+    // intentionally unimplemented
+  }
+
+  /**
+   * Instantiates this CompletionCondition with the specified number of maximum
+   * generations.
+   * 
+   * This condition returns true if the evolution has met or exceeded this
+   * number of generations.
+   * 
+   * @param maxGenerations
+   *          The number of generations to occur in an EvolutionContext before
+   *          this condition returns true.
+   */
+  public MaxGenerationCompletionCondition(final int maxGenerations) {
+    this.maxGenerations = maxGenerations;
+  }
 
   /**
    * Whether the maximum number of generations has already occurred.

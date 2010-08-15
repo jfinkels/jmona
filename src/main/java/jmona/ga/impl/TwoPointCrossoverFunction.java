@@ -19,6 +19,7 @@
  */
 package jmona.ga.impl;
 
+import jmona.DeepCopyable;
 import jmona.impl.Pair;
 import jmona.random.RandomUtils;
 
@@ -31,7 +32,7 @@ import jmona.random.RandomUtils;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class TwoPointCrossoverFunction<E> extends
+public class TwoPointCrossoverFunction<E extends DeepCopyable<E>> extends
     AbstractListCrossoverFunction<E> {
 
   /**

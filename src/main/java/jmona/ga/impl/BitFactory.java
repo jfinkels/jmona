@@ -20,6 +20,7 @@
 package jmona.ga.impl;
 
 import jmona.Factory;
+import jmona.impl.mutable.MutableByte;
 import jmona.random.RandomUtils;
 
 /**
@@ -28,7 +29,7 @@ import jmona.random.RandomUtils;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class BitFactory implements Factory<Byte> {
+public class BitFactory implements Factory<MutableByte> {
 
   /**
    * Generate a random bit, with value 0 or 1, uniformly distributed.
@@ -37,8 +38,8 @@ public class BitFactory implements Factory<Byte> {
    * @see jmona.Factory#createObject()
    */
   @Override
-  public Byte createObject() {
-    return (byte) RandomUtils.randomData().nextInt(0, 1);
+  public MutableByte createObject() {
+    return new MutableByte(RandomUtils.randomData().nextInt(0, 1));
   }
 
 }

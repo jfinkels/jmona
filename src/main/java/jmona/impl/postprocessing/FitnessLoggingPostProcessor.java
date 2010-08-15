@@ -24,7 +24,6 @@ import java.util.Map.Entry;
 
 import jmona.DeepCopyable;
 import jmona.EvolutionContext;
-import jmona.FitnessException;
 import jmona.GeneticEvolutionContext;
 import jmona.LoggingException;
 

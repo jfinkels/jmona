@@ -27,7 +27,12 @@
   <bean id="fitnessFunction" class="jmona.example.ones.OnesFitnessFunction" >
     <constructor-arg ref="geneLength" />
   </bean>
-  <bean id="mutationFunction" class="jmona.example.ones.OnesMutationFunction" />
+  <bean id="bitwiseMutationFunction"
+    class="jmona.example.ones.BitFlipMutationFunction" />
+  <bean id="mutationFunction"
+    class="jmona.impl.mutation.UniformDistributionMutationFunction">
+    <property name="elementMutationFunction" ref="bitwiseMutationFunction" />
+  </bean>
   <bean id="selectionFunction" class="jmona.impl.selection.FitnessProportionateSelection" />
 
 </beans>

@@ -33,6 +33,7 @@ import jmona.CrossoverFunction;
 import jmona.MappingException;
 import jmona.functional.Functional;
 import jmona.functional.Range;
+import jmona.impl.mutable.MutableInteger;
 import jmona.random.RandomUtils;
 
 /**
@@ -43,7 +44,7 @@ import jmona.random.RandomUtils;
  * @since 0.1
  */
 public class EdgeRecombinationCrossoverFunction implements
-    CrossoverFunction<List<Integer>> {
+    CrossoverFunction<List<MutableInteger>> {
 
   /**
    * Remove the specified city from the specified set of neighbors for each
@@ -85,8 +86,9 @@ public class EdgeRecombinationCrossoverFunction implements
    *           If there is a problem determining which cities satisfy the
    *           condition of having a specific number of neighbors.
    */
-  protected List<Integer> edgeRecombinationOperator(final List<Integer> tour1,
-      final List<Integer> tour2) throws CrossoverException {
+  protected List<MutableInteger> edgeRecombinationOperator(
+      final List<MutableInteger> tour1, final List<MutableInteger> tour2)
+      throws CrossoverException {
 
     // initialize the adjacency lists for cities in the tours
     final Map<Integer, Set<Integer>> neighborsBothTours = new HashMap<Integer, Set<Integer>>();
@@ -104,10 +106,10 @@ public class EdgeRecombinationCrossoverFunction implements
       // add the neighbors of the current city in both tours
       // note: have to do (i + size - 1), because % operator does not work for
       // negative integers for some reason
-      neighbors.add(tour1.get((i + tourSize - 1) % tourSize));
-      neighbors.add(tour1.get((i + 1) % tourSize));
-      neighbors.add(tour2.get((i + tourSize - 1) % tourSize));
-      neighbors.add(tour2.get((i + 1) % tourSize));
+      neighbors.add(tour1.get((i + tourSize - 1) % tourSize).intValue());
+      neighbors.add(tour1.get((i + 1) % tourSize).intValue());
+      neighbors.add(tour2.get((i + tourSize - 1) % tourSize).intValue());
+      neighbors.add(tour2.get((i + 1) % tourSize).intValue());
 
       // add this set to the adjacency list for both tours
       neighborsBothTours.put(i, neighbors);
@@ -115,10 +117,10 @@ public class EdgeRecombinationCrossoverFunction implements
 
     // choose an initial city to add from a random parent
     int cityToAdd = 0;
-    if (RandomUtils.randomData().nextInt(0, 1) == 0) {
-      cityToAdd = tour1.get(0);
+    if (RandomUtils.nextBoolean()) {
+      cityToAdd = tour1.get(0).intValue();
     } else {
-      cityToAdd = tour2.get(0);
+      cityToAdd = tour2.get(0).intValue();
     }
 
     // create a list of all possible cities to add to the new tour
@@ -137,7 +139,7 @@ public class EdgeRecombinationCrossoverFunction implements
         neighborsBothTours);
 
     // create a new tour to contain the recombined individual
-    final List<Integer> newTour = new Vector<Integer>();
+    final List<MutableInteger> newTour = new Vector<MutableInteger>();
 
     // while the new tour is not complete
     int cityWithMinNeighbors = 0;
@@ -181,7 +183,7 @@ public class EdgeRecombinationCrossoverFunction implements
       }
 
       // add the chosen city to the new tour
-      newTour.add(cityToAdd);
+      newTour.add(new MutableInteger(cityToAdd));
 
       // remove the city just added from the list of all possible cities
       allPossibleCities.remove(cityToAdd);
@@ -211,8 +213,8 @@ public class EdgeRecombinationCrossoverFunction implements
    * @see jmona.CrossoverFunction#crossover(Object, Object)
    */
   @Override
-  public void crossover(final List<Integer> tour1, final List<Integer> tour2)
-      throws CrossoverException {
+  public void crossover(final List<MutableInteger> tour1,
+      final List<MutableInteger> tour2) throws CrossoverException {
     Collections.copy(tour1, this.edgeRecombinationOperator(tour1, tour2));
     Collections.copy(tour2, this.edgeRecombinationOperator(tour1, tour2));
   }

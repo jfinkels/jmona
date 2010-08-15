@@ -22,6 +22,7 @@ package jmona.ga.impl;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import jmona.impl.Pair;
+import jmona.impl.example.DeepCopyableObject;
 
 import org.junit.Test;
 
@@ -39,7 +40,7 @@ public class OnePointCrossoverFunctionTester {
    */
   @Test
   public void testSliceStartEnd() {
-    final OnePointCrossoverFunction<Object> function = new OnePointCrossoverFunction<Object>();
+    final OnePointCrossoverFunction<DeepCopyableObject> function = new OnePointCrossoverFunction<DeepCopyableObject>();
 
     final int length = 14;
     final Pair<Integer, Integer> pair = function.sliceStartEnd(length);

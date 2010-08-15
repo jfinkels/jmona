@@ -31,16 +31,14 @@
     <property name="maxY" ref="height" />
   </bean>
   
-  <bean id="individualFactory"
-    class="jmona.impl.CompleteDeepCopyableListFactory">
+  <bean id="individualFactory" class="jmona.impl.DeepCopyableListFactory">
+    <constructor-arg value="50" />
     <property name="elementFactory" ref="polygonFactory" />
-    <property name="size" value="50" />
   </bean>
   
-  <bean id="populationFactory"
-    class="jmona.impl.DefaultListFactory">
+  <bean id="populationFactory" class="jmona.impl.ListFactory">
+    <constructor-arg value="10" />
     <property name="elementFactory" ref="individualFactory" />
-    <property name="size" value="10" />
   </bean>
 
 </beans>

@@ -19,8 +19,8 @@
  */
 package jmona.ga.impl;
 
-import jmona.Factory;
 import jmona.ga.BinaryString;
+import jmona.impl.SizedFactory;
 
 /**
  * A factory which creates random BinaryString objects.
@@ -28,21 +28,17 @@ import jmona.ga.BinaryString;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class BinaryStringFactory implements Factory<BinaryString> {
-
-  /** The default length of the BinaryString to create. */
-  public static final int DEFAULT_LENGTH = Integer.SIZE;
-  /** The length of the BinaryString to create. */
-  private int length = DEFAULT_LENGTH;
+public class BinaryStringFactory extends SizedFactory<BinaryString> {
 
   /**
-   * Sets the length of the BinaryString to create.
+   * Instantiates this Factory with the specified number of bits in the binary
+   * strings to create.
    * 
-   * @param newLength
-   *          The length of the BinaryString to create.
+   * @param initialSize
+   *          The number of bits in the binary strings to create.
    */
-  public void setLength(final int newLength) {
-    this.length = newLength;
+  public BinaryStringFactory(final int initialSize) {
+    super(initialSize);
   }
 
   /**
@@ -53,7 +49,7 @@ public class BinaryStringFactory implements Factory<BinaryString> {
    */
   @Override
   public BinaryString createObject() {
-    return new CharArrayBinaryString(this.length, true);
+    return new CharArrayBinaryString(this.size(), true);
   }
 
 }

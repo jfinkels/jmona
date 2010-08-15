@@ -22,6 +22,7 @@ package jmona.impl.mutation;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.DeepCopyable;
 import jmona.DeepCopyableList;
 import jmona.random.RandomUtils;
 
@@ -34,7 +35,7 @@ import jmona.random.RandomUtils;
  *          The type of element in the List to mutate.
  * @since 0.4
  */
-public class DisplacementMutationFunction<E> implements
+public class DisplacementMutationFunction<E extends DeepCopyable<E>> implements
     OrderedListMutationFunction<E> {
 
   /**

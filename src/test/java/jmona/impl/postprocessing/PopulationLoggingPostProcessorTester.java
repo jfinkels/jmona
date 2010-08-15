@@ -19,7 +19,6 @@
  */
 package jmona.impl.postprocessing;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;

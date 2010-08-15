@@ -69,7 +69,7 @@ public class FitnessProportionateSelection<T> implements
     }
 
     // get the sum of all fitnesses
-    final double fitnessesSum = Functional.sum(fitnesses.values());
+    final double fitnessesSum = Functional.sumDouble(fitnesses.values());
 
     // if no individual has any fitness, just return a random one
     if (fitnessesSum == 0.0) {

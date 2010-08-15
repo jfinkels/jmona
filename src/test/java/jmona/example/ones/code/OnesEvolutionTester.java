@@ -27,14 +27,16 @@ import jmona.Factory;
 import jmona.FitnessException;
 import jmona.GeneticEvolutionContext;
 import jmona.InitializationException;
+import jmona.example.ones.BitFlipMutationFunction;
 import jmona.example.ones.OnesFitnessFunction;
-import jmona.example.ones.OnesMutationFunction;
 import jmona.ga.impl.BitFactory;
 import jmona.ga.impl.GAEvolutionContext;
 import jmona.ga.impl.TwoPointCrossoverFunction;
-import jmona.impl.DefaultListFactory;
-import jmona.impl.PartialDeepCopyableListFactory;
+import jmona.impl.DeepCopyableListFactory;
+import jmona.impl.ListFactory;
 import jmona.impl.completion.MaxGenerationCompletionCondition;
+import jmona.impl.mutable.MutableByte;
+import jmona.impl.mutation.SingleElementwiseMutationFunction;
 import jmona.impl.selection.FitnessProportionateSelection;
 import jmona.test.Util;
 
@@ -56,42 +58,44 @@ public class OnesEvolutionTester {
   /** Test for the "most ones" evolution, using code. */
   @Test
   public void testOnesEvolution() {
-    Factory<Byte> bitFactory = new BitFactory();
+    Factory<MutableByte> bitFactory = new BitFactory();
     int length = 20;
 
-    PartialDeepCopyableListFactory<Byte> individualFactory = new PartialDeepCopyableListFactory<Byte>();
+    DeepCopyableListFactory<MutableByte> individualFactory = new DeepCopyableListFactory<MutableByte>(
+        length);
     individualFactory.setElementFactory(bitFactory);
-    individualFactory.setSize(length);
 
     int numberOfIndividuals = 100;
 
-    DefaultListFactory<DeepCopyableList<Byte>> populationFactory = new DefaultListFactory<DeepCopyableList<Byte>>();
-    populationFactory.setSize(numberOfIndividuals);
+    ListFactory<DeepCopyableList<MutableByte>> populationFactory = new ListFactory<DeepCopyableList<MutableByte>>(
+        numberOfIndividuals);
     populationFactory.setElementFactory(individualFactory);
 
-    List<DeepCopyableList<Byte>> population = null;
+    List<DeepCopyableList<MutableByte>> population = null;
     try {
       population = populationFactory.createObject();
     } catch (final InitializationException exception) {
       Util.fail(exception);
     }
 
-    GeneticEvolutionContext<DeepCopyableList<Byte>> context = new GAEvolutionContext<DeepCopyableList<Byte>>(
+    GeneticEvolutionContext<DeepCopyableList<MutableByte>> context = new GAEvolutionContext<DeepCopyableList<MutableByte>>(
         population);
 
-    context.setCrossoverFunction(new TwoPointCrossoverFunction<Byte>());
+    context.setCrossoverFunction(new TwoPointCrossoverFunction<MutableByte>());
     try {
       context.setFitnessFunction(new OnesFitnessFunction(length));
     } catch (final FitnessException exception) {
       Util.fail(exception);
     }
-    context.setMutationFunction(new OnesMutationFunction());
+    final SingleElementwiseMutationFunction<MutableByte> mutationFunction = new SingleElementwiseMutationFunction<MutableByte>();
+    mutationFunction.setElementMutationFunction(new BitFlipMutationFunction());
+    context.setMutationFunction(mutationFunction);
     context
-        .setSelectionFunction(new FitnessProportionateSelection<DeepCopyableList<Byte>>());
+        .setSelectionFunction(new FitnessProportionateSelection<DeepCopyableList<MutableByte>>());
 
     int maxGenerations = 20;
 
-    MaxGenerationCompletionCondition<DeepCopyableList<Byte>> condition = new MaxGenerationCompletionCondition<DeepCopyableList<Byte>>();
+    MaxGenerationCompletionCondition<DeepCopyableList<MutableByte>> condition = new MaxGenerationCompletionCondition<DeepCopyableList<MutableByte>>();
     condition.setMaxGenerations(maxGenerations);
 
     try {

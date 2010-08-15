@@ -28,7 +28,6 @@ import java.util.Vector;
 
 import jmona.EvolutionContext;
 import jmona.LoggingException;
-import jmona.game.Strategy;
 import jmona.game.impl.example.ExampleStrategy;
 import jmona.test.Util;
 import joptsimple.internal.Strings;

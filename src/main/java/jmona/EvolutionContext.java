@@ -19,7 +19,6 @@
  */
 package jmona;
 
-import java.util.List;
 
 /**
  * A context in which evolution occurs.

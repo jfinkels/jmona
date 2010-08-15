@@ -25,7 +25,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import jmona.MutationException;
+import jmona.functional.MutableRange;
 import jmona.functional.Range;
+import jmona.impl.mutable.MutableInteger;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -41,7 +43,7 @@ public class SwapMutationFunctionTester extends
 
   /** Instantiate this test class with access to a SwapMutationFunction. */
   public SwapMutationFunctionTester() {
-    super(new SwapMutationFunction<Integer>());
+    super(new SwapMutationFunction<MutableInteger>());
   }
 
   /**
@@ -62,19 +64,19 @@ public class SwapMutationFunctionTester extends
       }
 
       assertEquals(LENGTH, this.list().size());
-      for (final int i : new Range(LENGTH)) {
+      for (final MutableInteger i : new MutableRange(LENGTH)) {
         assertTrue(this.list().contains(i));
       }
 
       int changed = 0;
       for (final int i : new Range(this.list().size())) {
-        if (this.list().get(i) != i) {
+        if (this.list().get(i).intValue() != i) {
           changed = i;
           break;
         }
       }
 
-      final int swappedElement = this.list().get(changed);
+      final int swappedElement = this.list().get(changed).intValue();
 
       assertEquals(changed, this.list().get(swappedElement).intValue());
     }

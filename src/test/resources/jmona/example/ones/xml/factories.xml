@@ -29,14 +29,14 @@
 
   <bean id="bitFactory" class="jmona.ga.impl.BitFactory" />
 
-  <bean id="individualFactory" class="jmona.impl.PartialDeepCopyableListFactory">
+  <bean id="individualFactory" class="jmona.impl.DeepCopyableListFactory">
+    <constructor-arg ref="geneLength" />
     <property name="elementFactory" ref="bitFactory" />
-    <property name="size" ref="geneLength" />
   </bean>
   
-  <bean id="populationFactory" class="jmona.impl.DefaultListFactory">
+  <bean id="populationFactory" class="jmona.impl.ListFactory">
+    <constructor-arg value="20" />
     <property name="elementFactory" ref="individualFactory" />
-    <property name="size" value="20" />
   </bean>
 
 </beans>

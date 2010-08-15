@@ -1,5 +1,5 @@
 /**
- * CompleteDeepCopyableListFactoryTester.java
+ * DeepCopyableListFactoryTester.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -35,26 +35,25 @@ import jmona.test.Util;
 import org.junit.Test;
 
 /**
- * Test class for the CompleteDeepCopyableListFactory class.
+ * Test class for the DeepCopyableListFactory class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class CompleteDeepCopyableListFactoryTester {
+public class DeepCopyableListFactoryTester {
 
   /** Zero. */
   public static final double ZERO_DELTA = 0.0;
 
   /**
-   * Test method for
-   * {@link jmona.impl.CompleteDeepCopyableListFactory#createObject()}.
+   * Test method for {@link jmona.impl.DeepCopyableListFactory#createObject()}.
    */
   @Test
   public void testCreateObject() {
     final int size = 1;
 
-    final CompleteDeepCopyableListFactory<ExampleIndividual> factory = new CompleteDeepCopyableListFactory<ExampleIndividual>();
-    factory.setSize(size);
+    final DeepCopyableListFactory<ExampleIndividual> factory = new DeepCopyableListFactory<ExampleIndividual>(
+        size);
 
     try {
       factory.createObject();

@@ -26,8 +26,6 @@ import java.util.Vector;
 
 import jmona.functional.Range;
 import jmona.graph.DirectedGraph;
-import jmona.graph.impl.AdjacencyMatrixGraph;
-import jmona.graph.impl.GraphUtils;
 
 import org.junit.Test;
 

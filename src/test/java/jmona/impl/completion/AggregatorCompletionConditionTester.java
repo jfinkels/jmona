@@ -22,7 +22,6 @@ package jmona.impl.completion;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
@@ -54,8 +53,9 @@ public class AggregatorCompletionConditionTester {
     final MaxGenerationCompletionCondition<ExampleIndividual> condition1 = new MaxGenerationCompletionCondition<ExampleIndividual>();
     condition1.setMaxGenerations(2);
     final PerfectMatchCompletionCondition<ExampleIndividual> condition2 = new PerfectMatchCompletionCondition<ExampleIndividual>();
+    @SuppressWarnings("unchecked")
     final AggregatorCompletionCondition<ExampleIndividual> condition = new AggregatorCompletionCondition<ExampleIndividual>(
-        Arrays.asList(condition1, condition2));
+        condition1, condition2);
 
     final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
 

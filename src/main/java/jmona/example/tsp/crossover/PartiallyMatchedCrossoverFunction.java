@@ -23,6 +23,7 @@ import java.util.List;
 
 import jmona.CrossoverFunction;
 import jmona.impl.ListUtils;
+import jmona.impl.mutable.MutableInteger;
 import jmona.random.RandomUtils;
 
 /**
@@ -35,7 +36,7 @@ import jmona.random.RandomUtils;
  */
 // TODO inherit from two-point crossover?
 public class PartiallyMatchedCrossoverFunction implements
-    CrossoverFunction<List<Integer>> {
+    CrossoverFunction<List<MutableInteger>> {
 
   /**
    * Perform partially matched crossover (also known as PMX) on the specified
@@ -58,7 +59,8 @@ public class PartiallyMatchedCrossoverFunction implements
    * @see jmona.CrossoverFunction#crossover(Object, Object)
    */
   @Override
-  public void crossover(final List<Integer> tour1, final List<Integer> tour2) {
+  public void crossover(final List<MutableInteger> tour1,
+      final List<MutableInteger> tour2) {
 
     // get the size of the tours
     final int size = tour1.size();
@@ -76,12 +78,12 @@ public class PartiallyMatchedCrossoverFunction implements
     ListUtils.swap(tour1, tour2, start, end);
 
     // get a view of the crossover over sections in each tour
-    final List<Integer> swappedSectionInTour1 = tour1.subList(start, end);
-    final List<Integer> swappedSectionInTour2 = tour2.subList(start, end);
+    final List<MutableInteger> swappedSectionInTour1 = tour1.subList(start, end);
+    final List<MutableInteger> swappedSectionInTour2 = tour2.subList(start, end);
 
-    int currentCity = 0;
+    MutableInteger currentCity = new MutableInteger(0);
     int replacementCityIndex = 0;
-    int replacementCity = 0;
+    MutableInteger replacementCity = new MutableInteger(0);
 
     // iterate over each city in not in the crossed over section
     for (int i = end % size; i >= end || i < start; i = (i + 1) % size) {

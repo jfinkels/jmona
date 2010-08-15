@@ -30,12 +30,10 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.1
  */
 @RunWith(Suite.class)
-@SuiteClasses({ ArrayUtilsTester.class,
-    CompleteDeepCopyableListFactoryTester.class,
-    CompleteDeepCopyableVectorTester.class, DeepCopyUtilsTester.class,
+@SuiteClasses({ ArrayUtilsTester.class, DeepCopyableListFactoryTester.class,
+    DeepCopyableVectorTester.class, DeepCopyUtilsTester.class,
     IdentityFunctionTester.class, ListUtilsTester.class, MapUtilsTester.class,
-    PairTester.class, PartialDeepCopyableListFactoryTester.class,
-    PartialDeepCopyableVectorTester.class })
+    PairTester.class })
 public class AllTest {
 
 }

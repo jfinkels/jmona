@@ -26,7 +26,6 @@ import java.util.Vector;
 import jmona.CopyingException;
 import jmona.CrossoverException;
 import jmona.EvolutionException;
-import jmona.FitnessException;
 import jmona.IndependentSelectionFunction;
 import jmona.MutationException;
 import jmona.PropertyNotSetException;

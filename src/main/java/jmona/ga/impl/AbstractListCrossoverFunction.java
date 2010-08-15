@@ -20,6 +20,7 @@
 package jmona.ga.impl;
 
 import jmona.CrossoverFunction;
+import jmona.DeepCopyable;
 import jmona.DeepCopyableList;
 import jmona.impl.ListUtils;
 import jmona.impl.Pair;
@@ -33,8 +34,8 @@ import jmona.impl.Pair;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public abstract class AbstractListCrossoverFunction<E> implements
-    CrossoverFunction<DeepCopyableList<E>> {
+public abstract class AbstractListCrossoverFunction<E extends DeepCopyable<E>>
+    implements CrossoverFunction<DeepCopyableList<E>> {
 
   /**
    * Perform a crossover between a range of elements specified by the

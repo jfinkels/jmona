@@ -34,7 +34,6 @@ import org.junit.runners.Suite.SuiteClasses;
     DisplacementMutationFunctionTester.class,
     ElementwiseMutationFunctionTester.class,
     IdentityMutationFunctionTester.class,
-    ImmutableElementsListMutationFunctionTester.class,
     InsertionMutationFunctionTester.class,
     InversionMutationFunctionTester.class, SwapMutationFunctionTester.class })
 public class AllTest {

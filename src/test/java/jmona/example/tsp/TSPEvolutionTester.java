@@ -24,6 +24,7 @@ import jmona.DeepCopyableList;
 import jmona.EvolutionException;
 import jmona.MappingException;
 import jmona.PopulationEvolutionContext;
+import jmona.impl.mutable.MutableInteger;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
@@ -51,11 +52,11 @@ public class TSPEvolutionTester extends AbstractJUnit4SpringContextTests {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<DeepCopyableList<Integer>> completionCondition = null;
+  private CompletionCondition<DeepCopyableList<MutableInteger>> completionCondition = null;
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
-  private PopulationEvolutionContext<DeepCopyableList<Integer>> context = null;
+  private PopulationEvolutionContext<DeepCopyableList<MutableInteger>> context = null;
 
   /** Test method for the traveling salesman problem evolution. */
   @Test

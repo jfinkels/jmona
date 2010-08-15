@@ -25,9 +25,9 @@
   
   <bean id="individualFactory" class="jmona.example.ipd.IPDStrategyFactory" />
   
-  <bean id="populationFactory" class="jmona.impl.CompleteDeepCopyableListFactory">
+  <bean id="populationFactory" class="jmona.impl.DeepCopyableListFactory">
+    <constructor-arg value="70" />
     <property name="elementFactory" ref="individualFactory" />
-    <property name="size" value="70" />
   </bean>
 
   <bean id="population" 

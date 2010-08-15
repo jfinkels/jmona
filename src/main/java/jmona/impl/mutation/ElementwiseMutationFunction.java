@@ -19,51 +19,43 @@
  */
 package jmona.impl.mutation;
 
-import jmona.DeepCopyableList;
-import jmona.MutationException;
+import jmona.DeepCopyable;
 import jmona.MutationFunction;
-import jmona.random.RandomUtils;
 
 /**
  * A class which mutates elements in a List by mutating one element at random.
+ * 
+ * Concrete subclasses of this class should check if the
+ * {@link #elementMutationFunction} member is null before attempting to
+ * dereference it.
  * 
  * @author Jeffrey Finkelstein
  * @param <E>
  *          The type of element contained in the List to mutate.
  * @since 0.1
  */
-public class ElementwiseMutationFunction<E> implements ListMutationFunction<E> {
+public abstract class ElementwiseMutationFunction<E extends DeepCopyable<E>>
+    implements ListMutationFunction<E> {
 
   /** The mutation function on elements of the List. */
   private MutationFunction<E> elementMutationFunction = null;
 
   /**
-   * Mutate a random element in the specified List.
-   * 
-   * @param list
-   *          The List in which to mutate a random element.
-   * @throws MutationException
-   *           If the mutation of the random element throws an Exception, or if
-   *           the ListElementMutationException has not been set.
-   * @see jmona.MutationFunction#mutate(Object)
-   */
-  @Override
-  public void mutate(final DeepCopyableList<E> list) throws MutationException {
-    if (this.elementMutationFunction == null) {
-      throw new MutationException(
-          "No ListElementMutationFunction has been set.");
-    }
-
-    this.elementMutationFunction.mutate(RandomUtils.choice(list));
-  }
-
-  /**
-   * Set the mutation function on elements of the List.
+   * Sets the mutation function on elements of the List.
    * 
    * @param newFunction
    *          The mutation function on elements of the List.
    */
   public void setElementMutationFunction(final MutationFunction<E> newFunction) {
     this.elementMutationFunction = newFunction;
+  }
+
+  /**
+   * Gets the mutation function on elements of the List.
+   * 
+   * @return The mutation function on elements of the List.
+   */
+  protected MutationFunction<E> elementMutationFunction() {
+    return this.elementMutationFunction;
   }
 }

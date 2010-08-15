@@ -21,9 +21,9 @@ package jmona.impl.selection;
 
 import java.util.Comparator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.SortedMap;
 import java.util.TreeMap;
-import java.util.Map.Entry;
 
 import jmona.IndependentSelectionFunction;
 import jmona.random.RandomUtils;

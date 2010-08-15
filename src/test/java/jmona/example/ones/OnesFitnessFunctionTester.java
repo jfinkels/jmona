@@ -25,7 +25,8 @@ import java.util.List;
 
 import jmona.DeepCopyableList;
 import jmona.functional.Range;
-import jmona.impl.PartialDeepCopyableVector;
+import jmona.impl.DeepCopyableVector;
+import jmona.impl.mutable.MutableByte;
 
 import org.junit.Test;
 
@@ -48,21 +49,21 @@ public class OnesFitnessFunctionTester {
   public void testRawFitness() {
     final int length = 10;
     final OnesFitnessFunction function = new OnesFitnessFunction(length);
-    final DeepCopyableList<Byte> individual = new PartialDeepCopyableVector<Byte>();
+    final DeepCopyableList<MutableByte> individual = new DeepCopyableVector<MutableByte>();
 
     for (final int i : new Range(length)) {
-      individual.add((byte) 0);
+      individual.add(new MutableByte(0));
     }
 
     assertEquals(0, function.rawFitness(individual), ZERO_DELTA);
 
     for (final int i : new Range(length)) {
-      individual.set(i, (byte) 1);
+      individual.set(i, new MutableByte(1));
       assertEquals(i + 1, function.rawFitness(individual), ZERO_DELTA);
     }
 
     for (int i = length - 1; i >= 0; --i) {
-      individual.set(i, (byte) 0);
+      individual.set(i, new MutableByte(0));
       assertEquals(i, function.rawFitness(individual), ZERO_DELTA);
     }
 

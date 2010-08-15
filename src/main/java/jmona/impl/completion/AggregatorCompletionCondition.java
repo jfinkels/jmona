@@ -44,6 +44,19 @@ public class AggregatorCompletionCondition<T> extends
     CompletionCondition<T> {
 
   /**
+   * Instantiates this class with the specified varargs array of
+   * CompletionCondition objects to check every time this Condition is executed.
+   * 
+   * @param initialConditions
+   *          The varargs array of CompletionCondition objects to check every
+   *          time this Condition is executed.
+   */
+  public AggregatorCompletionCondition(
+      final CompletionCondition<T>... initialConditions) {
+    super(initialConditions);
+  }
+
+  /**
    * Instantiates this class with the specified Collection of
    * CompletionConditions to check every time this Condition is executed.
    * 

@@ -19,6 +19,7 @@
  */
 package jmona.impl.mutation;
 
+import jmona.DeepCopyable;
 import jmona.DeepCopyableList;
 import jmona.random.RandomUtils;
 
@@ -31,7 +32,7 @@ import jmona.random.RandomUtils;
  *          The type of element in the List to reinsert.
  * @since 0.4
  */
-public class InsertionMutationFunction<E> implements
+public class InsertionMutationFunction<E extends DeepCopyable<E>> implements
     OrderedListMutationFunction<E> {
 
   /**

@@ -25,7 +25,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import jmona.MutationException;
+import jmona.functional.MutableRange;
 import jmona.functional.Range;
+import jmona.impl.mutable.MutableInteger;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -41,7 +43,7 @@ public class InsertionMutationFunctionTester extends
 
   /** Instantiate this test class with access to an InsertionMutationFunction. */
   public InsertionMutationFunctionTester() {
-    super(new InsertionMutationFunction<Integer>());
+    super(new InsertionMutationFunction<MutableInteger>());
   }
 
   /**
@@ -52,6 +54,7 @@ public class InsertionMutationFunctionTester extends
   @Override
   public void testMutate() {
     for (final int j : new Range(NUM_TESTS)) {
+      System.out.println("test " + j);
       this.setUp();
 
       try {
@@ -61,13 +64,13 @@ public class InsertionMutationFunctionTester extends
       }
 
       assertEquals(LENGTH, this.list().size());
-      for (final int i : new Range(LENGTH)) {
+      for (final MutableInteger i : new MutableRange(LENGTH)) {
         assertTrue(this.list().contains(i));
       }
 
       int firstChange = 0;
       for (final int i : new Range(this.list().size())) {
-        if (!this.list().get(i).equals(i)) {
+        if (this.list().get(i).intValue() != i) {
           firstChange = i;
           break;
         }
@@ -75,20 +78,24 @@ public class InsertionMutationFunctionTester extends
 
       int lastChange = 0;
       for (int i = this.list().size() - 1; i >= 0; --i) {
-        if (!this.list().get(i).equals(i)) {
+        if (this.list().get(i).intValue() != i) {
           lastChange = i;
           break;
         }
       }
+      
+      System.out.println(this.list());
+      System.out.println("first change: " + firstChange);
+      System.out.println("last change: " + lastChange);
 
       // TODO check the case of final element being moved
 
-      // if a element was moved to a location previous to its original location
+      // if an element was moved to a location previous to its original location
       // for example:
       //
       // before: 0 1 2 3 4 5 6 7 8 9 10 11 12
       // after : 0 1 2 3 4 10 5 6 7 8 9 11 12
-      if (this.list().get(lastChange) == lastChange - 1) {
+      if (this.list().get(lastChange).intValue() == lastChange - 1) {
         assertEquals(lastChange, this.list().get(firstChange).intValue());
 
         for (final int i : new Range(firstChange + 1, lastChange)) {
@@ -101,12 +108,14 @@ public class InsertionMutationFunctionTester extends
         }
       }
 
-      // if an element was moved to an location after its original location
+      // if an element was moved to a location after its original location
       // for example:
       //
       // before: 0 1 2 3 4 5 6 7 8 9 10 11 12
       // after : 0 1 2 3 4 6 7 8 9 10 5 11 12
-      if (this.list().get(firstChange) == firstChange + 1) {
+      if (this.list().get(firstChange).intValue() == firstChange + 1) {
+        System.out.println("first change: " + firstChange);
+        System.out.println("value of last change: " + this.list().get(lastChange));
         assertEquals(firstChange, this.list().get(lastChange).intValue());
 
         for (final int i : new Range(firstChange, lastChange)) {

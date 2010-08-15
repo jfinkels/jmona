@@ -30,7 +30,7 @@ import java.util.List;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public interface DeepCopyableList<E> extends DeepCopyable<DeepCopyableList<E>>,
-    List<E> {
+public interface DeepCopyableList<E extends DeepCopyable<E>> extends
+    DeepCopyable<DeepCopyableList<E>>, List<E> {
 
 }

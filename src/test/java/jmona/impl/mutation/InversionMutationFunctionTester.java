@@ -25,7 +25,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import jmona.MutationException;
+import jmona.functional.MutableRange;
 import jmona.functional.Range;
+import jmona.impl.mutable.MutableInteger;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -43,7 +45,7 @@ public class InversionMutationFunctionTester extends
    * Instantiate this test class with access to an InversionMutationFunction.
    */
   public InversionMutationFunctionTester() {
-    super(new InversionMutationFunction<Integer>());
+    super(new InversionMutationFunction<MutableInteger>());
   }
 
   /**
@@ -65,14 +67,14 @@ public class InversionMutationFunctionTester extends
       }
 
       assertEquals(LENGTH, this.list().size());
-      for (final int i : new Range(LENGTH)) {
+      for (final MutableInteger i : new MutableRange(LENGTH)) {
         assertTrue(this.list().contains(i));
       }
 
       // find the first element which is different from the pre-mutation list
       // element
       int start = 0;
-      while (start < LENGTH && this.list().get(start) == start) {
+      while (start < LENGTH && this.list().get(start).intValue() == start) {
         start += 1;
       }
 
@@ -85,7 +87,7 @@ public class InversionMutationFunctionTester extends
       } else {
 
         // determine the ending index of the inverted sublist
-        final int end = this.list().get(start) + 1;
+        final int end = this.list().get(start).intValue() + 1;
 
         for (final int i : new Range(start - end)) {
           assertEquals(end - i, this.list().get(start + i).intValue());

@@ -36,6 +36,11 @@ import jmona.Metric;
  */
 public class EuclideanMetric<T extends Number> implements Metric<T> {
 
+  public static final EuclideanMetric<Double> DOUBLE_METRIC = new EuclideanMetric<Double>();
+  public static final EuclideanMetric<Integer> INTEGER_METRIC = new EuclideanMetric<Integer>();
+  public static final EuclideanMetric<Float> FLOAT_METRIC = new EuclideanMetric<Float>();
+  public static final EuclideanMetric<Long> LONG_METRIC = new EuclideanMetric<Long>();
+
   /**
    * Get the Euclidean distance between the two specified numbers, defined as
    * <em>|element1 - element2|</em>.

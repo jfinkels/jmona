@@ -22,8 +22,9 @@ package jmona.ga.impl;
 import static org.junit.Assert.assertEquals;
 import jmona.DeepCopyableList;
 import jmona.functional.Range;
+import jmona.impl.DeepCopyableVector;
 import jmona.impl.Pair;
-import jmona.impl.PartialDeepCopyableVector;
+import jmona.impl.mutable.MutableByte;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -37,18 +38,18 @@ import org.junit.Test;
 public class AbstractListCrossoverFunctionTester {
 
   /** The function under test. */
-  private AbstractListCrossoverFunction<Byte> function = null;
+  private AbstractListCrossoverFunction<MutableByte> function = null;
   /** The length of the binary strings in the tests. */
   public static final int LENGTH = 10;
   /** The binary string of all zeros. */
-  private DeepCopyableList<Byte> individual1 = null;
+  private DeepCopyableList<MutableByte> individual1 = null;
   /** The binary string of all ones. */
-  private DeepCopyableList<Byte> individual2 = null;
+  private DeepCopyableList<MutableByte> individual2 = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.function = new AbstractListCrossoverFunction<Byte>() {
+    this.function = new AbstractListCrossoverFunction<MutableByte>() {
       @Override
       protected Pair<Integer, Integer> sliceStartEnd(final int length) {
         return new Pair<Integer, Integer>(0, length);
@@ -57,12 +58,12 @@ public class AbstractListCrossoverFunctionTester {
     };
 
     // this is the binary string of all zeros
-    this.individual1 = new PartialDeepCopyableVector<Byte>();
-    this.individual2 = new PartialDeepCopyableVector<Byte>();
+    this.individual1 = new DeepCopyableVector<MutableByte>();
+    this.individual2 = new DeepCopyableVector<MutableByte>();
 
     for (final int i : new Range(LENGTH)) {
-      this.individual1.add((byte) 0);
-      this.individual2.add((byte) 1);
+      this.individual1.add(new MutableByte(0));
+      this.individual2.add(new MutableByte(1));
     }
   }
 

@@ -49,14 +49,14 @@ public final class DeepCopyUtils {
    *           If there is a problem copying the elements of the Collection.
    */
   public static <E extends DeepCopyable<E>> List<E> deepCopy(
-      final Iterable<E> collection) throws CopyingException {
-  
+      final Iterable<? extends E> iterable) throws CopyingException {
+
     final List<E> result = new Vector<E>();
-  
-    for (final E element : collection) {
+
+    for (final E element : iterable) {
       result.add((E) element.deepCopy());
     }
-  
+
     return result;
   }
 

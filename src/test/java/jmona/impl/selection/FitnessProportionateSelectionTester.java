@@ -26,7 +26,6 @@ import static org.junit.Assert.assertSame;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 
 import jmona.FitnessFunction;
 import jmona.functional.Range;

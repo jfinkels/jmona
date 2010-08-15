@@ -20,6 +20,7 @@
 package jmona.example.ones;
 
 import static org.junit.Assert.assertEquals;
+import jmona.impl.mutable.MutableByte;
 
 import org.junit.Test;
 
@@ -37,9 +38,12 @@ public class OnesMutationFunctionTester {
    */
   @Test
   public void testMutatedByte() {
-    final OnesMutationFunction function = new OnesMutationFunction();
-    assertEquals(1, function.mutated((byte) 0).intValue());
-    assertEquals(0, function.mutated((byte) 1).intValue());
+    final BitFlipMutationFunction function = new BitFlipMutationFunction();
+    final MutableByte bit = new MutableByte(0);
+    function.mutate(bit);
+    assertEquals(1, bit.byteValue());
+    function.mutate(bit);
+    assertEquals(0, bit.byteValue());
   }
 
 }

@@ -42,7 +42,7 @@
     class="jmona.ga.impl.TwoPointCrossoverFunction" />
   
   <bean id="mutationFunction"
-    class="jmona.impl.mutation.ElementwiseMutationFunction">
+    class="jmona.impl.mutation.SingleElementwiseMutationFunction">
     <property name="elementMutationFunction" ref="polygonMutationFunction" />
   </bean>
   

@@ -52,16 +52,32 @@ public class FunctionalTester {
   @Test
   public void testAny() {
     Iterable<Boolean> iterable = Arrays.asList();
-    assertFalse(Functional.any(iterable));
-    
+    try {
+      assertFalse(Functional.any(iterable));
+    } catch (final MappingException exception) {
+      Util.fail(exception);
+    }
+
     iterable = Arrays.asList(true, false, false);
-    assertTrue(Functional.any(iterable));
-    
+    try {
+      assertTrue(Functional.any(iterable));
+    } catch (final MappingException exception) {
+      Util.fail(exception);
+    }
+
     iterable = Arrays.asList(false, false, true);
-    assertTrue(Functional.any(iterable));
-    
+    try {
+      assertTrue(Functional.any(iterable));
+    } catch (final MappingException exception) {
+      Util.fail(exception);
+    }
+
     iterable = Arrays.asList(false, false, false);
-    assertFalse(Functional.any(iterable));
+    try {
+      assertFalse(Functional.any(iterable));
+    } catch (final MappingException exception) {
+      Util.fail(exception);
+    }
   }
 
   /**
@@ -71,13 +87,13 @@ public class FunctionalTester {
   public void testAll() {
     Iterable<Boolean> iterable = Arrays.asList();
     assertTrue(Functional.all(iterable));
-    
+
     iterable = Arrays.asList(true, false, false);
     assertFalse(Functional.all(iterable));
-    
+
     iterable = Arrays.asList(true, false, true);
     assertFalse(Functional.all(iterable));
-    
+
     iterable = Arrays.asList(true, true, true);
     assertTrue(Functional.all(iterable));
   }
@@ -181,14 +197,47 @@ public class FunctionalTester {
     integerList.add(1);
     integerList.add(2);
 
-    assertEquals(0 + 1 + 2, Functional.sum(integerList));
+    assertEquals(0 + 1 + 2, Functional.sumInteger(integerList));
 
     final List<Double> doubleList = new Vector<Double>();
     doubleList.add(0.0);
     doubleList.add(0.1);
     doubleList.add(0.2);
 
-    assertEquals(0.0 + 0.1 + 0.2, Functional.sum(doubleList), ZERO_DELTA);
+    assertEquals(0.0 + 0.1 + 0.2, Functional.sumDouble(doubleList), ZERO_DELTA);
 
   }
+
+  /**
+   * Test method for {@link jmona.functional.Functional#zip(Iterable, Iterable)}
+   * .
+   */
+//  @Test
+//  public void testZip() {
+//    List<Integer> left = Arrays.asList(0, 1, 2);
+//    List<Double> right = Arrays.asList(0.0, 1.0, 2.0);
+//
+//    List<Pair<Integer, Double>> zipped = Functional.zip(left, right);
+//
+//    assertEquals(zipped.size(), Math.min(left.size(), right.size()));
+//
+//    for (final int i : new Range(3)) {
+//      assertEquals(zipped.get(i).left().intValue(), zipped.get(i).right()
+//          .intValue());
+//      assertEquals(zipped.get(i).left().doubleValue(), zipped.get(i).right()
+//          .doubleValue(), ZERO_DELTA);
+//    }
+//
+//    right = Arrays.asList(0.0, 1.0);
+//    zipped = Functional.zip(left, right);
+//
+//    assertEquals(zipped.size(), Math.min(left.size(), right.size()));
+//
+//    for (final int i : new Range(Math.min(left.size(), right.size()))) {
+//      assertEquals(zipped.get(i).left().intValue(), zipped.get(i).right()
+//          .intValue());
+//      assertEquals(zipped.get(i).left().doubleValue(), zipped.get(i).right()
+//          .doubleValue(), ZERO_DELTA);
+//    }
+//  }
 }

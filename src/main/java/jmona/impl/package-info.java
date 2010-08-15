@@ -26,23 +26,15 @@
  * <p>
  * Among other classes, this package provides:
  * <ul>
- * <li>{@link jmona.impl.context.AbstractEvolutionContext}, a base class for
- * {@link jmona.EvolutionContext} implementations.</li>
- * <li>{@link jmona.impl.completion.MaxGenerationCompletionCondition}, a default
- * {@link jmona.CompletionCondition} implementation which checks an {@code
- * EvolutionContext} for a maximum number of generations evolved.</li>
- * <li>{@link jmona.impl.postprocessing.PeriodicPostProcessor}, a base class for
- * {@link jmona.PostProcessor} implementations which execute periodically.</li>
- * <li>{@link jmona.impl.CompleteDeepCopyableListFactory}, a factory for
- * creating a List of objects which implement {@link jmona.DeepCopyable}, for
- * use as, for example, an individual in a population in an EvolutionContext.</li>
- * <li>{@link jmona.impl.PartialDeepCopyableListFactory}, a factory for creating
- * a DeepCopyable List of objects which are not DeepCopyable themselves. For
- * example, in the "ones" evolution in the {@link jmona.example.ones} package,
- * the genetic algorithm operates on indviduals which are represented by a
- * DeepCopyable List of Byte objects. The List itself is the individual, so it
- * must be DeepCopyable, but the Byte objects contained in the List are
- * immutable, so they do not need to be DeepCopyable.</li>
+ * <li>{@link jmona.impl.DeeCopyableVector}, a Vector containing elements which
+ * implement {@link jmona.DeepCopyable}, and which can itself be deep-copied.
+ * This is good for creating list-like individuals, like in the
+ * {@link jmona.example.ones} evolution in which the individuals are lists of
+ * bits, or the {@link jmona.example.monalisa.ga} evolution, in which the
+ * individuals are lists of colored polygons.</li>
+ * <li>{@link jmona.impl.DeepCopyableListFactory}, a factory for creating a List
+ * of objects which implement {@link jmona.DeepCopyable}, for use as, for
+ * example, an individual in a population in an EvolutionContext.</li>
  * </ul>
  * </p>
  * 

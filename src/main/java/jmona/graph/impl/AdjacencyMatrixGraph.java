@@ -24,7 +24,6 @@ import java.util.Set;
 import jmona.functional.HashSetFromIterable;
 import jmona.functional.Range;
 import jmona.graph.DirectedGraph;
-import jmona.graph.Graph;
 
 /**
  * A DirectedGraph backed by an adjacency matrix (a two-dimensional array)

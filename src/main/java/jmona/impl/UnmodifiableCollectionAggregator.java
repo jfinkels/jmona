@@ -19,6 +19,7 @@
  */
 package jmona.impl;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -36,6 +37,17 @@ import java.util.Collections;
 public class UnmodifiableCollectionAggregator<E> implements Aggregator<E> {
   /** The collection of elements aggregated by this class. */
   private final Collection<E> collection;
+
+  /**
+   * Instantiates this class by creating a Collection from the specified varargs
+   * array of objects.
+   * 
+   * @param initialObjects
+   *          A varargs array of objects.
+   */
+  public UnmodifiableCollectionAggregator(final E... initialObjects) {
+    this.collection = Arrays.asList(initialObjects);
+  }
 
   /**
    * Instantiates this class with the specified Collection of elements.

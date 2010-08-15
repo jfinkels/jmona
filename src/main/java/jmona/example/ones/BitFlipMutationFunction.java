@@ -1,5 +1,5 @@
 /**
- * ListFactory.java
+ * BitFlipMutationFunction.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -17,33 +17,34 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona;
+package jmona.example.ones;
 
-import java.util.List;
+import jmona.MutationFunction;
+import jmona.impl.mutable.MutableByte;
 
 /**
- * Create a new List containing elements of type E.
+ * Mutation function which flips a single bit (represented as a byte with value
+ * either 0 or 1).
  * 
- * @param <E>
- *          The type of element in the List to create.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public interface DeepCopyableListFactory<E extends DeepCopyable<E>> extends
-    Factory<List<E>> {
-  /**
-   * Set the factory which creates objects of type E.
-   * 
-   * @param newElementFactory
-   *          The factory which creates objects of type E.
-   */
-  void setElementFactory(final Factory<E> newElementFactory);
+public class BitFlipMutationFunction implements MutationFunction<MutableByte> {
 
   /**
-   * Set the size of the List to create.
+   * Flips the specified bit from 1 to 0 or from 0 to 1, depending on the value
+   * of the input bit.
    * 
-   * @param newSize
-   *          The size of the List to create.
+   * Assumes as a precondition that the value of the {@code bit} parameter is
+   * either 1 or 0.
+   * 
+   * @param bit
+   *          The bit to mutate, implemented as a MutableByte object.
+   * @see jmona.MutationFunction#mutate(Object)
    */
-  void setSize(final int newSize);
+  @Override
+  public void mutate(final MutableByte bit) {
+    bit.setValue(1 - bit.intValue());
+  }
+
 }

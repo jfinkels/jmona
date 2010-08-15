@@ -21,9 +21,13 @@ package jmona.example.tsp;
 
 import java.util.List;
 
+import jmona.FitnessException;
+import jmona.MappingException;
+import jmona.functional.Functional;
 import jmona.graph.DirectedGraph;
 import jmona.graph.impl.GraphUtils;
 import jmona.impl.fitness.MinimizingFitnessFunction;
+import jmona.impl.mutable.MutableInteger;
 
 /**
  * A FitnessFunction which determines the raw fitness of a tour based on its
@@ -33,7 +37,7 @@ import jmona.impl.fitness.MinimizingFitnessFunction;
  * @since 0.1
  */
 public class TSPFitnessFunction extends
-    MinimizingFitnessFunction<List<Integer>> {
+    MinimizingFitnessFunction<List<MutableInteger>> {
 
   /** The graph containing distances between cities. */
   private final DirectedGraph<Integer, Double> graph;
@@ -49,6 +53,8 @@ public class TSPFitnessFunction extends
     this.graph = initialGraph;
   }
 
+  private static final MutableIntegerConverter CONVERTER = new MutableIntegerConverter();
+
   /**
    * Gets the total distance of the specified tour, based on the edge weights in
    * the Graph specified in the constructor to this class.
@@ -56,17 +62,28 @@ public class TSPFitnessFunction extends
    * @param tour
    *          The tour whose raw fitness will be determined.
    * @return The total distance of this tour.
+   * @throws FitnessException
+   *           If there is a problem converting the List of MutableInteger
+   *           objects to a List of Integer objects.
    * @throws IllegalArgumentException
    *           If the specified tour is empty (that is, it has size 0).
    * @see jmona.FitnessFunction#rawFitness(Object)
    */
   @Override
-  public double rawFitness(final List<Integer> tour) {
+  public double rawFitness(final List<MutableInteger> tour)
+      throws FitnessException {
     if (tour.size() == 0) {
       throw new IllegalArgumentException("Tour must have size greater than 0.");
     }
 
-    return GraphUtils.totalDistance(tour, this.graph);
+    // map the list of mutable integers to a list of java.lang.Integers
+    try {
+      return GraphUtils.totalDistance(Functional.map(CONVERTER, tour),
+          this.graph);
+    } catch (final MappingException exception) {
+      throw new FitnessException(
+          "Failed to convert a MutableInteger to an Integer", exception);
+    }
   }
 
 }

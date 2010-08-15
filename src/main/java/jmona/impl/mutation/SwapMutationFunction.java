@@ -21,6 +21,7 @@ package jmona.impl.mutation;
 
 import java.util.Collections;
 
+import jmona.DeepCopyable;
 import jmona.DeepCopyableList;
 import jmona.random.RandomUtils;
 
@@ -35,7 +36,8 @@ import jmona.random.RandomUtils;
  *          The type of element in the List to swap.
  * @since 0.4
  */
-public class SwapMutationFunction<E> implements OrderedListMutationFunction<E> {
+public class SwapMutationFunction<E extends DeepCopyable<E>> implements
+    OrderedListMutationFunction<E> {
 
   /**
    * Swap two element chosen at random from a List.

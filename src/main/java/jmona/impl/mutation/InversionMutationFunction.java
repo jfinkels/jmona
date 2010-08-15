@@ -21,6 +21,7 @@ package jmona.impl.mutation;
 
 import java.util.Collections;
 
+import jmona.DeepCopyable;
 import jmona.DeepCopyableList;
 import jmona.random.RandomUtils;
 
@@ -33,7 +34,7 @@ import jmona.random.RandomUtils;
  *          The type of element in the List to mutate.
  * @since 0.4
  */
-public class InversionMutationFunction<E> implements
+public class InversionMutationFunction<E extends DeepCopyable<E>> implements
     OrderedListMutationFunction<E> {
 
   /**

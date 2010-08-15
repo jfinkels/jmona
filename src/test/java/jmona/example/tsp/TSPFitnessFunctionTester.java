@@ -25,9 +25,11 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jmona.FitnessException;
 import jmona.functional.Range;
 import jmona.graph.DirectedGraph;
 import jmona.graph.impl.AdjacencyMatrixGraph;
+import jmona.impl.mutable.MutableInteger;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -64,25 +66,37 @@ public class TSPFitnessFunctionTester {
     final TSPFitnessFunction function = new TSPFitnessFunction(graph);
 
     // this tour is 0 -> 1 -> 0
-    final List<Integer> tour = new Vector<Integer>();
-    tour.add(0);
-    tour.add(1);
+    final List<MutableInteger> tour = new Vector<MutableInteger>();
+    tour.add(new MutableInteger(0));
+    tour.add(new MutableInteger(1));
 
-    assertEquals(weights[0][1] + weights[1][0], function.rawFitness(tour),
-        ZERO_DELTA);
+    try {
+      assertEquals(weights[0][1] + weights[1][0], function.rawFitness(tour),
+          ZERO_DELTA);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
 
     // this tour is 1 -> 0 -> 1
     tour.clear();
-    tour.add(1);
-    tour.add(0);
+    tour.add(new MutableInteger(1));
+    tour.add(new MutableInteger(0));
 
-    assertEquals(weights[1][0] + weights[0][1], function.rawFitness(tour),
-        ZERO_DELTA);
+    try {
+      assertEquals(weights[1][0] + weights[0][1], function.rawFitness(tour),
+          ZERO_DELTA);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
 
     tour.clear();
-    tour.add(0);
+    tour.add(new MutableInteger(0));
 
-    assertEquals(0, function.rawFitness(tour), ZERO_DELTA);
+    try {
+      assertEquals(0, function.rawFitness(tour), ZERO_DELTA);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
+    }
 
     tour.clear();
 
@@ -93,6 +107,8 @@ public class TSPFitnessFunctionTester {
       // tour has size 0
       assertEquals(0, tour.size());
       assertTrue(exception instanceof IllegalArgumentException);
+    } catch (final FitnessException exception) {
+      Util.fail(exception);
     }
   }
 }

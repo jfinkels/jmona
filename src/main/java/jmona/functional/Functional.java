@@ -55,6 +55,22 @@ public final class Functional {
     return true;
   }
 
+  /** An instance of the identity condition, which always returns its input. */
+  public static final Condition<Boolean> IDENTITY_CONDITION = new Condition<Boolean>() {
+    /**
+     * Returns the specified input.
+     * 
+     * @param input
+     *          The value to return.
+     * @return The specified input.
+     * @see jmona.Function#execute(java.lang.Object)
+     */
+    @Override
+    public Boolean execute(final Boolean input) {
+      return input;
+    }
+  };
+
   /**
    * Determines whether any element in the specified Iterable is true (similar
    * to Python's <a
@@ -64,11 +80,20 @@ public final class Functional {
    * @param iterable
    *          The iterable to check for any true values.
    * @return Whether any value in the specified iterable is true.
+   * @throws MappingException
+   *           If there is a problem determining the truth value of any of the
+   *           elements of the iterable.
    */
-  public static boolean any(final Iterable<Boolean> iterable) {
+  public static boolean any(final Iterable<Boolean> iterable)
+      throws MappingException {
+    return any(iterable, IDENTITY_CONDITION);
+  }
 
-    for (final boolean element : iterable) {
-      if (element) {
+  public static <T> boolean any(final Iterable<T> iterable,
+      final Condition<T> condition) throws MappingException {
+
+    for (final T element : iterable) {
+      if (condition.execute(element)) {
         return true;
       }
     }
@@ -147,7 +172,7 @@ public final class Functional {
    *          The iterable over which to sum the doubles.
    * @return The sum of the doubles over which the specified iterable iterates.
    */
-  public static double sum(final Iterable<Double> iterable) {
+  public static double sumDouble(final Iterable<Double> iterable) {
     double result = 0;
 
     for (final Double d : iterable) {
@@ -164,7 +189,7 @@ public final class Functional {
    *          The iterable over which to sum the integers.
    * @return The sum of the integers over which the specified iterable iterates.
    */
-  public static int sum(final Iterable<Integer> iterable) {
+  public static int sumInteger(final Iterable<Integer> iterable) {
     int result = 0;
 
     for (final Integer i : iterable) {
@@ -182,15 +207,51 @@ public final class Functional {
    *          The iterable over which to sum the bytes.
    * @return The sum of the bytes over which the specified iterable iterates.
    */
-  public static int sumBytes(final Iterable<Byte> iterable) {
+  public static <N extends Number> int sumBytes(final Iterable<N> iterable) {
     int sum = 0;
 
-    for (final Byte b : iterable) {
-      sum += b;
+    for (final Number n : iterable) {
+      sum += n.byteValue();
     }
 
     return sum;
   }
+
+  /**
+   * Returns a List of Pairs, where the <em>i</em>-th Pair contains the
+   * <em>i</em>-th element from each of the iterables (similar to Python's
+   * built-in
+   * <code><a href="http://docs.python.org/library/functions.html#zip">zip</a></code>
+   * function).
+   * 
+   * The size of the returned List is equal to the minimum of the "sizes" of the
+   * input iterables (that is, the number of elements over which they iterate).
+   * 
+   * @param <S>
+   *          The type of elements in the left iterable.
+   * @param <T>
+   *          The type of elements in the right iterable.
+   * @param iterable1
+   *          An iterable over elements of type S.
+   * @param iterable2
+   *          An iterable over elements of type T.
+   * @return A List of Pairs, where the <em>i</em>-th Pair contains the
+   *         <em>i</em>-th element from each of the iterables, and whose size is
+   *         the minimum of the sizes of the input iterables.
+   */
+//  public static <S, T> List<Pair<S, T>> zip(final Iterable<S> iterable1,
+//      final Iterable<T> iterable2) {
+//    final List<Pair<S, T>> result = new ArrayList<Pair<S, T>>();
+//
+//    final Iterator<S> it1 = iterable1.iterator();
+//    final Iterator<T> it2 = iterable2.iterator();
+//
+//    while (it1.hasNext() && it2.hasNext()) {
+//      result.add(new Pair<S, T>(it1.next(), it2.next()));
+//    }
+//
+//    return result;
+//  }
 
   /** Instantiation disallowed except by subclasses. */
   protected Functional() {

@@ -55,8 +55,8 @@ public class ExampleTernaryNode extends TernaryNode implements ExampleNode {
   @Override
   public Integer evaluate() throws EvaluationException {
     try {
-      return Functional.sum(Functional.map(new ExampleNodeEvaluator(), this
-          .children()));
+      return Functional.sumInteger(Functional.map(new ExampleNodeEvaluator(),
+          this.children()));
     } catch (final MappingException exception) {
       throw new EvaluationException();
     }

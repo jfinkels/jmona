@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import jmona.CrossoverFunction;
 import jmona.impl.ListUtils;
+import jmona.impl.mutable.MutableInteger;
 import jmona.random.RandomUtils;
 
 /**
@@ -33,7 +34,8 @@ import jmona.random.RandomUtils;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class CycleCrossoverFunction implements CrossoverFunction<List<Integer>> {
+public class CycleCrossoverFunction implements
+    CrossoverFunction<List<MutableInteger>> {
 
   /**
    * <p>
@@ -66,7 +68,8 @@ public class CycleCrossoverFunction implements CrossoverFunction<List<Integer>> 
    * @see jmona.CrossoverFunction#crossover(Object, Object)
    */
   @Override
-  public void crossover(final List<Integer> tour1, final List<Integer> tour2) {
+  public void crossover(final List<MutableInteger> tour1,
+      final List<MutableInteger> tour2) {
     final List<Integer> cycleIndices = new Vector<Integer>();
 
     // choose a random initial index of a city in the tour
@@ -76,7 +79,7 @@ public class CycleCrossoverFunction implements CrossoverFunction<List<Integer>> 
     cycleIndices.add(tour1index);
 
     // get the city in tour2 at that index
-    int tour2city = tour2.get(tour1index);
+    MutableInteger tour2city = tour2.get(tour1index);
 
     // get the index of that city in tour1
     tour1index = tour1.indexOf(tour2city);

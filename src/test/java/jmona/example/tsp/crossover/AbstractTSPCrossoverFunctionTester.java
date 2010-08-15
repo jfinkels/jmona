@@ -27,8 +27,11 @@ import java.util.Vector;
 
 import jmona.CrossoverException;
 import jmona.CrossoverFunction;
+import jmona.InitializationException;
 import jmona.example.tsp.TourFactory;
+import jmona.functional.MutableRange;
 import jmona.functional.Range;
+import jmona.impl.mutable.MutableInteger;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
@@ -51,28 +54,28 @@ public abstract class AbstractTSPCrossoverFunctionTester {
   /** The number of independent crossovers to perform. */
   public static final int NUM_TESTS = 100;
   /** The function under test. */
-  private CrossoverFunction<List<Integer>> function = null;
+  private CrossoverFunction<List<MutableInteger>> function = null;
   /**
    * A tour on which to perform crossover which contains an increasing sequence
    * of integers.
    */
-  private List<Integer> tour1 = null;
+  private List<MutableInteger> tour1 = null;
 
   /**
    * A tour on which to perform crossover which contains a decreasing sequence
    * of integers.
    */
-  private List<Integer> tour2 = null;
+  private List<MutableInteger> tour2 = null;
   /**
    * A tour on which to perform crossover which contains a random sequence of
    * integers.
    */
-  private List<Integer> tour3 = null;
+  private List<MutableInteger> tour3 = null;
   /**
    * A tour on which to perform crossover which contains a random sequence of
    * integers.
    */
-  private List<Integer> tour4 = null;
+  private List<MutableInteger> tour4 = null;
 
   /**
    * Instantiate this test class with the specified CrossoverFunction.
@@ -81,7 +84,7 @@ public abstract class AbstractTSPCrossoverFunctionTester {
    *          The CrossoverFunction under test.
    */
   public AbstractTSPCrossoverFunctionTester(
-      final CrossoverFunction<List<Integer>> initialFunction) {
+      final CrossoverFunction<List<MutableInteger>> initialFunction) {
     this.function = initialFunction;
   }
 
@@ -90,33 +93,41 @@ public abstract class AbstractTSPCrossoverFunctionTester {
    * 
    * @return The CrossoverFunction under test in this class.
    */
-  public CrossoverFunction<List<Integer>> function() {
+  public CrossoverFunction<List<MutableInteger>> function() {
     return this.function;
   }
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.tour1 = new Vector<Integer>();
-    this.tour2 = new Vector<Integer>();
+    this.tour1 = new Vector<MutableInteger>();
+    this.tour2 = new Vector<MutableInteger>();
 
-    final TourFactory factory = new TourFactory();
-    factory.setSize(LENGTH);
+    final TourFactory factory = new TourFactory(LENGTH);
 
     for (final int i : new Range(LENGTH)) {
-      this.tour1.add(i);
-      this.tour2.add(LENGTH - 1 - i);
+      this.tour1.add(new MutableInteger(i));
+      this.tour2.add(new MutableInteger(LENGTH - 1 - i));
     }
 
-    this.tour3 = factory.createObject();
-    this.tour4 = factory.createObject();
+    try {
+      this.tour3 = factory.createObject();
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
+
+    try {
+      this.tour4 = factory.createObject();
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
 
     assertEquals(LENGTH, this.tour1.size());
     assertEquals(LENGTH, this.tour2.size());
     assertEquals(LENGTH, this.tour3.size());
     assertEquals(LENGTH, this.tour4.size());
 
-    for (final int i : new Range(LENGTH)) {
+    for (final MutableInteger i : new MutableRange(LENGTH)) {
       assertTrue(this.tour1.contains(i));
       assertTrue(this.tour2.contains(i));
       assertTrue(this.tour3.contains(i));
@@ -145,7 +156,7 @@ public abstract class AbstractTSPCrossoverFunctionTester {
     assertEquals(LENGTH, this.tour1.size());
     assertEquals(LENGTH, this.tour2.size());
 
-    for (final int i : new Range(LENGTH)) {
+    for (final MutableInteger i : new MutableRange(LENGTH)) {
       assertTrue(this.tour1.contains(i));
       assertTrue(this.tour2.contains(i));
     }
@@ -165,7 +176,7 @@ public abstract class AbstractTSPCrossoverFunctionTester {
     assertEquals(LENGTH, this.tour3.size());
     assertEquals(LENGTH, this.tour4.size());
 
-    for (final int i : new Range(LENGTH)) {
+    for (final MutableInteger i : new MutableRange(LENGTH)) {
       assertTrue(this.tour3.contains(i));
       assertTrue(this.tour4.contains(i));
     }
@@ -177,7 +188,7 @@ public abstract class AbstractTSPCrossoverFunctionTester {
    * 
    * @return The tour containing the increasing sequence.
    */
-  protected List<Integer> tour1() {
+  protected List<MutableInteger> tour1() {
     return this.tour1;
   }
 
@@ -186,7 +197,7 @@ public abstract class AbstractTSPCrossoverFunctionTester {
    * 
    * @return The tour containing the decreasing sequence.
    */
-  protected List<Integer> tour2() {
+  protected List<MutableInteger> tour2() {
     return this.tour2;
   }
 }

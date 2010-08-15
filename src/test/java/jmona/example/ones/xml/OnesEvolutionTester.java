@@ -24,6 +24,7 @@ import jmona.CompletionException;
 import jmona.DeepCopyableList;
 import jmona.EvolutionException;
 import jmona.PopulationEvolutionContext;
+import jmona.impl.mutable.MutableByte;
 import jmona.test.Util;
 
 import org.apache.log4j.Logger;
@@ -51,11 +52,11 @@ public class OnesEvolutionTester extends AbstractJUnit4SpringContextTests {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<DeepCopyableList<Byte>> completionCondition = null;
+  private CompletionCondition<DeepCopyableList<MutableByte>> completionCondition = null;
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
-  private PopulationEvolutionContext<DeepCopyableList<Byte>> context = null;
+  private PopulationEvolutionContext<DeepCopyableList<MutableByte>> context = null;
 
   /** Test method for a Ones evolution. */
   @Test

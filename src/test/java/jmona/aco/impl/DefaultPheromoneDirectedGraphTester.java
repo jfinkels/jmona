@@ -20,7 +20,6 @@
 package jmona.aco.impl;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import jmona.functional.Range;
 
 import org.junit.Before;

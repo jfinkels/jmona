@@ -52,6 +52,30 @@ public final class RandomUtils {
   }
 
   /**
+   * Returns an element from the specified array chosen with uniform
+   * distribution over all elements of the array.
+   * 
+   * @param <T>
+   *          The type of element in the array.
+   * @param array
+   *          The array from which to randomly choose an element.
+   * @return An element chosen with uniform probability over all elements in the
+   *         array.
+   */
+  public static <T> T choice(final T[] array) {
+    return choice(Arrays.asList(array));
+  }
+
+  /**
+   * Returns a uniformly random {@code boolean}.
+   * 
+   * @return A random boolean.
+   */
+  public static boolean nextBoolean() {
+    return randomData.nextInt(0, 1) == 0;
+  }
+
+  /**
    * Returns a uniformly random {@code double} between 0 and 1, exclusive (this
    * is a convenience method for {@code
    * RandomData.randomData().nextUniform(0,1)}).

@@ -31,7 +31,7 @@ import jmona.EvolutionContext;
 import jmona.InitializationException;
 import jmona.ProcessingException;
 import jmona.ga.impl.GAEvolutionContext;
-import jmona.impl.CompleteDeepCopyableListFactory;
+import jmona.impl.DeepCopyableListFactory;
 import jmona.test.Util;
 
 import org.junit.After;
@@ -95,7 +95,8 @@ public class ImageOutputPostProcessorTester {
     polygonFactory.setMaxX(WIDTH);
     polygonFactory.setMaxY(HEIGHT);
 
-    final CompleteDeepCopyableListFactory<ColoredPolygon> factory = new CompleteDeepCopyableListFactory<ColoredPolygon>();
+    final DeepCopyableListFactory<ColoredPolygon> factory = new DeepCopyableListFactory<ColoredPolygon>(
+        0);
     factory.setElementFactory(new ColoredPolygonFactory());
 
     DeepCopyableList<ColoredPolygon> individual1 = null;

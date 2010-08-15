@@ -19,7 +19,6 @@
  */
 package jmona.ga.impl;
 
-import static org.junit.Assert.assertEquals;
 import jmona.ga.BinaryString;
 
 import org.junit.Before;
@@ -39,33 +38,16 @@ public class BinaryStringFactoryTester {
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.factory = new BinaryStringFactory();
+    this.factory = new BinaryStringFactory(20);
   }
 
   /**
    * Test method for {@link jmona.ga.impl.BinaryStringFactory#createObject()}.
    */
   @Test
-  public void testCreateIndividual() {
+  public void testCreateObject() {
     final BinaryString individual = this.factory.createObject();
     // TODO make assertions about this binary string
-  }
-
-  /**
-   * Test method for {@link jmona.ga.impl.BinaryStringFactory#setLength(int)}.
-   */
-  @Test
-  public void testSetLength() {
-    BinaryString individual = this.factory.createObject();
-
-    assertEquals(BinaryStringFactory.DEFAULT_LENGTH, individual.size());
-
-    final int newLength = 100;
-    this.factory.setLength(newLength);
-    individual = this.factory.createObject();
-
-    assertEquals(newLength, individual.size());
-
   }
 
 }

@@ -46,8 +46,8 @@ public final class GraphUtils {
    * @return The total distance (the sum of the edge weights) in the specified
    *         tour with respect to the weights defined in the specified Graph.
    */
-  public static double totalDistance(final List<Integer> tour,
-      final DirectedGraph<Integer, Double> graph) {
+  public static <V> double totalDistance(final List<V> tour,
+      final DirectedGraph<V, Double> graph) {
 
     // the number of cities in the tour
     final int size = tour.size();

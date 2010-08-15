@@ -24,7 +24,10 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import jmona.functional.Range;
+import jmona.InitializationException;
+import jmona.functional.MutableRange;
+import jmona.impl.mutable.MutableInteger;
+import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -43,12 +46,16 @@ public class TourFactoryTester {
    */
   @Test
   public void testCreateObject() {
-    final TourFactory factory = new TourFactory();
-    factory.setSize(NUM_CITIES);
-    final List<Integer> tour = factory.createObject();
+    final TourFactory factory = new TourFactory(NUM_CITIES);
+    List<MutableInteger> tour = null;
+    try {
+      tour = factory.createObject();
+    } catch (final InitializationException exception) {
+      Util.fail(exception);
+    }
 
     assertEquals(NUM_CITIES, tour.size());
-    for (final int i : new Range(NUM_CITIES)) {
+    for (final MutableInteger i : new MutableRange(NUM_CITIES)) {
       assertTrue(tour.contains(i));
     }
   }

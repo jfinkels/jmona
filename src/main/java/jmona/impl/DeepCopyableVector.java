@@ -1,5 +1,5 @@
 /**
- * CompleteDeepCopyableVector.java
+ * DeepCopyableVector.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -19,10 +19,11 @@
  */
 package jmona.impl;
 
-import java.util.Collection;
+import java.util.Vector;
 
 import jmona.CopyingException;
 import jmona.DeepCopyable;
+import jmona.DeepCopyableList;
 
 /**
  * A vector which can be deep copied, and which contains elements which can be
@@ -33,31 +34,30 @@ import jmona.DeepCopyable;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class CompleteDeepCopyableVector<E extends DeepCopyable<E>> extends
-    PartialDeepCopyableVector<E> {
+public class DeepCopyableVector<E extends DeepCopyable<E>> extends Vector<E>
+    implements DeepCopyableList<E> {
 
   /** Default generated serial version UID. */
   private static final long serialVersionUID = 2375384227473517083L;
 
   /** Instantiate this Vector as an empty List. */
-  public CompleteDeepCopyableVector() {
-    super();
+  public DeepCopyableVector() {
+    // intentionally unimplemented
   }
 
   /**
-   * Instantiate this Vector and perform a deep copy on the specified
-   * Collection, adding those copied elements to this Vector.
+   * Instantiate this Vector and perform a deep copy on the specified Iterable,
+   * adding those copied elements to this Vector.
    * 
-   * @param collection
-   *          The collection on which to perform a deep copy, then add the
-   *          copied elements to this Vector.
+   * @param iterable
+   *          The iterable on which to perform a deep copy, then add the copied
+   *          elements to this Vector.
    * @throws CopyingException
    *           If there is a problem deep copying the elements of the specified
-   *           collection.
+   *           Iterable.
    */
-  public CompleteDeepCopyableVector(final Collection<E> collection)
-      throws CopyingException {
-    this.addAll(DeepCopyUtils.deepCopy(collection));
+  public DeepCopyableVector(final Iterable<E> iterable) throws CopyingException {
+    this.addAll(DeepCopyUtils.deepCopy(iterable));
   }
 
   /**
@@ -67,8 +67,8 @@ public class CompleteDeepCopyableVector<E extends DeepCopyable<E>> extends
    * @see jmona.DeepCopyable#deepCopy()
    */
   @Override
-  public CompleteDeepCopyableVector<E> deepCopy() throws CopyingException {
-    return new CompleteDeepCopyableVector<E>(this);
+  public DeepCopyableVector<E> deepCopy() throws CopyingException {
+    return new DeepCopyableVector<E>(this);
   }
 
 }

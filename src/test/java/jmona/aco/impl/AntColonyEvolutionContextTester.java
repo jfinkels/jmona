@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Vector;
 
 import jmona.EvolutionException;
-import jmona.ProcessingException;
 import jmona.aco.PheromoneUpdateStrategy;
 import jmona.functional.Range;
 import jmona.test.Util;

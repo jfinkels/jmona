@@ -22,6 +22,7 @@ package jmona.example.ones;
 import jmona.DeepCopyableList;
 import jmona.functional.Functional;
 import jmona.impl.fitness.MaximizingFitnessFunction;
+import jmona.impl.mutable.MutableByte;
 
 /**
  * A fitness function which gives higher fitness to individuals with a greater
@@ -31,7 +32,7 @@ import jmona.impl.fitness.MaximizingFitnessFunction;
  * @since 0.1
  */
 public class OnesFitnessFunction extends
-    MaximizingFitnessFunction<DeepCopyableList<Byte>> {
+    MaximizingFitnessFunction<DeepCopyableList<MutableByte>> {
 
   /**
    * Instantiates this FitnessFunction with the specified length of binary
@@ -58,7 +59,7 @@ public class OnesFitnessFunction extends
    * @see jmona.FitnessFunction#rawFitness(Object)
    */
   @Override
-  public double rawFitness(final DeepCopyableList<Byte> individual) {
+  public double rawFitness(final DeepCopyableList<MutableByte> individual) {
     return Functional.sumBytes(individual);
   }
 

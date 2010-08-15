@@ -19,6 +19,8 @@
  */
 package jmona.impl.mutation;
 
+import jmona.DeepCopyable;
+
 /**
  * A ListMutationFunction in which the order of individual elements in the list
  * is significant.
@@ -28,6 +30,7 @@ package jmona.impl.mutation;
  *          The type of element in the Lists to mutate.
  * @since 0.4
  */
-public interface OrderedListMutationFunction<E> extends ListMutationFunction<E> {
+public interface OrderedListMutationFunction<E extends DeepCopyable<E>> extends
+    ListMutationFunction<E> {
 
 }

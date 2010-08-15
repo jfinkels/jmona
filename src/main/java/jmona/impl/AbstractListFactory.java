@@ -1,5 +1,5 @@
 /**
- * DefaultListFactory.java
+ * AbstractListFactory.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -19,33 +19,26 @@
  */
 package jmona.impl;
 
+import java.util.List;
+
 import jmona.Factory;
 import jmona.PropertyNotSetException;
 
 /**
- * A class which has access to a factory of type E, and which has a size
- * property.
+ * A base class for a Factory which creates List objects.
+ * 
+ * Concrete implementing subclasses should use the Factory returned by the
+ * {@link #elementFactory()} method to create objects to populate the List
+ * created in the {@link #createObject()} method.
  * 
  * @author Jeffrey Finkelstein
- * @param <E>
- *          The type of element in the List to create.
  * @since 0.5
  */
-public abstract class ListFactorySupport<E> {
-  /** The default size of the List to create. */
-  public static final int DEFAULT_SIZE = 20;
-  /** The factory which creates elements of type E. */
-  private Factory<E> elementFactory = null;
-  /** The size of the List to create. */
-  private int size = DEFAULT_SIZE;
+public abstract class AbstractListFactory<E, L extends List<E>> extends
+    SizedFactory<L> {
 
-  /**
-   * Gets the factory which creates elements contained in a created List.
-   * 
-   * @return The factory which creates elements contained in a created List.
-   */
-  public Factory<E> elementFactory() {
-    return this.elementFactory;
+  public AbstractListFactory(final int initialSize) {
+    super(initialSize);
   }
 
   /**
@@ -57,10 +50,13 @@ public abstract class ListFactorySupport<E> {
    *           If any of the necessary properties have not been set.
    */
   protected void sanityCheck() {
-    if (this.elementFactory() == null) {
+    if (this.elementFactory == null) {
       throw new PropertyNotSetException("Element factory has not been set.");
     }
   }
+
+  /** The factory which creates elements of type E. */
+  private Factory<E> elementFactory = null;
 
   /**
    * Sets the factory which creates elements contained in a created List.
@@ -72,23 +68,8 @@ public abstract class ListFactorySupport<E> {
     this.elementFactory = newElementFactory;
   }
 
-  /**
-   * Sets the size of the List to create.
-   * 
-   * @param newSize
-   *          The size of the List to create.
-   */
-  public void setSize(final int newSize) {
-    this.size = newSize;
-  }
-
-  /**
-   * Gets the size of the List to create.
-   * 
-   * @return The size of the List to create.
-   */
-  public int size() {
-    return this.size;
+  public Factory<E> elementFactory() {
+    return this.elementFactory;
   }
 
 }

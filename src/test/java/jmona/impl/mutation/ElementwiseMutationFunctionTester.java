@@ -19,14 +19,12 @@
  */
 package jmona.impl.mutation;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-import jmona.MutationException;
-import jmona.impl.CompleteDeepCopyableVector;
+import jmona.DeepCopyableList;
+import jmona.MutationFunction;
 import jmona.impl.example.ExampleIndividual;
 import jmona.impl.example.ExampleMutationFunction;
-import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -43,38 +41,37 @@ public class ElementwiseMutationFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.mutation.ElementwiseMutationFunction#mutate(java.util.List)}
+   * {@link jmona.impl.mutation.ElementwiseMutationFunction#setElementMutationFunction(jmona.MutationFunction)}
    * .
    */
   @Test
-  public void testMutate() {
-    final ElementwiseMutationFunction<ExampleIndividual> function = new ElementwiseMutationFunction<ExampleIndividual>();
-
-    try {
-      function.mutate(null);
-      Util.shouldHaveThrownException();
-    } catch (final MutationException exception) {
-      // elementMutationFunction has not been set
-      assertTrue(exception instanceof MutationException);
-    }
-
-    final double initialFitness = 1;
-    final ExampleIndividual individual = new ExampleIndividual(initialFitness);
-
-    final CompleteDeepCopyableVector<ExampleIndividual> list = new CompleteDeepCopyableVector<ExampleIndividual>();
-    list.add(individual);
-
+  public void testSetElementMutationFunction() {
+    final ElementwiseMutationFunction<ExampleIndividual> function = new ElementwiseMutationFunction<ExampleIndividual>() {
+      @Override
+      public void mutate(final DeepCopyableList<ExampleIndividual> object) {
+        // intentionally unimplemented
+      }
+    };
     function.setElementMutationFunction(new ExampleMutationFunction());
+  }
 
-    try {
-      function.mutate(list);
-    } catch (final MutationException exception) {
-      Util.fail(exception);
-    }
-
-    assertSame(individual, list.get(0));
-    assertEquals(ExampleMutationFunction.SCALE * initialFitness, list.get(0)
-        .fitness(), ZERO_DELTA);
+  /**
+   * Test method for
+   * {@link jmona.impl.mutation.ElementwiseMutationFunction#elementMutationFunction()}
+   * .
+   */
+  @Test
+  public void testElementMutationFunction() {
+    final ElementwiseMutationFunction<ExampleIndividual> function = new ElementwiseMutationFunction<ExampleIndividual>() {
+      @Override
+      public void mutate(final DeepCopyableList<ExampleIndividual> object) {
+        // intentionally unimplemented
+      }
+    };
+    assertNull(function.elementMutationFunction());
+    final MutationFunction<ExampleIndividual> elementMutationFunction = new ExampleMutationFunction();
+    function.setElementMutationFunction(elementMutationFunction);
+    assertSame(elementMutationFunction, function.elementMutationFunction());
   }
 
 }

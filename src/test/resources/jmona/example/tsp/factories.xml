@@ -24,12 +24,12 @@
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
   <bean id="individualFactory" class="jmona.example.tsp.TourFactory">
-    <property name="size" ref="numberOfVertices" />
+    <constructor-arg ref="numberOfVertices" />
   </bean>
   
-  <bean id="populationFactory" class="jmona.impl.CompleteDeepCopyableListFactory">
+  <bean id="populationFactory" class="jmona.impl.DeepCopyableListFactory">
+    <constructor-arg value="20" />
     <property name="elementFactory" ref="individualFactory" />
-    <property name="size" value="20" />
   </bean>
 
 </beans>
