@@ -60,6 +60,7 @@ public class FitnessProportionateSelectionTester {
     this.fitnesses = new HashMap<ExampleIndividual, Double>();
   }
 
+  /** The Logger for this class. */
   private static final transient Logger LOG = Logger
       .getLogger(FitnessProportionateSelectionTester.class);
 
