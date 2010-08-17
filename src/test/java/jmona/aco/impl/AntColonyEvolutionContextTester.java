@@ -57,6 +57,7 @@ public class AntColonyEvolutionContextTester {
   /** The population of Ants in the evolution. */
   private List<WorkerAnt> population = null;
 
+  /** Establish a fixture for tests in this class. */
   @Before
   public void setUp() {
     this.adjacencyMatrix = new double[NUMBER_OF_VERTICES][NUMBER_OF_VERTICES];
