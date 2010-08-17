@@ -84,6 +84,7 @@ public class ExampleIndividual implements DeepCopyable<ExampleIndividual> {
    */
   @Override
   public String toString() {
-    return "ExampleIndividual[" + this.fitness + "]";
+    return "ExampleIndividual@" + Integer.toHexString(this.hashCode()) + "["
+        + this.fitness + "]";
   }
 }
