@@ -25,6 +25,7 @@ import jmona.Metric;
 import jmona.MetricException;
 import jmona.test.Util;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -37,7 +38,7 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class AbstractMetricTester<E, M extends Metric<E>> {
+public abstract class AbstractMetricTester<E, M extends Metric<E>> {
   /** The metric for this test. */
   private M metric = null;
   /** The x value for this test. */
@@ -86,6 +87,16 @@ public class AbstractMetricTester<E, M extends Metric<E>> {
   protected void setZ(final E newZ) {
     this.z = newZ;
   }
+
+  /**
+   * Establish a fixture for tests in this class.
+   * 
+   * Concrete implementing subclasses should use the {@link #setMetric(Metric)},
+   * {@link #setX(Object)}, {@link #setY(Object)} and {@link #setZ(Object)}
+   * methods to establish the fixture.
+   */
+  @Before
+  public abstract void setUp();
 
   /**
    * Test method for the metric.
