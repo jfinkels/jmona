@@ -43,12 +43,12 @@ public class AbstractPheromoneUpdateStrategyTester {
     final AbstractPheromoneUpdateStrategy strategy = new AbstractPheromoneUpdateStrategy() {
 
       @Override
-      public double pheromoneToAddFullCycle(double totalDistance) {
+      public double pheromoneToAddFullCycle(final double totalDistance) {
         return 0;
       }
 
       @Override
-      public double pheromoneToAddSingleEdge(double edgeDistance) {
+      public double pheromoneToAddSingleEdge(final double edgeDistance) {
         return 0;
       }
     };
