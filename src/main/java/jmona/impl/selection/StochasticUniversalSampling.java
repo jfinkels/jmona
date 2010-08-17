@@ -20,16 +20,11 @@
 package jmona.impl.selection;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import jmona.MultipleSelectionFunction;
 import jmona.SelectionException;
-import jmona.functional.Functional;
 import jmona.functional.Range;
 import jmona.random.RandomUtils;
 
@@ -122,23 +117,6 @@ public class StochasticUniversalSampling<T> implements
     for (final int i : new Range(numberToSelect)) {
       pointers[i] = (i * pointerWidth) + pointer;
     }
-
-    // get an iterator over the pointers and the cumulative fitnesses map
-    // final Iterator<Double> pointerIterator = pointers.iterator();
-    // final Iterator<Entry<T, Double>> cumulativeFitnessesIterator =
-    // cumulativeFitnesses
-    // .entrySet().iterator();
-
-    // if either of the iterators is empty, something is wrong
-    // if (!pointerIterator.hasNext()) {
-    // throw new SelectionException(
-    // "Iterator over random pointers (arms on the roulette wheel) is empty.");
-    // }
-
-    // if (!cumulativeFitnessesIterator.hasNext()) {
-    // throw new SelectionException(
-    // "Iterator over cumulative fitnesses (regions on the roulette wheel) is empty.");
-    // }
 
     // simultaneously iterate over pointers and cumulative fitnesses
     int pointersIndex = 0;
