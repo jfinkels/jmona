@@ -1,5 +1,5 @@
 /**
- * MutableByteTester.java
+ * MutableBooleanTester.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -19,55 +19,50 @@
  */
 package jmona.impl.mutable;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 /**
- * Test class for the MutableByte class.
+ * Test class for the MutableBoolean class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class MutableByteTester {
+public class MutableBooleanTester {
 
   /**
-   * Test method for {@link jmona.impl.mutable.MutableByte#MutableByte()}.
+   * Test method for {@link jmona.impl.mutable.MutableBoolean#MutableBoolean()}.
    */
   @Test
-  public void testMutableByte() {
-    final MutableByte b = new MutableByte();
-  }
-
-  /**
-   * Test method for {@link jmona.impl.mutable.MutableByte#MutableByte(byte)}.
-   */
-  @Test
-  public void testMutableByteByte() {
-    final MutableByte b = new MutableByte(0);
-    assertEquals(0, b.byteValue());
+  public void testMutableBoolean() {
+    final MutableBoolean b = new MutableBoolean();
   }
 
   /**
    * Test method for
-   * {@link jmona.impl.mutable.MutableByte#MutableByte(java.lang.Number)}.
+   * {@link jmona.impl.mutable.MutableBoolean#MutableBoolean(boolean)}.
    */
   @Test
-  public void testMutableByteNumber() {
-    final MutableByte b = new MutableByte(1.1);
-    assertEquals(1, b.byteValue());
+  public void testMutableBooleanBoolean() {
+    final MutableBoolean b = new MutableBoolean(false);
+    assertFalse(b.booleanValue());
+    final MutableBoolean b2 = new MutableBoolean(true);
+    assertTrue(b2.booleanValue());
   }
 
   /**
-   * Test method for {@link jmona.impl.mutable.MutableByte#deepCopy()}.
+   * Test method for {@link jmona.impl.mutable.MutableBoolean#deepCopy()}.
    */
   @Test
   public void testDeepCopy() {
-    final MutableByte b = new MutableByte(1);
-    final MutableByte clone = b.deepCopy();
+    final MutableBoolean b = new MutableBoolean(true);
+    final MutableBoolean clone = b.deepCopy();
     assertNotSame(b, clone);
-    assertEquals(b, clone);
+    assertTrue(b.booleanValue());
+    assertTrue(clone.booleanValue());
   }
 
 }

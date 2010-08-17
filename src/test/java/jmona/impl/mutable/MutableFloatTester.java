@@ -1,5 +1,5 @@
 /**
- * MutableIntegerTester.java
+ * MutableFloatTester.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -25,49 +25,53 @@ import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
 
 /**
- * Test class for the MutableInteger class.
+ * Test class for the MutableFloat class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class MutableIntegerTester {
+public class MutableFloatTester {
+
+  /** Zero. */
+  public static final double ZERO_DELTA = 0.0;
 
   /**
-   * Test method for {@link jmona.impl.mutable.MutableInteger#MutableInteger()}.
+   * Test method for {@link jmona.impl.mutable.MutableFloat#MutableFloat()}.
    */
   @Test
-  public void testMutableInteger() {
-    final MutableInteger i = new MutableInteger();
-  }
-
-  /**
-   * Test method for {@link jmona.impl.mutable.MutableInteger#MutableInteger(int)}.
-   */
-  @Test
-  public void testMutableIntegerInteger() {
-    final MutableInteger i = new MutableInteger(0);
-    assertEquals(0, i.intValue());
+  public void testMutableFloat() {
+    final MutableFloat f = new MutableFloat();
   }
 
   /**
    * Test method for
-   * {@link jmona.impl.mutable.MutableInteger#MutableInteger(java.lang.Number)}.
+   * {@link jmona.impl.mutable.MutableFloat#MutableFloat(float)}.
    */
   @Test
-  public void testMutableIntegerNumber() {
-    final MutableInteger i = new MutableInteger(1.1);
-    assertEquals(1, i.intValue());
+  public void testMutableFloatFloat() {
+    final MutableFloat f = new MutableFloat(0f);
+    assertEquals(0.0, f.floatValue(), ZERO_DELTA);
   }
 
   /**
-   * Test method for {@link jmona.impl.mutable.MutableInteger#deepCopy()}.
+   * Test method for
+   * {@link jmona.impl.mutable.MutableFloat#MutableFloat(java.lang.Number)}.
+   */
+  @Test
+  public void testMutableFloatNumber() {
+    final MutableFloat f = new MutableFloat(0.25f);
+    assertEquals(0.25, f.floatValue(), ZERO_DELTA);
+  }
+
+  /**
+   * Test method for {@link jmona.impl.mutable.MutableFloat#deepCopy()}.
    */
   @Test
   public void testDeepCopy() {
-    final MutableInteger i = new MutableInteger(1);
-    final MutableInteger clone = i.deepCopy();
-    assertNotSame(i, clone);
-    assertEquals(i, clone);
+    final MutableFloat f = new MutableFloat(1.5f);
+    final MutableFloat clone = f.deepCopy();
+    assertNotSame(f, clone);
+    assertEquals(f, clone);
   }
 
 }

@@ -1,5 +1,5 @@
 /**
- * MutableIntegerTester.java
+ * MutableLongTester.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -25,49 +25,49 @@ import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
 
 /**
- * Test class for the MutableInteger class.
+ * Test class for the MutableLong class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class MutableIntegerTester {
+public class MutableLongTester {
 
   /**
-   * Test method for {@link jmona.impl.mutable.MutableInteger#MutableInteger()}.
+   * Test method for {@link jmona.impl.mutable.MutableLong#MutableLong()}.
    */
   @Test
-  public void testMutableInteger() {
-    final MutableInteger i = new MutableInteger();
+  public void testMutableLong() {
+    final MutableLong l = new MutableLong();
   }
 
   /**
-   * Test method for {@link jmona.impl.mutable.MutableInteger#MutableInteger(int)}.
+   * Test method for {@link jmona.impl.mutable.MutableLong#MutableLong(long)}.
    */
   @Test
-  public void testMutableIntegerInteger() {
-    final MutableInteger i = new MutableInteger(0);
-    assertEquals(0, i.intValue());
+  public void testMutableLongLong() {
+    final MutableLong l = new MutableLong(0l);
+    assertEquals(0l, l.longValue());
   }
 
   /**
    * Test method for
-   * {@link jmona.impl.mutable.MutableInteger#MutableInteger(java.lang.Number)}.
+   * {@link jmona.impl.mutable.MutableLong#MutableLong(java.lang.Number)}.
    */
   @Test
-  public void testMutableIntegerNumber() {
-    final MutableInteger i = new MutableInteger(1.1);
-    assertEquals(1, i.intValue());
+  public void testMutableLongNumber() {
+    final MutableLong l = new MutableLong(1l);
+    assertEquals(1, l.longValue());
   }
 
   /**
-   * Test method for {@link jmona.impl.mutable.MutableInteger#deepCopy()}.
+   * Test method for {@link jmona.impl.mutable.MutableLong#deepCopy()}.
    */
   @Test
   public void testDeepCopy() {
-    final MutableInteger i = new MutableInteger(1);
-    final MutableInteger clone = i.deepCopy();
-    assertNotSame(i, clone);
-    assertEquals(i, clone);
+    final MutableLong l = new MutableLong(2l);
+    final MutableLong clone = l.deepCopy();
+    assertNotSame(l, clone);
+    assertEquals(l, clone);
   }
 
 }

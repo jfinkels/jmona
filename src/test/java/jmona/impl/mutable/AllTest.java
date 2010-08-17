@@ -30,8 +30,9 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.5
  */
 @RunWith(Suite.class)
-@SuiteClasses({ MutableByteTester.class, MutableDoubleTester.class,
-    MutableIntegerTester.class })
+@SuiteClasses({ MutableBooleanTester.class, MutableByteTester.class,
+    MutableDoubleTester.class, MutableFloatTester.class,
+    MutableIntegerTester.class, MutableLongTester.class })
 public class AllTest {
 
 }

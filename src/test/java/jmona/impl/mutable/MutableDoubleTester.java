@@ -20,6 +20,7 @@
 package jmona.impl.mutable;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
 
 import org.junit.Test;
 
@@ -69,6 +70,7 @@ public class MutableDoubleTester {
   public void testDeepCopy() {
     final MutableDouble d = new MutableDouble(1.5);
     final MutableDouble clone = d.deepCopy();
+    assertNotSame(d, clone);
     assertEquals(d, clone);
   }
 
