@@ -20,6 +20,7 @@
 package jmona.impl.selection;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -31,6 +32,8 @@ import jmona.SelectionException;
 import jmona.functional.Functional;
 import jmona.functional.Range;
 import jmona.random.RandomUtils;
+
+import org.apache.log4j.Logger;
 
 /**
  * An implementation of stochastic universal sampling, which simultaneously
@@ -52,6 +55,10 @@ import jmona.random.RandomUtils;
  */
 public class StochasticUniversalSampling<T> implements
     MultipleSelectionFunction<T> {
+
+  /** The Logger for this class. */
+  private static final transient Logger LOG = Logger
+      .getLogger(StochasticUniversalSampling.class);
 
   /**
    * Selects the specified number of individuals, with each being selected a
@@ -83,58 +90,91 @@ public class StochasticUniversalSampling<T> implements
     }
 
     // create the list which will contain the chosen individuals
-    List<T> result = new ArrayList<T>();
+    final List<T> result = new ArrayList<T>();
 
-    // get the sum of all fitnesses
-    final double fitnessesSum = Functional.sumDouble(fitnesses.values());
-
-    // if no individual has any fitness, just return random ones
-    if (fitnessesSum == 0.0) {
-      for (final int i : new Range(numberToSelect)) {
-        result.add(RandomUtils.choice(fitnesses.keySet()));
-      }
+    // if the number to select is zero, return an empty list
+    if (numberToSelect == 0) {
       return result;
     }
 
+    @SuppressWarnings("unchecked")
+    final T[] individualsInOrder = (T[]) fitnesses.keySet().toArray();
+    final double[] cumulativeFitnesses = new double[individualsInOrder.length];
+
     // create the map from individual to cumulative fitnesses
-    Map<T, Double> cumulativeFitnesses = new HashMap<T, Double>();
     double sum = 0;
-    for (final Entry<T, Double> entry : fitnesses.entrySet()) {
-      sum += entry.getValue();
-      cumulativeFitnesses.put(entry.getKey(), sum);
+    for (int i = 0; i < individualsInOrder.length; ++i) {
+      sum += fitnesses.get(individualsInOrder[i]);
+      cumulativeFitnesses[i] = sum;
+    }
+
+    // if no individual has any fitness, just return random ones
+    if (sum == 0.0) {
+      return RandomUtils.sampleWithReplacement(fitnesses.keySet(),
+          numberToSelect);
     }
 
     // create a list of numberToSelect pointers spaced evenly on the interval
     // [0, fitnessesSum)
-    double pointerWidth = fitnessesSum / numberToSelect;
-    double pointer = RandomUtils.nextDouble() * pointerWidth;
-    List<Double> pointers = new ArrayList<Double>();
+    final double pointerWidth = sum / numberToSelect;
+    final double pointer = RandomUtils.nextDouble() * pointerWidth;
+    final double[] pointers = new double[numberToSelect];
     for (final int i : new Range(numberToSelect)) {
-      pointers.add((i * pointerWidth) + pointer);
+      pointers[i] = (i * pointerWidth) + pointer;
     }
 
     // get an iterator over the pointers and the cumulative fitnesses map
-    final Iterator<Double> pointerIterator = pointers.iterator();
-    final Iterator<Entry<T, Double>> cumulativeFitnessesIterator = cumulativeFitnesses
-        .entrySet().iterator();
+    // final Iterator<Double> pointerIterator = pointers.iterator();
+    // final Iterator<Entry<T, Double>> cumulativeFitnessesIterator =
+    // cumulativeFitnesses
+    // .entrySet().iterator();
 
-    // simultaneously iterate over using these two iterators, finding each of
-    // the selected individuals and adding them to the result list
-    double currentPointer = pointerIterator.next();
-    Entry<T, Double> currentEntry = cumulativeFitnessesIterator.next();
-    while (result.size() < numberToSelect && pointerIterator.hasNext()
-        && cumulativeFitnessesIterator.hasNext()) {
+    // if either of the iterators is empty, something is wrong
+    // if (!pointerIterator.hasNext()) {
+    // throw new SelectionException(
+    // "Iterator over random pointers (arms on the roulette wheel) is empty.");
+    // }
 
-      // if the current pointer is less than the value of the current entry,
-      // then add it to the result list and move the pointer to the next value
-      if (currentPointer < currentEntry.getValue()) {
-        result.add(currentEntry.getKey());
-        currentPointer = pointerIterator.next();
+    // if (!cumulativeFitnessesIterator.hasNext()) {
+    // throw new SelectionException(
+    // "Iterator over cumulative fitnesses (regions on the roulette wheel) is empty.");
+    // }
+
+    // simultaneously iterate over pointers and cumulative fitnesses
+    int pointersIndex = 0;
+    int individualsIndex = 0;
+    double currentPointer = pointers[pointersIndex];
+    double currentExtent = cumulativeFitnesses[individualsIndex];
+    while (result.size() < numberToSelect) {
+      // if the current pointer is less than the current cumulative fitness
+      if (currentPointer < currentExtent) {
+
+        // add individual with the current cumulative fitness to the result
+        result.add(individualsInOrder[individualsIndex]);
+
+        // increment the pointer which will be examined next time around
+        ++pointersIndex;
+
+        // if that was the last pointer, break out of the loop
+        if (pointersIndex >= pointers.length) {
+          break;
+        }
+
+        // otherwise, get the value of the next pointer
+        currentPointer = pointers[pointersIndex];
+
       } else {
-        // otherwise, look at the next individual/cumulative fitness entry
-        currentEntry = cumulativeFitnessesIterator.next();
-      }
+        // otherwise, look at the next individual
+        ++individualsIndex;
 
+        // if that was the last individual, break out of the loop
+        if (individualsIndex >= cumulativeFitnesses.length) {
+          break;
+        }
+
+        // otherwise get the next cumulative fitness value
+        currentExtent = cumulativeFitnesses[individualsIndex];
+      }
     }
 
     if (result.size() != numberToSelect) {
