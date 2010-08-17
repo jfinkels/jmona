@@ -27,7 +27,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jmona.FitnessFunction;
 import jmona.functional.Range;
 import jmona.impl.example.ExampleIndividual;
 
@@ -66,8 +65,8 @@ public class FitnessProportionateSelectionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.FitnessProportionateSelection#select(List, FitnessFunction)}
-   * on individuals of equal weights.
+   * {@link jmona.impl.selection.FitnessProportionateSelection#select(List)} on
+   * individuals of equal weights.
    */
   @Test
   public void testEqualWeightSelect() {
@@ -116,7 +115,7 @@ public class FitnessProportionateSelectionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.FitnessProportionateSelection#select(List, FitnessFunction)}
+   * {@link jmona.impl.selection.FitnessProportionateSelection#select(List)}
    * with a fitnesses map with no elements.
    */
   @Test
@@ -126,8 +125,8 @@ public class FitnessProportionateSelectionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.FitnessProportionateSelection#select(List, FitnessFunction)}
-   * on individuals of unequal weight.
+   * {@link jmona.impl.selection.FitnessProportionateSelection#select(List)} on
+   * individuals of unequal weight.
    */
   @Test
   public void testUnequalWeightSelect() {
