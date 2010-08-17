@@ -1,5 +1,5 @@
 /**
- * MutableByte.java
+ * MutableLong.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -22,22 +22,23 @@ package jmona.impl.mutable;
 import jmona.DeepCopyable;
 
 /**
- * A deep-copyable, mutable byte wrapper.
+ * A deep-copyable, mutable long wrapper.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class MutableByte extends org.apache.commons.lang3.mutable.MutableByte
-    implements DeepCopyable<MutableByte> {
+public class MutableLong extends
+    org.apache.commons.lang3.mutable.MutableLong implements
+    DeepCopyable<MutableLong> {
 
   /** Default generated serial version UID. */
-  private static final long serialVersionUID = 7939210268935242142L;
+  private static final long serialVersionUID = -270777759872744946L;
 
   /**
    * Instantiates this object by calling the default constructor of the
    * superclass.
    */
-  public MutableByte() {
+  public MutableLong() {
     // intentionally unimplemented
   }
 
@@ -47,7 +48,7 @@ public class MutableByte extends org.apache.commons.lang3.mutable.MutableByte
    * @param initialValue
    *          The initial value of this object.
    */
-  public MutableByte(final byte initialValue) {
+  public MutableLong(final long initialValue) {
     super(initialValue);
   }
 
@@ -57,7 +58,7 @@ public class MutableByte extends org.apache.commons.lang3.mutable.MutableByte
    * @param initialValue
    *          The initial value of this object.
    */
-  public MutableByte(final Number initialValue) {
+  public MutableLong(final Number initialValue) {
     super(initialValue);
   }
 
@@ -68,8 +69,8 @@ public class MutableByte extends org.apache.commons.lang3.mutable.MutableByte
    * @see jmona.DeepCopyable#deepCopy()
    */
   @Override
-  public MutableByte deepCopy() {
-    return new MutableByte(this);
+  public MutableLong deepCopy() {
+    return new MutableLong(this);
   }
 
 }

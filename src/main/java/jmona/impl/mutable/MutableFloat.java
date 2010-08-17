@@ -1,5 +1,5 @@
 /**
- * MutableByte.java
+ * MutableFloat.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -14,7 +14,7 @@
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
  * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  * 
- * You should have received a copy of the GNU General Public License along with
+ * You should have received a copy of the GNU General Public License afloat with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 package jmona.impl.mutable;
@@ -22,22 +22,23 @@ package jmona.impl.mutable;
 import jmona.DeepCopyable;
 
 /**
- * A deep-copyable, mutable byte wrapper.
+ * A deep-copyable, mutable float wrapper.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class MutableByte extends org.apache.commons.lang3.mutable.MutableByte
-    implements DeepCopyable<MutableByte> {
+public class MutableFloat extends
+    org.apache.commons.lang3.mutable.MutableFloat implements
+    DeepCopyable<MutableFloat> {
 
   /** Default generated serial version UID. */
-  private static final long serialVersionUID = 7939210268935242142L;
+  private static final long serialVersionUID = -2646506100049786381L;
 
   /**
    * Instantiates this object by calling the default constructor of the
    * superclass.
    */
-  public MutableByte() {
+  public MutableFloat() {
     // intentionally unimplemented
   }
 
@@ -47,7 +48,7 @@ public class MutableByte extends org.apache.commons.lang3.mutable.MutableByte
    * @param initialValue
    *          The initial value of this object.
    */
-  public MutableByte(final byte initialValue) {
+  public MutableFloat(final float initialValue) {
     super(initialValue);
   }
 
@@ -57,7 +58,7 @@ public class MutableByte extends org.apache.commons.lang3.mutable.MutableByte
    * @param initialValue
    *          The initial value of this object.
    */
-  public MutableByte(final Number initialValue) {
+  public MutableFloat(final Number initialValue) {
     super(initialValue);
   }
 
@@ -68,8 +69,8 @@ public class MutableByte extends org.apache.commons.lang3.mutable.MutableByte
    * @see jmona.DeepCopyable#deepCopy()
    */
   @Override
-  public MutableByte deepCopy() {
-    return new MutableByte(this);
+  public MutableFloat deepCopy() {
+    return new MutableFloat(this);
   }
 
 }

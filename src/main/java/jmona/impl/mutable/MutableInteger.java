@@ -31,7 +31,7 @@ public class MutableInteger extends org.apache.commons.lang3.mutable.MutableInt
     implements DeepCopyable<MutableInteger> {
 
   /** Default generated serial version UID. */
-  private static final long serialVersionUID = 1066843948828325412L;
+  private static final long serialVersionUID = 8395046045923593442L;
 
   /**
    * Instantiates this object by calling the default constructor of the

@@ -32,7 +32,7 @@ public class MutableDouble extends
     DeepCopyable<MutableDouble> {
 
   /** Default generated serial version UID. */
-  private static final long serialVersionUID = 1066843948828325412L;
+  private static final long serialVersionUID = -6697013927461746246L;
 
   /**
    * Instantiates this object by calling the default constructor of the
