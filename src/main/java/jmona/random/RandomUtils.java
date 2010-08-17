@@ -19,6 +19,7 @@
  */
 package jmona.random;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -77,8 +78,8 @@ public final class RandomUtils {
 
   /**
    * Returns a uniformly random {@code double} between 0 and 1, exclusive (this
-   * is a convenience method for {@code
-   * RandomData.randomData().nextUniform(0,1)}).
+   * is a convenience method for
+   * {@code RandomData.randomData().nextUniform(0,1)}).
    * 
    * @return A uniformly random {@code double} between 0 and 1, exclusive.
    */
@@ -96,8 +97,11 @@ public final class RandomUtils {
   }
 
   /**
-   * Choose a random sublist from the specified collection with uniform
-   * distribution without replacement.
+   * Choose with uniform distribution (without replacement) a random subset
+   * (returned as a List) from the specified collection.
+   * 
+   * For a sample <em>with</em> replacement, see the
+   * {@link #sampleWithReplacement(Collection, int)} method.
    * 
    * @param <T>
    *          The type of element in the collection from which to choose.
@@ -113,6 +117,33 @@ public final class RandomUtils {
       final int numberToChoose) {
     return Arrays.asList((T[]) randomData
         .nextSample(collection, numberToChoose));
+  }
+
+  /**
+   * Choose with uniform distribution (with replacement) a random subset
+   * (returned as a List) from the specified collection.
+   * 
+   * For a sample <em>without</em> replacement, see the
+   * {@link #sample(Collection, int)} method.
+   * 
+   * @param <T>
+   *          The type of element in the collection from which to choose.
+   * @param collection
+   *          The collection from which to choose a sublist.
+   * @param numberToChoose
+   *          The number of elements to choose from the specified collection.
+   * @return A sublist of the requested size of elements chosen randomly from
+   *         the specified collection without repeats.
+   */
+  public static <T> List<T> sampleWithReplacement(
+      final Collection<T> collection, final int numberToChoose) {
+    final List<T> result = new ArrayList<T>();
+
+    for (int i = 0; i < numberToChoose; ++i) {
+      result.add(choice(collection));
+    }
+
+    return result;
   }
 
   /**

@@ -31,6 +31,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import jmona.functional.Range;
+import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -112,36 +113,117 @@ public class RandomUtilsTester {
     final List<Object> list = new Vector<Object>();
     final Object o1 = new Object();
     final Object o2 = new Object();
-    
+
     list.add(o1);
     list.add(o2);
-    
+
     List<Object> sample = RandomUtils.sample(list, list.size());
-    
+
     assertEquals(list.size(), sample.size());
-    
+
     for (final Object o : sample) {
       assertTrue(list.contains(o));
     }
-    
+
     int count1 = 0;
     int count2 = 0;
     for (final int i : new Range(NUM_TESTS)) {
       sample = RandomUtils.sample(list, 1);
       assertEquals(1, sample.size());
-      
+
       if (sample.get(0).equals(o1)) {
         count1 += 1;
       } else {
         count2 += 1;
       }
     }
-    
+
     final int expected = NUM_TESTS / 2;
     final double delta = expected * 0.1;
-    
+
     assertEquals(expected, count1, delta);
     assertEquals(expected, count2, delta);
+
+    count1 = 0;
+    count2 = 0;
+    for (final int i : new Range(NUM_TESTS)) {
+      sample = RandomUtils.sample(list, 2);
+
+      assertEquals(2, sample.size());
+
+      if (sample.get(0).equals(o1)) {
+        count1 += 1;
+      } else {
+        count2 += 1;
+      }
+
+      if (sample.get(1).equals(o2)) {
+        count2 += 1;
+      } else {
+        count1 += 1;
+      }
+    }
+
+    assertEquals(count1, count2);
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.random.RandomUtils#sampleWithReplacement(java.util.Collection, int)}
+   * .
+   */
+  @Test
+  public void testSampleWithReplacement() {
+    final List<Object> list = new Vector<Object>();
+    final Object o1 = new Object();
+    final Object o2 = new Object();
+
+    list.add(o1);
+    list.add(o2);
+
+    List<Object> sample = RandomUtils.sampleWithReplacement(list, list.size());
+
+    assertEquals(list.size(), sample.size());
+
+    for (final Object o : sample) {
+      assertTrue(list.contains(o));
+    }
+
+    int count1 = 0;
+    int count2 = 0;
+    for (final int i : new Range(NUM_TESTS)) {
+      sample = RandomUtils.sampleWithReplacement(list, 1);
+      assertEquals(1, sample.size());
+
+      if (sample.get(0).equals(o1)) {
+        count1 += 1;
+      } else {
+        count2 += 1;
+      }
+    }
+
+    final int expected = NUM_TESTS / 2;
+    final double delta = expected * 0.1;
+
+    assertEquals(expected, count1, delta);
+    assertEquals(expected, count2, delta);
+    
+    final Map<Object, Integer> counts = new HashMap<Object, Integer>();
+    counts.put(o1, 0);
+    counts.put(o2, 0);
+    for (final int i : new Range(NUM_TESTS)) {
+      sample = RandomUtils.sampleWithReplacement(list, 2);
+      
+      assertEquals(2, sample.size());
+      
+      final Map<Object, Integer> newCounts = Util.count(sample);
+      for (final Object object : newCounts.keySet()) {
+        counts.put(object, counts.get(object) + newCounts.get(object));
+      }
+    }
+
+    final double delta2 = NUM_TESTS * 0.1;
+    assertEquals(counts.get(o1), counts.get(o2), delta2);
   }
 
   /**
