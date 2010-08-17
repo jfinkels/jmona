@@ -19,7 +19,9 @@
  */
 package jmona.test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import jmona.functional.Range;
@@ -106,6 +108,36 @@ public class Util {
     }
 
     return true;
+  }
+
+  /**
+   * Returns a map from object to the number of times that object appeared in
+   * the specified Iterable.
+   * 
+   * Every value in the returned map is an positive Integer (that is, greater
+   * than 0).
+   * 
+   * @param <T>
+   *          The type of object to count.
+   * @param iterable
+   *          An Iterable containing the objects to count.
+   * @return A Map from objects of type T to the number of times they appeared
+   *         in the specified iterable.
+   */
+  public static <T> Map<T, Integer> count(final Iterable<T> iterable) {
+    final Map<T, Integer> result = new HashMap<T, Integer>();
+
+    for (final T object : iterable) {
+
+      int newCount = 1;
+      if (result.containsKey(object)) {
+        newCount = result.get(object) + 1;
+      }
+
+      result.put(object, newCount);
+    }
+
+    return result;
   }
 
   /**
