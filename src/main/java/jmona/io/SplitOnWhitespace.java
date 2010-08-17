@@ -22,16 +22,26 @@ package jmona.io;
 import jmona.Function;
 
 /**
+ * Splits a string on whitespace characters (similar to Python's built-in <a
+ * href
+ * ="http://docs.python.org/library/stdtypes.html#str.split">string.split()</a>
+ * method, when called with no arguments).
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
 public class SplitOnWhitespace implements Function<String, String[]> {
+
   /** A regular expression matching any whitespace character. */
   public static final String WHITESPACE = "\\s+";
 
-  /*
-   * (non-Javadoc)
+  /**
+   * Returns an array of words in the specified input String, split on
+   * whitespace.
    * 
+   * @param input
+   *          The String to split on whitespace.
+   * @return The words of the specified input String split on whitespace.
    * @see jmona.Function#execute(java.lang.Object)
    */
   @Override
