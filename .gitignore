@@ -8,6 +8,9 @@
 # ignore the build output directory
 target
 
+# ignore buildr reports directory
+reports
+
 # ignore temporary files
 \#*
 *~
