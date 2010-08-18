@@ -21,7 +21,8 @@
     <dependency> <!-- Apache Commons lang, for mutable primitive wrappers -->
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>${version.dependency.lang}</version>
+      <!-- <version>${version.dependency.lang}</version> -->
+      <version>3.0-20100727.144948-1</version>
       <scope>compile</scope>
       <type>jar</type>
     </dependency>
