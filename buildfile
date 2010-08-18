@@ -9,7 +9,7 @@ define 'jmona' do
   project.group = 'jmona'
   project.version = '0.5-SNAPSHOT'
   compile.with \
-  'log4j:log4j:jar:1.2.14',
+  'log4j:log4j:jar:1.2.16',
   'net.sf.jopt-simple:jopt-simple:jar:3.2',
   'org.apache.commons:commons-lang3:jar:3.0-SNAPSHOT',
   'org.apache.commons:commons-math:jar:2.1',
