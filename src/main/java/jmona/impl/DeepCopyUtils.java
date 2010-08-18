@@ -54,7 +54,7 @@ public final class DeepCopyUtils {
     final List<E> result = new Vector<E>();
 
     for (final E element : iterable) {
-      result.add((E) element.deepCopy());
+      result.add(element.deepCopy());
     }
 
     return result;

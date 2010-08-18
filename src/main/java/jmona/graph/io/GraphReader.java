@@ -137,7 +137,7 @@ public class GraphReader {
       MappingException, MetricException {
 
     LOG.debug("Reading from file " + file);
-    
+
     // get all lines, split on whitespace
     final List<String[]> allLines = Functional.map(new SplitOnWhitespace(),
         LineReader.readLines(file));
@@ -154,8 +154,7 @@ public class GraphReader {
       final String key = line[0];
 
       // get the remaining words in the line
-      final String[] remaining = (String[]) ArrayUtils.slice(line, 1,
-          line.length);
+      final String[] remaining = ArrayUtils.slice(line, 1, line.length);
 
       // if we have reached the "node coordinates" section of the file
       if (nodeCoordSection) {
