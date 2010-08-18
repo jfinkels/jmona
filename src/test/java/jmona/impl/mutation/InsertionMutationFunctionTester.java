@@ -54,7 +54,7 @@ public class InsertionMutationFunctionTester extends
   @Override
   public void testMutate() {
     for (final int j : new Range(NUM_TESTS)) {
-      System.out.println("test " + j);
+      
       this.setUp();
 
       try {
@@ -84,10 +84,6 @@ public class InsertionMutationFunctionTester extends
         }
       }
       
-      System.out.println(this.list());
-      System.out.println("first change: " + firstChange);
-      System.out.println("last change: " + lastChange);
-
       // TODO check the case of final element being moved
 
       // if an element was moved to a location previous to its original location
@@ -114,8 +110,6 @@ public class InsertionMutationFunctionTester extends
       // before: 0 1 2 3 4 5 6 7 8 9 10 11 12
       // after : 0 1 2 3 4 6 7 8 9 10 5 11 12
       if (this.list().get(firstChange).intValue() == firstChange + 1) {
-        System.out.println("first change: " + firstChange);
-        System.out.println("value of last change: " + this.list().get(lastChange));
         assertEquals(firstChange, this.list().get(lastChange).intValue());
 
         for (final int i : new Range(firstChange, lastChange)) {
