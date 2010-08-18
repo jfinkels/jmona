@@ -32,7 +32,7 @@ import org.junit.Test;
 /**
  * Test class for the SingleElementwiseMutationFunction class.
  * 
- * @author jfinke02
+ * @author Jeffrey Finkelstein
  * @since 0.5
  */
 public class SingleElementwiseMutationFunctionTester {
