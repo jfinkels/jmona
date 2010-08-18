@@ -31,10 +31,11 @@ import jmona.test.Util;
 
 import org.junit.After;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Test class for an evolution of the Mona example.
@@ -43,7 +44,8 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * @since 0.1
  */
 @ContextConfiguration
-public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
+@RunWith(SpringJUnit4ClassRunner.class)
+public class MonaEvolutionTester {
 
   /**
    * Get the completion criteria for this evolution from the Spring XML

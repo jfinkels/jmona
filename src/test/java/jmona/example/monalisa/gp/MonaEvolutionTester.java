@@ -33,10 +33,11 @@ import jmona.test.Util;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Test class for the Mona genetic programming example for matching an image
@@ -46,19 +47,16 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * @since 0.1
  */
 @ContextConfiguration
-public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
+@RunWith(SpringJUnit4ClassRunner.class)
+public class MonaEvolutionTester {
 
   /**
    * The file to which to write the best individual at the end of the evolution.
    */
   public static final String FILENAME = "target/mona.png";
-  /** The ID of the bean containing the height of the image. */
-  public static final String HEIGHT_BEAN = "height";
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger
       .getLogger(MonaEvolutionTester.class);
-  /** The ID of the bean containing the width of the image. */
-  public static final String WIDTH_BEAN = "width";
   /**
    * Get the completion criteria for this evolution from the Spring XML
    * configuration file.
@@ -68,6 +66,14 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
   private PopulationEvolutionContext<Tree> context = null;
+
+  /** The height of the image. */
+  @Autowired
+  private Integer height = null;
+
+  /** The width of the image. */
+  @Autowired
+  private Integer width = null;
 
   /** Test the evolution. */
   @Test
@@ -85,15 +91,11 @@ public class MonaEvolutionTester extends AbstractJUnit4SpringContextTests {
       Util.fail(exception);
     }
 
-    // could not autowire because spring could distinguish between these 2 beans
-    final int width = (Integer) this.applicationContext.getBean(WIDTH_BEAN);
-    final int height = (Integer) this.applicationContext.getBean(HEIGHT_BEAN);
-
     try {
       final Tree individual = this.context.currentPopulation().get(0);
       final ColoredPolygonNode root = (ColoredPolygonNode) individual.root();
-      final RenderedImage image = Converter.toImage(root.evaluate(), width,
-          height);
+      final RenderedImage image = Converter.toImage(root.evaluate(),
+          this.width, this.height);
       ImageWriter.writeImage(image, FILENAME);
     } catch (final IOException exception) {
       Util.fail(exception);

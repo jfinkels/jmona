@@ -30,10 +30,11 @@ import jmona.test.Util;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Test class for the ant colony optimization for the traveling salesman
@@ -43,8 +44,8 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  * @since 0.5
  */
 @ContextConfiguration
-public class TSPAntColonyEvolutionTester extends
-    AbstractJUnit4SpringContextTests {
+@RunWith(SpringJUnit4ClassRunner.class)
+public class TSPAntColonyEvolutionTester {
   /** The Logger for this class. */
   private static final transient Logger LOG = Logger
       .getLogger(TSPAntColonyEvolutionTester.class);
