@@ -22,4 +22,6 @@ define 'jmona' do
   compile.options.target = 1.6
   compile.options.warnings = true
   package :jar, :id => 'jmona'
+  #package :sources
+  #package :javadoc
 end
