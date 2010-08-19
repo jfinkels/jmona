@@ -19,8 +19,8 @@
  */
 package jmona.impl.mutation;
 
-import jmona.DeepCopyable;
-import jmona.DeepCopyableList;
+import java.util.List;
+
 import jmona.random.RandomUtils;
 
 /**
@@ -32,8 +32,8 @@ import jmona.random.RandomUtils;
  *          The type of element in the List to reinsert.
  * @since 0.4
  */
-public class InsertionMutationFunction<E extends DeepCopyable<E>> implements
-    OrderedListMutationFunction<E> {
+public class InsertionMutationFunction<E, L extends List<E>> implements
+    OrderedListMutationFunction<E, L> {
 
   /**
    * Choose an element in the specified List at random and move it to a new
@@ -44,7 +44,7 @@ public class InsertionMutationFunction<E extends DeepCopyable<E>> implements
    * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
-  public void mutate(final DeepCopyableList<E> list) {
+  public void mutate(final L list) {
     // choose a random index of a city to remove from the tour
     final int source = RandomUtils.randomData().nextInt(0, list.size() - 1);
 

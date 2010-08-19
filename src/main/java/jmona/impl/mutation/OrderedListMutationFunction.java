@@ -19,7 +19,7 @@
  */
 package jmona.impl.mutation;
 
-import jmona.DeepCopyable;
+import java.util.List;
 
 /**
  * A ListMutationFunction in which the order of individual elements in the list
@@ -30,7 +30,7 @@ import jmona.DeepCopyable;
  *          The type of element in the Lists to mutate.
  * @since 0.4
  */
-public interface OrderedListMutationFunction<E extends DeepCopyable<E>> extends
-    ListMutationFunction<E> {
+public interface OrderedListMutationFunction<E, L extends List<E>> extends
+    ListMutationFunction<E, L> {
 
 }

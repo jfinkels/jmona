@@ -19,8 +19,8 @@
  */
 package jmona.impl.mutation;
 
-import jmona.DeepCopyable;
-import jmona.DeepCopyableList;
+import java.util.List;
+
 import jmona.MutationException;
 import jmona.functional.Range;
 import jmona.random.RandomUtils;
@@ -29,9 +29,9 @@ import jmona.random.RandomUtils;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class VariableDistributionMutationFunction<E extends DeepCopyable<E>>
-    extends ElementwiseMutationFunction<E> implements
-    OrderedListMutationFunction<E> {
+public class VariableDistributionMutationFunction<E, L extends List<E>> extends
+    ElementwiseMutationFunction<E, L> implements
+    OrderedListMutationFunction<E, L> {
 
   private double[] distribution = null;
 
@@ -45,7 +45,7 @@ public class VariableDistributionMutationFunction<E extends DeepCopyable<E>>
    * @see jmona.MutationFunction#mutate(java.lang.Object)
    */
   @Override
-  public void mutate(final DeepCopyableList<E> list) throws MutationException {
+  public void mutate(final L list) throws MutationException {
     if (this.distribution == null) {
       throw new MutationException(
           "Probability distribution has not been set; must call setDistribution() before mutate().");

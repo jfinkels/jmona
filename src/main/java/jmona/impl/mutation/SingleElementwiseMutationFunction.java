@@ -19,8 +19,8 @@
  */
 package jmona.impl.mutation;
 
-import jmona.DeepCopyable;
-import jmona.DeepCopyableList;
+import java.util.List;
+
 import jmona.MutationException;
 import jmona.random.RandomUtils;
 
@@ -36,8 +36,8 @@ import jmona.random.RandomUtils;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class SingleElementwiseMutationFunction<E extends DeepCopyable<E>>
-    extends ElementwiseMutationFunction<E> {
+public class SingleElementwiseMutationFunction<E, L extends List<E>> extends
+    ElementwiseMutationFunction<E, L> {
 
   /**
    * Mutate a random element in the specified List.
@@ -50,7 +50,7 @@ public class SingleElementwiseMutationFunction<E extends DeepCopyable<E>>
    * @see jmona.MutationFunction#mutate(Object)
    */
   @Override
-  public void mutate(final DeepCopyableList<E> list) throws MutationException {
+  public void mutate(final L list) throws MutationException {
     if (this.elementMutationFunction() == null) {
       throw new MutationException(
           "No ListElementMutationFunction has been set.");

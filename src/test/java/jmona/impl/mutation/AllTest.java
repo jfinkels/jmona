@@ -35,7 +35,11 @@ import org.junit.runners.Suite.SuiteClasses;
     ElementwiseMutationFunctionTester.class,
     IdentityMutationFunctionTester.class,
     InsertionMutationFunctionTester.class,
-    InversionMutationFunctionTester.class, SwapMutationFunctionTester.class })
+    InversionMutationFunctionTester.class,
+    SingleElementwiseMutationFunctionTester.class,
+    SwapMutationFunctionTester.class,
+    UniformDistributionMutationFunctionTester.class,
+    VariableDistributionMutationFunctionTester.class })
 public class AllTest {
 
 }

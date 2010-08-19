@@ -19,11 +19,10 @@
  */
 package jmona.impl.mutation;
 
-import java.util.Arrays;
+import java.util.List;
 
-import jmona.DeepCopyable;
-import jmona.DeepCopyableList;
 import jmona.MutationException;
+import jmona.random.RandomUtils;
 
 /**
  * Mutates each element in a list with probability equal to
@@ -39,25 +38,28 @@ import jmona.MutationException;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class UniformDistributionMutationFunction<E extends DeepCopyable<E>>
-    extends VariableDistributionMutationFunction<E> {
+public class UniformDistributionMutationFunction<E, L extends List<E>> extends
+    ElementwiseMutationFunction<E, L> {
 
-  /*
-   * (non-Javadoc)
+  /**
+   * Mutates each element in the specified list with probability
+   * <em>1 / list.size()</em>.
+   * 
+   * Iterates over each element in the list, checking if that element should be
+   * mutated according to the probability.
    * 
    * @see jmona.MutationFunction#mutate(java.lang.Object)
    */
   @Override
-  public void mutate(final DeepCopyableList<E> list) throws MutationException {
-    // the probability distribution is uniform for each element in the list
-    final double[] probabilities = new double[list.size()];
-    Arrays.fill(probabilities, 1.0 / list.size());
+  public void mutate(final L list) throws MutationException {
+    // the probability that each element in the list will be mutated
+    final double probability = 1.0 / list.size();
 
-    // set the probability distribution on this object
-    this.setDistribution(probabilities);
-
-    // call the mutate() method of the superclass
-    super.mutate(list);
+    for (final E object : list) {
+      if (RandomUtils.nextDouble() < probability) {
+        this.elementMutationFunction().mutate(object);
+      }
+    }
   }
 
 }

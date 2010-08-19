@@ -19,7 +19,8 @@
  */
 package jmona.impl.mutation;
 
-import jmona.DeepCopyable;
+import java.util.List;
+
 import jmona.MutationFunction;
 
 /**
@@ -34,8 +35,8 @@ import jmona.MutationFunction;
  *          The type of element contained in the List to mutate.
  * @since 0.1
  */
-public abstract class ElementwiseMutationFunction<E extends DeepCopyable<E>>
-    implements ListMutationFunction<E> {
+public abstract class ElementwiseMutationFunction<E, L extends List<E>>
+    implements ListMutationFunction<E, L> {
 
   /** The mutation function on elements of the List. */
   private MutationFunction<E> elementMutationFunction = null;

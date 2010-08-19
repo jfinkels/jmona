@@ -43,7 +43,7 @@ public class SwapMutationFunctionTester extends
 
   /** Instantiate this test class with access to a SwapMutationFunction. */
   public SwapMutationFunctionTester() {
-    super(new SwapMutationFunction<MutableInteger>());
+    super(new SwapMutationFunction<MutableInteger, List<MutableInteger>>());
   }
 
   /**

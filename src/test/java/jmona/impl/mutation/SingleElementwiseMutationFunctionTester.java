@@ -20,6 +20,9 @@
 package jmona.impl.mutation;
 
 import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+
 import jmona.DeepCopyableList;
 import jmona.MutationException;
 import jmona.impl.DeepCopyableVector;
@@ -47,7 +50,7 @@ public class SingleElementwiseMutationFunctionTester {
    */
   @Test
   public void testMutate() {
-    final SingleElementwiseMutationFunction<ExampleIndividual> function = new SingleElementwiseMutationFunction<ExampleIndividual>();
+    final SingleElementwiseMutationFunction<ExampleIndividual, List<ExampleIndividual>> function = new SingleElementwiseMutationFunction<ExampleIndividual, List<ExampleIndividual>>();
     function.setElementMutationFunction(new ExampleMutationFunction());
     final DeepCopyableList<ExampleIndividual> list = new DeepCopyableVector<ExampleIndividual>();
     list.add(new ExampleIndividual(1));

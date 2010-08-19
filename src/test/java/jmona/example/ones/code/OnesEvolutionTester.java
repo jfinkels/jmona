@@ -87,7 +87,7 @@ public class OnesEvolutionTester {
     } catch (final FitnessException exception) {
       Util.fail(exception);
     }
-    final SingleElementwiseMutationFunction<MutableByte> mutationFunction = new SingleElementwiseMutationFunction<MutableByte>();
+    final SingleElementwiseMutationFunction<MutableByte, DeepCopyableList<MutableByte>> mutationFunction = new SingleElementwiseMutationFunction<MutableByte, DeepCopyableList<MutableByte>>();
     mutationFunction.setElementMutationFunction(new BitFlipMutationFunction());
     context.setMutationFunction(mutationFunction);
     context

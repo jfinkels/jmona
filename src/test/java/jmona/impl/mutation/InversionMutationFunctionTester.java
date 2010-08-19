@@ -45,7 +45,7 @@ public class InversionMutationFunctionTester extends
    * Instantiate this test class with access to an InversionMutationFunction.
    */
   public InversionMutationFunctionTester() {
-    super(new InversionMutationFunction<MutableInteger>());
+    super(new InversionMutationFunction<MutableInteger, List<MutableInteger>>());
   }
 
   /**

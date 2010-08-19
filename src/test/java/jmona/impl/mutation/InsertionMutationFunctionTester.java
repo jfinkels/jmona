@@ -43,7 +43,7 @@ public class InsertionMutationFunctionTester extends
 
   /** Instantiate this test class with access to an InsertionMutationFunction. */
   public InsertionMutationFunctionTester() {
-    super(new InsertionMutationFunction<MutableInteger>());
+    super(new InsertionMutationFunction<MutableInteger, List<MutableInteger>>());
   }
 
   /**

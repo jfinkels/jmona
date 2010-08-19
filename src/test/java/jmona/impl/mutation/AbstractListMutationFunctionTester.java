@@ -19,10 +19,11 @@
  */
 package jmona.impl.mutation;
 
-import jmona.DeepCopyableList;
+import java.util.List;
+import java.util.Vector;
+
 import jmona.MutationFunction;
 import jmona.functional.Range;
-import jmona.impl.DeepCopyableVector;
 import jmona.impl.mutable.MutableInteger;
 
 import org.junit.Before;
@@ -40,9 +41,9 @@ public abstract class AbstractListMutationFunctionTester {
   /** The number of independent mutations to perform. */
   public static final int NUM_TESTS = 100;
   /** The function under test. */
-  private MutationFunction<DeepCopyableList<MutableInteger>> function = null;
+  private MutationFunction<List<MutableInteger>> function = null;
   /** The list to mutate. */
-  private DeepCopyableList<MutableInteger> list = null;
+  private List<MutableInteger> list = null;
 
   /**
    * Instantiate this test class with the specified MutationFunction.
@@ -51,7 +52,7 @@ public abstract class AbstractListMutationFunctionTester {
    *          The MutationFunction under test.
    */
   public AbstractListMutationFunctionTester(
-      final MutationFunction<DeepCopyableList<MutableInteger>> initialFunction) {
+      final MutationFunction<List<MutableInteger>> initialFunction) {
     this.function = initialFunction;
   }
 
@@ -60,14 +61,14 @@ public abstract class AbstractListMutationFunctionTester {
    * 
    * @return The MutationFunction under test in this class.
    */
-  public MutationFunction<DeepCopyableList<MutableInteger>> function() {
+  public MutationFunction<List<MutableInteger>> function() {
     return this.function;
   }
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.list = new DeepCopyableVector<MutableInteger>();
+    this.list = new Vector<MutableInteger>();
     for (final int i : new Range(LENGTH)) {
       this.list.add(new MutableInteger(i));
     }
@@ -84,7 +85,7 @@ public abstract class AbstractListMutationFunctionTester {
    * 
    * @return The list under test in this class.
    */
-  protected DeepCopyableList<MutableInteger> list() {
+  protected List<MutableInteger> list() {
     return this.list;
   }
 }

@@ -45,7 +45,8 @@ public class DisplacementMutationFunctionTester extends
    * Instantiate this test class with access to an DisplacementMutationFunction.
    */
   public DisplacementMutationFunctionTester() {
-    super(new DisplacementMutationFunction<MutableInteger>());
+    super(
+        new DisplacementMutationFunction<MutableInteger, List<MutableInteger>>());
   }
 
   /**
@@ -113,14 +114,14 @@ public class DisplacementMutationFunctionTester extends
 
       // from the first change to the second change
       for (final int i : new Range(firstLength)) {
-        assertEquals(this.list().get(start).intValue() + i, this.list().get(
-            start + i).intValue());
+        assertEquals(this.list().get(start).intValue() + i,
+            this.list().get(start + i).intValue());
       }
 
       // from the second change to the end of the slices
       for (final int i : new Range(secondLength)) {
-        assertEquals(this.list().get(middle).intValue() + i, this.list().get(
-            middle + i).intValue());
+        assertEquals(this.list().get(middle).intValue() + i,
+            this.list().get(middle + i).intValue());
       }
 
       // from the end of the slices to the end of the list

@@ -19,8 +19,8 @@
  */
 package jmona.impl.mutation;
 
-import jmona.DeepCopyable;
-import jmona.DeepCopyableList;
+import java.util.List;
+
 import jmona.MutationFunction;
 
 /**
@@ -31,7 +31,7 @@ import jmona.MutationFunction;
  *          The type of element in the Lists to mutate.
  * @since 0.4
  */
-public interface ListMutationFunction<E extends DeepCopyable<E>> extends
-    MutationFunction<DeepCopyableList<E>> {
+public interface ListMutationFunction<E, L extends List<E>> extends
+    MutationFunction<L> {
 
 }

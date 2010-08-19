@@ -21,6 +21,9 @@ package jmona.impl.mutation;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
+
+import java.util.List;
+
 import jmona.DeepCopyableList;
 import jmona.MutationFunction;
 import jmona.impl.example.ExampleIndividual;
@@ -46,9 +49,9 @@ public class ElementwiseMutationFunctionTester {
    */
   @Test
   public void testSetElementMutationFunction() {
-    final ElementwiseMutationFunction<ExampleIndividual> function = new ElementwiseMutationFunction<ExampleIndividual>() {
+    final ElementwiseMutationFunction<ExampleIndividual, List<ExampleIndividual>> function = new ElementwiseMutationFunction<ExampleIndividual, List<ExampleIndividual>>() {
       @Override
-      public void mutate(final DeepCopyableList<ExampleIndividual> object) {
+      public void mutate(final List<ExampleIndividual> object) {
         // intentionally unimplemented
       }
     };
@@ -62,9 +65,9 @@ public class ElementwiseMutationFunctionTester {
    */
   @Test
   public void testElementMutationFunction() {
-    final ElementwiseMutationFunction<ExampleIndividual> function = new ElementwiseMutationFunction<ExampleIndividual>() {
+    final ElementwiseMutationFunction<ExampleIndividual, List<ExampleIndividual>> function = new ElementwiseMutationFunction<ExampleIndividual, List<ExampleIndividual>>() {
       @Override
-      public void mutate(final DeepCopyableList<ExampleIndividual> object) {
+      public void mutate(final List<ExampleIndividual> object) {
         // intentionally unimplemented
       }
     };
