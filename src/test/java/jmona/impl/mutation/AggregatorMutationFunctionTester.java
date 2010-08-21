@@ -41,23 +41,54 @@ import org.junit.Test;
  */
 public class AggregatorMutationFunctionTester {
 
-  class ExampleMutationFunction1 implements
+  /**
+   * A MutationFunction which increments
+   * {@link AggregatorMutationFunctionTester#mutations1}.
+   * 
+   * @author Jeffrey Finkelstein
+   * @since 0.5
+   */
+  private class ExampleMutationFunction1 implements
       MutationFunction<ExampleIndividual> {
+
+    /**
+     * Instantiates this class.
+     */
+    public ExampleMutationFunction1() {
+      // intentionally unimplemented; provided to avoid synthetic accessor
+      // emulation
+    }
 
     /**
      * Increments the counter for mutations1.
      * 
+     * @param individual
+     *          ignores this parameter.
      * @see jmona.MutationFunction#mutate(Object)
      */
     @Override
-    public void mutate(ExampleIndividual individual1) {
+    public void mutate(final ExampleIndividual individual) {
       AggregatorMutationFunctionTester.this.mutations1 += 1;
     }
 
   }
 
-  class ExampleMutationFunction2 implements
+  /**
+   * A MutationFunction which increments
+   * {@link AggregatorMutationFunctionTester#mutations2}.
+   * 
+   * @author Jeffrey Finkelstein
+   * @since 0.5
+   */
+  private class ExampleMutationFunction2 implements
       MutationFunction<ExampleIndividual> {
+    /**
+     * Instantiates this class.
+     */
+    public ExampleMutationFunction2() {
+      // intentionally unimplemented; provided to avoid synthetic accessor
+      // emulation
+    }
 
     /**
      * Increments the counter for mutations2.
@@ -65,7 +96,7 @@ public class AggregatorMutationFunctionTester {
      * @see jmona.MutationFunction#mutate(Object)
      */
     @Override
-    public void mutate(ExampleIndividual individual1){
+    public void mutate(ExampleIndividual individual1) {
       AggregatorMutationFunctionTester.this.mutations2 += 1;
     }
 
