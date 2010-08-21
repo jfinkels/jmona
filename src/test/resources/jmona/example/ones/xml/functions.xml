@@ -28,7 +28,7 @@
     <constructor-arg ref="geneLength" />
   </bean>
   <bean id="mutationFunction"
-    class="jmona.impl.mutation.BinaryStringMutationFunction" />
+    class="jmona.ga.impl.BinaryStringMutationFunction" />
   <bean id="selectionFunction" class="jmona.impl.selection.FitnessProportionateSelection" />
 
 </beans>
