@@ -55,7 +55,7 @@ public class Residue implements DeepCopyable<Residue> {
    * 
    * @return The type of this residue.
    */
-  public ResidueType getType() {
+  public ResidueType type() {
     return this.type;
   }
 
