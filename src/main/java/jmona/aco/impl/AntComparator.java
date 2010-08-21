@@ -19,6 +19,7 @@
  */
 package jmona.aco.impl;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 import jmona.aco.Ant;
@@ -34,8 +35,12 @@ import jmona.graph.impl.TourComparator;
  *          The type of Ant to compare.
  * @since 0.5
  */
-public class AntComparator<A extends Ant> implements Comparator<A> {
+public class AntComparator<A extends Ant> implements Comparator<A>,
+    Serializable {
 
+  /** Default generated serial version UID. */
+  private static final long serialVersionUID = -5424779888400377470L;
+  
   /** The comparator which compares distances of tours. */
   private final TourComparator tourComparator;
 
