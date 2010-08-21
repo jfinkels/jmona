@@ -48,20 +48,8 @@ public class AggregatorMutationFunctionTester {
    * @author Jeffrey Finkelstein
    * @since 0.5
    */
-<<<<<<< HEAD
   private class ExampleMutationFunction1 implements
       MutationFunction<ExampleIndividual> {
-=======
-  class ExampleMutationFunction1 implements MutationFunction<ExampleIndividual> {
-
-    /**
-     * Instantiates this class.
-     */
-    public ExampleMutationFunction1() {
-      // intentionally unimplemented; provided to avoid synthetic accessor
-      // emulation
-    }
->>>>>>> 70cbe55edf7ae6cb8975c5e08cc8a08f7451f34a
 
     /**
      * Instantiates this class.
@@ -92,12 +80,8 @@ public class AggregatorMutationFunctionTester {
    * @author Jeffrey Finkelstein
    * @since 0.5
    */
-<<<<<<< HEAD
   private class ExampleMutationFunction2 implements
       MutationFunction<ExampleIndividual> {
-=======
-  class ExampleMutationFunction2 implements MutationFunction<ExampleIndividual> {
->>>>>>> 70cbe55edf7ae6cb8975c5e08cc8a08f7451f34a
     /**
      * Instantiates this class.
      */
