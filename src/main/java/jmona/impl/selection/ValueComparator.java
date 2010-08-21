@@ -19,6 +19,7 @@
  */
 package jmona.impl.selection;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Map;
 
@@ -36,8 +37,11 @@ import jmona.ComparisonException;
  * @since 0.5
  */
 public class ValueComparator<K, V extends Comparable<V>> implements
-    Comparator<K> {
+    Comparator<K>, Serializable {
 
+  /** Default generated serial version UID. */
+  private static final long serialVersionUID = -1154427598107138792L;
+  
   /** The Map whose values are used to compare the keys. */
   private final Map<K, V> map;
 
