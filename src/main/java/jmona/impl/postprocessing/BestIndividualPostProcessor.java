@@ -48,6 +48,8 @@ public class BestIndividualPostProcessor<T extends DeepCopyable<T>> extends
    * 
    * @param context
    *          The EvolutionContext from which to get the most fit individual.
+   * @return A string representation of the most fit individual along with its
+   *         fitness.
    * @throws LoggingException
    *           If the specified EvolutionContext is not a
    *           GeneticEvolutionContext, or if there is a problem getting the

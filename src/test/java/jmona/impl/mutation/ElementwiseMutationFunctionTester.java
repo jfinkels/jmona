@@ -24,7 +24,6 @@ import static org.junit.Assert.assertSame;
 
 import java.util.List;
 
-import jmona.DeepCopyableList;
 import jmona.MutationFunction;
 import jmona.impl.example.ExampleIndividual;
 import jmona.impl.example.ExampleMutationFunction;

@@ -27,8 +27,6 @@ import jmona.SelectionException;
 import jmona.functional.Functional;
 import jmona.random.RandomUtils;
 
-import org.apache.log4j.Logger;
-
 /**
  * Fitness-proportionate selection, also known as "roulette wheel selection".
  * 
@@ -40,8 +38,6 @@ import org.apache.log4j.Logger;
 // TODO what happens on Double.POSITIVE_INFINITY fitnesses?
 public class FitnessProportionateSelection<T> implements
     IndependentSelectionFunction<T> {
-  private static final transient Logger LOG = Logger
-      .getLogger(FitnessProportionateSelection.class);
 
   /**
    * Fitness-proportionate selection, also known as "roulette wheel selection",
@@ -56,8 +52,6 @@ public class FitnessProportionateSelection<T> implements
    *          {@inheritDoc}
    * @return An individual chosen with probability weighted by corresponding
    *         fitnesses.
-   * @throws SelectionException
-   *           {@inheritDoc}
    * @see jmona.IndependentSelectionFunction#select(Map)
    */
   @Override

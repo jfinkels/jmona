@@ -46,6 +46,8 @@ import org.apache.log4j.Logger;
  * Wikipedia article on stochastic universal sampling</a>.
  * 
  * @author Jeffrey Finkelstein
+ * @param <T>
+ *          The type of individual to select.
  * @since 0.5
  */
 public class StochasticUniversalSampling<T> implements

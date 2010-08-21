@@ -36,6 +36,8 @@ import jmona.random.RandomUtils;
  * {@link jmona.impl.mutation.SingleElementwiseMutationFunction} class.
  * 
  * @author Jeffrey Finkelstein
+ * @param <E>
+ *          The type of element in the List to mutate.
  * @param <L>
  *          The type of List to mutate.
  * @since 0.5
@@ -50,6 +52,11 @@ public class UniformDistributionMutationFunction<E, L extends List<E>> extends
    * Iterates over each element in the list, checking if that element should be
    * mutated according to the probability.
    * 
+   * @param list
+   *          The List to mutate.
+   * @throws MutationException
+   *           If a MutationException is thrown when mutating an element of the
+   *           List.
    * @see jmona.MutationFunction#mutate(java.lang.Object)
    */
   @Override

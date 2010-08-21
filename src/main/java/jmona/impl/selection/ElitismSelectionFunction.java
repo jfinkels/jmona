@@ -45,13 +45,10 @@ public class ElitismSelectionFunction<T> implements
    * Select the specified number of the most fit individuals from the specified
    * population with respect to the specified fitness function.
    * 
-   * @param population
-   *          The List of individuals from which to choose the most fit.
-   * @param fitnessFunction
-   *          The FitnessFunction by which to measure fitness of individuals.
+   * @param fitnesses
+   *          {@inheritDoc}
    * @param numberToSelect
-   *          The number of most fit individuals to select from the specified
-   *          population.
+   *          {@inheritDoc}
    * @see jmona.MultipleSelectionFunction#select(java.util.Map, int)
    */
   @Override

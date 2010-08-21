@@ -43,20 +43,15 @@ public class LinearRankingSelection<T> extends FitnessProportionateSelection<T> 
    * Use a linear ranking as the probability distribution with which to choose
    * an individual from the specified population.
    * 
-   * Linear ranking is performed by assigning a rank (1, 2, 3, &hellip;, {@code
-   * population.size()}) to each individual in the specified population. This
-   * number is then used as the fitness of the individual in a
+   * Linear ranking is performed by assigning a rank (1, 2, 3, &hellip;,
+   * {@code population.size()}) to each individual in the specified population.
+   * This number is then used as the fitness of the individual in a
    * fitness-proportionate selection.
    * 
-   * @param population
-   *          The population from which to choose an individual.
-   * @param fitnessFunction
-   *          The fitness function which is used to determine ranking of
-   *          individuals of the specified population.
-   * @return An individual chosen from the specified population.
-   * @throws SelectionException
-   *           If the fitness-proportionate selection phase of this method
-   *           throws a SelectionException.
+   * @param fitnesses
+   *          {@inheritDoc}
+   * @return An individual chosen from the specified by the ranking method
+   *         described above.
    * @see jmona.IndependentSelectionFunction#select(java.util.List,
    *      jmona.FitnessFunction)
    */
