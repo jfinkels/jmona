@@ -29,28 +29,17 @@ import jmona.impl.mutation.UniformDistributionMutationFunction;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class BinaryStringMutationFunction extends
+public class BinaryStringMutationFunction
+    extends
     UniformDistributionMutationFunction<MutableByte, DeepCopyableList<MutableByte>> {
 
+  /**
+   * Instantiates this MutationFunction by setting the mutation function which
+   * mutates individual elements of the list to be the
+   * {@link jmona.ga.impl.BitFlipMutationFunction}.
+   */
   public BinaryStringMutationFunction() {
     this.setElementMutationFunction(new BitFlipMutationFunction());
   }
-  
-  /**
-   * Flips a random bit in the specified BinaryString.
-   * 
-   * @param binaryString
-   *          The BinaryString in which to flip a random bit.
-   * @see jmona.MutationFunction#mutate(java.lang.Object)
-   */
-/*  @Override
-  public void mutate(final DeepCopyableList<MutableByte> binaryString) {
-    int index = 0;
-    if (binaryString.size() > 1) {
-      index = RandomUtils.randomData().nextInt(0, binaryString.size() - 1);
-    }
 
-    binaryString.flipBit(index);
-  }
-*/
 }
