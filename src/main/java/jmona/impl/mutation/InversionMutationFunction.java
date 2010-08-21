@@ -31,6 +31,8 @@ import jmona.random.RandomUtils;
  * @author Jeffrey Finkelstein
  * @param <E>
  *          The type of element in the List to mutate.
+ * @param <L>
+ *          The type of List to mutate.
  * @since 0.4
  */
 public class InversionMutationFunction<E, L extends List<E>> implements

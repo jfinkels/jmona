@@ -28,6 +28,8 @@ import java.util.List;
  * @author Jeffrey Finkelstein
  * @param <E>
  *          The type of element in the Lists to mutate.
+ * @param <L>
+ *          The type of List to mutate.
  * @since 0.4
  */
 public interface OrderedListMutationFunction<E, L extends List<E>> extends

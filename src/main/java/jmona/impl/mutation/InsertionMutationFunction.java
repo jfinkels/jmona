@@ -30,6 +30,8 @@ import jmona.random.RandomUtils;
  * @author Jeffrey Finkelstein
  * @param <E>
  *          The type of element in the List to reinsert.
+ * @param <L>
+ *          The type of List to mutate.
  * @since 0.4
  */
 public class InsertionMutationFunction<E, L extends List<E>> implements

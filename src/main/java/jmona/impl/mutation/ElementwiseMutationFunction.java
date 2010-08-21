@@ -33,6 +33,8 @@ import jmona.MutationFunction;
  * @author Jeffrey Finkelstein
  * @param <E>
  *          The type of element contained in the List to mutate.
+ * @param <L>
+ *          The type of List to mutate.
  * @since 0.1
  */
 public abstract class ElementwiseMutationFunction<E, L extends List<E>>

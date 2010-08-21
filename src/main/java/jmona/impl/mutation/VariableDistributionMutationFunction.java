@@ -26,22 +26,64 @@ import jmona.functional.Range;
 import jmona.random.RandomUtils;
 
 /**
+ * A MutationFunction which mutates Lists, with a variable probability of
+ * mutating each element of the list.
+ * 
+ * The {@link #setDistribution(double[])} method must be called before calling
+ * the {@link #mutate(List)} method, or an Exception will be thrown.
+ * 
  * @author Jeffrey Finkelstein
+ * @param <E>
+ *          The type of element in the List to mutate.
+ * @param <L>
+ *          The type of List to mutate.
  * @since 0.5
  */
 public class VariableDistributionMutationFunction<E, L extends List<E>> extends
     ElementwiseMutationFunction<E, L> implements
     OrderedListMutationFunction<E, L> {
 
+  /**
+   * The probability distribution which determines the probability that an
+   * element in a List will be mutated.
+   * 
+   * Specifically, the element at index <em>i</em> will be mutated with
+   * probability {@code distribution[i]}.
+   */
   private double[] distribution = null;
 
+  /**
+   * Sets the probability distribution which determines the probability that an
+   * element in a List will be mutated.
+   * 
+   * Specifically, the element at index <em>i</em> will be mutated with
+   * probability {@code newDistribution[i]}.
+   * 
+   * @param newDistribution
+   *          The probability distribution specifying the probability with which
+   *          elements of a List will be mutated.
+   */
   public void setDistribution(final double[] newDistribution) {
     this.distribution = newDistribution.clone();
   }
 
-  /*
-   * (non-Javadoc)
+  /**
+   * Iterate over the specified list and mutate each element with probability
+   * specified by the array of probabilities provided in the
+   * {@link #setDistribution(double[])} method.
    * 
+   * The {@link #setDistribution(double[])} method must be called
+   * <em>before</em> calling this method.
+   * 
+   * @param list
+   *          The list whose elements will be mutated (with variable probability
+   *          depending on the probability distribution set in the
+   *          {@link #setDistribution(double[])} method).
+   * @throws MutationException
+   *           If the probability distribution has not been set by calling the
+   *           {@link #setDistribution(double[])} method, or if the number of
+   *           elements in the probability distribution is not equal to the
+   *           number of elements in the specified List to mutate.
    * @see jmona.MutationFunction#mutate(java.lang.Object)
    */
   @Override

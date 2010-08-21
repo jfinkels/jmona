@@ -29,6 +29,8 @@ import jmona.MutationFunction;
  * @author Jeffrey Finkelstein
  * @param <E>
  *          The type of element in the Lists to mutate.
+ * @param <L>
+ *          The type of List to mutate.
  * @since 0.4
  */
 public interface ListMutationFunction<E, L extends List<E>> extends

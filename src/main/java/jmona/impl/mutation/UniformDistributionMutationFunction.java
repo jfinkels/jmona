@@ -36,6 +36,8 @@ import jmona.random.RandomUtils;
  * {@link jmona.impl.mutation.SingleElementwiseMutationFunction} class.
  * 
  * @author Jeffrey Finkelstein
+ * @param <L>
+ *          The type of List to mutate.
  * @since 0.5
  */
 public class UniformDistributionMutationFunction<E, L extends List<E>> extends
