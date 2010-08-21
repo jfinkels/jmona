@@ -13,8 +13,8 @@ define 'jmona' do
   'net.sf.jopt-simple:jopt-simple:jar:3.2',
   'org.apache.commons:commons-lang3:jar:3.0-SNAPSHOT',
   'org.apache.commons:commons-math:jar:2.1',
-  transitive('org.springframework:spring-context:jar:3.0.3.RELEASE')
-  test.with transitive('org.springframework:spring-test:jar:3.0.3.RELEASE')
+  transitive('org.springframework:spring-context:jar:3.0.4.RELEASE')
+  test.with transitive('org.springframework:spring-test:jar:3.0.4.RELEASE')
   test.include '*AllTest'
   compile.options.deprecation = true
   compile.options.lint = true
