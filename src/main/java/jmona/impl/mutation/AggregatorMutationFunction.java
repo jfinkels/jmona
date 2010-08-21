@@ -42,7 +42,7 @@ public class AggregatorMutationFunction<T> extends
    * Instantiates this MutationFunction with the specified Collection of
    * MutationFunctions from which to choose when performing a mutation.
    * 
-   * @param initialCollection
+   * @param initialMutationFunctions
    *          The Collection of MutationFunctions from which to choose when
    *          performing a mutation.
    */
@@ -59,7 +59,7 @@ public class AggregatorMutationFunction<T> extends
    * 
    * @param individual
    *          The individual to mutate.
-   * @throws MutationFunction
+   * @throws MutationException
    *           If the chosen MutationFunction throws an Exception.
    * @see jmona.MutationFunction#mutate(java.lang.Object)
    */
