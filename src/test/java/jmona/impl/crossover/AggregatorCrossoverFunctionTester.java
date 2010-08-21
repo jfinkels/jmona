@@ -52,13 +52,25 @@ public class AggregatorCrossoverFunctionTester {
       CrossoverFunction<ExampleIndividual> {
 
     /**
+     * Instantiates this class.
+     */
+    public ExampleCrossoverFunction1() {
+      // intentionally unimplemented; provided to avoid synthetic accessor
+      // emulation
+    }
+
+    /**
      * Increments the counter for crossover1.
      * 
+     * @param individual1
+     *          {@inheritDoc}
+     * @param individual2
+     *          {@inheritDoc}
      * @see jmona.CrossoverFunction#crossover(java.lang.Object,java.lang.Object)
      */
     @Override
-    public void crossover(ExampleIndividual individual1,
-        ExampleIndividual individual2) throws CrossoverException {
+    public void crossover(final ExampleIndividual individual1,
+        final ExampleIndividual individual2) {
       AggregatorCrossoverFunctionTester.this.crossovers1 += 1;
     }
 
@@ -75,13 +87,25 @@ public class AggregatorCrossoverFunctionTester {
       CrossoverFunction<ExampleIndividual> {
 
     /**
+     * Instantiates this class.
+     */
+    public ExampleCrossoverFunction2() {
+      // intentionally unimplemented; provided to avoid synthetic accessor
+      // emulation
+    }
+
+    /**
      * Increments the counter for crossovers2.
      * 
+     * @param individual1
+     *          {@inheritDoc}
+     * @param individual2
+     *          {@inheritDoc}
      * @see jmona.CrossoverFunction#crossover(java.lang.Object,java.lang.Object)
      */
     @Override
-    public void crossover(ExampleIndividual individual1,
-        ExampleIndividual individual2) throws CrossoverException {
+    public void crossover(final ExampleIndividual individual1,
+        final ExampleIndividual individual2) {
       AggregatorCrossoverFunctionTester.this.crossovers2 += 1;
     }
 
