@@ -42,7 +42,7 @@ public class AggregatorCrossoverFunction<T> extends
    * Instantiates this CrossoverFunction with the specified Collection of
    * CrossoverFunctions from which to choose when performing crossover.
    * 
-   * @param initialCollection
+   * @param initialCrossoverFunctions
    *          The Collection of CrossoverFunctions from which to choose when
    *          performing crossover.
    */

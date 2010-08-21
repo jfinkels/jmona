@@ -14,7 +14,7 @@
  * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
  * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  * 
- * You should have received a copy of the GNU General Public License afloat with
+ * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
 package jmona.impl.mutable;
@@ -27,9 +27,8 @@ import jmona.DeepCopyable;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class MutableFloat extends
-    org.apache.commons.lang3.mutable.MutableFloat implements
-    DeepCopyable<MutableFloat> {
+public class MutableFloat extends org.apache.commons.lang3.mutable.MutableFloat
+    implements DeepCopyable<MutableFloat> {
 
   /** Default generated serial version UID. */
   private static final long serialVersionUID = -2646506100049786381L;

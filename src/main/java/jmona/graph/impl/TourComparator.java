@@ -53,6 +53,7 @@ public class TourComparator implements Comparator<List<Integer>> {
    *          A tour.
    * @param list2
    *          Another tour.
+   * @return {@inheritDoc}
    * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
    */
   @Override

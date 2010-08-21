@@ -46,6 +46,9 @@ public class UniformPopulationCompletionCondition<T> implements
    *          The EvolutionContext containing the population.
    * @return Whether the current population in the specified EvolutionContext
    *         contains only individuals of one class.
+   * @throws CompletionException
+   *           If the specified EvolutionContext is not a
+   *           PopulationEvolutionContext.
    * @see jmona.CompletionCondition#execute(jmona.EvolutionContext)
    */
   @SuppressWarnings("unchecked")

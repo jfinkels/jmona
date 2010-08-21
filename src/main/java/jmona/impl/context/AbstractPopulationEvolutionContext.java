@@ -24,6 +24,10 @@ import java.util.List;
 import jmona.PopulationEvolutionContext;
 
 /**
+ * A base class for evolutions which involve individuals in a population.
+ * 
+ * @param <T>
+ *          The type of individual to evolve.
  * @author Jeffrey Finkelstein
  * @since 0.5
  */

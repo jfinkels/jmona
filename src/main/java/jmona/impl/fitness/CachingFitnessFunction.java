@@ -42,6 +42,10 @@ import jmona.FitnessFunction;
  * @since 0.5
  */
 public abstract class CachingFitnessFunction<T> implements FitnessFunction<T> {
+  /**
+   * The cache for this class, which contains a map from object to the fitness
+   * value of that object.
+   */
   private Map<T, Double> cache = new HashMap<T, Double>();
 
   /**

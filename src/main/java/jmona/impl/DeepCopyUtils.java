@@ -35,18 +35,18 @@ import jmona.DeepCopyable;
 public final class DeepCopyUtils {
 
   /**
-   * Perform a deep copy on the specified Collection of deep copyable elements.
+   * Perform a deep copy on the specified Iterable of deep copyable elements.
    * 
    * This method runs in <em>O(n)</em> time.
    * 
    * @param <E>
    *          The type of deep copyable element in the Collection to be deep
    *          copied.
-   * @param collection
-   *          The Collection of elements on which to perform a deep copy.
-   * @return A List of the copied elements from the specified Collection.
+   * @param iterable
+   *          The Iterable of elements on which to perform a deep copy.
+   * @return A List of the copied elements from the specified Iterable.
    * @throws CopyingException
-   *           If there is a problem copying the elements of the Collection.
+   *           If there is a problem copying the elements of the Iterable.
    */
   public static <E extends DeepCopyable<E>> List<E> deepCopy(
       final Iterable<? extends E> iterable) throws CopyingException {

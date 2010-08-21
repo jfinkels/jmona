@@ -23,6 +23,8 @@ package jmona.impl.fitness;
  * Returns the Euclidean norm of a number, which is simply the distance of that
  * number from zero (or just the value of that number as a double).
  * 
+ * @param <N>
+ *          The type of number to measure.
  * @author Jeffrey Finkelstein
  * @since 0.5
  */

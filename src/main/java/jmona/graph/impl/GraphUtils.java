@@ -39,6 +39,8 @@ public final class GraphUtils {
    * 
    * A tour of length 0 or 1 has a total distance of 0.
    * 
+   * @param <V>
+   *          The type of vertex in the graph on which distances are measured.
    * @param tour
    *          The tour whose total distance is to be determined.
    * @param graph

@@ -19,10 +19,8 @@
  */
 package jmona.impl.example;
 
-import java.util.List;
 import java.util.Map;
 
-import jmona.FitnessFunction;
 import jmona.IndependentSelectionFunction;
 import jmona.SelectionException;
 
@@ -38,14 +36,12 @@ public class ExampleBadSelectionFunction implements
   /**
    * Always throws a SelectionException.
    * 
-   * @param population
-   *          This parameter is ignored.
-   * @param fitnessFunction
+   * @param fitnesses
    *          This parameter is ignored.
    * @return Never returns.
    * @throws SelectionException
    *           Always throws this Exception.
-   * @see jmona.IndependentSelectionFunction#select(List, FitnessFunction)
+   * @see jmona.IndependentSelectionFunction#select(Map)
    */
   @Override
   public ExampleIndividual select(final Map<ExampleIndividual, Double> fitnesses)

@@ -31,6 +31,10 @@ import jmona.PropertyNotSetException;
  * {@link #elementFactory()} method to create objects to populate the List
  * created in the {@link #createObject()} method.
  * 
+ * @param <E>
+ *          The type of elements in the Lists which this factory creates.
+ * @param <L>
+ *          The type of Lists which this factory creates.
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
