@@ -19,7 +19,6 @@
  */
 package jmona.graph;
 
-
 /**
  * A directed graph.
  * 
@@ -42,5 +41,5 @@ public interface DirectedGraph<V, E> extends Graph<V, E> {
    * @return The edge from the source vertex to the target vertex.
    */
   E edgeBetween(final V sourceVertex, final V targetVertex);
-  
+
 }
