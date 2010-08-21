@@ -19,8 +19,12 @@
  */
 package jmona.ga.impl;
 
-import jmona.ga.BinaryString;
+import jmona.DeepCopyableList;
+import jmona.functional.Range;
+import jmona.impl.DeepCopyableVector;
 import jmona.impl.SizedFactory;
+import jmona.impl.mutable.MutableByte;
+import jmona.random.RandomUtils;
 
 /**
  * A factory which creates random BinaryString objects.
@@ -28,7 +32,7 @@ import jmona.impl.SizedFactory;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class BinaryStringFactory extends SizedFactory<BinaryString> {
+public class BinaryStringFactory extends SizedFactory<DeepCopyableList<MutableByte>> {
 
   /**
    * Instantiates this Factory with the specified number of bits in the binary
@@ -48,8 +52,22 @@ public class BinaryStringFactory extends SizedFactory<BinaryString> {
    * @see jmona.Factory#createObject()
    */
   @Override
-  public BinaryString createObject() {
-    return new CharArrayBinaryString(this.size(), true);
+  public DeepCopyableList<MutableByte> createObject() {
+    final DeepCopyableList<MutableByte> result = new DeepCopyableVector<MutableByte>();
+
+    for (final int i : new Range(this.size())) {
+      final MutableByte bit;
+      
+      if (RandomUtils.nextBoolean()) {
+        bit = new MutableByte(1);
+      } else {
+        bit = new MutableByte(0);
+      }
+      
+      result.add(bit);
+    }
+    
+    return result;
   }
 
 }

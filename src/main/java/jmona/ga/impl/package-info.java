@@ -29,11 +29,21 @@
  * </p>
  * 
  * <p>
- * The {@link jmona.ga.impl.BitFactory} class can be used to create a sequence
- * of bits (represented as Byte objects) which can be used in a genetic
- * algorithm in the more traditional way. The plain old
+ * The user of this package can create a genetic algorithm evolution in whatever
+ * way he or she wants. However, we also provide an interface for creating the
+ * "standard" genetic algorithm, which evolves binary strings. To that effect,
+ * this class provides the {@link jmona.ga.impl.BitFactory} class, which can be
+ * used to create a sequence of bits (represented as Byte objects) which can be
+ * used in a genetic algorithm in the more traditional way. A mutation function
+ * which flips bits is provided in
+ * {@link jmona.ga.impl.BinaryStringMutationFunction} (which has a
+ * {@link jmona.ga.impl.BitFlipMutationFunction} instance). The plain old
  * {@link jmona.ga.impl.OnePointCrossoverFunction} and
  * {@link jmona.ga.impl.TwoPointCrossoverFunction} are provided as well.
+ * </p>
+ * 
+ * <p>
+ * Therefore to write a genetic algorithm, one simply needs
  * </p>
  * 
  * <p>

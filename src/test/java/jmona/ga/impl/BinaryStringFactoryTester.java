@@ -19,7 +19,8 @@
  */
 package jmona.ga.impl;
 
-import jmona.ga.BinaryString;
+import jmona.DeepCopyableList;
+import jmona.impl.mutable.MutableByte;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -46,7 +47,7 @@ public class BinaryStringFactoryTester {
    */
   @Test
   public void testCreateObject() {
-    final BinaryString individual = this.factory.createObject();
+    final DeepCopyableList<MutableByte> individual = this.factory.createObject();
     // TODO make assertions about this binary string
   }
 

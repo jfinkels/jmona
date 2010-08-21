@@ -30,8 +30,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.1
  */
 @RunWith(Suite.class)
-@SuiteClasses({ OnesFitnessFunctionTester.class,
-    OnesMutationFunctionTester.class })
+@SuiteClasses({ OnesFitnessFunctionTester.class })
 public class AllTest {
 
 }

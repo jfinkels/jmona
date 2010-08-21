@@ -19,9 +19,9 @@
  */
 package jmona.ga.impl;
 
-import jmona.MutationFunction;
-import jmona.ga.BinaryString;
-import jmona.random.RandomUtils;
+import jmona.DeepCopyableList;
+import jmona.impl.mutable.MutableByte;
+import jmona.impl.mutation.UniformDistributionMutationFunction;
 
 /**
  * A MutationFunction which flips a random bit in a BinaryString object.
@@ -29,9 +29,13 @@ import jmona.random.RandomUtils;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class BinaryStringMutationFunction implements
-    MutationFunction<BinaryString> {
+public class BinaryStringMutationFunction extends
+    UniformDistributionMutationFunction<MutableByte, DeepCopyableList<MutableByte>> {
 
+  public BinaryStringMutationFunction() {
+    this.setElementMutationFunction(new BitFlipMutationFunction());
+  }
+  
   /**
    * Flips a random bit in the specified BinaryString.
    * 
@@ -39,8 +43,8 @@ public class BinaryStringMutationFunction implements
    *          The BinaryString in which to flip a random bit.
    * @see jmona.MutationFunction#mutate(java.lang.Object)
    */
-  @Override
-  public void mutate(final BinaryString binaryString) {
+/*  @Override
+  public void mutate(final DeepCopyableList<MutableByte> binaryString) {
     int index = 0;
     if (binaryString.size() > 1) {
       index = RandomUtils.randomData().nextInt(0, binaryString.size() - 1);
@@ -48,5 +52,5 @@ public class BinaryStringMutationFunction implements
 
     binaryString.flipBit(index);
   }
-
+*/
 }

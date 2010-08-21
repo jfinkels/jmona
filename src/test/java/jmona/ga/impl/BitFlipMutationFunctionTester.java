@@ -1,5 +1,5 @@
 /**
- * OnesMutationFunctionTester.java
+ * BitFlipMutationFunctionTester.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -17,27 +17,28 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.example.ones;
+package jmona.ga.impl;
 
 import static org.junit.Assert.assertEquals;
+import jmona.ga.impl.BitFlipMutationFunction;
 import jmona.impl.mutable.MutableByte;
 
 import org.junit.Test;
 
 /**
- * Test class for the OnesMutationFunction class.
+ * Test class for the BitFlipMutationFunction class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class OnesMutationFunctionTester {
+public class BitFlipMutationFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.ones.OnesMutationFunction#mutated(java.lang.Byte)}.
+   * {@link jmona.ga.impl.BitFlipMutationFunction#BitFlipMutationFunction()}.
    */
   @Test
-  public void testMutatedByte() {
+  public void testMutate() {
     final BitFlipMutationFunction function = new BitFlipMutationFunction();
     final MutableByte bit = new MutableByte(0);
     function.mutate(bit);
