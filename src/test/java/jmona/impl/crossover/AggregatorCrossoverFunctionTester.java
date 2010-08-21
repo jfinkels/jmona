@@ -41,7 +41,14 @@ import org.junit.Test;
  */
 public class AggregatorCrossoverFunctionTester {
 
-  class ExampleCrossoverFunction1 implements
+  /**
+   * An example CrossoverFunction which simply increments
+   * {@link AggregatorCrossoverFunctionTester#crossovers1}.
+   * 
+   * @author Jeffrey Finkelstein
+   * @since 0.5
+   */
+  private class ExampleCrossoverFunction1 implements
       CrossoverFunction<ExampleIndividual> {
 
     /**
@@ -57,7 +64,14 @@ public class AggregatorCrossoverFunctionTester {
 
   }
 
-  class ExampleCrossoverFunction2 implements
+  /**
+   * An example CrossoverFunction which simply increments
+   * {@link AggregatorCrossoverFunctionTester#crossovers2}.
+   * 
+   * @author Jeffrey Finkelstein
+   * @since 0.5
+   */
+  private class ExampleCrossoverFunction2 implements
       CrossoverFunction<ExampleIndividual> {
 
     /**
