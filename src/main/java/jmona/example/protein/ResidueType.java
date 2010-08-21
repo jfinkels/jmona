@@ -19,11 +19,17 @@
  */
 package jmona.example.protein;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+
 /**
  * A type of a residue in a protein or a peptide chain.
  * 
  * For more information on standard three-letter and one-letter abbreviations
- * for amino acids, see <a href="http://en.wikipedia.org/wiki/Amino_acid#Table_of_standard_amino_acid_abbreviations_and_properties"
+ * for amino acids, see <a href=
+ * "http://en.wikipedia.org/wiki/Amino_acid#Table_of_standard_amino_acid_abbreviations_and_properties"
  * >the Wikipedia article on amino acids</a>.
  * 
  * @author Jeffrey Finkelstein
@@ -49,10 +55,16 @@ public enum ResidueType {
   /** A placeholder for an unknown or otherwise unspecified residue. */
   UNKNOWN("XAA", 'X');
 
-  public static final ResidueType[] PROTEINOGENIC_RESIDUE_TYPES = { ALANINE,
-      ARGININE, ASPARAGINE, ASPARTIC_ACID, CYSTEINE, GLUTAMIC_ACID, GLUTAMINE,
-      GLYCINE, HISTIDINE, ISOLEUCINE, LEUCINE, LYSINE, METHIONINE,
-      PHENYLALANINE, PROLINE, SERINE, THREONINE, TRYPTOPHAN, TYROSINE, VALINE };
+  /**
+   * An unmodifiable view on a collection (backed by a HashSet) which contains
+   * each of the proteinogenic residue types.
+   */
+  public static final Collection<ResidueType> PROTEINOGENIC_RESIDUE_TYPES = Collections
+      .unmodifiableSet(new HashSet<ResidueType>(Arrays.asList(ALANINE,
+          ARGININE, ASPARAGINE, ASPARTIC_ACID, CYSTEINE, GLUTAMIC_ACID,
+          GLUTAMINE, GLYCINE, HISTIDINE, ISOLEUCINE, LEUCINE, LYSINE,
+          METHIONINE, PHENYLALANINE, PROLINE, SERINE, THREONINE, TRYPTOPHAN,
+          TYROSINE, VALINE)));
 
   /** The standard three-letter abbreviation of this residue type. */
   private final String threeLetterAbbreviation;
