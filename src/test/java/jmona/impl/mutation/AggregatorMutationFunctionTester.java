@@ -82,6 +82,7 @@ public class AggregatorMutationFunctionTester {
    */
   private class ExampleMutationFunction2 implements
       MutationFunction<ExampleIndividual> {
+
     /**
      * Instantiates this class.
      */
@@ -93,10 +94,12 @@ public class AggregatorMutationFunctionTester {
     /**
      * Increments the counter for mutations2.
      * 
+     * @param individual
+     *          ignores this parameter.
      * @see jmona.MutationFunction#mutate(Object)
      */
     @Override
-    public void mutate(ExampleIndividual individual1) {
+    public void mutate(final ExampleIndividual individual) {
       AggregatorMutationFunctionTester.this.mutations2 += 1;
     }
 
