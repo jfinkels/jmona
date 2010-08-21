@@ -37,7 +37,7 @@ public class MutableRange extends AbstractRange<MutableInteger> {
    * @param terminalInteger
    *          The (exclusive) upper bound on integers to add to this list.
    */
-  public MutableRange(int terminalInteger) {
+  public MutableRange(final int terminalInteger) {
     super(terminalInteger);
   }
 
@@ -50,7 +50,7 @@ public class MutableRange extends AbstractRange<MutableInteger> {
    * @param terminalInteger
    *          The (exclusive) upper bound on integers to add to this list.
    */
-  public MutableRange(int initialInteger, int terminalInteger) {
+  public MutableRange(final int initialInteger, final int terminalInteger) {
     super(initialInteger, terminalInteger);
   }
 
@@ -66,8 +66,8 @@ public class MutableRange extends AbstractRange<MutableInteger> {
    * @param step
    *          The increment between each integer initially added to this list.
    */
-  public MutableRange(int initialInteger, int terminalInteger,
-      int incrementInteger) {
+  public MutableRange(final int initialInteger, final int terminalInteger,
+      final int incrementInteger) {
     super(initialInteger, terminalInteger, incrementInteger);
   }
 
