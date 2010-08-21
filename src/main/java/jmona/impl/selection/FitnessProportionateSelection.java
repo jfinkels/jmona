@@ -23,7 +23,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import jmona.IndependentSelectionFunction;
-import jmona.SelectionException;
 import jmona.functional.Functional;
 import jmona.random.RandomUtils;
 

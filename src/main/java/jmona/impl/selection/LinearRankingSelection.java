@@ -25,8 +25,6 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import jmona.SelectionException;
-
 /**
  * SelectionFunction which assigns a linear rank to individuals (1, 2, 3,
  * &hellip;), then uses those numbers as the adjusted fitness in a

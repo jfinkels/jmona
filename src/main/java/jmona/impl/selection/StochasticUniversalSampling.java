@@ -28,8 +28,6 @@ import jmona.SelectionException;
 import jmona.functional.Range;
 import jmona.random.RandomUtils;
 
-import org.apache.log4j.Logger;
-
 /**
  * An implementation of stochastic universal sampling, which simultaneously
  * selects an arbitrary number of individuals by simulating a single spin of a
@@ -52,10 +50,6 @@ import org.apache.log4j.Logger;
  */
 public class StochasticUniversalSampling<T> implements
     MultipleSelectionFunction<T> {
-
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(StochasticUniversalSampling.class);
 
   /**
    * Selects the specified number of individuals, with each being selected a
