@@ -19,6 +19,7 @@
  */
 package jmona.graph.impl;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
 
@@ -30,8 +31,11 @@ import jmona.graph.DirectedGraph;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class TourComparator implements Comparator<List<Integer>> {
+public class TourComparator implements Comparator<List<Integer>>, Serializable {
 
+  /** Default generated serial version UID. */
+  private static final long serialVersionUID = -2176851840416352471L;
+  
   /** The graph on which to measure distances. */
   private final DirectedGraph<Integer, Double> graph;
 
