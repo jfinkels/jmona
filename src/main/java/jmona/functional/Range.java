@@ -36,7 +36,7 @@ public class Range extends AbstractRange<Integer> {
    * @param terminalInteger
    *          The (exclusive) upper bound on this range of integers.
    */
-  public Range(int terminalInteger) {
+  public Range(final int terminalInteger) {
     super(terminalInteger);
   }
 
@@ -49,7 +49,7 @@ public class Range extends AbstractRange<Integer> {
    * @param terminalInteger
    *          The (exclusive) upper bound on this range of integers.
    */
-  public Range(int initialInteger, int terminalInteger) {
+  public Range(final int initialInteger, final int terminalInteger) {
     super(initialInteger, terminalInteger);
   }
 
@@ -64,7 +64,8 @@ public class Range extends AbstractRange<Integer> {
    * @param incrementInteger
    *          The number by which to increment integers in this range.
    */
-  public Range(int initialInteger, int terminalInteger, int incrementInteger) {
+  public Range(final int initialInteger, final int terminalInteger,
+      final int incrementInteger) {
     super(initialInteger, terminalInteger, incrementInteger);
   }
 
