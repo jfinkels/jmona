@@ -24,10 +24,10 @@ import java.util.Collections;
 import jmona.CopyingException;
 import jmona.DeepCopyableList;
 import jmona.InitializationException;
-import jmona.functional.MutableRange;
 import jmona.impl.DeepCopyableListFactory;
 import jmona.impl.DeepCopyableVector;
 import jmona.impl.mutable.MutableInteger;
+import jmona.impl.mutable.functional.MutableRange;
 
 /**
  * A factory which generates random Tours.

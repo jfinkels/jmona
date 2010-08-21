@@ -25,8 +25,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import jmona.InitializationException;
-import jmona.functional.MutableRange;
 import jmona.impl.mutable.MutableInteger;
+import jmona.impl.mutable.functional.MutableRange;
 import jmona.test.Util;
 
 import org.junit.Test;

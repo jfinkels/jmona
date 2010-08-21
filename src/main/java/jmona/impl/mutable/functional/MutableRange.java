@@ -17,47 +17,69 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.functional;
+package jmona.impl.mutable.functional;
 
+import jmona.functional.AbstractRange;
 import jmona.impl.mutable.MutableInteger;
 
 /**
+ * An AbstractRange consisting of MutableIntegers.
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
 public class MutableRange extends AbstractRange<MutableInteger> {
 
   /**
+   * Instantiates this MutableRange by adding each integer between 0 (inclusive)
+   * and {@code terminalInteger} (exclusive).
+   * 
    * @param terminalInteger
+   *          The (exclusive) upper bound on integers to add to this list.
    */
   public MutableRange(int terminalInteger) {
     super(terminalInteger);
   }
-  
+
   /**
+   * Instantiates this MutableRange by adding each integer between
+   * {@code initialInteger} (inclusive) and {@code terminalInteger} (exclusive).
+   * 
    * @param initialInteger
+   *          The (inclusive) lower bound on integers to add to this list.
    * @param terminalInteger
+   *          The (exclusive) upper bound on integers to add to this list.
    */
   public MutableRange(int initialInteger, int terminalInteger) {
     super(initialInteger, terminalInteger);
   }
 
   /**
+   * Instantiates this MutableRange by adding each integer between
+   * {@code initialInteger} (inclusive) and {@code terminalInteger} (exclusive),
+   * incremented by {@code step} between each integer.
+   * 
    * @param initialInteger
+   *          The (inclusive) lower bound on integers to add to this list.
    * @param terminalInteger
-   * @param incrementInteger
+   *          The (exclusive) upper bound on integers to add to this list.
+   * @param step
+   *          The increment between each integer initially added to this list.
    */
   public MutableRange(int initialInteger, int terminalInteger,
       int incrementInteger) {
     super(initialInteger, terminalInteger, incrementInteger);
   }
 
-  /* (non-Javadoc)
-   * @see jmona.functional.AbstractRange#getValue(int)
+  /**
+   * {@inheritDoc}
+   * 
+   * @return {@inheritDoc}
+   * @see jmona.functional.AbstractRange#getValue()
    */
   @Override
-  protected MutableInteger getValue(final int current) {
-    return new MutableInteger(current);
+  protected MutableInteger getValue() {
+    return new MutableInteger(this.current());
   }
 
 }

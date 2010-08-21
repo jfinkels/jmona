@@ -1,7 +1,7 @@
 /**
  * AllTest.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.functional;
+package jmona.impl.mutable.functional;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -27,12 +27,10 @@ import org.junit.runners.Suite.SuiteClasses;
  * Runs all tests in this package.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @since 0.5
  */
 @RunWith(Suite.class)
-@SuiteClasses({ AbstractRangeTester.class, FunctionalTester.class,
-    HashSetFromIterableTester.class, IterableStringTester.class,
-    RangeListTester.class, RangeTester.class })
+@SuiteClasses({ MutableRangeListTester.class, MutableRangeTester.class })
 public class AllTest {
 
 }

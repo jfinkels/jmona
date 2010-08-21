@@ -20,43 +20,63 @@
 package jmona.functional;
 
 /**
+ * A range over integers, similar in spirit to the Python <a
+ * href="http://docs.python.org/library/functions.html#range">{@code range()}
+ * </a> function.
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
 public class Range extends AbstractRange<Integer> {
 
   /**
+   * Instantiates this class by calling the corresponding constructor of the
+   * superclass.
+   * 
    * @param terminalInteger
+   *          The (exclusive) upper bound on this range of integers.
    */
   public Range(int terminalInteger) {
     super(terminalInteger);
   }
 
   /**
+   * Instantiates this class by calling the corresponding constructor of the
+   * superclass.
+   * 
    * @param initialInteger
+   *          The (inclusive) lower bound on this range of integers.
    * @param terminalInteger
+   *          The (exclusive) upper bound on this range of integers.
    */
   public Range(int initialInteger, int terminalInteger) {
     super(initialInteger, terminalInteger);
   }
 
   /**
+   * Instantiates this class by calling the corresponding constructor of the
+   * superclass.
+   * 
    * @param initialInteger
+   *          The (inclusive) lower bound on this range of integers.
    * @param terminalInteger
+   *          The (exclusive) upper bound on this range of integers.
    * @param incrementInteger
+   *          The number by which to increment integers in this range.
    */
   public Range(int initialInteger, int terminalInteger, int incrementInteger) {
     super(initialInteger, terminalInteger, incrementInteger);
   }
 
-  /*
-   * (non-Javadoc)
+  /**
+   * {@inheritDoc}
    * 
-   * @see jmona.functional.AbstractRange#getValue(int)
+   * @return {@inheritDoc}
+   * @see jmona.functional.AbstractRange#getValue()
    */
   @Override
-  protected Integer getValue(final int current) {
-    return current;
+  protected Integer getValue() {
+    return this.current();
   }
 
 }

@@ -1,5 +1,5 @@
 /**
- * RangeTester.java
+ * MutableRangeTester.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -17,28 +17,29 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.functional;
+package jmona.impl.mutable.functional;
 
 import static org.junit.Assert.assertEquals;
+import jmona.impl.mutable.MutableInteger;
 
 import org.junit.Test;
 
 /**
- * Test class for the Range class.
+ * Test class for the MutableRange class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class RangeTester {
+public class MutableRangeTester {
 
   /**
-   * Test method for {@link jmona.functional.Range#Range(int)}.
+   * Test method for {@link jmona.functional.MutableRange#MutableRange(int)}.
    */
   @Test
-  public void testRangeInt() {
+  public void testMutableRangeInt() {
     int j = 0;
-    for (final int i : new Range(10)) {
-      assertEquals(j, i);
+    for (final MutableInteger i : new MutableRange(10)) {
+      assertEquals(j, i.intValue());
       j += 1;
     }
 
@@ -46,13 +47,14 @@ public class RangeTester {
   }
 
   /**
-   * Test method for {@link jmona.functional.Range#Range(int, int)}.
+   * Test method for
+   * {@link jmona.functional.MutableRange#MutableRange(int, int)}.
    */
   @Test
-  public void testRangeIntInt() {
+  public void testMutableRangeIntInt() {
     int j = 5;
-    for (final int i : new Range(5, 10)) {
-      assertEquals(j, i);
+    for (final MutableInteger i : new MutableRange(5, 10)) {
+      assertEquals(j, i.intValue());
       j += 1;
     }
 
@@ -60,13 +62,14 @@ public class RangeTester {
   }
 
   /**
-   * Test method for {@link jmona.functional.Range#Range(int, int, int)}.
+   * Test method for
+   * {@link jmona.functional.MutableRange#MutableRange(int, int, int)}.
    */
   @Test
-  public void testRangeIntIntInt() {
+  public void testMutableRangeIntIntInt() {
     int j = 0;
-    for (final int i : new Range(0, 10, 2)) {
-      assertEquals(j, i);
+    for (final MutableInteger i : new MutableRange(0, 10, 2)) {
+      assertEquals(j, i.intValue());
       j += 2;
     }
 
@@ -74,11 +77,11 @@ public class RangeTester {
   }
 
   /**
-   * Test method for {@link jmona.functional.Range#getValue()}.
+   * Test method for {@link jmona.functional.MutableRange#getValue()}.
    */
   @Test
   public void testGetValue() {
-    final Range range = new Range(10);
+    final MutableRange range = new MutableRange(10);
     for (int i = 0; i < 10; ++i) {
       range.next();
       assertEquals(i, range.getValue().intValue());

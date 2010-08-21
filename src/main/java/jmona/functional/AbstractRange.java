@@ -22,9 +22,8 @@ package jmona.functional;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-
 /**
- * A range over integers, similar in spirit to the Python <a
+ * A range over numbers, similar in spirit to the Python <a
  * href="http://docs.python.org/library/functions.html#range">{@code range()}
  * </a> function.
  * 
@@ -35,57 +34,60 @@ import java.util.NoSuchElementException;
  * @since 0.1
  */
 // TODO negative increments
-public abstract class AbstractRange<N extends Number> implements Iterator<N>, Iterable<N> {
+public abstract class AbstractRange<N extends Number> implements Iterator<N>,
+    Iterable<N> {
 
   /** The default increment for this Iterator. */
   public static final int DEFAULT_INCREMENT = 1;
 
-//  /**
-//   * Get a new iterable Range object over the interval from 0 to {@code
-//   * terminalInteger-1}, inclusive.
-//   * 
-//   * @param terminalInteger
-//   *          The maximum + 1 of the range to get.
-//   * @return An iterable Range object over the interval from 0 to {@code
-//   *         terminalInteger-1}, inclusive.
-//   */
-//  public static Range range(final int terminalInteger) {
-//    return range(0, terminalInteger);
-//  }
-//
-//  /**
-//   * Get a new iterable Range object over the interval from {@code
-//   * initialInteger} to {@code terminalInteger-1}, inclusive.
-//   * 
-//   * @param initialInteger
-//   *          The minimum of the range to get.
-//   * @param terminalInteger
-//   *          The maximum + 1 of the range to get.
-//   * @return An iterable Range object over the interval from 0 to {@code
-//   *         terminalInteger-1}, inclusive.
-//   */
-//  public static Range range(final int initialInteger, final int terminalInteger) {
-//    return range(initialInteger, terminalInteger, 1);
-//  }
-//
-//  /**
-//   * Get a new iterable Range object over the interval from {@code
-//   * initialInteger} to {@code terminalInteger-1}, inclusive, with incrementing
-//   * steps of the specified value.
-//   * 
-//   * @param initialInteger
-//   *          The minimum of the range to get.
-//   * @param terminalInteger
-//   *          The maximum + 1 of the range to get.
-//   * @param incrementInteger
-//   *          The value by which to increment over the Range.
-//   * @return An iterable Range object over the interval from 0 to {@code
-//   *         terminalInteger-1}, inclusive.
-//   */
-//  public static Range range(final int initialInteger,
-//      final int terminalInteger, final int incrementInteger) {
-//    return new Range(initialInteger, terminalInteger, incrementInteger);
-//  }
+  // /**
+  // * Get a new iterable Range object over the interval from 0 to {@code
+  // * terminalInteger-1}, inclusive.
+  // *
+  // * @param terminalInteger
+  // * The maximum + 1 of the range to get.
+  // * @return An iterable Range object over the interval from 0 to {@code
+  // * terminalInteger-1}, inclusive.
+  // */
+  // public static Range range(final int terminalInteger) {
+  // return range(0, terminalInteger);
+  // }
+  //
+  // /**
+  // * Get a new iterable Range object over the interval from {@code
+  // * initialInteger} to {@code terminalInteger-1}, inclusive.
+  // *
+  // * @param initialInteger
+  // * The minimum of the range to get.
+  // * @param terminalInteger
+  // * The maximum + 1 of the range to get.
+  // * @return An iterable Range object over the interval from 0 to {@code
+  // * terminalInteger-1}, inclusive.
+  // */
+  // public static Range range(final int initialInteger, final int
+  // terminalInteger) {
+  // return range(initialInteger, terminalInteger, 1);
+  // }
+  //
+  // /**
+  // * Get a new iterable Range object over the interval from {@code
+  // * initialInteger} to {@code terminalInteger-1}, inclusive, with
+  // incrementing
+  // * steps of the specified value.
+  // *
+  // * @param initialInteger
+  // * The minimum of the range to get.
+  // * @param terminalInteger
+  // * The maximum + 1 of the range to get.
+  // * @param incrementInteger
+  // * The value by which to increment over the Range.
+  // * @return An iterable Range object over the interval from 0 to {@code
+  // * terminalInteger-1}, inclusive.
+  // */
+  // public static Range range(final int initialInteger,
+  // final int terminalInteger, final int incrementInteger) {
+  // return new Range(initialInteger, terminalInteger, incrementInteger);
+  // }
 
   /** The current pointer. */
   private int current;
@@ -97,8 +99,8 @@ public abstract class AbstractRange<N extends Number> implements Iterator<N>, It
   private final int start;
 
   /**
-   * Instantiate this range of integers from {@code 0} to {@code
-   * terminalInteger-1} inclusive.
+   * Instantiate this range of integers from {@code 0} to
+   * {@code terminalInteger-1} inclusive.
    * 
    * @param terminalInteger
    *          The maximum + 1 integer of this range.
@@ -108,8 +110,8 @@ public abstract class AbstractRange<N extends Number> implements Iterator<N>, It
   }
 
   /**
-   * Instantiate this range of integers from {@code initialInteger} to {@code
-   * terminalInteger-1} inclusive.
+   * Instantiate this range of integers from {@code initialInteger} to
+   * {@code terminalInteger-1} inclusive.
    * 
    * @param initialInteger
    *          The lower integer of this range.
@@ -121,8 +123,8 @@ public abstract class AbstractRange<N extends Number> implements Iterator<N>, It
   }
 
   /**
-   * Instantiate this range of integers from {@code initialInteger} to {@code
-   * terminalInteger-1}, inclusive, with the specified increment.
+   * Instantiate this range of integers from {@code initialInteger} to
+   * {@code terminalInteger-1}, inclusive, with the specified increment.
    * 
    * @param initialInteger
    *          The lower integer of this range.
@@ -180,31 +182,31 @@ public abstract class AbstractRange<N extends Number> implements Iterator<N>, It
     // increment the current integer
     this.current += this.increment;
 
-    return this.getValue(this.current);
+    return this.getValue();
   }
 
-  protected abstract N getValue(final int current);
-  
+  protected abstract N getValue();
+
   protected int current() {
     return this.current;
   }
-  
+
   protected void setCurrent(final int newCurrent) {
     this.current = newCurrent;
   }
-  
+
   protected int increment() {
     return this.increment;
   }
-  
+
   protected int start() {
     return this.start;
   }
-  
+
   protected int end() {
     return this.end;
   }
-  
+
   /**
    * This operation is unsupported.
    * 
