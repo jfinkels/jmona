@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * IsZeroInteger.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -19,19 +19,24 @@
  */
 package jmona.functional.operators;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
-
 /**
- * Runs all tests in this package.
+ * Condition for testing whether an integer is 0.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-@RunWith(Suite.class)
-@SuiteClasses({ IsZeroDoubleTester.class, IsZeroFloatTester.class,
-    IsZeroIntegerTester.class, IsZeroLongTester.class })
-public class AllTest {
+public class IsZeroInteger implements IsZero<Integer> {
+
+  /**
+   * Whether the specified input number is 0.
+   * 
+   * @param input
+   *          The number to test for zero.
+   * @return Whether the specified input number is 0.
+   */
+  @Override
+  public Boolean execute(final Integer input) {
+    return input == 0;
+  }
 
 }

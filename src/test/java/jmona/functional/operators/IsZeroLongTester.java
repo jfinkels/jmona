@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * IsZeroLongTester.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -19,19 +19,29 @@
  */
 package jmona.functional.operators;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 /**
- * Runs all tests in this package.
+ * Test class for the IsZeroLong class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-@RunWith(Suite.class)
-@SuiteClasses({ IsZeroDoubleTester.class, IsZeroFloatTester.class,
-    IsZeroIntegerTester.class, IsZeroLongTester.class })
-public class AllTest {
+public class IsZeroLongTester {
+
+  /**
+   * Test method for
+   * {@link jmona.functional.operators.IsZeroLong#execute(java.lang.Long)} .
+   */
+  @Test
+  public void testExecute() {
+    IsZeroLong condition = new IsZeroLong();
+    assertFalse(condition.execute(1l));
+    assertFalse(condition.execute(-1l));
+    assertTrue(condition.execute(0l));
+  }
 
 }

@@ -1,5 +1,5 @@
 /**
- * IsZeroTester.java
+ * IsZeroLong.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -19,36 +19,24 @@
  */
 package jmona.functional.operators;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import jmona.Condition;
-import jmona.MappingException;
-import jmona.test.Util;
-
-import org.junit.Test;
-
 /**
- * Test class for the IsZero class.
+ * Condition for testing whether an long is 0.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class IsZeroTester {
+public class IsZeroLong implements IsZero<Long> {
 
   /**
-   * Test method for
-   * {@link jmona.functional.operators.IsZero#execute(java.lang.Double)}.
+   * Whether the specified input number is 0.
+   * 
+   * @param input
+   *          The number to test for zero.
+   * @return Whether the specified input number is 0.
    */
-  @Test
-  public void testExecute() {
-    final Condition<Double> condition = new IsZero();
-    try {
-      assertFalse(condition.execute(1.0));
-      assertFalse(condition.execute(-1.0));
-      assertTrue(condition.execute(0.0));
-    } catch (final MappingException exception) {
-      Util.fail(exception);
-    }
+  @Override
+  public Boolean execute(final Long input) {
+    return input == 0l;
   }
 
 }

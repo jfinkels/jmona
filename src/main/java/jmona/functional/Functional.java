@@ -89,16 +89,22 @@ public final class Functional {
     return any(iterable, IDENTITY_CONDITION);
   }
 
+  /**
+   * Determines whether any element in the specified Iterable is true under the
+   * specified condition.
+   * 
+   * @param <T>
+   *          The type of element in the iterable.
+   * @param iterable
+   *          The iterable to check for any true values.
+   * @return Whether any value in the specified iterable is true.
+   * @throws MappingException
+   *           If there is a problem determining the truth value of any of the
+   *           elements of the iterable.
+   */
   public static <T> boolean any(final Iterable<T> iterable,
       final Condition<T> condition) throws MappingException {
-
-    for (final T element : iterable) {
-      if (condition.execute(element)) {
-        return true;
-      }
-    }
-
-    return false;
+    return !filter(condition, iterable).isEmpty();
   }
 
   /**
@@ -239,19 +245,19 @@ public final class Functional {
    *         <em>i</em>-th element from each of the iterables, and whose size is
    *         the minimum of the sizes of the input iterables.
    */
-//  public static <S, T> List<Pair<S, T>> zip(final Iterable<S> iterable1,
-//      final Iterable<T> iterable2) {
-//    final List<Pair<S, T>> result = new ArrayList<Pair<S, T>>();
-//
-//    final Iterator<S> it1 = iterable1.iterator();
-//    final Iterator<T> it2 = iterable2.iterator();
-//
-//    while (it1.hasNext() && it2.hasNext()) {
-//      result.add(new Pair<S, T>(it1.next(), it2.next()));
-//    }
-//
-//    return result;
-//  }
+  // public static <S, T> List<Pair<S, T>> zip(final Iterable<S> iterable1,
+  // final Iterable<T> iterable2) {
+  // final List<Pair<S, T>> result = new ArrayList<Pair<S, T>>();
+  //
+  // final Iterator<S> it1 = iterable1.iterator();
+  // final Iterator<T> it2 = iterable2.iterator();
+  //
+  // while (it1.hasNext() && it2.hasNext()) {
+  // result.add(new Pair<S, T>(it1.next(), it2.next()));
+  // }
+  //
+  // return result;
+  // }
 
   /** Instantiation disallowed except by subclasses. */
   protected Functional() {

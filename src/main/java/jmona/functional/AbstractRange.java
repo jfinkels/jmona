@@ -30,6 +30,8 @@ import java.util.NoSuchElementException;
  * For large ranges, this class uses less memory than a Vector containing each
  * integer in the interval.
  * 
+ * @param <N>
+ *          The type of number which over which this range iterates.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
@@ -39,55 +41,6 @@ public abstract class AbstractRange<N extends Number> implements Iterator<N>,
 
   /** The default increment for this Iterator. */
   public static final int DEFAULT_INCREMENT = 1;
-
-  // /**
-  // * Get a new iterable Range object over the interval from 0 to {@code
-  // * terminalInteger-1}, inclusive.
-  // *
-  // * @param terminalInteger
-  // * The maximum + 1 of the range to get.
-  // * @return An iterable Range object over the interval from 0 to {@code
-  // * terminalInteger-1}, inclusive.
-  // */
-  // public static Range range(final int terminalInteger) {
-  // return range(0, terminalInteger);
-  // }
-  //
-  // /**
-  // * Get a new iterable Range object over the interval from {@code
-  // * initialInteger} to {@code terminalInteger-1}, inclusive.
-  // *
-  // * @param initialInteger
-  // * The minimum of the range to get.
-  // * @param terminalInteger
-  // * The maximum + 1 of the range to get.
-  // * @return An iterable Range object over the interval from 0 to {@code
-  // * terminalInteger-1}, inclusive.
-  // */
-  // public static Range range(final int initialInteger, final int
-  // terminalInteger) {
-  // return range(initialInteger, terminalInteger, 1);
-  // }
-  //
-  // /**
-  // * Get a new iterable Range object over the interval from {@code
-  // * initialInteger} to {@code terminalInteger-1}, inclusive, with
-  // incrementing
-  // * steps of the specified value.
-  // *
-  // * @param initialInteger
-  // * The minimum of the range to get.
-  // * @param terminalInteger
-  // * The maximum + 1 of the range to get.
-  // * @param incrementInteger
-  // * The value by which to increment over the Range.
-  // * @return An iterable Range object over the interval from 0 to {@code
-  // * terminalInteger-1}, inclusive.
-  // */
-  // public static Range range(final int initialInteger,
-  // final int terminalInteger, final int incrementInteger) {
-  // return new Range(initialInteger, terminalInteger, incrementInteger);
-  // }
 
   /** The current pointer. */
   private int current;
@@ -144,6 +97,31 @@ public abstract class AbstractRange<N extends Number> implements Iterator<N>,
   }
 
   /**
+   * Gets the current value of this iterator.
+   * 
+   * @return The current value of this iterator.
+   */
+  protected int current() {
+    return this.current;
+  }
+
+  /**
+   * Gets the terminal number in this range.
+   * 
+   * @return The terminal number in this range.
+   */
+  protected int end() {
+    return this.end;
+  }
+
+  /**
+   * Gets the current value of this range.
+   * 
+   * @return The current value of this range.
+   */
+  protected abstract N getValue();
+
+  /**
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
@@ -152,6 +130,15 @@ public abstract class AbstractRange<N extends Number> implements Iterator<N>,
   @Override
   public boolean hasNext() {
     return this.current + this.increment < this.end;
+  }
+
+  /**
+   * Gets the increment between numbers in this range.
+   * 
+   * @return The increment between numbers in this range.
+   */
+  protected int increment() {
+    return this.increment;
   }
 
   /**
@@ -185,28 +172,6 @@ public abstract class AbstractRange<N extends Number> implements Iterator<N>,
     return this.getValue();
   }
 
-  protected abstract N getValue();
-
-  protected int current() {
-    return this.current;
-  }
-
-  protected void setCurrent(final int newCurrent) {
-    this.current = newCurrent;
-  }
-
-  protected int increment() {
-    return this.increment;
-  }
-
-  protected int start() {
-    return this.start;
-  }
-
-  protected int end() {
-    return this.end;
-  }
-
   /**
    * This operation is unsupported.
    * 
@@ -217,5 +182,24 @@ public abstract class AbstractRange<N extends Number> implements Iterator<N>,
   @Override
   public void remove() {
     throw new UnsupportedOperationException();
+  }
+
+  /**
+   * Sets the current value of this iterator.
+   * 
+   * @param newCurrent
+   *          The current value of this iterator.
+   */
+  protected void setCurrent(final int newCurrent) {
+    this.current = newCurrent;
+  }
+
+  /**
+   * Gets the initial number in this range.
+   * 
+   * @return The initial number in this range.
+   */
+  protected int start() {
+    return this.start;
   }
 }

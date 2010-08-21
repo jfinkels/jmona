@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * IsZeroDoubleTester.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -19,19 +19,30 @@
  */
 package jmona.functional.operators;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 /**
- * Runs all tests in this package.
+ * Test class for the IsZeroDouble class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-@RunWith(Suite.class)
-@SuiteClasses({ IsZeroDoubleTester.class, IsZeroFloatTester.class,
-    IsZeroIntegerTester.class, IsZeroLongTester.class })
-public class AllTest {
+public class IsZeroDoubleTester {
+
+  /**
+   * Test method for
+   * {@link jmona.functional.operators.IsZeroDouble#execute(java.lang.Double)}
+   * .
+   */
+  @Test
+  public void testExecute() {
+    IsZeroDouble condition = new IsZeroDouble();
+    assertFalse(condition.execute(1.0));
+    assertFalse(condition.execute(-1.0));
+    assertTrue(condition.execute(0.0));
+  }
 
 }

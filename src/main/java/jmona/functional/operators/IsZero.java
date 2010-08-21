@@ -27,18 +27,6 @@ import jmona.Condition;
  * @author Jeffrey Finkelstein
  * @since 0.4
  */
-public class IsZero implements Condition<Double> {
-
-  /**
-   * Whether the specified input number is 0.
-   * 
-   * @param input
-   *          The number to test for zero.
-   * @return Whether the specified input number is 0.
-   */
-  @Override
-  public Boolean execute(final Double input) {
-    return input == 0.0;
-  }
-
+public interface IsZero<N extends Number> extends Condition<N> {
+  // intentionally unimplemented
 }

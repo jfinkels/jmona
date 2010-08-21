@@ -31,6 +31,7 @@ import jmona.Condition;
 import jmona.MappingException;
 import jmona.functional.example.BadMapping;
 import jmona.functional.example.ToHashCode;
+import jmona.functional.operators.IsZeroInteger;
 import jmona.test.Util;
 
 import org.junit.Test;
@@ -50,7 +51,7 @@ public class FunctionalTester {
    * Test method for {@link jmona.functional.Functional#any(Iterable).
    */
   @Test
-  public void testAny() {
+  public void testAnyIterable() {
     Iterable<Boolean> iterable = Arrays.asList();
     try {
       assertFalse(Functional.any(iterable));
@@ -75,6 +76,42 @@ public class FunctionalTester {
     iterable = Arrays.asList(false, false, false);
     try {
       assertFalse(Functional.any(iterable));
+    } catch (final MappingException exception) {
+      Util.fail(exception);
+    }
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.functional.Functional#any(Iterable, Condition).
+   */
+  @Test
+  public void testAnyIterableCondition() {
+    final Condition<Integer> isZero = new IsZeroInteger();
+    Iterable<Integer> iterable = Arrays.asList();
+    try {
+      assertFalse(Functional.any(iterable, isZero));
+    } catch (final MappingException exception) {
+      Util.fail(exception);
+    }
+
+    iterable = Arrays.asList(0, 1, -1);
+    try {
+      assertTrue(Functional.any(iterable, isZero));
+    } catch (final MappingException exception) {
+      Util.fail(exception);
+    }
+
+    iterable = Arrays.asList(1, -1, 0);
+    try {
+      assertTrue(Functional.any(iterable, isZero));
+    } catch (final MappingException exception) {
+      Util.fail(exception);
+    }
+
+    iterable = Arrays.asList(1, 2, 3);
+    try {
+      assertFalse(Functional.any(iterable, isZero));
     } catch (final MappingException exception) {
       Util.fail(exception);
     }
@@ -212,32 +249,32 @@ public class FunctionalTester {
    * Test method for {@link jmona.functional.Functional#zip(Iterable, Iterable)}
    * .
    */
-//  @Test
-//  public void testZip() {
-//    List<Integer> left = Arrays.asList(0, 1, 2);
-//    List<Double> right = Arrays.asList(0.0, 1.0, 2.0);
-//
-//    List<Pair<Integer, Double>> zipped = Functional.zip(left, right);
-//
-//    assertEquals(zipped.size(), Math.min(left.size(), right.size()));
-//
-//    for (final int i : new Range(3)) {
-//      assertEquals(zipped.get(i).left().intValue(), zipped.get(i).right()
-//          .intValue());
-//      assertEquals(zipped.get(i).left().doubleValue(), zipped.get(i).right()
-//          .doubleValue(), ZERO_DELTA);
-//    }
-//
-//    right = Arrays.asList(0.0, 1.0);
-//    zipped = Functional.zip(left, right);
-//
-//    assertEquals(zipped.size(), Math.min(left.size(), right.size()));
-//
-//    for (final int i : new Range(Math.min(left.size(), right.size()))) {
-//      assertEquals(zipped.get(i).left().intValue(), zipped.get(i).right()
-//          .intValue());
-//      assertEquals(zipped.get(i).left().doubleValue(), zipped.get(i).right()
-//          .doubleValue(), ZERO_DELTA);
-//    }
-//  }
+  // @Test
+  // public void testZip() {
+  // List<Integer> left = Arrays.asList(0, 1, 2);
+  // List<Double> right = Arrays.asList(0.0, 1.0, 2.0);
+  //
+  // List<Pair<Integer, Double>> zipped = Functional.zip(left, right);
+  //
+  // assertEquals(zipped.size(), Math.min(left.size(), right.size()));
+  //
+  // for (final int i : new Range(3)) {
+  // assertEquals(zipped.get(i).left().intValue(), zipped.get(i).right()
+  // .intValue());
+  // assertEquals(zipped.get(i).left().doubleValue(), zipped.get(i).right()
+  // .doubleValue(), ZERO_DELTA);
+  // }
+  //
+  // right = Arrays.asList(0.0, 1.0);
+  // zipped = Functional.zip(left, right);
+  //
+  // assertEquals(zipped.size(), Math.min(left.size(), right.size()));
+  //
+  // for (final int i : new Range(Math.min(left.size(), right.size()))) {
+  // assertEquals(zipped.get(i).left().intValue(), zipped.get(i).right()
+  // .intValue());
+  // assertEquals(zipped.get(i).left().doubleValue(), zipped.get(i).right()
+  // .doubleValue(), ZERO_DELTA);
+  // }
+  // }
 }

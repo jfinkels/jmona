@@ -22,6 +22,12 @@
  * Provides common operators implemented as classes representing functions.
  * </p>
  * 
+ * <p>
+ * The {@link jmon.functional.operators.IsZero} interface and its implementing
+ * classes provide a (type-safe) condition for testing whether a number is equal
+ * to zero.
+ * </p>
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */

@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * IsZeroIntegerTester.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -19,19 +19,30 @@
  */
 package jmona.functional.operators;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 /**
- * Runs all tests in this package.
+ * Test class for the IsZeroInteger class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-@RunWith(Suite.class)
-@SuiteClasses({ IsZeroDoubleTester.class, IsZeroFloatTester.class,
-    IsZeroIntegerTester.class, IsZeroLongTester.class })
-public class AllTest {
+public class IsZeroIntegerTester {
+
+  /**
+   * Test method for
+   * {@link jmona.functional.operators.IsZeroInteger#execute(java.lang.Integer)}
+   * .
+   */
+  @Test
+  public void testExecute() {
+    IsZeroInteger condition = new IsZeroInteger();
+    assertFalse(condition.execute(1));
+    assertFalse(condition.execute(-1));
+    assertTrue(condition.execute(0));
+  }
 
 }
