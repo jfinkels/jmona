@@ -38,7 +38,10 @@ import jmona.impl.mutable.functional.MutableRange;
 public class TourFactory extends DeepCopyableListFactory<MutableInteger> {
 
   /**
+   * Instantiates this factory to create Lists of the specified size.
+   * 
    * @param initialSize
+   *          The size of the List to create.
    */
   public TourFactory(final int initialSize) {
     super(initialSize);
@@ -64,8 +67,8 @@ public class TourFactory extends DeepCopyableListFactory<MutableInteger> {
       throws InitializationException {
     DeepCopyableList<MutableInteger> result;
     try {
-      result = new DeepCopyableVector<MutableInteger>(new MutableRange(this
-          .size()));
+      result = new DeepCopyableVector<MutableInteger>(new MutableRange(
+          this.size()));
     } catch (final CopyingException exception) {
       throw new InitializationException(
           "Failed to create initial list of integers.", exception);

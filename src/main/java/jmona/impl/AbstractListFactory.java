@@ -37,8 +37,26 @@ import jmona.PropertyNotSetException;
 public abstract class AbstractListFactory<E, L extends List<E>> extends
     SizedFactory<L> {
 
+  /** The factory which creates elements of type E. */
+  private Factory<E> elementFactory = null;
+
+  /**
+   * Instantiates this factory to create Lists of the specified size.
+   * 
+   * @param initialSize
+   *          The size of the List to create.
+   */
   public AbstractListFactory(final int initialSize) {
     super(initialSize);
+  }
+
+  /**
+   * Gets the factory which creates elements contained in a created List.
+   * 
+   * @return The factory which creates elements contained in a created List.
+   */
+  public Factory<E> elementFactory() {
+    return this.elementFactory;
   }
 
   /**
@@ -55,9 +73,6 @@ public abstract class AbstractListFactory<E, L extends List<E>> extends
     }
   }
 
-  /** The factory which creates elements of type E. */
-  private Factory<E> elementFactory = null;
-
   /**
    * Sets the factory which creates elements contained in a created List.
    * 
@@ -66,10 +81,6 @@ public abstract class AbstractListFactory<E, L extends List<E>> extends
    */
   public void setElementFactory(final Factory<E> newElementFactory) {
     this.elementFactory = newElementFactory;
-  }
-
-  public Factory<E> elementFactory() {
-    return this.elementFactory;
   }
 
 }

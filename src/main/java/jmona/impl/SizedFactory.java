@@ -22,20 +22,35 @@ package jmona.impl;
 import jmona.Factory;
 
 /**
+ * A factory which creates an object with a size, like a List.
+ * 
+ * @param <E>
+ *          The type of object which this factory creates.
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
 public abstract class SizedFactory<E> implements Factory<E> {
-  
+
+  /** The size of the object which this factory creates. */
   private final int size;
-  
+
+  /**
+   * Instantiates this factory to create objects of the specified size.
+   * 
+   * @param initialSize
+   *          The size of the object to create.
+   */
   public SizedFactory(final int initialSize) {
     this.size = initialSize;
   }
 
+  /**
+   * Gets the size of the object to create.
+   * 
+   * @return The size of the object to create.
+   */
   protected int size() {
     return this.size;
   }
-
 
 }

@@ -38,7 +38,10 @@ public class DeepCopyableListFactory<E extends DeepCopyable<E>> extends
     AbstractListFactory<E, DeepCopyableList<E>> {
 
   /**
+   * Instantiates this factory to create Lists of the specified size.
+   * 
    * @param initialSize
+   *          The size of the List to create.
    */
   public DeepCopyableListFactory(final int initialSize) {
     super(initialSize);
@@ -72,6 +75,5 @@ public class DeepCopyableListFactory<E extends DeepCopyable<E>> extends
 
     return result;
   }
-
 
 }
