@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * ToClassTester.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -19,19 +19,29 @@
  */
 package jmona.functional.operators;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
 
 /**
- * Runs all tests in this package.
+ * Test class for the ToClass class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-@RunWith(Suite.class)
-@SuiteClasses({ IsZeroDoubleTester.class, IsZeroFloatTester.class,
-    IsZeroIntegerTester.class, IsZeroLongTester.class, ToClassTester.class })
-public class AllTest {
+public class ToClassTester {
+
+  /**
+   * Test method for
+   * {@link jmona.functional.operators.ToClass#execute(java.lang.Object)}.
+   */
+  @Test
+  public void testExecute() {
+    ToClass<Number> function = new ToClass<Number>();
+    assertEquals(Integer.class, function.execute(new Integer(0)));
+    assertEquals(Double.class, function.execute(new Double(0.0d)));
+    assertEquals(Long.class, function.execute(new Long(0l)));
+    assertEquals(Float.class, function.execute(new Float(0.0f)));
+  }
 
 }

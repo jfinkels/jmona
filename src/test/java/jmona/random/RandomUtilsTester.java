@@ -31,7 +31,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import jmona.functional.Range;
-import jmona.test.Util;
+import jmona.impl.ListUtils;
 
 import org.junit.Test;
 
@@ -216,7 +216,7 @@ public class RandomUtilsTester {
       
       assertEquals(2, sample.size());
       
-      final Map<Object, Integer> newCounts = Util.count(sample);
+      final Map<Object, Integer> newCounts = ListUtils.count(sample);
       for (final Object object : newCounts.keySet()) {
         counts.put(object, counts.get(object) + newCounts.get(object));
       }

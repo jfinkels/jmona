@@ -23,10 +23,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Vector;
 
 import jmona.Factory;
@@ -135,21 +132,6 @@ public class UtilTester {
     assertFalse(Util.areEqual(list2, list3));
     assertFalse(Util.areEqual(list3, list2));
 
-  }
-
-  /** Test method for {@link Util#count(Iterable)}. */
-  @SuppressWarnings("unchecked")
-  @Test
-  public void testCount() {
-    assertEquals(0, Util.count(Collections.EMPTY_LIST).size());
-
-    final Iterable<String> iterable = Arrays.asList("a", "a", "b", "c", "c",
-        "c");
-    final Map<String, Integer> result = Util.count(iterable);
-    assertEquals(3, result.size());
-    assertEquals(2, result.get("a").intValue());
-    assertEquals(1, result.get("b").intValue());
-    assertEquals(3, result.get("c").intValue());
   }
 
   /**

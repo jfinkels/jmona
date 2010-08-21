@@ -19,12 +19,15 @@
  */
 package jmona.game.impl;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import jmona.EvolutionContext;
 import jmona.LoggingException;
+import jmona.MappingException;
 import jmona.PopulationEvolutionContext;
+import jmona.functional.Functional;
+import jmona.functional.operators.ToClass;
+import jmona.impl.ListUtils;
 import jmona.impl.postprocessing.LoggingPostProcessor;
 
 /**
@@ -44,9 +47,15 @@ public class ClassCountingPostProcessor<T> extends LoggingPostProcessor<T> {
    * @param context
    *          The context from which to get the population of objects whose
    *          classes will be counted.
+   * @return The string representation of a map from class to number of objects
+   *         of that class in the specified EvolutionContext.
+   * @throws LoggingException
+   *           If the specified EvolutionContext is not a
+   *           PopulationEvolutionContext, or if there is a problem determining
+   *           the classes of the individuals in the current population of the
+   *           specified EvolutionContext.
    * @see jmona.impl.postprocessing.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
    */
-  @SuppressWarnings("unchecked")
   @Override
   protected String message(final EvolutionContext<T> context)
       throws LoggingException {
@@ -56,21 +65,16 @@ public class ClassCountingPostProcessor<T> extends LoggingPostProcessor<T> {
               + context.getClass());
     }
 
-    final Map<Class<T>, Integer> results = new HashMap<Class<T>, Integer>();
-
-    Class<T> clazz = null;
-    for (final T individual : ((PopulationEvolutionContext<T>) context)
-        .currentPopulation()) {
-      clazz = (Class<T>) individual.getClass();
-
-      if (results.containsKey(clazz)) {
-        results.put(clazz, results.get(clazz) + 1);
-      } else {
-        results.put(clazz, 1);
-      }
+    List<Class<?>> classes = null;
+    try {
+      classes = Functional.map(new ToClass<T>(),
+          ((PopulationEvolutionContext<T>) context).currentPopulation());
+    } catch (final MappingException exception) {
+      throw new LoggingException("Failed to determine classes of individuals.",
+          exception);
     }
 
-    return results.toString();
+    return ListUtils.count(classes).toString();
   }
 
 }

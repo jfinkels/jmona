@@ -19,9 +19,13 @@
  */
 package jmona.impl;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import org.junit.Test;
@@ -33,6 +37,29 @@ import org.junit.Test;
  * @since 0.5
  */
 public class ListUtilsTester {
+
+  /** Test method for {@link ListUtils#count(Iterable)}. */
+  @SuppressWarnings("unchecked")
+  @Test
+  public void testCount() {
+    assertEquals(0, ListUtils.count(Collections.EMPTY_LIST).size());
+
+    final Iterable<String> iterable = Arrays.asList("a", "a", "b", "c", "c",
+        "c");
+    final Map<String, Integer> result = ListUtils.count(iterable);
+    assertEquals(3, result.size());
+    assertEquals(2, result.get("a").intValue());
+    assertEquals(1, result.get("b").intValue());
+    assertEquals(3, result.get("c").intValue());
+  }
+
+  /**
+   * Test method for {@link jmona.impl.ListUtils#ListUtils()}.
+   */
+  @Test
+  public void testListUtils() {
+    new ListUtils();
+  }
 
   /**
    * Test method for
@@ -110,14 +137,6 @@ public class ListUtilsTester {
 
     assertSame(list2Object2, list1.get(2));
     assertSame(list1Object2, list2.get(2));
-  }
-
-  /**
-   * Test method for {@link jmona.impl.ListUtils#ListUtils()}.
-   */
-  @Test
-  public void testListUtils() {
-    new ListUtils();
   }
 
 }

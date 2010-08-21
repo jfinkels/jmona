@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * ToClass.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -19,19 +19,27 @@
  */
 package jmona.functional.operators;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import jmona.Function;
 
 /**
- * Runs all tests in this package.
+ * Maps an object to its class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-@RunWith(Suite.class)
-@SuiteClasses({ IsZeroDoubleTester.class, IsZeroFloatTester.class,
-    IsZeroIntegerTester.class, IsZeroLongTester.class, ToClassTester.class })
-public class AllTest {
+public class ToClass<T> implements Function<T, Class<?>> {
+
+  /**
+   * Gets the class of the specified input object.
+   * 
+   * @param input
+   *          The object whose class to get.
+   * @return The class of the input object.
+   * @see jmona.Function#execute(java.lang.Object)
+   */
+  @Override
+  public Class<?> execute(final T input) {
+    return input.getClass();
+  }
 
 }
