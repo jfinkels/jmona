@@ -61,12 +61,12 @@ public class MaxGenerationCompletionCondition<T> implements
    * This condition returns true if the evolution has met or exceeded this
    * number of generations.
    * 
-   * @param maxGenerations
+   * @param initialMaxGenerations
    *          The number of generations to occur in an EvolutionContext before
    *          this condition returns true.
    */
-  public MaxGenerationCompletionCondition(final int maxGenerations) {
-    this.maxGenerations = maxGenerations;
+  public MaxGenerationCompletionCondition(final int initialMaxGenerations) {
+    this.maxGenerations = initialMaxGenerations;
   }
 
   /**
