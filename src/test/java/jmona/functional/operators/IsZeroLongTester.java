@@ -39,9 +39,9 @@ public class IsZeroLongTester {
   @Test
   public void testExecute() {
     IsZeroLong condition = new IsZeroLong();
-    assertFalse(condition.execute(1l));
-    assertFalse(condition.execute(-1l));
-    assertTrue(condition.execute(0l));
+    assertFalse(condition.execute(1L));
+    assertFalse(condition.execute(-1L));
+    assertTrue(condition.execute(0L));
   }
 
 }

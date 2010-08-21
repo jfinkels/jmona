@@ -45,7 +45,7 @@ public class MutableLongTester {
    */
   @Test
   public void testMutableLongLong() {
-    final MutableLong l = new MutableLong(0l);
+    final MutableLong l = new MutableLong(0L);
     assertEquals(0l, l.longValue());
   }
 
@@ -55,7 +55,7 @@ public class MutableLongTester {
    */
   @Test
   public void testMutableLongNumber() {
-    final MutableLong l = new MutableLong(1l);
+    final MutableLong l = new MutableLong(1L);
     assertEquals(1, l.longValue());
   }
 
@@ -64,7 +64,7 @@ public class MutableLongTester {
    */
   @Test
   public void testDeepCopy() {
-    final MutableLong l = new MutableLong(2l);
+    final MutableLong l = new MutableLong(2L);
     final MutableLong clone = l.deepCopy();
     assertNotSame(l, clone);
     assertEquals(l, clone);
