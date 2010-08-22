@@ -496,12 +496,18 @@
   <distributionManagement>
     <downloadUrl>http://www.cs.tufts.edu/~jfinke02/jmona/</downloadUrl>
     <repository>
-      <uniqueVersion>false</uniqueVersion>
       <id>jmona.repo</id>
       <name>jmona repository</name>
       <url>scp://linux.cs.tufts.edu/h/jfinke02/public_html/repo</url>
       <layout>default</layout>
     </repository>
+    <snapshotRepository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>jmona.repo.snapshot</id>
+      <name>jmona snapshot repository</name>
+      <url>scp://linux.cs.tufts.edu/h/jfinke02/public_html/repo</url>
+      <layout>default</layout>
+    </snapshotRepository>
     <site>
       <id>jmona.website</id>
       <name>jmona website</name>
