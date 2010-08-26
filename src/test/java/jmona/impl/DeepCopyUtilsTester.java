@@ -60,7 +60,7 @@ public class DeepCopyUtilsTester {
     try {
       clonedList = DeepCopyUtils.deepCopy(list);
     } catch (final CopyingException exception) {
-      jmona.test.Util.fail(exception);
+      jmona.test.TestUtils.fail(exception);
     }
 
     assertEquals(list.size(), clonedList.size());

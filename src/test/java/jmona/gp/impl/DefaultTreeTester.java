@@ -120,7 +120,7 @@ public class DefaultTreeTester {
     try {
       copy = this.bigTree.deepCopy();
     } catch (final CopyingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     // the copy should not refer to the same object as the original
@@ -157,7 +157,7 @@ public class DefaultTreeTester {
       assertEquals(ExampleNodeEvaluator.evaluate(originalNode),
           ExampleNodeEvaluator.evaluate(copyNode));
     } catch (final MappingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

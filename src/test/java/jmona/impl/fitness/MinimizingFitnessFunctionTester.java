@@ -61,7 +61,7 @@ public class MinimizingFitnessFunctionTester {
       assertEquals(0, function.standardizedFitness(new ExampleIndividual(
           minimum)), ZERO_DELTA);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     function = new MinimizingFitnessFunction<ExampleIndividual>() {
@@ -77,7 +77,7 @@ public class MinimizingFitnessFunctionTester {
       assertEquals(0, function.standardizedFitness(new ExampleIndividual(0)),
           ZERO_DELTA);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
   }

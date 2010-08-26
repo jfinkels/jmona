@@ -62,7 +62,7 @@ public class DeepCopyableListFactoryTester {
       // elementFactory has not been set
       assertTrue(exception instanceof PropertyNotSetException);
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     factory.setElementFactory(new ExampleIndividualFactory());
@@ -72,14 +72,14 @@ public class DeepCopyableListFactoryTester {
     try {
       beforeList = factory.createObject();
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     DeepCopyableList<ExampleIndividual> afterList = null;
     try {
       afterList = beforeList.deepCopy();
     } catch (final CopyingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(size, beforeList.size());

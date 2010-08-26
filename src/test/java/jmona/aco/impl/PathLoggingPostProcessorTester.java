@@ -94,7 +94,7 @@ public class PathLoggingPostProcessorTester {
     try {
       result = processor.message(context);
     } catch (final LoggingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertTrue(result.contains("[0, 1, 2]"));
@@ -105,7 +105,7 @@ public class PathLoggingPostProcessorTester {
     try {
       result = processor.message(context);
     } catch (final LoggingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertTrue(result.contains("[0, 1, 2], total distance: 6.0"));

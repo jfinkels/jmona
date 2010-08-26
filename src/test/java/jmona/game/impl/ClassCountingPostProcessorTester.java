@@ -69,7 +69,7 @@ public class ClassCountingPostProcessorTester {
     try {
       result = processor.message(context);
     } catch (final LoggingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     final Map<Class<ExampleStrategy>, Integer> counts = new HashMap<Class<ExampleStrategy>, Integer>();

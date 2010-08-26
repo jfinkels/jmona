@@ -65,7 +65,7 @@ public class UniformDistributionMutationFunctionTester {
       try {
         function.mutate(list);
       } catch (final MutationException exception) {
-        Util.fail(exception);
+        TestUtils.fail(exception);
       }
 
       // count the number of mutated individuals in the list

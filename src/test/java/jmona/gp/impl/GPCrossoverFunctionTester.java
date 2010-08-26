@@ -138,9 +138,9 @@ public class GPCrossoverFunctionTester {
         }
 
       } catch (final InitializationException exception) {
-        Util.fail(exception);
+        TestUtils.fail(exception);
       } catch (final NullPointerException exception) {
-        Util.fail(exception);
+        TestUtils.fail(exception);
       }
     }
   }

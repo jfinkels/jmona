@@ -67,7 +67,7 @@ public class ImageWriterTester {
     try {
       ImageWriter.writeImage(image, OUTPUT_FILENAME);
     } catch (final IOException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 }

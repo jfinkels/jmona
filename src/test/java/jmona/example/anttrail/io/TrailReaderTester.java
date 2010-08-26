@@ -55,7 +55,7 @@ public class TrailReaderTester {
     try {
       trail = TrailReader.fromFile(TESTFILE);
     } catch (final IOException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(new CoordinatePair(2, 2), trail.bounds());

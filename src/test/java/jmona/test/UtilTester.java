@@ -145,34 +145,12 @@ public class UtilTester {
     try {
       tree = factory.createObject();
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     final double epsilon = 0;
     assertEquals(Math.pow(2, AbstractTreeFactory.DEFAULT_MAX_DEPTH) - 1,
         Util.countNodes(tree), epsilon);
-  }
-
-  /**
-   * Test method for {@link jmona.test.Util#fail(java.lang.Throwable)}.
-   */
-  @Test
-  public void testFail() {
-    try {
-      Util.fail(new Exception());
-    } catch (final AssertionError error) {
-      assertTrue(error instanceof AssertionError);
-    }
-  }
-
-  /** Test method for {@link jmona.test.Util#shouldHaveThrownException()}. */
-  @Test
-  public void testShouldHaveThrownException() {
-    try {
-      Util.shouldHaveThrownException();
-    } catch (final AssertionError error) {
-      assertTrue(error instanceof AssertionError);
-    }
   }
 
 }

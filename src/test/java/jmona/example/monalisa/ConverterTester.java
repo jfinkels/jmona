@@ -91,7 +91,7 @@ public class ConverterTester {
     try {
       pixelGrabber.grabPixels();
     } catch (final InterruptedException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     int currentColor = 0;

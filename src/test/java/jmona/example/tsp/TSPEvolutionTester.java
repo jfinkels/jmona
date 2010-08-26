@@ -71,11 +71,11 @@ public class TSPEvolutionTester {
             + this.context.currentPopulation());
       }
     } catch (final MappingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final ArrayIndexOutOfBoundsException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 }

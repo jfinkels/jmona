@@ -76,7 +76,7 @@ public class AbstractTreeFactoryTester {
       }
 
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -89,7 +89,7 @@ public class AbstractTreeFactoryTester {
     try {
       this.factory.createTree(0);
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     Node node = null;
@@ -98,7 +98,7 @@ public class AbstractTreeFactoryTester {
       assertNull(node.children());
       assertTrue(node instanceof TerminalNode);
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     try {
@@ -113,7 +113,7 @@ public class AbstractTreeFactoryTester {
       assertTrue(node.children().get(1) instanceof TerminalNode);
 
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     try {
@@ -144,7 +144,7 @@ public class AbstractTreeFactoryTester {
       }
 
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
   }

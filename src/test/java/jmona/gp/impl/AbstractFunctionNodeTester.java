@@ -85,7 +85,7 @@ public class AbstractFunctionNodeTester {
     try {
       TreeUtils.deepCopyChildren(parent, children);
     } catch (final CopyingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertNotSame(parent.children().get(0), children.get(0));

@@ -65,7 +65,7 @@ public class AbstractEvolutionContextTester {
     try {
       this.context.stepGeneration();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
     assertEquals(1, this.context.currentGeneration());
   }
@@ -80,7 +80,7 @@ public class AbstractEvolutionContextTester {
     try {
       this.context.executeGenerationStep();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -93,7 +93,7 @@ public class AbstractEvolutionContextTester {
     try {
       this.context.stepGeneration();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

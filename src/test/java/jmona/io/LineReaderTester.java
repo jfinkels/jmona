@@ -51,7 +51,7 @@ public class LineReaderTester {
     try {
       result = LineReader.readLines(TESTFILE);
     } catch (final IOException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals("Hello, world!", result.get(0));

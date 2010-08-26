@@ -90,7 +90,7 @@ public class AntColonyEvolutionContextTester {
     try {
       this.context.executeGenerationStep();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     for (final WorkerAnt ant : this.context.currentPopulation()) {
@@ -127,7 +127,7 @@ public class AntColonyEvolutionContextTester {
     try {
       this.context.stepGeneration();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     for (final int i : new Range(NUMBER_OF_VERTICES)) {

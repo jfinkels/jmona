@@ -71,7 +71,7 @@ public class PerfectMatchCompletionConditionTester {
     try {
       this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -89,9 +89,9 @@ public class PerfectMatchCompletionConditionTester {
       this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
       assertTrue(this.completionCriteria.execute(this.evolutionContext));
     } catch (final MappingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

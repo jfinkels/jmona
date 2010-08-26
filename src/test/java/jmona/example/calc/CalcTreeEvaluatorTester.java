@@ -69,7 +69,7 @@ public class CalcTreeEvaluatorTester {
     try {
       assertEquals(0.0, evaluator.execute(tree).execute(0.0), ZERO_DELTA);
     } catch (final MappingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

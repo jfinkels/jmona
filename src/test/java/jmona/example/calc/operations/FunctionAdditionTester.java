@@ -80,7 +80,7 @@ public class FunctionAdditionTester {
           ZERO_DELTA);
 
     } catch (final MappingException exception) {
-      jmona.test.Util.fail(exception);
+      jmona.test.TestUtils.fail(exception);
     }
 
   }

@@ -60,7 +60,7 @@ public class MaximizingFitnessFunctionTester {
       assertEquals(0, function.standardizedFitness(new ExampleIndividual(
           maximum)), ZERO_DELTA);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
   }

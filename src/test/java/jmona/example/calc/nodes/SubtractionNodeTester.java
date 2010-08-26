@@ -62,9 +62,9 @@ public class SubtractionNodeTester {
             ZERO_DELTA);
       }
     } catch (final EvaluationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final MappingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

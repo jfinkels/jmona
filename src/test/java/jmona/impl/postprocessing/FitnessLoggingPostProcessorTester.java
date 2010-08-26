@@ -70,7 +70,7 @@ public class FitnessLoggingPostProcessorTester {
     try {
       context.setFitnessFunction(new ExampleFitnessFunction());
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     final FitnessLoggingPostProcessor<ExampleIndividual> processor = new FitnessLoggingPostProcessor<ExampleIndividual>();
@@ -79,7 +79,7 @@ public class FitnessLoggingPostProcessorTester {
     try {
       result = processor.message(context);
     } catch (final LoggingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertNotNull(result);

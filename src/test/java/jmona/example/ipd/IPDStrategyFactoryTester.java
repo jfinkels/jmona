@@ -64,7 +64,7 @@ public class IPDStrategyFactoryTester {
         }
       }
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     final int numStrategies = 5;

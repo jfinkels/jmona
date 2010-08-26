@@ -120,7 +120,7 @@ public class CalcTerminalNodeFactoryTester {
         }
       }
     } catch (final MappingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 }

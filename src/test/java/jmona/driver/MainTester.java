@@ -91,13 +91,13 @@ public class MainTester {
     } catch (final BeanDefinitionStoreException exception) {
       assertTrue(exception instanceof BeanDefinitionStoreException);
     } catch (final RuntimeException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     try {
       Main.main(new String[] { CONFIG_FILE_GOOD });
     } catch (final RuntimeException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

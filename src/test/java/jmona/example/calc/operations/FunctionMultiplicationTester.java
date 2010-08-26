@@ -99,7 +99,7 @@ public class FunctionMultiplicationTester {
       assertEquals(Util.ONE_FUNCTION.execute(0.0), result.execute(0.0),
           ZERO_DELTA);
     } catch (final MappingException exception) {
-      jmona.test.Util.fail(exception);
+      jmona.test.TestUtils.fail(exception);
     }
   }
 

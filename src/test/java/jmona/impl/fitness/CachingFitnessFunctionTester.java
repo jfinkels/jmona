@@ -56,7 +56,7 @@ public class CachingFitnessFunctionTester {
       // cache the fitness
       function.adjustedFitness(individual);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertNotNull(function.getCachedFitness(individual));

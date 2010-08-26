@@ -147,7 +147,7 @@ public class AggregatorCrossoverFunctionTester {
         function.crossover(null, null);
       }
     } catch (final CrossoverException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     final double delta = (NUM_CROSSOVERS / 2) * 0.1;

@@ -56,7 +56,7 @@ public class IdentityCrossoverFunctionTester {
     try {
       function.crossover(individual1, individual2);
     } catch (final CrossoverException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(fitness1, individual1.fitness(), ZERO_DELTA);

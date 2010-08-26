@@ -59,7 +59,7 @@ public class WorkerAntVectorTester {
     try {
       cities = Functional.map(antToCity, vector);
     } catch (final MappingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     for (final int i : new Range(numberOfVertices)) {

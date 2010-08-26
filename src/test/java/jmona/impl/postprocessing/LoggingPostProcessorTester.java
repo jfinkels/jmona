@@ -103,7 +103,7 @@ public class LoggingPostProcessorTester {
     try {
       this.processor.processAtInterval(this.context);
     } catch (final ProcessingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
     
     this.processor = new FitnessLoggingPostProcessor<ExampleIndividual>();
@@ -134,7 +134,7 @@ public class LoggingPostProcessorTester {
     try {
       this.processor.processAtInterval(this.context);
     } catch (final ProcessingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

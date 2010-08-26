@@ -86,9 +86,9 @@ public class MonaEvolutionTester {
             + this.context.currentPopulation());
       }
     } catch (final CompletionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     try {
@@ -98,7 +98,7 @@ public class MonaEvolutionTester {
           this.width, this.height);
       ImageWriter.writeImage(image, FILENAME);
     } catch (final IOException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
   }

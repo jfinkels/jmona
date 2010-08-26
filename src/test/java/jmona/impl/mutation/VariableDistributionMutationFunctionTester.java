@@ -60,7 +60,7 @@ public class VariableDistributionMutationFunctionTester {
     try {
       function.mutate(list);
     } catch (final MutationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(-1, list.get(0).fitness(), ZERO_DELTA);
@@ -69,7 +69,7 @@ public class VariableDistributionMutationFunctionTester {
     try {
       function.mutate(list);
     } catch (final MutationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(-1, list.get(0).fitness(), ZERO_DELTA);
@@ -80,7 +80,7 @@ public class VariableDistributionMutationFunctionTester {
     try {
       function.mutate(list);
     } catch (final MutationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(1, list.get(0).fitness(), ZERO_DELTA);
@@ -89,7 +89,7 @@ public class VariableDistributionMutationFunctionTester {
     try {
       function.mutate(list);
     } catch (final MutationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(-1, list.get(0).fitness(), ZERO_DELTA);

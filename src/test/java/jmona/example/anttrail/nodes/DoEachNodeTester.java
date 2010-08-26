@@ -67,7 +67,7 @@ public class DoEachNodeTester {
     try {
       clonedNode = node.deepCopy();
     } catch (final CopyingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertNotSame(clonedNode, node);
@@ -83,7 +83,7 @@ public class DoEachNodeTester {
     try {
       node.execute();
     } catch (final ExecutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(Orientation.west(), ant.orientation());

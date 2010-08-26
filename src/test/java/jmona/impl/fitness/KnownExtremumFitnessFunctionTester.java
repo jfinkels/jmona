@@ -60,7 +60,7 @@ public class KnownExtremumFitnessFunctionTester {
       assertEquals(1.0 / (1 + individual.fitness()), this.function
           .adjustedFitness(individual), ZERO_DELTA);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -97,7 +97,7 @@ public class KnownExtremumFitnessFunctionTester {
       assertEquals(individual.fitness(), this.function
           .standardizedFitness(individual), ZERO_DELTA);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

@@ -110,7 +110,7 @@ public class TourEvolutionContextTester {
         selections.put(selection, selections.get(selection) + 1);
       }
     } catch (final SelectionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     final int totalSelections = Functional.sumInteger(selections.values());
@@ -137,7 +137,7 @@ public class TourEvolutionContextTester {
       try {
         this.context.executeGenerationStep();
       } catch (final EvolutionException exception) {
-        Util.fail(exception);
+        TestUtils.fail(exception);
       }
 
       for (final WorkerAnt ant : this.context.currentPopulation()) {

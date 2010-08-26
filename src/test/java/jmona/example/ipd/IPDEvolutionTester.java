@@ -90,9 +90,9 @@ public class IPDEvolutionTester<S extends DeepCopyable<S> & Strategy> {
         results.clear();
       }
     } catch (final CompletionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
   }

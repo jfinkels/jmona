@@ -70,7 +70,7 @@ public class StochasticUniversalSamplingTester {
     try {
       assertNull(this.function.select(this.fitnesses, 0));
     } catch (final SelectionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -89,7 +89,7 @@ public class StochasticUniversalSamplingTester {
       try {
         selections = this.function.select(this.fitnesses, 1);
       } catch (final SelectionException exception) {
-        Util.fail(exception);
+        TestUtils.fail(exception);
       }
 
       assertEquals(1, selections.size());
@@ -123,7 +123,7 @@ public class StochasticUniversalSamplingTester {
       try {
         selections = this.function.select(this.fitnesses, i % 10);
       } catch (final SelectionException exception) {
-        Util.fail(exception);
+        TestUtils.fail(exception);
       }
 
       assertEquals(i % 10, selections.size());
@@ -163,7 +163,7 @@ public class StochasticUniversalSamplingTester {
       try {
         assertNull(this.function.select(this.fitnesses, i));
       } catch (final SelectionException exception) {
-        Util.fail(exception);
+        TestUtils.fail(exception);
       }
     }
   }
@@ -195,7 +195,7 @@ public class StochasticUniversalSamplingTester {
       try {
         selections = this.function.select(this.fitnesses, 10);
       } catch (final SelectionException exception) {
-        Util.fail(exception);
+        TestUtils.fail(exception);
       }
 
       for (final ExampleIndividual selectedIndividual : selections) {
@@ -239,7 +239,7 @@ public class StochasticUniversalSamplingTester {
       try {
         selections = this.function.select(this.fitnesses, 10);
       } catch (final SelectionException exception) {
-        Util.fail(exception);
+        TestUtils.fail(exception);
       }
 
       for (final ExampleIndividual selection : selections) {

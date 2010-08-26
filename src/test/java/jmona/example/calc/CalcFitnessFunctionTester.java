@@ -87,7 +87,7 @@ public class CalcFitnessFunctionTester {
     try {
       assertEquals(2, function.rawFitness(tree), ZERO_DELTA);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

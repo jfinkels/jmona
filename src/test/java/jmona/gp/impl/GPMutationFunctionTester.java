@@ -82,7 +82,7 @@ public class GPMutationFunctionTester {
     try {
       this.function.mutate(tree);
     } catch (final MutationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     if (tree.root().equals(root)
@@ -130,9 +130,9 @@ public class GPMutationFunctionTester {
       assertNotSame(root.evaluate(), ((ExampleNode) tree.root()).evaluate());
 
     } catch (final EvaluationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final MutationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     this.function.setTreeFactory(new Factory<Tree>() {

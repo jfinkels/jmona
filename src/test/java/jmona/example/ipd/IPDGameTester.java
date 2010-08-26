@@ -73,7 +73,7 @@ public class IPDGameTester {
     try {
       result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(IPDGame.DEFAULT_SUCKERS_PAYOFF, result.scoreOfStrategy1(),
@@ -85,7 +85,7 @@ public class IPDGameTester {
     try {
       result = this.game.play(this.ruthlessStrategy, this.cooperativeStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(IPDGame.DEFAULT_TEMPTATION, result.scoreOfStrategy1(),
@@ -98,7 +98,7 @@ public class IPDGameTester {
       result = this.game.play(this.cooperativeStrategy,
           this.cooperativeStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(result.scoreOfStrategy1(), result.scoreOfStrategy2(),
@@ -107,7 +107,7 @@ public class IPDGameTester {
     try {
       result = this.game.play(this.ruthlessStrategy, this.ruthlessStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(result.scoreOfStrategy1(), result.scoreOfStrategy2(),
@@ -126,7 +126,7 @@ public class IPDGameTester {
     try {
       result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(0.0, result.scoreOfStrategy1(), ZERO_DELTA);
@@ -136,7 +136,7 @@ public class IPDGameTester {
     try {
       result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(0.0, result.scoreOfStrategy1(), ZERO_DELTA);
@@ -149,7 +149,7 @@ public class IPDGameTester {
     try {
       result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(0.0, result.scoreOfStrategy1(), ZERO_DELTA);
@@ -172,7 +172,7 @@ public class IPDGameTester {
     try {
       result = this.game.play(this.ruthlessStrategy, this.ruthlessStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(punishmentPayoff, result.scoreOfStrategy1(), ZERO_DELTA);
@@ -183,7 +183,7 @@ public class IPDGameTester {
     try {
       result = this.game.play(this.ruthlessStrategy, this.ruthlessStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(punishmentPayoff, result.scoreOfStrategy1(), ZERO_DELTA);
@@ -204,7 +204,7 @@ public class IPDGameTester {
       result = this.game.play(this.cooperativeStrategy,
           this.cooperativeStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(rewardPayoff, result.scoreOfStrategy1(), ZERO_DELTA);
@@ -216,7 +216,7 @@ public class IPDGameTester {
       result = this.game.play(this.cooperativeStrategy,
           this.cooperativeStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(rewardPayoff, result.scoreOfStrategy1(), ZERO_DELTA);
@@ -235,7 +235,7 @@ public class IPDGameTester {
     try {
       result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(newSuckersPayoff, result.scoreOfStrategy1(), ZERO_DELTA);
@@ -247,7 +247,7 @@ public class IPDGameTester {
     try {
       result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(newSuckersPayoff, result.scoreOfStrategy1(), ZERO_DELTA);
@@ -268,7 +268,7 @@ public class IPDGameTester {
     try {
       result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(IPDGame.DEFAULT_SUCKERS_PAYOFF, result.scoreOfStrategy1(),
@@ -281,7 +281,7 @@ public class IPDGameTester {
     try {
       result = this.game.play(this.cooperativeStrategy, this.ruthlessStrategy);
     } catch (final GameplayException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(IPDGame.DEFAULT_SUCKERS_PAYOFF, result.scoreOfStrategy1(),

@@ -67,14 +67,14 @@ public class BestIndividualPostProcessorTester {
     try {
       context.setFitnessFunction(fitnessFunction);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     String fittestIndividual = null;
     try {
       fittestIndividual = processor.message(context);
     } catch (final LoggingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertTrue(fittestIndividual.contains(individual1.toString()));

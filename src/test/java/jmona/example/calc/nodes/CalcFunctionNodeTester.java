@@ -74,9 +74,9 @@ public class CalcFunctionNodeTester {
       assertEquals(CHILD1_VALUE + CHILD2_VALUE, this.node.evaluate().execute(
           null), ZERO_DELTA);
     } catch (final MappingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (EvaluationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -108,7 +108,7 @@ public class CalcFunctionNodeTester {
     try {
       clonedNode = this.node.deepCopy();
     } catch (final CopyingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertTrue(clonedNode instanceof CalcFunctionNode);
@@ -120,9 +120,9 @@ public class CalcFunctionNodeTester {
       assertEquals(clonedNode.evaluate().execute(null), this.node.evaluate()
           .execute(null), ZERO_DELTA);
     } catch (final MappingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (EvaluationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

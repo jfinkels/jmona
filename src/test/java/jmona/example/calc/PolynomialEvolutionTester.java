@@ -69,13 +69,13 @@ public class PolynomialEvolutionTester {
         LOG.debug("  " + this.context.currentPopulation());
       }
     } catch (final CompletionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final StackOverflowError error) {
-      Util.fail(error);
+      TestUtils.fail(error);
     } catch (final NullPointerException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 }

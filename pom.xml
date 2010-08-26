@@ -50,11 +50,27 @@
       <type>jar</type>
     </dependency>
 
+    <dependency> <!-- Functional programming tools -->
+      <groupId>jfcommon</groupId>
+      <artifactId>functional</artifactId>
+      <version>${version.dependency.jfcommon.functional}</version>
+      <scope>test</scope>
+      <type>jar</type>
+    </dependency>
+
     <!-- TEST-COMPILE DEPENDENCIES -->
     <dependency> <!-- JUnit 4 unit testing framework -->
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${version.dependency.junit}</version>
+      <scope>test</scope>
+      <type>jar</type>
+    </dependency>
+    
+    <dependency> <!-- Testing utilities -->
+      <groupId>jfcommon</groupId>
+      <artifactId>test</artifactId>
+      <version>${version.dependency.jfcommon.test}</version>
       <scope>test</scope>
       <type>jar</type>
     </dependency>
@@ -71,6 +87,8 @@
 
   <properties>
     <!-- dependency versions -->
+    <version.dependency.jfcommon.functional>0.1</version.dependency.jfcommon.functional>
+    <version.dependency.jfcommon.test>0.1.1</version.dependency.jfcommon.test>
     <version.dependency.jopt-simple>3.2</version.dependency.jopt-simple>
     <version.dependency.junit>4.8.1</version.dependency.junit>
     <version.dependency.lang>3.0-SNAPSHOT</version.dependency.lang>

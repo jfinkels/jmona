@@ -57,7 +57,7 @@ public class PeriodicPostProcessorTester {
       this.processor.process(null);
       assertEquals(2, this.processor.count());
     } catch (final ProcessingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -75,7 +75,7 @@ public class PeriodicPostProcessorTester {
       this.processor.process(null);
       assertEquals(2, this.processor.count());
     } catch (final ProcessingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -98,7 +98,7 @@ public class PeriodicPostProcessorTester {
       this.processor.process(null);
       assertEquals(2, this.processor.count());
     } catch (final ProcessingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

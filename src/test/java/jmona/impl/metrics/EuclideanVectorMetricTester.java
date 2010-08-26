@@ -114,7 +114,7 @@ public class EuclideanVectorMetricTester extends
     try {
       assertEquals(Math.sqrt(2), metric.measure(vector1, vector2), ZERO_DELTA);
     } catch (final MetricException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     vector1.clear();
@@ -131,7 +131,7 @@ public class EuclideanVectorMetricTester extends
     try {
       assertEquals(5.0, metric.measure(vector1, vector2), ZERO_DELTA);
     } catch (final MetricException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 }

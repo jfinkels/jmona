@@ -63,7 +63,7 @@ public class InversionMutationFunctionTester extends
       try {
         this.function().mutate(this.list());
       } catch (final MutationException exception) {
-        Util.fail(exception);
+        TestUtils.fail(exception);
       }
 
       assertEquals(LENGTH, this.list().size());

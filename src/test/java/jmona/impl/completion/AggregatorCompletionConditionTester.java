@@ -76,11 +76,11 @@ public class AggregatorCompletionConditionTester {
 
       assertTrue(condition.execute(context));
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final CompletionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 }

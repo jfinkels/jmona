@@ -71,7 +71,7 @@ public class AntTrailExecutorTester {
     try {
       assertEquals(3, executor.execute(tree).intValue());
     } catch (final MappingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

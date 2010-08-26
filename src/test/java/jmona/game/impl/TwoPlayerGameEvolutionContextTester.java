@@ -96,7 +96,7 @@ public class TwoPlayerGameEvolutionContextTester {
     try {
       this.context.sanityCheck();
     } catch (final PropertyNotSetException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     this.context.setGame(null);
@@ -106,7 +106,7 @@ public class TwoPlayerGameEvolutionContextTester {
     } catch (final PropertyNotSetException exception) {
       assertTrue(exception instanceof PropertyNotSetException);
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -139,7 +139,7 @@ public class TwoPlayerGameEvolutionContextTester {
     try {
       this.context.executeGenerationStep();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(beforeSize, this.context.currentPopulation().size());
@@ -165,7 +165,7 @@ public class TwoPlayerGameEvolutionContextTester {
     try {
       this.context.executeGenerationStep();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 }

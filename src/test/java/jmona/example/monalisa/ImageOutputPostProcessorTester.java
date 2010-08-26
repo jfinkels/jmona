@@ -105,7 +105,7 @@ public class ImageOutputPostProcessorTester {
       individual1 = factory.createObject();
       individual2 = factory.createObject();
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     final List<DeepCopyableList<ColoredPolygon>> population = new Vector<DeepCopyableList<ColoredPolygon>>();
@@ -118,7 +118,7 @@ public class ImageOutputPostProcessorTester {
     try {
       this.processor.processAtInterval(context);
     } catch (final ProcessingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     final File file = new File(OUTPUT_DIRECTORY

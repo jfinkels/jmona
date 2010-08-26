@@ -60,13 +60,13 @@ public class UniformPopulationCompletionConditionTester {
     try {
       context.setFitnessFunction(new ExampleFitnessFunction());
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     try {
       assertTrue(criteria.execute(context));
     } catch (final CompletionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     population.add(new ExampleIndividual(1) {
@@ -76,7 +76,7 @@ public class UniformPopulationCompletionConditionTester {
     try {
       assertFalse(criteria.execute(context));
     } catch (final CompletionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
   }

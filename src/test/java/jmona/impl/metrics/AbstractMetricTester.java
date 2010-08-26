@@ -152,7 +152,7 @@ public abstract class AbstractMetricTester<E, M extends Metric<E>> {
           this.y, this.x)
           + this.metric.measure(this.x, this.z));
     } catch (final MetricException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

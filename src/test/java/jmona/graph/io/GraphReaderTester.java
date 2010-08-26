@@ -75,7 +75,7 @@ public class GraphReaderTester {
     try {
       distances = GraphReader.distances(coordinatesList);
     } catch (final MetricException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(0.0, distances[0][0], ZERO_DELTA);
@@ -94,11 +94,11 @@ public class GraphReaderTester {
     try {
       adjacencyMatrix = GraphReader.adjacencyMatrix(TESTFILE);
     } catch (final IOException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final MappingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final MetricException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(51, adjacencyMatrix.length);

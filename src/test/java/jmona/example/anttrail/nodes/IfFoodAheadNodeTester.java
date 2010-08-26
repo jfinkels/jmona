@@ -65,7 +65,7 @@ public class IfFoodAheadNodeTester {
     try {
       node.execute();
     } catch (final ExecutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(1, ant.foodEaten());
@@ -75,7 +75,7 @@ public class IfFoodAheadNodeTester {
     try {
       node.execute();
     } catch (final ExecutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(1, ant.foodEaten());
@@ -86,7 +86,7 @@ public class IfFoodAheadNodeTester {
     try {
       clonedNode = node.deepCopy();
     } catch (final CopyingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertNotSame(clonedNode, node);

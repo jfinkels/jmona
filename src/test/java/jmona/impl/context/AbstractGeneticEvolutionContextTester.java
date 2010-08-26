@@ -106,7 +106,7 @@ public class AbstractGeneticEvolutionContextTester {
     try {
       this.context.setFitnessFunction(this.fitnessFunction);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
   }
@@ -135,7 +135,7 @@ public class AbstractGeneticEvolutionContextTester {
     try {
       this.context = new ExampleEvolutionContext(this.emptyPopulation);
     } catch (final IllegalArgumentException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -174,7 +174,7 @@ public class AbstractGeneticEvolutionContextTester {
     try {
       this.context.stepGeneration();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(1, this.context.currentGeneration());
@@ -182,7 +182,7 @@ public class AbstractGeneticEvolutionContextTester {
     try {
       this.context.stepGeneration();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(2, this.context.currentGeneration());
@@ -263,7 +263,7 @@ public class AbstractGeneticEvolutionContextTester {
       try {
         this.unsetContext.setFitnessFunction(new ExampleFitnessFunction());
       } catch (final FitnessException fitnessException) {
-        Util.fail(fitnessException);
+        TestUtils.fail(fitnessException);
       }
     }
 
@@ -312,7 +312,7 @@ public class AbstractGeneticEvolutionContextTester {
       assertNotNull(this.unsetContext.crossoverFunction());
       this.unsetContext.sanityCheck();
     } catch (final PropertyNotSetException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -380,7 +380,7 @@ public class AbstractGeneticEvolutionContextTester {
     try {
       this.context.setFitnessFunction(newFunction);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertSame(newFunction, this.context.fitnessFunction());

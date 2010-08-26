@@ -54,7 +54,7 @@ public class NumberNodeTester {
         assertEquals(value, node.evaluate().execute(x), ZERO_DELTA);
       }
     } catch (final MappingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

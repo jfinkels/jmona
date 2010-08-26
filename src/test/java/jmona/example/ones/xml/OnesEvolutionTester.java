@@ -72,11 +72,11 @@ public class OnesEvolutionTester {
             + this.context.currentPopulation());
       }
     } catch (NullPointerException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final CompletionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 }

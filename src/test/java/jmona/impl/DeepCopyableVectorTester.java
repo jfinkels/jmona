@@ -64,7 +64,7 @@ public class DeepCopyableVectorTester {
       this.vector = new DeepCopyableVector<ExampleIndividual>(
           this.beforeList);
     } catch (final CopyingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -104,7 +104,7 @@ public class DeepCopyableVectorTester {
     try {
       afterList = this.vector.deepCopy();
     } catch (final CopyingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertFalse(Util.areEqual(afterList, this.vector));

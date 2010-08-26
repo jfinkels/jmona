@@ -86,7 +86,7 @@ public class AbstractPopulationEvolutionContextTester {
     try {
       this.context.stepGeneration();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
     assertEquals(1, this.context.currentGeneration());
   }
@@ -110,7 +110,7 @@ public class AbstractPopulationEvolutionContextTester {
     try {
       this.context.executeGenerationStep();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -136,7 +136,7 @@ public class AbstractPopulationEvolutionContextTester {
     try {
       this.context.stepGeneration();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertSame(this.population.get(0), this.context.currentPopulation().get(0));

@@ -78,13 +78,13 @@ public class TSPAntColonyEvolutionTester {
         this.processor.process(this.context);
       }
     } catch (final MappingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final NullPointerException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final ProcessingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 }

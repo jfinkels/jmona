@@ -141,7 +141,7 @@ public class AggregatorMutationFunctionTester {
         function.mutate(null);
       }
     } catch (final MutationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     final double delta = (NUM_MUTATIONS / 2) * 0.1;

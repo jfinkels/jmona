@@ -75,7 +75,7 @@ public class OnesEvolutionTester {
     try {
       population = populationFactory.createObject();
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     GeneticEvolutionContext<DeepCopyableList<MutableByte>> context = new GAEvolutionContext<DeepCopyableList<MutableByte>>(
@@ -85,7 +85,7 @@ public class OnesEvolutionTester {
     try {
       context.setFitnessFunction(new OnesFitnessFunction(length));
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
     final SingleElementwiseMutationFunction<MutableByte, DeepCopyableList<MutableByte>> mutationFunction = new SingleElementwiseMutationFunction<MutableByte, DeepCopyableList<MutableByte>>();
     mutationFunction.setElementMutationFunction(new BitFlipMutationFunction());
@@ -105,7 +105,7 @@ public class OnesEvolutionTester {
             + context.currentPopulation());
       }
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 }

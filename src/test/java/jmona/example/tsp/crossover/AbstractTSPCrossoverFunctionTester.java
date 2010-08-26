@@ -113,13 +113,13 @@ public abstract class AbstractTSPCrossoverFunctionTester {
     try {
       this.tour3 = factory.createObject();
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     try {
       this.tour4 = factory.createObject();
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(LENGTH, this.tour1.size());
@@ -147,7 +147,7 @@ public abstract class AbstractTSPCrossoverFunctionTester {
     try {
       this.function.crossover(this.tour1, this.tour2);
     } catch (final CrossoverException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     LOG.debug("Tour 1 after: " + this.tour1);
@@ -167,7 +167,7 @@ public abstract class AbstractTSPCrossoverFunctionTester {
     try {
       this.function.crossover(this.tour3, this.tour4);
     } catch (final CrossoverException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     LOG.debug("Tour 3 after: " + this.tour3);

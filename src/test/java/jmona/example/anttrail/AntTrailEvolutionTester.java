@@ -67,11 +67,11 @@ public class AntTrailEvolutionTester {
         processor.process(this.context);
       }
     } catch (final CompletionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final ProcessingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 }

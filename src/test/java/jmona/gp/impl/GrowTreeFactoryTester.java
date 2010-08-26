@@ -74,7 +74,7 @@ public class GrowTreeFactoryTester {
     try {
       tree = this.factory.createObject();
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     final int numNodes = Util.countNodes(tree);
@@ -159,7 +159,7 @@ public class GrowTreeFactoryTester {
             .countNodes(tree), epsilon);
       }
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

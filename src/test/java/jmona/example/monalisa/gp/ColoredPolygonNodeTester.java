@@ -91,7 +91,7 @@ public class ColoredPolygonNodeTester extends ColoredPolygonTestSupport {
     try {
       clonedNode = this.node.deepCopy();
     } catch (final CopyingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertNotNull(clonedNode);

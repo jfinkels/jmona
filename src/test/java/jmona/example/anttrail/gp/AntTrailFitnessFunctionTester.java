@@ -87,7 +87,7 @@ public class AntTrailFitnessFunctionTester {
     try {
       assertEquals(3, function.rawFitness(tree), ZERO_DELTA);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

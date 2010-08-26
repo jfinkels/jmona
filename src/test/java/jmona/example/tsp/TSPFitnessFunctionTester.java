@@ -74,7 +74,7 @@ public class TSPFitnessFunctionTester {
       assertEquals(weights[0][1] + weights[1][0], function.rawFitness(tour),
           ZERO_DELTA);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     // this tour is 1 -> 0 -> 1
@@ -86,7 +86,7 @@ public class TSPFitnessFunctionTester {
       assertEquals(weights[1][0] + weights[0][1], function.rawFitness(tour),
           ZERO_DELTA);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     tour.clear();
@@ -95,7 +95,7 @@ public class TSPFitnessFunctionTester {
     try {
       assertEquals(0, function.rawFitness(tour), ZERO_DELTA);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     tour.clear();
@@ -108,7 +108,7 @@ public class TSPFitnessFunctionTester {
       assertEquals(0, tour.size());
       assertTrue(exception instanceof IllegalArgumentException);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 }

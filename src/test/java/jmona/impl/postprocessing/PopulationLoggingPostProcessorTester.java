@@ -62,7 +62,7 @@ public class PopulationLoggingPostProcessorTester {
     try {
       result = processor.message(context);
     } catch (LoggingException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertTrue(result.contains(individual1.toString()));

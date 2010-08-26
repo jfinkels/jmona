@@ -82,7 +82,7 @@ public class GAEvolutionContextTester {
       try {
         context.setFitnessFunction(new ExampleFitnessFunction());
       } catch (final FitnessException exception2) {
-        Util.fail(exception2);
+        TestUtils.fail(exception2);
       }
     }
 
@@ -120,7 +120,7 @@ public class GAEvolutionContextTester {
     try {
       context.stepGeneration();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -153,7 +153,7 @@ public class GAEvolutionContextTester {
     try {
       context.setFitnessFunction(new ExampleFitnessFunction());
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(0, context.currentGeneration());
@@ -166,7 +166,7 @@ public class GAEvolutionContextTester {
     try {
       context.executeGenerationStep();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(population.size(), context.currentPopulation().size());
@@ -179,7 +179,7 @@ public class GAEvolutionContextTester {
     try {
       context.executeGenerationStep();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(population.size() - 1, context.currentPopulation().size());
@@ -191,7 +191,7 @@ public class GAEvolutionContextTester {
     } catch (final PropertyNotSetException exception) {
       assertTrue(exception instanceof PropertyNotSetException);
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
   }

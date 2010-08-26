@@ -82,7 +82,7 @@ public class GPEvolutionContextTester {
       this.population.add(this.factory.createObject());
       this.population.add(this.factory.createObject());
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
     this.context = new GPEvolutionContext(this.population);
     this.context.setCrossoverFunction(new GPCrossoverFunction());
@@ -100,7 +100,7 @@ public class GPEvolutionContextTester {
     try {
       this.context.setFitnessFunction(fitnessFunction);
     } catch (final FitnessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
   }
@@ -122,9 +122,9 @@ public class GPEvolutionContextTester {
       }
 
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -141,7 +141,7 @@ public class GPEvolutionContextTester {
       assertTrue(exception instanceof PropertyNotSetException);
       assertNull(this.context.crossoverFunction());
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
@@ -158,7 +158,7 @@ public class GPEvolutionContextTester {
     try {
       this.context.executeGenerationStep();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     final List<Tree> after = this.context.currentPopulation();
@@ -167,7 +167,7 @@ public class GPEvolutionContextTester {
     try {
       this.context.executeGenerationStep();
     } catch (final EvolutionException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     final List<Tree> after2 = this.context.currentPopulation();

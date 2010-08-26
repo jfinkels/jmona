@@ -51,7 +51,7 @@ public class TourFactoryTester {
     try {
       tour = factory.createObject();
     } catch (final InitializationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(NUM_CITIES, tour.size());

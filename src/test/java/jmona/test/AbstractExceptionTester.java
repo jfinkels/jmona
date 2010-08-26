@@ -82,17 +82,17 @@ public abstract class AbstractExceptionTester {
       this.exceptionStringThrowable = this.exceptionClass.getConstructor(
           String.class, Throwable.class).newInstance(TEST_MESSAGE, TEST_CAUSE);
     } catch (final IllegalArgumentException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final SecurityException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final InstantiationException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final IllegalAccessException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final InvocationTargetException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     } catch (final NoSuchMethodException exception) {
-      Util.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 
