@@ -21,9 +21,9 @@ package jmona.impl.metrics;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import jfcommon.test.TestUtils;
 import jmona.Metric;
 import jmona.MetricException;
-import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;

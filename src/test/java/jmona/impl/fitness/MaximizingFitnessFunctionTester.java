@@ -20,9 +20,9 @@
 package jmona.impl.fitness;
 
 import static org.junit.Assert.assertEquals;
+import jfcommon.test.TestUtils;
 import jmona.FitnessException;
 import jmona.impl.example.ExampleIndividual;
-import jmona.test.Util;
 
 import org.junit.Test;
 

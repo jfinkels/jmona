@@ -19,13 +19,13 @@
  */
 package jmona.example.ones.xml;
 
+import jfcommon.test.TestUtils;
 import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.DeepCopyableList;
 import jmona.EvolutionException;
 import jmona.PopulationEvolutionContext;
 import jmona.impl.mutable.MutableByte;
-import jmona.test.Util;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;

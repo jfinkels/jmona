@@ -20,6 +20,7 @@
 package jmona.example.calc.functions;
 
 import static org.junit.Assert.assertEquals;
+import jfcommon.test.TestUtils;
 import jmona.MappingException;
 import jmona.example.calc.operations.Util;
 
@@ -60,7 +61,7 @@ public class MultiplicationFunctionTester {
       assertEquals(Util.TWO_FUNCTION.execute(0.0), function.execute(0.0),
           ZERO_DELTA);
     } catch (final MappingException exception) {
-      jmona.test.TestUtils.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 }

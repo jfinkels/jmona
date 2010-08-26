@@ -26,12 +26,12 @@ import static org.junit.Assert.assertSame;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.test.TestUtils;
 import jmona.CopyingException;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.gp.impl.example.ExampleBinaryNode;
 import jmona.gp.impl.example.ExampleTerminalNode;
-import jmona.test.Util;
 
 import org.junit.Test;
 

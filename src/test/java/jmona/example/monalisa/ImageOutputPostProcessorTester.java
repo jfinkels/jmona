@@ -26,13 +26,13 @@ import java.io.File;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.test.TestUtils;
 import jmona.DeepCopyableList;
 import jmona.EvolutionContext;
 import jmona.InitializationException;
 import jmona.ProcessingException;
 import jmona.ga.impl.GAEvolutionContext;
 import jmona.impl.DeepCopyableListFactory;
-import jmona.test.Util;
 
 import org.junit.After;
 import org.junit.Before;

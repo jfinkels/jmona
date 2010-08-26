@@ -20,9 +20,9 @@
 package jmona.impl.postprocessing;
 
 import static org.junit.Assert.assertEquals;
+import jfcommon.test.TestUtils;
 import jmona.ProcessingException;
 import jmona.impl.example.ExamplePostProcessor;
-import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;

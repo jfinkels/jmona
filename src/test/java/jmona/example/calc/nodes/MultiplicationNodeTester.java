@@ -20,9 +20,9 @@
 package jmona.example.calc.nodes;
 
 import static org.junit.Assert.assertEquals;
+import jfcommon.test.TestUtils;
 import jmona.MappingException;
 import jmona.gp.EvaluationException;
-import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;

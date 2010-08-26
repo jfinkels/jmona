@@ -21,12 +21,12 @@ package jmona.example.ipd;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
+import jfcommon.test.TestUtils;
 import jmona.example.ipd.strategy.CooperativeStrategy;
 import jmona.example.ipd.strategy.IPDStrategy;
 import jmona.example.ipd.strategy.RuthlessStrategy;
 import jmona.game.GameplayException;
 import jmona.game.TwoPlayerGameResult;
-import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;

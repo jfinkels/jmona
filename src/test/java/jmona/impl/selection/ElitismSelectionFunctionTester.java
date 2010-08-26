@@ -27,8 +27,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jfcommon.test.TestUtils;
 import jmona.impl.example.ExampleIndividual;
-import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -77,7 +77,7 @@ public class ElitismSelectionFunctionTester {
 
     try {
       selection = function.select(fitnesses, numberToSelect);
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final IllegalArgumentException exception) {
       assertTrue(fitnesses.size() < numberToSelect);
     }

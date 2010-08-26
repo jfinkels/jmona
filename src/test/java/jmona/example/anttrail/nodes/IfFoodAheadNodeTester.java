@@ -22,6 +22,7 @@ package jmona.example.anttrail.nodes;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
+import jfcommon.test.TestUtils;
 import jmona.CopyingException;
 import jmona.example.anttrail.Ant;
 import jmona.example.anttrail.CoordinatePair;
@@ -30,7 +31,6 @@ import jmona.example.anttrail.Orientation;
 import jmona.example.anttrail.Trail;
 import jmona.gp.ExecutionException;
 import jmona.gp.impl.TreeUtils;
-import jmona.test.Util;
 
 import org.junit.Test;
 

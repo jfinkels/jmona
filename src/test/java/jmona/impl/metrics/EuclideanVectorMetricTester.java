@@ -26,8 +26,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.test.TestUtils;
 import jmona.MetricException;
-import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -87,7 +87,7 @@ public class EuclideanVectorMetricTester extends
 
     try {
       metric.measure(vector1, vector2);
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final MetricException exception) {
       // the two vectors have different sizes
       assertFalse(vector1.size() == vector2.size());

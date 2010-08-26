@@ -20,9 +20,9 @@
 package jmona.impl.context;
 
 import static org.junit.Assert.assertEquals;
+import jfcommon.test.TestUtils;
 import jmona.EvolutionException;
 import jmona.impl.example.ExampleIndividual;
-import jmona.test.Util;
 
 import org.apache.log4j.Logger;
 import org.junit.Before;

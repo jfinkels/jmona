@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import jfcommon.test.TestUtils;
 import jmona.CrossoverException;
 import jmona.CrossoverFunction;
 import jmona.EvolutionException;
@@ -45,7 +46,6 @@ import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleGPFitnessFunction;
 import jmona.gp.impl.example.ExampleTreeFactory;
 import jmona.impl.selection.FitnessProportionateSelection;
-import jmona.test.Util;
 
 import org.apache.log4j.Logger;
 import org.junit.Before;
@@ -136,7 +136,7 @@ public class GPEvolutionContextTester {
 
     try {
       this.context.stepGeneration();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final PropertyNotSetException exception) {
       assertTrue(exception instanceof PropertyNotSetException);
       assertNull(this.context.crossoverFunction());
@@ -185,7 +185,7 @@ public class GPEvolutionContextTester {
 
     try {
       this.context.executeGenerationStep();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
       assertTrue(exception.getCause() instanceof CrossoverException);
       this.context.setCrossoverFunction(new GPCrossoverFunction());
@@ -201,7 +201,7 @@ public class GPEvolutionContextTester {
     this.context.setMutationProbability(1);
     try {
       this.context.executeGenerationStep();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
       assertTrue(exception.getCause() instanceof MutationException);
       this.context.setMutationFunction(new GPMutationFunction());
@@ -217,7 +217,7 @@ public class GPEvolutionContextTester {
 
     try {
       this.context.executeGenerationStep();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
       assertTrue(exception.getCause() instanceof SelectionException);
       this.context

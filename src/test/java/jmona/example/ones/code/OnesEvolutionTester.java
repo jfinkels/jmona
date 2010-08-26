@@ -21,6 +21,7 @@ package jmona.example.ones.code;
 
 import java.util.List;
 
+import jfcommon.test.TestUtils;
 import jmona.DeepCopyableList;
 import jmona.EvolutionException;
 import jmona.Factory;
@@ -38,7 +39,6 @@ import jmona.impl.completion.MaxGenerationCompletionCondition;
 import jmona.impl.mutable.MutableByte;
 import jmona.impl.mutation.SingleElementwiseMutationFunction;
 import jmona.impl.selection.FitnessProportionateSelection;
-import jmona.test.Util;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;

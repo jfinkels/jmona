@@ -23,11 +23,11 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import jfcommon.test.TestUtils;
 import jmona.Function;
 import jmona.MappingException;
 import jmona.functional.Functional;
 import jmona.functional.Range;
-import jmona.test.Util;
 
 import org.junit.Test;
 

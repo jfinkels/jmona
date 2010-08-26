@@ -26,9 +26,9 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.io.IOException;
 
+import jfcommon.test.TestUtils;
 import jmona.example.anttrail.CoordinatePair;
 import jmona.example.anttrail.Trail;
-import jmona.test.Util;
 
 import org.junit.Test;
 

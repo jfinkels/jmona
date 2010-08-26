@@ -22,6 +22,7 @@ package jmona.example.monalisa.gp;
 import java.awt.image.RenderedImage;
 import java.io.IOException;
 
+import jfcommon.test.TestUtils;
 import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionException;
@@ -29,7 +30,6 @@ import jmona.PopulationEvolutionContext;
 import jmona.example.monalisa.Converter;
 import jmona.example.monalisa.io.ImageWriter;
 import jmona.gp.Tree;
-import jmona.test.Util;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;

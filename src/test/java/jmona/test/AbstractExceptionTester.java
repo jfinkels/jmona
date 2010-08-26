@@ -24,6 +24,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.InvocationTargetException;
 
+import jfcommon.test.TestUtils;
+
 import org.junit.Before;
 import org.junit.Test;
 

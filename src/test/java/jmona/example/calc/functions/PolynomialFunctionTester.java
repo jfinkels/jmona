@@ -23,8 +23,8 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import jfcommon.test.TestUtils;
 import jmona.functional.Range;
-import jmona.test.Util;
 
 import org.apache.log4j.Logger;
 import org.junit.Before;
@@ -94,7 +94,7 @@ public class PolynomialFunctionTester {
         ZERO_DELTA);
     try {
       new PolynomialFunction(null);
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final IllegalArgumentException exception) {
       assertTrue(exception instanceof IllegalArgumentException);
     }

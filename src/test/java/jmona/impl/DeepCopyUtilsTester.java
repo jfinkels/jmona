@@ -25,6 +25,7 @@ import static org.junit.Assert.assertNotSame;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.test.TestUtils;
 import jmona.CopyingException;
 import jmona.functional.Range;
 import jmona.impl.example.ExampleIndividual;
@@ -60,7 +61,7 @@ public class DeepCopyUtilsTester {
     try {
       clonedList = DeepCopyUtils.deepCopy(list);
     } catch (final CopyingException exception) {
-      jmona.test.TestUtils.fail(exception);
+      TestUtils.fail(exception);
     }
 
     assertEquals(list.size(), clonedList.size());

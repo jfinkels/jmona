@@ -25,12 +25,12 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.test.TestUtils;
 import jmona.FitnessException;
 import jmona.functional.Range;
 import jmona.graph.DirectedGraph;
 import jmona.graph.impl.AdjacencyMatrixGraph;
 import jmona.impl.mutable.MutableInteger;
-import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -102,7 +102,7 @@ public class TSPFitnessFunctionTester {
 
     try {
       function.rawFitness(tour);
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final IllegalArgumentException exception) {
       // tour has size 0
       assertEquals(0, tour.size());

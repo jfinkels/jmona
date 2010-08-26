@@ -25,13 +25,13 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.test.TestUtils;
 import jmona.CompletionException;
 import jmona.EvolutionException;
 import jmona.FitnessException;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
-import jmona.test.Util;
 
 import org.junit.Test;
 

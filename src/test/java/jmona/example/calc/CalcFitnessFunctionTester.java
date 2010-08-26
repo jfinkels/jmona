@@ -25,6 +25,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.HashSet;
 import java.util.Set;
 
+import jfcommon.test.TestUtils;
 import jmona.CopyingException;
 import jmona.FitnessException;
 import jmona.Function;
@@ -36,7 +37,6 @@ import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 import jmona.gp.impl.DefaultTree;
-import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -70,7 +70,7 @@ public class CalcFitnessFunctionTester {
 
     try {
       function.rawFitness(tree);
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final FitnessException exception) {
       assertTrue(exception.getCause() instanceof MappingException);
       assertTrue(exception.getCause().getCause() instanceof EvaluationException);

@@ -21,8 +21,8 @@ package jmona.aco.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import jfcommon.test.TestUtils;
 import jmona.aco.AlreadyVisitedException;
-import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -86,7 +86,7 @@ public class WorkerAntTester {
     assertEquals(1, ant.currentVertex().intValue());
     try {
       ant.moveTo(0);
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final AlreadyVisitedException exception) {
       assertEquals(2, ant.memory().size());
     }

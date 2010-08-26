@@ -27,11 +27,11 @@ import static org.junit.Assert.assertTrue;
 import java.awt.Color;
 import java.util.Set;
 
+import jfcommon.test.TestUtils;
 import jmona.CopyingException;
 import jmona.example.monalisa.ColoredPolygon;
 import jmona.example.monalisa.ColoredPolygonFactory;
 import jmona.example.monalisa.ColoredPolygonTestSupport;
-import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;

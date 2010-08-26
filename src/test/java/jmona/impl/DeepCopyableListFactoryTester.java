@@ -23,6 +23,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
+import jfcommon.test.TestUtils;
 import jmona.CopyingException;
 import jmona.DeepCopyableList;
 import jmona.InitializationException;
@@ -57,7 +58,7 @@ public class DeepCopyableListFactoryTester {
 
     try {
       factory.createObject();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final PropertyNotSetException exception) {
       // elementFactory has not been set
       assertTrue(exception instanceof PropertyNotSetException);

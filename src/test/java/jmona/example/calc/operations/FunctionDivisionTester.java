@@ -20,6 +20,7 @@
 package jmona.example.calc.operations;
 
 import static org.junit.Assert.assertEquals;
+import jfcommon.test.TestUtils;
 import jmona.Function;
 import jmona.MappingException;
 
@@ -95,7 +96,7 @@ public class FunctionDivisionTester {
       assertEquals(Util.TWO_FUNCTION.execute(0.0), result.execute(0.0),
           ZERO_DELTA);
     } catch (final MappingException exception) {
-      jmona.test.TestUtils.fail(exception);
+      TestUtils.fail(exception);
     }
   }
 

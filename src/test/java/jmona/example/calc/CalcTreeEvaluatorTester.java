@@ -21,6 +21,7 @@ package jmona.example.calc;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import jfcommon.test.TestUtils;
 import jmona.Function;
 import jmona.MappingException;
 import jmona.example.calc.nodes.NumberNode;
@@ -29,7 +30,6 @@ import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 import jmona.gp.impl.DefaultTree;
-import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -59,7 +59,7 @@ public class CalcTreeEvaluatorTester {
     final Tree tree = new DefaultTree(root);
     try {
       evaluator.execute(tree);
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final MappingException exception) {
       assertTrue(exception.getCause() instanceof EvaluationException);
     }

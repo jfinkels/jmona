@@ -20,6 +20,7 @@
 package jmona.example.anttrail.gp;
 
 import static org.junit.Assert.assertEquals;
+import jfcommon.test.TestUtils;
 import jmona.MappingException;
 import jmona.example.anttrail.Ant;
 import jmona.example.anttrail.DefaultAnt;
@@ -28,7 +29,6 @@ import jmona.example.anttrail.nodes.DoEachNode;
 import jmona.example.anttrail.nodes.MoveForwardNode;
 import jmona.gp.Tree;
 import jmona.gp.impl.DefaultTree;
-import jmona.test.Util;
 
 import org.junit.Test;
 

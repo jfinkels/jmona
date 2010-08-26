@@ -22,6 +22,7 @@ package jmona.gp.impl;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
+import jfcommon.test.TestUtils;
 import jmona.Factory;
 import jmona.InitializationException;
 import jmona.MutationException;
@@ -32,7 +33,6 @@ import jmona.gp.impl.example.ExampleBinaryNode;
 import jmona.gp.impl.example.ExampleNode;
 import jmona.gp.impl.example.ExampleTerminalNode;
 import jmona.gp.impl.example.ExampleTreeFactory;
-import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -112,7 +112,7 @@ public class GPMutationFunctionTester {
 
     try {
       this.function.mutate(tree);
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final MutationException exception) {
       assertTrue(exception instanceof MutationException);
     }
@@ -145,7 +145,7 @@ public class GPMutationFunctionTester {
 
     try {
       this.function.mutate(tree);
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final MutationException exception) {
       assertTrue(exception.getCause() instanceof InitializationException);
     }

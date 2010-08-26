@@ -26,7 +26,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import jmona.test.Util;
+import jfcommon.test.TestUtils;
 
 import org.junit.Test;
 

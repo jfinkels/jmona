@@ -25,6 +25,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.test.TestUtils;
 import jmona.EvolutionException;
 import jmona.PropertyNotSetException;
 import jmona.SelectionException;
@@ -34,7 +35,6 @@ import jmona.game.TwoPlayerGame;
 import jmona.game.impl.example.ExampleBadGame;
 import jmona.game.impl.example.ExampleGame;
 import jmona.game.impl.example.ExampleStrategy;
-import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -80,14 +80,14 @@ public class TwoPlayerGameEvolutionContextTester {
         this.population);
     try {
       this.context.sanityCheck();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final PropertyNotSetException exception) {
       this.context.setGame(new ExampleGame());
     }
 
     try {
       this.context.sanityCheck();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final PropertyNotSetException exception) {
       // tournament has not been set
       this.context.setTournament(new RoundRobinTournament<ExampleStrategy>());
@@ -102,7 +102,7 @@ public class TwoPlayerGameEvolutionContextTester {
     this.context.setGame(null);
     try {
       this.context.stepGeneration();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final PropertyNotSetException exception) {
       assertTrue(exception instanceof PropertyNotSetException);
     } catch (final EvolutionException exception) {
@@ -120,7 +120,7 @@ public class TwoPlayerGameEvolutionContextTester {
     this.context.setGame(new ExampleBadGame());
     try {
       this.context.executeGenerationStep();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
       assertTrue(exception.getCause() instanceof SelectionException);
       assertTrue(exception.getCause().getCause() instanceof GameplayException);
@@ -154,7 +154,7 @@ public class TwoPlayerGameEvolutionContextTester {
 
     try {
       this.context.executeGenerationStep();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
       assertTrue(exception.getCause() instanceof SelectionException);
       final RoundRobinTournament<ExampleStrategy> tournament = new RoundRobinTournament<ExampleStrategy>();

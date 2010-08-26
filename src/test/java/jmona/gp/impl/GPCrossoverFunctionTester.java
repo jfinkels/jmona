@@ -27,6 +27,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import jfcommon.test.TestUtils;
 import jmona.InitializationException;
 import jmona.functional.Range;
 import jmona.gp.Node;

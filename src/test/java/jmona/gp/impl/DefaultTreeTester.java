@@ -31,6 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jfcommon.test.TestUtils;
 import jmona.CopyingException;
 import jmona.MappingException;
 import jmona.functional.Range;

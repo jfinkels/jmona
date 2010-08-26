@@ -19,6 +19,7 @@
  */
 package jmona.example.monalisa.ga;
 
+import jfcommon.test.TestUtils;
 import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.DeepCopyableList;
@@ -27,7 +28,6 @@ import jmona.EvolutionException;
 import jmona.PostProcessor;
 import jmona.ProcessingException;
 import jmona.example.monalisa.ColoredPolygon;
-import jmona.test.Util;
 
 import org.junit.After;
 import org.junit.Test;

@@ -24,11 +24,11 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import jfcommon.test.TestUtils;
 import jmona.MutationException;
 import jmona.functional.Range;
 import jmona.impl.example.ExampleIndividual;
 import jmona.impl.example.ExampleMutationFunction;
-import jmona.test.Util;
 
 import org.junit.Test;
 

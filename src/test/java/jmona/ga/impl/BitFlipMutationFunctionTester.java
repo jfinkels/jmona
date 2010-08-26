@@ -20,7 +20,6 @@
 package jmona.ga.impl;
 
 import static org.junit.Assert.assertEquals;
-import jmona.ga.impl.BitFlipMutationFunction;
 import jmona.impl.mutable.MutableByte;
 
 import org.junit.Test;

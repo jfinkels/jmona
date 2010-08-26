@@ -26,6 +26,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.test.TestUtils;
 import jmona.CrossoverException;
 import jmona.EvolutionException;
 import jmona.FitnessException;
@@ -41,7 +42,6 @@ import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
 import jmona.impl.example.ExampleMutationFunction;
 import jmona.impl.selection.FitnessProportionateSelection;
-import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -77,7 +77,7 @@ public class GAEvolutionContextTester {
     context.setSelectionFunction(new ExampleBadSelectionFunction());
     try {
       context.setFitnessFunction(new ExampleBadFitnessFunction());
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final FitnessException exception) {
       try {
         context.setFitnessFunction(new ExampleFitnessFunction());
@@ -91,7 +91,7 @@ public class GAEvolutionContextTester {
 
     try {
       context.stepGeneration();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
       // bad selection function
       assertTrue(exception.getCause() instanceof SelectionException);
@@ -101,7 +101,7 @@ public class GAEvolutionContextTester {
     
     try {
       context.stepGeneration();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
       // bad crossover function
       assertTrue(exception.getCause() instanceof CrossoverException);
@@ -110,7 +110,7 @@ public class GAEvolutionContextTester {
 
     try {
       context.stepGeneration();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final EvolutionException exception) {
       // bad mutation function
       assertTrue(exception.getCause() instanceof MutationException);
@@ -187,7 +187,7 @@ public class GAEvolutionContextTester {
     context.setMutationFunction(null);
     try {
       context.executeGenerationStep();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final PropertyNotSetException exception) {
       assertTrue(exception instanceof PropertyNotSetException);
     } catch (final EvolutionException exception) {

@@ -21,10 +21,10 @@ package jmona.impl.fitness;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import jfcommon.test.TestUtils;
 import jmona.FitnessException;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
-import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -78,7 +78,7 @@ public class KnownExtremumFitnessFunctionTester {
     this.function.setExtremum(null);
     try {
       this.function.standardizedFitness(new ExampleIndividual());
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final FitnessException exception) {
       assertNull(this.function.extremum());
     }

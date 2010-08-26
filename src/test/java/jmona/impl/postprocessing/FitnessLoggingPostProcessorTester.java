@@ -26,6 +26,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.test.TestUtils;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
 import jmona.FitnessException;
@@ -35,7 +36,6 @@ import jmona.impl.context.AbstractEvolutionContext;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
-import jmona.test.Util;
 
 import org.junit.Test;
 
@@ -95,7 +95,7 @@ public class FitnessLoggingPostProcessorTester {
 
     try {
       processor.message(badContext);
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final LoggingException exception) {
       assertFalse(badContext.getClass().equals(GeneticEvolutionContext.class));
     }

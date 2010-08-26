@@ -25,6 +25,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import jfcommon.test.TestUtils;
 import jmona.Factory;
 import jmona.InitializationException;
 import jmona.functional.Range;
@@ -221,7 +222,7 @@ public class AbstractTreeFactoryTester {
 
     try {
       badFactory.createObject();
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final InitializationException exception) {
       assertTrue(exception instanceof InitializationException);
     }

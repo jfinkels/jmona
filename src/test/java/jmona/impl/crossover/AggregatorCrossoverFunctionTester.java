@@ -24,11 +24,11 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.test.TestUtils;
 import jmona.CrossoverException;
 import jmona.CrossoverFunction;
 import jmona.functional.Range;
 import jmona.impl.example.ExampleIndividual;
-import jmona.test.Util;
 
 import org.junit.Before;
 import org.junit.Test;

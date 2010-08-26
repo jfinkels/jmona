@@ -19,6 +19,7 @@
  */
 package jmona.example.anttrail;
 
+import jfcommon.test.TestUtils;
 import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
@@ -27,7 +28,6 @@ import jmona.PostProcessor;
 import jmona.ProcessingException;
 import jmona.gp.Tree;
 import jmona.impl.postprocessing.FitnessLoggingPostProcessor;
-import jmona.test.Util;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

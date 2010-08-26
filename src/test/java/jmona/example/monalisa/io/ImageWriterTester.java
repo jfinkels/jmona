@@ -23,7 +23,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import jmona.test.Util;
+import jfcommon.test.TestUtils;
 
 import org.apache.log4j.Logger;
 import org.junit.After;

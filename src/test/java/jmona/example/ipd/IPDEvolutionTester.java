@@ -22,13 +22,13 @@ package jmona.example.ipd;
 import java.util.HashMap;
 import java.util.Map;
 
+import jfcommon.test.TestUtils;
 import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.DeepCopyable;
 import jmona.EvolutionException;
 import jmona.PopulationEvolutionContext;
 import jmona.game.Strategy;
-import jmona.test.Util;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;

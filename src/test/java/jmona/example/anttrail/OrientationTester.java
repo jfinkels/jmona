@@ -22,7 +22,7 @@ package jmona.example.anttrail;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import jmona.test.Util;
+import jfcommon.test.TestUtils;
 
 import org.junit.Test;
 
@@ -133,7 +133,7 @@ public class OrientationTester {
     final Orientation orientation = Orientation.east();
     try {
       orientation.setLeft((short) 0);
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final UnsupportedOperationException exception) {
       assertTrue(exception instanceof UnsupportedOperationException);
     }
@@ -147,7 +147,7 @@ public class OrientationTester {
     final Orientation orientation = Orientation.east();
     try {
       orientation.setRight((short) 0);
-      Util.shouldHaveThrownException();
+      TestUtils.shouldHaveThrownException();
     } catch (final UnsupportedOperationException exception) {
       assertTrue(exception instanceof UnsupportedOperationException);
     }

@@ -26,10 +26,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import jfcommon.test.TestUtils;
 import jmona.EvolutionContext;
 import jmona.LoggingException;
 import jmona.game.impl.example.ExampleStrategy;
-import jmona.test.Util;
 import joptsimple.internal.Strings;
 
 import org.junit.Test;

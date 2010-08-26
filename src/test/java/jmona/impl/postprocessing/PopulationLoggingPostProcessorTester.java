@@ -24,10 +24,10 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.test.TestUtils;
 import jmona.LoggingException;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
-import jmona.test.Util;
 import joptsimple.internal.Strings;
 
 import org.junit.Test;
