@@ -19,7 +19,8 @@
  */
 package jmona;
 
-import jmona.test.AbstractExceptionTester;
+import jfcommon.test.AbstractExceptionTest;
+
 
 /**
  * Test class for the EvolutionException class.
@@ -27,7 +28,7 @@ import jmona.test.AbstractExceptionTester;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class EvolutionExceptionTester extends AbstractExceptionTester {
+public class EvolutionExceptionTester extends AbstractExceptionTest {
   /** Instantiates this test class for the EvolutionException. */
   public EvolutionExceptionTester() {
     super(EvolutionException.class);

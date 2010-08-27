@@ -19,7 +19,8 @@
  */
 package jmona;
 
-import jmona.test.AbstractExceptionTester;
+import jfcommon.test.AbstractExceptionTest;
+
 
 /**
  * Test class for the ProcessingException class.
@@ -27,7 +28,7 @@ import jmona.test.AbstractExceptionTester;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ProcessingExceptionTester extends AbstractExceptionTester {
+public class ProcessingExceptionTester extends AbstractExceptionTest {
   /** Instantiates this test class for the ProcessingException. */
   public ProcessingExceptionTester() {
     super(ProcessingException.class);

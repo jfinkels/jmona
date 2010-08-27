@@ -19,7 +19,8 @@
  */
 package jmona;
 
-import jmona.test.AbstractExceptionTester;
+import jfcommon.test.AbstractExceptionTest;
+
 
 /**
  * Test class for the CopyingException class.
@@ -27,7 +28,7 @@ import jmona.test.AbstractExceptionTester;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class CopyingExceptionTester extends AbstractExceptionTester {
+public class CopyingExceptionTester extends AbstractExceptionTest {
   /** Instantiates this test class for the CopyingException. */
   public CopyingExceptionTester() {
     super(CopyingException.class);

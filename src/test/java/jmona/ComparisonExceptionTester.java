@@ -19,7 +19,7 @@
  */
 package jmona;
 
-import jmona.test.AbstractExceptionTester;
+import jfcommon.test.AbstractExceptionTest;
 
 /**
  * Test class for the ComparisonException class.
@@ -27,7 +27,7 @@ import jmona.test.AbstractExceptionTester;
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
-public class ComparisonExceptionTester extends AbstractExceptionTester {
+public class ComparisonExceptionTester extends AbstractExceptionTest {
   /** Instantiates this test class for the AlreadyVisitedException. */
   public ComparisonExceptionTester() {
     super(ComparisonException.class);

@@ -19,7 +19,7 @@
  */
 package jmona.game;
 
-import jmona.test.AbstractExceptionTester;
+import jfcommon.test.AbstractExceptionTest;
 
 /**
  * Test class for the GameplayException class.
@@ -27,7 +27,7 @@ import jmona.test.AbstractExceptionTester;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class GameplayExceptionTester extends AbstractExceptionTester {
+public class GameplayExceptionTester extends AbstractExceptionTest {
   /** Instantiates this test class for the GameplayException. */
   public GameplayExceptionTester() {
     super(GameplayException.class);

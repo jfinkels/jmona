@@ -19,7 +19,8 @@
  */
 package jmona.aco;
 
-import jmona.test.AbstractExceptionTester;
+import jfcommon.test.AbstractExceptionTest;
+
 
 /**
  * Test class for the AlreadyVisitedException class.
@@ -27,7 +28,7 @@ import jmona.test.AbstractExceptionTester;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class AlreadyVisitedExceptionTester extends AbstractExceptionTester {
+public class AlreadyVisitedExceptionTester extends AbstractExceptionTest {
   /** Instantiates this test class for the AlreadyVisitedException. */
   public AlreadyVisitedExceptionTester() {
     super(AlreadyVisitedException.class);

@@ -19,7 +19,7 @@
  */
 package jmona.gp;
 
-import jmona.test.AbstractExceptionTester;
+import jfcommon.test.AbstractExceptionTest;
 
 /**
  * Test class for the ExecutionException class.
@@ -27,7 +27,7 @@ import jmona.test.AbstractExceptionTester;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ExecutionExceptionTester extends AbstractExceptionTester {
+public class ExecutionExceptionTester extends AbstractExceptionTest {
   /** Instantiates this test class for the ExecutionException. */
   public ExecutionExceptionTester() {
     super(ExecutionException.class);

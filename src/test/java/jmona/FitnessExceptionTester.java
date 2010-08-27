@@ -19,7 +19,8 @@
  */
 package jmona;
 
-import jmona.test.AbstractExceptionTester;
+import jfcommon.test.AbstractExceptionTest;
+
 
 /**
  * Test class for the FitnessException class.
@@ -27,7 +28,7 @@ import jmona.test.AbstractExceptionTester;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class FitnessExceptionTester extends AbstractExceptionTester {
+public class FitnessExceptionTester extends AbstractExceptionTest {
   /** Instantiates this test class for the FitnessException. */
   public FitnessExceptionTester() {
     super(FitnessException.class);

@@ -19,7 +19,8 @@
  */
 package jmona;
 
-import jmona.test.AbstractExceptionTester;
+import jfcommon.test.AbstractExceptionTest;
+
 
 /**
  * Test class for the MetricException class.
@@ -27,7 +28,7 @@ import jmona.test.AbstractExceptionTester;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class MetricExceptionTester extends AbstractExceptionTester {
+public class MetricExceptionTester extends AbstractExceptionTest {
   /** Instantiates this test class for the MetricException. */
   public MetricExceptionTester() {
     super(MetricException.class);

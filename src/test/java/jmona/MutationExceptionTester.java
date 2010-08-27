@@ -19,7 +19,8 @@
  */
 package jmona;
 
-import jmona.test.AbstractExceptionTester;
+import jfcommon.test.AbstractExceptionTest;
+
 
 /**
  * Test class for the MutationException class.
@@ -27,7 +28,7 @@ import jmona.test.AbstractExceptionTester;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class MutationExceptionTester extends AbstractExceptionTester {
+public class MutationExceptionTester extends AbstractExceptionTest {
   /** Instantiates this test class for the MutationException. */
   public MutationExceptionTester() {
     super(MutationException.class);

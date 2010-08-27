@@ -19,7 +19,8 @@
  */
 package jmona;
 
-import jmona.test.AbstractExceptionTester;
+import jfcommon.test.AbstractExceptionTest;
+
 
 /**
  * Test class for the PropertyNotWritableException class.
@@ -27,7 +28,7 @@ import jmona.test.AbstractExceptionTester;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class PropertyNotWritableExceptionTester extends AbstractExceptionTester {
+public class PropertyNotWritableExceptionTester extends AbstractExceptionTest {
   /** Instantiates this test class for the PropertyNotWritableException. */
   public PropertyNotWritableExceptionTester() {
     super(PropertyNotWritableException.class);
