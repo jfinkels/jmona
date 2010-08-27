@@ -32,5 +32,5 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ MainTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

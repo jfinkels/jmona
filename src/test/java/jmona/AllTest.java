@@ -38,5 +38,5 @@ import org.junit.runners.Suite.SuiteClasses;
     ProcessingExceptionTester.class, PropertyNotWritableExceptionTester.class,
     SelectionExceptionTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

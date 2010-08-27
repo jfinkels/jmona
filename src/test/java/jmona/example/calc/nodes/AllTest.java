@@ -36,5 +36,5 @@ import org.junit.runners.Suite.SuiteClasses;
     NumberNodeTester.class, SubtractionNodeTester.class,
     VariableNodeTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

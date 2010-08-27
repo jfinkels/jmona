@@ -34,5 +34,5 @@ import org.junit.runners.Suite.SuiteClasses;
     PerfectMatchCompletionConditionTester.class,
     MaxGenerationCompletionConditionTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

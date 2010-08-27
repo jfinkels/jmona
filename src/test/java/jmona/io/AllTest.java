@@ -32,5 +32,5 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ LineReaderTester.class, SplitOnWhitespaceTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

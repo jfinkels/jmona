@@ -38,5 +38,5 @@ import org.junit.runners.Suite.SuiteClasses;
     GrowTreeFactoryTester.class, TernaryNodeTester.class,
     TreeUtilsTester.class, UnaryNodeTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

@@ -35,5 +35,5 @@ import org.junit.runners.Suite.SuiteClasses;
     IfFoodAheadNodeTester.class, MoveForwardNodeTester.class,
     TurnLeftNodeTester.class, TurnRightNodeTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

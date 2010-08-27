@@ -33,5 +33,5 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ TourFactoryTester.class, TSPEvolutionTester.class,
     TSPFitnessFunctionTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

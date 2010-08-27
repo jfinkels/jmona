@@ -32,5 +32,5 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ EuclideanMetricTester.class, EuclideanVectorMetricTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

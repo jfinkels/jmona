@@ -34,5 +34,5 @@ import org.junit.runners.Suite.SuiteClasses;
     PavlovStrategyTester.class, RandomStrategyTester.class,
     RuthlessStrategyTester.class, TitForTatStrategyTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

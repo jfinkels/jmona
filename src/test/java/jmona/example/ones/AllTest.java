@@ -32,5 +32,5 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ OnesFitnessFunctionTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

@@ -34,5 +34,5 @@ import org.junit.runners.Suite.SuiteClasses;
     MutableDoubleTester.class, MutableFloatTester.class,
     MutableIntegerTester.class, MutableLongTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

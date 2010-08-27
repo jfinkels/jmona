@@ -33,5 +33,5 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ ColoredPolygonNodeFactoryTester.class,
     ColoredPolygonNodeTester.class, MonaEvolutionTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

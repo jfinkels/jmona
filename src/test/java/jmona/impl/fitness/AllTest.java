@@ -35,5 +35,5 @@ import org.junit.runners.Suite.SuiteClasses;
     MaximizingFitnessFunctionTester.class,
     MinimizingFitnessFunctionTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

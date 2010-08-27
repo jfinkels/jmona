@@ -33,5 +33,5 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ AntTrailEvolutionTester.class, CoordinatePairTester.class,
     DefaultAntTester.class, OrientationTester.class, TrailTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

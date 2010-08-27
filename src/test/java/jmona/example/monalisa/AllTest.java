@@ -34,5 +34,5 @@ import org.junit.runners.Suite.SuiteClasses;
     ColoredPolygonMutationFunctionTester.class, ColoredPolygonTester.class,
     ConverterTester.class, ImageOutputPostProcessorTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

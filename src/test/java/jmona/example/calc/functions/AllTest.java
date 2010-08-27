@@ -35,5 +35,5 @@ import org.junit.runners.Suite.SuiteClasses;
     SecondOrderFunctionTester.class, SquareFunctionTester.class,
     SubtractionFunctionTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

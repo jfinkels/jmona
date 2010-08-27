@@ -33,5 +33,5 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ FunctionAdditionTester.class, FunctionDivisionTester.class,
     FunctionMultiplicationTester.class, FunctionSubtractionTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }

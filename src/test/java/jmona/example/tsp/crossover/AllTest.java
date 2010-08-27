@@ -37,5 +37,5 @@ import org.junit.runners.Suite.SuiteClasses;
     PartiallyMatchedCrossoverFunctionTester.class,
     SameNumberOfNeighborsConditionTester.class })
 public class AllTest {
-
+  // intentionally unimplemented
 }
