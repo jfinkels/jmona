@@ -58,7 +58,7 @@ class SameNumberOfNeighborsCondition implements Predicate<Integer> {
    *          The city whose neighbors will be counted.
    * @return Whether the specified city has the same number of neighbors as the
    *         number to match.
-   * @see jmona.Function#execute(java.lang.Object)
+   * @see jfcommon.functional.Function#execute(java.lang.Object)
    */
   @Override
   public Boolean execute(final Integer city) {

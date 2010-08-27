@@ -42,7 +42,7 @@ public class SplitOnWhitespace implements Function<String, String[]> {
    * @param input
    *          The String to split on whitespace.
    * @return The words of the specified input String split on whitespace.
-   * @see jmona.Function#execute(java.lang.Object)
+   * @see jfcommon.functional.Function#execute(java.lang.Object)
    */
   @Override
   public String[] execute(final String input) {

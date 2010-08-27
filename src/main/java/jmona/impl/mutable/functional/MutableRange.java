@@ -75,7 +75,7 @@ public class MutableRange extends AbstractRange<MutableInteger> {
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}
-   * @see jmona.functional.AbstractRange#getValue()
+   * @see jfcommon.functional.AbstractRange#getValue()
    */
   @Override
   protected MutableInteger getValue() {

@@ -38,7 +38,7 @@ public class ExampleBadMapping implements Function<Double, Double> {
    * @return Never returns.
    * @throws MappingException
    *           Always throws this Exception.
-   * @see jmona.Function#execute(java.lang.Object)
+   * @see jfcommon.functional.Function#execute(java.lang.Object)
    */
   @Override
   public Double execute(final Double input) throws MappingException {

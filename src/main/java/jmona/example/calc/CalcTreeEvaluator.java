@@ -43,7 +43,7 @@ public class CalcTreeEvaluator implements
    * @return The result of evaluatinf the root of the specified Tree.
    * @throws MappingException
    *           If there is a problem evaluating the root.
-   * @see jmona.Function#execute(java.lang.Object)
+   * @see jfcommon.functional.Function#execute(java.lang.Object)
    */
   @Override
   public Function<Double, Double> execute(final Tree tree)

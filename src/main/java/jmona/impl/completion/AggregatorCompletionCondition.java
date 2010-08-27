@@ -82,7 +82,7 @@ public class AggregatorCompletionCondition<T> extends
    *         CompletionConditions specified in the constructor of this class.
    * @throws CompletionException
    *           If any of the CompletionConditions throws a MappingException.
-   * @see jmona.Function#execute(java.lang.Object)
+   * @see jfcommon.functional.Function#execute(java.lang.Object)
    */
   @Override
   public Boolean execute(final EvolutionContext<T> input)

@@ -55,7 +55,7 @@ public class DistanceGetter<A extends Ant> implements Function<A, Double> {
    *          The WorkerAnt whose memory specifies the tour whose distance to
    *          get.
    * @return The total distance of the tour specified by the WorkerAnt's memory.
-   * @see jmona.Function#execute(java.lang.Object)
+   * @see jfcommon.functional.Function#execute(java.lang.Object)
    */
   @Override
   public Double execute(final Ant ant) {

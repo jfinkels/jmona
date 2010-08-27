@@ -26,7 +26,7 @@
  * <p>
  * Among other classes, this package provides:
  * <ul>
- * <li>{@link jmona.impl.DeeCopyableVector}, a Vector containing elements which
+ * <li>{@link jmona.impl.DeepCopyableVector}, a Vector containing elements which
  * implement {@link jmona.DeepCopyable}, and which can itself be deep-copied.
  * This is good for creating list-like individuals, like in the
  * {@link jmona.example.ones} evolution in which the individuals are lists of

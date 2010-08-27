@@ -37,7 +37,7 @@ public class MutableIntegerConverter implements
    * @param input
    *          The MutableInteger to transform to an Integer.
    * @return The Integer representation of the specified MutableInteger.
-   * @see jmona.Function#execute(java.lang.Object)
+   * @see jfcommon.functional.Function#execute(java.lang.Object)
    */
   @Override
   public Integer execute(final MutableInteger input) {

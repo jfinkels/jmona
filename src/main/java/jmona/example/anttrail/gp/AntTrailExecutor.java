@@ -53,7 +53,7 @@ public class AntTrailExecutor implements Function<Tree, Integer> {
    * @return The amount of food eaten by the Ant.
    * @throws MappingException
    *           If there is a problem executing the Tree.
-   * @see jmona.Function#execute(java.lang.Object)
+   * @see jfcommon.functional.Function#execute(java.lang.Object)
    */
   @Override
   public Integer execute(final Tree tree) throws MappingException {

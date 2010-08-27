@@ -36,7 +36,7 @@ public class ExampleMapping implements
    * @param individual
    *          The ExampleIndividual whose fitness will be returned.
    * @return The fitness of the specified ExampleIndividual.
-   * @see jmona.Function#execute(java.lang.Object)
+   * @see jfcommon.functional.Function#execute(java.lang.Object)
    */
   @Override
   public Double execute(final ExampleIndividual individual) {

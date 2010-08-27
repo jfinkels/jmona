@@ -87,7 +87,7 @@ public class PolynomialFunction implements Function<Double, Double> {
    * @param input
    *          The input value to this polynomial.
    * @return The value of this polynomial at the specified input value.
-   * @see jmona.Function#execute(java.lang.Object )
+   * @see jfcommon.functional.Function#execute(java.lang.Object )
    */
   @Override
   public Double execute(final Double input) {

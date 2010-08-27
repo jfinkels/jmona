@@ -21,7 +21,7 @@
  * <p>
  * Provides some common input/output functionality, including
  * {@link jmona.io.LineReader}, which reads all lines from a file immediately
- * and {@link jmona.io.SplitLines} a function which splits a String on
+ * and {@link jmona.io.SplitOnWhitespace} a function which splits a String on
  * whitespace.
  * </p>
  * 

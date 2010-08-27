@@ -20,7 +20,7 @@
 /**
  * <p>
  * Provides wrappers for primitive types which are both mutable and
- * deep-copyable, to be used as elements in {@link jmona.impl.DeepCopyableList}
+ * deep-copyable, to be used as elements in {@link jmona.DeepCopyableList}
  * objects.
  * </p>
  * 

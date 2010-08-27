@@ -53,7 +53,7 @@ public class MultiplicationFunction extends SecondOrderFunction {
    * @return The product of the two functions with the specified input.
    * @throws MappingException
    *           {@inheritDoc}
-   * @see jmona.Function#execute(java.lang.Object)
+   * @see jfcommon.functional.Function#execute(java.lang.Object)
    */
   @Override
   public Double execute(final Double input) throws MappingException {
