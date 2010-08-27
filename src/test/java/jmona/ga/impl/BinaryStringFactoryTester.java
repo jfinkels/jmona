@@ -19,10 +19,15 @@
  */
 package jmona.ga.impl;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.Map;
+
+import jfcommon.functional.Range;
 import jmona.DeepCopyableList;
+import jmona.impl.ListUtils;
 import jmona.impl.mutable.MutableByte;
 
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -33,22 +38,38 @@ import org.junit.Test;
  */
 public class BinaryStringFactoryTester {
 
-  /** The factory under test. */
-  private BinaryStringFactory factory = null;
-
-  /** Establish a fixture for tests in this class. */
-  @Before
-  public final void setUp() {
-    this.factory = new BinaryStringFactory(20);
-  }
+  /** The length of the binary string to create. */
+  public static final int LENGTH = 1 << 12;
+  /** The number of individuals that the factory will create. */
+  public static final int NUM_INDIVIDUALS = 1000;
 
   /**
    * Test method for {@link jmona.ga.impl.BinaryStringFactory#createObject()}.
    */
   @Test
   public void testCreateObject() {
-    final DeepCopyableList<MutableByte> individual = this.factory.createObject();
-    // TODO make assertions about this binary string
+    final BinaryStringFactory factory = new BinaryStringFactory(LENGTH);
+    
+    int zeroCount = 0;
+    int oneCount = 0;
+    double delta = LENGTH * 0.1;
+    for (final int i : new Range(NUM_INDIVIDUALS)) {
+      final DeepCopyableList<MutableByte> individual = factory.createObject();
+      
+      // count the number of ones and the number of zeros
+      final Map<MutableByte, Integer> counts = ListUtils.count(individual);
+      
+      final int zeros = counts.get(MutableByte.ZERO);
+      final int ones = counts.get(MutableByte.ONE);
+      
+      assertEquals(zeros, ones, delta);
+      
+      zeroCount += zeros;
+      oneCount += ones;
+    }
+    
+    delta *= NUM_INDIVIDUALS;
+    assertEquals(zeroCount, oneCount, delta);
   }
 
 }
