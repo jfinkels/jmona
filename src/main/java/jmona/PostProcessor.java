@@ -29,7 +29,7 @@ package jmona;
  * @since 0.1
  */
 // TODO PreProcessor?
-public interface PostProcessor<T> {
+public interface PostProcessor<T, E extends EvolutionContext<T>> {
 
   /**
    * Perform some action on the specified EvolutionContext.
@@ -39,6 +39,5 @@ public interface PostProcessor<T> {
    * @throws ProcessingException
    *           If there is a problem processing the specified EvolutionContext.
    */
-  void process(final EvolutionContext<T> evolutionContext)
-      throws ProcessingException;
+  void process(final E evolutionContext) throws ProcessingException;
 }

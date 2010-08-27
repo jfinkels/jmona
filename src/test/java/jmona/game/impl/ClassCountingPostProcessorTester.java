@@ -27,10 +27,9 @@ import java.util.Map;
 import java.util.Vector;
 
 import jfcommon.test.TestUtils;
-import jmona.EvolutionContext;
 import jmona.LoggingException;
+import jmona.PopulationEvolutionContext;
 import jmona.game.impl.example.ExampleStrategy;
-import joptsimple.internal.Strings;
 
 import org.junit.Test;
 
@@ -58,13 +57,13 @@ public class ClassCountingPostProcessorTester {
     population.add(new ExampleStrategy());
 
     // instantiate a context with the population initialized above
-    final EvolutionContext<ExampleStrategy> context = new TwoPlayerGameEvolutionContext<ExampleStrategy>(
+    final PopulationEvolutionContext<ExampleStrategy> context = new TwoPlayerGameEvolutionContext<ExampleStrategy>(
         population);
 
     // instantiate the processor with the context initialized above
-    final ClassCountingPostProcessor<ExampleStrategy> processor = new ClassCountingPostProcessor<ExampleStrategy>();
+    final ClassCountingPostProcessor<ExampleStrategy, PopulationEvolutionContext<ExampleStrategy>> processor = new ClassCountingPostProcessor<ExampleStrategy, PopulationEvolutionContext<ExampleStrategy>>();
 
-    String result = Strings.EMPTY;
+    String result = "";
 
     try {
       result = processor.message(context);

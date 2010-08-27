@@ -23,9 +23,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import jmona.DeepCopyable;
-import jmona.EvolutionContext;
 import jmona.GeneticEvolutionContext;
-import jmona.LoggingException;
 
 /**
  * Logs the raw fitnesses of the current population.
@@ -36,8 +34,8 @@ import jmona.LoggingException;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class FitnessLoggingPostProcessor<T extends DeepCopyable<T>> extends
-    LoggingPostProcessor<T> {
+public class FitnessLoggingPostProcessor<T extends DeepCopyable<T>, E extends GeneticEvolutionContext<T>>
+    extends LoggingPostProcessor<T, E> {
 
   /**
    * Get the raw fitnesses of the individuals in the current population of the
@@ -48,25 +46,14 @@ public class FitnessLoggingPostProcessor<T extends DeepCopyable<T>> extends
    *          current population.
    * @return The raw fitnesses of the individuals in the current population, as
    *         a String.
-   * @throws LoggingException
-   *           If the specified EvolutionContext is not a
-   *           GeneticEvolutionContext, or if there is a problem determining the
-   *           raw fitness of an individual.
    * @see jmona.impl.postprocessing.LoggingPostProcessor#message(jmona.EvolutionContext)
    */
   @Override
-  protected String message(final EvolutionContext<T> context)
-      throws LoggingException {
-    if (!(context instanceof GeneticEvolutionContext<?>)) {
-      throw new LoggingException(
-          "Cannot get a fitness function from the EvolutionContext unless it is a GeneticEvolutionContext. Class of EvolutionContext is "
-              + context.getClass());
-    }
+  protected String message(final E context) {
 
     final StringBuilder result = new StringBuilder();
 
-    final Map<T, Double> fitnesses = ((GeneticEvolutionContext<T>) context)
-        .currentAdjustedFitnesses();
+    final Map<T, Double> fitnesses = context.currentAdjustedFitnesses();
 
     for (final Entry<T, Double> entry : fitnesses.entrySet()) {
       result.append(NEWLINE);

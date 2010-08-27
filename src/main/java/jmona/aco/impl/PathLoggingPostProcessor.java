@@ -19,8 +19,6 @@
  */
 package jmona.aco.impl;
 
-import jmona.EvolutionContext;
-import jmona.LoggingException;
 import jmona.PopulationEvolutionContext;
 import jmona.aco.Ant;
 import jmona.graph.DirectedGraph;
@@ -36,8 +34,8 @@ import jmona.impl.postprocessing.LoggingPostProcessor;
  *          The type of Ant whose paths will be logged.
  * @since 0.5
  */
-public class PathLoggingPostProcessor<A extends Ant> extends
-    LoggingPostProcessor<A> {
+public class PathLoggingPostProcessor<A extends Ant, E extends PopulationEvolutionContext<A>>
+    extends LoggingPostProcessor<A, E> {
 
   /** The graph with which total distance of a tour can be determined. */
   private DirectedGraph<Integer, Double> graph = null;
@@ -64,18 +62,11 @@ public class PathLoggingPostProcessor<A extends Ant> extends
    * @see jmona.impl.postprocessing.LoggingPostProcessor#message(jmona.EvolutionContext)
    */
   @Override
-  protected String message(final EvolutionContext<A> context)
-      throws LoggingException {
-    if (!(context instanceof PopulationEvolutionContext<?>)) {
-      throw new LoggingException(
-          "Cannot get population from the EvolutionContext unless it is a PopulationEvolutionContext. Class of EvolutionContext is "
-              + context.getClass());
-    }
+  protected String message(final E context) {
 
     final StringBuilder result = new StringBuilder();
 
-    for (final A agent : ((PopulationEvolutionContext<A>) context)
-        .currentPopulation()) {
+    for (final A agent : context.currentPopulation()) {
       result.append(NEWLINE);
       result.append(agent.memory());
       if (this.graph != null) {

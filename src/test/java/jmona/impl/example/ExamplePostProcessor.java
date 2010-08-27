@@ -29,7 +29,7 @@ import jmona.impl.postprocessing.PeriodicPostProcessor;
  * @since 0.1
  */
 public class ExamplePostProcessor extends
-    PeriodicPostProcessor<ExampleIndividual> {
+    PeriodicPostProcessor<ExampleIndividual, ExampleEvolutionContext> {
 
   /**
    * The number of times {@link #processAtInterval(EvolutionContext)} has been
@@ -57,7 +57,7 @@ public class ExamplePostProcessor extends
    */
   @Override
   protected void processAtInterval(
-      final EvolutionContext<ExampleIndividual> evolutionContext) {
+      final ExampleEvolutionContext evolutionContext) {
     this.count += 1;
   }
 

@@ -22,8 +22,8 @@ package jmona.example.anttrail;
 import jfcommon.test.TestUtils;
 import jmona.CompletionCondition;
 import jmona.CompletionException;
-import jmona.EvolutionContext;
 import jmona.EvolutionException;
+import jmona.GeneticEvolutionContext;
 import jmona.PostProcessor;
 import jmona.ProcessingException;
 import jmona.gp.Tree;
@@ -53,13 +53,13 @@ public class AntTrailEvolutionTester {
   private CompletionCondition<Tree> completionCondition = null;
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
-  private EvolutionContext<Tree> context = null;
+  private GeneticEvolutionContext<Tree> context = null;
 
   /** Test the evolution. */
   @Test
   @DirtiesContext
   public final void testEvolution() {
-    final PostProcessor<Tree> processor = new FitnessLoggingPostProcessor<Tree>();
+    final PostProcessor<Tree, GeneticEvolutionContext<Tree>> processor = new FitnessLoggingPostProcessor<Tree, GeneticEvolutionContext<Tree>>();
 
     try {
       while (!this.completionCondition.execute(this.context)) {

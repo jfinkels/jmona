@@ -24,9 +24,7 @@ import java.util.Comparator;
 import java.util.Map;
 
 import jmona.DeepCopyable;
-import jmona.EvolutionContext;
 import jmona.GeneticEvolutionContext;
-import jmona.LoggingException;
 import jmona.impl.selection.ValueComparator;
 
 /**
@@ -39,8 +37,8 @@ import jmona.impl.selection.ValueComparator;
  *          most fit individual.
  * @since 0.5
  */
-public class BestIndividualPostProcessor<T extends DeepCopyable<T>> extends
-    LoggingPostProcessor<T> {
+public class BestIndividualPostProcessor<T extends DeepCopyable<T>, E extends GeneticEvolutionContext<T>>
+    extends LoggingPostProcessor<T, E> {
 
   /**
    * Gets the String representation of the most fit individual in the specified
@@ -50,24 +48,13 @@ public class BestIndividualPostProcessor<T extends DeepCopyable<T>> extends
    *          The EvolutionContext from which to get the most fit individual.
    * @return A string representation of the most fit individual along with its
    *         fitness.
-   * @throws LoggingException
-   *           If the specified EvolutionContext is not a
-   *           GeneticEvolutionContext, or if there is a problem getting the
-   *           most fit individual from the specified EvolutionContext.
    * @see jmona.impl.postprocessing.LoggingPostProcessor#message(jmona.EvolutionContext)
    */
   @Override
-  protected String message(final EvolutionContext<T> context)
-      throws LoggingException {
-    if (!(context instanceof GeneticEvolutionContext<?>)) {
-      throw new LoggingException(
-          "Cannot get a fitness function from the EvolutionContext unless it is a GeneticEvolutionContext. Class of EvolutionContext is "
-              + context.getClass());
-    }
+  protected String message(final E context) {
 
     // get the map of fitnesses of individuals in the EvolutionContext
-    final Map<T, Double> fitnesses = ((GeneticEvolutionContext<T>) context)
-        .currentAdjustedFitnesses();
+    final Map<T, Double> fitnesses = context.currentAdjustedFitnesses();
 
     // create a comparator based on the fitnesses of the individuals
     final Comparator<T> comparator = new ValueComparator<T, Double>(fitnesses);

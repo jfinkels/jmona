@@ -24,7 +24,6 @@ import java.util.List;
 import jfcommon.functional.Functional;
 import jfcommon.functional.MappingException;
 import jfcommon.functional.operators.ToClass;
-import jmona.EvolutionContext;
 import jmona.LoggingException;
 import jmona.PopulationEvolutionContext;
 import jmona.impl.ListUtils;
@@ -38,7 +37,8 @@ import jmona.impl.postprocessing.LoggingPostProcessor;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ClassCountingPostProcessor<T> extends LoggingPostProcessor<T> {
+public class ClassCountingPostProcessor<T, E extends PopulationEvolutionContext<T>>
+    extends LoggingPostProcessor<T, E> {
 
   /**
    * Count the number of objects of each class in the specified
@@ -50,20 +50,12 @@ public class ClassCountingPostProcessor<T> extends LoggingPostProcessor<T> {
    * @return The string representation of a map from class to number of objects
    *         of that class in the specified EvolutionContext.
    * @throws LoggingException
-   *           If the specified EvolutionContext is not a
-   *           PopulationEvolutionContext, or if there is a problem determining
-   *           the classes of the individuals in the current population of the
-   *           specified EvolutionContext.
+   *           If there is a problem determining the classes of the individuals
+   *           in the current population of the specified EvolutionContext.
    * @see jmona.impl.postprocessing.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
    */
   @Override
-  protected String message(final EvolutionContext<T> context)
-      throws LoggingException {
-    if (!(context instanceof PopulationEvolutionContext<?>)) {
-      throw new LoggingException(
-          "Cannot get population from the EvolutionContext unless it is a PopulationEvolutionContext. Class of EvolutionContext is "
-              + context.getClass());
-    }
+  protected String message(final E context) throws LoggingException {
 
     List<Class<?>> classes = null;
     try {

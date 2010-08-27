@@ -38,7 +38,8 @@ import org.apache.log4j.Logger;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public abstract class LoggingPostProcessor<T> extends PeriodicPostProcessor<T> {
+public abstract class LoggingPostProcessor<T, E extends EvolutionContext<T>>
+    extends PeriodicPostProcessor<T, E> {
   /** The default level at which to log information. */
   public static final Level DEFAULT_LOGGING_LEVEL = Level.INFO;
   /** The default format of the message to log. */
@@ -86,8 +87,7 @@ public abstract class LoggingPostProcessor<T> extends PeriodicPostProcessor<T> {
    * @throws LoggingException
    *           If there is a problem logging a message.
    */
-  protected abstract String message(final EvolutionContext<T> context)
-      throws LoggingException;
+  protected abstract String message(final E context) throws LoggingException;
 
   /**
    * Log a message.
@@ -99,11 +99,10 @@ public abstract class LoggingPostProcessor<T> extends PeriodicPostProcessor<T> {
    * @see jmona.PostProcessor#process(jmona.EvolutionContext)
    */
   @Override
-  protected void processAtInterval(final EvolutionContext<T> context)
-      throws ProcessingException {
+  protected void processAtInterval(final E context) throws ProcessingException {
     try {
-      this.log(String.format(DEFAULT_MESSAGE_FORMAT, context
-          .currentGeneration(), this.message(context)));
+      this.log(String.format(DEFAULT_MESSAGE_FORMAT,
+          context.currentGeneration(), this.message(context)));
     } catch (final LoggingException exception) {
       throw new ProcessingException("Failed to log a message.", exception);
     }

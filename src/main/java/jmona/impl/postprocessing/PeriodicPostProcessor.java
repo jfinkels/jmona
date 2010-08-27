@@ -33,7 +33,8 @@ import jmona.ProcessingException;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public abstract class PeriodicPostProcessor<T> implements PostProcessor<T> {
+public abstract class PeriodicPostProcessor<T, E extends EvolutionContext<T>>
+    implements PostProcessor<T, E> {
 
   /**
    * The number of times that the {@link #process(EvolutionContext)} method has
@@ -55,7 +56,7 @@ public abstract class PeriodicPostProcessor<T> implements PostProcessor<T> {
    * @see jmona.PostProcessor#process(jmona.EvolutionContext)
    */
   @Override
-  public synchronized void process(final EvolutionContext<T> evolutionContext)
+  public synchronized void process(final E evolutionContext)
       throws ProcessingException {
     this.counter += 1;
 
@@ -75,8 +76,8 @@ public abstract class PeriodicPostProcessor<T> implements PostProcessor<T> {
    * @throws ProcessingException
    *           If there is a problem processing the EvolutionContext.
    */
-  protected abstract void processAtInterval(
-      final EvolutionContext<T> evolutionContext) throws ProcessingException;
+  protected abstract void processAtInterval(final E evolutionContext)
+      throws ProcessingException;
 
   /**
    * Set the period at which to process.

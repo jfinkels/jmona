@@ -25,9 +25,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jfcommon.functional.Range;
-import jfcommon.test.TestUtils;
-import jmona.LoggingException;
-import joptsimple.internal.Strings;
+import jmona.PopulationEvolutionContext;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -73,7 +71,7 @@ public class PathLoggingPostProcessorTester {
    */
   @Test
   public void testMessageEvolutionContextOfA() {
-    final PathLoggingPostProcessor<WorkerAnt> processor = new PathLoggingPostProcessor<WorkerAnt>();
+    final PathLoggingPostProcessor<WorkerAnt, PopulationEvolutionContext<WorkerAnt>> processor = new PathLoggingPostProcessor<WorkerAnt, PopulationEvolutionContext<WorkerAnt>>();
 
     final WorkerAnt ant1 = new WorkerAnt(0);
     ant1.moveTo(1);
@@ -90,23 +88,14 @@ public class PathLoggingPostProcessorTester {
     final AntColonyEvolutionContext<WorkerAnt> context = new AntColonyEvolutionContext<WorkerAnt>(
         population, this.graph, new AntCycleStrategy());
 
-    String result = Strings.EMPTY;
-    try {
-      result = processor.message(context);
-    } catch (final LoggingException exception) {
-      TestUtils.fail(exception);
-    }
+    String result = processor.message(context);
 
     assertTrue(result.contains("[0, 1, 2]"));
     assertTrue(result.contains("[1, 2, 0]"));
 
     processor.setGraph(this.graph);
 
-    try {
-      result = processor.message(context);
-    } catch (final LoggingException exception) {
-      TestUtils.fail(exception);
-    }
+    result = processor.message(context);
 
     assertTrue(result.contains("[0, 1, 2], total distance: 6.0"));
     assertTrue(result.contains("[1, 2, 0], total distance: 6.0"));

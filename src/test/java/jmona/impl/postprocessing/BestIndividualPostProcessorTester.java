@@ -27,8 +27,6 @@ import java.util.Vector;
 import jfcommon.test.TestUtils;
 import jmona.FitnessException;
 import jmona.FitnessFunction;
-import jmona.GeneticEvolutionContext;
-import jmona.LoggingException;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
@@ -50,7 +48,7 @@ public class BestIndividualPostProcessorTester {
    */
   @Test
   public void testMessage() {
-    final BestIndividualPostProcessor<ExampleIndividual> processor = new BestIndividualPostProcessor<ExampleIndividual>();
+    final BestIndividualPostProcessor<ExampleIndividual, ExampleEvolutionContext> processor = new BestIndividualPostProcessor<ExampleIndividual, ExampleEvolutionContext>();
 
     final ExampleIndividual individual1 = new ExampleIndividual(1);
     final ExampleIndividual individual2 = new ExampleIndividual(2);
@@ -61,21 +59,16 @@ public class BestIndividualPostProcessorTester {
 
     final FitnessFunction<ExampleIndividual> fitnessFunction = new ExampleFitnessFunction();
 
-    final GeneticEvolutionContext<ExampleIndividual> context = new ExampleEvolutionContext(
+    final ExampleEvolutionContext context = new ExampleEvolutionContext(
         population);
-    
+
     try {
       context.setFitnessFunction(fitnessFunction);
     } catch (final FitnessException exception) {
       TestUtils.fail(exception);
     }
 
-    String fittestIndividual = null;
-    try {
-      fittestIndividual = processor.message(context);
-    } catch (final LoggingException exception) {
-      TestUtils.fail(exception);
-    }
+    final String fittestIndividual = processor.message(context);
 
     assertTrue(fittestIndividual.contains(individual1.toString()));
     assertTrue(fittestIndividual

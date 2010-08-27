@@ -28,7 +28,7 @@ import java.util.Vector;
 
 import jfcommon.test.TestUtils;
 import jmona.DeepCopyableList;
-import jmona.EvolutionContext;
+import jmona.GeneticEvolutionContext;
 import jmona.InitializationException;
 import jmona.ProcessingException;
 import jmona.ga.impl.GAEvolutionContext;
@@ -47,7 +47,7 @@ import org.junit.Test;
 public class ImageOutputPostProcessorTester {
 
   /** The PostProcessor under test. */
-  private ImageOutputPostProcessor processor = null;
+  private ImageOutputPostProcessor<DeepCopyableList<ColoredPolygon>, GeneticEvolutionContext<DeepCopyableList<ColoredPolygon>>> processor = null;
   /** The width of the output image. */
   public static final int WIDTH = 5;
   /** The height of the output image. */
@@ -58,7 +58,8 @@ public class ImageOutputPostProcessorTester {
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.processor = new ImageOutputPostProcessor(WIDTH, HEIGHT);
+    this.processor = new ImageOutputPostProcessor<DeepCopyableList<ColoredPolygon>, GeneticEvolutionContext<DeepCopyableList<ColoredPolygon>>>(
+        WIDTH, HEIGHT);
     this.processor.setOutputDir(OUTPUT_DIRECTORY);
   }
 
@@ -74,9 +75,11 @@ public class ImageOutputPostProcessorTester {
     final String filename = ImageOutputPostProcessor.generateFilename(
         directory, generation);
 
-    assertEquals(directory + ImageOutputPostProcessor.FILE_SEPARATOR
-        + String.format(ImageOutputPostProcessor.FILENAME_FORMAT, generation),
-        filename);
+    assertEquals(
+        directory
+            + ImageOutputPostProcessor.FILE_SEPARATOR
+            + String.format(ImageOutputPostProcessor.FILENAME_FORMAT,
+                generation), filename);
 
     final String filename2 = ImageOutputPostProcessor.generateFilename(
         directory + "/", generation);
@@ -112,7 +115,7 @@ public class ImageOutputPostProcessorTester {
     population.add(individual1);
     population.add(individual2);
 
-    final EvolutionContext<DeepCopyableList<ColoredPolygon>> context = new GAEvolutionContext<DeepCopyableList<ColoredPolygon>>(
+    final GeneticEvolutionContext<DeepCopyableList<ColoredPolygon>> context = new GAEvolutionContext<DeepCopyableList<ColoredPolygon>>(
         population);
 
     try {
@@ -123,8 +126,8 @@ public class ImageOutputPostProcessorTester {
 
     final File file = new File(OUTPUT_DIRECTORY
         + ImageOutputPostProcessor.FILE_SEPARATOR
-        + String.format(ImageOutputPostProcessor.FILENAME_FORMAT, context
-            .currentGeneration()));
+        + String.format(ImageOutputPostProcessor.FILENAME_FORMAT,
+            context.currentGeneration()));
 
     assertTrue(file.exists());
   }

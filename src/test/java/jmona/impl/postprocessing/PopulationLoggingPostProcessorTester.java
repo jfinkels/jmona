@@ -24,11 +24,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
-import jfcommon.test.TestUtils;
-import jmona.LoggingException;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
-import joptsimple.internal.Strings;
 
 import org.junit.Test;
 
@@ -56,14 +53,9 @@ public class PopulationLoggingPostProcessorTester {
 
     ExampleEvolutionContext context = new ExampleEvolutionContext(population);
 
-    final PopulationLoggingPostProcessor<ExampleIndividual> processor = new PopulationLoggingPostProcessor<ExampleIndividual>();
+    final PopulationLoggingPostProcessor<ExampleIndividual, ExampleEvolutionContext> processor = new PopulationLoggingPostProcessor<ExampleIndividual, ExampleEvolutionContext>();
 
-    String result = Strings.EMPTY;
-    try {
-      result = processor.message(context);
-    } catch (LoggingException exception) {
-      TestUtils.fail(exception);
-    }
+    final String result = processor.message(context);
 
     assertTrue(result.contains(individual1.toString()));
     assertTrue(result.contains(individual2.toString()));

@@ -21,8 +21,6 @@ package jmona.aco.impl;
 
 import java.util.Collections;
 
-import jmona.EvolutionContext;
-import jmona.LoggingException;
 import jmona.PopulationEvolutionContext;
 import jmona.aco.Ant;
 import jmona.graph.DirectedGraph;
@@ -36,8 +34,8 @@ import jmona.impl.postprocessing.LoggingPostProcessor;
  *          The type of Ant in the evolution.
  * @since 0.5
  */
-public class BestAntLoggingPostProcessor<A extends Ant> extends
-    LoggingPostProcessor<A> {
+public class BestAntLoggingPostProcessor<A extends Ant, E extends PopulationEvolutionContext<A>>
+    extends LoggingPostProcessor<A, E> {
 
   /**
    * The comparator which compares Ants based on the distance of the tour stored
@@ -73,18 +71,12 @@ public class BestAntLoggingPostProcessor<A extends Ant> extends
    * @see jmona.impl.postprocessing.LoggingPostProcessor#message(jmona.EvolutionContext)
    */
   @Override
-  protected String message(final EvolutionContext<A> context)
-      throws LoggingException {
-    if (!(context instanceof PopulationEvolutionContext<?>)) {
-      throw new LoggingException(
-          "Cannot get population from the EvolutionContext unless it is a PopulationEvolutionContext. Class of EvolutionContext is "
-              + context.getClass());
-    }
+  protected String message(final E context) {
 
     final StringBuilder result = new StringBuilder();
 
-    final A bestAnt = Collections.min(((PopulationEvolutionContext<A>) context)
-        .currentPopulation(), this.comparator);
+    final A bestAnt = Collections.min(context.currentPopulation(),
+        this.comparator);
 
     result.append("distance " + this.distanceGetter.execute(bestAnt));
     result.append(": ");

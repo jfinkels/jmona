@@ -19,7 +19,6 @@
  */
 package jmona.impl.postprocessing;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -27,12 +26,7 @@ import java.util.List;
 import java.util.Vector;
 
 import jfcommon.test.TestUtils;
-import jmona.EvolutionContext;
-import jmona.EvolutionException;
 import jmona.FitnessException;
-import jmona.GeneticEvolutionContext;
-import jmona.LoggingException;
-import jmona.impl.context.AbstractEvolutionContext;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
@@ -73,33 +67,13 @@ public class FitnessLoggingPostProcessorTester {
       TestUtils.fail(exception);
     }
 
-    final FitnessLoggingPostProcessor<ExampleIndividual> processor = new FitnessLoggingPostProcessor<ExampleIndividual>();
+    final FitnessLoggingPostProcessor<ExampleIndividual, ExampleEvolutionContext> processor = new FitnessLoggingPostProcessor<ExampleIndividual, ExampleEvolutionContext>();
 
-    String result = null;
-    try {
-      result = processor.message(context);
-    } catch (final LoggingException exception) {
-      TestUtils.fail(exception);
-    }
+    final String result = processor.message(context);
 
     assertNotNull(result);
     assertTrue(result.contains(String.valueOf(individual1.fitness())));
     assertTrue(result.contains(String.valueOf(individual2.fitness())));
 
-    final EvolutionContext<ExampleIndividual> badContext = new AbstractEvolutionContext<ExampleIndividual>() {
-      @Override
-      protected void executeGenerationStep() throws EvolutionException {
-        // intentionally unimplemented
-      }
-    };
-
-    try {
-      processor.message(badContext);
-      TestUtils.shouldHaveThrownException();
-    } catch (final LoggingException exception) {
-      assertFalse(badContext.getClass().equals(GeneticEvolutionContext.class));
-    }
-
   }
-
 }

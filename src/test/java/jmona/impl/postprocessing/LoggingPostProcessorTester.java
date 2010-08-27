@@ -25,11 +25,12 @@ import java.util.List;
 import java.util.Vector;
 
 import jfcommon.test.TestUtils;
-import jmona.EvolutionContext;
 import jmona.EvolutionException;
+import jmona.GeneticEvolutionContext;
 import jmona.LoggingException;
 import jmona.ProcessingException;
-import jmona.impl.context.AbstractEvolutionContext;
+import jmona.impl.DeepCopyableVector;
+import jmona.impl.context.AbstractGeneticEvolutionContext;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
 
@@ -51,10 +52,10 @@ public class LoggingPostProcessorTester {
   /** A message to log. */
   public static final String TEST_MESSAGE = "Hello, world!";
   /** The context about which to log information. */
-  private EvolutionContext<ExampleIndividual> context = null;
+  private ExampleEvolutionContext context = null;
 
   /** The PostProcessor under test. */
-  private LoggingPostProcessor<ExampleIndividual> processor = null;
+  private LoggingPostProcessor<ExampleIndividual, ExampleEvolutionContext> processor = null;
   /** The population in the EvolutionContext. */
   private List<ExampleIndividual> population = null;
 
@@ -70,7 +71,7 @@ public class LoggingPostProcessorTester {
 
     this.context = new ExampleEvolutionContext(this.population);
 
-    this.processor = new PopulationLoggingPostProcessor<ExampleIndividual>();
+    this.processor = new PopulationLoggingPostProcessor<ExampleIndividual, ExampleEvolutionContext>();
   }
 
   /**
@@ -105,18 +106,19 @@ public class LoggingPostProcessorTester {
     } catch (final ProcessingException exception) {
       TestUtils.fail(exception);
     }
-    
-    this.processor = new FitnessLoggingPostProcessor<ExampleIndividual>();
-    
-    final EvolutionContext<ExampleIndividual> badContext = new AbstractEvolutionContext<ExampleIndividual>() {
+
+    final FitnessLoggingPostProcessor<ExampleIndividual, GeneticEvolutionContext<ExampleIndividual>> processor2 = new FitnessLoggingPostProcessor<ExampleIndividual, GeneticEvolutionContext<ExampleIndividual>>();
+
+    final GeneticEvolutionContext<ExampleIndividual> badContext = new AbstractGeneticEvolutionContext<ExampleIndividual>(
+        new DeepCopyableVector<ExampleIndividual>()) {
       @Override
       protected void executeGenerationStep() throws EvolutionException {
         // intentionally unimplemented
       }
     };
-        
+
     try {
-      this.processor.processAtInterval(badContext);
+      processor2.processAtInterval(badContext);
       TestUtils.shouldHaveThrownException();
     } catch (final ProcessingException exception) {
       assertTrue(exception.getCause() instanceof LoggingException);

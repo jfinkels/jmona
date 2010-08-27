@@ -20,7 +20,6 @@
 package jmona.impl.postprocessing;
 
 import jmona.EvolutionContext;
-import jmona.LoggingException;
 import jmona.PopulationEvolutionContext;
 
 /**
@@ -33,7 +32,8 @@ import jmona.PopulationEvolutionContext;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class PopulationLoggingPostProcessor<T> extends LoggingPostProcessor<T> {
+public class PopulationLoggingPostProcessor<T, E extends PopulationEvolutionContext<T>>
+    extends LoggingPostProcessor<T, E> {
 
   /**
    * Get the current population of the specified EvolutionContext, as a String.
@@ -42,21 +42,11 @@ public class PopulationLoggingPostProcessor<T> extends LoggingPostProcessor<T> {
    *          The EvolutionContext containing the population.
    * @return The current population of the specified EvolutionContext, as a
    *         String.
-   * @throws LoggingException
-   *           If the specified EvolutionContext is not an instance of
-   *           PopulationEvolutionContext.
    * @see jmona.impl.postprocessing.LoggingPostProcessor#message(EvolutionContext)
    */
   @Override
-  protected String message(final EvolutionContext<T> context)
-      throws LoggingException {
-    if (!(context instanceof PopulationEvolutionContext<?>)) {
-      throw new LoggingException(
-          "Cannot get population from the EvolutionContext unless it is a PopulationEvolutionContext. Class of EvolutionContext is "
-              + context.getClass());
-    }
-    return ((PopulationEvolutionContext<T>) context).currentPopulation()
-        .toString();
+  protected String message(final E context) {
+    return context.currentPopulation().toString();
   }
 
 }
