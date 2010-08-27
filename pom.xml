@@ -483,6 +483,17 @@
   </scm>
 
   <repositories>
+    <repository> <!-- repo for jfcommon.functional and jfcommon.test -->
+      <id>jmona.repo</id>
+      <name>jmona repository</name>
+      <url>http://www.cs.tufts.edu/~jfinke02/repo</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>      
+      </snapshots>
+    </repository>
     <repository> <!-- apache commons repo, to get commons-lang 3 -->
       <releases>
         <enabled>true</enabled>
