@@ -32,6 +32,10 @@ public class MutableByte extends org.apache.commons.lang3.mutable.MutableByte
 
   /** Default generated serial version UID. */
   private static final long serialVersionUID = 7939210268935242142L;
+  /** An instance of a zero byte. */
+  public static final MutableByte ZERO = new MutableByte(0);
+  /** An instance of a one byte. */
+  public static final MutableByte ONE = new MutableByte(1);
 
   /**
    * Instantiates this object by calling the default constructor of the
