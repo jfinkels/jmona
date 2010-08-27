@@ -19,11 +19,11 @@
  */
 package jmona.example.tsp;
 
+import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
 import jmona.CompletionCondition;
 import jmona.DeepCopyableList;
 import jmona.EvolutionException;
-import jmona.MappingException;
 import jmona.PopulationEvolutionContext;
 import jmona.impl.mutable.MutableInteger;
 

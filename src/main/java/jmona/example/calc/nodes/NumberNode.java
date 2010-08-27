@@ -19,8 +19,8 @@
  */
 package jmona.example.calc.nodes;
 
-import jmona.Function;
-import jmona.example.calc.functions.DoubleConstantFunction;
+import jfcommon.functional.DoubleConstantFunction;
+import jfcommon.functional.Function;
 
 /**
  * A Node containing a single value as a Double.

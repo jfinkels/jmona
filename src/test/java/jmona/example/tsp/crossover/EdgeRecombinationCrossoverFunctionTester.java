@@ -26,7 +26,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 
 import org.junit.Test;
 

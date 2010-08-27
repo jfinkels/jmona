@@ -19,8 +19,8 @@
  */
 package jmona.example.calc.nodes;
 
+import jfcommon.functional.Function;
 import jmona.CopyingException;
-import jmona.Function;
 import jmona.example.calc.operations.UniformBinaryOperation;
 import jmona.gp.EvaluationException;
 import jmona.gp.impl.BinaryNode;

@@ -20,7 +20,7 @@
 package jmona.example.monalisa;
 
 import static org.junit.Assert.assertTrue;
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 
 import org.junit.Before;
 import org.junit.Test;

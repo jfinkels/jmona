@@ -21,8 +21,8 @@ package jmona.gp.impl;
 
 import java.util.List;
 
+import jfcommon.functional.Range;
 import jmona.CopyingException;
-import jmona.functional.Range;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.gp.Tree;

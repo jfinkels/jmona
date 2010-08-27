@@ -23,9 +23,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
 import jmona.CopyingException;
-import jmona.MappingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.impl.TreeUtils;
 

@@ -21,8 +21,8 @@ package jmona.graph.impl;
 
 import java.util.Set;
 
-import jmona.functional.HashSetFromIterable;
-import jmona.functional.Range;
+import jfcommon.functional.HashSetFromIterable;
+import jfcommon.functional.Range;
 import jmona.graph.DirectedGraph;
 
 /**

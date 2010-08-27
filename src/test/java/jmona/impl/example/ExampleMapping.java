@@ -19,7 +19,7 @@
  */
 package jmona.impl.example;
 
-import jmona.Function;
+import jfcommon.functional.Function;
 
 /**
  * An example mapping from an ExampleIndividual to its fitness.

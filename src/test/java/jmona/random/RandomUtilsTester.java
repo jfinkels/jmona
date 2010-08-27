@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 import jmona.impl.ListUtils;
 
 import org.junit.Test;

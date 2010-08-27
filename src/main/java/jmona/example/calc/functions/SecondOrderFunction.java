@@ -19,7 +19,8 @@
  */
 package jmona.example.calc.functions;
 
-import jmona.Function;
+import jfcommon.functional.Function;
+
 
 /**
  * A function which operates on functions.

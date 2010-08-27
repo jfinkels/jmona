@@ -19,8 +19,8 @@
  */
 package jmona.example.calc;
 
-import jmona.Function;
-import jmona.MappingException;
+import jfcommon.functional.Function;
+import jfcommon.functional.MappingException;
 import jmona.example.calc.nodes.CalcNode;
 import jmona.gp.EvaluationException;
 import jmona.gp.Tree;

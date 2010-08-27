@@ -21,9 +21,9 @@ package jmona.example.tsp;
 
 import java.util.List;
 
+import jfcommon.functional.Functional;
+import jfcommon.functional.MappingException;
 import jmona.FitnessException;
-import jmona.MappingException;
-import jmona.functional.Functional;
 import jmona.graph.DirectedGraph;
 import jmona.graph.impl.GraphUtils;
 import jmona.impl.fitness.MinimizingFitnessFunction;

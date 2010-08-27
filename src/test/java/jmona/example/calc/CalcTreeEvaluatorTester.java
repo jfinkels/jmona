@@ -21,9 +21,9 @@ package jmona.example.calc;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import jfcommon.functional.Function;
+import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
-import jmona.Function;
-import jmona.MappingException;
 import jmona.example.calc.nodes.NumberNode;
 import jmona.example.calc.nodes.VariableNode;
 import jmona.gp.EvaluationException;

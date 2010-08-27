@@ -19,8 +19,8 @@
  */
 package jmona.aco.impl;
 
+import jfcommon.functional.Range;
 import jmona.aco.PheromoneDirectedGraph;
-import jmona.functional.Range;
 import jmona.graph.impl.AdjacencyMatrixGraph;
 
 /**

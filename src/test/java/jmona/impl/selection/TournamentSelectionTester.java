@@ -24,8 +24,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.HashMap;
 import java.util.Map;
 
+import jfcommon.functional.Range;
 import jmona.FitnessFunction;
-import jmona.functional.Range;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
 

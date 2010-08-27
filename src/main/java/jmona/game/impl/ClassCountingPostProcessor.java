@@ -21,12 +21,12 @@ package jmona.game.impl;
 
 import java.util.List;
 
+import jfcommon.functional.Functional;
+import jfcommon.functional.MappingException;
+import jfcommon.functional.operators.ToClass;
 import jmona.EvolutionContext;
 import jmona.LoggingException;
-import jmona.MappingException;
 import jmona.PopulationEvolutionContext;
-import jmona.functional.Functional;
-import jmona.functional.operators.ToClass;
 import jmona.impl.ListUtils;
 import jmona.impl.postprocessing.LoggingPostProcessor;
 

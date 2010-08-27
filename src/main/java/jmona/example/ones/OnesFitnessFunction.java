@@ -19,8 +19,8 @@
  */
 package jmona.example.ones;
 
+import jfcommon.functional.Functional;
 import jmona.DeepCopyableList;
-import jmona.functional.Functional;
 import jmona.impl.fitness.MaximizingFitnessFunction;
 import jmona.impl.mutable.MutableByte;
 
@@ -60,7 +60,7 @@ public class OnesFitnessFunction extends
    */
   @Override
   public double rawFitness(final DeepCopyableList<MutableByte> individual) {
-    return Functional.sumBytes(individual);
+    return Functional.sumByte(individual);
   }
 
 }

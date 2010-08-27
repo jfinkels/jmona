@@ -19,7 +19,7 @@
  */
 package jmona.example.calc.operations;
 
-import jmona.example.calc.functions.ConstantFunction;
+import jfcommon.functional.ConstantFunction;
 
 /**
  * Utility class for FunctionOperationTester classes.

@@ -21,7 +21,7 @@ package jmona.ga.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 import jmona.impl.mutable.MutableByte;
 
 import org.junit.Test;

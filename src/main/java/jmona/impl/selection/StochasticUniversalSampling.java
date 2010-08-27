@@ -23,9 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import jfcommon.functional.Range;
 import jmona.MultipleSelectionFunction;
 import jmona.SelectionException;
-import jmona.functional.Range;
 import jmona.random.RandomUtils;
 
 /**
@@ -69,7 +69,6 @@ public class StochasticUniversalSampling<T> implements
    * @throws SelectionException
    *           If the number of individuals selected is not equal to the value
    *           of the numberToSelect parameter.
-   * @see jmona.impl.selection.FitnessProportionateSelection(java.util.Map)
    * @see jmona.MultipleSelectionFunction#select(java.util.Map, int)
    */
   @Override

@@ -26,9 +26,9 @@ import static org.junit.Assert.assertNotSame;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.CopyingException;
-import jmona.functional.Range;
 import jmona.impl.example.ExampleIndividual;
 import jmona.test.Util;
 

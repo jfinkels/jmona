@@ -21,7 +21,7 @@ package jmona.example.ipd.strategy;
 
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 
 import org.junit.Test;
 

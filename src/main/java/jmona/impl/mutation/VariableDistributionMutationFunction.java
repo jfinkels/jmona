@@ -21,8 +21,8 @@ package jmona.impl.mutation;
 
 import java.util.List;
 
+import jfcommon.functional.Range;
 import jmona.MutationException;
-import jmona.functional.Range;
 import jmona.random.RandomUtils;
 
 /**

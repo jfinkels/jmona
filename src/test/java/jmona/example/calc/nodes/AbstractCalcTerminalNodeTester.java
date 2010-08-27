@@ -20,8 +20,8 @@
 package jmona.example.calc.nodes;
 
 import static org.junit.Assert.assertEquals;
+import jfcommon.functional.Function;
 import jmona.CopyingException;
-import jmona.Function;
 import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 

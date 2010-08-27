@@ -21,11 +21,11 @@ package jmona.aco.impl;
 
 import java.util.List;
 
+import jfcommon.functional.Range;
 import jmona.EvolutionException;
 import jmona.aco.Ant;
 import jmona.aco.PheromoneDirectedGraph;
 import jmona.aco.PheromoneUpdateStrategy;
-import jmona.functional.Range;
 import jmona.graph.impl.GraphUtils;
 import jmona.impl.completion.MaxGenerationCompletionCondition;
 import jmona.impl.context.AbstractPopulationEvolutionContext;

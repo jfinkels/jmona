@@ -25,10 +25,10 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
 import jmona.FitnessException;
 import jmona.GeneticEvolutionContext;
-import jmona.MappingException;
 import jmona.ga.impl.GAEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;

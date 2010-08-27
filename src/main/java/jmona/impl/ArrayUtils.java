@@ -19,7 +19,7 @@
  */
 package jmona.impl;
 
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 
 /**
  * A utility class which provides methods for operating on arrays.
@@ -48,7 +48,7 @@ public final class ArrayUtils {
       final int endIndex) {
     final int length = endIndex - startIndex;
     final String[] result = new String[length];
-    
+
     for (final int i : new Range(0, length)) {
       result[i] = array[startIndex + i];
     }

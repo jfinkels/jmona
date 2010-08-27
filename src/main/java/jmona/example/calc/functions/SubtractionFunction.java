@@ -19,8 +19,8 @@
  */
 package jmona.example.calc.functions;
 
-import jmona.Function;
-import jmona.MappingException;
+import jfcommon.functional.Function;
+import jfcommon.functional.MappingException;
 
 /**
  * A function which returns the difference between two specified functions.

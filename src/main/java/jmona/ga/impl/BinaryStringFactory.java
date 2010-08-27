@@ -19,8 +19,8 @@
  */
 package jmona.ga.impl;
 
+import jfcommon.functional.Range;
 import jmona.DeepCopyableList;
-import jmona.functional.Range;
 import jmona.impl.DeepCopyableVector;
 import jmona.impl.SizedFactory;
 import jmona.impl.mutable.MutableByte;

@@ -20,8 +20,8 @@
 package jmona.ga.impl;
 
 import static org.junit.Assert.assertEquals;
+import jfcommon.functional.Range;
 import jmona.DeepCopyableList;
-import jmona.functional.Range;
 import jmona.impl.DeepCopyableVector;
 import jmona.impl.Pair;
 import jmona.impl.mutable.MutableByte;

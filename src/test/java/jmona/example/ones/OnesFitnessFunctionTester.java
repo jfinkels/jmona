@@ -23,8 +23,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import jfcommon.functional.Range;
 import jmona.DeepCopyableList;
-import jmona.functional.Range;
 import jmona.impl.DeepCopyableVector;
 import jmona.impl.mutable.MutableByte;
 

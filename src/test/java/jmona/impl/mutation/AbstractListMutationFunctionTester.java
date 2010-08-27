@@ -22,8 +22,8 @@ package jmona.impl.mutation;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.functional.Range;
 import jmona.MutationFunction;
-import jmona.functional.Range;
 import jmona.impl.mutable.MutableInteger;
 
 import org.junit.Before;

@@ -19,6 +19,8 @@
  */
 package jmona;
 
+import jfcommon.functional.MappingException;
+
 /**
  * This Exception is thrown when there is a problem determining if a
  * CompletionCondition has satisfied.

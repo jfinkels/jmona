@@ -20,7 +20,7 @@
 package jmona.graph.impl;
 
 import static org.junit.Assert.assertEquals;
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 
 import org.junit.Test;
 

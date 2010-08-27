@@ -20,7 +20,7 @@
 package jmona.impl;
 
 import static org.junit.Assert.assertSame;
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 
 import org.junit.Test;
 

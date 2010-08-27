@@ -19,8 +19,8 @@
  */
 package jmona.gp.impl.example;
 
-import jmona.Function;
-import jmona.MappingException;
+import jfcommon.functional.Function;
+import jfcommon.functional.MappingException;
 import jmona.gp.EvaluationException;
 import jmona.gp.Node;
 

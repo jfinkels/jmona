@@ -26,8 +26,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
-import jmona.MappingException;
 import jmona.MetricException;
 
 import org.apache.log4j.Logger;

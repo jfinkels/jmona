@@ -19,7 +19,7 @@
  */
 package jmona.aco.impl;
 
-import jmona.Function;
+import jfcommon.functional.Function;
 import jmona.aco.Ant;
 import jmona.graph.DirectedGraph;
 import jmona.graph.impl.GraphUtils;

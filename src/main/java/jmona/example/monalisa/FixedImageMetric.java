@@ -24,8 +24,8 @@ import java.awt.image.PixelGrabber;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.functional.Range;
 import jmona.MetricException;
-import jmona.functional.Range;
 import jmona.impl.metrics.EuclideanVectorMetric;
 
 /**

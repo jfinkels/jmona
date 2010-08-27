@@ -24,10 +24,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.MappingException;
+import jfcommon.functional.Functional;
+import jfcommon.functional.MappingException;
+import jfcommon.functional.Range;
 import jmona.MetricException;
-import jmona.functional.Functional;
-import jmona.functional.Range;
 import jmona.impl.ArrayUtils;
 import jmona.impl.metrics.EuclideanVectorMetric;
 import jmona.io.LineReader;

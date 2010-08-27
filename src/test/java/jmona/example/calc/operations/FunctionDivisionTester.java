@@ -20,9 +20,9 @@
 package jmona.example.calc.operations;
 
 import static org.junit.Assert.assertEquals;
+import jfcommon.functional.Function;
+import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
-import jmona.Function;
-import jmona.MappingException;
 
 import org.junit.Test;
 

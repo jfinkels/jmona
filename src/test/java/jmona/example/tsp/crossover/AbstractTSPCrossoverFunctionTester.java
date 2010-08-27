@@ -25,12 +25,12 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.CrossoverException;
 import jmona.CrossoverFunction;
 import jmona.InitializationException;
 import jmona.example.tsp.TourFactory;
-import jmona.functional.Range;
 import jmona.impl.mutable.MutableInteger;
 import jmona.impl.mutable.functional.MutableRange;
 

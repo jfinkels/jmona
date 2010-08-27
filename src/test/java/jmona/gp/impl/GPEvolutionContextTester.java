@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.CrossoverException;
 import jmona.CrossoverFunction;
@@ -41,7 +42,6 @@ import jmona.MutationException;
 import jmona.MutationFunction;
 import jmona.PropertyNotSetException;
 import jmona.SelectionException;
-import jmona.functional.Range;
 import jmona.gp.Tree;
 import jmona.gp.impl.example.ExampleGPFitnessFunction;
 import jmona.gp.impl.example.ExampleTreeFactory;

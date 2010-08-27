@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 
 /**
  * Utility class which provides static methods for operations on Lists.

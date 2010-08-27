@@ -23,8 +23,8 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
-import jmona.functional.Range;
 
 import org.apache.log4j.Logger;
 import org.junit.Before;

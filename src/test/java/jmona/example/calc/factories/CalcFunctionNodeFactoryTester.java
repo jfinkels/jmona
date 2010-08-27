@@ -21,11 +21,11 @@ package jmona.example.calc.factories;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import jfcommon.functional.Range;
 import jmona.example.calc.nodes.AdditionNode;
 import jmona.example.calc.nodes.DivisionNode;
 import jmona.example.calc.nodes.MultiplicationNode;
 import jmona.example.calc.nodes.SubtractionNode;
-import jmona.functional.Range;
 import jmona.gp.FunctionNode;
 
 import org.junit.Test;

@@ -19,7 +19,7 @@
  */
 package jmona.io;
 
-import jmona.Function;
+import jfcommon.functional.Function;
 
 /**
  * Splits a string on whitespace characters (similar to Python's built-in <a

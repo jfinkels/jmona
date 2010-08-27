@@ -21,7 +21,7 @@ package jmona.graph.impl;
 
 import java.util.List;
 
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 import jmona.graph.DirectedGraph;
 
 /**

@@ -25,9 +25,9 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Set;
 
+import jfcommon.functional.Range;
 import jmona.example.monalisa.ColoredPolygon;
 import jmona.example.monalisa.ColoredPolygonFactory;
-import jmona.functional.Range;
 
 import org.junit.Before;
 import org.junit.Test;

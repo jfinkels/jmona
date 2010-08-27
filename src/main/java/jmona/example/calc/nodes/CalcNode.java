@@ -19,7 +19,7 @@
  */
 package jmona.example.calc.nodes;
 
-import jmona.Function;
+import jfcommon.functional.Function;
 import jmona.gp.EvaluatableNode;
 
 /**

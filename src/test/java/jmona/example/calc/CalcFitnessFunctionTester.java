@@ -25,12 +25,12 @@ import static org.junit.Assert.assertTrue;
 import java.util.HashSet;
 import java.util.Set;
 
+import jfcommon.functional.ConstantFunction;
+import jfcommon.functional.Function;
+import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
 import jmona.CopyingException;
 import jmona.FitnessException;
-import jmona.Function;
-import jmona.MappingException;
-import jmona.example.calc.functions.ConstantFunction;
 import jmona.example.calc.nodes.AbstractCalcTerminalNode;
 import jmona.example.calc.nodes.NumberNode;
 import jmona.gp.EvaluationException;

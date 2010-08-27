@@ -28,9 +28,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.InitializationException;
-import jmona.functional.Range;
 import jmona.gp.Node;
 import jmona.gp.TerminalNode;
 import jmona.gp.Tree;

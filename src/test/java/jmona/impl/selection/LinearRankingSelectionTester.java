@@ -24,7 +24,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
 import java.util.Map;
 
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Test;

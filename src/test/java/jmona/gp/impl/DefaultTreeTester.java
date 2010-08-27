@@ -31,10 +31,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jfcommon.functional.MappingException;
+import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.CopyingException;
-import jmona.MappingException;
-import jmona.functional.Range;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.gp.TerminalNode;

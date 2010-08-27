@@ -30,11 +30,10 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.1
  */
 @RunWith(Suite.class)
-@SuiteClasses({ AdditionFunctionTester.class, ConstantFunctionTester.class,
-    DivisionFunctionTester.class, DoubleConstantFunctionTester.class,
-    DoubleIdentityFunctionTester.class, MultiplicationFunctionTester.class,
-    PolynomialFunctionTester.class, SecondOrderFunctionTester.class,
-    SquareFunctionTester.class, SubtractionFunctionTester.class })
+@SuiteClasses({ AdditionFunctionTester.class, DivisionFunctionTester.class,
+    MultiplicationFunctionTester.class, PolynomialFunctionTester.class,
+    SecondOrderFunctionTester.class, SquareFunctionTester.class,
+    SubtractionFunctionTester.class })
 public class AllTest {
 
 }

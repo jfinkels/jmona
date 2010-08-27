@@ -22,7 +22,7 @@ package jmona.test;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 import jmona.gp.Node;
 import jmona.gp.Tree;
 

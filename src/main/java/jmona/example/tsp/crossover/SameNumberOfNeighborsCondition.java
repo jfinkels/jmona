@@ -22,7 +22,7 @@ package jmona.example.tsp.crossover;
 import java.util.Map;
 import java.util.Set;
 
-import jmona.Condition;
+import jfcommon.functional.Predicate;
 
 /**
  * A condition which determines whether a city has a specified number of
@@ -31,7 +31,7 @@ import jmona.Condition;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-class SameNumberOfNeighborsCondition implements Condition<Integer> {
+class SameNumberOfNeighborsCondition implements Predicate<Integer> {
 
   /** The adjacency list as a mapping from city to neighbors of that city. */
   private final Map<Integer, Set<Integer>> neighborSets;

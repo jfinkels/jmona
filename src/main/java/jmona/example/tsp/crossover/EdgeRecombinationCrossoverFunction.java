@@ -28,11 +28,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import jfcommon.functional.Functional;
+import jfcommon.functional.MappingException;
+import jfcommon.functional.Range;
 import jmona.CrossoverException;
 import jmona.CrossoverFunction;
-import jmona.MappingException;
-import jmona.functional.Functional;
-import jmona.functional.Range;
 import jmona.impl.mutable.MutableInteger;
 import jmona.random.RandomUtils;
 

@@ -21,9 +21,9 @@ package jmona.impl.metrics;
 
 import java.util.List;
 
+import jfcommon.functional.Range;
 import jmona.Metric;
 import jmona.MetricException;
-import jmona.functional.Range;
 
 /**
  * Get the Euclidean distance between two specified vectors in Euclidean

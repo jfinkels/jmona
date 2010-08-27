@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 import jmona.impl.example.ExampleIndividual;
 
 import org.apache.log4j.Logger;

@@ -21,7 +21,7 @@ package jmona.example.monalisa;
 
 import java.awt.Color;
 
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 
 /**
  * Base class for tests involving ColoredPolygon objects.

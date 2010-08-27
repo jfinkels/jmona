@@ -19,19 +19,24 @@
  */
 package jmona.example.tsp;
 
-import jmona.Function;
+import jfcommon.functional.Function;
 import jmona.impl.mutable.MutableInteger;
 
 /**
+ * Maps a MutableInteger to its corresponding Integer representation.
+ * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
 public class MutableIntegerConverter implements
     Function<MutableInteger, Integer> {
 
-  /*
-   * (non-Javadoc)
+  /**
+   * Returns the Integer representation of the specified MutableInteger.
    * 
+   * @param input
+   *          The MutableInteger to transform to an Integer.
+   * @return The Integer representation of the specified MutableInteger.
    * @see jmona.Function#execute(java.lang.Object)
    */
   @Override

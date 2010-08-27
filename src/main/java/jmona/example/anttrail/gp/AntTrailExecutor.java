@@ -19,8 +19,8 @@
  */
 package jmona.example.anttrail.gp;
 
-import jmona.Function;
-import jmona.MappingException;
+import jfcommon.functional.Function;
+import jfcommon.functional.MappingException;
 import jmona.example.anttrail.Ant;
 import jmona.example.anttrail.nodes.AntNode;
 import jmona.gp.ExecutionException;

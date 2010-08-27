@@ -23,8 +23,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import jfcommon.functional.IterableString;
 import jmona.example.anttrail.Trail;
-import jmona.functional.IterableString;
 import jmona.io.LineReader;
 
 /**

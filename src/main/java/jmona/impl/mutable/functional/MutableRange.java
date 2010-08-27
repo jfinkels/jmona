@@ -19,7 +19,7 @@
  */
 package jmona.impl.mutable.functional;
 
-import jmona.functional.AbstractRange;
+import jfcommon.functional.AbstractRange;
 import jmona.impl.mutable.MutableInteger;
 
 /**
@@ -67,8 +67,8 @@ public class MutableRange extends AbstractRange<MutableInteger> {
    *          The increment between each integer initially added to this list.
    */
   public MutableRange(final int initialInteger, final int terminalInteger,
-      final int incrementInteger) {
-    super(initialInteger, terminalInteger, incrementInteger);
+      final int step) {
+    super(initialInteger, terminalInteger, step);
   }
 
   /**

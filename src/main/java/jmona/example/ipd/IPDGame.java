@@ -19,9 +19,9 @@
  */
 package jmona.example.ipd;
 
+import jfcommon.functional.Range;
 import jmona.example.ipd.strategy.Action;
 import jmona.example.ipd.strategy.IPDStrategy;
-import jmona.functional.Range;
 import jmona.game.GameplayException;
 import jmona.game.TwoPlayerGame;
 import jmona.game.TwoPlayerGameResult;

@@ -19,8 +19,9 @@
  */
 package jmona.example.calc.functions;
 
-import jmona.Function;
-import jmona.functional.Range;
+import jfcommon.functional.Function;
+import jfcommon.functional.Range;
+
 
 /**
  * An immutable polynomial in a single variable with an array of coefficient

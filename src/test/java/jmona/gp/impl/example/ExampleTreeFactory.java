@@ -19,7 +19,7 @@
  */
 package jmona.gp.impl.example;
 
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.gp.impl.AbstractTreeFactory;

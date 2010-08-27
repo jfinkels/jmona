@@ -19,11 +19,11 @@
  */
 package jmona.example.tsp.aco;
 
+import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
 import jmona.CompletionCondition;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
-import jmona.MappingException;
 import jmona.PostProcessor;
 import jmona.ProcessingException;
 import jmona.aco.impl.WorkerAnt;

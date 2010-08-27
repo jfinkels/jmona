@@ -22,6 +22,7 @@ package jmona.example.anttrail.factories;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import jfcommon.functional.Range;
 import jmona.example.anttrail.Ant;
 import jmona.example.anttrail.DefaultAnt;
 import jmona.example.anttrail.Trail;
@@ -29,7 +30,6 @@ import jmona.example.anttrail.nodes.AntNode;
 import jmona.example.anttrail.nodes.MoveForwardNode;
 import jmona.example.anttrail.nodes.TurnLeftNode;
 import jmona.example.anttrail.nodes.TurnRightNode;
-import jmona.functional.Range;
 import jmona.gp.TerminalNode;
 
 import org.junit.Test;

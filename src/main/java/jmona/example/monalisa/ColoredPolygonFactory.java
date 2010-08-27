@@ -19,8 +19,8 @@
  */
 package jmona.example.monalisa;
 
+import jfcommon.functional.Range;
 import jmona.Factory;
-import jmona.functional.Range;
 import jmona.random.RandomUtils;
 
 /**

@@ -21,7 +21,7 @@ package jmona.aco.impl;
 
 import java.util.Vector;
 
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 
 /**
  * A Vector of WorkerAnt objects, which initially places one WorkerAnt on each

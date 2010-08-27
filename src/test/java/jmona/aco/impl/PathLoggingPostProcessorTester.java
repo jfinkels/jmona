@@ -24,9 +24,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.LoggingException;
-import jmona.functional.Range;
 import joptsimple.internal.Strings;
 
 import org.junit.Before;

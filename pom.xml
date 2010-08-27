@@ -87,7 +87,7 @@
 
   <properties>
     <!-- dependency versions -->
-    <version.dependency.jfcommon.functional>0.1.1</version.dependency.jfcommon.functional>
+    <version.dependency.jfcommon.functional>0.2.1</version.dependency.jfcommon.functional>
     <version.dependency.jfcommon.test>0.1</version.dependency.jfcommon.test>
     <version.dependency.jopt-simple>3.2</version.dependency.jopt-simple>
     <version.dependency.junit>4.8.1</version.dependency.junit>

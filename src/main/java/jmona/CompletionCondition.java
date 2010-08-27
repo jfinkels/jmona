@@ -19,6 +19,8 @@
  */
 package jmona;
 
+import jfcommon.functional.Predicate;
+
 /**
  * A condition on EvolutionContexts which determines when the evolution should
  * stop.
@@ -29,8 +31,7 @@ package jmona;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public interface CompletionCondition<T> extends
-    Condition<EvolutionContext<T>> {
+public interface CompletionCondition<T> extends Predicate<EvolutionContext<T>> {
 
   /**
    * Whether the evolution of the specified EvolutionContext should complete.
@@ -44,5 +45,6 @@ public interface CompletionCondition<T> extends
    *           satisfied.
    */
   @Override
-  Boolean execute(final EvolutionContext<T> context) throws CompletionException;
+  Boolean execute(final EvolutionContext<T> context)
+      throws CompletionException;
 }

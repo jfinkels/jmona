@@ -24,10 +24,10 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.MutationException;
 import jmona.MutationFunction;
-import jmona.functional.Range;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Before;

@@ -24,9 +24,9 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.MutationException;
-import jmona.functional.Range;
 import jmona.impl.mutable.MutableInteger;
 import jmona.impl.mutable.functional.MutableRange;
 

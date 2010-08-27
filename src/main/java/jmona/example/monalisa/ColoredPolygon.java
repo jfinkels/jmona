@@ -22,8 +22,8 @@ package jmona.example.monalisa;
 import java.awt.Color;
 import java.awt.Polygon;
 
+import jfcommon.functional.Range;
 import jmona.DeepCopyable;
-import jmona.functional.Range;
 
 /**
  * A Polygon with a Color.

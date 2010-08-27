@@ -27,7 +27,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
-import jmona.functional.Range;
+import jfcommon.functional.Range;
 import jmona.impl.Pair;
 
 import org.junit.Before;

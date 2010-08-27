@@ -27,12 +27,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import jfcommon.functional.Functional;
+import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.EvolutionException;
 import jmona.SelectionException;
 import jmona.aco.PheromoneUpdateStrategy;
-import jmona.functional.Functional;
-import jmona.functional.Range;
 
 import org.junit.Before;
 import org.junit.Test;

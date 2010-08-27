@@ -20,8 +20,8 @@
 package jmona.example.anttrail.gp;
 
 import static org.junit.Assert.assertEquals;
+import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
-import jmona.MappingException;
 import jmona.example.anttrail.Ant;
 import jmona.example.anttrail.DefaultAnt;
 import jmona.example.anttrail.Trail;

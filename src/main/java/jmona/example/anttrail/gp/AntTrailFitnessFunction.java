@@ -19,8 +19,8 @@
  */
 package jmona.example.anttrail.gp;
 
+import jfcommon.functional.MappingException;
 import jmona.FitnessException;
-import jmona.MappingException;
 import jmona.gp.Tree;
 import jmona.impl.fitness.MaximizingFitnessFunction;
 

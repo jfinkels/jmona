@@ -35,7 +35,8 @@ import java.util.TreeMap;
  *          The type of individual to choose.
  * @since 0.3
  */
-public class LinearRankingSelection<T> extends FitnessProportionateSelection<T> {
+public class LinearRankingSelection<T> extends
+    FitnessProportionateSelection<T> {
 
   /**
    * Use a linear ranking as the probability distribution with which to choose
@@ -50,8 +51,7 @@ public class LinearRankingSelection<T> extends FitnessProportionateSelection<T> 
    *          {@inheritDoc}
    * @return An individual chosen from the specified by the ranking method
    *         described above.
-   * @see jmona.IndependentSelectionFunction#select(java.util.List,
-   *      jmona.FitnessFunction)
+   * @see jmona.IndependentSelectionFunction#select(java.util.Map)
    */
   @Override
   public T select(final Map<T, Double> fitnesses) {

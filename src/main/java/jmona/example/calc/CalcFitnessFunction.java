@@ -21,9 +21,9 @@ package jmona.example.calc;
 
 import java.util.Set;
 
+import jfcommon.functional.Function;
+import jfcommon.functional.MappingException;
 import jmona.FitnessException;
-import jmona.Function;
-import jmona.MappingException;
 import jmona.gp.Tree;
 import jmona.impl.fitness.MaximizingFitnessFunction;
 

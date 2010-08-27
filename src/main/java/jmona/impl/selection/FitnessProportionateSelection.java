@@ -22,8 +22,8 @@ package jmona.impl.selection;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import jfcommon.functional.Functional;
 import jmona.IndependentSelectionFunction;
-import jmona.functional.Functional;
 import jmona.random.RandomUtils;
 
 /**

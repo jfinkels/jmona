@@ -19,9 +19,9 @@
  */
 package jmona.gp.impl.example;
 
+import jfcommon.functional.Functional;
+import jfcommon.functional.MappingException;
 import jmona.CopyingException;
-import jmona.MappingException;
-import jmona.functional.Functional;
 import jmona.gp.EvaluationException;
 import jmona.gp.impl.TernaryNode;
 

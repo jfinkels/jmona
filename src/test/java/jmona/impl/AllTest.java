@@ -32,8 +32,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ ArrayUtilsTester.class, DeepCopyableListFactoryTester.class,
     DeepCopyableVectorTester.class, DeepCopyUtilsTester.class,
-    IdentityFunctionTester.class, ListUtilsTester.class, MapUtilsTester.class,
-    PairTester.class })
+    ListUtilsTester.class, MapUtilsTester.class, PairTester.class })
 public class AllTest {
 
 }

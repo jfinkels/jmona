@@ -27,8 +27,8 @@ import java.awt.image.PixelGrabber;
 import java.util.List;
 import java.util.Vector;
 
+import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
-import jmona.functional.Range;
 
 import org.junit.Test;
 

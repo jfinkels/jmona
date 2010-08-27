@@ -19,7 +19,7 @@
  */
 package jmona.example.calc.operations;
 
-import jmona.Function;
+import jfcommon.functional.Function;
 import jmona.example.calc.functions.AdditionFunction;
 
 /**

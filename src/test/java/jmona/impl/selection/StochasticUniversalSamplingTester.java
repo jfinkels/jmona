@@ -27,10 +27,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jfcommon.functional.Functional;
+import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.SelectionException;
-import jmona.functional.Functional;
-import jmona.functional.Range;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Before;

@@ -19,8 +19,8 @@
  */
 package jmona.gp.impl;
 
+import jfcommon.functional.Range;
 import jmona.InitializationException;
-import jmona.functional.Range;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.random.RandomUtils;

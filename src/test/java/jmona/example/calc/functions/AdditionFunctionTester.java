@@ -20,8 +20,8 @@
 package jmona.example.calc.functions;
 
 import static org.junit.Assert.assertEquals;
+import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
-import jmona.MappingException;
 import jmona.example.calc.operations.Util;
 
 import org.junit.Test;
