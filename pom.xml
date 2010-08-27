@@ -54,7 +54,7 @@
       <groupId>jfcommon</groupId>
       <artifactId>functional</artifactId>
       <version>${version.dependency.jfcommon.functional}</version>
-      <scope>test</scope>
+      <scope>compile</scope>
       <type>jar</type>
     </dependency>
 
