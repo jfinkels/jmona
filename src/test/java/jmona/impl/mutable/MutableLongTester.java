@@ -37,7 +37,7 @@ public class MutableLongTester {
    */
   @Test
   public void testMutableLong() {
-    final MutableLong l = new MutableLong();
+    new MutableLong();
   }
 
   /**
