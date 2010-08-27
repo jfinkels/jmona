@@ -37,7 +37,7 @@ public class MutableByteTester {
    */
   @Test
   public void testMutableByte() {
-    final MutableByte b = new MutableByte();
+    new MutableByte();
   }
 
   /**

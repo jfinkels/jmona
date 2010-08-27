@@ -38,7 +38,7 @@ public class MutableBooleanTester {
    */
   @Test
   public void testMutableBoolean() {
-    final MutableBoolean b = new MutableBoolean();
+    new MutableBoolean();
   }
 
   /**

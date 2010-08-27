@@ -25,8 +25,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import jfcommon.functional.Range;
-import jmona.FitnessFunction;
-import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Before;
@@ -69,8 +67,6 @@ public class TournamentSelectionTester {
    */
   @Test
   public void testSelect() {
-
-    final FitnessFunction<ExampleIndividual> fitnessFunction = new ExampleFitnessFunction();
 
     ExampleIndividual individual = null;
     for (final int i : new Range(NUM_SELECTIONS)) {

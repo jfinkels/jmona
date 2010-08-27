@@ -40,7 +40,7 @@ public class MutableDoubleTester {
    */
   @Test
   public void testMutableDouble() {
-    final MutableDouble d = new MutableDouble();
+    new MutableDouble();
   }
 
   /**

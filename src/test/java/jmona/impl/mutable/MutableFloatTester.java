@@ -40,7 +40,7 @@ public class MutableFloatTester {
    */
   @Test
   public void testMutableFloat() {
-    final MutableFloat f = new MutableFloat();
+    new MutableFloat();
   }
 
   /**
