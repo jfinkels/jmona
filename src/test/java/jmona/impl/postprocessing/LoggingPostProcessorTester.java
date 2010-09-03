@@ -25,12 +25,9 @@ import java.util.List;
 import java.util.Vector;
 
 import jfcommon.test.TestUtils;
-import jmona.EvolutionException;
 import jmona.GeneticEvolutionContext;
 import jmona.LoggingException;
 import jmona.ProcessingException;
-import jmona.impl.DeepCopyableVector;
-import jmona.impl.context.AbstractGeneticEvolutionContext;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
 
@@ -107,18 +104,27 @@ public class LoggingPostProcessorTester {
       TestUtils.fail(exception);
     }
 
-    final FitnessLoggingPostProcessor<ExampleIndividual, GeneticEvolutionContext<ExampleIndividual>> processor2 = new FitnessLoggingPostProcessor<ExampleIndividual, GeneticEvolutionContext<ExampleIndividual>>();
+    final LoggingPostProcessor<ExampleIndividual, GeneticEvolutionContext<ExampleIndividual>> processor2 = new LoggingPostProcessor<ExampleIndividual, GeneticEvolutionContext<ExampleIndividual>>() {
 
-    final GeneticEvolutionContext<ExampleIndividual> badContext = new AbstractGeneticEvolutionContext<ExampleIndividual>(
-        new DeepCopyableVector<ExampleIndividual>()) {
+      /**
+       * Always throws a LoggingException.
+       * 
+       * @param context
+       *          This parameter is ignored.
+       * @return This method never returns.
+       * @throws LoggingException
+       *           This method always throws this exception.
+       */
       @Override
-      protected void executeGenerationStep() throws EvolutionException {
-        // intentionally unimplemented
+      protected String message(
+          final GeneticEvolutionContext<ExampleIndividual> context)
+          throws LoggingException {
+        throw new LoggingException();
       }
     };
 
     try {
-      processor2.processAtInterval(badContext);
+      processor2.processAtInterval(this.context);
       TestUtils.shouldHaveThrownException();
     } catch (final ProcessingException exception) {
       assertTrue(exception.getCause() instanceof LoggingException);
