@@ -29,5 +29,5 @@ import jmona.gp.EvaluatableNode;
  * @since 0.3
  */
 public interface CalcNode extends EvaluatableNode<Function<Double, Double>> {
-
+  // intentionally empty
 }

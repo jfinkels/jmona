@@ -28,5 +28,5 @@ package jmona.game;
  * @since 0.1
  */
 public interface Game<S extends Strategy> {
-
+  // intentionally empty
 }

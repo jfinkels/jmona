@@ -28,5 +28,5 @@ package jmona.example.calc.operations;
  * @since 0.1
  */
 public interface UniformBinaryOperation<T> extends BinaryOperation<T, T, T> {
-
+  // intentionally empty
 }

@@ -29,5 +29,5 @@ package jmona.example.calc.operations;
  */
 public interface UniformTernaryOperation<T> extends
     TernaryOperation<T, T, T, T> {
-
+  // intentionally empty
 }

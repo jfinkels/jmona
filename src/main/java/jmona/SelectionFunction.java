@@ -28,5 +28,5 @@ package jmona;
  * @since 0.1
  */
 public interface SelectionFunction<T> {
-
+  // intentionally empty
 }

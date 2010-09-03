@@ -26,5 +26,5 @@ package jmona.gp;
  * @since 0.1
  */
 public interface FunctionNode extends Node {
-
+  // intentionally empty
 }

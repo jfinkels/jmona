@@ -32,5 +32,5 @@ import java.util.List;
  */
 public interface DeepCopyableList<E extends DeepCopyable<E>> extends
     DeepCopyable<DeepCopyableList<E>>, List<E> {
-
+  // intentionally empty
 }
