@@ -85,10 +85,13 @@ public class Main {
         configFile);
 
     // get the evolution contexts, completion criteria, and post processors
+    @SuppressWarnings("rawtypes")
     final Map<String, EvolutionContext> evolutionContextsMap = applicationContext
         .getBeansOfType(EvolutionContext.class);
+    @SuppressWarnings("rawtypes")
     final Map<String, CompletionCondition> completionCriteriaMap = applicationContext
         .getBeansOfType(CompletionCondition.class);
+    @SuppressWarnings("rawtypes")
     final Map<String, PostProcessor> postProcessorMap = applicationContext
         .getBeansOfType(PostProcessor.class);
 
@@ -107,8 +110,10 @@ public class Main {
     }
 
     // get the evolution context and completion condition from their maps
+    @SuppressWarnings("rawtypes")
     final EvolutionContext evolutionContext = MapUtils
         .firstValue(evolutionContextsMap);
+    @SuppressWarnings("rawtypes")
     final CompletionCondition completionCondition = MapUtils
         .firstValue(completionCriteriaMap);
 
@@ -119,7 +124,8 @@ public class Main {
         evolutionContext.stepGeneration();
 
         // perform all post-processing on the evolution context
-        for (final PostProcessor postProcessor : postProcessorMap.values()) {
+        for (@SuppressWarnings("rawtypes")
+        final PostProcessor postProcessor : postProcessorMap.values()) {
           postProcessor.process(evolutionContext);
         }
       }
@@ -136,8 +142,8 @@ public class Main {
   private static void setUpParser() {
     // "--config=/path/to/configfile.xml"
     PARSER.accepts(OPT_CONFIG_FILE_LONG, OPT_CONFIG_FILE_DESC)
-        .withRequiredArg().ofType(String.class).defaultsTo(
-            OPT_CONFIG_FILE_DEFAULT);
+        .withRequiredArg().ofType(String.class)
+        .defaultsTo(OPT_CONFIG_FILE_DEFAULT);
   }
 
   /** Instantiation disallowed. */
