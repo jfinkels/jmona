@@ -95,6 +95,7 @@ public class DefaultTree implements Tree {
    *           {@inheritDoc}
    * @see jmona.gp.Tree#deepCopy()
    */
+  @Override
   public Tree deepCopy() throws CopyingException {
     return new DefaultTree(this.root.deepCopy());
   }
