@@ -70,7 +70,7 @@ public class AggregatorCrossoverFunctionTester {
     @Override
     public void crossover(final ExampleIndividual individual1,
         final ExampleIndividual individual2) {
-      AggregatorCrossoverFunctionTester.this.crossovers1 += 1;
+      AggregatorCrossoverFunctionTester.this.incrementCrossovers1();
     }
 
   }
@@ -105,7 +105,7 @@ public class AggregatorCrossoverFunctionTester {
     @Override
     public void crossover(final ExampleIndividual individual1,
         final ExampleIndividual individual2) {
-      AggregatorCrossoverFunctionTester.this.crossovers2 += 1;
+      AggregatorCrossoverFunctionTester.this.incrementCrossovers2();
     }
 
   }
@@ -113,9 +113,25 @@ public class AggregatorCrossoverFunctionTester {
   /** The number of crossovers to perform. */
   public static final int NUM_CROSSOVERS = 10000;
   /** The number of times the first crossover function is called. */
-  int crossovers1 = 0;
+  private int crossovers1 = 0;
   /** The number of times the second crossover function is called. */
-  int crossovers2 = 0;
+  private int crossovers2 = 0;
+
+  /**
+   * Increments the counter for the number of times the first crossover function
+   * is called.
+   */
+  void incrementCrossovers1() {
+    ++this.crossovers1;
+  }
+
+  /**
+   * Increments the counter for the number of times the second crossover
+   * function is called.
+   */
+  void incrementCrossovers2() {
+    ++this.crossovers2;
+  }
 
   /**
    * Resets the counters for the number of times each CrossoverFunction is
