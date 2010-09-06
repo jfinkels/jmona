@@ -20,6 +20,9 @@
 package jmona.ga.impl;
 
 import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+
 import jfcommon.functional.Range;
 import jmona.DeepCopyableList;
 import jmona.impl.DeepCopyableVector;
@@ -38,7 +41,7 @@ import org.junit.Test;
 public class AbstractListCrossoverFunctionTester {
 
   /** The function under test. */
-  private AbstractListCrossoverFunction<MutableByte> function = null;
+  private AbstractListCrossoverFunction<MutableByte, List<MutableByte>> function = null;
   /** The length of the binary strings in the tests. */
   public static final int LENGTH = 10;
   /** The binary string of all zeros. */
@@ -49,7 +52,7 @@ public class AbstractListCrossoverFunctionTester {
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.function = new AbstractListCrossoverFunction<MutableByte>() {
+    this.function = new AbstractListCrossoverFunction<MutableByte, List<MutableByte>>() {
       @Override
       protected Pair<Integer, Integer> sliceStartEnd(final int length) {
         return new Pair<Integer, Integer>(0, length);
@@ -74,7 +77,8 @@ public class AbstractListCrossoverFunctionTester {
   @Test
   public void testSliceStartEnd() {
     assertEquals(0, this.function.sliceStartEnd(LENGTH).left().intValue());
-    assertEquals(LENGTH, this.function.sliceStartEnd(LENGTH).right().intValue());
+    assertEquals(LENGTH, this.function.sliceStartEnd(LENGTH).right()
+        .intValue());
   }
 
   /**

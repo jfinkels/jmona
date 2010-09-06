@@ -19,7 +19,8 @@
  */
 package jmona.ga.impl;
 
-import jmona.DeepCopyable;
+import java.util.List;
+
 import jmona.impl.Pair;
 import jmona.random.RandomUtils;
 
@@ -32,8 +33,8 @@ import jmona.random.RandomUtils;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class OnePointCrossoverFunction<E extends DeepCopyable<E>> extends
-    AbstractListCrossoverFunction<E> {
+public class OnePointCrossoverFunction<E, L extends List<E>> extends
+    AbstractListCrossoverFunction<E, L> {
 
   /**
    * Return a pair in which the left number is a random integer less than the

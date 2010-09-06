@@ -81,7 +81,8 @@ public class OnesEvolutionTester {
     GeneticEvolutionContext<DeepCopyableList<MutableByte>> context = new GAEvolutionContext<DeepCopyableList<MutableByte>>(
         population);
 
-    context.setCrossoverFunction(new TwoPointCrossoverFunction<MutableByte>());
+    context
+        .setCrossoverFunction(new TwoPointCrossoverFunction<MutableByte, DeepCopyableList<MutableByte>>());
     try {
       context.setFitnessFunction(new OnesFitnessFunction(length));
     } catch (final FitnessException exception) {
