@@ -61,8 +61,11 @@ public class TwoPlayerGameEvolutionContext<S extends Strategy & DeepCopyable<S>>
   }
 
   /**
-   * A GameEvolution only requires a selection function; it doesn't use a
-   * crossover function or a mutation function.
+   * Select Strategy objects for the next generation by playing tournaments and
+   * selecting the winners.
+   * 
+   * The next generation is comprised of deep copied Strategy objects which were
+   * tournament winners.
    * 
    * @throws EvolutionException
    *           {@inheritDoc}
@@ -70,7 +73,6 @@ public class TwoPlayerGameEvolutionContext<S extends Strategy & DeepCopyable<S>>
    *           If one of the necessary properties has not been set.
    */
   @Override
-  // TODO documentation
   protected void executeGenerationStep() throws EvolutionException {
     // perform a sanity check (i.e. make sure there are no null properties)
     this.sanityCheck();
