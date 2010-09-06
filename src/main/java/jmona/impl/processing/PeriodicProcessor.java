@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.impl.postprocessing;
+package jmona.impl.processing;
 
 import jmona.EvolutionContext;
 import jmona.Processor;

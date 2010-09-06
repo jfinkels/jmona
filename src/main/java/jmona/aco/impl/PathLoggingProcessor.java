@@ -23,7 +23,7 @@ import jmona.PopulationEvolutionContext;
 import jmona.aco.Ant;
 import jmona.graph.DirectedGraph;
 import jmona.graph.impl.GraphUtils;
-import jmona.impl.postprocessing.LoggingProcessor;
+import jmona.impl.processing.LoggingProcessor;
 
 /**
  * A Processor which logs the tour from each Ant's memory and the total
@@ -59,7 +59,7 @@ public class PathLoggingProcessor<A extends Ant, E extends PopulationEvolutionCo
    *          {@inheritDoc}
    * @return The tours (and total distances if a graph has been set) from
    *         individuals in the specified context.
-   * @see jmona.impl.postprocessing.LoggingProcessor#message(jmona.EvolutionContext)
+   * @see jmona.impl.processing.LoggingProcessor#message(jmona.EvolutionContext)
    */
   @Override
   protected String message(final E context) {

@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.impl.postprocessing;
+package jmona.impl.processing;
 
 import static org.junit.Assert.assertTrue;
 
@@ -30,6 +30,8 @@ import jmona.LoggingException;
 import jmona.ProcessingException;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
+import jmona.impl.processing.LoggingProcessor;
+import jmona.impl.processing.PopulationLoggingProcessor;
 
 import org.apache.log4j.Level;
 import org.junit.Before;
@@ -73,7 +75,7 @@ public class LoggingProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.LoggingProcessor#log(java.lang.String)}
+   * {@link jmona.impl.processing.LoggingProcessor#log(java.lang.String)}
    * .
    */
   @Test
@@ -83,7 +85,7 @@ public class LoggingProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.LoggingProcessor#log(java.lang.String, java.lang.Throwable)}
+   * {@link jmona.impl.processing.LoggingProcessor#log(java.lang.String, java.lang.Throwable)}
    * .
    */
   @Test
@@ -93,7 +95,7 @@ public class LoggingProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.LoggingProcessor#processAtInterval(jmona.EvolutionContext)}
+   * {@link jmona.impl.processing.LoggingProcessor#processAtInterval(jmona.EvolutionContext)}
    * .
    */
   @Test
@@ -133,7 +135,7 @@ public class LoggingProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.LoggingProcessor#setLoggingLevel(org.apache.log4j.Level)}
+   * {@link jmona.impl.processing.LoggingProcessor#setLoggingLevel(org.apache.log4j.Level)}
    * .
    */
   @Test

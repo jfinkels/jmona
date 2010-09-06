@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.impl.postprocessing;
+package jmona.impl.processing;
 
 import static org.junit.Assert.assertEquals;
 import jfcommon.test.TestUtils;
@@ -46,7 +46,7 @@ public class PeriodicProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.PeriodicProcessor#process(jmona.EvolutionContext)}.
+   * {@link jmona.impl.processing.PeriodicProcessor#process(jmona.EvolutionContext)}.
    */
   @Test
   public void testProcess() {
@@ -63,7 +63,7 @@ public class PeriodicProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.PeriodicProcessor#processAtInterval(jmona.EvolutionContext)}
+   * {@link jmona.impl.processing.PeriodicProcessor#processAtInterval(jmona.EvolutionContext)}
    * .
    */
   @Test
@@ -80,7 +80,7 @@ public class PeriodicProcessorTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.postprocessing.PeriodicProcessor#setPeriod(int)}.
+   * Test method for {@link jmona.impl.processing.PeriodicProcessor#setPeriod(int)}.
    */
   @Test
   public void testSetPeriod() {

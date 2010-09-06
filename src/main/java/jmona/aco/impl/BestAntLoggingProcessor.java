@@ -24,7 +24,7 @@ import java.util.Collections;
 import jmona.PopulationEvolutionContext;
 import jmona.aco.Ant;
 import jmona.graph.DirectedGraph;
-import jmona.impl.postprocessing.LoggingProcessor;
+import jmona.impl.processing.LoggingProcessor;
 
 /**
  * Logs the Ant with the best tour.
@@ -68,7 +68,7 @@ public class BestAntLoggingProcessor<A extends Ant, E extends PopulationEvolutio
    * @param context
    *          {@inheritDoc}
    * @return The String representation of the Ant with the best tour.
-   * @see jmona.impl.postprocessing.LoggingProcessor#message(jmona.EvolutionContext)
+   * @see jmona.impl.processing.LoggingProcessor#message(jmona.EvolutionContext)
    */
   @Override
   protected String message(final E context) {

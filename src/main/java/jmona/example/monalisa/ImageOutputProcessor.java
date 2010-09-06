@@ -26,7 +26,7 @@ import java.util.List;
 import jmona.PopulationEvolutionContext;
 import jmona.ProcessingException;
 import jmona.example.monalisa.io.ImageWriter;
-import jmona.impl.postprocessing.PeriodicProcessor;
+import jmona.impl.processing.PeriodicProcessor;
 
 /**
  * A Processor which writes an individual out to an image on the filesystem.
@@ -105,7 +105,7 @@ public class ImageOutputProcessor<L extends List<ColoredPolygon>, E extends Popu
    * @throws ProcessingException
    *           If the height or width of the output image has not been set, or
    *           if there is a problem writing the image to disk.
-   * @see jmona.impl.postprocessing.PeriodicProcessor#processAtInterval(jmona.EvolutionContext)
+   * @see jmona.impl.processing.PeriodicProcessor#processAtInterval(jmona.EvolutionContext)
    */
   @Override
   protected void processAtInterval(final E evolutionContext)

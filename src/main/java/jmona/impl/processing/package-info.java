@@ -26,11 +26,11 @@
  * <p>
  * This package includes, among other classes:
  * <ul>
- * <li>{@link jmona.impl.postprocessing.BestIndividualProcessor}, which logs
+ * <li>{@link jmona.impl.processing.BestIndividualProcessor}, which logs
  * the individual with the best fitness in the EvolutionContext</li>
- * <li>{@link jmona.impl.postprocessing.FitnessLoggingProcessor}, which logs
+ * <li>{@link jmona.impl.processing.FitnessLoggingProcessor}, which logs
  * the fitnesses of all individuals in the EvolutionContext</li>
- * <li>{@link jmona.impl.postprocessing.PopulationLoggingProcessor}, which
+ * <li>{@link jmona.impl.processing.PopulationLoggingProcessor}, which
  * logs the string representation of all individuals in the EvolutionContext</li>
  * </ul>
  * </p>
@@ -38,5 +38,5 @@
  * @author Jeffrey Finkelstein
  * @since 0.3
  */
-package jmona.impl.postprocessing;
+package jmona.impl.processing;
 

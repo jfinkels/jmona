@@ -27,7 +27,7 @@ import jfcommon.functional.operators.ToClass;
 import jmona.LoggingException;
 import jmona.PopulationEvolutionContext;
 import jmona.impl.ListUtils;
-import jmona.impl.postprocessing.LoggingProcessor;
+import jmona.impl.processing.LoggingProcessor;
 
 /**
  * Count the number of objects of each class in an EvolutionContext.
@@ -52,7 +52,7 @@ public class ClassCountingProcessor<T, E extends PopulationEvolutionContext<T>>
    * @throws LoggingException
    *           If there is a problem determining the classes of the individuals
    *           in the current population of the specified EvolutionContext.
-   * @see jmona.impl.postprocessing.PeriodicProcessor#processAtInterval(jmona.EvolutionContext)
+   * @see jmona.impl.processing.PeriodicProcessor#processAtInterval(jmona.EvolutionContext)
    */
   @Override
   protected String message(final E context) throws LoggingException {

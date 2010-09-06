@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.impl.postprocessing;
+package jmona.impl.processing;
 
 import static org.junit.Assert.assertTrue;
 
@@ -30,6 +30,7 @@ import jmona.FitnessFunction;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
+import jmona.impl.processing.BestIndividualProcessor;
 
 import org.junit.Test;
 
@@ -43,7 +44,7 @@ public class BestIndividualProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.BestIndividualProcessor#message(jmona.EvolutionContext)}
+   * {@link jmona.impl.processing.BestIndividualProcessor#message(jmona.EvolutionContext)}
    * .
    */
   @Test

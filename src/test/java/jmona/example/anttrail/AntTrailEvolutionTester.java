@@ -27,7 +27,7 @@ import jmona.GeneticEvolutionContext;
 import jmona.Processor;
 import jmona.ProcessingException;
 import jmona.gp.Tree;
-import jmona.impl.postprocessing.FitnessLoggingProcessor;
+import jmona.impl.processing.FitnessLoggingProcessor;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

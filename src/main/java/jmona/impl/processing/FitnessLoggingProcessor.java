@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.impl.postprocessing;
+package jmona.impl.processing;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -46,7 +46,7 @@ public class FitnessLoggingProcessor<T extends DeepCopyable<T>, E extends Geneti
    *          current population.
    * @return The raw fitnesses of the individuals in the current population, as
    *         a String.
-   * @see jmona.impl.postprocessing.LoggingProcessor#message(jmona.EvolutionContext)
+   * @see jmona.impl.processing.LoggingProcessor#message(jmona.EvolutionContext)
    */
   @Override
   protected String message(final E context) {

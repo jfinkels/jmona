@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.impl.postprocessing;
+package jmona.impl.processing;
 
 import jmona.EvolutionContext;
 import jmona.PopulationEvolutionContext;
@@ -42,7 +42,7 @@ public class PopulationLoggingProcessor<T, E extends PopulationEvolutionContext<
    *          The EvolutionContext containing the population.
    * @return The current population of the specified EvolutionContext, as a
    *         String.
-   * @see jmona.impl.postprocessing.LoggingProcessor#message(EvolutionContext)
+   * @see jmona.impl.processing.LoggingProcessor#message(EvolutionContext)
    */
   @Override
   protected String message(final E context) {
