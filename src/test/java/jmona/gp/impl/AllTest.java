@@ -32,11 +32,11 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ AbstractFunctionNodeTester.class, AbstractNodeTester.class,
     AbstractTerminalNodeTester.class, AbstractTreeFactoryTester.class,
-    BinaryNodeTester.class, DefaultTreeTester.class,
-    FullTreeFactoryTester.class, GPCrossoverFunctionTester.class,
-    GPEvolutionContextTester.class, GPMutationFunctionTester.class,
-    GrowTreeFactoryTester.class, TernaryNodeTester.class,
-    TreeUtilsTester.class, UnaryNodeTester.class })
+    BaseDefaultTreeFactoryTester.class, BinaryNodeTester.class,
+    DefaultTreeTester.class, FullTreeFactoryTester.class,
+    GPCrossoverFunctionTester.class, GPEvolutionContextTester.class,
+    GPMutationFunctionTester.class, GrowTreeFactoryTester.class,
+    TernaryNodeTester.class, TreeUtilsTester.class, UnaryNodeTester.class })
 public class AllTest {
   // intentionally unimplemented
 }

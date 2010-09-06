@@ -21,7 +21,7 @@ package jmona.gp.impl.example;
 
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
-import jmona.gp.impl.AbstractTreeFactory;
+import jmona.gp.impl.BaseDefaultTreeFactory;
 import jmona.gp.impl.TreeUtils;
 
 /**
@@ -30,7 +30,7 @@ import jmona.gp.impl.TreeUtils;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ExampleTreeFactory extends AbstractTreeFactory {
+public class ExampleTreeFactory extends BaseDefaultTreeFactory {
 
   /**
    * Create a complete binary Tree of the specified depth.

@@ -1,5 +1,5 @@
 /**
- * TreeFactory.java
+ * AbstractTreeFactory.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -42,21 +42,6 @@ public abstract class AbstractTreeFactory implements Factory<Tree> {
   private int maxDepth = DEFAULT_MAX_DEPTH;
   /** The factory which creates TerminalNode objects. */
   private Factory<TerminalNode> terminalNodeFactory = null;
-
-  /**
-   * Create a Tree by instantiating a DefaultTree and assigning its root to be a
-   * tree created by the {@link #createTree(int)} method.
-   * 
-   * @throws InitializationException
-   *           If there is a problem invoking the constructor of the Tree class.
-   * @return A Tree of depth at most {@link #maxDepth}.
-   * @see jmona.Factory#createObject()
-   */
-  @Override
-  public Tree createObject() throws InitializationException {
-    // TODO I don't want this to be tied to a specified implementation of Tree
-    return new DefaultTree(this.createTree(this.maxDepth));
-  }
 
   /**
    * Create a subtree of Node objects given the specified current (recursive)

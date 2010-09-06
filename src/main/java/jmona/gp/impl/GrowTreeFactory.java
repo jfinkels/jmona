@@ -31,7 +31,7 @@ import jmona.random.RandomUtils;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class GrowTreeFactory extends AbstractTreeFactory {
+public class GrowTreeFactory extends BaseDefaultTreeFactory {
 
   /** The default probability of creating a terminal node within the Tree. */
   public static final double DEFAULT_PROBABILITY_TERMINAL = 0.1;

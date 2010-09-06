@@ -61,26 +61,6 @@ public class AbstractTreeFactoryTester {
   }
 
   /**
-   * Test method for
-   * {@link jmona.gp.impl.AbstractTreeFactory#createObject()}.
-   */
-  @Test
-  public void testCreateObject() {
-    try {
-
-      Tree individual = null;
-      for (int i = 0; i < NUM_TESTS; ++i) {
-        individual = this.factory.createObject();
-
-        assertTrue(individual instanceof DefaultTree);
-      }
-
-    } catch (final InitializationException exception) {
-      TestUtils.fail(exception);
-    }
-  }
-
-  /**
    * Test method for {@link jmona.gp.impl.AbstractTreeFactory#createTree(int)}.
    */
   @Test
@@ -202,7 +182,7 @@ public class AbstractTreeFactoryTester {
   /** Test for a factory method which throws an Exception. */
   @Test
   public void testThrownException() {
-    final AbstractTreeFactory badFactory = new AbstractTreeFactory() {
+    final AbstractTreeFactory badFactory = new BaseDefaultTreeFactory() {
       /**
        * Always throws an InitializationException.
        * 
