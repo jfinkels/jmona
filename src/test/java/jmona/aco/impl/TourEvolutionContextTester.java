@@ -120,11 +120,9 @@ public class TourEvolutionContextTester {
     for (final int i : new Range(2, NUMBER_OF_VERTICES)) {
       assertTrue(selections.get(i - 1) > selections.get(i));
     }
-    
+
     final double delta = selections.get(2) * 0.1;
-    if (NUMBER_OF_VERTICES == 3) {
-      assertEquals(selections.get(1), selections.get(2) * 2, delta);
-    }
+    assertEquals(selections.get(1), selections.get(2) * 2, delta);
   }
 
   /**
