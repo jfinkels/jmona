@@ -19,11 +19,16 @@
  */
 package jmona.driver;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import jfcommon.test.TestUtils;
+import jmona.impl.example.ExampleProcessor;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 /**
  * Test class for the Main class.
@@ -72,12 +77,34 @@ public class MainTester {
   public static final String CONFIG_TOO_MANY_EC = "--config=src/test/resources/jmona/driver/TooManyEC-context.xml";
 
   /**
-   * Test method for {@link jmona.driver.Main#main(java.lang.String[])} with
-   * several PostProcessors.
+   * The path to the Spring XML configuration file containing multiple
+   * Processors.
    */
+  public static final String CONFIG_MULTIPLE_PROCESSORS_PATH = "src/test/resources/jmona/driver/MultipleProcessors-context.xml";
+
+  /** A Spring XML configuration file containing multiple Processors. */
+  public static final String CONFIG_MULTIPLE_PROCESSORS = "--config="
+      + CONFIG_MULTIPLE_PROCESSORS_PATH;
+
+  /**
+   * Test method for {@link jmona.driver.Main#main(java.lang.String[])} with
+   * multiple Processors.
+   */
+  @Ignore
   @Test
-  public void severalPostProcessors() {
-    // not yet implemented
+  public void testMultipleProcessors() {
+    Main.main(new String[] { CONFIG_MULTIPLE_PROCESSORS });
+    // TODO how can we access objects in the application context created in
+    // Main?
+    final ApplicationContext context = new FileSystemXmlApplicationContext(
+        CONFIG_MULTIPLE_PROCESSORS_PATH);
+    final ExampleProcessor processor1 = context.getBean("processor1",
+        ExampleProcessor.class);
+    final ExampleProcessor processor2 = context.getBean("processor2",
+        ExampleProcessor.class);
+    final int generations = context.getBean("maxGenerations", Integer.class);
+    assertEquals(generations, processor1.count());
+    assertEquals(generations / 2, processor2.count());
   }
 
   /**
