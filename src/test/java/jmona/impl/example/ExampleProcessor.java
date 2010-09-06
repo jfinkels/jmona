@@ -32,14 +32,14 @@ public class ExampleProcessor extends
     PeriodicProcessor<ExampleIndividual, ExampleEvolutionContext> {
 
   /**
-   * The number of times {@link #processAtInterval(EvolutionContext)} has been
-   * called.
+   * The number of times {@link #processAtInterval(ExampleEvolutionContext)} has
+   * been called.
    */
   private int count = 0;
 
   /**
-   * Get the number of times {@link #processAtInterval(EvolutionContext)} has
-   * been called.
+   * Gets the number of times
+   * {@link #processAtInterval(ExampleEvolutionContext)} has been called.
    * 
    * @return The number of times {@link #processAtInterval(EvolutionContext)}
    *         has been called.

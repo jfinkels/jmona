@@ -30,7 +30,6 @@ import jmona.FitnessException;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
-import jmona.impl.processing.FitnessLoggingProcessor;
 
 import org.junit.Test;
 

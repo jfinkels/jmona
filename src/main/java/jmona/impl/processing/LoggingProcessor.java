@@ -38,6 +38,8 @@ import org.apache.log4j.Logger;
  * @param <T>
  *          The type of individual in the EvolutionContext about which to log
  *          information.
+ * @param <E>
+ *          The type of EvolutionContext to process.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */

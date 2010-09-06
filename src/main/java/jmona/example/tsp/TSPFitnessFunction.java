@@ -39,6 +39,12 @@ import jmona.impl.mutable.MutableInteger;
 public class TSPFitnessFunction extends
     MinimizingFitnessFunction<List<MutableInteger>> {
 
+  /**
+   * Object which maps a MutableInteger to its corresponding representation as
+   * an Integer.
+   */
+  private static final MutableIntegerConverter CONVERTER = new MutableIntegerConverter();
+
   /** The graph containing distances between cities. */
   private final DirectedGraph<Integer, Double> graph;
 
@@ -52,8 +58,6 @@ public class TSPFitnessFunction extends
   public TSPFitnessFunction(final DirectedGraph<Integer, Double> initialGraph) {
     this.graph = initialGraph;
   }
-
-  private static final MutableIntegerConverter CONVERTER = new MutableIntegerConverter();
 
   /**
    * Gets the total distance of the specified tour, based on the edge weights in

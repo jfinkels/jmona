@@ -35,6 +35,8 @@ import jmona.impl.selection.ValueComparator;
  * @param <T>
  *          The type of individual in the EvolutionContext from which to get the
  *          most fit individual.
+ * @param <E>
+ *          The type of EvolutionContext to process.
  * @since 0.5
  */
 public class BestIndividualProcessor<T extends DeepCopyable<T>, E extends GeneticEvolutionContext<T>>

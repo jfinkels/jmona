@@ -46,7 +46,7 @@ public class MutableLongTester {
   @Test
   public void testMutableLongLong() {
     final MutableLong l = new MutableLong(0L);
-    assertEquals(0l, l.longValue());
+    assertEquals(0L, l.longValue());
   }
 
   /**
@@ -56,7 +56,7 @@ public class MutableLongTester {
   @Test
   public void testMutableLongNumber() {
     final MutableLong l = new MutableLong(1L);
-    assertEquals(1, l.longValue());
+    assertEquals(1L, l.longValue());
   }
 
   /**

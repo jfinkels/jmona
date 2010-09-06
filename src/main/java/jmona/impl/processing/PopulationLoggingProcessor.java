@@ -29,6 +29,8 @@ import jmona.PopulationEvolutionContext;
  * @param <T>
  *          The type of individual in the PopulationEvolutionContext whose
  *          population will be logged.
+ * @param <E>
+ *          The type of EvolutionContext to process.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */

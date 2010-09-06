@@ -20,9 +20,6 @@
 package jmona.example.ones;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.List;
-
 import jmona.DeepCopyableList;
 import jmona.impl.DeepCopyableVector;
 import jmona.impl.mutable.MutableByte;
@@ -42,7 +39,8 @@ public class OnesFitnessFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.ones.OnesFitnessFunction#rawFitness(List)}.
+   * {@link jmona.example.ones.OnesFitnessFunction#rawFitness(DeepCopyableList)}
+   * .
    */
   @Test
   public void testRawFitness() {

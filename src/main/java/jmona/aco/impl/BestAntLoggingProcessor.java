@@ -32,6 +32,8 @@ import jmona.impl.processing.LoggingProcessor;
  * @author Jeffrey Finkelstein
  * @param <A>
  *          The type of Ant in the evolution.
+ * @param <E>
+ *          The type of EvolutionContext which this class processes.
  * @since 0.5
  */
 public class BestAntLoggingProcessor<A extends Ant, E extends PopulationEvolutionContext<A>>

@@ -32,6 +32,11 @@ import jmona.impl.processing.PeriodicProcessor;
  * A Processor which writes an individual out to an image on the filesystem.
  * 
  * @author Jeffrey Finkelstein
+ * @param <L>
+ *          The type of List of ColoredPolygon objects which is written to an
+ *          image file by this class.
+ * @param <E>
+ *          The type of EvolutionContext which this class processes.
  * @since 0.1
  */
 public class ImageOutputProcessor<L extends List<ColoredPolygon>, E extends PopulationEvolutionContext<L>>

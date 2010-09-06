@@ -34,6 +34,8 @@ import jmona.impl.processing.LoggingProcessor;
  * 
  * @param <T>
  *          Classes of this type of object will be counted.
+ * @param <E>
+ *          The type of EvolutionContext to process.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
@@ -62,8 +64,8 @@ public class ClassCountingProcessor<T, E extends PopulationEvolutionContext<T>>
       classes = Functional.map(new ToClass<T>(),
           ((PopulationEvolutionContext<T>) context).currentPopulation());
     } catch (final MappingException exception) {
-      throw new LoggingException("Failed to determine classes of individuals.",
-          exception);
+      throw new LoggingException(
+          "Failed to determine classes of individuals.", exception);
     }
 
     return ListUtils.count(classes).toString();

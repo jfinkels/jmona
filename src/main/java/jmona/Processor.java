@@ -24,6 +24,8 @@ package jmona;
  * 
  * @param <T>
  *          The type of individual in the EvolutionContext to process.
+ * @param <E>
+ *          The type of EvolutionContext which this class processes.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */

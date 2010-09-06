@@ -64,7 +64,7 @@ public class FitnessProportionateSelectionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.FitnessProportionateSelection#select(List)} on
+   * {@link jmona.impl.selection.FitnessProportionateSelection#select(Map)} on
    * individuals of equal weights.
    */
   @Test
@@ -92,8 +92,8 @@ public class FitnessProportionateSelectionTester {
 
     for (int i = 0; i < NUM_SELECTIONS; ++i) {
       individual = this.function.select(this.fitnesses);
-      numberOfSelections
-          .put(individual, numberOfSelections.get(individual) + 1);
+      numberOfSelections.put(individual,
+          numberOfSelections.get(individual) + 1);
     }
 
     int sum = 0;

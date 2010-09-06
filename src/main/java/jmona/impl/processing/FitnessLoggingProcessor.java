@@ -31,6 +31,8 @@ import jmona.GeneticEvolutionContext;
  * @param <T>
  *          The type of individual in the EvolutionContext whose raw fitness
  *          will be logged.
+ * @param <E>
+ *          The type of EvolutionContext to process.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */

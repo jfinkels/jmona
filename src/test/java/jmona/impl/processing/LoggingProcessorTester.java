@@ -30,8 +30,6 @@ import jmona.LoggingException;
 import jmona.ProcessingException;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleIndividual;
-import jmona.impl.processing.LoggingProcessor;
-import jmona.impl.processing.PopulationLoggingProcessor;
 
 import org.apache.log4j.Level;
 import org.junit.Before;
