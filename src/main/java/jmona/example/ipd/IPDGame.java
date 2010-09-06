@@ -19,7 +19,6 @@
  */
 package jmona.example.ipd;
 
-import jfcommon.functional.Range;
 import jmona.example.ipd.strategy.Action;
 import jmona.example.ipd.strategy.IPDStrategy;
 import jmona.game.GameplayException;
@@ -152,7 +151,7 @@ public class IPDGame implements TwoPlayerGame<IPDStrategy> {
     Action actionOfStrategy2 = null;
     Pair<Action, Action> actionsPerformedStrategy1 = null;
     Pair<Action, Action> actionsPerformedStrategy2 = null;
-    for (final int i : new Range(this.iterations)) {
+    for (int i = 0; i < this.iterations; ++i) {
       actionOfStrategy1 = strategy1.nextAction();
       actionOfStrategy2 = strategy2.nextAction();
 

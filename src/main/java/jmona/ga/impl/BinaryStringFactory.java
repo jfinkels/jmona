@@ -19,7 +19,6 @@
  */
 package jmona.ga.impl;
 
-import jfcommon.functional.Range;
 import jmona.DeepCopyableList;
 import jmona.impl.DeepCopyableVector;
 import jmona.impl.SizedFactory;
@@ -55,7 +54,8 @@ public class BinaryStringFactory extends SizedFactory<DeepCopyableList<MutableBy
   public DeepCopyableList<MutableByte> createObject() {
     final DeepCopyableList<MutableByte> result = new DeepCopyableVector<MutableByte>();
 
-    for (final int i : new Range(this.size())) {
+    final int size = this.size();
+    for (int i = 0; i < size; ++i) {
       final MutableByte bit;
       
       if (RandomUtils.nextBoolean()) {

@@ -24,7 +24,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
 import java.util.Map;
 
-import jfcommon.functional.Range;
 import jmona.impl.example.ExampleIndividual;
 
 import org.junit.Test;
@@ -64,7 +63,7 @@ public class LinearRankingSelectionTester {
     int selectionsOfIndividual3 = 0;
 
     ExampleIndividual selection = null;
-    for (final int i : new Range(NUM_SELECTIONS)) {
+    for (int i = 0; i < NUM_SELECTIONS; ++i) {
       selection = function.select(fitnesses);
 
       if (selection.equals(individual1)) {

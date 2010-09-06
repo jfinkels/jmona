@@ -24,7 +24,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
 import java.util.Map;
 
-import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.InitializationException;
 import jmona.example.ipd.strategy.IPDStrategy;
@@ -54,7 +53,7 @@ public class IPDStrategyFactoryTester {
 
     IPDStrategy strategy = null;
     try {
-      for (final int i : new Range(NUM_TESTS)) {
+      for (int i = 0; i < NUM_TESTS; ++i) {
         strategy = factory.createObject();
         if (numSelections.containsKey(strategy.getClass())) {
           numSelections.put(strategy.getClass(), numSelections.get(strategy

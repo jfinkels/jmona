@@ -28,7 +28,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.CrossoverException;
 import jmona.CrossoverFunction;
@@ -112,12 +111,12 @@ public class GPEvolutionContextTester {
     try {
 
       // add some extra Trees into the population
-      for (final int i : new Range(NUM_INDIVIDUALS)) {
+      for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
         this.context.currentPopulation().add(this.factory.createObject());
       }
 
       // run the evolution for multiple generations
-      for (final int i : new Range(NUM_GENERATIONS)) {
+      for (int i = 0; i < NUM_GENERATIONS; ++i) {
         this.context.stepGeneration();
       }
 

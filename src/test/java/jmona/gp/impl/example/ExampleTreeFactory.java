@@ -19,7 +19,6 @@
  */
 package jmona.gp.impl.example;
 
-import jfcommon.functional.Range;
 import jmona.gp.FunctionNode;
 import jmona.gp.Node;
 import jmona.gp.impl.AbstractTreeFactory;
@@ -51,7 +50,8 @@ public class ExampleTreeFactory extends AbstractTreeFactory {
     } else {
       result = new ExampleBinaryNode();
 
-      for (final int i : new Range(result.arity())) {
+      final int arity = result.arity();
+      for (int i = 0; i < arity; ++i) {
         child = this.createTree(currentDepth - 1);
 
         TreeUtils.attachChildToParent((FunctionNode) result, child);

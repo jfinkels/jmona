@@ -185,7 +185,7 @@ public class DefaultTreeTester {
 
     Node choice = null;
     Integer numSelections = null;
-    for (final int i : new Range(NUM_TESTS)) {
+    for (int i = 0; i < NUM_TESTS; ++i) {
       // every randomNode() call on a single-Node tree returns the root
       assertSame(this.smallTreeNode, this.smallTree.randomNode());
       assertSame(this.smallTree.root(), this.smallTree.randomNode());

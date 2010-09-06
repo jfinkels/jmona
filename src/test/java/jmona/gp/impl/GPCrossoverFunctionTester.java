@@ -27,7 +27,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.InitializationException;
 import jmona.gp.Node;
@@ -127,7 +126,7 @@ public class GPCrossoverFunctionTester {
 
     final int numRandomPairs = 3;
 
-    for (final int i : new Range(numRandomPairs)) {
+    for (int i = 0; i < numRandomPairs; ++i) {
       try {
         // initialize two random trees
         final Tree leftTree = factory.createObject();
@@ -160,7 +159,7 @@ public class GPCrossoverFunctionTester {
     List<Node> postRightNodes = null;
 
     Node currentNode = null;
-    for (final int i : new Range(NUM_TESTS)) {
+    for (int i = 0; i < NUM_TESTS; ++i) {
 
       // perform the crossover
       this.function.crossover(this.tree1, this.tree2);
@@ -248,7 +247,7 @@ public class GPCrossoverFunctionTester {
     List<Node> postRightNodes = null;
 
     Node currentNode = null;
-    for (final int i : new Range(NUM_TESTS)) {
+    for (int i = 0; i < NUM_TESTS; ++i) {
       this.setUp();
 
       preLeftNodes = Util.allNodes(this.tree1);

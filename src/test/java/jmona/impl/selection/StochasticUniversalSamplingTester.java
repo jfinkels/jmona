@@ -84,7 +84,7 @@ public class StochasticUniversalSamplingTester {
     ExampleIndividual individual = new ExampleIndividual(1);
     this.fitnesses.put(individual, individual.fitness());
 
-    for (final int i : new Range(NUM_SELECTIONS)) {
+    for (int i = 0; i < NUM_SELECTIONS; ++i) {
       List<ExampleIndividual> selections = null;
       try {
         selections = this.function.select(this.fitnesses, 1);
@@ -106,7 +106,7 @@ public class StochasticUniversalSamplingTester {
   @Test
   public void testEqualWeightSelect() {
     // initialize some individuals all with equal fitness
-    for (final int i : new Range(NUM_INDIVIDUALS)) {
+    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
       final ExampleIndividual individual = new ExampleIndividual(1);
       this.fitnesses.put(individual, individual.fitness());
     }
@@ -177,19 +177,19 @@ public class StochasticUniversalSamplingTester {
   public void testUnequalWeightSelect() {
     // initialize some individuals all with equal fitness
     ExampleIndividual individual = null;
-    for (final int i : new Range(NUM_INDIVIDUALS / 2)) {
+    for (int i = 0; i < NUM_INDIVIDUALS / 2; ++i) {
       individual = new ExampleIndividual(1);
       this.fitnesses.put(individual, individual.fitness());
     }
 
-    for (final int i : new Range(NUM_INDIVIDUALS / 2)) {
+    for (int i = 0; i < NUM_INDIVIDUALS / 2; ++i) {
       individual = new ExampleIndividual(2);
       this.fitnesses.put(individual, individual.fitness());
     }
 
     int lowerSelections = 0;
     int upperSelections = 0;
-    for (final int i : new Range(NUM_SELECTIONS)) {
+    for (int i = 0; i < NUM_SELECTIONS; ++i) {
       List<ExampleIndividual> selections = null;
 
       try {
@@ -233,7 +233,7 @@ public class StochasticUniversalSamplingTester {
     int selectionsOfIndividual2 = 0;
     int selectionsOfIndividual3 = 0;
 
-    for (final int i : new Range(NUM_SELECTIONS)) {
+    for (int i = 0; i < NUM_SELECTIONS; ++i) {
       List<ExampleIndividual> selections = null;
 
       try {

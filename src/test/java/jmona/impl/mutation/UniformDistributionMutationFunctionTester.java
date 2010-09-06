@@ -24,7 +24,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.MutationException;
 import jmona.impl.example.ExampleIndividual;
@@ -54,10 +53,10 @@ public class UniformDistributionMutationFunctionTester {
     final UniformDistributionMutationFunction<ExampleIndividual, List<ExampleIndividual>> function = new UniformDistributionMutationFunction<ExampleIndividual, List<ExampleIndividual>>();
     function.setElementMutationFunction(new ExampleMutationFunction());
 
-    for (final int i : new Range(NUM_MUTATIONS)) {
+    for (int i = 0; i < NUM_MUTATIONS; ++i) {
       // populate a list with individuals each storing the value -1
       final List<ExampleIndividual> list = new ArrayList<ExampleIndividual>();
-      for (final int j : new Range(NUM_INDIVIDUALS)) {
+      for (int j = 0; j < NUM_INDIVIDUALS; ++j) {
         list.add(new ExampleIndividual(-1));
       }
 

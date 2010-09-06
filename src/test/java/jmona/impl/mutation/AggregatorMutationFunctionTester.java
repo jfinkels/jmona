@@ -24,7 +24,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 import java.util.Vector;
 
-import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.MutationException;
 import jmona.MutationFunction;
@@ -137,7 +136,7 @@ public class AggregatorMutationFunctionTester {
         list);
 
     try {
-      for (final int i : new Range(NUM_MUTATIONS)) {
+      for (int i = 0; i < NUM_MUTATIONS; ++i) {
         function.mutate(null);
       }
     } catch (final MutationException exception) {

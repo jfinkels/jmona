@@ -27,7 +27,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jfcommon.functional.Range;
 import jmona.impl.example.ExampleIndividual;
 
 import org.apache.log4j.Logger;
@@ -75,12 +74,12 @@ public class FitnessProportionateSelectionTester {
     ExampleIndividual individual = new ExampleIndividual(1);
     this.fitnesses.put(individual, individual.fitness());
 
-    for (final int i : new Range(NUM_SELECTIONS)) {
+    for (int i = 0; i < NUM_SELECTIONS; ++i) {
       assertSame(individual, this.function.select(this.fitnesses));
     }
 
     // initialize some individuals all with equal fitness
-    for (final int i : new Range(NUM_INDIVIDUALS)) {
+    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
       individual = new ExampleIndividual(1);
       this.fitnesses.put(individual, individual.fitness());
     }
@@ -91,7 +90,7 @@ public class FitnessProportionateSelectionTester {
       numberOfSelections.put(i, 0);
     }
 
-    for (final int i : new Range(NUM_SELECTIONS)) {
+    for (int i = 0; i < NUM_SELECTIONS; ++i) {
       individual = this.function.select(this.fitnesses);
       numberOfSelections
           .put(individual, numberOfSelections.get(individual) + 1);
@@ -132,19 +131,19 @@ public class FitnessProportionateSelectionTester {
   public void testUnequalWeightSelect() {
     // initialize some individuals all with equal fitness
     ExampleIndividual individual = null;
-    for (final int i : new Range(NUM_INDIVIDUALS / 2)) {
+    for (int i = 0; i < NUM_INDIVIDUALS / 2; ++i) {
       individual = new ExampleIndividual(1);
       this.fitnesses.put(individual, individual.fitness());
     }
 
-    for (final int i : new Range(NUM_INDIVIDUALS / 2)) {
+    for (int i = 0; i < NUM_INDIVIDUALS / 2; ++i) {
       individual = new ExampleIndividual(2);
       this.fitnesses.put(individual, individual.fitness());
     }
 
     int lowerSelections = 0;
     int upperSelections = 0;
-    for (final int i : new Range(NUM_SELECTIONS)) {
+    for (int i = 0; i < NUM_SELECTIONS; ++i) {
       individual = this.function.select(this.fitnesses);
 
       if (individual.fitness() == 1.0) {
@@ -180,7 +179,7 @@ public class FitnessProportionateSelectionTester {
     int selectionsOfIndividual3 = 0;
 
     ExampleIndividual selection = null;
-    for (final int i : new Range(NUM_SELECTIONS)) {
+    for (int i = 0; i < NUM_SELECTIONS; ++i) {
       selection = this.function.select(this.fitnesses);
 
       if (selection.equals(individual1)) {

@@ -28,7 +28,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
-import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.InitializationException;
 import jmona.gp.Node;
@@ -142,7 +141,7 @@ public class GrowTreeFactoryTester {
     this.factory.setProbabilityTerminal(1);
     try {
       Tree tree = null;
-      for (final int i : new Range(NUM_TESTS)) {
+      for (int i = 0; i < NUM_TESTS; ++i) {
         tree = this.factory.createObject();
         assertNull(tree.root().children());
         assertTrue(tree.root() instanceof TerminalNode);
@@ -153,7 +152,7 @@ public class GrowTreeFactoryTester {
 
       final double epsilon = 0;
 
-      for (final int i : new Range(NUM_TESTS)) {
+      for (int i = 0; i < NUM_TESTS; ++i) {
         tree = this.factory.createObject();
 
         assertEquals(Math.pow(2, this.factory.maxDepth()) - 1, Util

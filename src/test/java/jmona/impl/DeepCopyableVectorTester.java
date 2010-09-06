@@ -57,7 +57,7 @@ public class DeepCopyableVectorTester {
   public final void setUp() {
     this.beforeList = new Vector<ExampleIndividual>();
 
-    for (final int i : new Range(NUM_INDIVIDUALS)) {
+    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
       this.beforeList.add(new ExampleIndividual());
     }
 

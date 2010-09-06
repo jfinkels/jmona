@@ -69,17 +69,17 @@ public class TournamentSelectionTester {
   public void testSelect() {
 
     ExampleIndividual individual = null;
-    for (final int i : new Range(NUM_SELECTIONS)) {
+    for (int i = 0; i < NUM_SELECTIONS; ++i) {
       individual = this.function.select(this.population);
       assertTrue(this.population.containsKey(individual));
     }
 
     // add some more individuals
-    for (final int i : new Range(NUM_INDIVIDUALS, 2 * NUM_INDIVIDUALS)) {
+    for (int i = NUM_INDIVIDUALS; i < 2 * NUM_INDIVIDUALS; ++i) {
       this.population.put(new ExampleIndividual(i), (double) i);
     }
 
-    for (final int i : new Range(NUM_INDIVIDUALS)) {
+    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
       individual = this.function.select(this.population);
       assertTrue(this.population.containsKey(individual));
     }

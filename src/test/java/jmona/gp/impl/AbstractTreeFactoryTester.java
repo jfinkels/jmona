@@ -25,7 +25,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.Factory;
 import jmona.InitializationException;
@@ -70,7 +69,7 @@ public class AbstractTreeFactoryTester {
     try {
 
       Tree individual = null;
-      for (final int i : new Range(NUM_TESTS)) {
+      for (int i = 0; i < NUM_TESTS; ++i) {
         individual = this.factory.createObject();
 
         assertTrue(individual instanceof DefaultTree);

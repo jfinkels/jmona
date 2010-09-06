@@ -26,7 +26,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.Random;
 
 import jfcommon.functional.MappingException;
-import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.example.calc.nodes.NumberNode;
 import jmona.example.calc.nodes.VariableNode;
@@ -62,7 +61,7 @@ public class CalcTerminalNodeFactoryTester {
     int numNumberNodes = 0;
     int numVariableNodes = 0;
 
-    for (final int i : new Range(NUM_TESTS)) {
+    for (int i = 0; i < NUM_TESTS; ++i) {
       final TerminalNode node = factory.createObject();
 
       assertTrue(node instanceof VariableNode || node instanceof NumberNode);
@@ -110,7 +109,7 @@ public class CalcTerminalNodeFactoryTester {
 
       TerminalNode node = null;
       double value = 0.0;
-      for (final int i : new Range(NUM_TESTS)) {
+      for (int i = 0; i < NUM_TESTS; ++i) {
 
         node = factory.createObject();
 

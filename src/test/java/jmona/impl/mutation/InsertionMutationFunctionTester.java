@@ -53,7 +53,7 @@ public class InsertionMutationFunctionTester extends
   @Test
   @Override
   public void testMutate() {
-    for (final int j : new Range(NUM_TESTS)) {
+    for (int j = 0; j < NUM_TESTS; ++j) {
       
       this.setUp();
 

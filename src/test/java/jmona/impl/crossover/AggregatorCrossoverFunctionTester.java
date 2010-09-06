@@ -24,7 +24,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 import java.util.Vector;
 
-import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.CrossoverException;
 import jmona.CrossoverFunction;
@@ -143,7 +142,7 @@ public class AggregatorCrossoverFunctionTester {
         list);
 
     try {
-      for (final int i : new Range(NUM_CROSSOVERS)) {
+      for (int i = 0; i < NUM_CROSSOVERS; ++i) {
         function.crossover(null, null);
       }
     } catch (final CrossoverException exception) {

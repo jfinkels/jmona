@@ -21,7 +21,6 @@ package jmona.example.calc.factories;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-import jfcommon.functional.Range;
 import jmona.example.calc.nodes.AdditionNode;
 import jmona.example.calc.nodes.DivisionNode;
 import jmona.example.calc.nodes.MultiplicationNode;
@@ -56,7 +55,7 @@ public class CalcFunctionNodeFactoryTester {
     int divisionCount = 0;
 
     FunctionNode node = null;
-    for (final int i : new Range(NUM_NODES)) {
+    for (int i = 0; i < NUM_NODES; ++i) {
       node = factory.createObject();
 
       if (node instanceof AdditionNode) {

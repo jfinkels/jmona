@@ -61,7 +61,7 @@ public class AbstractListCrossoverFunctionTester {
     this.individual1 = new DeepCopyableVector<MutableByte>();
     this.individual2 = new DeepCopyableVector<MutableByte>();
 
-    for (final int i : new Range(LENGTH)) {
+    for (int i = 0; i < LENGTH; ++i) {
       this.individual1.add(new MutableByte(0));
       this.individual2.add(new MutableByte(1));
     }

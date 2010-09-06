@@ -24,7 +24,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import jfcommon.functional.Range;
 import jfcommon.test.TestUtils;
 import jmona.MutationException;
 import jmona.impl.mutable.MutableInteger;
@@ -56,7 +55,7 @@ public class DisplacementMutationFunctionTester extends
   @Override
   @Test
   public void testMutate() {
-    for (final int j : new Range(NUM_TESTS)) {
+    for (int j = 0; j < NUM_TESTS; ++j) {
       this.setUp();
 
       try {
@@ -77,7 +76,7 @@ public class DisplacementMutationFunctionTester extends
 
       // get the index of the start of the first slice
       int start = 0;
-      for (final int i : new Range(this.list().size())) {
+      for (int i = 0; i < this.list().size(); ++i) {
         if (this.list().get(i).intValue() != i) {
           start = i;
           break;
@@ -86,7 +85,7 @@ public class DisplacementMutationFunctionTester extends
 
       // get the index between the first and second slices
       int middle = 0;
-      for (final int i : new Range(start + 1, this.list().size())) {
+      for (int i = start + 1; i < this.list().size(); ++i) {
         if (this.list().get(i).intValue() != this.list().get(i - 1).intValue() + 1) {
           middle = i;
           break;
@@ -96,7 +95,7 @@ public class DisplacementMutationFunctionTester extends
       // get the index of the end of the second slice. if the last change isn't
       // found, it is at the end
       int end = this.list().size();
-      for (final int i : new Range(middle + 1, this.list().size())) {
+      for (int i = middle + 1; i < this.list().size(); ++i) {
         if (this.list().get(i).intValue() != this.list().get(i - 1).intValue() + 1) {
           end = i;
           break;
@@ -108,24 +107,24 @@ public class DisplacementMutationFunctionTester extends
       final int secondLength = end - middle;
 
       // from the start to the first change
-      for (final int i : new Range(start)) {
+      for (int i = 0; i < start; ++i) {
         assertEquals(i, this.list().get(i).intValue());
       }
 
       // from the first change to the second change
-      for (final int i : new Range(firstLength)) {
+      for (int i = 0; i < firstLength; ++i) {
         assertEquals(this.list().get(start).intValue() + i,
             this.list().get(start + i).intValue());
       }
 
       // from the second change to the end of the slices
-      for (final int i : new Range(secondLength)) {
+      for (int i = 0; i < secondLength; ++i) {
         assertEquals(this.list().get(middle).intValue() + i,
             this.list().get(middle + i).intValue());
       }
 
       // from the end of the slices to the end of the list
-      for (final int i : new Range(end, this.list().size())) {
+      for (int i = end; i < this.list().size(); ++i) {
         assertEquals(i, this.list().get(i).intValue());
       }
 

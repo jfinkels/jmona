@@ -30,7 +30,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import jfcommon.functional.Range;
 import jmona.impl.ListUtils;
 
 import org.junit.Test;
@@ -63,7 +62,7 @@ public class RandomUtilsTester {
     Map<Object, Integer> selectionsMap = new HashMap<Object, Integer>();
 
     Object choice = null;
-    for (final int i : new Range(NUM_TESTS)) {
+    for (int i = 0; i < NUM_TESTS; ++i) {
       choice = RandomUtils.choice(set);
 
       if (selectionsMap.containsKey(choice)) {
@@ -98,7 +97,7 @@ public class RandomUtilsTester {
     set.add(object);
 
     Object choice = null;
-    for (final int i : new Range(NUM_TESTS)) {
+    for (int i = 0; i < NUM_TESTS; ++i) {
       choice = RandomUtils.choice(set);
       assertSame(object, choice);
     }
@@ -127,7 +126,7 @@ public class RandomUtilsTester {
 
     int count1 = 0;
     int count2 = 0;
-    for (final int i : new Range(NUM_TESTS)) {
+    for (int i = 0; i < NUM_TESTS; ++i) {
       sample = RandomUtils.sample(list, 1);
       assertEquals(1, sample.size());
 
@@ -146,7 +145,7 @@ public class RandomUtilsTester {
 
     count1 = 0;
     count2 = 0;
-    for (final int i : new Range(NUM_TESTS)) {
+    for (int i = 0; i < NUM_TESTS; ++i) {
       sample = RandomUtils.sample(list, 2);
 
       assertEquals(2, sample.size());
@@ -191,7 +190,7 @@ public class RandomUtilsTester {
 
     int count1 = 0;
     int count2 = 0;
-    for (final int i : new Range(NUM_TESTS)) {
+    for (int i = 0; i < NUM_TESTS; ++i) {
       sample = RandomUtils.sampleWithReplacement(list, 1);
       assertEquals(1, sample.size());
 
@@ -211,7 +210,7 @@ public class RandomUtilsTester {
     final Map<Object, Integer> counts = new HashMap<Object, Integer>();
     counts.put(o1, 0);
     counts.put(o2, 0);
-    for (final int i : new Range(NUM_TESTS)) {
+    for (int i = 0; i < NUM_TESTS; ++i) {
       sample = RandomUtils.sampleWithReplacement(list, 2);
       
       assertEquals(2, sample.size());

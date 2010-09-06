@@ -23,7 +23,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Map;
 
-import jfcommon.functional.Range;
 import jmona.DeepCopyableList;
 import jmona.impl.ListUtils;
 import jmona.impl.mutable.MutableByte;
@@ -53,7 +52,7 @@ public class BinaryStringFactoryTester {
     int zeroCount = 0;
     int oneCount = 0;
     double delta = LENGTH * 0.1;
-    for (final int i : new Range(NUM_INDIVIDUALS)) {
+    for (int i = 0; i < NUM_INDIVIDUALS; ++i) {
       final DeepCopyableList<MutableByte> individual = factory.createObject();
       
       // count the number of ones and the number of zeros

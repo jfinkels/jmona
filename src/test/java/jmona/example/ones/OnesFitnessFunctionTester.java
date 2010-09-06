@@ -23,7 +23,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import jfcommon.functional.Range;
 import jmona.DeepCopyableList;
 import jmona.impl.DeepCopyableVector;
 import jmona.impl.mutable.MutableByte;
@@ -51,13 +50,13 @@ public class OnesFitnessFunctionTester {
     final OnesFitnessFunction function = new OnesFitnessFunction(length);
     final DeepCopyableList<MutableByte> individual = new DeepCopyableVector<MutableByte>();
 
-    for (final int i : new Range(length)) {
+    for (int i = 0; i < length; ++i) {
       individual.add(new MutableByte(0));
     }
 
     assertEquals(0, function.rawFitness(individual), ZERO_DELTA);
 
-    for (final int i : new Range(length)) {
+    for (int i = 0; i < length; ++i) {
       individual.set(i, new MutableByte(1));
       assertEquals(i + 1, function.rawFitness(individual), ZERO_DELTA);
     }

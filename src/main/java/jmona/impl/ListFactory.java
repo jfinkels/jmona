@@ -22,7 +22,6 @@ package jmona.impl;
 import java.util.List;
 import java.util.Vector;
 
-import jfcommon.functional.Range;
 import jmona.DeepCopyable;
 import jmona.InitializationException;
 import jmona.PropertyNotSetException;
@@ -68,7 +67,8 @@ public class ListFactory<E extends DeepCopyable<E>> extends
 
     final List<E> result = new Vector<E>();
 
-    for (final int i : new Range(this.size())) {
+    final int size = this.size();
+    for (int i = 0; i < size; ++i) {
       result.add(this.elementFactory().createObject());
     }
 

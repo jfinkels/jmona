@@ -99,13 +99,13 @@ public class TourEvolutionContextTester {
     final WorkerAnt ant = this.population.get(0);
 
     final Map<Integer, Integer> selections = new HashMap<Integer, Integer>();
-    for (final int i : new Range(NUMBER_OF_VERTICES)) {
+    for (int i = 0; i < NUMBER_OF_VERTICES; ++i) {
       selections.put(i, 0);
     }
 
     try {
       int selection = 0;
-      for (final int i : new Range(NUM_SELECTIONS)) {
+      for (int i = 0; i < NUM_SELECTIONS; ++i) {
         selection = this.context.chooseNextVertex(ant);
         selections.put(selection, selections.get(selection) + 1);
       }
@@ -133,7 +133,7 @@ public class TourEvolutionContextTester {
    */
   @Test
   public void testExecuteGenerationStep() {
-    for (final int i : new Range(NUMBER_OF_VERTICES - 1)) {
+    for (int i = 0; i < NUMBER_OF_VERTICES - 1; ++i) {
       try {
         this.context.executeGenerationStep();
       } catch (final EvolutionException exception) {
@@ -141,7 +141,7 @@ public class TourEvolutionContextTester {
       }
 
       for (final WorkerAnt ant : this.context.currentPopulation()) {
-        for (final int j : new Range(NUMBER_OF_VERTICES)) {
+        for (int j = 0; j < NUMBER_OF_VERTICES; ++j) {
           assertEquals(ant.memory().indexOf(j), ant.memory().lastIndexOf(j));
         }
       }

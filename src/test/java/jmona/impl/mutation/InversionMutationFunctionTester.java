@@ -55,7 +55,7 @@ public class InversionMutationFunctionTester extends
   @Override
   @Test
   public void testMutate() {
-    for (final int j : new Range(NUM_TESTS)) {
+    for (int j = 0; j < NUM_TESTS; ++j) {
       this.setUp();
 
       assertEquals(LENGTH, this.list().size());

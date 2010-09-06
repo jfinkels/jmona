@@ -22,7 +22,6 @@ package jmona.example.anttrail.factories;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import jfcommon.functional.Range;
 import jmona.example.anttrail.Ant;
 import jmona.example.anttrail.DefaultAnt;
 import jmona.example.anttrail.Trail;
@@ -60,7 +59,7 @@ public class AntTerminalNodeFactoryTester {
     int numLeft = 0;
     int numRight = 0;
     TerminalNode node = null;
-    for (final int i : new Range(NUM_NODES)) {
+    for (int i = 0; i < NUM_NODES; ++i) {
       node = factory.createObject();
       assertTrue(node instanceof MoveForwardNode
           || node instanceof TurnRightNode || node instanceof TurnLeftNode);

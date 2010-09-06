@@ -19,7 +19,6 @@
  */
 package jmona.impl;
 
-import jfcommon.functional.Range;
 import jmona.DeepCopyable;
 import jmona.DeepCopyableList;
 import jmona.InitializationException;
@@ -69,7 +68,8 @@ public class DeepCopyableListFactory<E extends DeepCopyable<E>> extends
 
     final DeepCopyableList<E> result = new DeepCopyableVector<E>();
 
-    for (final int i : new Range(this.size())) {
+    final int size = this.size();
+    for (int i = 0; i < size; ++i) {
       result.add(this.elementFactory().createObject());
     }
 
