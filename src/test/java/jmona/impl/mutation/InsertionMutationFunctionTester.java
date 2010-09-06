@@ -43,7 +43,8 @@ public class InsertionMutationFunctionTester extends
 
   /** Instantiate this test class with access to an InsertionMutationFunction. */
   public InsertionMutationFunctionTester() {
-    super(new InsertionMutationFunction<MutableInteger, List<MutableInteger>>());
+    super(
+        new InsertionMutationFunction<MutableInteger, List<MutableInteger>>());
   }
 
   /**
@@ -54,7 +55,7 @@ public class InsertionMutationFunctionTester extends
   @Override
   public void testMutate() {
     for (int j = 0; j < NUM_TESTS; ++j) {
-      
+
       this.setUp();
 
       try {
@@ -83,8 +84,6 @@ public class InsertionMutationFunctionTester extends
           break;
         }
       }
-      
-      // TODO check the case of final element being moved
 
       // if an element was moved to a location previous to its original location
       // for example:
@@ -117,8 +116,8 @@ public class InsertionMutationFunctionTester extends
         }
 
         final int size = this.list().size();
-        for (int i = (lastChange + 1) % size; i > lastChange || i < firstChange; i = (i + 1)
-            % size) {
+        for (int i = (lastChange + 1) % size; i > lastChange
+            || i < firstChange; i = (i + 1) % size) {
           assertEquals(i, this.list().get(i).intValue());
         }
       }
