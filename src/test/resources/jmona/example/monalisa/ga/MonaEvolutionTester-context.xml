@@ -48,8 +48,7 @@
     <property name="selectionFunction" ref="selectionFunction" />
   </bean>
 
-  <bean id="postProcessor"
-    class="jmona.example.monalisa.ImageOutputPostProcessor">
+  <bean id="processor" class="jmona.example.monalisa.ImageOutputProcessor">
     <constructor-arg ref="width" />
     <constructor-arg ref="height" />
   </bean>

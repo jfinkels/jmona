@@ -57,7 +57,7 @@
     <property name="visibilityImportance" value="1" />
   </bean>
 
-  <bean id="postProcessor" class="jmona.aco.impl.BestAntLoggingPostProcessor">
+  <bean id="processor" class="jmona.aco.impl.BestAntLoggingProcessor">
     <constructor-arg ref="graph" />
   </bean>
 </beans>
