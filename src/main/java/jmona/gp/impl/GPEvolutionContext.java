@@ -60,6 +60,13 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
    * the next generation. The correctness of the evolution relies on the
    * correctness of the {@link Tree#deepCopy()} method.
    * 
+   * Because the traditional genetic programming algorithm probabilistically
+   * chooses which variation operator to use on each individual (that is,
+   * whether to perform crossover or mutation), this implementation ignores the
+   * value of {@link #crossoverProbability()} and uses only the value of
+   * {@link #mutationProbability()} to determine which variation operator to
+   * use.
+   * 
    * @throws EvolutionException
    *           {@inheritDoc}
    * @throws PropertyNotSetException
@@ -105,7 +112,6 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
             .deepCopy();
 
         // choose variation operation probabilistically
-        // TODO we are ignoring the crossoverProbability property
         if (nextPopulation.size() >= currentSize - 1
             || RandomUtils.nextDouble() < this.mutationProbability()) {
 
@@ -138,7 +144,8 @@ public class GPEvolutionContext extends AbstractGeneticEvolutionContext<Tree> {
     } catch (final MutationException exception) {
       throw new EvolutionException("Failed mutating an individual.", exception);
     } catch (final SelectionException exception) {
-      throw new EvolutionException("Failed to select an individual.", exception);
+      throw new EvolutionException("Failed to select an individual.",
+          exception);
     } catch (final CopyingException exception) {
       throw new EvolutionException("Failed to copy an individual.", exception);
     }
