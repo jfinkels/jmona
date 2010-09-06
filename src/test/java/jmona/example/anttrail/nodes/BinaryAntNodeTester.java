@@ -45,6 +45,7 @@ public class BinaryAntNodeTester {
 
       @Override
       public void execute() {
+        // intentionally unimplemented
       }
 
       @Override

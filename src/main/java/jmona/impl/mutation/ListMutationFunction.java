@@ -35,5 +35,5 @@ import jmona.MutationFunction;
  */
 public interface ListMutationFunction<E, L extends List<E>> extends
     MutationFunction<L> {
-
+  // intentionally empty
 }

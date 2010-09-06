@@ -42,6 +42,7 @@ public class AntNodeFactoryTester {
   @Test
   public void testAnt() {
     final AntNodeFactory factory = new AntNodeFactory() {
+      // intentionally unimplemented
     };
 
     assertNull(factory.ant());

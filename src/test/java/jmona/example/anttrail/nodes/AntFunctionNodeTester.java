@@ -46,6 +46,7 @@ public class AntFunctionNodeTester {
     final AntFunctionNode node = new AntFunctionNode(ant) {
       @Override
       public void execute() {
+        // intentionally unimplemented
       }
 
       @Override

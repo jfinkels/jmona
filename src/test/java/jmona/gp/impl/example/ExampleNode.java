@@ -28,5 +28,5 @@ import jmona.gp.EvaluatableNode;
  * @since 0.3
  */
 public interface ExampleNode extends EvaluatableNode<Integer> {
-
+  // intentionally empty
 }

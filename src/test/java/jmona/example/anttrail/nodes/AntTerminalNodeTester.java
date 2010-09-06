@@ -45,6 +45,7 @@ public class AntTerminalNodeTester {
     final AntTerminalNode node = new AntTerminalNode(ant) {
       @Override
       public void execute() {
+        // intentionall unimplemented
       }
 
       @Override

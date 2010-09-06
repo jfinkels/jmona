@@ -34,5 +34,5 @@ import java.util.List;
  */
 public interface OrderedListMutationFunction<E, L extends List<E>> extends
     ListMutationFunction<E, L> {
-
+  // intentionally empty
 }
