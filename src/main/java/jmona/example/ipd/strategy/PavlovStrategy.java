@@ -44,7 +44,6 @@ public class PavlovStrategy extends IPDStrategy implements
     final PavlovStrategy result = new PavlovStrategy();
 
     // copy the memory
-    // TODO figure out if these are in the right order
     for (final Pair<Action, Action> actions : this.memory()) {
       result.addToMemory(actions);
     }

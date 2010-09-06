@@ -22,6 +22,7 @@ package jmona.example.ipd.strategy;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
+import jfcommon.functional.Range;
 import jmona.impl.Pair;
 
 import org.junit.Before;
@@ -50,14 +51,23 @@ public class PavlovStrategyTester {
    */
   @Test
   public void testDeepCopy() {
-    final Pair<Action, Action> pair = new Pair<Action, Action>(Action.DEFECT,
+    final Pair<Action, Action> pair1 = new Pair<Action, Action>(Action.DEFECT,
         Action.COOPERATE);
-    this.strategy.addToMemory(pair);
+    final Pair<Action, Action> pair2 = new Pair<Action, Action>(Action.DEFECT,
+        Action.DEFECT);
+    final Pair<Action, Action> pair3 = new Pair<Action, Action>(
+        Action.COOPERATE, Action.DEFECT);
+
+    this.strategy.addToMemory(pair1);
+    this.strategy.addToMemory(pair2);
+    this.strategy.addToMemory(pair3);
 
     final PavlovStrategy clone = this.strategy.deepCopy();
     assertNotSame(clone, this.strategy);
-    assertEquals(1, clone.memory().size());
-    assertSame(pair, clone.memory().get(0));
+    assertEquals(this.strategy.memory().size(), clone.memory().size());
+    for (final int i : new Range(this.strategy.memory().size())) {
+      assertSame(this.strategy.memory().get(i), clone.memory().get(i));
+    }
   }
 
   /**
