@@ -1,5 +1,5 @@
 /**
- * ClassCountingPostProcessor.java
+ * ClassCountingProcessor.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -27,7 +27,7 @@ import jfcommon.functional.operators.ToClass;
 import jmona.LoggingException;
 import jmona.PopulationEvolutionContext;
 import jmona.impl.ListUtils;
-import jmona.impl.postprocessing.LoggingPostProcessor;
+import jmona.impl.postprocessing.LoggingProcessor;
 
 /**
  * Count the number of objects of each class in an EvolutionContext.
@@ -37,8 +37,8 @@ import jmona.impl.postprocessing.LoggingPostProcessor;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ClassCountingPostProcessor<T, E extends PopulationEvolutionContext<T>>
-    extends LoggingPostProcessor<T, E> {
+public class ClassCountingProcessor<T, E extends PopulationEvolutionContext<T>>
+    extends LoggingProcessor<T, E> {
 
   /**
    * Count the number of objects of each class in the specified
@@ -52,7 +52,7 @@ public class ClassCountingPostProcessor<T, E extends PopulationEvolutionContext<
    * @throws LoggingException
    *           If there is a problem determining the classes of the individuals
    *           in the current population of the specified EvolutionContext.
-   * @see jmona.impl.postprocessing.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
+   * @see jmona.impl.postprocessing.PeriodicProcessor#processAtInterval(jmona.EvolutionContext)
    */
   @Override
   protected String message(final E context) throws LoggingException {

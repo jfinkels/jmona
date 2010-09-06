@@ -1,5 +1,5 @@
 /**
- * ImageOutputPostProcessorTester.java
+ * ImageOutputProcessorTester.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -39,15 +39,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test class for the ImageOutputPostProcessor class.
+ * Test class for the ImageOutputProcessor class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ImageOutputPostProcessorTester {
+public class ImageOutputProcessorTester {
 
-  /** The PostProcessor under test. */
-  private ImageOutputPostProcessor<DeepCopyableList<ColoredPolygon>, GeneticEvolutionContext<DeepCopyableList<ColoredPolygon>>> processor = null;
+  /** The Processor under test. */
+  private ImageOutputProcessor<DeepCopyableList<ColoredPolygon>, GeneticEvolutionContext<DeepCopyableList<ColoredPolygon>>> processor = null;
   /** The width of the output image. */
   public static final int WIDTH = 5;
   /** The height of the output image. */
@@ -58,38 +58,37 @@ public class ImageOutputPostProcessorTester {
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.processor = new ImageOutputPostProcessor<DeepCopyableList<ColoredPolygon>, GeneticEvolutionContext<DeepCopyableList<ColoredPolygon>>>(
+    this.processor = new ImageOutputProcessor<DeepCopyableList<ColoredPolygon>, GeneticEvolutionContext<DeepCopyableList<ColoredPolygon>>>(
         WIDTH, HEIGHT);
     this.processor.setOutputDir(OUTPUT_DIRECTORY);
   }
 
   /**
    * Test method for
-   * {@link jmona.example.monalisa.ImageOutputPostProcessor#generateFilename(java.lang.String, int)}
+   * {@link jmona.example.monalisa.ImageOutputProcessor#generateFilename(java.lang.String, int)}
    * .
    */
   @Test
   public void testGenerateFilename() {
     final String directory = "target";
     final int generation = 1;
-    final String filename = ImageOutputPostProcessor.generateFilename(
-        directory, generation);
+    final String filename = ImageOutputProcessor.generateFilename(directory,
+        generation);
 
     assertEquals(
-        directory
-            + ImageOutputPostProcessor.FILE_SEPARATOR
-            + String.format(ImageOutputPostProcessor.FILENAME_FORMAT,
-                generation), filename);
+        directory + ImageOutputProcessor.FILE_SEPARATOR
+            + String.format(ImageOutputProcessor.FILENAME_FORMAT, generation),
+        filename);
 
-    final String filename2 = ImageOutputPostProcessor.generateFilename(
-        directory + "/", generation);
+    final String filename2 = ImageOutputProcessor.generateFilename(directory
+        + "/", generation);
 
     assertEquals(filename, filename2);
   }
 
   /**
    * Test method for
-   * {@link jmona.example.monalisa.ImageOutputPostProcessor#processAtInterval(jmona.EvolutionContext)}
+   * {@link jmona.example.monalisa.ImageOutputProcessor#processAtInterval(jmona.EvolutionContext)}
    * .
    */
   @Test
@@ -125,8 +124,8 @@ public class ImageOutputPostProcessorTester {
     }
 
     final File file = new File(OUTPUT_DIRECTORY
-        + ImageOutputPostProcessor.FILE_SEPARATOR
-        + String.format(ImageOutputPostProcessor.FILENAME_FORMAT,
+        + ImageOutputProcessor.FILE_SEPARATOR
+        + String.format(ImageOutputProcessor.FILENAME_FORMAT,
             context.currentGeneration()));
 
     assertTrue(file.exists());
@@ -136,8 +135,8 @@ public class ImageOutputPostProcessorTester {
   @After
   public final void tearDown() {
     final File file = new File(OUTPUT_DIRECTORY
-        + ImageOutputPostProcessor.FILE_SEPARATOR
-        + String.format(ImageOutputPostProcessor.FILENAME_FORMAT, 0));
+        + ImageOutputProcessor.FILE_SEPARATOR
+        + String.format(ImageOutputProcessor.FILENAME_FORMAT, 0));
     if (file.exists()) {
       assertTrue(file.delete());
     }

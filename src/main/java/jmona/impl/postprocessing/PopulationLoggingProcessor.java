@@ -1,5 +1,5 @@
 /**
- * OnesPostProcessor.java
+ * PopulationLoggingProcessor.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -23,7 +23,7 @@ import jmona.EvolutionContext;
 import jmona.PopulationEvolutionContext;
 
 /**
- * A PostProcessor which logs the current population of a
+ * A Processor which logs the current population of a
  * PopulationEvolutionContext.
  * 
  * @param <T>
@@ -32,8 +32,8 @@ import jmona.PopulationEvolutionContext;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class PopulationLoggingPostProcessor<T, E extends PopulationEvolutionContext<T>>
-    extends LoggingPostProcessor<T, E> {
+public class PopulationLoggingProcessor<T, E extends PopulationEvolutionContext<T>>
+    extends LoggingProcessor<T, E> {
 
   /**
    * Get the current population of the specified EvolutionContext, as a String.
@@ -42,7 +42,7 @@ public class PopulationLoggingPostProcessor<T, E extends PopulationEvolutionCont
    *          The EvolutionContext containing the population.
    * @return The current population of the specified EvolutionContext, as a
    *         String.
-   * @see jmona.impl.postprocessing.LoggingPostProcessor#message(EvolutionContext)
+   * @see jmona.impl.postprocessing.LoggingProcessor#message(EvolutionContext)
    */
   @Override
   protected String message(final E context) {

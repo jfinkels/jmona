@@ -25,7 +25,7 @@ import jmona.CompletionException;
 import jmona.DeepCopyableList;
 import jmona.EvolutionException;
 import jmona.GeneticEvolutionContext;
-import jmona.PostProcessor;
+import jmona.Processor;
 import jmona.ProcessingException;
 import jmona.example.monalisa.ColoredPolygon;
 
@@ -58,9 +58,9 @@ public class MonaEvolutionTester {
   @Autowired
   private GeneticEvolutionContext<DeepCopyableList<ColoredPolygon>> context = null;
 
-  /** Get the PostProcessor from the Spring XML configuration file. */
+  /** Get the Processor from the Spring XML configuration file. */
   @Autowired
-  private PostProcessor<DeepCopyableList<ColoredPolygon>, GeneticEvolutionContext<DeepCopyableList<ColoredPolygon>>> processor = null;
+  private Processor<DeepCopyableList<ColoredPolygon>, GeneticEvolutionContext<DeepCopyableList<ColoredPolygon>>> processor = null;
 
   /** Perform cleanup after each test. */
   @After

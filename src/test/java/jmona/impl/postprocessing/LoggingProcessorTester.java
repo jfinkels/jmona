@@ -1,5 +1,5 @@
 /**
- * LoggingPostProcessorTester.java
+ * LoggingProcessorTester.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -36,7 +36,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test class for the LoggingPostProcessor class.
+ * Test class for the LoggingProcessor class.
  * 
  * I don't know how to capture output from the Logger, so we must examine the
  * output manually.
@@ -44,15 +44,15 @@ import org.junit.Test;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class LoggingPostProcessorTester {
+public class LoggingProcessorTester {
 
   /** A message to log. */
   public static final String TEST_MESSAGE = "Hello, world!";
   /** The context about which to log information. */
   private ExampleEvolutionContext context = null;
 
-  /** The PostProcessor under test. */
-  private LoggingPostProcessor<ExampleIndividual, ExampleEvolutionContext> processor = null;
+  /** The Processor under test. */
+  private LoggingProcessor<ExampleIndividual, ExampleEvolutionContext> processor = null;
   /** The population in the EvolutionContext. */
   private List<ExampleIndividual> population = null;
 
@@ -68,12 +68,12 @@ public class LoggingPostProcessorTester {
 
     this.context = new ExampleEvolutionContext(this.population);
 
-    this.processor = new PopulationLoggingPostProcessor<ExampleIndividual, ExampleEvolutionContext>();
+    this.processor = new PopulationLoggingProcessor<ExampleIndividual, ExampleEvolutionContext>();
   }
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.LoggingPostProcessor#log(java.lang.String)}
+   * {@link jmona.impl.postprocessing.LoggingProcessor#log(java.lang.String)}
    * .
    */
   @Test
@@ -83,7 +83,7 @@ public class LoggingPostProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.LoggingPostProcessor#log(java.lang.String, java.lang.Throwable)}
+   * {@link jmona.impl.postprocessing.LoggingProcessor#log(java.lang.String, java.lang.Throwable)}
    * .
    */
   @Test
@@ -93,7 +93,7 @@ public class LoggingPostProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.LoggingPostProcessor#processAtInterval(jmona.EvolutionContext)}
+   * {@link jmona.impl.postprocessing.LoggingProcessor#processAtInterval(jmona.EvolutionContext)}
    * .
    */
   @Test
@@ -104,7 +104,7 @@ public class LoggingPostProcessorTester {
       TestUtils.fail(exception);
     }
 
-    final LoggingPostProcessor<ExampleIndividual, GeneticEvolutionContext<ExampleIndividual>> processor2 = new LoggingPostProcessor<ExampleIndividual, GeneticEvolutionContext<ExampleIndividual>>() {
+    final LoggingProcessor<ExampleIndividual, GeneticEvolutionContext<ExampleIndividual>> processor2 = new LoggingProcessor<ExampleIndividual, GeneticEvolutionContext<ExampleIndividual>>() {
 
       /**
        * Always throws a LoggingException.
@@ -133,7 +133,7 @@ public class LoggingPostProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.LoggingPostProcessor#setLoggingLevel(org.apache.log4j.Level)}
+   * {@link jmona.impl.postprocessing.LoggingProcessor#setLoggingLevel(org.apache.log4j.Level)}
    * .
    */
   @Test

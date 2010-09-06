@@ -1,5 +1,5 @@
 /**
- * BestIndividualPostProcessorTester.java
+ * BestIndividualProcessorTester.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -34,21 +34,21 @@ import jmona.impl.example.ExampleIndividual;
 import org.junit.Test;
 
 /**
- * Test class for the BestIndividualPostProcessor class.
+ * Test class for the BestIndividualProcessor class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class BestIndividualPostProcessorTester {
+public class BestIndividualProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.BestIndividualPostProcessor#message(jmona.EvolutionContext)}
+   * {@link jmona.impl.postprocessing.BestIndividualProcessor#message(jmona.EvolutionContext)}
    * .
    */
   @Test
   public void testMessage() {
-    final BestIndividualPostProcessor<ExampleIndividual, ExampleEvolutionContext> processor = new BestIndividualPostProcessor<ExampleIndividual, ExampleEvolutionContext>();
+    final BestIndividualProcessor<ExampleIndividual, ExampleEvolutionContext> processor = new BestIndividualProcessor<ExampleIndividual, ExampleEvolutionContext>();
 
     final ExampleIndividual individual1 = new ExampleIndividual(1);
     final ExampleIndividual individual2 = new ExampleIndividual(2);

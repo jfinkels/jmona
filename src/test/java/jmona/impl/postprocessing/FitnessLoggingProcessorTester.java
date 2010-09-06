@@ -1,5 +1,5 @@
 /**
- * FitnessLoggingPostProcessorTester.java
+ * FitnessLoggingProcessorTester.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -34,12 +34,12 @@ import jmona.impl.example.ExampleIndividual;
 import org.junit.Test;
 
 /**
- * Test class for the FitnessLoggingPostProcessor class.
+ * Test class for the FitnessLoggingProcessor class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class FitnessLoggingPostProcessorTester {
+public class FitnessLoggingProcessorTester {
 
   /** The fitness of one individual. */
   public static final int FITNESS_ONE = 1;
@@ -48,7 +48,7 @@ public class FitnessLoggingPostProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.FitnessLoggingPostProcessor#message(jmona.EvolutionContext)}
+   * {@link jmona.impl.postprocessing.FitnessLoggingProcessor#message(jmona.EvolutionContext)}
    * .
    */
   @Test
@@ -67,7 +67,7 @@ public class FitnessLoggingPostProcessorTester {
       TestUtils.fail(exception);
     }
 
-    final FitnessLoggingPostProcessor<ExampleIndividual, ExampleEvolutionContext> processor = new FitnessLoggingPostProcessor<ExampleIndividual, ExampleEvolutionContext>();
+    final FitnessLoggingProcessor<ExampleIndividual, ExampleEvolutionContext> processor = new FitnessLoggingProcessor<ExampleIndividual, ExampleEvolutionContext>();
 
     final String result = processor.message(context);
 

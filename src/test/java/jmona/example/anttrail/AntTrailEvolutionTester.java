@@ -24,10 +24,10 @@ import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionException;
 import jmona.GeneticEvolutionContext;
-import jmona.PostProcessor;
+import jmona.Processor;
 import jmona.ProcessingException;
 import jmona.gp.Tree;
-import jmona.impl.postprocessing.FitnessLoggingPostProcessor;
+import jmona.impl.postprocessing.FitnessLoggingProcessor;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,7 +59,7 @@ public class AntTrailEvolutionTester {
   @Test
   @DirtiesContext
   public final void testEvolution() {
-    final PostProcessor<Tree, GeneticEvolutionContext<Tree>> processor = new FitnessLoggingPostProcessor<Tree, GeneticEvolutionContext<Tree>>();
+    final Processor<Tree, GeneticEvolutionContext<Tree>> processor = new FitnessLoggingProcessor<Tree, GeneticEvolutionContext<Tree>>();
 
     try {
       while (!this.completionCondition.execute(this.context)) {

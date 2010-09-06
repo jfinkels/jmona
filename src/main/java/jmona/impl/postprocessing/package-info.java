@@ -19,18 +19,18 @@
  */
 /**
  * <p>
- * Provides {@link jmona.PostProcessor} classes for examining
+ * Provides {@link jmona.Processor} classes for examining
  * {@link jmona.EvolutionContext} objects during the run of an evolution.
  * </p>
  * 
  * <p>
  * This package includes, among other classes:
  * <ul>
- * <li>{@link jmona.impl.postprocessing.BestIndividualPostProcessor}, which logs
+ * <li>{@link jmona.impl.postprocessing.BestIndividualProcessor}, which logs
  * the individual with the best fitness in the EvolutionContext</li>
- * <li>{@link jmona.impl.postprocessing.FitnessLoggingPostProcessor}, which logs
+ * <li>{@link jmona.impl.postprocessing.FitnessLoggingProcessor}, which logs
  * the fitnesses of all individuals in the EvolutionContext</li>
- * <li>{@link jmona.impl.postprocessing.PopulationLoggingPostProcessor}, which
+ * <li>{@link jmona.impl.postprocessing.PopulationLoggingProcessor}, which
  * logs the string representation of all individuals in the EvolutionContext</li>
  * </ul>
  * </p>

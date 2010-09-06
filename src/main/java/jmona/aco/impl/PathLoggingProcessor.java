@@ -1,5 +1,5 @@
 /**
- * PathLoggingPostProcessor.java
+ * PathLoggingProcessor.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -23,10 +23,10 @@ import jmona.PopulationEvolutionContext;
 import jmona.aco.Ant;
 import jmona.graph.DirectedGraph;
 import jmona.graph.impl.GraphUtils;
-import jmona.impl.postprocessing.LoggingPostProcessor;
+import jmona.impl.postprocessing.LoggingProcessor;
 
 /**
- * A PostProcessor which logs the tour from each Ant's memory and the total
+ * A Processor which logs the tour from each Ant's memory and the total
  * distance if a graph is specified.
  * 
  * @author Jeffrey Finkelstein
@@ -34,8 +34,8 @@ import jmona.impl.postprocessing.LoggingPostProcessor;
  *          The type of Ant whose paths will be logged.
  * @since 0.5
  */
-public class PathLoggingPostProcessor<A extends Ant, E extends PopulationEvolutionContext<A>>
-    extends LoggingPostProcessor<A, E> {
+public class PathLoggingProcessor<A extends Ant, E extends PopulationEvolutionContext<A>>
+    extends LoggingProcessor<A, E> {
 
   /** The graph with which total distance of a tour can be determined. */
   private DirectedGraph<Integer, Double> graph = null;
@@ -59,7 +59,7 @@ public class PathLoggingPostProcessor<A extends Ant, E extends PopulationEvoluti
    *          {@inheritDoc}
    * @return The tours (and total distances if a graph has been set) from
    *         individuals in the specified context.
-   * @see jmona.impl.postprocessing.LoggingPostProcessor#message(jmona.EvolutionContext)
+   * @see jmona.impl.postprocessing.LoggingProcessor#message(jmona.EvolutionContext)
    */
   @Override
   protected String message(final E context) {

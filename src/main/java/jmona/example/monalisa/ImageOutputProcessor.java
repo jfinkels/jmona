@@ -1,5 +1,5 @@
 /**
- * ImageOutputPostProcessor.java
+ * ImageOutputProcessor.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -26,16 +26,16 @@ import java.util.List;
 import jmona.PopulationEvolutionContext;
 import jmona.ProcessingException;
 import jmona.example.monalisa.io.ImageWriter;
-import jmona.impl.postprocessing.PeriodicPostProcessor;
+import jmona.impl.postprocessing.PeriodicProcessor;
 
 /**
- * A PostProcessor which writes an individual out to an image on the filesystem.
+ * A Processor which writes an individual out to an image on the filesystem.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ImageOutputPostProcessor<L extends List<ColoredPolygon>, E extends PopulationEvolutionContext<L>>
-    extends PeriodicPostProcessor<L, E> {
+public class ImageOutputProcessor<L extends List<ColoredPolygon>, E extends PopulationEvolutionContext<L>>
+    extends PeriodicProcessor<L, E> {
 
   /** The default directory in which to write images. */
   public static final String DEFAULT_OUTPUT_DIR = "target";
@@ -54,16 +54,15 @@ public class ImageOutputPostProcessor<L extends List<ColoredPolygon>, E extends 
   private final int width;
 
   /**
-   * Instantiate this PostProcessor with the specified width and height of the
-   * image to write.
+   * Instantiate this Processor with the specified width and height of the image
+   * to write.
    * 
    * @param initialWidth
    *          The width of the image to write.
    * @param initialHeight
    *          The height of the image to write.
    */
-  public ImageOutputPostProcessor(final int initialWidth,
-      final int initialHeight) {
+  public ImageOutputProcessor(final int initialWidth, final int initialHeight) {
     this.width = initialWidth;
     this.height = initialHeight;
   }
@@ -106,7 +105,7 @@ public class ImageOutputPostProcessor<L extends List<ColoredPolygon>, E extends 
    * @throws ProcessingException
    *           If the height or width of the output image has not been set, or
    *           if there is a problem writing the image to disk.
-   * @see jmona.impl.postprocessing.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
+   * @see jmona.impl.postprocessing.PeriodicProcessor#processAtInterval(jmona.EvolutionContext)
    */
   @Override
   protected void processAtInterval(final E evolutionContext)

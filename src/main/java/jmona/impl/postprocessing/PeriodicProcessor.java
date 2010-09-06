@@ -1,5 +1,5 @@
 /**
- * PeriodicPostProcessor.java
+ * PeriodicProcessor.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -20,11 +20,11 @@
 package jmona.impl.postprocessing;
 
 import jmona.EvolutionContext;
-import jmona.PostProcessor;
+import jmona.Processor;
 import jmona.ProcessingException;
 
 /**
- * A PostProcessor which repeatedly performs some processing after a specified
+ * A Processor which repeatedly performs some processing after a specified
  * number of generations only.
  * 
  * @param <T>
@@ -33,8 +33,8 @@ import jmona.ProcessingException;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public abstract class PeriodicPostProcessor<T, E extends EvolutionContext<T>>
-    implements PostProcessor<T, E> {
+public abstract class PeriodicProcessor<T, E extends EvolutionContext<T>>
+    implements Processor<T, E> {
 
   /**
    * The number of times that the {@link #process(EvolutionContext)} method has
@@ -53,7 +53,7 @@ public abstract class PeriodicPostProcessor<T, E extends EvolutionContext<T>>
    *          {@inheritDoc}
    * @throws ProcessingException
    *           {@inheritDoc}
-   * @see jmona.PostProcessor#process(jmona.EvolutionContext)
+   * @see jmona.Processor#process(jmona.EvolutionContext)
    */
   @Override
   public synchronized void process(final E evolutionContext)

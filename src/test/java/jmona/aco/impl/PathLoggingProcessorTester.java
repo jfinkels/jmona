@@ -1,5 +1,5 @@
 /**
- * PathLoggingPostProcessorTester.java
+ * PathLoggingProcessorTester.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -31,12 +31,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test class for the PathLoggingPostProcessor class.
+ * Test class for the PathLoggingProcessor class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class PathLoggingPostProcessorTester {
+public class PathLoggingProcessorTester {
 
   /** The initial pheromone to place on each edge in the graph. */
   public static final double INITIAL_PHEROMONE = 10;
@@ -66,12 +66,12 @@ public class PathLoggingPostProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.aco.impl.PathLoggingPostProcessor#message(jmona.EvolutionContext)}
+   * {@link jmona.aco.impl.PathLoggingProcessor#message(jmona.EvolutionContext)}
    * .
    */
   @Test
   public void testMessageEvolutionContextOfA() {
-    final PathLoggingPostProcessor<WorkerAnt, PopulationEvolutionContext<WorkerAnt>> processor = new PathLoggingPostProcessor<WorkerAnt, PopulationEvolutionContext<WorkerAnt>>();
+    final PathLoggingProcessor<WorkerAnt, PopulationEvolutionContext<WorkerAnt>> processor = new PathLoggingProcessor<WorkerAnt, PopulationEvolutionContext<WorkerAnt>>();
 
     final WorkerAnt ant1 = new WorkerAnt(0);
     ant1.moveTo(1);

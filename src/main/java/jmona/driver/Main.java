@@ -25,7 +25,7 @@ import jmona.CompletionCondition;
 import jmona.CompletionException;
 import jmona.EvolutionContext;
 import jmona.EvolutionException;
-import jmona.PostProcessor;
+import jmona.Processor;
 import jmona.ProcessingException;
 import jmona.impl.MapUtils;
 import joptsimple.OptionParser;
@@ -92,8 +92,8 @@ public class Main {
     final Map<String, CompletionCondition> completionCriteriaMap = applicationContext
         .getBeansOfType(CompletionCondition.class);
     @SuppressWarnings("rawtypes")
-    final Map<String, PostProcessor> postProcessorMap = applicationContext
-        .getBeansOfType(PostProcessor.class);
+    final Map<String, Processor> postProcessorMap = applicationContext
+        .getBeansOfType(Processor.class);
 
     // assert that there is only one evolution context bean in the app. context
     if (evolutionContextsMap.size() != 1) {
@@ -125,8 +125,8 @@ public class Main {
 
         // perform all post-processing on the evolution context
         for (@SuppressWarnings("rawtypes")
-        final PostProcessor postProcessor : postProcessorMap.values()) {
-          postProcessor.process(evolutionContext);
+        final Processor processor : postProcessorMap.values()) {
+          processor.process(evolutionContext);
         }
       }
     } catch (final CompletionException exception) {

@@ -1,5 +1,5 @@
 /**
- * LoggingPostProcessor.java
+ * LoggingProcessor.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -27,10 +27,13 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 /**
- * A PostProcessor which periodically logs information about an
- * EvolutionContext.
+ * A Processor which periodically logs information about an EvolutionContext.
  * 
  * Set the logging level by setting the {@link #loggingLevel} property.
+ * 
+ * This class also provides, as a static member, the system-dependent line
+ * separator, so that concrete subclasses can use it to construct messages for
+ * logging.
  * 
  * @param <T>
  *          The type of individual in the EvolutionContext about which to log
@@ -38,8 +41,8 @@ import org.apache.log4j.Logger;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public abstract class LoggingPostProcessor<T, E extends EvolutionContext<T>>
-    extends PeriodicPostProcessor<T, E> {
+public abstract class LoggingProcessor<T, E extends EvolutionContext<T>>
+    extends PeriodicProcessor<T, E> {
   /** The default level at which to log information. */
   public static final Level DEFAULT_LOGGING_LEVEL = Level.INFO;
   /** The default format of the message to log. */
@@ -90,13 +93,13 @@ public abstract class LoggingPostProcessor<T, E extends EvolutionContext<T>>
   protected abstract String message(final E context) throws LoggingException;
 
   /**
-   * Log a message.
+   * Log the message which is returned by {@link #message(EvolutionContext)}.
    * 
    * @param context
    *          The EvolutionContext containing the current population.
    * @throws ProcessingException
    *           If there was a problem logging a message.
-   * @see jmona.PostProcessor#process(jmona.EvolutionContext)
+   * @see jmona.Processor#process(jmona.EvolutionContext)
    */
   @Override
   protected void processAtInterval(final E context) throws ProcessingException {

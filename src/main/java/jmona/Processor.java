@@ -1,5 +1,5 @@
 /**
- * PostProcessor.java
+ * Processor.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -20,16 +20,14 @@
 package jmona;
 
 /**
- * An object which performs some processing on an EvolutionContext after each
- * generation.
+ * An object which performs some processing on an EvolutionContext.
  * 
  * @param <T>
  *          The type of individual in the EvolutionContext to process.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-// TODO PreProcessor?
-public interface PostProcessor<T, E extends EvolutionContext<T>> {
+public interface Processor<T, E extends EvolutionContext<T>> {
 
   /**
    * Perform some action on the specified EvolutionContext.

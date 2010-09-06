@@ -1,5 +1,5 @@
 /**
- * ExamplePostProcessor.java
+ * ExampleProcessor.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -20,16 +20,16 @@
 package jmona.impl.example;
 
 import jmona.EvolutionContext;
-import jmona.impl.postprocessing.PeriodicPostProcessor;
+import jmona.impl.postprocessing.PeriodicProcessor;
 
 /**
- * A PostProcessor which simply increments a counter.
+ * A Processor which simply increments a counter.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ExamplePostProcessor extends
-    PeriodicPostProcessor<ExampleIndividual, ExampleEvolutionContext> {
+public class ExampleProcessor extends
+    PeriodicProcessor<ExampleIndividual, ExampleEvolutionContext> {
 
   /**
    * The number of times {@link #processAtInterval(EvolutionContext)} has been
@@ -53,7 +53,7 @@ public class ExamplePostProcessor extends
    * 
    * @param evolutionContext
    *          This parameter is ignored.
-   * @see jmona.impl.postprocessing.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)
+   * @see jmona.impl.postprocessing.PeriodicProcessor#processAtInterval(jmona.EvolutionContext)
    */
   @Override
   protected void processAtInterval(

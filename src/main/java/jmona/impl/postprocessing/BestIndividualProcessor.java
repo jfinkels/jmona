@@ -1,5 +1,5 @@
 /**
- * BestIndividualPostProcessor.java
+ * BestIndividualProcessor.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -28,7 +28,7 @@ import jmona.GeneticEvolutionContext;
 import jmona.impl.selection.ValueComparator;
 
 /**
- * A LoggingPostProcessor which logs the most fit individual and its fitness (if
+ * A LoggingProcessor which logs the most fit individual and its fitness (if
  * possible).
  * 
  * @author Jeffrey Finkelstein
@@ -37,8 +37,8 @@ import jmona.impl.selection.ValueComparator;
  *          most fit individual.
  * @since 0.5
  */
-public class BestIndividualPostProcessor<T extends DeepCopyable<T>, E extends GeneticEvolutionContext<T>>
-    extends LoggingPostProcessor<T, E> {
+public class BestIndividualProcessor<T extends DeepCopyable<T>, E extends GeneticEvolutionContext<T>>
+    extends LoggingProcessor<T, E> {
 
   /**
    * Gets the String representation of the most fit individual in the specified
@@ -48,7 +48,7 @@ public class BestIndividualPostProcessor<T extends DeepCopyable<T>, E extends Ge
    *          The EvolutionContext from which to get the most fit individual.
    * @return A string representation of the most fit individual along with its
    *         fitness.
-   * @see jmona.impl.postprocessing.LoggingPostProcessor#message(jmona.EvolutionContext)
+   * @see jmona.impl.postprocessing.LoggingProcessor#message(jmona.EvolutionContext)
    */
   @Override
   protected String message(final E context) {
@@ -60,7 +60,8 @@ public class BestIndividualPostProcessor<T extends DeepCopyable<T>, E extends Ge
     final Comparator<T> comparator = new ValueComparator<T, Double>(fitnesses);
 
     // get the fittest individual
-    final T fittestIndividual = Collections.max(fitnesses.keySet(), comparator);
+    final T fittestIndividual = Collections
+        .max(fitnesses.keySet(), comparator);
 
     // create a string builder to contain the String to return
     final StringBuilder result = new StringBuilder();

@@ -1,5 +1,5 @@
 /**
- * PeriodicPostProcessorTester.java
+ * PeriodicProcessorTester.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -22,31 +22,31 @@ package jmona.impl.postprocessing;
 import static org.junit.Assert.assertEquals;
 import jfcommon.test.TestUtils;
 import jmona.ProcessingException;
-import jmona.impl.example.ExamplePostProcessor;
+import jmona.impl.example.ExampleProcessor;
 
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test class for the PeriodicPostProcessor class.
+ * Test class for the PeriodicProcessor class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class PeriodicPostProcessorTester {
+public class PeriodicProcessorTester {
 
   /** The processor under test. */
-  private ExamplePostProcessor processor = null;
+  private ExampleProcessor processor = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.processor = new ExamplePostProcessor();
+    this.processor = new ExampleProcessor();
   }
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.PeriodicPostProcessor#process(jmona.EvolutionContext)}.
+   * {@link jmona.impl.postprocessing.PeriodicProcessor#process(jmona.EvolutionContext)}.
    */
   @Test
   public void testProcess() {
@@ -63,7 +63,7 @@ public class PeriodicPostProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.PeriodicPostProcessor#processAtInterval(jmona.EvolutionContext)}
+   * {@link jmona.impl.postprocessing.PeriodicProcessor#processAtInterval(jmona.EvolutionContext)}
    * .
    */
   @Test
@@ -80,7 +80,7 @@ public class PeriodicPostProcessorTester {
   }
 
   /**
-   * Test method for {@link jmona.impl.postprocessing.PeriodicPostProcessor#setPeriod(int)}.
+   * Test method for {@link jmona.impl.postprocessing.PeriodicProcessor#setPeriod(int)}.
    */
   @Test
   public void testSetPeriod() {

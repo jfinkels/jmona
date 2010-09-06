@@ -1,5 +1,5 @@
 /**
- * PopulationLoggingPostProcessorTester.java
+ * PopulationLoggingProcessorTester.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -30,16 +30,16 @@ import jmona.impl.example.ExampleIndividual;
 import org.junit.Test;
 
 /**
- * Test class for the PopulationLoggingPostProcessor class.
+ * Test class for the PopulationLoggingProcessor class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class PopulationLoggingPostProcessorTester {
+public class PopulationLoggingProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.postprocessing.PopulationLoggingPostProcessor#message(jmona.EvolutionContext)}
+   * {@link jmona.impl.postprocessing.PopulationLoggingProcessor#message(jmona.EvolutionContext)}
    * .
    */
   @Test
@@ -53,7 +53,7 @@ public class PopulationLoggingPostProcessorTester {
 
     ExampleEvolutionContext context = new ExampleEvolutionContext(population);
 
-    final PopulationLoggingPostProcessor<ExampleIndividual, ExampleEvolutionContext> processor = new PopulationLoggingPostProcessor<ExampleIndividual, ExampleEvolutionContext>();
+    final PopulationLoggingProcessor<ExampleIndividual, ExampleEvolutionContext> processor = new PopulationLoggingProcessor<ExampleIndividual, ExampleEvolutionContext>();
 
     final String result = processor.message(context);
 

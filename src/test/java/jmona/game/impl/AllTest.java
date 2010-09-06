@@ -30,7 +30,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.1
  */
 @RunWith(Suite.class)
-@SuiteClasses({ ClassCountingPostProcessorTester.class,
+@SuiteClasses({ ClassCountingProcessorTester.class,
     DefaultTwoPlayerGameResultTester.class, TwoPlayerGameEvolutionContextTester.class,
     UniformPopulationCompletionConditionTester.class })
 public class AllTest {

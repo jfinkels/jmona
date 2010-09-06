@@ -34,7 +34,7 @@ import org.junit.runners.Suite.SuiteClasses;
     AntColonyEvolutionContextTester.class, AntCycleStrategyTester.class,
     AntDensityStrategyTester.class, AntQuantityStrategyTester.class,
     DefaultPheromoneDirectedGraphTester.class,
-    PathLoggingPostProcessorTester.class, TourEvolutionContextTester.class,
+    PathLoggingProcessorTester.class, TourEvolutionContextTester.class,
     WorkerAntTester.class, WorkerAntVectorTester.class })
 public class AllTest {
   // intentionally unimplemented

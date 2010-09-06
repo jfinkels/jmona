@@ -20,7 +20,7 @@
 package jmona;
 
 /**
- * This Exception is thrown when there is a problem during PostProcessor
+ * This Exception is thrown when there is a problem during Processor
  * processing of an EvolutionContext.
  * 
  * @author Jeffrey Finkelstein

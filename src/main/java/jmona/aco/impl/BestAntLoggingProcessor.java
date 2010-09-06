@@ -1,5 +1,5 @@
 /**
- * BestAntLoggingPostProcessor.java
+ * BestAntLoggingProcessor.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -24,7 +24,7 @@ import java.util.Collections;
 import jmona.PopulationEvolutionContext;
 import jmona.aco.Ant;
 import jmona.graph.DirectedGraph;
-import jmona.impl.postprocessing.LoggingPostProcessor;
+import jmona.impl.postprocessing.LoggingProcessor;
 
 /**
  * Logs the Ant with the best tour.
@@ -34,8 +34,8 @@ import jmona.impl.postprocessing.LoggingPostProcessor;
  *          The type of Ant in the evolution.
  * @since 0.5
  */
-public class BestAntLoggingPostProcessor<A extends Ant, E extends PopulationEvolutionContext<A>>
-    extends LoggingPostProcessor<A, E> {
+public class BestAntLoggingProcessor<A extends Ant, E extends PopulationEvolutionContext<A>>
+    extends LoggingProcessor<A, E> {
 
   /**
    * The comparator which compares Ants based on the distance of the tour stored
@@ -50,13 +50,13 @@ public class BestAntLoggingPostProcessor<A extends Ant, E extends PopulationEvol
   private final DistanceGetter<A> distanceGetter;
 
   /**
-   * Instantiates this PostProcessor with the specified graph with which to
+   * Instantiates this Processor with the specified graph with which to
    * determine distances of tours.
    * 
    * @param initialGraph
    *          The graph with which to determine distances of tours.
    */
-  public BestAntLoggingPostProcessor(
+  public BestAntLoggingProcessor(
       final DirectedGraph<Integer, Double> initialGraph) {
     this.comparator = new AntComparator<A>(initialGraph);
     this.distanceGetter = new DistanceGetter<A>(initialGraph);
@@ -68,7 +68,7 @@ public class BestAntLoggingPostProcessor<A extends Ant, E extends PopulationEvol
    * @param context
    *          {@inheritDoc}
    * @return The String representation of the Ant with the best tour.
-   * @see jmona.impl.postprocessing.LoggingPostProcessor#message(jmona.EvolutionContext)
+   * @see jmona.impl.postprocessing.LoggingProcessor#message(jmona.EvolutionContext)
    */
   @Override
   protected String message(final E context) {

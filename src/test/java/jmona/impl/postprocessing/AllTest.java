@@ -30,10 +30,10 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.1
  */
 @RunWith(Suite.class)
-@SuiteClasses({ BestIndividualPostProcessorTester.class,
-    FitnessLoggingPostProcessorTester.class, LoggingPostProcessorTester.class,
-    PeriodicPostProcessorTester.class,
-    PopulationLoggingPostProcessorTester.class })
+@SuiteClasses({ BestIndividualProcessorTester.class,
+    FitnessLoggingProcessorTester.class, LoggingProcessorTester.class,
+    PeriodicProcessorTester.class,
+    PopulationLoggingProcessorTester.class })
 public class AllTest {
   // intentionally unimplemented
 }

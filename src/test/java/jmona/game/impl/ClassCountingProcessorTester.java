@@ -1,5 +1,5 @@
 /**
- * ClassCountingPostProcessorTester.java
+ * ClassCountingProcessorTester.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -34,16 +34,16 @@ import jmona.game.impl.example.ExampleStrategy;
 import org.junit.Test;
 
 /**
- * Test class for the ClassCountingPostProcessor class.
+ * Test class for the ClassCountingProcessor class.
  * 
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class ClassCountingPostProcessorTester {
+public class ClassCountingProcessorTester {
 
   /**
    * Test method for
-   * {@link jmona.game.impl.ClassCountingPostProcessor#processAtInterval(jmona.EvolutionContext)}
+   * {@link jmona.game.impl.ClassCountingProcessor#processAtInterval(jmona.EvolutionContext)}
    * .
    */
   @Test
@@ -61,7 +61,7 @@ public class ClassCountingPostProcessorTester {
         population);
 
     // instantiate the processor with the context initialized above
-    final ClassCountingPostProcessor<ExampleStrategy, PopulationEvolutionContext<ExampleStrategy>> processor = new ClassCountingPostProcessor<ExampleStrategy, PopulationEvolutionContext<ExampleStrategy>>();
+    final ClassCountingProcessor<ExampleStrategy, PopulationEvolutionContext<ExampleStrategy>> processor = new ClassCountingProcessor<ExampleStrategy, PopulationEvolutionContext<ExampleStrategy>>();
 
     String result = "";
 

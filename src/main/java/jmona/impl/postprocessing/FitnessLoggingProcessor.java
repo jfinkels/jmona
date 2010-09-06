@@ -1,5 +1,5 @@
 /**
- * FitnessLoggingPostProcessor.java
+ * FitnessLoggingProcessor.java
  * 
  * Copyright 2009, 2010 Jeffrey Finkelstein
  * 
@@ -34,8 +34,8 @@ import jmona.GeneticEvolutionContext;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class FitnessLoggingPostProcessor<T extends DeepCopyable<T>, E extends GeneticEvolutionContext<T>>
-    extends LoggingPostProcessor<T, E> {
+public class FitnessLoggingProcessor<T extends DeepCopyable<T>, E extends GeneticEvolutionContext<T>>
+    extends LoggingProcessor<T, E> {
 
   /**
    * Get the raw fitnesses of the individuals in the current population of the
@@ -46,7 +46,7 @@ public class FitnessLoggingPostProcessor<T extends DeepCopyable<T>, E extends Ge
    *          current population.
    * @return The raw fitnesses of the individuals in the current population, as
    *         a String.
-   * @see jmona.impl.postprocessing.LoggingPostProcessor#message(jmona.EvolutionContext)
+   * @see jmona.impl.postprocessing.LoggingProcessor#message(jmona.EvolutionContext)
    */
   @Override
   protected String message(final E context) {
