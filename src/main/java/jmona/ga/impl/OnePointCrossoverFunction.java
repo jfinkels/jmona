@@ -30,6 +30,8 @@ import jmona.random.RandomUtils;
  * @param <E>
  *          The type of element contained in the List on which to perform
  *          crossover.
+ * @param <L>
+ *          The type of List on which to perform crossover.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
