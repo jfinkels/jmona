@@ -37,7 +37,7 @@ public class MutableIntegerTester {
    */
   @Test
   public void testMutableInteger() {
-    final MutableInteger i = new MutableInteger();
+    new MutableInteger();
   }
 
   /**
