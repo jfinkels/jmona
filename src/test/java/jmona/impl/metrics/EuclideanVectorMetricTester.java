@@ -52,6 +52,7 @@ public class EuclideanVectorMetricTester extends
 
   /** Establish a fixture for tests in this class. */
   @Before
+  @Override
   public final void setUp() {
     this.v = new Vector<Double>();
     this.u = new Vector<Double>();

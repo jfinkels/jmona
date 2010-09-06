@@ -63,6 +63,7 @@ public class IntegerNode extends AbstractTerminalNode implements ExampleNode {
    *           Never throws this Exception.
    * @see jmona.gp.EvaluatableNode#evaluate()
    */
+  @Override
   public Integer evaluate() {
     return this.value;
   }

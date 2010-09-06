@@ -39,6 +39,7 @@ public class EuclideanMetricTester extends
 
   /** Establish a fixture for tests in this class. */
   @Before
+  @Override
   public final void setUp() {
     this.setMetric(new EuclideanMetric<Double>());
     this.setX(X);
