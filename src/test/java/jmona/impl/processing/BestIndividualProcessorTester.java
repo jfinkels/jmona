@@ -30,7 +30,6 @@ import jmona.FitnessFunction;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
-import jmona.impl.processing.BestIndividualProcessor;
 
 import org.junit.Test;
 
