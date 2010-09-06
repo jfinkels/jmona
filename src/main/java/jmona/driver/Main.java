@@ -58,7 +58,7 @@ public class Main {
 
   /**
    * Run the {@link EvolutionContext#stepGeneration()} method until the
-   * CompletionConditionon is met, executing any PostProcessors after each
+   * CompletionConditionon is met, executing any Processors after each
    * generation step.
    * 
    * Provide the location of the Spring XML configuration file by using the
@@ -84,7 +84,7 @@ public class Main {
     final ApplicationContext applicationContext = new FileSystemXmlApplicationContext(
         configFile);
 
-    // get the evolution contexts, completion criteria, and post processors
+    // get the evolution contexts, completion criteria, and processors
     @SuppressWarnings("rawtypes")
     final Map<String, EvolutionContext> evolutionContextsMap = applicationContext
         .getBeansOfType(EvolutionContext.class);
@@ -92,7 +92,7 @@ public class Main {
     final Map<String, CompletionCondition> completionCriteriaMap = applicationContext
         .getBeansOfType(CompletionCondition.class);
     @SuppressWarnings("rawtypes")
-    final Map<String, Processor> postProcessorMap = applicationContext
+    final Map<String, Processor> processorMap = applicationContext
         .getBeansOfType(Processor.class);
 
     // assert that there is only one evolution context bean in the app. context
@@ -125,7 +125,7 @@ public class Main {
 
         // perform all post-processing on the evolution context
         for (@SuppressWarnings("rawtypes")
-        final Processor processor : postProcessorMap.values()) {
+        final Processor processor : processorMap.values()) {
           processor.process(evolutionContext);
         }
       }
