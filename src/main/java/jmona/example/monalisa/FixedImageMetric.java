@@ -21,8 +21,8 @@ package jmona.example.monalisa;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.PixelGrabber;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Vector;
 
 import jfcommon.functional.Range;
 import jmona.MetricException;
@@ -91,11 +91,8 @@ public class FixedImageMetric {
    *         specified pixel.
    */
   protected static List<Integer> toList(final int pixel) {
-    final List<Integer> result = new Vector<Integer>();
-    result.add(getColor(pixel, RED));
-    result.add(getColor(pixel, GREEN));
-    result.add(getColor(pixel, BLUE));
-    return result;
+    return Arrays.asList(getColor(pixel, RED), getColor(pixel, GREEN),
+        getColor(pixel, BLUE));
   }
 
   /** The pixels of the target image. */
