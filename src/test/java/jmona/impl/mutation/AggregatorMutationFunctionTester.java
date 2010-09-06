@@ -67,7 +67,7 @@ public class AggregatorMutationFunctionTester {
      */
     @Override
     public void mutate(final ExampleIndividual individual) {
-      AggregatorMutationFunctionTester.this.mutations1 += 1;
+      AggregatorMutationFunctionTester.this.incrementMutations1();
     }
 
   }
@@ -99,7 +99,7 @@ public class AggregatorMutationFunctionTester {
      */
     @Override
     public void mutate(final ExampleIndividual individual) {
-      AggregatorMutationFunctionTester.this.mutations2 += 1;
+      AggregatorMutationFunctionTester.this.incrementMutations2();
     }
 
   }
@@ -107,9 +107,25 @@ public class AggregatorMutationFunctionTester {
   /** The number of mutations to perform. */
   public static final int NUM_MUTATIONS = 10000;
   /** The number of times the first mutation function is called. */
-  int mutations1 = 0;
+  private int mutations1 = 0;
   /** The number of times the second mutation function is called. */
-  int mutations2 = 0;
+  private int mutations2 = 0;
+
+  /**
+   * Increments the counter of the number of times the first mutation function
+   * is called.
+   */
+  void incrementMutations1() {
+    ++this.mutations1;
+  }
+
+  /**
+   * Increments the counter of the number of times the second mutation function
+   * is called.
+   */
+  void incrementMutations2() {
+    ++this.mutations2;
+  }
 
   /**
    * Resets the counters for the number of times each MutationFunction is
