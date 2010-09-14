@@ -33,6 +33,7 @@ import org.apache.log4j.Logger;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
+// TODO this class is unnecessary
 public final class ImageWriter {
 
   /** The identifier for the PNG image format. */
