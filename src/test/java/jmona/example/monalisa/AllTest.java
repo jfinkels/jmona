@@ -32,7 +32,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ ColoredPolygonFactoryTester.class,
     ColoredPolygonMutationFunctionTester.class, ColoredPolygonTester.class,
-    ConverterTester.class, ImageOutputProcessorTester.class })
+    ConverterTester.class, FixedImageMetricTester.class,
+    ImageOutputProcessorTester.class })
 public class AllTest {
   // intentionally unimplemented
 }
