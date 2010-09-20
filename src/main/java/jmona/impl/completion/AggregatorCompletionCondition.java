@@ -37,11 +37,13 @@ import jmona.impl.UnmodifiableCollectionAggregator;
  * @param <T>
  *          The type of individual in the EvolutionContext to check for
  *          completion.
+ * @param <E>
+ *          The type of EvolutionContext which this Condition checks.
  * @since 0.4
  */
-public class AggregatorCompletionCondition<T> extends
-    UnmodifiableCollectionAggregator<CompletionCondition<T>> implements
-    CompletionCondition<T> {
+public class AggregatorCompletionCondition<T, E extends EvolutionContext<T>>
+    extends UnmodifiableCollectionAggregator<CompletionCondition<T, E>>
+    implements CompletionCondition<T, E> {
 
   /**
    * Instantiates this class with the specified varargs array of
@@ -52,7 +54,7 @@ public class AggregatorCompletionCondition<T> extends
    *          time this Condition is executed.
    */
   public AggregatorCompletionCondition(
-      final CompletionCondition<T>... initialConditions) {
+      final CompletionCondition<T, E>... initialConditions) {
     super(initialConditions);
   }
 
@@ -65,7 +67,7 @@ public class AggregatorCompletionCondition<T> extends
    *          Condition is executed.
    */
   public AggregatorCompletionCondition(
-      final Collection<CompletionCondition<T>> initialConditions) {
+      final Collection<CompletionCondition<T, E>> initialConditions) {
     super(initialConditions);
   }
 
@@ -81,14 +83,13 @@ public class AggregatorCompletionCondition<T> extends
    * @return Whether the specified EvolutionContext satisfies any of the
    *         CompletionConditions specified in the constructor of this class.
    * @throws CompletionException
-   *           If any of the CompletionConditions throws a MappingException.
+   *           If any of the CompletionConditions throws a CompletionException.
    * @see jfcommon.functional.Function#execute(java.lang.Object)
    */
   @Override
-  public Boolean execute(final EvolutionContext<T> input)
-      throws CompletionException {
+  public Boolean execute(final E input) throws CompletionException {
 
-    for (final CompletionCondition<T> condition : this.collection()) {
+    for (final CompletionCondition<T, E> condition : this.collection()) {
       if (condition.execute(input)) {
         return true;
       }

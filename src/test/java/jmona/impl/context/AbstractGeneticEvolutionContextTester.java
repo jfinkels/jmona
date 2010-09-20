@@ -163,6 +163,19 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#currentAdjustedFitnesses()}
+   * .
+   */
+  @Test
+  public void testCurrentAdjustedFitnesses() {
+    assertEquals(1 / (1 + individual1.fitness()), this.context
+        .currentAdjustedFitnesses().get(individual1).doubleValue(), ZERO_DELTA);
+    assertEquals(1 / (1 + individual2.fitness()), this.context
+        .currentAdjustedFitnesses().get(individual2).doubleValue(), ZERO_DELTA);
+  }
+
+  /**
+   * Test method for
    * {@link jmona.impl.context.AbstractGeneticEvolutionContext#currentGeneration()}
    * .
    */
@@ -206,8 +219,8 @@ public class AbstractGeneticEvolutionContextTester {
    */
   @Test
   public void testSetElitism() {
-    assertEquals(AbstractGeneticEvolutionContext.DEFAULT_ELITISM, this.context
-        .elitism());
+    assertEquals(AbstractGeneticEvolutionContext.DEFAULT_ELITISM,
+        this.context.elitism());
     final int newElitism = 10;
     this.context.setElitism(newElitism);
     assertEquals(newElitism, this.context.elitism());

@@ -21,7 +21,6 @@ package jmona;
 
 import jfcommon.test.AbstractExceptionTest;
 
-
 /**
  * Test class for the PropertyNotWritableException class.
  * 

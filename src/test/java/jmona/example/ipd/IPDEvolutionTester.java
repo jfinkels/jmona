@@ -59,7 +59,7 @@ public class IPDEvolutionTester<S extends DeepCopyable<S> & Strategy> {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<S> completionCondition = null;
+  private CompletionCondition<S, PopulationEvolutionContext<S>> completionCondition = null;
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired

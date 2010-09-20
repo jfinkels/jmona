@@ -151,7 +151,7 @@ public class FixedImageMetricTester {
     final int height = 2;
     final Polygon polygon = new Polygon();
     polygon.xpoints = new int[] { 0, width, width, 0 };
-    polygon.ypoints = new int[] { 0, 0, height / 2, height / 2 };
+    polygon.ypoints = new int[] { 0, 0, 0, 0 };
     polygon.npoints = 4;
 
     // create an image on which to draw the polygon
@@ -173,8 +173,7 @@ public class FixedImageMetricTester {
     }
 
     try {
-      assertEquals(difference, metric.distanceFromTarget(testImage),
-          ZERO_DELTA);
+      assertEquals(difference, metric.distanceFromTarget(testImage), ZERO_DELTA);
     } catch (final MetricException exception) {
       TestUtils.fail(exception);
     }

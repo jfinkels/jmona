@@ -1,7 +1,7 @@
 /**
- * AllTest.java
+ * PropertyNotSetExceptionTester.java
  * 
- * Copyright 2009, 2010 Jeffrey Finkelstein
+ * Copyright 2010 Jeffrey Finkelstein
  * 
  * This file is part of jmona.
  * 
@@ -17,21 +17,19 @@
  * You should have received a copy of the GNU General Public License along with
  * jmona. If not, see <http://www.gnu.org/licenses/>.
  */
-package jmona.io;
+package jmona;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import jfcommon.test.AbstractExceptionTest;
 
 /**
- * Runs all tests in this package.
+ * Test class for the PropertyNotSetException class.
  * 
  * @author Jeffrey Finkelstein
- * @since 0.1
+ * @since 0.5
  */
-@RunWith(Suite.class)
-@SuiteClasses({ LineReaderTester.class, SplitOnColonTester.class,
-    SplitOnWhitespaceTester.class })
-public class AllTest {
-  // intentionally unimplemented
+public class PropertyNotSetExceptionTester extends AbstractExceptionTest {
+  /** Instantiates this test class for the PropertyNotSetException. */
+  public PropertyNotSetExceptionTester() {
+    super(PropertyNotSetException.class);
+  }
 }

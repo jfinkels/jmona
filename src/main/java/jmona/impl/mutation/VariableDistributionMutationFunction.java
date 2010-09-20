@@ -89,6 +89,7 @@ public class VariableDistributionMutationFunction<E, L extends List<E>> extends
   @Override
   public void mutate(final L list) throws MutationException {
     if (this.distribution == null) {
+      // TODO this should be a PropertyNotSetException
       throw new MutationException(
           "Probability distribution has not been set; must call setDistribution() before mutate().");
     }
@@ -101,6 +102,7 @@ public class VariableDistributionMutationFunction<E, L extends List<E>> extends
     }
 
     if (this.elementMutationFunction() == null) {
+      // TODO this should be a PropertyNotSetException
       throw new MutationException(
           "MutationFunction for elements has not been set.");
     }

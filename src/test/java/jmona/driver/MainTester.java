@@ -112,6 +112,8 @@ public class MainTester {
    */
   @Test
   public void testMain() {
+    new Main();
+    
     try {
       Main.main(new String[] { CONFIG_FILE_BAD });
       TestUtils.shouldHaveThrownException();
@@ -158,7 +160,7 @@ public class MainTester {
       assertTrue(exception instanceof RuntimeException);
     }
   }
-
+  
   /**
    * Test method for {@link jmona.driver.Main#main(java.lang.String[])} when the
    * specified configuration file does has too many EvolutionContext

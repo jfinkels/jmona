@@ -52,7 +52,7 @@ public class MonaEvolutionTester {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<DeepCopyableList<ColoredPolygon>> completionCondition = null;
+  private CompletionCondition<DeepCopyableList<ColoredPolygon>, GeneticEvolutionContext<DeepCopyableList<ColoredPolygon>>> completionCondition = null;
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired

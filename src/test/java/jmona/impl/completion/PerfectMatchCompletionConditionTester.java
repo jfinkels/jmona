@@ -25,11 +25,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
-import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
 import jmona.FitnessException;
-import jmona.GeneticEvolutionContext;
-import jmona.ga.impl.GAEvolutionContext;
+import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
 
@@ -45,23 +43,22 @@ import org.junit.Test;
 public class PerfectMatchCompletionConditionTester {
 
   /** The completion criteria under test. */
-  private PerfectMatchCompletionCondition<ExampleIndividual> completionCriteria = null;
+  private PerfectMatchCompletionCondition<ExampleIndividual, ExampleEvolutionContext> completionCriteria = null;
   /** The evolution context on which to test the completion criteria. */
-  private GeneticEvolutionContext<ExampleIndividual> evolutionContext = null;
+  private ExampleEvolutionContext evolutionContext = null;
   /** The population in the evolution context. */
   private List<ExampleIndividual> population = null;
 
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.completionCriteria = new PerfectMatchCompletionCondition<ExampleIndividual>();
+    this.completionCriteria = new PerfectMatchCompletionCondition<ExampleIndividual, ExampleEvolutionContext>();
 
     this.population = new Vector<ExampleIndividual>();
     this.population.add(new ExampleIndividual(1));
     this.population.add(new ExampleIndividual(2));
 
-    this.evolutionContext = new GAEvolutionContext<ExampleIndividual>(
-        this.population);
+    this.evolutionContext = new ExampleEvolutionContext(this.population);
 
     try {
       this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
@@ -83,8 +80,6 @@ public class PerfectMatchCompletionConditionTester {
       this.population.add(new ExampleIndividual(0));
       this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
       assertTrue(this.completionCriteria.execute(this.evolutionContext));
-    } catch (final MappingException exception) {
-      TestUtils.fail(exception);
     } catch (final FitnessException exception) {
       TestUtils.fail(exception);
     }

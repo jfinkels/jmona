@@ -53,7 +53,7 @@ public class PolynomialEvolutionTester {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<Tree> completionCondition = null;
+  private CompletionCondition<Tree, PopulationEvolutionContext<Tree>> completionCondition = null;
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
   private PopulationEvolutionContext<Tree> context = null;

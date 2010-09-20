@@ -45,7 +45,7 @@ public class MutableByteTester {
    */
   @Test
   public void testMutableByteByte() {
-    final MutableByte b = new MutableByte(0);
+    final MutableByte b = new MutableByte((byte) 0);
     assertEquals(0, b.byteValue());
   }
 

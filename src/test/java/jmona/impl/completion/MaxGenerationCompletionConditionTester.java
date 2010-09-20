@@ -22,13 +22,17 @@ package jmona.impl.completion;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.Vector;
 
-import jmona.EvolutionContext;
-import jmona.ga.impl.GAEvolutionContext;
+import jfcommon.test.TestUtils;
+import jmona.EvolutionException;
+import jmona.FitnessException;
+import jmona.impl.example.ExampleEvolutionContext;
+import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -39,6 +43,45 @@ import org.junit.Test;
  */
 public class MaxGenerationCompletionConditionTester {
 
+  /** The CompletionCondition under test in this class. */
+  private MaxGenerationCompletionCondition<ExampleIndividual, ExampleEvolutionContext> condition = null;
+  /** The EvolutionContext on which to test the CompletionCondition. */
+  private ExampleEvolutionContext context = null;
+
+  /** Establish a fixture for tests in this class. */
+  @Before
+  public void setUp() {
+    this.condition = new MaxGenerationCompletionCondition<ExampleIndividual, ExampleEvolutionContext>(
+        1);
+    final List<ExampleIndividual> population = Arrays
+        .asList(new ExampleIndividual());
+    this.context = new ExampleEvolutionContext(population);
+    try {
+      this.context.setFitnessFunction(new ExampleFitnessFunction());
+    } catch (final FitnessException exception) {
+      TestUtils.fail(exception);
+    }
+  }
+
+  /**
+   * Test method for
+   * {@link jmona.impl.completion.MaxGenerationCompletionCondition#MaxGenerationCompletionCondition(int)}
+   * .
+   */
+  @Test
+  public void testMaxGenerationCompletionCondition() {
+    assertFalse(this.condition.execute(this.context));
+
+    try {
+      this.context.stepGeneration();
+    } catch (final EvolutionException exception) {
+      TestUtils.fail(exception);
+    }
+
+    assertTrue(this.condition.execute(this.context));
+
+  }
+
   /**
    * Test method for
    * {@link jmona.impl.completion.MaxGenerationCompletionCondition#execute(jmona.EvolutionContext)}
@@ -46,19 +89,11 @@ public class MaxGenerationCompletionConditionTester {
    */
   @Test
   public void testExecute() {
-    final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
-    population.add(new ExampleIndividual());
-    population.add(new ExampleIndividual());
-    final EvolutionContext<ExampleIndividual> context = new GAEvolutionContext<ExampleIndividual>(
-        population);
+    this.condition.setMaxGenerations(0);
+    assertTrue(this.condition.execute(this.context));
 
-    final MaxGenerationCompletionCondition<ExampleIndividual> criteria = new MaxGenerationCompletionCondition<ExampleIndividual>();
-
-    criteria.setMaxGenerations(0);
-    assertTrue(criteria.execute(context));
-
-    criteria.setMaxGenerations(2);
-    assertFalse(criteria.execute(context));
+    this.condition.setMaxGenerations(2);
+    assertFalse(this.condition.execute(this.context));
   }
 
 }

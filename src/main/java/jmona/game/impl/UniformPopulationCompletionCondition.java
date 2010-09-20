@@ -22,8 +22,6 @@ package jmona.game.impl;
 import java.util.List;
 
 import jmona.CompletionCondition;
-import jmona.CompletionException;
-import jmona.EvolutionContext;
 import jmona.PopulationEvolutionContext;
 
 /**
@@ -35,8 +33,8 @@ import jmona.PopulationEvolutionContext;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public class UniformPopulationCompletionCondition<T> implements
-    CompletionCondition<T> {
+public class UniformPopulationCompletionCondition<T, E extends PopulationEvolutionContext<T>>
+    implements CompletionCondition<T, E> {
 
   /**
    * Determines whether the current population in the specified EvolutionContext
@@ -46,27 +44,16 @@ public class UniformPopulationCompletionCondition<T> implements
    *          The EvolutionContext containing the population.
    * @return Whether the current population in the specified EvolutionContext
    *         contains only individuals of one class.
-   * @throws CompletionException
-   *           If the specified EvolutionContext is not a
-   *           PopulationEvolutionContext.
    * @see jmona.CompletionCondition#execute(jmona.EvolutionContext)
    */
-  @SuppressWarnings("unchecked")
   @Override
-  public Boolean execute(final EvolutionContext<T> context)
-      throws CompletionException {
-
-    if (!(context instanceof PopulationEvolutionContext<?>)) {
-      throw new CompletionException(
-          "The specified EvolutionContext must be an instance of PopulationEvolutionContext. Class of specified EvolutionContext was: "
-              + context.getClass());
-    }
+  public Boolean execute(final E context) {
 
     // get the current population from the evolution context
-    final List<T> population = ((PopulationEvolutionContext<T>) context)
-        .currentPopulation();
+    final List<T> population = context.currentPopulation();
 
     // get a class for comparison with classes of the rest of the population
+    @SuppressWarnings("unchecked")
     final Class<T> someClass = (Class<T>) population.get(0).getClass();
 
     // iterate over every individual in the population
