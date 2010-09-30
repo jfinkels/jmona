@@ -103,7 +103,8 @@
     <version.plugin.clean>2.4.1</version.plugin.clean>
     <version.plugin.clirr>2.2.2</version.plugin.clirr>
     <version.plugin.cobertura>2.4</version.plugin.cobertura>
-    <version.plugin.compiler>2.3.1</version.plugin.compiler>
+    <version.plugin.compiler>2.3.2</version.plugin.compiler>
+    <version.plugin.dependency>2.1</version.plugin.dependency>
     <version.plugin.deploy>2.5</version.plugin.deploy>
     <version.plugin.findbugs>2.3.1</version.plugin.findbugs>
     <version.plugin.install>2.3.1</version.plugin.install>
@@ -184,6 +185,11 @@
             <source>${version.java.source}</source>
             <target>${version.java.target}</target>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>${version.plugin.dependency}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
