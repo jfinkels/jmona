@@ -20,6 +20,7 @@
 package jmona.impl.mutation;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,13 +50,38 @@ public class VariableDistributionMutationFunctionTester {
    */
   @Test
   public void testMutate() {
-    final VariableDistributionMutationFunction<ExampleIndividual, List<ExampleIndividual>> function = new VariableDistributionMutationFunction<ExampleIndividual, List<ExampleIndividual>>();
-    function.setElementMutationFunction(new ExampleMutationFunction());
-    function.setDistribution(new double[] { 0.0, 1.0 });
-
     final List<ExampleIndividual> list = new ArrayList<ExampleIndividual>();
     list.add(new ExampleIndividual(-1));
     list.add(new ExampleIndividual(-1));
+
+    final VariableDistributionMutationFunction<ExampleIndividual, List<ExampleIndividual>> function = new VariableDistributionMutationFunction<ExampleIndividual, List<ExampleIndividual>>();
+
+    try {
+      function.mutate(list);
+      TestUtils.shouldHaveThrownException();
+    } catch (final MutationException exception) {
+      // distribution has not been set
+      // TODO add a check here
+    }
+
+    function.setDistribution(new double[] { 0.0 });
+
+    try {
+      function.mutate(list);
+      TestUtils.shouldHaveThrownException();
+    } catch (final MutationException exception) {
+      // distribution is wrong size
+      function.setDistribution(new double[] { 0.0, 1.0 });
+    }
+
+    try {
+      function.mutate(list);
+      TestUtils.shouldHaveThrownException();
+    } catch (final MutationException exception) {
+      // element mutation function has not been set
+      assertNull(function.elementMutationFunction());
+      function.setElementMutationFunction(new ExampleMutationFunction());
+    }
 
     try {
       function.mutate(list);

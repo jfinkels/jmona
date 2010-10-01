@@ -136,15 +136,6 @@ public abstract class AbstractGeneticEvolutionContext<T extends DeepCopyable<T>>
   }
 
   /**
-   * Gets the raw fitnesses of individuals in the current population.
-   * 
-   * @return The raw fitnesses of individuals in the current population.
-   */
-  protected Map<T, Double> currentRawFitnesses() {
-    return this.currentAdjustedFitnesses;
-  }
-
-  /**
    * {@inheritDoc}
    * 
    * @return {@inheritDoc}

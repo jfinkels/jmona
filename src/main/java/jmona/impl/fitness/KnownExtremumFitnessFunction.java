@@ -107,6 +107,7 @@ public abstract class KnownExtremumFitnessFunction<T> extends
   @Override
   public double standardizedFitness(final T individual) throws FitnessException {
     if (this.extremum == null) {
+      // TODO should be PropertyNotSetException
       throw new FitnessException(
           "Extremum (maximum or minimum) raw fitness value has not been set.");
     }

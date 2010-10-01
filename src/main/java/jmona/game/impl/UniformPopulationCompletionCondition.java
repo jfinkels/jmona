@@ -46,7 +46,6 @@ public class UniformPopulationCompletionCondition<T, E extends PopulationEvoluti
    *         contains only individuals of one class.
    * @see jmona.CompletionCondition#execute(jmona.EvolutionContext)
    */
-  @SuppressWarnings("unchecked")
   @Override
   public Boolean execute(final E context) {
 
@@ -54,6 +53,7 @@ public class UniformPopulationCompletionCondition<T, E extends PopulationEvoluti
     final List<T> population = context.currentPopulation();
 
     // get a class for comparison with classes of the rest of the population
+    @SuppressWarnings("unchecked")
     final Class<T> someClass = (Class<T>) population.get(0).getClass();
 
     // iterate over every individual in the population

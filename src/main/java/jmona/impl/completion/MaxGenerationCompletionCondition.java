@@ -30,6 +30,8 @@ import jmona.EvolutionContext;
  * @param <T>
  *          The type of individual in the EvolutionContext to check for
  *          completion.
+ * @param <E>
+ *          The type of EvolutionContext which this Condition checks.
  * @since 0.4
  */
 public class MaxGenerationCompletionCondition<T, E extends EvolutionContext<T>>

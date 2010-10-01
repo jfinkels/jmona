@@ -32,6 +32,9 @@ import java.util.Vector;
 
 import jmona.impl.ListUtils;
 
+import org.apache.commons.math.random.MersenneTwister;
+import org.apache.commons.math.random.RandomData;
+import org.apache.commons.math.random.RandomDataImpl;
 import org.junit.Test;
 
 /**
@@ -64,6 +67,44 @@ public class RandomUtilsTester {
     Object choice = null;
     for (int i = 0; i < NUM_TESTS; ++i) {
       choice = RandomUtils.choice(set);
+
+      if (selectionsMap.containsKey(choice)) {
+        selectionsMap.put(choice, selectionsMap.get(choice) + 1);
+      } else {
+        selectionsMap.put(choice, 1);
+      }
+    }
+
+    int sum = 0;
+    for (final Integer selections : selectionsMap.values()) {
+      sum += selections;
+    }
+
+    final double meanSelections = (double) sum / selectionsMap.size();
+
+    final double delta = meanSelections * 0.1;
+
+    for (final Integer selection : selectionsMap.values()) {
+      assertEquals(meanSelections, selection, delta);
+    }
+  }
+
+  /**
+   * Test method for {@link jmona.random.RandomUtils#choice(Object[])}.
+   */
+  @Test
+  public void testChoiceArray() {
+    final Object object1 = new Object();
+    final Object object2 = new Object();
+    final Object object3 = new Object();
+
+    final Object[] array = new Object[] {object1, object2, object3};
+
+    final Map<Object, Integer> selectionsMap = new HashMap<Object, Integer>();
+
+    Object choice = null;
+    for (int i = 0; i < NUM_TESTS; ++i) {
+      choice = RandomUtils.choice(array);
 
       if (selectionsMap.containsKey(choice)) {
         selectionsMap.put(choice, selectionsMap.get(choice) + 1);
@@ -206,15 +247,15 @@ public class RandomUtilsTester {
 
     assertEquals(expected, count1, delta);
     assertEquals(expected, count2, delta);
-    
+
     final Map<Object, Integer> counts = new HashMap<Object, Integer>();
     counts.put(o1, 0);
     counts.put(o2, 0);
     for (int i = 0; i < NUM_TESTS; ++i) {
       sample = RandomUtils.sampleWithReplacement(list, 2);
-      
+
       assertEquals(2, sample.size());
-      
+
       final Map<Object, Integer> newCounts = ListUtils.count(sample);
       for (final Object object : newCounts.keySet()) {
         counts.put(object, counts.get(object) + newCounts.get(object));
@@ -231,6 +272,16 @@ public class RandomUtilsTester {
   @Test
   public void testRandomUtils() {
     new RandomUtils();
+  }
+
+  /**
+   * Test method for {@link jmona.random.RandomUtils#setRandomData(RandomData)}.
+   */
+  @Test
+  public void testSetRandomData() {
+    final RandomData newRandomData = new RandomDataImpl(new MersenneTwister());
+    RandomUtils.setRandomData(newRandomData);
+    assertSame(newRandomData, RandomUtils.randomData());
   }
 
 }

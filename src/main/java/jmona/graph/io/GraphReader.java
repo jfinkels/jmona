@@ -31,7 +31,7 @@ import jmona.MetricException;
 import jmona.impl.ArrayUtils;
 import jmona.impl.metrics.EuclideanVectorMetric;
 import jmona.io.LineReader;
-import jmona.io.SplitOnWhitespace;
+import jmona.io.SplitOnColon;
 import joptsimple.internal.Strings;
 
 import org.apache.log4j.Logger;
@@ -55,11 +55,11 @@ import org.apache.log4j.Logger;
 public class GraphReader {
 
   /** The comment identifier. */
-  public static final String COMMENT = "COMMENT:";
+  public static final String COMMENT = "COMMENT";
   /** The dimension identifier. */
-  public static final String DIMENSION = "DIMENSION:";
+  public static final String DIMENSION = "DIMENSION";
   /** The edge weight type identifier. */
-  public static final String EDGE_WEIGHT_TYPE = "EDGE_WEIGHT_TYPE:";
+  public static final String EDGE_WEIGHT_TYPE = "EDGE_WEIGHT_TYPE";
   /** The end-of-file identifier. */
   public static final String EOF = "EOF";
   /** The Logger for this class. */
@@ -68,11 +68,11 @@ public class GraphReader {
   /** The Euclidean metric for <em><b>R</b><sup>n</sup></em>. */
   private static final EuclideanVectorMetric<Double> METRIC = new EuclideanVectorMetric<Double>();
   /** The graph name identifier. */
-  public static final String NAME = "NAME:";
+  public static final String NAME = "NAME";
   /** The vertex coordinate section identifier. */
   public static final String NODE_COORD_SECTION = "NODE_COORD_SECTION";
   /** The graph type identifier. */
-  public static final String TYPE = "TYPE:";
+  public static final String TYPE = "TYPE";
 
   /**
    * Gets the adjacency matrix representing distances between vertices with
@@ -139,7 +139,7 @@ public class GraphReader {
     LOG.debug("Reading from file " + file);
 
     // get all lines, split on whitespace
-    final List<String[]> allLines = Functional.map(new SplitOnWhitespace(),
+    final List<String[]> allLines = Functional.map(new SplitOnColon(),
         LineReader.readLines(file));
 
     // create a list of coordinates for each of the vertices in the graph
@@ -148,10 +148,9 @@ public class GraphReader {
     // iterate over each line in the file
     boolean nodeCoordSection = false;
     for (final String[] line : allLines) {
-
       // get the first word in the line, for determining what metadata is on
       // this line, if any
-      final String key = line[0];
+      final String key = line[0].trim();
 
       // get the remaining words in the line
       final String[] remaining = ArrayUtils.slice(line, 1, line.length);
@@ -181,7 +180,7 @@ public class GraphReader {
       } else {
 
         // join the remaining words on the line
-        final String remainingString = Strings.join(remaining, " ");
+        final String remainingString = Strings.join(remaining, " ").trim();
 
         if (key.equals(NAME)) {
           LOG.debug("Graph name: " + remainingString);

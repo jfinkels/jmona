@@ -28,7 +28,7 @@ import jfcommon.test.AbstractExceptionTest;
  * @since 0.3
  */
 public class ComparisonExceptionTester extends AbstractExceptionTest {
-  /** Instantiates this test class for the AlreadyVisitedException. */
+  /** Instantiates this test class for the ComparisonException. */
   public ComparisonExceptionTester() {
     super(ComparisonException.class);
   }

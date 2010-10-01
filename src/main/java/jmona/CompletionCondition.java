@@ -28,6 +28,8 @@ import jfcommon.functional.Predicate;
  * @param <T>
  *          The type of the individual in the evolution whose completion
  *          criteria this object encapsulates.
+ * @param <E>
+ *          The type of EvolutionContext which this Condition checks.
  * @author Jeffrey Finkelstein
  * @since 0.1
  */

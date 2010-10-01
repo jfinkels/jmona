@@ -115,8 +115,6 @@ public class MonaGAFitnessFunctionTester {
     individual.add(polygon1);
     individual.add(polygon2);
 
-    System.out.println(individual);
-
     double fitness = 0.0;
     try {
       fitness = function.rawFitness(individual);

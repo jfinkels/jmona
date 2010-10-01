@@ -1,5 +1,5 @@
 /**
- * SplitOnWhitespace.java
+ * SplitOnColon.java
  * 
  * Copyright 2010 Jeffrey Finkelstein
  * 
@@ -22,31 +22,26 @@ package jmona.io;
 import jfcommon.functional.Function;
 
 /**
- * Splits a string on whitespace characters (similar to Python's built-in <a
- * href
+ * Splits a string on colon characters (similar to Python's built-in <a href
  * ="http://docs.python.org/library/stdtypes.html#str.split">string.split()</a>
- * method, when called with no arguments).
+ * method, when called with the argument ':').
  * 
  * @author Jeffrey Finkelstein
- * @since 0.3
+ * @since 0.5
  */
-public class SplitOnWhitespace implements Function<String, String[]> {
-
-  /** A regular expression matching any whitespace character. */
-  public static final String WHITESPACE = "\\s+";
+public class SplitOnColon implements Function<String, String[]> {
 
   /**
-   * Returns an array of words in the specified input String, split on
-   * whitespace.
+   * Returns an array of words in the specified input String, split on colons.
    * 
    * @param input
-   *          The String to split on whitespace.
-   * @return The words of the specified input String split on whitespace.
+   *          The String to split on colons.
+   * @return The words of the specified input String split on colons.
    * @see jfcommon.functional.Function#execute(java.lang.Object)
    */
   @Override
   public String[] execute(final String input) {
-    return input.trim().split(WHITESPACE);
+    return input.trim().split(":");
   }
 
 }

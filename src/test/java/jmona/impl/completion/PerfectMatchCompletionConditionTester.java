@@ -27,8 +27,7 @@ import java.util.Vector;
 
 import jfcommon.test.TestUtils;
 import jmona.FitnessException;
-import jmona.GeneticEvolutionContext;
-import jmona.ga.impl.GAEvolutionContext;
+import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;
 
@@ -46,7 +45,7 @@ public class PerfectMatchCompletionConditionTester {
   /** The completion criteria under test. */
   private PerfectMatchCompletionCondition<ExampleIndividual, GeneticEvolutionContext<ExampleIndividual>> completionCriteria = null;
   /** The evolution context on which to test the completion criteria. */
-  private GeneticEvolutionContext<ExampleIndividual> evolutionContext = null;
+  private ExampleEvolutionContext evolutionContext = null;
   /** The population in the evolution context. */
   private List<ExampleIndividual> population = null;
 
@@ -59,8 +58,7 @@ public class PerfectMatchCompletionConditionTester {
     this.population.add(new ExampleIndividual(1));
     this.population.add(new ExampleIndividual(2));
 
-    this.evolutionContext = new GAEvolutionContext<ExampleIndividual>(
-        this.population);
+    this.evolutionContext = new ExampleEvolutionContext(this.population);
 
     try {
       this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());

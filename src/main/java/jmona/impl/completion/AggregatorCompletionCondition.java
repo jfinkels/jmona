@@ -37,6 +37,8 @@ import jmona.impl.UnmodifiableCollectionAggregator;
  * @param <T>
  *          The type of individual in the EvolutionContext to check for
  *          completion.
+ * @param <E>
+ *          The type of EvolutionContext which this Condition checks.
  * @since 0.4
  */
 public class AggregatorCompletionCondition<T, E extends EvolutionContext<T>>
@@ -81,7 +83,7 @@ public class AggregatorCompletionCondition<T, E extends EvolutionContext<T>>
    * @return Whether the specified EvolutionContext satisfies any of the
    *         CompletionConditions specified in the constructor of this class.
    * @throws CompletionException
-   *           If any of the CompletionConditions throws a MappingException.
+   *           If any of the CompletionConditions throws a CompletionException.
    * @see jfcommon.functional.Function#execute(java.lang.Object)
    */
   @Override

@@ -61,11 +61,10 @@ public class ClassCountingProcessor<T, E extends PopulationEvolutionContext<T>>
 
     List<Class<?>> classes = null;
     try {
-      classes = Functional.map(new ToClass<T>(),
-          ((PopulationEvolutionContext<T>) context).currentPopulation());
+      classes = Functional.map(new ToClass<T>(), context.currentPopulation());
     } catch (final MappingException exception) {
-      throw new LoggingException(
-          "Failed to determine classes of individuals.", exception);
+      throw new LoggingException("Failed to determine classes of individuals.",
+          exception);
     }
 
     return ListUtils.count(classes).toString();
