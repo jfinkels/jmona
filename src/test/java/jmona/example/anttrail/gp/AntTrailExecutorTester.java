@@ -20,6 +20,7 @@
 package jmona.example.anttrail.gp;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
 import jmona.example.anttrail.Ant;
@@ -27,6 +28,7 @@ import jmona.example.anttrail.DefaultAnt;
 import jmona.example.anttrail.Trail;
 import jmona.example.anttrail.nodes.DoEachNode;
 import jmona.example.anttrail.nodes.MoveForwardNode;
+import jmona.gp.ExecutionException;
 import jmona.gp.Tree;
 import jmona.gp.impl.DefaultTree;
 
@@ -72,6 +74,13 @@ public class AntTrailExecutorTester {
       assertEquals(3, executor.execute(tree).intValue());
     } catch (final MappingException exception) {
       TestUtils.fail(exception);
+    }
+
+    try {
+      executor.execute(new DefaultTree(new BadAntNode(ant)));
+      TestUtils.shouldHaveThrownException();
+    } catch (final MappingException exception) {
+      assertTrue(exception.getCause() instanceof ExecutionException);
     }
   }
 

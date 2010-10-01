@@ -20,6 +20,8 @@
 package jmona.example.anttrail.gp;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
 import jmona.FitnessException;
 import jmona.example.anttrail.Ant;
@@ -88,6 +90,13 @@ public class AntTrailFitnessFunctionTester {
       assertEquals(3, function.rawFitness(tree), ZERO_DELTA);
     } catch (final FitnessException exception) {
       TestUtils.fail(exception);
+    }
+    
+    try {
+      function.rawFitness(new DefaultTree(new BadAntNode(ant)));
+      TestUtils.shouldHaveThrownException();
+    } catch (final FitnessException exception) {
+      assertTrue(exception.getCause() instanceof MappingException);
     }
   }
 
