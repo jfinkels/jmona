@@ -81,7 +81,7 @@
   <module name="NewlineAtEndOfFile"/>
   <module name="Translation"/>
   <module name="RegexpHeader">
-    <property name="headerFile" value="header_template.txt"/>
+    <property name="headerFile" value="misc/header_template.txt"/>
     <property name="multiLines" value="1"/>
   </module>
 </module>
