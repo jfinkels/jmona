@@ -168,10 +168,10 @@ public class AbstractGeneticEvolutionContextTester {
    */
   @Test
   public void testCurrentAdjustedFitnesses() {
-    assertEquals(1 / (1 + individual1.fitness()), this.context
-        .currentAdjustedFitnesses().get(individual1).doubleValue(), ZERO_DELTA);
-    assertEquals(1 / (1 + individual2.fitness()), this.context
-        .currentAdjustedFitnesses().get(individual2).doubleValue(), ZERO_DELTA);
+    assertEquals(1 / (1 + this.individual1.fitness()), this.context
+        .currentAdjustedFitnesses().get(this.individual1).doubleValue(), ZERO_DELTA);
+    assertEquals(1 / (1 + this.individual2.fitness()), this.context
+        .currentAdjustedFitnesses().get(this.individual2).doubleValue(), ZERO_DELTA);
   }
 
   /**

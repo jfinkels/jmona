@@ -27,6 +27,7 @@ import java.util.Vector;
 
 import jfcommon.test.TestUtils;
 import jmona.FitnessException;
+import jmona.GeneticEvolutionContext;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
 import jmona.impl.example.ExampleIndividual;

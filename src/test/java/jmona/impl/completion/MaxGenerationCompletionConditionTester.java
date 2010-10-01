@@ -26,6 +26,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import jfcommon.test.TestUtils;
+import jmona.EvolutionContext;
 import jmona.EvolutionException;
 import jmona.FitnessException;
 import jmona.impl.example.ExampleEvolutionContext;
@@ -80,7 +81,7 @@ public class MaxGenerationCompletionConditionTester {
 
     final MaxGenerationCompletionCondition<ExampleIndividual, EvolutionContext<ExampleIndividual>> criteria = new MaxGenerationCompletionCondition<ExampleIndividual, EvolutionContext<ExampleIndividual>>(
         0);
-    assertTrue(criteria.execute(context));
+    assertTrue(criteria.execute(this.context));
 
   }
 
