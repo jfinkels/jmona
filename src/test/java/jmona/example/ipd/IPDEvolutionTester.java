@@ -59,7 +59,7 @@ public class IPDEvolutionTester<S extends DeepCopyable<S> & Strategy> {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<S> completionCondition = null;
+  private CompletionCondition<S, PopulationEvolutionContext<S>> completionCondition = null;
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
@@ -78,8 +78,8 @@ public class IPDEvolutionTester<S extends DeepCopyable<S> & Strategy> {
 
         for (final S strategy : this.context.currentPopulation()) {
           if (results.containsKey(strategy.getClass())) {
-            results.put((Class<S>) strategy.getClass(), results.get(strategy
-                .getClass()) + 1);
+            results.put((Class<S>) strategy.getClass(),
+                results.get(strategy.getClass()) + 1);
           } else {
             results.put((Class<S>) strategy.getClass(), 1);
           }

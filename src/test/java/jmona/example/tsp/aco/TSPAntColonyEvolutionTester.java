@@ -24,8 +24,8 @@ import jfcommon.test.TestUtils;
 import jmona.CompletionCondition;
 import jmona.EvolutionException;
 import jmona.PopulationEvolutionContext;
-import jmona.Processor;
 import jmona.ProcessingException;
+import jmona.Processor;
 import jmona.aco.impl.WorkerAnt;
 
 import org.junit.Test;
@@ -51,7 +51,7 @@ public class TSPAntColonyEvolutionTester {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<WorkerAnt> completionCondition = null;
+  private CompletionCondition<WorkerAnt, PopulationEvolutionContext<WorkerAnt>> completionCondition = null;
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
   private PopulationEvolutionContext<WorkerAnt> context = null;

@@ -96,7 +96,7 @@ public class OnesEvolutionTester {
 
     int maxGenerations = 20;
 
-    MaxGenerationCompletionCondition<DeepCopyableList<MutableByte>> condition = new MaxGenerationCompletionCondition<DeepCopyableList<MutableByte>>();
+    MaxGenerationCompletionCondition<DeepCopyableList<MutableByte>, GeneticEvolutionContext<DeepCopyableList<MutableByte>>> condition = new MaxGenerationCompletionCondition<DeepCopyableList<MutableByte>, GeneticEvolutionContext<DeepCopyableList<MutableByte>>>();
     condition.setMaxGenerations(maxGenerations);
 
     try {

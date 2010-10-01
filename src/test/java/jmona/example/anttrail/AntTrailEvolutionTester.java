@@ -50,7 +50,7 @@ public class AntTrailEvolutionTester {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<Tree> completionCondition = null;
+  private CompletionCondition<Tree, GeneticEvolutionContext<Tree>> completionCondition = null;
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired
   private GeneticEvolutionContext<Tree> context = null;

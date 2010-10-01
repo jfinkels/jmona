@@ -54,7 +54,7 @@ public class OnesEvolutionTester {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<DeepCopyableList<MutableByte>> completionCondition = null;
+  private CompletionCondition<DeepCopyableList<MutableByte>, PopulationEvolutionContext<DeepCopyableList<MutableByte>>> completionCondition = null;
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired

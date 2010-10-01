@@ -25,7 +25,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Vector;
 
-import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
 import jmona.FitnessException;
 import jmona.GeneticEvolutionContext;
@@ -45,7 +44,7 @@ import org.junit.Test;
 public class PerfectMatchCompletionConditionTester {
 
   /** The completion criteria under test. */
-  private PerfectMatchCompletionCondition<ExampleIndividual> completionCriteria = null;
+  private PerfectMatchCompletionCondition<ExampleIndividual, GeneticEvolutionContext<ExampleIndividual>> completionCriteria = null;
   /** The evolution context on which to test the completion criteria. */
   private GeneticEvolutionContext<ExampleIndividual> evolutionContext = null;
   /** The population in the evolution context. */
@@ -54,7 +53,7 @@ public class PerfectMatchCompletionConditionTester {
   /** Establish a fixture for tests in this class. */
   @Before
   public final void setUp() {
-    this.completionCriteria = new PerfectMatchCompletionCondition<ExampleIndividual>();
+    this.completionCriteria = new PerfectMatchCompletionCondition<ExampleIndividual, GeneticEvolutionContext<ExampleIndividual>>();
 
     this.population = new Vector<ExampleIndividual>();
     this.population.add(new ExampleIndividual(1));
@@ -83,8 +82,6 @@ public class PerfectMatchCompletionConditionTester {
       this.population.add(new ExampleIndividual(0));
       this.evolutionContext.setFitnessFunction(new ExampleFitnessFunction());
       assertTrue(this.completionCriteria.execute(this.evolutionContext));
-    } catch (final MappingException exception) {
-      TestUtils.fail(exception);
     } catch (final FitnessException exception) {
       TestUtils.fail(exception);
     }

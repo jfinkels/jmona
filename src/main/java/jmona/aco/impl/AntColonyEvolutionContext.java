@@ -49,7 +49,7 @@ public class AntColonyEvolutionContext<A extends Ant> extends
   public static final double DEFAULT_TRAIL_PERSISTENCE = 0.5;
 
   /** The completion condition for the TourEvolutionContext. */
-  private final MaxGenerationCompletionCondition<A> condition = new MaxGenerationCompletionCondition<A>();
+  private final MaxGenerationCompletionCondition<A, TourEvolutionContext<A>> condition = new MaxGenerationCompletionCondition<A, TourEvolutionContext<A>>();
   /** The graph on which the Ants in this evolution live. */
   private final PheromoneDirectedGraph<Integer, Double> graph;
   /** The number of vertices in the graph. */

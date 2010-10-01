@@ -54,7 +54,7 @@ public class TSPEvolutionTester {
    * configuration file.
    */
   @Autowired
-  private CompletionCondition<DeepCopyableList<MutableInteger>> completionCondition = null;
+  private CompletionCondition<DeepCopyableList<MutableInteger>, PopulationEvolutionContext<DeepCopyableList<MutableInteger>>> completionCondition = null;
 
   /** Get the evolution context from the Spring XML configuration file. */
   @Autowired

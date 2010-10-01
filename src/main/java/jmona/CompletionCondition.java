@@ -31,7 +31,8 @@ import jfcommon.functional.Predicate;
  * @author Jeffrey Finkelstein
  * @since 0.1
  */
-public interface CompletionCondition<T> extends Predicate<EvolutionContext<T>> {
+public interface CompletionCondition<T, E extends EvolutionContext<T>> extends
+    Predicate<E> {
 
   /**
    * Whether the evolution of the specified EvolutionContext should complete.
@@ -45,6 +46,5 @@ public interface CompletionCondition<T> extends Predicate<EvolutionContext<T>> {
    *           satisfied.
    */
   @Override
-  Boolean execute(final EvolutionContext<T> context)
-      throws CompletionException;
+  Boolean execute(final E context) throws CompletionException;
 }

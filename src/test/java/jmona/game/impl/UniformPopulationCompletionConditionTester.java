@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Vector;
 
 import jfcommon.test.TestUtils;
-import jmona.CompletionException;
 import jmona.FitnessException;
 import jmona.impl.example.ExampleEvolutionContext;
 import jmona.impl.example.ExampleFitnessFunction;
@@ -49,7 +48,7 @@ public class UniformPopulationCompletionConditionTester {
    */
   @Test
   public void testExecute() {
-    final UniformPopulationCompletionCondition<ExampleIndividual> criteria = new UniformPopulationCompletionCondition<ExampleIndividual>();
+    final UniformPopulationCompletionCondition<ExampleIndividual, ExampleEvolutionContext> criteria = new UniformPopulationCompletionCondition<ExampleIndividual, ExampleEvolutionContext>();
 
     final List<ExampleIndividual> population = new Vector<ExampleIndividual>();
     population.add(new ExampleIndividual(1));
@@ -63,21 +62,13 @@ public class UniformPopulationCompletionConditionTester {
       TestUtils.fail(exception);
     }
 
-    try {
-      assertTrue(criteria.execute(context));
-    } catch (final CompletionException exception) {
-      TestUtils.fail(exception);
-    }
+    assertTrue(criteria.execute(context));
 
     population.add(new ExampleIndividual(1) {
       // intentionally unimplemented
     });
 
-    try {
-      assertFalse(criteria.execute(context));
-    } catch (final CompletionException exception) {
-      TestUtils.fail(exception);
-    }
+    assertFalse(criteria.execute(context));
 
   }
 }

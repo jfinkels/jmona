@@ -50,11 +50,11 @@ public class AggregatorCompletionConditionTester {
    */
   @Test
   public void testAggregatorCompletionCondition() {
-    final MaxGenerationCompletionCondition<ExampleIndividual> condition1 = new MaxGenerationCompletionCondition<ExampleIndividual>();
+    final MaxGenerationCompletionCondition<ExampleIndividual, ExampleEvolutionContext> condition1 = new MaxGenerationCompletionCondition<ExampleIndividual, ExampleEvolutionContext>();
     condition1.setMaxGenerations(2);
-    final PerfectMatchCompletionCondition<ExampleIndividual> condition2 = new PerfectMatchCompletionCondition<ExampleIndividual>();
+    final PerfectMatchCompletionCondition<ExampleIndividual, ExampleEvolutionContext> condition2 = new PerfectMatchCompletionCondition<ExampleIndividual, ExampleEvolutionContext>();
     @SuppressWarnings("unchecked")
-    final AggregatorCompletionCondition<ExampleIndividual> condition = new AggregatorCompletionCondition<ExampleIndividual>(
+    final AggregatorCompletionCondition<ExampleIndividual, ExampleEvolutionContext> condition = new AggregatorCompletionCondition<ExampleIndividual, ExampleEvolutionContext>(
         condition1, condition2);
 
     final List<ExampleIndividual> population = new Vector<ExampleIndividual>();

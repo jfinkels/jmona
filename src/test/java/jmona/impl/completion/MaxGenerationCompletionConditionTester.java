@@ -52,9 +52,8 @@ public class MaxGenerationCompletionConditionTester {
     final EvolutionContext<ExampleIndividual> context = new GAEvolutionContext<ExampleIndividual>(
         population);
 
-    final MaxGenerationCompletionCondition<ExampleIndividual> criteria = new MaxGenerationCompletionCondition<ExampleIndividual>();
-
-    criteria.setMaxGenerations(0);
+    final MaxGenerationCompletionCondition<ExampleIndividual, EvolutionContext<ExampleIndividual>> criteria = new MaxGenerationCompletionCondition<ExampleIndividual, EvolutionContext<ExampleIndividual>>(
+        0);
     assertTrue(criteria.execute(context));
 
     criteria.setMaxGenerations(2);

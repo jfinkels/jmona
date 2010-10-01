@@ -39,9 +39,9 @@ import jmona.impl.UnmodifiableCollectionAggregator;
  *          completion.
  * @since 0.4
  */
-public class AggregatorCompletionCondition<T> extends
-    UnmodifiableCollectionAggregator<CompletionCondition<T>> implements
-    CompletionCondition<T> {
+public class AggregatorCompletionCondition<T, E extends EvolutionContext<T>>
+    extends UnmodifiableCollectionAggregator<CompletionCondition<T, E>>
+    implements CompletionCondition<T, E> {
 
   /**
    * Instantiates this class with the specified varargs array of
@@ -52,7 +52,7 @@ public class AggregatorCompletionCondition<T> extends
    *          time this Condition is executed.
    */
   public AggregatorCompletionCondition(
-      final CompletionCondition<T>... initialConditions) {
+      final CompletionCondition<T, E>... initialConditions) {
     super(initialConditions);
   }
 
@@ -65,7 +65,7 @@ public class AggregatorCompletionCondition<T> extends
    *          Condition is executed.
    */
   public AggregatorCompletionCondition(
-      final Collection<CompletionCondition<T>> initialConditions) {
+      final Collection<CompletionCondition<T, E>> initialConditions) {
     super(initialConditions);
   }
 
@@ -85,10 +85,9 @@ public class AggregatorCompletionCondition<T> extends
    * @see jfcommon.functional.Function#execute(java.lang.Object)
    */
   @Override
-  public Boolean execute(final EvolutionContext<T> input)
-      throws CompletionException {
+  public Boolean execute(final E input) throws CompletionException {
 
-    for (final CompletionCondition<T> condition : this.collection()) {
+    for (final CompletionCondition<T, E> condition : this.collection()) {
       if (condition.execute(input)) {
         return true;
       }

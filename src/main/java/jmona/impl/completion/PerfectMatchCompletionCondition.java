@@ -19,12 +19,8 @@
  */
 package jmona.impl.completion;
 
-import java.util.Map;
-
 import jmona.CompletionCondition;
-import jmona.CompletionException;
 import jmona.DeepCopyable;
-import jmona.EvolutionContext;
 import jmona.GeneticEvolutionContext;
 
 /**
@@ -38,8 +34,8 @@ import jmona.GeneticEvolutionContext;
  *          completion.
  * @since 0.4
  */
-public class PerfectMatchCompletionCondition<T extends DeepCopyable<T>>
-    implements CompletionCondition<T> {
+public class PerfectMatchCompletionCondition<T extends DeepCopyable<T>, E extends GeneticEvolutionContext<T>>
+    implements CompletionCondition<T, E> {
 
   /** The optimal adjusted fitness for an individual. */
   public static final double PERFECT_FITNESS = 1.0;
@@ -50,23 +46,10 @@ public class PerfectMatchCompletionCondition<T extends DeepCopyable<T>>
    * 
    * @param context
    *          {@inheritDoc}
-   * @throws CompletionException
-   *           If the specified context is not a GeneticEvolutionContext
    * @see jmona.CompletionCondition#execute(jmona.EvolutionContext)
    */
   @Override
-  public Boolean execute(final EvolutionContext<T> context)
-      throws CompletionException {
-
-    if (!(context instanceof GeneticEvolutionContext<?>)) {
-      throw new CompletionException(
-          "Cannot get a fitness function from the EvolutionContext unless it is a GeneticEvolutionContext. Class of EvolutionContext is "
-              + context.getClass());
-    }
-
-    final Map<T, Double> fitnesses = ((GeneticEvolutionContext<T>) context)
-        .currentAdjustedFitnesses();
-
-    return fitnesses.containsValue(PERFECT_FITNESS);
+  public Boolean execute(final E context) {
+    return context.currentAdjustedFitnesses().containsValue(PERFECT_FITNESS);
   }
 }
