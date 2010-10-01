@@ -33,7 +33,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ CachingFitnessFunctionTester.class,
     KnownExtremumFitnessFunctionTester.class,
     MaximizingFitnessFunctionTester.class,
-    MinimizingFitnessFunctionTester.class })
+    MinimizingFitnessFunctionTester.class, NormFitnessFunctionTester.class })
 public class AllTest {
   // intentionally unimplemented
 }
