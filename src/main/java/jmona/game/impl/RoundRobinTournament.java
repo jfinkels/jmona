@@ -78,7 +78,8 @@ public class RoundRobinTournament<S extends Strategy> implements
    * @return The Strategy with the greatest cumulative score after the
    *         round-robin tournament of the specified game is complete.
    * @throws SelectionException
-   *           If there is a problem during gameplay.
+   *           If there is a problem during gameplay, or if the tournament size
+   *           is less than 1 or greater than the size of the input population.
    * @see jmona.game.TournamentGameSelection#select(List, TwoPlayerGame)
    */
   @Override
@@ -88,12 +89,11 @@ public class RoundRobinTournament<S extends Strategy> implements
     // get a random subset of competitors to compete in the round-robin tourn.
     List<S> competitors = null;
     try {
-      competitors = RandomUtils.sample(population,
-          this.tournamentSize);
+      competitors = RandomUtils.sample(population, this.tournamentSize);
     } catch (final IllegalArgumentException exception) {
       throw new SelectionException(
-          "Tournament size must be less than or equal to the total size of the population.",
-          exception);
+          "Tournament size must be greater than 0 and at most the total size of the population (was "
+              + this.tournamentSize + ").", exception);
     }
 
     // initialize the score of each strategy to 0
@@ -107,17 +107,17 @@ public class RoundRobinTournament<S extends Strategy> implements
       // iterate over each pair of competitors once
       TwoPlayerGameResult<S> result = null;
       for (final S competitor1 : competitors) {
-        for (final S competitor2 : competitors.subList(competitors
-            .indexOf(competitor1), competitors.size())) {
+        for (final S competitor2 : competitors.subList(
+            competitors.indexOf(competitor1), competitors.size())) {
 
           // play these two competitors
           result = game.play(competitor1, competitor2);
 
           // add the score of this game to their cumulative scores
-          scores.put(competitor1, scores.get(competitor1)
-              + result.scoreOfStrategy1());
-          scores.put(competitor2, scores.get(competitor2)
-              + result.scoreOfStrategy2());
+          scores.put(competitor1,
+              scores.get(competitor1) + result.scoreOfStrategy1());
+          scores.put(competitor2,
+              scores.get(competitor2) + result.scoreOfStrategy2());
 
           // reset the strategies to their initial state
           competitor1.reset();

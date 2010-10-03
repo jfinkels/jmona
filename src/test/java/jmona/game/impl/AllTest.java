@@ -31,7 +31,8 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses({ ClassCountingProcessorTester.class,
-    DefaultTwoPlayerGameResultTester.class, TwoPlayerGameEvolutionContextTester.class,
+    DefaultTwoPlayerGameResultTester.class, RoundRobinTournamentTester.class,
+    TwoPlayerGameEvolutionContextTester.class,
     UniformPopulationCompletionConditionTester.class })
 public class AllTest {
   // intentionally unimplemented
