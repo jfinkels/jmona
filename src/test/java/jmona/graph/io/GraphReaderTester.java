@@ -30,7 +30,6 @@ import jfcommon.functional.MappingException;
 import jfcommon.test.TestUtils;
 import jmona.MetricException;
 
-import org.apache.log4j.Logger;
 import org.junit.Test;
 
 /**
