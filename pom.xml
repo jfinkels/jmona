@@ -126,7 +126,7 @@
     <version.plugin.versions>1.2</version.plugin.versions>
     
     <!-- SCM provider versions -->
-    <version.scm.git>1.3</version.scm.git>
+    <version.scm.git>${version.plugin.scm}</version.scm.git>
     
     <!-- wagon provider versions -->
     <version.wagon.ssh>1.0-beta-6</version.wagon.ssh>
