@@ -27,9 +27,8 @@ import jmona.DeepCopyable;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class MutableLong extends
-    org.apache.commons.lang3.mutable.MutableLong implements
-    DeepCopyable<MutableLong> {
+public class MutableLong extends org.apache.commons.lang.mutable.MutableLong
+    implements DeepCopyable<MutableLong> {
 
   /** Default generated serial version UID. */
   private static final long serialVersionUID = -270777759872744946L;

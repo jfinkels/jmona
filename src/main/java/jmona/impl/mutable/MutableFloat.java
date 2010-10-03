@@ -27,7 +27,7 @@ import jmona.DeepCopyable;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class MutableFloat extends org.apache.commons.lang3.mutable.MutableFloat
+public class MutableFloat extends org.apache.commons.lang.mutable.MutableFloat
     implements DeepCopyable<MutableFloat> {
 
   /** Default generated serial version UID. */

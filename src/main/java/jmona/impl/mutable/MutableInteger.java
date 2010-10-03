@@ -27,7 +27,7 @@ import jmona.DeepCopyable;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class MutableInteger extends org.apache.commons.lang3.mutable.MutableInt
+public class MutableInteger extends org.apache.commons.lang.mutable.MutableInt
     implements DeepCopyable<MutableInteger> {
 
   /** Default generated serial version UID. */

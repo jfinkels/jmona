@@ -21,7 +21,7 @@ package jmona.io;
 
 import static org.junit.Assert.assertArrayEquals;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
 /**
@@ -42,8 +42,7 @@ public class SplitOnColonTester {
   public static final String[] PIECES = new String[] { PIECE1, PIECE2, PIECE3 };
 
   /**
-   * Test method for
-   * {@link jmona.io.SplitOnColon#execute(java.lang.String)}.
+   * Test method for {@link jmona.io.SplitOnColon#execute(java.lang.String)}.
    */
   @Test
   public void testExecute() {

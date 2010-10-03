@@ -19,8 +19,8 @@
     </dependency>
 
     <dependency> <!-- Apache Commons lang, for mutable primitive wrappers -->
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
       <version>${version.dependency.lang}</version>
       <scope>compile</scope>
       <type>jar</type>
@@ -91,7 +91,7 @@
     <version.dependency.jfcommon.test>0.1</version.dependency.jfcommon.test>
     <version.dependency.jopt-simple>3.2</version.dependency.jopt-simple>
     <version.dependency.junit>4.8.1</version.dependency.junit>
-    <version.dependency.lang>3.0-SNAPSHOT</version.dependency.lang>
+    <version.dependency.lang>2.5</version.dependency.lang>
     <version.dependency.log4j>1.2.14</version.dependency.log4j>
     <version.dependency.math>2.1</version.dependency.math>
     <version.dependency.spring>3.0.4.RELEASE</version.dependency.spring>
@@ -500,7 +500,7 @@
         <enabled>true</enabled>      
       </snapshots>
     </repository>
-    <repository> <!-- apache commons repo, to get commons-lang 3 -->
+    <!-- <repository> apache commons repo, to get commons-lang 3
       <releases>
         <enabled>true</enabled>
         <updatePolicy>daily</updatePolicy>
@@ -515,7 +515,7 @@
       <name>Apache Commons public repository</name>
       <url>https://repository.apache.org/content/groups/public</url>
       <layout>default</layout>
-    </repository>
+    </repository> -->
   </repositories>
 
   <!--<pluginRepositories>

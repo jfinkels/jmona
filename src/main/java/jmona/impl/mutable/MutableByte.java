@@ -27,7 +27,7 @@ import jmona.DeepCopyable;
  * @author Jeffrey Finkelstein
  * @since 0.5
  */
-public class MutableByte extends org.apache.commons.lang3.mutable.MutableByte
+public class MutableByte extends org.apache.commons.lang.mutable.MutableByte
     implements DeepCopyable<MutableByte> {
 
   /** Default generated serial version UID. */

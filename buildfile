@@ -1,5 +1,5 @@
 # Apache Commons public repository
-repositories.remote << 'https://repository.apache.org/content/groups/public'
+#repositories.remote << 'https://repository.apache.org/content/groups/public'
 
 # jmona repository
 repositories.remote << 'http://www.cs.tufts.edu/~jfinke02/repo'
@@ -14,7 +14,7 @@ define 'jmona' do
   compile.with \
   'log4j:log4j:jar:1.2.14',
   'net.sf.jopt-simple:jopt-simple:jar:3.2',
-  'org.apache.commons:commons-lang3:jar:3.0-SNAPSHOT',
+  'commons-lang:commons-lang:jar:2.5',
   'org.apache.commons:commons-math:jar:2.1',
   'jfcommon:functional:jar:0.2.1',
   transitive('org.springframework:spring-context:jar:3.0.4.RELEASE')

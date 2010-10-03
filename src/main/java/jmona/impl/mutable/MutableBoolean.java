@@ -28,7 +28,7 @@ import jmona.DeepCopyable;
  * @since 0.5
  */
 public class MutableBoolean extends
-    org.apache.commons.lang3.mutable.MutableBoolean implements
+    org.apache.commons.lang.mutable.MutableBoolean implements
     DeepCopyable<MutableBoolean> {
 
   /** Default generated serial version UID. */

@@ -28,7 +28,7 @@ import jmona.DeepCopyable;
  * @since 0.5
  */
 public class MutableDouble extends
-    org.apache.commons.lang3.mutable.MutableDouble implements
+    org.apache.commons.lang.mutable.MutableDouble implements
     DeepCopyable<MutableDouble> {
 
   /** Default generated serial version UID. */
