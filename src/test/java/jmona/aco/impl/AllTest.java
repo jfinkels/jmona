@@ -33,6 +33,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ AbstractPheromoneUpdateStrategyTester.class,
     AntColonyEvolutionContextTester.class, AntCycleStrategyTester.class,
     AntDensityStrategyTester.class, AntQuantityStrategyTester.class,
+    BestAntLoggingProcessorTester.class,
     DefaultPheromoneDirectedGraphTester.class, DistanceGetterTester.class,
     PathLoggingProcessorTester.class, TourEvolutionContextTester.class,
     WorkerAntTester.class, WorkerAntVectorTester.class })
