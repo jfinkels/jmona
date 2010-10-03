@@ -31,7 +31,7 @@ import jmona.MetricException;
 import jmona.impl.ArrayUtils;
 import jmona.impl.metrics.EuclideanVectorMetric;
 import jmona.io.LineReader;
-import jmona.io.SplitOnColon;
+import jmona.io.SplitOnWhitespace;
 import joptsimple.internal.Strings;
 
 import org.apache.log4j.Logger;
@@ -86,8 +86,8 @@ public class GraphReader {
    *           If there is a problem determining the distance between some pair
    *           of vertices.
    */
-  protected static double[][] distances(final List<List<Double>> coordinatesList)
-      throws MetricException {
+  protected static double[][] distances(
+      final List<List<Double>> coordinatesList) throws MetricException {
 
     // get the number of vertices in the graph
     final int numberOfVertices = coordinatesList.size();
@@ -133,13 +133,13 @@ public class GraphReader {
    *           If there is a problem determining the distance between some pair
    *           of vertices.
    */
-  public static double[][] adjacencyMatrix(final File file) throws IOException,
-      MappingException, MetricException {
+  public static double[][] adjacencyMatrix(final File file)
+      throws IOException, MappingException, MetricException {
 
     LOG.debug("Reading from file " + file);
 
     // get all lines, split on whitespace
-    final List<String[]> allLines = Functional.map(new SplitOnColon(),
+    final List<String[]> allLines = Functional.map(new SplitOnWhitespace(),
         LineReader.readLines(file));
 
     // create a list of coordinates for each of the vertices in the graph
@@ -179,22 +179,25 @@ public class GraphReader {
 
       } else {
 
-        // join the remaining words on the line
-        final String remainingString = Strings.join(remaining, " ").trim();
-
-        if (key.equals(NAME)) {
-          LOG.debug("Graph name: " + remainingString);
-        } else if (key.equals(TYPE)) {
-          LOG.debug("Graph type: " + remainingString);
-        } else if (key.equals(COMMENT)) {
-          LOG.debug("Graph comment: " + remainingString);
-        } else if (key.equals(EDGE_WEIGHT_TYPE)) {
-          LOG.debug("Graph edge weight type: " + remainingString);
-        } else if (key.equals(DIMENSION)) {
-          LOG.debug("Number of nodes: " + remainingString);
-        } else if (key.equals(NODE_COORD_SECTION)) {
+        if (key.equals(NODE_COORD_SECTION)) {
           LOG.debug("Node coordinate section begins");
           nodeCoordSection = true;
+        } else {
+          // join the remaining words on the line (without the colon)
+          final String remainingString = Strings.join(
+              ArrayUtils.slice(remaining, 1, remaining.length), " ").trim();
+
+          if (key.equals(NAME)) {
+            LOG.debug("Graph name: " + remainingString);
+          } else if (key.equals(TYPE)) {
+            LOG.debug("Graph type: " + remainingString);
+          } else if (key.equals(COMMENT)) {
+            LOG.debug("Graph comment: " + remainingString);
+          } else if (key.equals(EDGE_WEIGHT_TYPE)) {
+            LOG.debug("Graph edge weight type: " + remainingString);
+          } else if (key.equals(DIMENSION)) {
+            LOG.debug("Number of nodes: " + remainingString);
+          }
         }
       }
 

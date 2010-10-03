@@ -42,10 +42,7 @@ import org.junit.Test;
 public class GraphReaderTester {
 
   /** The name of the file from which to read. */
-  public static final String FILENAME = "src/test/resources/jmona/example/tsp/graphs/eil51.tsp";
-  /** The Logger for this class. */
-  private static final transient Logger LOG = Logger
-      .getLogger(GraphReaderTester.class);
+  public static final String FILENAME = "src/test/resources/jmona/example/tsp/graphs/small.tsp";
   /** The file from which to read. */
   public static final File TESTFILE = new File(FILENAME);
 
@@ -86,10 +83,11 @@ public class GraphReaderTester {
   }
 
   /**
-   * Test method for {@link jmona.graph.io.GraphReader#adjacencyMatrix(java.io.File)}.
+   * Test method for
+   * {@link jmona.graph.io.GraphReader#adjacencyMatrix(java.io.File)}.
    */
   @Test
-  public void testFromFile() {
+  public void testAdjacencyMatrix() {
     double[][] adjacencyMatrix = null;
     try {
       adjacencyMatrix = GraphReader.adjacencyMatrix(TESTFILE);
@@ -101,21 +99,12 @@ public class GraphReaderTester {
       TestUtils.fail(exception);
     }
 
-    assertEquals(51, adjacencyMatrix.length);
+    assertEquals(2, adjacencyMatrix.length);
 
-    int i = 0;
-    for (final double[] vertex : adjacencyMatrix) {
-      int j = 0;
-      for (final double distance : vertex) {
-        LOG.debug("distance from " + i + " to " + j + ": " + distance);
-        if (i == j) {
-          assertEquals(0, distance, ZERO_DELTA);
-        }
-        j += 1;
-      }
-      i += 1;
-    }
-
+    assertEquals(0.0, adjacencyMatrix[0][0], 0.0);
+    assertEquals(0.0, adjacencyMatrix[0][1], 5.0);
+    assertEquals(0.0, adjacencyMatrix[1][0], 5.0);
+    assertEquals(0.0, adjacencyMatrix[1][1], 0.0);
   }
 
   /**
