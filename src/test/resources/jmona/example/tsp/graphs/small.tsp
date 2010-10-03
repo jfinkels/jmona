@@ -1,0 +1,9 @@
+NAME : small
+COMMENT : Small graph for testing.
+TYPE : TSP
+DIMENSION : 2
+EDGE_WEIGHT_TYPE : EUC_2D
+NODE_COORD_SECTION
+1 0 3
+2 4 0
+EOF
