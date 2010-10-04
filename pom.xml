@@ -484,7 +484,7 @@
   </mailingLists>
 
   <scm>
-    <connection>scm:git:git://github.com/jfinkels/jmona.git</connection>
+    <connection>scm:git:git@github.com:jfinkels/jmona.git</connection>
     <url>http://github.com/jfinkels/jmona</url>
   </scm>
 
