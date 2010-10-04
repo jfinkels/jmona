@@ -41,7 +41,7 @@ import org.junit.Test;
 public class GraphReaderTester {
 
   /** The name of the file from which to read. */
-  public static final String FILENAME = "src/test/resources/jmona/example/tsp/graphs/small.tsp";
+  public static final String FILENAME = "src/test/resources/jmona/graph/io/small.tsp";
   /** The file from which to read. */
   public static final File TESTFILE = new File(FILENAME);
 

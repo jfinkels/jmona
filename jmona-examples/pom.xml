@@ -4,9 +4,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>jmona</groupId>
-  <artifactId>jmona</artifactId>
+  <artifactId>jmona-examples</artifactId>
   <version>0.6-SNAPSHOT</version>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
 
   <parent>
     <groupId>jfcommon</groupId>
@@ -14,45 +14,74 @@
     <version>0.1.1</version>
   </parent>
 
-  <modules>
-    <module>jmona-model</module>
-    <module>jmona-examples</module>
-  </modules>
+  <dependencies>
+    <!-- COMPILE DEPENDENCIES -->    
+    <dependency><!--  Log4j API -->
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>${version.dependency.log4j}</version>
+      <scope>compile</scope>
+      <type>jar</type>
+    </dependency>
+
+    <dependency><!--  jmona model -->
+      <groupId>jmona</groupId>
+      <artifactId>jmona</artifactId>
+      <version>${version.dependency.jmona}</version>
+      <scope>compile</scope>
+      <type>jar</type>
+    </dependency>
+
+    <dependency> <!-- Functional programming tools -->
+      <groupId>jfcommon</groupId>
+      <artifactId>functional</artifactId>
+      <version>${version.dependency.jfcommon.functional}</version>
+      <scope>compile</scope>
+      <type>jar</type>
+    </dependency>
+
+    <!-- TEST-COMPILE DEPENDENCIES -->
+    <dependency> <!-- JUnit 4 unit testing framework -->
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${version.dependency.junit}</version>
+      <scope>test</scope>
+      <type>jar</type>
+    </dependency>
+    
+    <dependency> <!-- Testing utilities -->
+      <groupId>jfcommon</groupId>
+      <artifactId>test</artifactId>
+      <version>${version.dependency.jfcommon.test}</version>
+      <scope>test</scope>
+      <type>jar</type>
+    </dependency>
+
+    <dependency> <!-- Spring testing framework -->
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${version.dependency.spring}</version>
+      <scope>test</scope>
+      <type>jar</type>
+    </dependency>
+
+  </dependencies>
 
   <properties>
-    <!-- checkstyle configuration -->
-    <config.checkstyle>${basedir}/misc/checkstyle.xml</config.checkstyle>    
-
-    <!-- character encodings -->
-    <project.reporting.encoding>UTF-8</project.reporting.encoding>
-    <project.reporting.sourceEncoding>UTF-8</project.reporting.sourceEncoding>
+    <!-- dependency versions -->
+    <version.dependency.jfcommon.functional>0.2.1</version.dependency.jfcommon.functional>
+    <version.dependency.jfcommon.test>0.1</version.dependency.jfcommon.test>
+    <version.dependency.jmona>0.5</version.dependency.jmona>
+    <version.dependency.junit>4.8.1</version.dependency.junit>
+    <version.dependency.log4j>1.2.14</version.dependency.log4j>
+    <version.dependency.spring>3.0.4.RELEASE</version.dependency.spring>
   </properties>
 
-  <reporting>
-    <plugins>
-      <plugin> <!-- changelog generation from SCM -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-changelog-plugin</artifactId>
-        <configuration>
-          <displayFileDetailUrl>http://github.com/jfinkels/jmona/blob/master/</displayFileDetailUrl>
-        </configuration>
-      </plugin>
-
-      <plugin> <!-- Checkstyle coding style violations report -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <configuration>
-          <configLocation>${config.checkstyle}</configLocation>
-        </configuration>
-      </plugin>
-    </plugins>
-  </reporting>
-
-  <name>jmona</name>
+  <name>jmona-examples</name>
   <description>A Java framework for evolutionary algorithms, including genetic 
-  algorithms, genetic programming, and game-playing algorithms. This is the
-  aggregator project, which collects the jmona-model project and the
-  jmona-examples project.</description>
+  algorithms, genetic programming, and game-playing algorithms. This project
+  contains examples for how to use jmona to create an evolutionary algorithm.
+  </description>
   <url>http://cs-people.bu.edu/jeffreyf/jmona</url>
   <inceptionYear>2009</inceptionYear>
   <licenses>
@@ -83,7 +112,7 @@
   </scm>
 
   <repositories>
-    <repository> <!-- jfcommon repo -->
+    <repository> <!-- repo for jfcommon -->
       <id>jfcommon.repo</id>
       <name>jfcommon repository</name>
       <url>http://cs-people.bu.edu/jeffreyf/repo</url>
@@ -112,8 +141,8 @@
       <layout>default</layout>
     </snapshotRepository>
     <site>
-      <id>jmona.website</id>
-      <name>jmona website</name>
+      <id>jfcommon.website</id>
+      <name>jfcommon website</name>
       <url>scp://csa2.bu.edu/home/grad2/jeffreyf/public_html/jmona</url>
     </site>
   </distributionManagement>

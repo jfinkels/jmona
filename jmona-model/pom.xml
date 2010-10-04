@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>jmona</groupId>
+  <artifactId>jmona-model</artifactId>
+  <version>0.6-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <parent>
+    <groupId>jfcommon</groupId>
+    <artifactId>pom</artifactId>
+    <version>0.1.1</version>
+  </parent>
+
+  <dependencies>
+    <!-- COMPILE DEPENDENCIES -->    
+    <dependency> <!-- Apache Commons math, for better random numbers -->
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-math</artifactId>
+      <version>${version.dependency.math}</version>
+      <scope>compile</scope>
+      <type>jar</type>
+    </dependency>
+
+    <dependency> <!-- Apache Commons lang, for mutable primitive wrappers -->
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>${version.dependency.lang}</version>
+      <scope>compile</scope>
+      <type>jar</type>
+    </dependency>
+
+    <dependency> <!-- command-line arguments parsing -->
+      <groupId>net.sf.jopt-simple</groupId>
+      <artifactId>jopt-simple</artifactId>
+      <version>${version.dependency.jopt-simple}</version>
+      <scope>compile</scope>
+      <type>jar</type>
+    </dependency>
+
+    <dependency><!--  Log4j API -->
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>${version.dependency.log4j}</version>
+      <scope>compile</scope>
+      <type>jar</type>
+    </dependency>
+
+    <dependency> <!-- Spring context package -->
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${version.dependency.spring}</version>
+      <scope>compile</scope>
+      <type>jar</type>
+    </dependency>
+
+    <dependency> <!-- Functional programming tools -->
+      <groupId>jfcommon</groupId>
+      <artifactId>functional</artifactId>
+      <version>${version.dependency.jfcommon.functional}</version>
+      <scope>compile</scope>
+      <type>jar</type>
+    </dependency>
+
+    <!-- TEST-COMPILE DEPENDENCIES -->
+    <dependency> <!-- JUnit 4 unit testing framework -->
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${version.dependency.junit}</version>
+      <scope>test</scope>
+      <type>jar</type>
+    </dependency>
+    
+    <dependency> <!-- Testing utilities -->
+      <groupId>jfcommon</groupId>
+      <artifactId>test</artifactId>
+      <version>${version.dependency.jfcommon.test}</version>
+      <scope>test</scope>
+      <type>jar</type>
+    </dependency>
+
+    <dependency> <!-- Spring testing framework -->
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${version.dependency.spring}</version>
+      <scope>test</scope>
+      <type>jar</type>
+    </dependency>
+
+  </dependencies>
+
+  <properties>
+    <!-- dependency versions -->
+    <version.dependency.jfcommon.functional>0.2.1</version.dependency.jfcommon.functional>
+    <version.dependency.jfcommon.test>0.1</version.dependency.jfcommon.test>
+    <version.dependency.jopt-simple>3.2</version.dependency.jopt-simple>
+    <version.dependency.junit>4.8.1</version.dependency.junit>
+    <version.dependency.lang>2.5</version.dependency.lang>
+    <version.dependency.log4j>1.2.14</version.dependency.log4j>
+    <version.dependency.math>2.1</version.dependency.math>
+    <version.dependency.spring>3.0.4.RELEASE</version.dependency.spring>
+    
+    <!-- configuration variables -->
+    <mainClass>jmona.driver.Main</mainClass>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>${mainClass}</mainClass>              
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <name>jmona-model</name>
+  <description>A Java framework for evolutionary algorithms, including genetic 
+  algorithms, genetic programming, and game-playing algorithms. This project
+  is the model for the evolutionary framework.</description>
+  <url>http://cs-people.bu.edu/jeffreyf/jmona</url>
+  <inceptionYear>2009</inceptionYear>
+  <licenses>
+    <license>
+      <distribution>repo</distribution>
+      <name>GNU General Public License version 3</name>
+      <url>http://www.gnu.org/licenses/gpl-3.0.txt</url>
+    </license>
+  </licenses>
+
+  <issueManagement>
+    <system>GitHub Issue Tracker</system>
+    <url>http://github.com/jfinkels/jmona/issues</url>
+  </issueManagement>
+
+  <mailingLists>
+    <mailingList>
+      <archive>http://n3.nabble.com/jmona-f94687.html</archive>
+      <name>jmona</name>
+      <subscribe>http://n3.nabble.com/subscriptions/Subscribe.jtp?node=94687</subscribe>
+      <unsubscribe>http://n3.nabble.com/subscriptions/Subscribe.jtp?node=94687</unsubscribe>
+    </mailingList>
+  </mailingLists>
+
+  <scm>
+    <connection>scm:git:git@github.com:jfinkels/jmona.git</connection>
+    <url>http://github.com/jfinkels/jmona</url>
+  </scm>
+
+  <repositories>
+    <repository> <!-- repo for jfcommon -->
+      <id>jfcommon.repo</id>
+      <name>jfcommon repository</name>
+      <url>http://cs-people.bu.edu/jeffreyf/repo</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>      
+      </snapshots>
+    </repository>
+  </repositories>
+    
+  <distributionManagement>
+    <downloadUrl>http://cs-people.bu.edu/jeffreyf/jmona/</downloadUrl>
+    <repository>
+      <id>jfcommon.repo</id>
+      <name>jfcommon repository</name>
+      <url>scp://csa2.bu.edu/home/grad2/jeffreyf/public_html/repo</url>
+      <layout>default</layout>
+    </repository>
+    <snapshotRepository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>jfcommon.repo.snapshot</id>
+      <name>jfcommon snapshot repository</name>
+      <url>scp://csa2.bu.edu/home/grad2/jeffreyf/public_html/repo</url>
+      <layout>default</layout>
+    </snapshotRepository>
+    <site>
+      <id>jmona.website</id>
+      <name>jmona website</name>
+      <url>scp://csa2.bu.edu/home/grad2/jeffreyf/public_html/jmona</url>
+    </site>
+  </distributionManagement>
+</project>

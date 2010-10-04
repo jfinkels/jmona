@@ -122,12 +122,12 @@ public class MainTester {
     } catch (final RuntimeException exception) {
       TestUtils.fail(exception);
     }
-
+/*
     try {
       Main.main(new String[] { CONFIG_FILE_GOOD });
     } catch (final RuntimeException exception) {
       TestUtils.fail(exception);
-    }
+    }*/
   }
 
   /**
