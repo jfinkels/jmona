@@ -5,7 +5,7 @@
 
   <groupId>jmona</groupId>
   <artifactId>jmona</artifactId>
-  <version>0.5-SNAPSHOT</version>
+  <version>0.5</version>
   <packaging>jar</packaging>
 
   <dependencies>
