@@ -33,7 +33,9 @@ public class NormFitnessFunctionTester {
   /** Zero. */
   public static final double ZERO_DELTA = 0.0;
 
-  /** Test for {@link jmon.impl.fitness.NormFitnessFunction#rawFitness(Number)}. */
+  /**
+   * Test for {@link jmona.impl.fitness.NormFitnessFunction#rawFitness(Number)}.
+   */
   @Test
   public void testRawFitness() {
     assertEquals(10.0,

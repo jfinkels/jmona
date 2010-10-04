@@ -45,7 +45,7 @@ public class VariableDistributionMutationFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.mutation.VariableDistributionMutationFunction#mutate(jmona.DeepCopyableList)}
+   * {@link jmona.impl.mutation.VariableDistributionMutationFunction#mutate(java.util.List)}
    * .
    */
   @Test

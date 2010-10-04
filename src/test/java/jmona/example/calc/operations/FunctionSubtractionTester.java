@@ -39,7 +39,7 @@ public class FunctionSubtractionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.calc.operations.FunctionSubtraction#operate(jmona.Function, jmona.Function)}
+   * {@link jmona.example.calc.operations.FunctionSubtraction#operate(jfcommon.functional.Function, jfcommon.functional.Function)}
    * .
    */
   @Test

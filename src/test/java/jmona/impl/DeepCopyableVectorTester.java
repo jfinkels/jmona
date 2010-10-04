@@ -62,16 +62,14 @@ public class DeepCopyableVectorTester {
     }
 
     try {
-      this.vector = new DeepCopyableVector<ExampleIndividual>(
-          this.beforeList);
+      this.vector = new DeepCopyableVector<ExampleIndividual>(this.beforeList);
     } catch (final CopyingException exception) {
       TestUtils.fail(exception);
     }
   }
 
   /**
-   * Test method for
-   * {@link jmona.impl.DeepCopyableVector#DeepCopyableVector()}.
+   * Test method for {@link jmona.impl.DeepCopyableVector#DeepCopyableVector()}.
    */
   @Test
   public void testDeepCopyableVector() {
@@ -81,7 +79,7 @@ public class DeepCopyableVectorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.DeepCopyableVector#DeepCopyableVector(java.util.Collection)}
+   * {@link jmona.impl.DeepCopyableVector#DeepCopyableVector(java.lang.Iterable)}
    * .
    */
   @Test

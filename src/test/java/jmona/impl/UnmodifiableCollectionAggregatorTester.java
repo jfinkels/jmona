@@ -37,7 +37,7 @@ public class UnmodifiableCollectionAggregatorTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.UnmodifiableCollectionAggregator#AbstractAggregator(java.util.Collection)}
+   * {@link jmona.impl.UnmodifiableCollectionAggregator#UnmodifiableCollectionAggregator(Object[])}
    * .
    */
   @Test

@@ -62,7 +62,7 @@ public class StochasticUniversalSamplingTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.StochasticUniversalSampling#select(List, int)}
+   * {@link jmona.impl.selection.StochasticUniversalSampling#select(Map, int)}
    * numberToSelect equal to 0.
    */
   @Test
@@ -76,7 +76,7 @@ public class StochasticUniversalSamplingTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.StochasticUniversalSampling#select(List, int)}
+   * {@link jmona.impl.selection.StochasticUniversalSampling#select(Map, int)}
    * numberToSelect equal to 1.
    */
   @Test
@@ -100,7 +100,7 @@ public class StochasticUniversalSamplingTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.StochasticUniversalSampling#select(List, int)}
+   * {@link jmona.impl.selection.StochasticUniversalSampling#select(Map, int)}
    * on individuals of equal weights.
    */
   @Test
@@ -154,7 +154,7 @@ public class StochasticUniversalSamplingTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.StochasticUniversalSampling#select(List, int)}
+   * {@link jmona.impl.selection.StochasticUniversalSampling#select(Map, int)}
    * with a fitnesses map with no elements.
    */
   @Test
@@ -170,7 +170,7 @@ public class StochasticUniversalSamplingTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.StochasticUniversalSampling#select(List, int)}
+   * {@link jmona.impl.selection.StochasticUniversalSampling#select(Map, int)}
    * on individuals of unequal weight.
    */
   @Test

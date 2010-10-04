@@ -42,7 +42,7 @@ public class ElitismSelectionFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.ElitismSelectionFunction#select(java.util.List, jmona.FitnessFunction, int)}
+   * {@link jmona.impl.selection.ElitismSelectionFunction#select(java.util.Map, int)}
    * .
    */
   @Test

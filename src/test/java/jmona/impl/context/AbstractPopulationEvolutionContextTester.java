@@ -68,7 +68,7 @@ public class AbstractPopulationEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#AbstractEvolutionContext(java.util.List)}
+   * {@link jmona.impl.context.AbstractPopulationEvolutionContext#AbstractPopulationEvolutionContext(java.util.List)}
    * .
    */
   @Test
@@ -78,7 +78,8 @@ public class AbstractPopulationEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#currentGeneration()}.
+   * {@link jmona.impl.context.AbstractPopulationEvolutionContext#currentGeneration()}
+   * .
    */
   @Test
   public void testCurrentGeneration() {
@@ -93,7 +94,8 @@ public class AbstractPopulationEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#currentPopulation()}.
+   * {@link jmona.impl.context.AbstractPopulationEvolutionContext#currentPopulation()}
+   * .
    */
   @Test
   public void testCurrentPopulation() {
@@ -102,7 +104,7 @@ public class AbstractPopulationEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#executeGenerationStep()}
+   * {@link jmona.impl.context.AbstractPopulationEvolutionContext#executeGenerationStep()}
    * .
    */
   @Test
@@ -116,7 +118,7 @@ public class AbstractPopulationEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#setCurrentPopulation(java.util.List)}
+   * {@link jmona.impl.context.AbstractPopulationEvolutionContext#setCurrentPopulation(java.util.List)}
    * .
    */
   @Test
@@ -129,7 +131,8 @@ public class AbstractPopulationEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#stepGeneration()}.
+   * {@link jmona.impl.context.AbstractPopulationEvolutionContext#stepGeneration()}
+   * .
    */
   @Test
   public void testStepGeneration() {

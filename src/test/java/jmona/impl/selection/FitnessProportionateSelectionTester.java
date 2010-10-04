@@ -24,7 +24,6 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import jmona.impl.example.ExampleIndividual;
@@ -114,8 +113,8 @@ public class FitnessProportionateSelectionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.FitnessProportionateSelection#select(List)}
-   * with a fitnesses map with no elements.
+   * {@link jmona.impl.selection.FitnessProportionateSelection#select(Map)} with
+   * a fitnesses map with no elements.
    */
   @Test
   public void testSelectionEmptyMap() {
@@ -124,7 +123,7 @@ public class FitnessProportionateSelectionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.selection.FitnessProportionateSelection#select(List)} on
+   * {@link jmona.impl.selection.FitnessProportionateSelection#select(Map)} on
    * individuals of unequal weight.
    */
   @Test

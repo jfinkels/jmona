@@ -39,7 +39,7 @@ public class FunctionDivisionTester {
 
   /**
    * Test method for
-   * {@link jmona.example.calc.operations.FunctionDivision#operate(jmona.Function, jmona.Function)}
+   * {@link jmona.example.calc.operations.FunctionDivision#operate(jfcommon.functional.Function, jfcommon.functional.Function)}
    * .
    */
   @Test

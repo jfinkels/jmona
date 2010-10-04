@@ -45,7 +45,7 @@ public class AggregatorCompletionConditionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.completion.AggregatorCompletionCondition#AggregatorCompletionCondition(java.lang.Iterable)}
+   * {@link jmona.impl.completion.AggregatorCompletionCondition#AggregatorCompletionCondition(CompletionCondition[])}
    * .
    */
   @Test

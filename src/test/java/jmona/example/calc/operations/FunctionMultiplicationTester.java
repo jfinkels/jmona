@@ -39,7 +39,7 @@ public class FunctionMultiplicationTester {
 
   /**
    * Test method for
-   * {@link jmona.example.calc.operations.FunctionMultiplication#operate(jmona.Function, jmona.Function)}
+   * {@link jmona.example.calc.operations.FunctionMultiplication#operate(jfcommon.functional.Function, jfcommon.functional.Function)}
    * .
    */
   @Test

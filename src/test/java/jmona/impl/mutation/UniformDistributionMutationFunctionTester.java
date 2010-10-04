@@ -45,7 +45,7 @@ public class UniformDistributionMutationFunctionTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.mutation.UniformDistributionMutationFunction#mutate(jmona.DeepCopyableList)}
+   * {@link jmona.impl.mutation.UniformDistributionMutationFunction#mutate(java.util.List)}
    * .
    */
   @Test

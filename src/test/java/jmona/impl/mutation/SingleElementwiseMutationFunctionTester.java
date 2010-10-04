@@ -46,24 +46,24 @@ public class SingleElementwiseMutationFunctionTester {
 
   /**
    * Test for the
-   * {@link jmona.impl.mutation.SingleElementwiseMutationFunction#mutate(DeepCopyableList)}
+   * {@link jmona.impl.mutation.SingleElementwiseMutationFunction#mutate(java.util.List)}
    * method.
    */
   @Test
   public void testMutate() {
-    
+
     final DeepCopyableList<ExampleIndividual> list = new DeepCopyableVector<ExampleIndividual>();
     list.add(new ExampleIndividual(1));
 
     final SingleElementwiseMutationFunction<ExampleIndividual, List<ExampleIndividual>> function = new SingleElementwiseMutationFunction<ExampleIndividual, List<ExampleIndividual>>();
-    
+
     try {
       function.mutate(list);
       TestUtils.shouldHaveThrownException();
     } catch (final MutationException exception) {
       assertNull(function.elementMutationFunction());
     }
-    
+
     function.setElementMutationFunction(new ExampleMutationFunction());
     try {
       function.mutate(list);

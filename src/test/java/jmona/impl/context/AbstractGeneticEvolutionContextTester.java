@@ -113,7 +113,7 @@ public class AbstractGeneticEvolutionContextTester {
 
   /**
    * Test method for
-   * {@link jmona.impl.context.AbstractEvolutionContext#AbstractEvolutionContext(List)}
+   * {@link jmona.impl.context.AbstractGeneticEvolutionContext#AbstractGeneticEvolutionContext(List)}
    * .
    */
   @Test
@@ -157,7 +157,8 @@ public class AbstractGeneticEvolutionContextTester {
    */
   @Test
   public void testCrossoverProbability() {
-    assertEquals(AbstractGeneticEvolutionContext.DEFAULT_CROSSOVER_PROBABILITY,
+    assertEquals(
+        AbstractGeneticEvolutionContext.DEFAULT_CROSSOVER_PROBABILITY,
         this.context.crossoverProbability(), ZERO_DELTA);
   }
 
@@ -169,9 +170,11 @@ public class AbstractGeneticEvolutionContextTester {
   @Test
   public void testCurrentAdjustedFitnesses() {
     assertEquals(1 / (1 + this.individual1.fitness()), this.context
-        .currentAdjustedFitnesses().get(this.individual1).doubleValue(), ZERO_DELTA);
+        .currentAdjustedFitnesses().get(this.individual1).doubleValue(),
+        ZERO_DELTA);
     assertEquals(1 / (1 + this.individual2.fitness()), this.context
-        .currentAdjustedFitnesses().get(this.individual2).doubleValue(), ZERO_DELTA);
+        .currentAdjustedFitnesses().get(this.individual2).doubleValue(),
+        ZERO_DELTA);
   }
 
   /**
@@ -424,7 +427,8 @@ public class AbstractGeneticEvolutionContextTester {
   public void testSetMutationProbability() {
     final double newProbability = this.context.mutationProbability() / 2.0;
     this.context.setMutationProbability(newProbability);
-    assertEquals(newProbability, this.context.mutationProbability(), ZERO_DELTA);
+    assertEquals(newProbability, this.context.mutationProbability(),
+        ZERO_DELTA);
   }
 
   /**
