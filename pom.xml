@@ -446,7 +446,7 @@
   <name>jmona</name>
   <description>A Java framework for evolutionary algorithms, including genetic 
   algorithms, genetic programming, and game-playing algorithms.</description>
-  <url>http://www.cs.tufts.edu/~jfinke02/jmona</url>
+  <url>http://cs-people.bu.edu/jeffreyf/jmona</url>
   <inceptionYear>2009</inceptionYear>
   <licenses>
     <license>
@@ -492,7 +492,7 @@
     <repository> <!-- repo for jfcommon.functional and jfcommon.test -->
       <id>jmona.repo</id>
       <name>jmona repository</name>
-      <url>http://www.cs.tufts.edu/~jfinke02/repo</url>
+      <url>http://cs-people.bu.edu/jeffreyf/repo</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -500,50 +500,27 @@
         <enabled>true</enabled>      
       </snapshots>
     </repository>
-    <!-- <repository> apache commons repo, to get commons-lang 3
-      <releases>
-        <enabled>true</enabled>
-        <updatePolicy>daily</updatePolicy>
-        <checksumPolicy>warn</checksumPolicy>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>daily</updatePolicy>
-        <checksumPolicy>warn</checksumPolicy>
-      </snapshots>
-      <id>commons-repo</id>
-      <name>Apache Commons public repository</name>
-      <url>https://repository.apache.org/content/groups/public</url>
-      <layout>default</layout>
-    </repository> -->
   </repositories>
-
-  <!--<pluginRepositories>
-    <pluginRepository>
-      <id>apache.snapshots</id>
-      <url>http://repository.apache.org/snapshots/</url>
-    </pluginRepository>
-  </pluginRepositories>-->
     
   <distributionManagement>
-    <downloadUrl>http://www.cs.tufts.edu/~jfinke02/jmona/</downloadUrl>
+    <downloadUrl>http://cs-people.bu.edu/jeffreyf/jmona/</downloadUrl>
     <repository>
       <id>jmona.repo</id>
       <name>jmona repository</name>
-      <url>scp://linux.cs.tufts.edu/h/jfinke02/public_html/repo</url>
+      <url>scp://csa2.bu.edu/home/grad2/jeffreyf/public_html/repo</url>
       <layout>default</layout>
     </repository>
     <snapshotRepository>
       <uniqueVersion>false</uniqueVersion>
       <id>jmona.repo.snapshot</id>
       <name>jmona snapshot repository</name>
-      <url>scp://linux.cs.tufts.edu/h/jfinke02/public_html/repo</url>
+      <url>scp://csa2.bu.edu/home/grad2/jeffreyf/public_html/repo</url>
       <layout>default</layout>
     </snapshotRepository>
     <site>
       <id>jmona.website</id>
       <name>jmona website</name>
-      <url>scp://linux.cs.tufts.edu/h/jfinke02/public_html/jmona</url>
+      <url>scp://csa2.bu.edu/home/grad2/jeffreyf/public_html/jmona</url>
     </site>
   </distributionManagement>
 </project>
